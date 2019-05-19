@@ -39,6 +39,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interface\ICommand.cs" />
+    <Compile Include="Interface\ISprite.cs" />
     <Compile Include="MarioGame.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
