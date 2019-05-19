@@ -12,7 +12,7 @@ namespace SuperMarioBros
 {
     class MarioGame : Game
     {
-        private static int a;
+        
         private SpriteBatch spriteBatch;
 
         public MarioGame()
