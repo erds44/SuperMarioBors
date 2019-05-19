@@ -12,7 +12,9 @@ namespace SuperMarioBros
 {
     class MarioGame : Game
     {
+        // Test messgae
         private SpriteBatch spriteBatch;
+        private static int test;
         public MarioGame()
         {
             var graphicsDeviceManager = new GraphicsDeviceManager(this);
