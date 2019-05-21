@@ -43,6 +43,5 @@ namespace SuperMarioBros
             GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(gameTime);
         }
-        //I am just testing out the commit process
     }
 }
