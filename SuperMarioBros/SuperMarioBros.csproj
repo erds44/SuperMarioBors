@@ -60,12 +60,14 @@
     <Compile Include="Class\Command\Quit.cs" />
     <Compile Include="Class\Controller\GamePadController.cs" />
     <Compile Include="Class\Controller\KeyboardController.cs" />
+    <Compile Include="Class\Object\Mario.cs" />
     <Compile Include="Class\Receiver\InputAction.cs" />
     <Compile Include="Class\SpriteFactory\MarioSpriteFactory .cs" />
     <Compile Include="Class\Sprite\MotionAnimatedSprite.cs" />
     <Compile Include="Class\Sprite\MotionlessFixedSprite.cs" />
     <Compile Include="Interface\ICommand.cs" />
     <Compile Include="Interface\IController.cs" />
+    <Compile Include="Interface\IObject.cs" />
     <Compile Include="Interface\ISprite.cs" />
     <Compile Include="Interface\IReceiver.cs" />
     <Compile Include="MarioGame.cs" />
