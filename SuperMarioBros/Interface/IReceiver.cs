@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros
 {
-    interface ICommand
+    interface IReceiver
     {
-        void Execute();
+        void Quit();
+        void MoveLeft();
+        void MoveRight();
+        void FaceLeftOrRight();
     }
 }

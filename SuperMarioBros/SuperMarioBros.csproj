@@ -36,11 +36,39 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Content\mario1Dead.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\mario1LeftMove.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\mario1LeftStill.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\mario1RightMove.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\mario1RightStill.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Command\FaceLeftOrRightCommand.cs" />
+    <Compile Include="Class\Command\MoveLeftCommand.cs" />
+    <Compile Include="Class\Command\MoveRightCommand.cs" />
+    <Compile Include="Class\Command\Quit.cs" />
+    <Compile Include="Class\Controller\GamePadController.cs" />
+    <Compile Include="Class\Controller\KeyboardController.cs" />
+    <Compile Include="Class\Receiver\InputAction.cs" />
+    <Compile Include="Class\Sprite\MotionAnimatedSprite.cs" />
+    <Compile Include="Class\Sprite\MotionlessFixedSprite.cs" />
+    <Compile Include="Class\Sprite\TextureStorage.cs" />
     <Compile Include="Interface\ICommand.cs" />
+    <Compile Include="Interface\IController.cs" />
+    <Compile Include="Interface\Invoker.cs" />
     <Compile Include="Interface\ISprite.cs" />
+    <Compile Include="Interface\IReceiver.cs" />
     <Compile Include="MarioGame.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
-namespace SuperMarioBros.Interface
+namespace SuperMarioBros
 {
     interface ISprite
     {
-        void Draw();
-        void Update();
+        void Update(ref Vector2 location);
+        void Draw(SpriteBatch spriteBatc);
     }
 }

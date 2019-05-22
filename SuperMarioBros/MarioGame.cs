@@ -12,36 +12,58 @@ namespace SuperMarioBros
 {
     class MarioGame : Game
     {
-        
-        private SpriteBatch spriteBatch;
+    private IController player;
+    private ISprite sprite;
+    private SpriteBatch spriteBatch;
+    private Vector2 location;
+    public MarioGame()
+    {
+        var graphicsDeviceManager = new GraphicsDeviceManager(this);
+        graphicsDeviceManager.DeviceCreated += (o, e) =>
+        {
+            spriteBatch = new SpriteBatch((o as GraphicsDeviceManager).GraphicsDevice);
+        };
+        Content.RootDirectory = "Content";
+    }
+    protected override void Initialize()
+    {
+        location = new Vector2(400, 200);
+        TextureStorage.LoadAllTextures(Content);
+        if (GamePad.GetState(PlayerIndex.One).IsConnected)
+        {
+            player = new GamePadController(this);
+        }
+        else
+        {
+            player = new KeyboardController(this);
+        }
+        base.Initialize();
+    }
+    protected override void LoadContent()
+    {
+        TextureStorage.LoadAllTextures(Content);
+    }
+    protected override void Update(GameTime gameTime)
+    {
+        player.Update();
+        sprite.Update(ref location);
+        base.Update(gameTime);
+    }
 
-        public MarioGame()
-        {
-            var graphicsDeviceManager = new GraphicsDeviceManager(this);
-            graphicsDeviceManager.DeviceCreated += (o, e) =>
-            {
-                spriteBatch = new SpriteBatch((o as GraphicsDeviceManager).GraphicsDevice);
-            };
-            Content.RootDirectory = "Content";
-        }
-        protected override void Initialize()
-        {
-            base.Initialize();
-        }
-        protected override void LoadContent()
-        {
-           
-            base.LoadContent();
-        }
-        protected override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
-        }
+    protected override void Draw(GameTime gameTime)
+    {
+        GraphicsDevice.Clear(Color.CornflowerBlue);
+        sprite.Draw(spriteBatch);
+        base.Draw(gameTime);
+    }
+    public void SetMotionAnimatedSprite(Texture2D texture, bool left)
+    {
 
-        protected override void Draw(GameTime gameTime)
-        {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-            base.Draw(gameTime);
-        }
+        sprite = new MotionAnimatedSprite(texture, left);
+    }
+    public void SetStillSprite(Texture2D texture)
+    {
+        sprite = new MotionlessFixedSprite(texture);
+    }
     }
 }
