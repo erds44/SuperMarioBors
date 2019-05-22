@@ -12,58 +12,51 @@ namespace SuperMarioBros
 {
     class MarioGame : Game
     {
-    private IController player;
-    private ISprite sprite;
-    private SpriteBatch spriteBatch;
-    private Vector2 location;
-    public MarioGame()
-    {
-        var graphicsDeviceManager = new GraphicsDeviceManager(this);
-        graphicsDeviceManager.DeviceCreated += (o, e) =>
+        private IController player;
+        public ISprite sprite;
+        private SpriteBatch spriteBatch;
+        private Vector2 location;
+        public MarioGame()
         {
-            spriteBatch = new SpriteBatch((o as GraphicsDeviceManager).GraphicsDevice);
-        };
-        Content.RootDirectory = "Content";
-    }
-    protected override void Initialize()
-    {
-        location = new Vector2(400, 200);
-        TextureStorage.LoadAllTextures(Content);
-        if (GamePad.GetState(PlayerIndex.One).IsConnected)
-        {
-            player = new GamePadController(this);
+            var graphicsDeviceManager = new GraphicsDeviceManager(this);
+            graphicsDeviceManager.DeviceCreated += (o, e) =>
+            {
+                spriteBatch = new SpriteBatch((o as GraphicsDeviceManager).GraphicsDevice);
+            };
+            Content.RootDirectory = "Content";
         }
-        else
+        protected override void Initialize()
         {
-            player = new KeyboardController(this);
+            location = new Vector2(400, 200);
+            MarioSpriteFactory.Instance.LoadAllTextures(Content);
+           
+            if (GamePad.GetState(PlayerIndex.One).IsConnected)
+            {
+                player = new GamePadController(this);
+            }
+            else
+            {
+                player = new KeyboardController(this);
+            }
+            base.Initialize();
         }
-        base.Initialize();
-    }
-    protected override void LoadContent()
-    {
-        TextureStorage.LoadAllTextures(Content);
-    }
-    protected override void Update(GameTime gameTime)
-    {
-        player.Update();
-        sprite.Update(ref location);
-        base.Update(gameTime);
-    }
+        protected override void LoadContent()
+        {
+            MarioSpriteFactory.Instance.LoadAllTextures(Content);
+        }
+        protected override void Update(GameTime gameTime)
+        {
+            player.Update();
+            sprite.Update(ref location);
+            base.Update(gameTime);
+        }
 
-    protected override void Draw(GameTime gameTime)
-    {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
-        sprite.Draw(spriteBatch);
-        base.Draw(gameTime);
-    }
-    public void SetMotionAnimatedSprite(Texture2D texture, bool left)
-    {
+        protected override void Draw(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+            sprite.Draw(spriteBatch);
+            base.Draw(gameTime);
+        }
 
-        sprite = new MotionAnimatedSprite(texture, left);
-    }
-    public void SetStillSprite(Texture2D texture)
-    {
-        sprite = new MotionlessFixedSprite(texture);
-    }
     }
 }

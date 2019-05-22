@@ -11,7 +11,6 @@ namespace SuperMarioBros
     class InputAction : IReceiver
     {
         private MarioGame game;
-        private Texture2D texture;
         private enum MarioSprites {RightStill, LeftStill, RightMove, LeftMove, Dead};
         private MarioSprites currentSprite;
         private bool left;
@@ -19,29 +18,26 @@ namespace SuperMarioBros
         {
             left = false;
             game = mario;
-            texture = TextureStorage.GetMario1RightStill();
             currentSprite = MarioSprites.RightStill;
-            game.SetStillSprite(texture);
+            game.sprite = MarioSpriteFactory.Instance.CreateSprite("smallMarioStillRight");
         }
 
         public void MoveLeft() 
         {
             if (currentSprite != MarioSprites.LeftMove)
             {
-                texture = TextureStorage.GetMario1LeftMove();
                 currentSprite = MarioSprites.LeftMove;
                 left = true;
-                game.SetMotionAnimatedSprite(texture, left);
+                game.sprite = MarioSpriteFactory.Instance.CreateSprite("smallMarioMoveLeft");
             }
         }
         public void MoveRight()
         {
             if (currentSprite != MarioSprites.RightMove)
             {
-                texture = TextureStorage.GetMario1RightMove();
                 currentSprite = MarioSprites.RightMove;
                 left = false;
-                game.SetMotionAnimatedSprite(texture, left);
+                game.sprite = MarioSpriteFactory.Instance.CreateSprite("smallMarioMoveRight");
             }
         }
 
@@ -51,15 +47,13 @@ namespace SuperMarioBros
             {
                 if (left)
                 {
-                    texture = TextureStorage.GetMario1LeftStill();
                     currentSprite = MarioSprites.LeftStill;
-                    game.SetStillSprite(texture);
+                    game.sprite = MarioSpriteFactory.Instance.CreateSprite("smallMarioStillLeft");
                 }
                 else
                 {
-                    texture = TextureStorage.GetMario1RightStill();
                     currentSprite = MarioSprites.RightStill;
-                    game.SetStillSprite(texture);
+                    game.sprite = MarioSpriteFactory.Instance.CreateSprite("smallMarioStillRight");
                 }
             }
         }
