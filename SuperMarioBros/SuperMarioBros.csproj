@@ -66,7 +66,6 @@
     <Compile Include="Class\Sprite\MotionlessFixedSprite.cs" />
     <Compile Include="Interface\ICommand.cs" />
     <Compile Include="Interface\IController.cs" />
-    <Compile Include="Interface\Invoker.cs" />
     <Compile Include="Interface\ISprite.cs" />
     <Compile Include="Interface\IReceiver.cs" />
     <Compile Include="MarioGame.cs" />

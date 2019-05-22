@@ -11,6 +11,6 @@ namespace SuperMarioBros
     interface ISprite
     {
         void Update(ref Vector2 location);
-        void Draw(SpriteBatch spriteBatc);
+        void Draw(SpriteBatch spriteBatch);
     }
 }

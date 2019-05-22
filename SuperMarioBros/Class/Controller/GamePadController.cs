@@ -13,33 +13,33 @@ namespace SuperMarioBros
     class GamePadController : IController
     {
         private IReceiver receiver;
-        private Invoker currInvoker;
-        private Invoker defaultInvoker;
-        private Dictionary<GamePadButtons, Invoker> inputKeys;
+        private ICommand defaultCommand;
+        private Dictionary<GamePadButtons, ICommand> inputKeys;
         public GamePadController(MarioGame game)
         {
-            inputKeys = new Dictionary<GamePadButtons, Invoker>();
+            inputKeys = new Dictionary<GamePadButtons, ICommand>();
             receiver = new InputAction(game);
-            defaultInvoker = new Invoker(new FaceLeftOrRightCommand(receiver));
+            defaultCommand = new FaceLeftOrRightCommand(receiver);
             Initialize();
         }
 
         private void Initialize()
         {
-            inputKeys.Add(new GamePadButtons(Buttons.Start), new Invoker(new Quit(receiver)));
+            inputKeys.Add(new GamePadButtons(Buttons.Start), new Quit(receiver));
             // More Keys TBD
 
         }
         public void Update()
         {
             GamePadButtons button = GamePad.GetState(PlayerIndex.One).Buttons;
-            if (inputKeys.TryGetValue(button, out currInvoker))
+            ICommand command;
+            if (inputKeys.TryGetValue(button, out command))
             {
-                currInvoker.press();
+                command.Execute();
             }
             else
             {
-                defaultInvoker.press();
+                defaultCommand.Execute();
             }
         }
     }

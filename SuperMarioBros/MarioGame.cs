@@ -12,7 +12,7 @@ namespace SuperMarioBros
 {
     class MarioGame : Game
     {
-        private IController player;
+        private IController controller;
         public ISprite sprite;
         private SpriteBatch spriteBatch;
         private Vector2 location;
@@ -28,25 +28,24 @@ namespace SuperMarioBros
         protected override void Initialize()
         {
             location = new Vector2(400, 200);
-            MarioSpriteFactory.Instance.LoadAllTextures(Content);
-           
+            MarioSpriteFactory.Instance.LoadAllTextures(Content); 
             if (GamePad.GetState(PlayerIndex.One).IsConnected)
             {
-                player = new GamePadController(this);
+                controller = new GamePadController(this);
             }
             else
             {
-                player = new KeyboardController(this);
+                controller = new KeyboardController(this);
             }
             base.Initialize();
         }
         protected override void LoadContent()
         {
-            MarioSpriteFactory.Instance.LoadAllTextures(Content);
+           // MarioSpriteFactory.Instance.LoadAllTextures(Content); ?
         }
         protected override void Update(GameTime gameTime)
         {
-            player.Update();
+            controller.Update();
             sprite.Update(ref location);
             base.Update(gameTime);
         }

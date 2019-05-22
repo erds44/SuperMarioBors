@@ -13,22 +13,21 @@ namespace SuperMarioBros
     class KeyboardController : IController
     {
         private IReceiver receiver;
-        private Invoker currInvoker;
-        private Invoker defaultInvoker;
-        private Dictionary<Keys, Invoker> inputKeys;
+        private ICommand defaultCommand;
+        private Dictionary<Keys, ICommand> inputKeys;
         public KeyboardController(MarioGame game)
         {
-            inputKeys = new Dictionary<Keys, Invoker>();
+            inputKeys = new Dictionary<Keys, ICommand>();
             receiver = new InputAction(game);
-            defaultInvoker = new Invoker(new FaceLeftOrRightCommand(receiver));
-            Initialize();
+            defaultCommand = new FaceLeftOrRightCommand(receiver);
+            BindKeys();
         }
 
-        private void Initialize()
+        private void BindKeys()
         {
-            inputKeys.Add(Keys.Q, new Invoker(new Quit(receiver)));
-            inputKeys.Add(Keys.A, new Invoker(new MoveLeftCommand(receiver)));
-            inputKeys.Add(Keys.D, new Invoker(new MoveRightCommand(receiver)));
+            inputKeys.Add(Keys.Q, new Quit(receiver));
+            inputKeys.Add(Keys.A, new MoveLeftCommand(receiver));
+            inputKeys.Add(Keys.D, new MoveRightCommand(receiver));
 
         }
         public void Update()
@@ -36,18 +35,19 @@ namespace SuperMarioBros
             Keys[] key = Keyboard.GetState().GetPressedKeys();
             if (key.Count() > 0)
             {
-                if(inputKeys.TryGetValue(key[0], out currInvoker))
+                ICommand command;
+                if (inputKeys.TryGetValue(key[0], out command))
                 {
-                    currInvoker.press();
+                    command.Execute();
                 }
                 else
                 {
-                    defaultInvoker.press();
+                    defaultCommand.Execute();
                 }
             }
             else
             {
-                defaultInvoker.press();
+                defaultCommand.Execute();
             }
 
         }
