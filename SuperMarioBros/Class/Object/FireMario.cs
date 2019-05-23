@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuperMarioBros.Class.Object
+namespace SuperMarioBros
 {
     class FireMario : IMarioObject
     {
@@ -12,7 +12,7 @@ namespace SuperMarioBros.Class.Object
         public FireMario(MarioGame game)
         {
             // Assume it is facing right, change later
-            state = new RightIdleMarioState(this, game, "FireMario");
+            state = new RightIdleMarioState(this, game, "fireMario");
         }
 
         public void Left()

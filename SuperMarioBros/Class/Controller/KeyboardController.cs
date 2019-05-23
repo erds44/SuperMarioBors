@@ -19,16 +19,16 @@ namespace SuperMarioBros
         {
             inputKeys = new Dictionary<Keys, ICommand>();
             receiver = new InputAction(game);
-            defaultCommand = new FaceLeftOrRightCommand(receiver);
             BindKeys();
         }
 
         private void BindKeys()
         {
             inputKeys.Add(Keys.Q, new Quit(receiver));
-            inputKeys.Add(Keys.A, new MoveLeftCommand(receiver));
-            inputKeys.Add(Keys.D, new MoveRightCommand(receiver));
-
+            inputKeys.Add(Keys.A, new LeftCommand(receiver));
+            inputKeys.Add(Keys.D, new RightCommand(receiver));
+            inputKeys.Add(Keys.W, new UpCommand(receiver));
+            inputKeys.Add(Keys.S, new DownCommand(receiver));
         }
         public void Update()
         {
@@ -40,14 +40,6 @@ namespace SuperMarioBros
                 {
                     command.Execute();
                 }
-                else
-                {
-                    defaultCommand.Execute();
-                }
-            }
-            else
-            {
-                defaultCommand.Execute();
             }
 
         }

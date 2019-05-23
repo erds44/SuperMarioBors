@@ -36,27 +36,58 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Content\smallMarioDead.xnb">
+    <None Include="Content\BigMarioLeftCrouching.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\smallMarioMoveLeft.xnb">
+    <None Include="Content\BigMarioLeftIdle.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\smallMarioStillLeft.xnb">
+    <None Include="Content\BigMarioLeftJumping.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\smallMarioMoveRight.xnb">
+    <None Include="Content\BigMarioLeftMoving.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\smallMarioStillRight.xnb">
+    <None Include="Content\BigMarioRightCrouching.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BigMarioRightIdle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BigMarioRightJumping.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BigMarioRightMoving.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioDead.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioLeftIdle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioLeftJumping.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioLeftMoving.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioRightIdle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioRightJumping.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioRightMoving.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\Command\FaceLeftOrRightCommand.cs" />
-    <Compile Include="Class\Command\MoveLeftCommand.cs" />
-    <Compile Include="Class\Command\MoveRightCommand.cs" />
+    <Compile Include="Class\Command\DownCommand.cs" />
+    <Compile Include="Class\Command\RightCommand.cs" />
+    <Compile Include="Class\Command\UpCommand.cs" />
+    <Compile Include="Class\Command\LeftCommand.cs" />
     <Compile Include="Class\Command\Quit.cs" />
     <Compile Include="Class\Controller\GamePadController.cs" />
     <Compile Include="Class\Controller\KeyboardController.cs" />
@@ -75,6 +106,7 @@
     <Compile Include="Class\Receiver\InputAction.cs" />
     <Compile Include="Class\SpriteFactory\SpriteFactory .cs" />
     <Compile Include="Class\Sprite\MotionAnimatedSprite.cs" />
+    <Compile Include="Class\Sprite\MotionlessAnimatedSprite.cs" />
     <Compile Include="Class\Sprite\MotionlessFixedSprite.cs" />
     <Compile Include="Interface\ICommand.cs" />
     <Compile Include="Interface\IController.cs" />
@@ -90,6 +122,7 @@
       <HintPath>..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\lib\net45\MonoGame.Framework.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets" Condition="Exists('..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

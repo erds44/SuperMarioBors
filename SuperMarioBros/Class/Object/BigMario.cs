@@ -14,7 +14,7 @@ namespace SuperMarioBros
         {
             // Assume it is facing right, change later
             // Actually, it depends on small mario
-            state = new RightIdleMarioState(this, game,"BigMario");
+            state = new RightIdleMarioState(this, game,"bigMario");
         }
 
         public void Left()

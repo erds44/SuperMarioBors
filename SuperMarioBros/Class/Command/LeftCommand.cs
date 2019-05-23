@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros
 {
-    class FaceLeftOrRightCommand: ICommand
+    class LeftCommand : ICommand
     {
         private IReceiver action;
-        public FaceLeftOrRightCommand(IReceiver receiver)
+        public LeftCommand(IReceiver receiver)
         {
             action = receiver;
         }
         public void Execute()
         {
-            action.FaceLeftOrRight();
+            action.Left();
         }
     }
 }

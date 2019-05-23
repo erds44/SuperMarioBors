@@ -26,12 +26,12 @@ namespace SuperMarioBros
 
         public void Left()
         {
-            mario.state = new RightIdleMarioState(mario, game, type);
+            mario.state = new LeftMovingMarioState(mario, game, type);
         }
 
         public void Right()
         {
-            mario.state = new RightMovingMarioState(mario, game, type);
+            mario.state = new RightIdleMarioState(mario, game, type);
         }
 
         public void Up()

@@ -10,52 +10,30 @@ namespace SuperMarioBros
 {
     class InputAction : IReceiver
     {
+        private IMarioObject mario;
         private MarioGame game;
-        private enum MarioSprites {RightStill, LeftStill, RightMove, LeftMove, Dead};
-        private MarioSprites currentSprite;
-        private bool left;
-        public InputAction(MarioGame mario)
+        public InputAction(MarioGame game)
         {
-            left = false;
-            game = mario;
-            currentSprite = MarioSprites.RightStill;
-            game.sprite = MarioSpriteFactory.Instance.CreateSprite("smallMarioStillRight");
+            this.game = game;
+            mario = new BigMario(game);
         }
 
-        public void MoveLeft() 
+        public void Left() 
         {
-            if (currentSprite != MarioSprites.LeftMove)
-            {
-                currentSprite = MarioSprites.LeftMove;
-                left = true;
-                game.sprite = MarioSpriteFactory.Instance.CreateSprite("smallMarioMoveLeft");
-            }
+            mario.Left();
         }
-        public void MoveRight()
+        public void Right()
         {
-            if (currentSprite != MarioSprites.RightMove)
-            {
-                currentSprite = MarioSprites.RightMove;
-                left = false;
-                game.sprite = MarioSpriteFactory.Instance.CreateSprite("smallMarioMoveRight");
-            }
+            mario.Right();
         }
 
-        public void FaceLeftOrRight()
+        public void Up()
         {
-            if (currentSprite != MarioSprites.RightStill || currentSprite != MarioSprites.LeftStill)
-            {
-                if (left)
-                {
-                    currentSprite = MarioSprites.LeftStill;
-                    game.sprite = MarioSpriteFactory.Instance.CreateSprite("smallMarioStillLeft");
-                }
-                else
-                {
-                    currentSprite = MarioSprites.RightStill;
-                    game.sprite = MarioSpriteFactory.Instance.CreateSprite("smallMarioStillRight");
-                }
-            }
+            mario.Up();
+        }
+        public void Down()
+        {
+            mario.Down();
         }
         public void Quit()
         {

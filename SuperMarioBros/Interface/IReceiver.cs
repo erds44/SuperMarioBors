@@ -9,8 +9,10 @@ namespace SuperMarioBros
     public interface IReceiver
     {
         void Quit();
-        void MoveLeft();
-        void MoveRight();
-        void FaceLeftOrRight();
+        void Left();
+        void Right();
+        void Up();
+        void Down();
+        // More Actions to add
     }
 }

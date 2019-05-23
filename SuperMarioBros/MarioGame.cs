@@ -16,6 +16,7 @@ namespace SuperMarioBros
         public ISprite sprite;
         private SpriteBatch spriteBatch;
         private Vector2 location;
+        private int count;
         public MarioGame()
         {
             var graphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -24,11 +25,12 @@ namespace SuperMarioBros
                 spriteBatch = new SpriteBatch((o as GraphicsDeviceManager).GraphicsDevice);
             };
             Content.RootDirectory = "Content";
+            count = 0;
         }
         protected override void Initialize()
         {
             location = new Vector2(400, 200);
-            MarioSpriteFactory.Instance.LoadAllTextures(Content); 
+            SpriteFactory.Instance.LoadAllTextures(Content); 
             if (GamePad.GetState(PlayerIndex.One).IsConnected)
             {
                 controller = new GamePadController(this);
@@ -45,16 +47,25 @@ namespace SuperMarioBros
         }
         protected override void Update(GameTime gameTime)
         {
-            controller.Update();
-            sprite.Update(ref location);
-            base.Update(gameTime);
+            count++;
+            if(count % 4 == 0) // Used for delay
+            {
+                controller.Update();
+                sprite.Update(ref location);
+                base.Update(gameTime);
+                count = 0;
+            }
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-            sprite.Draw(spriteBatch);
-            base.Draw(gameTime);
+            if (count % 4 == 0)
+            {
+                GraphicsDevice.Clear(Color.CornflowerBlue);
+                sprite.Draw(spriteBatch);
+                base.Draw(gameTime);
+            }
+
         }
 
     }

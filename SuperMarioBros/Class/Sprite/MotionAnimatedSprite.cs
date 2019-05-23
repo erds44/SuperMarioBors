@@ -17,7 +17,7 @@ namespace SuperMarioBros
         private int currentFrame;
         private int width;
         private int height;
-        private int totalFrame = 6;
+        private int totalFrame = 5;
         private bool left;
         private float xMovement = 10;
         public MotionAnimatedSprite(Texture2D inputTexture, bool inputleft)

@@ -13,13 +13,11 @@ namespace SuperMarioBros
     class GamePadController : IController
     {
         private IReceiver receiver;
-        private ICommand defaultCommand;
         private Dictionary<GamePadButtons, ICommand> inputKeys;
         public GamePadController(MarioGame game)
         {
             inputKeys = new Dictionary<GamePadButtons, ICommand>();
             receiver = new InputAction(game);
-            defaultCommand = new FaceLeftOrRightCommand(receiver);
             Initialize();
         }
 
@@ -36,10 +34,6 @@ namespace SuperMarioBros
             if (inputKeys.TryGetValue(button, out command))
             {
                 command.Execute();
-            }
-            else
-            {
-                defaultCommand.Execute();
             }
         }
     }
