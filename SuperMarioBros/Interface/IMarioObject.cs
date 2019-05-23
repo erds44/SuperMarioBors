@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros
 {
-    public interface IReceiver
+    public interface IMarioObject
     {
-        void Quit();
-        void MoveLeft();
-        void MoveRight();
-        void FaceLeftOrRight();
+        IMarioState state { get; set; }
+        void Left();
+        void Down();
+        void Up();
+        void Right();
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace SuperMarioBros
 {
-    interface ISprite
+    public interface ISprite
     {
         void Update(ref Vector2 location);
         void Draw(SpriteBatch spriteBatch);

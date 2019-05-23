@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace SuperMarioBros
 {
-    class MarioSpriteFactory
+    class SpriteFactory
     {
         private Texture2D smallMarioStillLeft;
         private Texture2D smallMarioStillRight;
@@ -16,15 +16,15 @@ namespace SuperMarioBros
         private Texture2D smallMarioMoveRight;
         private Texture2D smallMarioDead;
 
-        private static MarioSpriteFactory instance = new MarioSpriteFactory();
-        public static MarioSpriteFactory Instance
+        private static SpriteFactory instance = new SpriteFactory();
+        public static SpriteFactory Instance
         {
             get
             {
                 return instance;
             }
         }
-        private MarioSpriteFactory()
+        private SpriteFactory()
         {
 
         }
@@ -59,6 +59,7 @@ namespace SuperMarioBros
                 sprite = new MotionlessFixedSprite(smallMarioDead);
             }
             return sprite;
+
         }
     }
 }

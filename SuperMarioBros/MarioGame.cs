@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SuperMarioBros
 {
-    class MarioGame : Game
+    public class MarioGame : Game
     {
         private IController controller;
         public ISprite sprite;
