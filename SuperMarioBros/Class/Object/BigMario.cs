@@ -10,6 +10,7 @@ namespace SuperMarioBros
     public class BigMario : IMarioObject
     {
         public IMarioState state { get; set; }
+        public ISprite sprite { get; set; }
         public BigMario(MarioGame game)
         {
             // Assume it is facing right, change later

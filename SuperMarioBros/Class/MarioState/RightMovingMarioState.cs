@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros 
 {
-    class RightMovingMarioState : IMarioState
+    public class RightMovingMarioState : IMarioState
     {
         private IMarioObject mario;
         private MarioGame game;

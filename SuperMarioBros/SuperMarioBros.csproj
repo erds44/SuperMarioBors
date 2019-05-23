@@ -101,6 +101,7 @@
     <Compile Include="Class\MarioState\RightMovingMarioState.cs" />
     <Compile Include="Class\MarioState\LeftMovingMarioState.cs" />
     <Compile Include="Class\Object\BigMario.cs" />
+    <Compile Include="Class\Object\Block.cs" />
     <Compile Include="Class\Object\FireMario.cs" />
     <Compile Include="Class\Object\SmallMario.cs" />
     <Compile Include="Class\Receiver\InputAction.cs" />
@@ -108,6 +109,8 @@
     <Compile Include="Class\Sprite\MotionAnimatedSprite.cs" />
     <Compile Include="Class\Sprite\MotionlessAnimatedSprite.cs" />
     <Compile Include="Class\Sprite\MotionlessFixedSprite.cs" />
+    <Compile Include="Interface\IBlockObject.cs" />
+    <Compile Include="Interface\IBlockState.cs" />
     <Compile Include="Interface\ICommand.cs" />
     <Compile Include="Interface\IController.cs" />
     <Compile Include="Interface\IMarioObject.cs" />

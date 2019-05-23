@@ -9,6 +9,7 @@ namespace SuperMarioBros
     class SmallMario : IMarioObject
     {
         public IMarioState state { get; set; }
+        public ISprite sprite { get; set; }
         public SmallMario(MarioGame game)
         {
             // Assume it is facing right, change later

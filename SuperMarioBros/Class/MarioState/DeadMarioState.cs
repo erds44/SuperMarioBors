@@ -1,36 +1,62 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperMarioBros.Class.MarioState
 {
-    class DeadMarioState : IMarioState
+    public class DeadMarioState : IMarioState
     {
+        private IMarioObject mario;
+        private MarioGame game;
+        private String type;
+        public DeadMarioState(IMarioObject mario, MarioGame game, String type)
+        {
+            this.mario = mario;
+            this.game = game;
+            this.type = type;
+            game.sprite = SpriteFactory.Instance.CreateSprite(type + "DeadSprite");
+        }
         public void Down()
         {
-            throw new NotImplementedException();
+            //Do nothing.
         }
 
         public void Left()
         {
-            throw new NotImplementedException();
+            //Do nothing.
         }
 
         public void Right()
         {
-            throw new NotImplementedException();
+            //Do nothing.
         }
 
         public void Up()
         {
-            throw new NotImplementedException();
+            //Do nothing.
+        }
+
+        public void ToSmall()
+        {
+            mario.state = new RightIdleMarioState(mario, game, "smallMario");
+        }
+
+        public void ToBig()
+        {
+            mario.state = new RightIdleMarioState(mario, game, "bigMario");
+        }
+
+        public void ToFire()
+        {
+            mario.state = new RightIdleMarioState(mario, game, "fireMario");
+        }
+
+        public void Die()
+        {
+            //Do nothing.
         }
 
         public void Update()
         {
-            throw new NotImplementedException();
+            //Do nothing.
         }
     }
 }

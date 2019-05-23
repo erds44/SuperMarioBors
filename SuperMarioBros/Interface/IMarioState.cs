@@ -12,6 +12,10 @@ namespace SuperMarioBros
         void Down();
         void Up();
         void Right();
+        void ToSmall();
+        void ToBig();
+        void ToFire();
+        void Die();
         void Update();
     }
 }

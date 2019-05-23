@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros
 {
-    class LeftCrouchingMarioState : IMarioState
+    public class LeftCrouchingMarioState : IMarioState
     {
         private IMarioObject mario;
         private MarioGame game;
@@ -39,9 +39,20 @@ namespace SuperMarioBros
             mario.state = new LeftIdleMarioState(mario, game, type);
         }
 
-        public void Update()
-        {
-           // Do nothing
+        public void ToSmall() {
+            mario.state = new LeftCrouchingMarioState(mario, game, "smallMario");
+        }
+
+        public void ToBig() {
+            mario.state = new LeftCrouchingMarioState(mario, game, "bigMario");
+        }
+
+        public void ToFire() {
+            mario.state = new LeftCrouchingMarioState(mario, game, "fireMario");
+        }
+
+        public void Die() {
+            mario.state = new DeadMarioState();
         }
     }
 }

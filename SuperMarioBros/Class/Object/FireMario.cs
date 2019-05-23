@@ -9,6 +9,7 @@ namespace SuperMarioBros
     class FireMario : IMarioObject
     {
         public IMarioState state { get; set; }
+        public ISprite sprite { get; set; }
         public FireMario(MarioGame game)
         {
             // Assume it is facing right, change later
