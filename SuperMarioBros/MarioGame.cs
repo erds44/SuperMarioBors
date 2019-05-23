@@ -48,7 +48,7 @@ namespace SuperMarioBros
         protected override void Update(GameTime gameTime)
         {
             count++;
-            if(count % 4 == 0) // Used for delay
+            if(count % 5 == 0) // Used for delay
             {
                 controller.Update();
                 sprite.Update(ref location);
@@ -59,7 +59,7 @@ namespace SuperMarioBros
 
         protected override void Draw(GameTime gameTime)
         {
-            if (count % 4 == 0)
+            if (count % 5 == 0)
             {
                 GraphicsDevice.Clear(Color.CornflowerBlue);
                 sprite.Draw(spriteBatch);
