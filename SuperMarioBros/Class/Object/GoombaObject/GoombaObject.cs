@@ -58,7 +58,7 @@ namespace SuperMarioBros.Class.Object.GoombaObject
             sprite.Update();
         }
 
-        public void UpdateSprite(ISprite sprite)
+        public void ChangeSprite(ISprite sprite)
         {
             this.sprite = sprite;
         }

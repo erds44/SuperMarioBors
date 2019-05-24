@@ -15,7 +15,7 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
         {
             this.mario = mario;
             this.type = type;
-            mario.UpdateSprite(SpriteFactory.CreateSprite(type + "LeftCrouching"));      
+            mario.ChangeSprite(SpriteFactory.CreateSprite(type + "LeftCrouching"));      
         }
 
         public void Down()

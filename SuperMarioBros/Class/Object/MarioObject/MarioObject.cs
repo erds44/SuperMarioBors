@@ -111,7 +111,7 @@ namespace SuperMarioBros.Class.Object.MarioObject
              * This is a scratch, I don't know if it works.
              */
         }
-        public void UpdateSprite(ISprite sprite)
+        public void ChangeSprite(ISprite sprite)
         {
             this.sprite = sprite;
         }

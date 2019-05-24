@@ -16,7 +16,7 @@ namespace SuperMarioBros.Class.Object.GoombaObject.GoombaState
         public LeftMovingGoombaState(GoombaObject goomba)
         {
             this.goomba = goomba;
-            goomba.UpdateSprite(SpriteFactory.CreateSprite("Goomba"));
+            goomba.ChangeSprite(SpriteFactory.CreateSprite("Goomba"));
         }
         public void BeFlipped()
         {

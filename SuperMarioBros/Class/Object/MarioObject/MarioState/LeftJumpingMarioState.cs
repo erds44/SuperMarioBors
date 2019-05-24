@@ -16,7 +16,7 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
         {
             this.mario = mario;
             this.type = type;
-            mario.UpdateSprite(SpriteFactory.CreateSprite(type + "LeftJumping"));
+            mario.ChangeSprite(SpriteFactory.CreateSprite(type + "LeftJumping"));
         }
 
         public void Die()

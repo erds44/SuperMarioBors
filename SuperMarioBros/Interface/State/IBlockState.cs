@@ -9,9 +9,6 @@ namespace SuperMarioBros.Interface.State
     public interface IBlockState : IState
     {
         void ToUsed();
-        void ToBrick();
         void ToDisappear();
-        void ToQuestion();
-        void ToHidden();
     }
 }

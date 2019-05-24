@@ -14,11 +14,11 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
             this.type = type;
             if (type.Equals("SmallMario"))
             {
-                mario.UpdateSprite(SpriteFactory.CreateSprite(this.type + "Dead"));
+                mario.ChangeSprite(SpriteFactory.CreateSprite(this.type + "Dead"));
             }
             else
             {
-                mario.UpdateSprite(SpriteFactory.CreateSprite(this.type + "RightIdle"));
+                mario.ChangeSprite(SpriteFactory.CreateSprite(this.type + "RightIdle"));
             }
         }
         public void Down()

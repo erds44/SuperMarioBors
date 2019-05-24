@@ -16,7 +16,7 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
         {
             this.mario = mario;
             this.type = type;
-            mario.UpdateSprite(SpriteFactory.CreateSprite(type + "LeftMoving"));
+            mario.ChangeSprite(SpriteFactory.CreateSprite(type + "LeftMoving"));
         }
 
         public void Die()
@@ -26,7 +26,7 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
 
         public void Down()
         {
-            if (type.Equals("BigMario") || type.Equals("FireMario"))
+            if (!type.Equals("SmallMario"))
             {
                 mario.ChangeState(new LeftCrouchingMarioState(mario, type));
             }
