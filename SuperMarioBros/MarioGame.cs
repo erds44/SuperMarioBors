@@ -11,6 +11,7 @@ using SuperMarioBros.Interface;
 using SuperMarioBros.Class.Object.MarioObject;
 using SuperMarioBros.Class.Controller;
 using SuperMarioBros.Class.Object.GoombaObject;
+using SuperMarioBros.Class.Object.ItemObject;
 
 namespace SuperMarioBros
 {
@@ -22,6 +23,9 @@ namespace SuperMarioBros
         private int count;
         public MarioObject mario;
         public GoombaObject goomba;
+        public PipeObject pipe;
+        public FlowerObject flower;
+
         public MarioGame()
         {
             var graphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -40,6 +44,8 @@ namespace SuperMarioBros
             controllers.Add(new KeyboardController(this));
             mario = new MarioObject(this, location,"SmallMario");
             goomba = new GoombaObject(new Vector2(100, 100));
+            pipe = new PipeObject(new Vector2(200, 200));
+            flower = new FlowerObject(new Vector2(200, 300));
             base.Initialize();
         }
         protected override void LoadContent()
@@ -65,6 +71,8 @@ namespace SuperMarioBros
                 GraphicsDevice.Clear(Color.CornflowerBlue);
                 mario.Draw(spriteBatch);
                 goomba.Draw(spriteBatch);
+                pipe.Draw(spriteBatch);
+                flower.Draw(spriteBatch);
                 base.Draw(gameTime);
             }
 
