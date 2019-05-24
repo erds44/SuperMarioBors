@@ -36,51 +36,27 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Content\BigMarioLeftCrouching.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\BigMarioLeftIdle.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\BigMarioLeftJumping.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\BigMarioLeftMoving.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\BigMarioRightCrouching.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\BigMarioRightIdle.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\BigMarioRightJumping.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\BigMarioRightMoving.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\SmallMarioDead.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\SmallMarioLeftIdle.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\SmallMarioLeftJumping.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\SmallMarioLeftMoving.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\SmallMarioRightIdle.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\SmallMarioRightJumping.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\SmallMarioRightMoving.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="Content\BrickBlock.xnb" />
+    <None Include="Content\BrickDebris.xnb" />
+    <None Include="Content\Coin.xnb" />
+    <None Include="Content\EmptyBlock.xnb" />
+    <None Include="Content\FireMarioLeftCrounching.xnb" />
+    <None Include="Content\FireMarioLeftIdle.xnb" />
+    <None Include="Content\FireMarioLeftJumping.xnb" />
+    <None Include="Content\FireMarioLeftMoving.xnb" />
+    <None Include="Content\FireMarioRightCrounching.xnb" />
+    <None Include="Content\FireMarioRightIdle.xnb" />
+    <None Include="Content\FireMarioRightJumping.xnb" />
+    <None Include="Content\FireMarioRightMoving.xnb" />
+    <None Include="Content\Flower.xnb" />
+    <None Include="Content\Goomba.xnb" />
+    <None Include="Content\GoombaStomped.xnb" />
+    <None Include="Content\GreenMushroom.xnb" />
+    <None Include="Content\Koompa.xnb" />
+    <None Include="Content\KoompaStomped.xnb" />
+    <None Include="Content\Pipe.xnb" />
+    <None Include="Content\QuestionBlock.xnb" />
+    <None Include="Content\RedMushroom.xnb" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -91,32 +67,30 @@
     <Compile Include="Class\Command\Quit.cs" />
     <Compile Include="Class\Controller\GamePadController.cs" />
     <Compile Include="Class\Controller\KeyboardController.cs" />
-    <Compile Include="Class\MarioState\DeadMarioState.cs" />
-    <Compile Include="Class\MarioState\LeftCrouchingMarioState.cs" />
-    <Compile Include="Class\MarioState\LeftJumpingMarioState.cs" />
-    <Compile Include="Class\MarioState\LeftIdleMarioState.cs" />
-    <Compile Include="Class\MarioState\RightCrouchingMarioState.cs" />
-    <Compile Include="Class\MarioState\RightIdleMarioState.cs" />
-    <Compile Include="Class\MarioState\RightJumpingMarioState.cs" />
-    <Compile Include="Class\MarioState\RightMovingMarioState.cs" />
-    <Compile Include="Class\MarioState\LeftMovingMarioState.cs" />
-    <Compile Include="Class\Object\BigMario.cs" />
-    <Compile Include="Class\Object\Block.cs" />
-    <Compile Include="Class\Object\FireMario.cs" />
-    <Compile Include="Class\Object\SmallMario.cs" />
+    <Compile Include="Class\Object\BlockObject\BlockObject.cs" />
+    <Compile Include="Class\Object\BlockObject\BlockState\BrickBlockState.cs" />
+    <Compile Include="Class\SpriteFactory\SpriteFactory.cs" />
+    <Compile Include="Interface\Object\IBlockObject.cs" />
+    <Compile Include="Class\Object\MarioObject\MarioState\DeadMarioState.cs" />
+    <Compile Include="Class\Object\MarioObject\MarioState\LeftCrouchingMarioState.cs" />
+    <Compile Include="Class\Object\MarioObject\MarioState\LeftJumpingMarioState.cs" />
+    <Compile Include="Class\Object\MarioObject\MarioState\LeftIdleMarioState.cs" />
+    <Compile Include="Class\Object\MarioObject\MarioState\RightCrouchingMarioState.cs" />
+    <Compile Include="Class\Object\MarioObject\MarioState\RightIdleMarioState.cs" />
+    <Compile Include="Class\Object\MarioObject\MarioState\RightJumpingMarioState.cs" />
+    <Compile Include="Class\Object\MarioObject\MarioState\RightMovingMarioState.cs" />
+    <Compile Include="Class\Object\MarioObject\MarioState\LeftMovingMarioState.cs" />
+    <Compile Include="Class\Object\MarioObject\MarioObject.cs" />
     <Compile Include="Class\Receiver\InputAction.cs" />
-    <Compile Include="Class\SpriteFactory\SpriteFactory .cs" />
-    <Compile Include="Class\Sprite\MotionAnimatedSprite.cs" />
-    <Compile Include="Class\Sprite\MotionlessAnimatedSprite.cs" />
-    <Compile Include="Class\Sprite\MotionlessFixedSprite.cs" />
-    <Compile Include="Interface\IBlockObject.cs" />
-    <Compile Include="Interface\IBlockState.cs" />
+    <Compile Include="Class\Sprite\UniversalSprite.cs" />
+    <Compile Include="Interface\State\IBlockState.cs" />
     <Compile Include="Interface\ICommand.cs" />
     <Compile Include="Interface\IController.cs" />
-    <Compile Include="Interface\IMarioObject.cs" />
-    <Compile Include="Interface\IMarioState.cs" />
+    <Compile Include="Interface\State\IMarioState.cs" />
+    <Compile Include="Interface\Object\IObject.cs" />
     <Compile Include="Interface\ISprite.cs" />
     <Compile Include="Interface\IReceiver.cs" />
+    <Compile Include="Interface\State\IState.cs" />
     <Compile Include="MarioGame.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>

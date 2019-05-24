@@ -7,16 +7,19 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
+using SuperMarioBros.Interface;
+using SuperMarioBros.Class.Object.MarioObject;
+using SuperMarioBros.Class.Controller;
 
 namespace SuperMarioBros
 {
     public class MarioGame : Game
     {
-        private IController controller;
-        public ISprite sprite;
+        private List<IController> controllers = new List<IController>();
         private SpriteBatch spriteBatch;
         private Vector2 location;
         private int count;
+        private MarioObject mario;
         public MarioGame()
         {
             var graphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -30,15 +33,10 @@ namespace SuperMarioBros
         protected override void Initialize()
         {
             location = new Vector2(400, 200);
-            SpriteFactory.Instance.LoadAllTextures(Content); 
-            if (GamePad.GetState(PlayerIndex.One).IsConnected)
-            {
-                controller = new GamePadController(this);
-            }
-            else
-            {
-                controller = new KeyboardController(this);
-            }
+            SpriteFactory.Initialize(Content); 
+            controllers.Add(new GamePadController(this));
+            controllers.Add(new KeyboardController(this));
+            this.mario = new MarioObject(this, location);
             base.Initialize();
         }
         protected override void LoadContent()
@@ -50,8 +48,8 @@ namespace SuperMarioBros
             count++;
             if(count % 5 == 0) // Used for delay
             {
-                controller.Update();
-                sprite.Update(ref location);
+                controllers.ForEach(element => element.Update());
+                mario.Update();
                 base.Update(gameTime);
                 count = 0;
             }
@@ -62,7 +60,7 @@ namespace SuperMarioBros
             if (count % 5 == 0)
             {
                 GraphicsDevice.Clear(Color.CornflowerBlue);
-                sprite.Draw(spriteBatch);
+                mario.Draw(spriteBatch);
                 base.Draw(gameTime);
             }
 

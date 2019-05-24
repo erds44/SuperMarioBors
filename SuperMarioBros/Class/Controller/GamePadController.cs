@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.Interface;
+using SuperMarioBros.Class.Command;
 
-
-namespace SuperMarioBros
+namespace SuperMarioBros.Class.Controller
 {
     class GamePadController : IController
     {

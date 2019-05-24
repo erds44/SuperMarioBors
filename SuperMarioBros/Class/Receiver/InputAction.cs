@@ -5,17 +5,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.Class.Object.MarioObject;
+using SuperMarioBros.Interface;
 
 namespace SuperMarioBros
 {
     class InputAction : IReceiver
     {
-        private IMarioObject mario;
+        private MarioObject mario;
         private MarioGame game;
         public InputAction(MarioGame game)
         {
             this.game = game;
-            mario = new BigMario(game);
+            mario = new MarioObject(game, new Vector2());
         }
 
         public void Left() 

@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace SuperMarioBros
+namespace SuperMarioBros.Interface
 {
     public interface ISprite
     {
-        void Update(ref Vector2 location);
-        void Draw(SpriteBatch spriteBatch);
+        void Update();
+        void Draw(SpriteBatch spriteBatch, Vector2 location);
+        Vector2 Size();
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros.Interface
 {
-    public interface IController
+    public interface IState
     {
         void Update();
     }
