@@ -188,6 +188,7 @@
     <Compile Include="Class\Object\BlockObject\QuestionBlockObject.cs" />
     <Compile Include="Class\Object\BlockObject\BlockState\QuestionBlockState.cs" />
     <Compile Include="Class\Object\BlockObject\BlockState\UsedBlockState.cs" />
+    <Compile Include="Class\Object\ItemObject\PipeObject.cs" />
     <Compile Include="Class\SpriteFactory\SpriteFactory.cs" />
     <Compile Include="Interface\Object\IBlockObject.cs" />
     <Compile Include="Class\Object\MarioObject\MarioState\DeadMarioState.cs" />
