@@ -17,7 +17,7 @@ namespace SuperMarioBros
         {
             this.game = game;
         }
-
+        // To be Refactored, Coupling
         public void Left() 
         {
             game.mario.Left();
@@ -47,6 +47,15 @@ namespace SuperMarioBros
         public void FireMario()
         {
             game.mario.ToFire();
+        }
+        public void DeadMario()
+        {
+            game.mario.Die();
+        }
+        public void Reset()
+        {
+            game.mario.Reset();
+            game.goomba.Reset();
         }
         public void Quit()
         {

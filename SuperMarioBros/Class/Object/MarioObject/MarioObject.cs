@@ -12,12 +12,14 @@ namespace SuperMarioBros.Class.Object.MarioObject
         private ISprite sprite;
         private MarioGame game; //For future change game state.
         public Vector2 location;
+        private Vector2 initialLocation;
         private int jumpTimer;
         public MarioObject(MarioGame game, Vector2 location, string type)
         {
             state = new RightIdleMarioState(this, type);
             this.game = game;
             this.location = location;
+            initialLocation = location;
             jumpTimer = 6;
         }
 
@@ -117,6 +119,11 @@ namespace SuperMarioBros.Class.Object.MarioObject
         {
             this.state = marioState;
             jumpTimer = 6; //reset timer
+        }
+        public void Reset()
+        {
+            state = new RightIdleMarioState(this, "SmallMario");
+            location = initialLocation;
         }
     }
 }

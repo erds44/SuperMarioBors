@@ -10,15 +10,17 @@ using SuperMarioBros.Interface.State;
 using SuperMarioBros.Class.Object.GoombaObject.GoombaState;
 namespace SuperMarioBros.Class.Object.GoombaObject
 {
-    class GoombaObject : IObject
+    public class GoombaObject : IObject
     {
         private IGoombaState state;
         private Vector2 location;
+        private Vector2 initialLocation;
         public ISprite sprite { get; set; }
         public GoombaObject( Vector2 location)
         {
             state = new LeftMovingGoombaState(this);
             this.location = location;
+            initialLocation = location;
         }
         //public void ChangeDirection()
         //{
@@ -85,6 +87,11 @@ namespace SuperMarioBros.Class.Object.GoombaObject
         public void ChangeState(IGoombaState state)
         {
             this.state = state;
+        }
+        public void Reset()
+        {
+            state = new LeftMovingGoombaState(this);
+            location = initialLocation;
         }
     }
 }

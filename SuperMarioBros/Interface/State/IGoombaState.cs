@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 namespace SuperMarioBros.Interface.State
 {
-    interface IGoombaState : IState
+    public interface IGoombaState : IState
     {
-        void ChangeDirection();
+        // void ChangeDirection(); Not used in current Senario
         void BeStomped();
         void BeFlipped();
-        void Update();
     }
 }

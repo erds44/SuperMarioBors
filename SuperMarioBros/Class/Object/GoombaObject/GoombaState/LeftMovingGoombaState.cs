@@ -10,7 +10,7 @@ using SuperMarioBros.Class.Object.GoombaObject;
 
 namespace SuperMarioBros.Class.Object.GoombaObject.GoombaState
 {
-    class LeftMovingGoombaState : IGoombaState
+    public class LeftMovingGoombaState : IGoombaState
     {
         private GoombaObject goomba;
         public LeftMovingGoombaState(GoombaObject goomba)
@@ -28,7 +28,7 @@ namespace SuperMarioBros.Class.Object.GoombaObject.GoombaState
             throw new NotImplementedException();
         }
 
-        public void ChangeDirection()
+        private void ChangeDirection()
         {
             if (goomba.CheckLeftEdge())
             {
@@ -38,7 +38,7 @@ namespace SuperMarioBros.Class.Object.GoombaObject.GoombaState
 
         public void Update()
         {
-            goomba.Move(new Vector2(-10, 0));
+            goomba.Move(new Vector2(-5, 0));
             ChangeDirection();
         }
     }

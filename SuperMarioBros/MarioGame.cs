@@ -21,7 +21,7 @@ namespace SuperMarioBros
         private Vector2 location;
         private int count;
         public MarioObject mario;
-        private GoombaObject goomba;
+        public GoombaObject goomba;
         public MarioGame()
         {
             var graphicsDeviceManager = new GraphicsDeviceManager(this);

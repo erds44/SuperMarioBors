@@ -16,5 +16,7 @@ namespace SuperMarioBros.Interface
         void BigMario();
         void SmallMario();
         void FireMario();
+        void DeadMario();
+        void Reset();
     }
 }

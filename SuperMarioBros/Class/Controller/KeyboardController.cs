@@ -32,6 +32,8 @@ namespace SuperMarioBros.Class.Controller
             inputKeys.Add(Keys.Y, new SmallMarioCommand(receiver));
             inputKeys.Add(Keys.U, new BigMarioCommand(receiver));
             inputKeys.Add(Keys.I, new FireMarioCommand(receiver));
+            inputKeys.Add(Keys.O, new DieCommand(receiver));
+            inputKeys.Add(Keys.R, new ResetCommand(receiver));
             // More Keys TBD
 
         }
