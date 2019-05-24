@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.Interface;
 using SuperMarioBros.Class.Object.MarioObject;
 using SuperMarioBros.Class.Controller;
+using SuperMarioBros.Class.Object.GoombaObject;
 
 namespace SuperMarioBros
 {
@@ -19,7 +20,8 @@ namespace SuperMarioBros
         private SpriteBatch spriteBatch;
         private Vector2 location;
         private int count;
-        private MarioObject mario;
+        public MarioObject mario;
+        private GoombaObject goomba;
         public MarioGame()
         {
             var graphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -32,16 +34,16 @@ namespace SuperMarioBros
         }
         protected override void Initialize()
         {
-            location = new Vector2(400, 200);
+            location = new Vector2(400, 300);
             SpriteFactory.Initialize(Content); 
             controllers.Add(new GamePadController(this));
             controllers.Add(new KeyboardController(this));
-            this.mario = new MarioObject(this, location);
+            mario = new MarioObject(this, location,"SmallMario");
+            goomba = new GoombaObject(new Vector2(100, 100));
             base.Initialize();
         }
         protected override void LoadContent()
         {
-           // MarioSpriteFactory.Instance.LoadAllTextures(Content); ?
         }
         protected override void Update(GameTime gameTime)
         {
@@ -50,6 +52,7 @@ namespace SuperMarioBros
             {
                 controllers.ForEach(element => element.Update());
                 mario.Update();
+                goomba.Update();
                 base.Update(gameTime);
                 count = 0;
             }
@@ -61,6 +64,7 @@ namespace SuperMarioBros
             {
                 GraphicsDevice.Clear(Color.CornflowerBlue);
                 mario.Draw(spriteBatch);
+                goomba.Draw(spriteBatch);
                 base.Draw(gameTime);
             }
 

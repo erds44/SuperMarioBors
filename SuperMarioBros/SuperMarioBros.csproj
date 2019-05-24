@@ -36,39 +36,132 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Content\BrickBlock.xnb" />
-    <None Include="Content\BrickDebris.xnb" />
-    <None Include="Content\Coin.xnb" />
-    <None Include="Content\EmptyBlock.xnb" />
-    <None Include="Content\FireMarioLeftCrounching.xnb" />
-    <None Include="Content\FireMarioLeftIdle.xnb" />
-    <None Include="Content\FireMarioLeftJumping.xnb" />
-    <None Include="Content\FireMarioLeftMoving.xnb" />
-    <None Include="Content\FireMarioRightCrounching.xnb" />
-    <None Include="Content\FireMarioRightIdle.xnb" />
-    <None Include="Content\FireMarioRightJumping.xnb" />
-    <None Include="Content\FireMarioRightMoving.xnb" />
-    <None Include="Content\Flower.xnb" />
-    <None Include="Content\Goomba.xnb" />
-    <None Include="Content\GoombaStomped.xnb" />
-    <None Include="Content\GreenMushroom.xnb" />
-    <None Include="Content\Koompa.xnb" />
-    <None Include="Content\KoompaStomped.xnb" />
-    <None Include="Content\Pipe.xnb" />
-    <None Include="Content\QuestionBlock.xnb" />
-    <None Include="Content\RedMushroom.xnb" />
+    <None Include="Content\BigMarioLeftCrouching.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BigMarioLeftIdle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BigMarioLeftJumping.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BigMarioLeftMoving.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BigMarioRightCrouching.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BigMarioRightIdle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BigMarioRightJumping.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BigMarioRightMoving.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BrickBlock.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BrickDebris.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Coin.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\EmptyBlock.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\FireMarioLeftCrouching.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\FireMarioLeftIdle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\FireMarioLeftJumping.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\FireMarioLeftMoving.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\FireMarioRightCrouching.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\FireMarioRightIdle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\FireMarioRightJumping.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\FireMarioRightMoving.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Flower.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Goomba.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\GoombaStomped.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\GreenMushroom.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Koompa.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\KoompaStomped.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Pipe.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\QuestionBlock.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RedMushroom.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioDead.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioLeftIdle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioLeftJumping.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioLeftMoving.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioRightIdle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioRightJumping.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioRightMoving.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\Command\DownCommand.cs" />
     <Compile Include="Class\Command\RightCommand.cs" />
+    <Compile Include="Class\Command\SmallMarioCommand.cs" />
+    <Compile Include="Class\Command\BigMarioCommand.cs" />
+    <Compile Include="Class\Command\FireMarioCommand.cs" />
     <Compile Include="Class\Command\UpCommand.cs" />
     <Compile Include="Class\Command\LeftCommand.cs" />
     <Compile Include="Class\Command\Quit.cs" />
-    <Compile Include="Class\Controller\GamePadController.cs" />
     <Compile Include="Class\Controller\KeyboardController.cs" />
+    <Compile Include="Class\Controller\GamePadController.cs" />
     <Compile Include="Class\Object\BlockObject\BlockObject.cs" />
     <Compile Include="Class\Object\BlockObject\BlockState\BrickBlockState.cs" />
+    <Compile Include="Class\Object\GoombaObject\GoombaObject.cs" />
+    <Compile Include="Class\Object\GoombaObject\GoombaState\LeftMovingGoombaState.cs" />
+    <Compile Include="Class\Object\GoombaObject\GoombaState\RightMovingGoombaState.cs" />
     <Compile Include="Class\SpriteFactory\SpriteFactory.cs" />
     <Compile Include="Interface\Object\IBlockObject.cs" />
     <Compile Include="Class\Object\MarioObject\MarioState\DeadMarioState.cs" />
@@ -86,6 +179,7 @@
     <Compile Include="Interface\State\IBlockState.cs" />
     <Compile Include="Interface\ICommand.cs" />
     <Compile Include="Interface\IController.cs" />
+    <Compile Include="Interface\State\IGoombaState.cs" />
     <Compile Include="Interface\State\IMarioState.cs" />
     <Compile Include="Interface\Object\IObject.cs" />
     <Compile Include="Interface\ISprite.cs" />

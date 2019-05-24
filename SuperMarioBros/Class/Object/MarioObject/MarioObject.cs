@@ -11,13 +11,14 @@ namespace SuperMarioBros.Class.Object.MarioObject
         private IMarioState state;
         private ISprite sprite;
         private MarioGame game; //For future change game state.
-        private Vector2 location;
-        public MarioObject(MarioGame game, Vector2 location)
+        public Vector2 location;
+        private int jumpTimer;
+        public MarioObject(MarioGame game, Vector2 location, string type)
         {
-            // Assume it is facing right, change later
-            state = new RightIdleMarioState(this, "smallMario");
+            state = new RightIdleMarioState(this, type);
             this.game = game;
             this.location = location;
+            jumpTimer = 6;
         }
 
         public void Left()
@@ -62,17 +63,41 @@ namespace SuperMarioBros.Class.Object.MarioObject
 
         public void Move(Vector2 motion)
         {
-            this.location += motion;
+            if(location.X + motion.X < 780 && location.X + motion.X > 0)
+            {
+                location.X += motion.X;
+            }
+            if(location.Y + motion.Y < 580 && location.Y + motion.Y > 0)
+            {
+                location.Y += motion.Y;
+            }
+        }
+        public void Jump(Vector2 motion)
+        {
+            if(jumpTimer > 3)
+            {
+                location += motion;
+                jumpTimer--;
+            }else if(jumpTimer > 0)
+            {
+                location -= motion;
+                jumpTimer--;
+            }
+            else
+            {
+                jumpTimer = 6;
+            }
         }
         public void Update()
         {
-            this.state.Update();
+            state.Update();
+            sprite.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Vector2 size = sprite.Size();
-            sprite.Draw(spriteBatch, new Vector2(location.X, location.Y - size.Y));
+           // Vector2 size = sprite.Size();
+            sprite.Draw(spriteBatch, new Vector2(location.X, location.Y));
             /* Could be sprite.Draw(spriteBatch, location); 
              * the sprite knows the size it needs to draw.
              * size is a vector2 attribute of Sprite class.
@@ -91,6 +116,7 @@ namespace SuperMarioBros.Class.Object.MarioObject
         public void ChangeState(IMarioState marioState)
         {
             this.state = marioState;
+            jumpTimer = 6; //reset timer
         }
     }
 }

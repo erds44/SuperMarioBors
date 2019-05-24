@@ -13,6 +13,8 @@ namespace SuperMarioBros.Interface
         void Right();
         void Up();
         void Down();
-        // More Actions to add
+        void BigMario();
+        void SmallMario();
+        void FireMario();
     }
 }

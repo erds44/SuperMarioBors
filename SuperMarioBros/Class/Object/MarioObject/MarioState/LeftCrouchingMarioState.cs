@@ -15,7 +15,7 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
         {
             this.mario = mario;
             this.type = type;
-            mario.UpdateSprite(SpriteFactory.CreateSprite(type + "LeftCrouchingSprite"));      
+            mario.UpdateSprite(SpriteFactory.CreateSprite(type + "LeftCrouching"));      
         }
 
         public void Down()
@@ -39,15 +39,16 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
         }
 
         public void ToSmall() {
-            mario.ChangeState(new LeftIdleMarioState(mario, "smallMario")); //smallMario cannot crouch.
+            // Try Do Nothing
+            // mario.ChangeState(new LeftIdleMarioState(mario, "SmallMario")); //smallMario cannot crouch.
         }
 
         public void ToBig() {
-            mario.ChangeState(new LeftCrouchingMarioState(mario, "bigMario"));
+           mario.ChangeState(new LeftCrouchingMarioState(mario, "BigMario"));
         }
 
         public void ToFire() {
-            mario.ChangeState(new LeftCrouchingMarioState(mario, "fireMario"));
+            mario.ChangeState(new LeftCrouchingMarioState(mario, "FireMario"));
         }
 
         public void Die() {

@@ -16,7 +16,7 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
         {
             this.mario = mario;
             this.type = type;
-            mario.UpdateSprite(SpriteFactory.CreateSprite(type + "LeftMovingSprite"));
+            mario.UpdateSprite(SpriteFactory.CreateSprite(type + "LeftMoving"));
         }
 
         public void Die()
@@ -26,7 +26,10 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
 
         public void Down()
         {
-            mario.ChangeState(new LeftCrouchingMarioState(mario, type));
+            if (type.Equals("BigMario") || type.Equals("FireMario"))
+            {
+                mario.ChangeState(new LeftCrouchingMarioState(mario, type));
+            }
         }
 
         public void Fire()
@@ -46,17 +49,17 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
 
         public void ToBig()
         {
-            mario.ChangeState(new LeftMovingMarioState(mario, "bigMario"));
+            mario.ChangeState(new LeftMovingMarioState(mario, "BigMario"));
         }
 
         public void ToFire()
         {
-            mario.ChangeState(new LeftMovingMarioState(mario, "fireMario"));
+            mario.ChangeState(new LeftMovingMarioState(mario, "FireMario"));
         }
 
         public void ToSmall()
         {
-            mario.ChangeState(new LeftMovingMarioState(mario, "smallMario"));
+            mario.ChangeState(new LeftMovingMarioState(mario, "SmallMario"));
         }
 
         public void Up()
@@ -66,7 +69,7 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
 
         public void Update()
         {
-            mario.Move(new Vector2(-1, 0));
+            mario.Move(new Vector2(-10, 0));
         }
     }
 }

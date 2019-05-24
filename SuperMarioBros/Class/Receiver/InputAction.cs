@@ -12,30 +12,41 @@ namespace SuperMarioBros
 {
     class InputAction : IReceiver
     {
-        private MarioObject mario;
         private MarioGame game;
         public InputAction(MarioGame game)
         {
             this.game = game;
-            mario = new MarioObject(game, new Vector2());
         }
 
         public void Left() 
         {
-            mario.Left();
+            game.mario.Left();
         }
         public void Right()
         {
-            mario.Right();
+            game.mario.Right();
         }
 
         public void Up()
         {
-            mario.Up();
+            game.mario.Up();
         }
         public void Down()
         {
-            mario.Down();
+            game.mario.Down();
+        }
+        public void BigMario()
+        {
+            game.mario.ToBig();
+        }
+        public void SmallMario()
+        {
+            game.mario.ToSmall();
+
+        }
+        public void FireMario()
+        {
+            game.mario.ToFire();
         }
         public void Quit()
         {

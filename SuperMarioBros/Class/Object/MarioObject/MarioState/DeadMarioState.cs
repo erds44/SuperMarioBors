@@ -8,11 +8,11 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
         private MarioObject mario;
         private String type;
 
-        public DeadMarioState(MarioObject mario, String type)
+        public DeadMarioState(MarioObject mario, string type)
         {
             this.mario = mario;
             this.type = type;
-            mario.UpdateSprite(SpriteFactory.CreateSprite(this.type + "DeadSprite"));
+            mario.UpdateSprite(SpriteFactory.CreateSprite(this.type + "Dead"));
         }
         public void Down()
         {
@@ -36,17 +36,17 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
 
         public void ToSmall()
         {
-            mario.ChangeState(new RightIdleMarioState(mario, "smallMario"));
+            mario.ChangeState(new RightIdleMarioState(mario, "SmallMario"));
         }
 
         public void ToBig()
         {
-            mario.ChangeState(new RightIdleMarioState(mario, "bigMario"));
+            mario.ChangeState(new RightIdleMarioState(mario, "BigMario"));
         }
 
         public void ToFire()
         {
-            mario.ChangeState(new RightIdleMarioState(mario, "fireMario"));
+            mario.ChangeState(new RightIdleMarioState(mario, "FireMario"));
         }
 
         public void Die()

@@ -16,7 +16,7 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
         {
             this.mario = mario;
             this.type = type;
-            mario.UpdateSprite(SpriteFactory.CreateSprite(type + "LeftJumpingSprite"));
+            mario.UpdateSprite(SpriteFactory.CreateSprite(type + "LeftJumping"));
         }
 
         public void Die()
@@ -46,17 +46,17 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
 
         public void ToBig()
         {
-            mario.ChangeState(new LeftJumpingMarioState(mario, "bigMario"));
+            mario.ChangeState(new LeftJumpingMarioState(mario, "BigMario"));
         }
 
         public void ToFire()
         {
-            mario.ChangeState(new LeftJumpingMarioState(mario, "fireMario"));
+            mario.ChangeState(new LeftJumpingMarioState(mario, "FireMario"));
         }
 
         public void ToSmall()
         {
-            mario.ChangeState(new LeftJumpingMarioState(mario, "smallMario"));
+            mario.ChangeState(new LeftJumpingMarioState(mario, "SmallMario"));
         }
 
         public void Up()
@@ -66,7 +66,7 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
 
         public void Update()
         {
-            mario.Move(new Vector2(0,-1)); //jump speed
+            mario.Jump(new Vector2(0,-10)); //jump speed
         }
     }
 }
