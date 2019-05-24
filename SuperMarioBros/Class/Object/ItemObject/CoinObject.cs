@@ -9,33 +9,34 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros.Class.Object.ItemObject
 {
-   public class FlowerObject :IObject
-   {
+    public class CoinObject : IObject
+    {
         private Vector2 location;
-        public ISprite flowerSprite { get; set; }
+        public ISprite coinSprite { get; set; }
         private int updateDelay;
-        public FlowerObject(Vector2 location)
+        public CoinObject(Vector2 location)
         {
             this.location = location;
-            flowerSprite = SpriteFactory.CreateSprite("Flower");
+            coinSprite = SpriteFactory.CreateSprite("Coin");
         }
         public void Update()
         {
             updateDelay++;
-            if (updateDelay == 15)
+            if (updateDelay == 5)
             {
-                flowerSprite.Update();
+                coinSprite.Update();
                 updateDelay = 0;
             }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             
-            flowerSprite.Draw(spriteBatch, location);
+            coinSprite.Draw(spriteBatch, location);
         }
         public void UpdateSprite(ISprite sprite)
         {
-            flowerSprite = sprite;
+            coinSprite = sprite;
         }
-   }
+    }
 }
+

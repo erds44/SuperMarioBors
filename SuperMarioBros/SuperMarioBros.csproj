@@ -182,6 +182,7 @@
     <Compile Include="Class\Object\GoombaObject\GoombaObject.cs" />
     <Compile Include="Class\Object\GoombaObject\GoombaState\LeftMovingGoombaState.cs" />
     <Compile Include="Class\Object\GoombaObject\GoombaState\RightMovingGoombaState.cs" />
+    <Compile Include="Class\Object\ItemObject\CoinObject.cs" />
     <Compile Include="Class\Object\ItemObject\FlowerObject.cs" />
     <Compile Include="Class\Object\ItemObject\PipeObject.cs" />
     <Compile Include="Class\SpriteFactory\SpriteFactory.cs" />

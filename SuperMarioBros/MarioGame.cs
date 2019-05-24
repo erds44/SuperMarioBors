@@ -25,6 +25,7 @@ namespace SuperMarioBros
         public GoombaObject goomba;
         public PipeObject pipe;
         public FlowerObject flower;
+        public CoinObject coin;
 
         public MarioGame()
         {
@@ -46,6 +47,7 @@ namespace SuperMarioBros
             goomba = new GoombaObject(new Vector2(100, 100));
             pipe = new PipeObject(new Vector2(200, 200));
             flower = new FlowerObject(new Vector2(200, 300));
+            coin = new CoinObject(new Vector2(200, 400));
             base.Initialize();
         }
         protected override void LoadContent()
@@ -59,6 +61,8 @@ namespace SuperMarioBros
                 controllers.ForEach(element => element.Update());
                 mario.Update();
                 goomba.Update();
+                flower.Update();
+                coin.Update();
                 base.Update(gameTime);
                 count = 0;
             }
@@ -73,6 +77,7 @@ namespace SuperMarioBros
                 goomba.Draw(spriteBatch);
                 pipe.Draw(spriteBatch);
                 flower.Draw(spriteBatch);
+                coin.Draw(spriteBatch);
                 base.Draw(gameTime);
             }
 
