@@ -11,6 +11,7 @@ using SuperMarioBros.Interface;
 using SuperMarioBros.Class.Object.MarioObject;
 using SuperMarioBros.Class.Controller;
 using SuperMarioBros.Class.Object.GoombaObject;
+using SuperMarioBros.Class.Object.BlockObject;
 
 namespace SuperMarioBros
 {
@@ -22,6 +23,7 @@ namespace SuperMarioBros
         private int count;
         public MarioObject mario;
         public GoombaObject goomba;
+        public BlockObject brickBlock;
         public MarioGame()
         {
             var graphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -40,6 +42,7 @@ namespace SuperMarioBros
             controllers.Add(new KeyboardController(this));
             mario = new MarioObject(this, location,"SmallMario");
             goomba = new GoombaObject(new Vector2(100, 100));
+            brickBlock = new BrickBlockObject(this, new Vector2 (400, 400));
             base.Initialize();
         }
         protected override void LoadContent()
@@ -53,6 +56,7 @@ namespace SuperMarioBros
                 controllers.ForEach(element => element.Update());
                 mario.Update();
                 goomba.Update();
+                brickBlock.Update();
                 base.Update(gameTime);
                 count = 0;
             }
@@ -65,6 +69,7 @@ namespace SuperMarioBros
                 GraphicsDevice.Clear(Color.CornflowerBlue);
                 mario.Draw(spriteBatch);
                 goomba.Draw(spriteBatch);
+                brickBlock.Draw(spriteBatch);
                 base.Draw(gameTime);
             }
 
