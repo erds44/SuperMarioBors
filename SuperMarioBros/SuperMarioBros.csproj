@@ -185,6 +185,9 @@
     <Compile Include="Class\Object\ItemObject\CoinObject.cs" />
     <Compile Include="Class\Object\ItemObject\FlowerObject.cs" />
     <Compile Include="Class\Object\ItemObject\PipeObject.cs" />
+    <Compile Include="Class\Object\MushroomObject\MushroomObject.cs" />
+    <Compile Include="Class\Object\MushroomObject\MushroomState\LeftMovingMushroomState.cs" />
+    <Compile Include="Class\Object\MushroomObject\MushroomState\RightMovingMushroomState.cs" />
     <Compile Include="Class\SpriteFactory\SpriteFactory.cs" />
     <Compile Include="Interface\Object\IBlockObject.cs" />
     <Compile Include="Class\Object\MarioObject\MarioState\DeadMarioState.cs" />
@@ -199,6 +202,7 @@
     <Compile Include="Class\Object\MarioObject\MarioObject.cs" />
     <Compile Include="Class\Receiver\InputAction.cs" />
     <Compile Include="Class\Sprite\UniversalSprite.cs" />
+    <Compile Include="Interface\Object\IMushroomObject.cs" />
     <Compile Include="Interface\State\IBlockState.cs" />
     <Compile Include="Interface\ICommand.cs" />
     <Compile Include="Interface\IController.cs" />
@@ -207,6 +211,7 @@
     <Compile Include="Interface\Object\IObject.cs" />
     <Compile Include="Interface\ISprite.cs" />
     <Compile Include="Interface\IReceiver.cs" />
+    <Compile Include="Interface\State\IMushroomState.cs" />
     <Compile Include="Interface\State\IState.cs" />
     <Compile Include="MarioGame.cs" />
     <Compile Include="Program.cs" />

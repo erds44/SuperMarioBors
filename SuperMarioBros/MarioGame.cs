@@ -12,6 +12,8 @@ using SuperMarioBros.Class.Object.MarioObject;
 using SuperMarioBros.Class.Controller;
 using SuperMarioBros.Class.Object.GoombaObject;
 using SuperMarioBros.Class.Object.ItemObject;
+using SuperMarioBros.Interface.Object;
+using SuperMarioBros.Class.Object.MushroomObject;
 
 namespace SuperMarioBros
 {
@@ -23,9 +25,12 @@ namespace SuperMarioBros
         private int count;
         public MarioObject mario;
         public GoombaObject goomba;
-        public PipeObject pipe;
-        public FlowerObject flower;
-        public CoinObject coin;
+        public IObject pipe;
+        public IObject flower;
+        public IObject coin;
+        public IMushroomObject greenMushroom;
+        public IMushroomObject redMushroom;
+
 
         public MarioGame()
         {
@@ -48,6 +53,8 @@ namespace SuperMarioBros
             pipe = new PipeObject(new Vector2(200, 200));
             flower = new FlowerObject(new Vector2(200, 300));
             coin = new CoinObject(new Vector2(200, 400));
+            greenMushroom = new MushroomObject(new Vector2(400, 200), 350, 450, "Green");
+            redMushroom = new MushroomObject(new Vector2(400, 400), 350, 450, "Red");
             base.Initialize();
         }
         protected override void LoadContent()
@@ -63,6 +70,8 @@ namespace SuperMarioBros
                 goomba.Update();
                 flower.Update();
                 coin.Update();
+                greenMushroom.Update();
+                redMushroom.Update();
                 base.Update(gameTime);
                 count = 0;
             }
@@ -78,6 +87,8 @@ namespace SuperMarioBros
                 pipe.Draw(spriteBatch);
                 flower.Draw(spriteBatch);
                 coin.Draw(spriteBatch);
+                greenMushroom.Draw(spriteBatch);
+                redMushroom.Draw(spriteBatch);
                 base.Draw(gameTime);
             }
 
