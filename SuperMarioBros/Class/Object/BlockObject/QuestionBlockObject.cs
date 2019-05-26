@@ -14,9 +14,8 @@ namespace SuperMarioBros.Class.Object.BlockObject
 {
     public class QuestionBlockObject : BlockObject
     {
-        public QuestionBlockObject(MarioGame game, Vector2 location)
+        public QuestionBlockObject( Vector2 location)
         {
-            this.game = game;
             this.location = location;
             this.state = new QuestionBlockState(this);
         }

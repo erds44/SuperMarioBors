@@ -15,7 +15,7 @@ namespace SuperMarioBros.Class.Object.BlockObject.BlockState
         public DisappearBlockState(IBlockObject block)
         {
             this.block = block;
-            block.ChangeSprite(SpriteFactory.CreateSprite(type));
+            block.ChangeSprite(SpriteFactory.CreateSprite("HiddenBlock"));
         }
 
         public void ToDisappear()

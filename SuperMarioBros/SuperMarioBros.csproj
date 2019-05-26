@@ -126,6 +126,9 @@
     <None Include="Content\GreenMushroom.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\HiddenBlock.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\KoompaMovingLeft.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -175,6 +178,9 @@
     <Compile Include="Class\Command\BigMarioCommand.cs" />
     <Compile Include="Class\Command\FireMarioCommand.cs" />
     <Compile Include="Class\Command\ResetCommand.cs" />
+    <Compile Include="Class\Command\HiddenToUsedCommand.cs" />
+    <Compile Include="Class\Command\BrickToDisappearCommand.cs" />
+    <Compile Include="Class\Command\QuestionToUsedCommand.cs" />
     <Compile Include="Class\Command\UpCommand.cs" />
     <Compile Include="Class\Command\LeftCommand.cs" />
     <Compile Include="Class\Command\Quit.cs" />
@@ -193,6 +199,7 @@
     <Compile Include="Class\Object\BlockObject\BlockState\QuestionBlockState.cs" />
     <Compile Include="Class\Object\BlockObject\BlockState\UsedBlockState.cs" />
     <Compile Include="Class\SpriteFactory\SpriteFactory.cs" />
+    <Compile Include="IBrickObject.cs" />
     <Compile Include="Interface\Object\IBlockObject.cs" />
     <Compile Include="Class\Object\MarioObject\MarioState\DeadMarioState.cs" />
     <Compile Include="Class\Object\MarioObject\MarioState\LeftCrouchingMarioState.cs" />

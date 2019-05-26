@@ -12,7 +12,9 @@ using SuperMarioBros.Class.Object.MarioObject;
 using SuperMarioBros.Class.Controller;
 using SuperMarioBros.Class.Object.GoombaObject;
 using SuperMarioBros.Class.Command;
-using SuperMarioBros.Class.Object.BlockObject
+using SuperMarioBros.Class.Object.BlockObject;
+using SuperMarioBros.Interface.Object.BlockObject;
+
 namespace SuperMarioBros
 {
     public class MarioGame : Game
@@ -23,6 +25,9 @@ namespace SuperMarioBros
         private int count;
         private MarioObject mario;
         private List<IObject> objects;
+        private IBlockObject brickBlock;
+        private IBlockObject hiddenBlock;
+        private IBlockObject questionBlock;
         public MarioGame()
         {
             var graphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -68,6 +73,9 @@ namespace SuperMarioBros
         {
             IReceiver marioReceiver = new InputAction(mario);
             IReceiver gameReceiver = new InputAction(this);
+            IReceiver brickBlockReceiver = new InputAction(brickBlock);
+            IReceiver hiddenBlockReceiver = new InputAction(hiddenBlock);
+            IReceiver questionBlockReceiver = new InputAction(questionBlock);
             controller.Add(Keys.Q, new Quit(gameReceiver));
             controller.Add(Keys.A, new LeftCommand(marioReceiver));
             controller.Add(Keys.S, new DownCommand(marioReceiver));
@@ -78,13 +86,23 @@ namespace SuperMarioBros
             controller.Add(Keys.I, new FireMarioCommand(marioReceiver));
             controller.Add(Keys.O, new DieCommand(marioReceiver));
             controller.Add(Keys.R, new ResetCommand(gameReceiver));
+            controller.Add(Keys.Z, new QuestionToUsedCommand(questionBlockReceiver));
+            controller.Add(Keys.X, new BrickToDisappearCommand(brickBlockReceiver));
+            controller.Add(Keys.C, new HiddenToUsedCommand(hiddenBlockReceiver));
         }
         public void InitializeObjectsAndKeys()
         {
             objects = new List<IObject>();
             mario = new MarioObject(new Vector2(400, 300), "SmallMario");
+            brickBlock = new BrickBlockObject(new Vector2(150, 200));
+            hiddenBlock = new HiddenBlockObject(new Vector2(200, 200));
+            questionBlock = new QuestionBlockObject(new Vector2(100, 200));
+
+            objects.Add(mario);
+            objects.Add(brickBlock);
+            objects.Add(hiddenBlock);
+            objects.Add(questionBlock);
             objects.Add(new GoombaObject(new Vector2(100, 100)));
-            objects.Add(new BrickBlockObject(this, new Vector2(100, 200)));
             controller = new KeyboardController();
             KeyBinding(controller);
         }

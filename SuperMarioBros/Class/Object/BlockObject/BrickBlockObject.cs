@@ -14,12 +14,11 @@ namespace SuperMarioBros.Class.Object.BlockObject
 {
     public class BrickBlockObject : BlockObject
     {
-        public BrickBlockObject(MarioGame game, Vector2 location)
+        public BrickBlockObject( Vector2 location)
         {
-            this.game = game;
             this.location = location;
             this.state = new BrickBlockState(this);
-            Console.Out.WriteLine("BrickBlock created");
+            //Console.Out.WriteLine("BrickBlock created");
         }
 
     }

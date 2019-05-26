@@ -14,7 +14,7 @@ namespace SuperMarioBros.Class.Sprite
         public UniversalSprite(Texture2D texture)
         {
             this.texture = texture;
-            if(texture.Width > 200)
+            if(texture.Width > 100)
             {
                 totalFrame = 5;
             }

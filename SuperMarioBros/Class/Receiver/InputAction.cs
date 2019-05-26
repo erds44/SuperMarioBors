@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Class.Object.GoombaObject;
 using SuperMarioBros.Class.Object.MarioObject;
 using SuperMarioBros.Interface;
+using SuperMarioBros.Interface.Object.BlockObject;
 
 namespace SuperMarioBros
 {
@@ -15,7 +16,7 @@ namespace SuperMarioBros
     {
         private MarioObject mario;
         private MarioGame game;
-        private GoombaObject goomba;
+        private IBlockObject blockObject;
         public InputAction(MarioObject mario)
         {
             this.mario = mario;
@@ -24,10 +25,9 @@ namespace SuperMarioBros
         {
             this.game = game;
         }
-        public InputAction(GoombaObject goomba, MarioObject mario)
+        public InputAction(IBlockObject blockObject)
         {
-            this.goomba = goomba;
-            this.mario = mario;
+            this.blockObject = blockObject;
         }
         public void Left() 
         {
@@ -72,5 +72,19 @@ namespace SuperMarioBros
             game.Exit();
         }
 
+        public void QuestionBlockToUsedBlock()
+        {
+            blockObject.Used();
+        }
+
+        public void HiddenBlockToUsedBlock()
+        {
+            blockObject.Used();
+        }
+
+        public void BrickBlockDisappear()
+        {
+            blockObject.Disappear();
+        }
     }
 }

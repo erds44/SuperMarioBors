@@ -16,7 +16,7 @@ namespace SuperMarioBros.Class.Object.BlockObject
         protected IBlockState state;
         protected Vector2 location;
         protected ISprite sprite;
-        protected MarioGame game;
+        //protected MarioGame game;
 
         public void ChangeState(IBlockState state)
         {
@@ -46,6 +46,10 @@ namespace SuperMarioBros.Class.Object.BlockObject
         public void Disappear()
         {
             this.state.ToDisappear();
+        }
+        public void Used()
+        {
+            this.state.ToUsed();
         }
     }
 }
