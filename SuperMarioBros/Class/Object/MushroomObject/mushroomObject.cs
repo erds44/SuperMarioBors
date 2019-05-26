@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.Class.Object.MushroomObject.MushroomState;
 using SuperMarioBros.Interface;
 using SuperMarioBros.Interface.Object;
 using SuperMarioBros.Interface.State;
@@ -21,7 +20,6 @@ namespace SuperMarioBros.Class.Object.MushroomObject
         public int velocity;
         public int leftEdge;
         public int rightEdge;
-        private IMushroomState mushroomState;
         public MushroomObject(Vector2 location, int leftEdge, int rightEdge, String type)
         {
             
@@ -39,7 +37,6 @@ namespace SuperMarioBros.Class.Object.MushroomObject
                 velocity = 5;
                 sprite = SpriteFactory.CreateSprite("RedMushroom");
             }
-            mushroomState = new LeftMovingMushroomState(this);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -69,24 +66,21 @@ namespace SuperMarioBros.Class.Object.MushroomObject
             {
                 location.X = 2 * leftEdge - location.X;
                 velocity *= -1;
-                mushroomState = new RightMovingMushroomState(this);
             }
             else if(location.X > rightEdge)
             {
                 location.X = 2 * rightEdge - location.X;
                 velocity *= -1;
-                mushroomState = new LeftMovingMushroomState(this);
             }
         }
         public void Reset()
         {
-            mushroomState = new LeftMovingMushroomState(this);
             location = initialLocation;
         }
 
         public void BeKicked()
         {
-            mushroomState.BeKicked();
+
         }
 
     }
