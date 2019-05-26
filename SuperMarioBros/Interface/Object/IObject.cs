@@ -14,7 +14,7 @@ namespace SuperMarioBros.Interface
          * Therefore, it is still necessary to create this interface.*/
         void Draw(SpriteBatch spriteBatch);
         void Update();
-        void UpdateSprite(ISprite sprite);
+        void ChangeSprite(ISprite sprite);
         
         //void ReportHitBox();
     }

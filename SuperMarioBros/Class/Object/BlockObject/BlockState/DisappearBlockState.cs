@@ -8,16 +8,24 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros.Class.Object.BlockObject.BlockState
 {
-    public class BrickBlockState : IBlockState
+    public class DisappearBlockState : IBlockState
     {
-        private static string type = "brickBlock";
+        private static string type = "disappearBlock";
         private IBlockObject block;
-        private BrickBlockObject brickBlockObject;
-
-        public BrickBlockState(IBlockObject block)
+        public DisappearBlockState(IBlockObject block)
         {
             this.block = block;
             block.ChangeSprite(SpriteFactory.CreateSprite(type));
+        }
+
+        public void ToDisappear()
+        {
+            //Do nothing.
+        }
+
+        public void ToUsed()
+        {
+            //Do nothing.
         }
 
         public string Type()
@@ -26,15 +34,6 @@ namespace SuperMarioBros.Class.Object.BlockObject.BlockState
         }
 
         public void Update()
-        {
-            //Do nothing.
-        }
-        public void ToDisappear()
-        {
-            block.ChangeState(new DisappearBlockState(block));
-        }
-
-        public void ToUsed()
         {
             //Do nothing.
         }

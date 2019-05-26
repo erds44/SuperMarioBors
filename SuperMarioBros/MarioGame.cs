@@ -12,7 +12,7 @@ using SuperMarioBros.Class.Object.MarioObject;
 using SuperMarioBros.Class.Controller;
 using SuperMarioBros.Class.Object.GoombaObject;
 using SuperMarioBros.Class.Command;
-
+using SuperMarioBros.Class.Object.BlockObject
 namespace SuperMarioBros
 {
     public class MarioGame : Game
@@ -84,6 +84,7 @@ namespace SuperMarioBros
             objects = new List<IObject>();
             mario = new MarioObject(new Vector2(400, 300), "SmallMario");
             objects.Add(new GoombaObject(new Vector2(100, 100)));
+            objects.Add(new BrickBlockObject(this, new Vector2(100, 200)));
             controller = new KeyboardController();
             KeyBinding(controller);
         }
