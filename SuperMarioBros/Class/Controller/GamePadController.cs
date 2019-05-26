@@ -13,21 +13,24 @@ namespace SuperMarioBros.Class.Controller
 {
     class GamePadController : IController
     {
-        private IReceiver receiver;
         private Dictionary<GamePadButtons, ICommand> inputKeys;
-        public GamePadController(MarioGame game)
+        public GamePadController()
         {
             inputKeys = new Dictionary<GamePadButtons, ICommand>();
-            receiver = new InputAction(game);
-            Initialize();
         }
 
-        private void Initialize()
+        public  void Add (GamePadButtons key, ICommand command)
         {
-            inputKeys.Add(new GamePadButtons(Buttons.Start), new Quit(receiver));
-            // More Keys TBD
-
+            inputKeys.Add(key, command);
         }
+
+
+        //private void Initialize()
+        //{
+        //    inputKeys.Add(new GamePadButtons(Buttons.Start), new Quit(receiver));
+        //    // More Keys TBD
+
+        //}
         public void Update()
         {
             GamePadButtons button = GamePad.GetState(PlayerIndex.One).Buttons;
@@ -37,5 +40,6 @@ namespace SuperMarioBros.Class.Controller
                 command.Execute();
             }
         }
+
     }
 }

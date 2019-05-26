@@ -13,29 +13,14 @@ namespace SuperMarioBros.Class.Controller
 {
     class KeyboardController : IController
     {
-        private IReceiver receiver;
         private Dictionary<Keys, ICommand> inputKeys;
-        public KeyboardController(MarioGame game)
+        public KeyboardController()
         {
             inputKeys = new Dictionary<Keys, ICommand>();
-            receiver = new InputAction(game);
-            Initialize();
         }
-
-        private void Initialize()
+        public void Add(Keys key, ICommand command)
         {
-            inputKeys.Add(Keys.Q, new Quit(receiver));
-            inputKeys.Add(Keys.A, new LeftCommand(receiver));
-            inputKeys.Add(Keys.S, new DownCommand(receiver));
-            inputKeys.Add(Keys.D, new RightCommand(receiver));
-            inputKeys.Add(Keys.W, new UpCommand(receiver));
-            inputKeys.Add(Keys.Y, new SmallMarioCommand(receiver));
-            inputKeys.Add(Keys.U, new BigMarioCommand(receiver));
-            inputKeys.Add(Keys.I, new FireMarioCommand(receiver));
-            inputKeys.Add(Keys.O, new DieCommand(receiver));
-            inputKeys.Add(Keys.R, new ResetCommand(receiver));
-            // More Keys TBD
-
+            inputKeys.Add(key, command);
         }
         public void Update()
         {
