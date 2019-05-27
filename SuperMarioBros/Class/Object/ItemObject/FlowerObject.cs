@@ -13,7 +13,6 @@ namespace SuperMarioBros.Class.Object.ItemObject
    {
         private Vector2 location;
         public ISprite flowerSprite { get; set; }
-        private int updateDelay;
         public FlowerObject(Vector2 location)
         {
             this.location = location;
@@ -21,12 +20,7 @@ namespace SuperMarioBros.Class.Object.ItemObject
         }
         public void Update()
         {
-            updateDelay++;
-            if (updateDelay == 15)
-            {
-                flowerSprite.Update();
-                updateDelay = 0;
-            }
+            flowerSprite.Update();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -37,5 +31,10 @@ namespace SuperMarioBros.Class.Object.ItemObject
         {
             flowerSprite = sprite;
         }
-   }
+
+        public void ChangeSprite(ISprite sprite)
+        {
+           //Do Nothing
+        }
+    }
 }

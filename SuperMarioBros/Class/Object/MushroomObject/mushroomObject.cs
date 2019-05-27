@@ -15,7 +15,6 @@ namespace SuperMarioBros.Class.Object.MushroomObject
     {
         
         public Vector2 location;
-        private Vector2 initialLocation;
         public ISprite sprite { get; set; }
         public int velocity;
         public int leftEdge;
@@ -24,7 +23,6 @@ namespace SuperMarioBros.Class.Object.MushroomObject
         {
             
             this.location = location;
-            this.initialLocation = location;
             this.leftEdge = leftEdge;
             this.rightEdge = rightEdge;
             if (type == "Green")
@@ -73,15 +71,15 @@ namespace SuperMarioBros.Class.Object.MushroomObject
                 velocity *= -1;
             }
         }
-        public void Reset()
-        {
-            location = initialLocation;
-        }
 
         public void BeKicked()
         {
 
         }
 
+        public void ChangeSprite(ISprite sprite)
+        {
+            // Do Nothing
+        }
     }
 }

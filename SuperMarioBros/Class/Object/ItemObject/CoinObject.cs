@@ -13,7 +13,6 @@ namespace SuperMarioBros.Class.Object.ItemObject
     {
         private Vector2 location;
         public ISprite coinSprite { get; set; }
-        private int updateDelay;
         public CoinObject(Vector2 location)
         {
             this.location = location;
@@ -21,12 +20,7 @@ namespace SuperMarioBros.Class.Object.ItemObject
         }
         public void Update()
         {
-            updateDelay++;
-            if (updateDelay == 5)
-            {
                 coinSprite.Update();
-                updateDelay = 0;
-            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -36,6 +30,11 @@ namespace SuperMarioBros.Class.Object.ItemObject
         public void UpdateSprite(ISprite sprite)
         {
             coinSprite = sprite;
+        }
+
+        public void ChangeSprite(ISprite sprite)
+        {
+            // Do Nothing
         }
     }
 }

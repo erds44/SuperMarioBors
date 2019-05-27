@@ -14,6 +14,8 @@ using SuperMarioBros.Class.Object.GoombaObject;
 using SuperMarioBros.Class.Command;
 using SuperMarioBros.Class.Object.BlockObject;
 using SuperMarioBros.Interface.Object.BlockObject;
+using SuperMarioBros.Class.Object.MushroomObject;
+using SuperMarioBros.Class.Object.ItemObject;
 
 namespace SuperMarioBros
 {
@@ -22,7 +24,7 @@ namespace SuperMarioBros
         //private List<KeyboardController> controllers = new List<KeyboardController>();
         private KeyboardController controller;
         private SpriteBatch spriteBatch;
-        private int count;
+        private int delay;
         private MarioObject mario;
         private List<IObject> objects;
         private IBlockObject brickBlock;
@@ -36,7 +38,7 @@ namespace SuperMarioBros
                 spriteBatch = new SpriteBatch((o as GraphicsDeviceManager).GraphicsDevice);
             };
             Content.RootDirectory = "Content";
-            count = 0;
+            delay = 0;
         }
         protected override void Initialize()
         {
@@ -46,27 +48,29 @@ namespace SuperMarioBros
         }
         protected override void Update(GameTime gameTime)
         {
-            count++;
-            if(count % 5 == 0) // Used for delay
+            //controllers.ForEach(element => element.Update());
+            delay++;
+            if (delay % 5 == 0)
             {
-                //controllers.ForEach(element => element.Update());
                 controller.Update();
                 mario.Update();
                 objects.ForEach(element => element.Update());
                 base.Update(gameTime);
-                count = 0;
+                delay = 0;
             }
+            
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            if (count % 5 == 0)
+            if (delay % 5 == 0)
             {
                 GraphicsDevice.Clear(Color.CornflowerBlue);
                 mario.Draw(spriteBatch);
                 objects.ForEach(element => element.Draw(spriteBatch));
                 base.Draw(gameTime);
             }
+            
 
         }
         private void KeyBinding(KeyboardController controller)
@@ -94,15 +98,20 @@ namespace SuperMarioBros
         {
             objects = new List<IObject>();
             mario = new MarioObject(new Vector2(400, 300), "SmallMario");
-            brickBlock = new BrickBlockObject(new Vector2(150, 200));
-            hiddenBlock = new HiddenBlockObject(new Vector2(200, 200));
-            questionBlock = new QuestionBlockObject(new Vector2(100, 200));
+            brickBlock = new BrickBlockObject(new Vector2(50, 150));
+            hiddenBlock = new HiddenBlockObject(new Vector2(100, 150));
+            questionBlock = new QuestionBlockObject(new Vector2(150, 150));
 
             objects.Add(mario);
             objects.Add(brickBlock);
             objects.Add(hiddenBlock);
             objects.Add(questionBlock);
             objects.Add(new GoombaObject(new Vector2(100, 100)));
+            objects.Add(new MushroomObject(new Vector2(100, 50), 20, 120, "Green"));
+            objects.Add(new MushroomObject(new Vector2(150, 50), 150, 250, "Red"));
+            objects.Add(new CoinObject(new Vector2(50, 400)));
+            objects.Add(new FlowerObject(new Vector2(100, 400)));
+            objects.Add(new PipeObject(new Vector2(200, 400)));
             controller = new KeyboardController();
             KeyBinding(controller);
         }

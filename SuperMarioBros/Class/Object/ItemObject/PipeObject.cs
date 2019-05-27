@@ -31,5 +31,10 @@ namespace SuperMarioBros.Class.Object.ItemObject
         {
             pipeSprite = sprite;
         }
+
+        public void ChangeSprite(ISprite sprite)
+        {
+           // Do Nothing
+        }
     }
 }
