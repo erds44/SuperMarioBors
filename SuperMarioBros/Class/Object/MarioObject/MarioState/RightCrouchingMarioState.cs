@@ -55,7 +55,7 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
 
         public void Die()
         {
-            mario.ChangeState(new DeadMarioState(mario, type));
+            mario.ChangeState(new DeadMarioState(mario, "SmallMario"));
         }
 
         public void Update()

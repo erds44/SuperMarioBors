@@ -9,32 +9,32 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros.Class.Object.ItemObject
 {
-    public class PipeObject : IObject
-    {
+   public class FlowerObject :IObject
+   {
         private Vector2 location;
-        public ISprite pipeSprite { get; set; }
-        public PipeObject(Vector2 location)
+        public ISprite flowerSprite { get; set; }
+        public FlowerObject(Vector2 location)
         {
             this.location = location;
-            pipeSprite = SpriteFactory.CreateSprite("Pipe");
+            flowerSprite = SpriteFactory.CreateSprite("Flower");
         }
-
-       public void Update()
+        public void Update()
         {
-            //Doing nothing
+            flowerSprite.Update();
         }
-       public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            pipeSprite.Draw(spriteBatch,location);
+            
+            flowerSprite.Draw(spriteBatch, location);
         }
         public void UpdateSprite(ISprite sprite)
         {
-            pipeSprite = sprite;
+            flowerSprite = sprite;
         }
 
         public void ChangeSprite(ISprite sprite)
         {
-           // Do Nothing
+           //Do Nothing
         }
     }
 }

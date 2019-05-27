@@ -9,32 +9,33 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros.Class.Object.ItemObject
 {
-    public class PipeObject : IObject
+    public class CoinObject : IObject
     {
         private Vector2 location;
-        public ISprite pipeSprite { get; set; }
-        public PipeObject(Vector2 location)
+        public ISprite coinSprite { get; set; }
+        public CoinObject(Vector2 location)
         {
             this.location = location;
-            pipeSprite = SpriteFactory.CreateSprite("Pipe");
+            coinSprite = SpriteFactory.CreateSprite("Coin");
         }
-
-       public void Update()
+        public void Update()
         {
-            //Doing nothing
+                coinSprite.Update();
         }
-       public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            pipeSprite.Draw(spriteBatch,location);
+            
+            coinSprite.Draw(spriteBatch, location);
         }
         public void UpdateSprite(ISprite sprite)
         {
-            pipeSprite = sprite;
+            coinSprite = sprite;
         }
 
         public void ChangeSprite(ISprite sprite)
         {
-           // Do Nothing
+            // Do Nothing
         }
     }
 }
+

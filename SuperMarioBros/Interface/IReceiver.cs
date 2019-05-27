@@ -18,5 +18,9 @@ namespace SuperMarioBros.Interface
         void FireMario();
         void DeadMario();
         void Reset();
+        void QuestionBlockToUsedBlock();
+        void HiddenBlockToUsedBlock();
+        void BrickBlockDisappear();
+
     }
 }

@@ -5,62 +5,86 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.Class.Object.GoombaObject;
 using SuperMarioBros.Class.Object.MarioObject;
 using SuperMarioBros.Interface;
+using SuperMarioBros.Interface.Object.BlockObject;
 
 namespace SuperMarioBros
 {
     class InputAction : IReceiver
     {
+        private MarioObject mario;
         private MarioGame game;
+        private IBlockObject blockObject;
+        public InputAction(MarioObject mario)
+        {
+            this.mario = mario;
+        }
         public InputAction(MarioGame game)
         {
             this.game = game;
         }
-        // To be Refactored, Coupling
+        public InputAction(IBlockObject blockObject)
+        {
+            this.blockObject = blockObject;
+        }
         public void Left() 
         {
-            game.mario.Left();
+            mario.Left();
         }
         public void Right()
         {
-            game.mario.Right();
+            mario.Right();
         }
 
         public void Up()
         {
-            game.mario.Up();
+            mario.Up();
         }
         public void Down()
         {
-            game.mario.Down();
+            mario.Down();
         }
         public void BigMario()
         {
-            game.mario.ToBig();
+            mario.ToBig();
         }
         public void SmallMario()
         {
-            game.mario.ToSmall();
+            mario.ToSmall();
 
         }
         public void FireMario()
         {
-            game.mario.ToFire();
+            mario.ToFire();
         }
         public void DeadMario()
         {
-            game.mario.Die();
+            mario.Die();
         }
         public void Reset()
         {
-            game.mario.Reset();
-            game.goomba.Reset();
+            game.InitializeObjectsAndKeys();
         }
         public void Quit()
         {
             game.Exit();
         }
 
+        public void QuestionBlockToUsedBlock()
+        {
+            blockObject.Used();
+        }
+
+        public void HiddenBlockToUsedBlock()
+        {
+            blockObject.Used();
+        }
+
+        public void BrickBlockDisappear()
+        {
+            blockObject.Disappear();
+        }
     }
 }

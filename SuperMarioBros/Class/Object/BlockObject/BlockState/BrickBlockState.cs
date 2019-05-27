@@ -12,6 +12,7 @@ namespace SuperMarioBros.Class.Object.BlockObject.BlockState
     {
         private static string type = "brickBlock";
         private IBlockObject block;
+
         public BrickBlockState(IBlockObject block)
         {
             this.block = block;

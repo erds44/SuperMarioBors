@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Input;
 
-namespace SuperMarioBros.Interface
+namespace SuperMarioBros.Interface.Object
 {
-    public interface IController
+    public interface IMushroomObject : IObject
     {
-        void Update();
+        void BeKicked();
     }
 }
