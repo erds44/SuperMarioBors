@@ -87,6 +87,7 @@
     <None Include="Content\Coin.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\ConcreteBlock.xnb" />
     <None Include="Content\EmptyBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -150,6 +151,7 @@
     <None Include="Content\RedMushroom.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\RockBlock.xnb" />
     <None Include="Content\SmallMarioDead.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
