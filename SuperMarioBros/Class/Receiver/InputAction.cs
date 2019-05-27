@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.Class.Object.GoombaObject;
+﻿using SuperMarioBros.Class.Object.BlockObject;
 using SuperMarioBros.Class.Object.MarioObject;
 using SuperMarioBros.Interface;
-using SuperMarioBros.Interface.Object.BlockObject;
 
 namespace SuperMarioBros
 {
@@ -16,7 +8,7 @@ namespace SuperMarioBros
     {
         private MarioObject mario;
         private MarioGame game;
-        private IBlockObject blockObject;
+        private BlockObject blockObject;
         public InputAction(MarioObject mario)
         {
             this.mario = mario;
@@ -25,7 +17,7 @@ namespace SuperMarioBros
         {
             this.game = game;
         }
-        public InputAction(IBlockObject blockObject)
+        public InputAction(BlockObject blockObject)
         {
             this.blockObject = blockObject;
         }

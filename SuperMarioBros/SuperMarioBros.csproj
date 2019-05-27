@@ -87,7 +87,9 @@
     <None Include="Content\Coin.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\ConcreteBlock.xnb" />
+    <None Include="Content\ConcreteBlock.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\EmptyBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -148,7 +150,9 @@
     <None Include="Content\RedMushroom.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\RockBlock.xnb" />
+    <None Include="Content\RockBlock.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\SmallMarioDead.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -192,9 +196,13 @@
     <Compile Include="Class\Controller\KeyboardController.cs" />
     <Compile Include="Class\Controller\GamePadController.cs" />
     <Compile Include="Class\Object\BlockObject\BlockObject.cs" />
+    <Compile Include="Class\Object\BlockObject\BlockState\ConcreteBlockState.cs" />
+    <Compile Include="Class\Object\BlockObject\BlockState\RockBlockState.cs" />
     <Compile Include="Class\Object\BlockObject\BrickBlockObject.cs" />
     <Compile Include="Class\Object\BlockObject\BlockState\BrickBlockState.cs" />
     <Compile Include="Class\Object\BlockObject\BlockState\DisappearBlockState.cs" />
+    <Compile Include="Class\Object\BlockObject\ConcreteBlock.cs" />
+    <Compile Include="Class\Object\BlockObject\RockBlock.cs" />
     <Compile Include="Class\Object\GoombaObject\GoombaObject.cs" />
     <Compile Include="Class\Object\GoombaObject\GoombaState\LeftMovingGoombaState.cs" />
     <Compile Include="Class\Object\GoombaObject\GoombaState\RightMovingGoombaState.cs" />
@@ -209,7 +217,6 @@
     <Compile Include="Class\Object\ItemObject\StarObject.cs" />
     <Compile Include="Class\Object\MushroomObject\mushroomObject.cs" />
     <Compile Include="Class\SpriteFactory\SpriteFactory.cs" />
-    <Compile Include="IBrickObject.cs" />
     <Compile Include="Interface\Object\IBlockObject.cs" />
     <Compile Include="Class\Object\MarioObject\MarioState\DeadMarioState.cs" />
     <Compile Include="Class\Object\MarioObject\MarioState\LeftCrouchingMarioState.cs" />

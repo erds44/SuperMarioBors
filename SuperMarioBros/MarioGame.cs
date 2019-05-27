@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.Interface;
 using SuperMarioBros.Class.Object.MarioObject;
@@ -27,9 +22,11 @@ namespace SuperMarioBros
         private int delay;
         private MarioObject mario;
         private List<IObject> objects;
-        private IBlockObject brickBlock;
-        private IBlockObject hiddenBlock;
-        private IBlockObject questionBlock;
+        private BlockObject brickBlock;
+        private BlockObject hiddenBlock;
+        private BlockObject questionBlock;
+        private BlockObject concreteBlock;
+        private BlockObject rockBlock;
         public MarioGame()
         {
             var graphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -101,11 +98,15 @@ namespace SuperMarioBros
             brickBlock = new BrickBlockObject(new Vector2(50, 150));
             hiddenBlock = new HiddenBlockObject(new Vector2(100, 150));
             questionBlock = new QuestionBlockObject(new Vector2(150, 150));
+            rockBlock = new RockBlockObject(new Vector2(200, 150));
+            concreteBlock = new ConcreteBlockObject(new Vector2(250, 150));
 
             objects.Add(mario);
             objects.Add(brickBlock);
             objects.Add(hiddenBlock);
             objects.Add(questionBlock);
+            objects.Add(concreteBlock);
+            objects.Add(rockBlock);
             objects.Add(new GoombaObject(new Vector2(100, 100)));
             objects.Add(new MushroomObject(new Vector2(100, 50), 20, 120, "Green"));
             objects.Add(new MushroomObject(new Vector2(150, 50), 150, 250, "Red"));
