@@ -112,6 +112,7 @@ namespace SuperMarioBros
             objects.Add(new CoinObject(new Vector2(50, 400)));
             objects.Add(new FlowerObject(new Vector2(100, 400)));
             objects.Add(new PipeObject(new Vector2(200, 400)));
+            objects.Add(new StarObject(new Vector2(350, 400)));
             controller = new KeyboardController();
             KeyBinding(controller);
         }
