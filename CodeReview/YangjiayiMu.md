@@ -12,6 +12,7 @@ Specific comments on what is readable and what is not:
 	3. Comments on where not that direct.
 	4. Only a few, simple parameters for each method, makes it easy to understand.
     5. Using good namespace to separate different modules of code.
+	6. No long method.
 * Unreadable
 	1. Magic numbers in Move and CheckEdge methods with no comment.
 	2. Contains unused namespaces.
