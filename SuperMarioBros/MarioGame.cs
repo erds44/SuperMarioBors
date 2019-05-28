@@ -47,12 +47,16 @@ namespace SuperMarioBros
         protected override void Update(GameTime gameTime)
         {
             //controllers.ForEach(element => element.Update());
-            
-            controller.Update();
-            mario.Update();
-            objects.ForEach(element => element.Update());
-            base.Update(gameTime);
-            System.Threading.Thread.Sleep(12);
+            delay++;
+            if (delay % 5 == 0)
+            {
+                controller.Update();
+                mario.Update();
+                objects.ForEach(element => element.Update());
+                base.Update(gameTime);
+                System.Threading.Thread.Sleep(12);
+                delay = 0;
+            }
 
         }
 

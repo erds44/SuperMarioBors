@@ -26,7 +26,10 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
 
         public void Down()
         {
-            mario.ChangeState(new RightIdleMarioState(mario, type));
+            if (mario.jumpTimer== 0)
+            {
+                mario.ChangeState(new RightIdleMarioState(mario, type));
+            }
         }
 
         public void Fire()

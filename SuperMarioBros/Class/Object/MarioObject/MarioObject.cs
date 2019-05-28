@@ -10,9 +10,8 @@ namespace SuperMarioBros.Class.Object.MarioObject
     {
         private IMarioState state;
         private ISprite sprite;
-       // private MarioGame game; //For future change game state.
         public Vector2 location;
-        private int jumpTimer;
+        public int jumpTimer;
         public MarioObject(Vector2 location, string type)
         {
             state = new RightIdleMarioState(this, type);
