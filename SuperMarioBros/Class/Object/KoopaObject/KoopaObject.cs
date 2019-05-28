@@ -7,18 +7,18 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Interface;
 using SuperMarioBros.Interface.State;
-using SuperMarioBros.Class.Object.GoombaObject.GoombaState;
+using SuperMarioBros.Class.Object.KoopaObject.KoopaState;
 
-namespace SuperMarioBros.Class.Object.GoombaObject
+namespace SuperMarioBros.Class.Object.KoopaObject
 {
-    public class GoombaObject : IObject
+    public class KoopaObject : IObject
     {
         private IGoombaState state;
         private Vector2 location;
         public ISprite sprite { get; set; }
-        public GoombaObject( Vector2 location)
+        public KoopaObject(Vector2 location)
         {
-            state = new LeftMovingGoombaState(this);
+            state = new LeftMovingKoopaState(this);
             this.location = location;
         }
         //public void ChangeDirection()
@@ -63,7 +63,7 @@ namespace SuperMarioBros.Class.Object.GoombaObject
         }
         public bool CheckLeftEdge()
         {
-            if(location.X <= 50)
+            if (location.X <= 50)
             {
                 return true;
             }

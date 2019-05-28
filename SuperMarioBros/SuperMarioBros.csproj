@@ -132,13 +132,13 @@
     <None Include="Content\HiddenBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\KoompaMovingLeft.xnb">
+    <None Include="Content\KoopaMovingLeft.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\KoompaMovingRight.xnb">
+    <None Include="Content\KoopaMovingRight.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\KoompaStomped.xnb">
+    <None Include="Content\KoopaStomped.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\Pipe.xnb">
@@ -215,6 +215,9 @@
     <Compile Include="Class\Object\ItemObject\FlowerObject.cs" />
     <Compile Include="Class\Object\ItemObject\PipeObject.cs" />
     <Compile Include="Class\Object\ItemObject\StarObject.cs" />
+    <Compile Include="Class\Object\KoopaObject\KoopaObject.cs" />
+    <Compile Include="Class\Object\KoopaObject\KoopaState\LeftMovingKoopaState.cs" />
+    <Compile Include="Class\Object\KoopaObject\KoopaState\RightMovingKoopaState.cs" />
     <Compile Include="Class\Object\MushroomObject\mushroomObject.cs" />
     <Compile Include="Class\SpriteFactory\SpriteFactory.cs" />
     <Compile Include="Interface\Object\IBlockObject.cs" />
@@ -235,6 +238,7 @@
     <Compile Include="Interface\ICommand.cs" />
     <Compile Include="Interface\IController.cs" />
     <Compile Include="Interface\State\IGoombaState.cs" />
+    <Compile Include="Interface\State\IKoopaState.cs" />
     <Compile Include="Interface\State\IMarioState.cs" />
     <Compile Include="Interface\Object\IObject.cs" />
     <Compile Include="Interface\ISprite.cs" />

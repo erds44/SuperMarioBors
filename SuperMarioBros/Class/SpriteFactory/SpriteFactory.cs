@@ -21,6 +21,7 @@ namespace SuperMarioBros
         public static ISprite CreateSprite(string type)
         {
             return new UniversalSprite(content.Load<Texture2D>(type));
+            
         }
     }
 }

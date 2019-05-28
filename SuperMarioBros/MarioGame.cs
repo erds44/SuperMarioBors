@@ -6,6 +6,7 @@ using SuperMarioBros.Interface;
 using SuperMarioBros.Class.Object.MarioObject;
 using SuperMarioBros.Class.Controller;
 using SuperMarioBros.Class.Object.GoombaObject;
+using SuperMarioBros.Class.Object.KoopaObject;
 using SuperMarioBros.Class.Command;
 using SuperMarioBros.Class.Object.BlockObject;
 using SuperMarioBros.Interface.Object.BlockObject;
@@ -46,28 +47,22 @@ namespace SuperMarioBros
         protected override void Update(GameTime gameTime)
         {
             //controllers.ForEach(element => element.Update());
-            delay++;
-            if (delay % 5 == 0)
-            {
-                controller.Update();
-                mario.Update();
-                objects.ForEach(element => element.Update());
-                base.Update(gameTime);
-                delay = 0;
-            }
             
+            controller.Update();
+            mario.Update();
+            objects.ForEach(element => element.Update());
+            base.Update(gameTime);
+            System.Threading.Thread.Sleep(12);
+
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            if (delay % 5 == 0)
-            {
-                GraphicsDevice.Clear(Color.CornflowerBlue);
-                mario.Draw(spriteBatch);
-                objects.ForEach(element => element.Draw(spriteBatch));
-                base.Draw(gameTime);
-            }
-            
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+            mario.Draw(spriteBatch);
+            objects.ForEach(element => element.Draw(spriteBatch));
+            base.Draw(gameTime);
+            System.Threading.Thread.Sleep(12);
 
         }
         private void KeyBinding(KeyboardController controller)
@@ -108,6 +103,7 @@ namespace SuperMarioBros
             objects.Add(concreteBlock);
             objects.Add(rockBlock);
             objects.Add(new GoombaObject(new Vector2(100, 100)));
+            objects.Add(new KoopaObject(new Vector2(100, 225)));
             objects.Add(new MushroomObject(new Vector2(100, 50), 20, 120, "Green"));
             objects.Add(new MushroomObject(new Vector2(150, 50), 150, 250, "Red"));
             objects.Add(new CoinObject(new Vector2(50, 400)));
