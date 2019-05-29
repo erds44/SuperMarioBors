@@ -26,10 +26,10 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
 
         public void Down()
         {
-            if (mario.jumpTimer== 0)
-            {
+            //if (mario.jumpTimer== 0)
+            //{
                 mario.ChangeState(new RightIdleMarioState(mario, type));
-            }
+            //}
         }
 
         public void Fire()
@@ -69,7 +69,7 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
 
         public void Update()
         {
-            mario.Jump(new Vector2(0, -10)); //jump speed
+            //mario.Jump(new Vector2(0, -10)); //jump speed
         }
     }
 }

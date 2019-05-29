@@ -73,7 +73,7 @@ namespace SuperMarioBros.Class.Object.MarioObject
         }
         public void Jump(Vector2 motion)
         {
-            if(jumpTimer > 3)
+           /* if(jumpTimer > 3)
             {
                 location += motion;
                 jumpTimer--;
@@ -85,7 +85,7 @@ namespace SuperMarioBros.Class.Object.MarioObject
             else
             {
                 jumpTimer = 6;
-            }
+            }*/
         }
         public void Update()
         {
