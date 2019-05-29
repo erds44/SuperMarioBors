@@ -1,6 +1,6 @@
-Author of the review: Keyu Bao
-Date of the review: 28 May 2019
-Sprint Number: 2
+*Author of the review: Keyu Bao
+*Date of the review: 28 May 2019
+*Sprint Number: 2
 
 Class Name: DeadMarioState.cs
 Author of the code: Yangjiayi Mu and Zhijian Yao
