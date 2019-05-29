@@ -115,7 +115,6 @@ namespace SuperMarioBros.Class.Object.MarioObject
         public void ChangeState(IMarioState marioState)
         {
             this.state = marioState;
-            jumpTimer = 6; //reset timer
         }
     }
 }

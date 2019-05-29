@@ -10,7 +10,7 @@ namespace SuperMarioBros.Class.Object.BlockObject.BlockState
 {
     public class HiddenBlockState : IBlockState
     {
-        private static string type = "hiddenBlock";
+        private static string type = "HiddenBlock";
         private IBlockObject block;
         public HiddenBlockState(IBlockObject block)
         {

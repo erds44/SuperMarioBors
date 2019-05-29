@@ -11,17 +11,10 @@ namespace SuperMarioBros.Class.Sprite
         private int width;
         private int height;
         private int totalFrame;
-        public UniversalSprite(Texture2D texture)
+        public UniversalSprite(Texture2D texture, int frame)
         {
             this.texture = texture;
-            if(texture.Width > 90 || texture.Width == 71)
-            {
-                totalFrame = 5;
-            }
-            else
-            {
-                totalFrame = 1;
-            }
+            totalFrame = frame;
             width = texture.Width / totalFrame;
             height = texture.Height;
             currentFrame = 0;

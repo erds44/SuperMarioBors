@@ -58,6 +58,7 @@ namespace SuperMarioBros
         public void Reset()
         {
             game.InitializeObjectsAndKeys();
+            game.KeyBinding();
         }
         public void Quit()
         {

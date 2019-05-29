@@ -14,9 +14,13 @@ namespace SuperMarioBros.Class.Controller
     class KeyboardController : IController
     {
         private Dictionary<Keys, ICommand> inputKeys;
-        public KeyboardController()
+        public KeyboardController(params (Keys key, ICommand command)[] args)
         {
             inputKeys = new Dictionary<Keys, ICommand>();
+            foreach ((Keys, ICommand) element  in args)
+            {
+                inputKeys.Add(element.Item1, element.Item2);
+            }
         }
         public void Add(Keys key, ICommand command)
         {

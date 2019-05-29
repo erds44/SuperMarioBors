@@ -14,9 +14,13 @@ namespace SuperMarioBros.Class.Controller
     class GamePadController : IController
     {
         private Dictionary<GamePadButtons, ICommand> inputKeys;
-        public GamePadController()
+        public GamePadController(params (GamePadButtons key, ICommand command)[] args)
         {
             inputKeys = new Dictionary<GamePadButtons, ICommand>();
+            foreach ((GamePadButtons,ICommand) element in args)
+            {
+                inputKeys.Add(element.Item1, element.Item2);
+            }
         }
 
         public  void Add (GamePadButtons key, ICommand command)

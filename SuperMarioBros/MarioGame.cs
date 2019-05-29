@@ -17,7 +17,6 @@ namespace SuperMarioBros
 {
     public class MarioGame : Game
     {
-        //private List<KeyboardController> controllers = new List<KeyboardController>();
         private KeyboardController controller;
         private SpriteBatch spriteBatch;
         private int delay;
@@ -42,6 +41,7 @@ namespace SuperMarioBros
         {
             SpriteFactory.Initialize(Content);
             InitializeObjectsAndKeys();
+            KeyBinding();
             base.Initialize();
         }
         protected override void Update(GameTime gameTime)
@@ -69,26 +69,29 @@ namespace SuperMarioBros
             System.Threading.Thread.Sleep(12);
 
         }
-        private void KeyBinding(KeyboardController controller)
+        public void KeyBinding()
         {
             IReceiver marioReceiver = new InputAction(mario);
             IReceiver gameReceiver = new InputAction(this);
             IReceiver brickBlockReceiver = new InputAction(brickBlock);
             IReceiver hiddenBlockReceiver = new InputAction(hiddenBlock);
             IReceiver questionBlockReceiver = new InputAction(questionBlock);
-            controller.Add(Keys.Q, new Quit(gameReceiver));
-            controller.Add(Keys.A, new LeftCommand(marioReceiver));
-            controller.Add(Keys.S, new DownCommand(marioReceiver));
-            controller.Add(Keys.D, new RightCommand(marioReceiver));
-            controller.Add(Keys.W, new UpCommand(marioReceiver));
-            controller.Add(Keys.Y, new SmallMarioCommand(marioReceiver));
-            controller.Add(Keys.U, new BigMarioCommand(marioReceiver));
-            controller.Add(Keys.I, new FireMarioCommand(marioReceiver));
-            controller.Add(Keys.O, new DieCommand(marioReceiver));
-            controller.Add(Keys.R, new ResetCommand(gameReceiver));
-            controller.Add(Keys.Z, new QuestionToUsedCommand(questionBlockReceiver));
-            controller.Add(Keys.X, new BrickToDisappearCommand(brickBlockReceiver));
-            controller.Add(Keys.C, new HiddenToUsedCommand(hiddenBlockReceiver));
+            controller = new KeyboardController
+                (
+                    (Keys.Q, new Quit(gameReceiver)),
+                    (Keys.A, new LeftCommand(marioReceiver)),
+                    (Keys.S, new DownCommand(marioReceiver)),
+                    (Keys.D, new RightCommand(marioReceiver)),
+                    (Keys.W, new UpCommand(marioReceiver)),
+                    (Keys.Y, new SmallMarioCommand(marioReceiver)),
+                    (Keys.U, new BigMarioCommand(marioReceiver)),
+                    (Keys.I, new FireMarioCommand(marioReceiver)),
+                    (Keys.O, new DieCommand(marioReceiver)),
+                    (Keys.R, new ResetCommand(gameReceiver)),
+                    (Keys.Z, new QuestionToUsedCommand(questionBlockReceiver)),
+                    (Keys.X, new BrickToDisappearCommand(brickBlockReceiver)),
+                    (Keys.C, new HiddenToUsedCommand(hiddenBlockReceiver))
+                );
         }
         public void InitializeObjectsAndKeys()
         {
@@ -114,8 +117,6 @@ namespace SuperMarioBros
             objects.Add(new FlowerObject(new Vector2(100, 400)));
             objects.Add(new PipeObject(new Vector2(200, 400)));
             objects.Add(new StarObject(new Vector2(350, 400)));
-            controller = new KeyboardController();
-            KeyBinding(controller);
         }
 
     }

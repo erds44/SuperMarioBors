@@ -10,7 +10,7 @@ namespace SuperMarioBros.Class.Object.BlockObject.BlockState
 {
     public class RockBlockState : IBlockState
     {
-        private static string type = "rockBlock";
+        private static string type = "RockBlock";
         private IBlockObject block;
 
         public RockBlockState(IBlockObject block)

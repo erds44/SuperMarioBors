@@ -10,7 +10,7 @@ namespace SuperMarioBros.Class.Object.BlockObject.BlockState
 {
     public class DisappearBlockState : IBlockState
     {
-        private static string type = "disappearBlock";
+        private static string type = "DisappearBlock";
         private IBlockObject block;
         public DisappearBlockState(IBlockObject block)
         {
