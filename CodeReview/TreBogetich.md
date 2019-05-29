@@ -16,12 +16,16 @@ Author of the code: Tre Bogetich
 Time for the review: 5 min 
 
 Comments: 
-    Repetitive: The classes here can be simplified primarily to objects that inherit from an IEnemy interface. The code for each of these works fine, but can be simplified.
+    Repetitive: 
+        The classes here can be simplified primarily to objects that inherit from an IEnemy interface. 
+        The code for each of these works fine, but can be simplified.
 
 Class Name: RightCrouchingMarioState.cs 
 Author of the code: Yangjiayi Mu and Zhijian Yao 
 Time for the review: 5 min 
 
 Comments: 
-    Broken: This code makes it so that after a crouch is initiated that left and right movement can't work anymore. Much of the Mario motion and keys need to be fixed, but are overall effective for a proof of concept.
+    Broken: 
+        This code makes it so that after a crouch is initiated that left and right movement can't work anymore. 
+        Much of the Mario motion and keys need to be fixed, but are overall effective for a proof of concept.
 
