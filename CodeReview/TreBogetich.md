@@ -7,9 +7,10 @@ Author of the code: Yangjiayi Mu and Zhijian Yao
 Time for the review: 20 min 
 
 Comments: 
-    The code here does a few things incorrectly such as the left and right edge boundaries. 
-    Currently a lot of objects are hard coded into the program. 
-    A time delay needs to be added so that the draw and update functions work better.
+    Needs Improvement:
+        The code here does a few things incorrectly such as the left and right edge boundaries. 
+        Currently a lot of objects are hard coded into the program. 
+        A time delay needs to be added so that the draw and update functions work better.
 
 Class Name: KoopaObject.cs and GoombaObject.cs 
 Author of the code: Tre Bogetich 
