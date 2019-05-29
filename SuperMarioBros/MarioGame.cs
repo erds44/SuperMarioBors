@@ -66,8 +66,6 @@ namespace SuperMarioBros
             mario.Draw(spriteBatch);
             objects.ForEach(element => element.Draw(spriteBatch));
             base.Draw(gameTime);
-            System.Threading.Thread.Sleep(12);
-
         }
         public void KeyBinding()
         {
