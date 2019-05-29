@@ -1,4 +1,6 @@
-Author of the review: Tre Date of the review: 28 May 2019 Sprint Number: 2
+Author of the review: Tre 
+Date of the review: 28 May 2019 
+Sprint Number: 2
 
 Class Name: MarioObject.cs Author of the code: Yangjiayi Mu and Zhijian Yao Time for the review: 20 min Comments: The code here does a few things incorrectly such as the left and right edge boundaries. Currently a lot of objects are hard coded into the program. A time delay needs to be added so that the draw and update functions work better.
 
