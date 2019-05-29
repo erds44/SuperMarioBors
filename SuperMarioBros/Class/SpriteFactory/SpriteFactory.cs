@@ -35,11 +35,11 @@ namespace SuperMarioBros
             spriteInfo.Add("FireMarioLeftCrouching", new UniversalSprite(content.Load<Texture2D>("FireMarioLeftCrouching"), 1));
             spriteInfo.Add("FireMarioLeftIdle", new UniversalSprite(content.Load<Texture2D>("FireMarioLeftIdle"), 1));
             spriteInfo.Add("FireMarioLeftJumping", new UniversalSprite(content.Load<Texture2D>("FireMarioLeftJumping"), 1));
-            spriteInfo.Add("FireMarioLeftMoving", new UniversalSprite(content.Load<Texture2D>("FireMarioLeftMoving"), 5));
+            spriteInfo.Add("FireMarioLeftMoving", new UniversalSprite(content.Load<Texture2D>("FireMarioLeftMoving"), 6));
             spriteInfo.Add("FireMarioRightCrouching", new UniversalSprite(content.Load<Texture2D>("FireMarioRightCrouching"), 1));
             spriteInfo.Add("FireMarioRightIdle", new UniversalSprite(content.Load<Texture2D>("FireMarioRightIdle"), 1));
             spriteInfo.Add("FireMarioRightJumping", new UniversalSprite(content.Load<Texture2D>("FireMarioRightJumping"), 1));
-            spriteInfo.Add("FireMarioRightMoving", new UniversalSprite(content.Load<Texture2D>("FireMarioRightMoving"), 5));
+            spriteInfo.Add("FireMarioRightMoving", new UniversalSprite(content.Load<Texture2D>("FireMarioRightMoving"), 6));
             spriteInfo.Add("Flower", new UniversalSprite(content.Load<Texture2D>("Flower"), 5));
             spriteInfo.Add("Goomba", new UniversalSprite(content.Load<Texture2D>("Goomba"), 5));
             spriteInfo.Add("GoombaStomped", new UniversalSprite(content.Load<Texture2D>("GoombaStomped"), 1));
@@ -59,7 +59,7 @@ namespace SuperMarioBros
             spriteInfo.Add("SmallMarioRightIdle", new UniversalSprite(content.Load<Texture2D>("SmallMarioRightIdle"), 1));
             spriteInfo.Add("SmallMarioRightJumping", new UniversalSprite(content.Load<Texture2D>("SmallMarioRightJumping"), 1));
             spriteInfo.Add("SmallMarioRightMoving", new UniversalSprite(content.Load<Texture2D>("SmallMarioRightMoving"), 5));
-            spriteInfo.Add("Star", new UniversalSprite(content.Load<Texture2D>("Star"), 5));
+            spriteInfo.Add("Star", new UniversalSprite(content.Load<Texture2D>("Star"), 4));
 
         }
 
