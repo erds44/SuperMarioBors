@@ -62,11 +62,11 @@ namespace SuperMarioBros.Class.Object.MarioObject
 
         public void Move(Vector2 motion)
         {
-            if(location.X + motion.X < 780 && location.X + motion.X > 0)
+            if(location.X + motion.X < 730 && location.X + motion.X> 0)
             {
                 location.X += motion.X;
             }
-            if(location.Y + motion.Y < 580 && location.Y + motion.Y > 0)
+            /*if(location.Y + motion.Y < 580 && location.Y + motion.Y > 0)
             {
                 location.Y += motion.Y;
             }
