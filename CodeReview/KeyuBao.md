@@ -20,6 +20,7 @@ Unreadable:
 * Some unnecessary directives
 * Variable (String type) is unnecessary in current implementation and could be deleted.  
 * Left/Right states shares many similarities and might be integrated into one class.
+* Some magic number in Update()
 Readable:  
 * Every method does one job and is easy to read.
 * No long method.
@@ -31,7 +32,7 @@ Time fo the review: 20 min
 Unreadable:  
 * The code does not check the right and left edges corectly.
 * Some unnecessary directives
-
+* Some magic number in checking edges.
 Readable:  
 * Every method does one job and is easy to read.
 * No long method.
