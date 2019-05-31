@@ -1,7 +1,8 @@
 Author: Zhijian Yao  
 Date:  28 May, 2019  
 Sprint: 2  
-Readability Review  
+
+## Readability Review  
 
 Name of .cs file: BrickBlockState.cs  
 Author of .cs file: Yangjiayi Mu  
@@ -23,18 +24,19 @@ Number of minutes taken to complete the review: 10 minutes
 2.  Move Method deos not have comment on how it actually works  
 3.  Each Mehtod has a clear name that defines what it does  
 
-Quality Review  
+## Quality Review  
 
 Name of .cs file: DeadMarioState.cs    
 Author of .cs file: Yangjiayi Mu  
 Number of minutes taken to complete the review: 20 minutes  
+
 Each Method is clear and it serves what it does. I would suggest  
 make dead Mario as a concrete class implements IMario instead of   
 treating as a state, since in each state, the method Die is the  
 same in every state class. Eventually, there will be FireMario,  
-SuperMario,  SmallMario, and DeadMario, which implement IMario  
-interface. There are many transitions between these mario classes, 
-like small Mario eating fire flower becoming  fire Mario, fire Mario  
-taking damage becomes super Mario etc. These relations form another  
-state pattern, which make state as a class memeber.
+SuperMario,  SmallMario, and DeadMario, which implement  IMario  
+interface. There are many transitions between these mario classes,   
+like small Mario eating fire flower becoming  fire Mario, fire Mario   
+taking damage becomes super Mario etc. These relations form another   
+state pattern, which makes state as a class memeber.
 
