@@ -54,7 +54,6 @@ namespace SuperMarioBros
                 mario.Update();
                 objects.ForEach(element => element.Update());
                 base.Update(gameTime);
-                System.Threading.Thread.Sleep(12);
                 delay = 0;
             }
 
