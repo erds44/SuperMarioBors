@@ -19,7 +19,7 @@ namespace SuperMarioBros
     [ComVisible(false)]
     public class MarioGame : Game
     {
-        private KeyboardController controller;
+        private IController controller;
         private SpriteBatch spriteBatch;
         private int delay;
         private MarioObject mario;
