@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Interface;
-using SuperMarioBros.Class.Command;
 
 namespace SuperMarioBros.Class.Controller
 {
     class KeyboardController : IController
     {
-        private Dictionary<Keys, ICommand> inputKeys;
+        private readonly Dictionary<Keys, ICommand> inputKeys;
         public KeyboardController(params (Keys key, ICommand command)[] args)
         {
             inputKeys = new Dictionary<Keys, ICommand>();
@@ -31,8 +25,7 @@ namespace SuperMarioBros.Class.Controller
             Keys[] key = Keyboard.GetState().GetPressedKeys();
             if (key.Count() > 0)
             {
-                ICommand command;
-                if (inputKeys.TryGetValue(key[0], out command))
+                if (inputKeys.TryGetValue(key[0], out ICommand command))
                 {
                     command.Execute();
                 }

@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SuperMarioBros.Interface.State;
 
 namespace SuperMarioBros.Class.Object.MarioObject.MarioState
 {
     public class RightIdleMarioState : IMarioState
     {
-        private MarioObject mario;
-        private String type;
+        private readonly MarioObject mario;
+        private readonly String type;
 
         public RightIdleMarioState(MarioObject mario, String type)
         {

@@ -1,21 +1,16 @@
 ﻿using SuperMarioBros.Interface.Object.BlockObject;
 using SuperMarioBros.Interface.State;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperMarioBros.Class.Object.BlockObject.BlockState
 {
     public class ConcreteBlockState : IBlockState
     {
-        private static string type = "ConcreteBlock";
-        private IBlockObject block;
+        private readonly static string type = "ConcreteBlock";
+        //private readonly IBlockObject block;
 
         public ConcreteBlockState(IBlockObject block)
         {
-            this.block = block;
+            //this.block = block;
             block.ChangeSprite(SpriteFactory.CreateSprite(type));
         }
 

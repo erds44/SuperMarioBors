@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Interface;
 using SuperMarioBros.Interface.State;
@@ -15,7 +10,7 @@ namespace SuperMarioBros.Class.Object.GoombaObject
     {
         private IGoombaState state;
         private Vector2 location;
-        public ISprite sprite { get; set; }
+        public ISprite Sprite { get; set; }
         public GoombaObject( Vector2 location)
         {
             state = new LeftMovingGoombaState(this);
@@ -37,7 +32,7 @@ namespace SuperMarioBros.Class.Object.GoombaObject
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, location);
+            Sprite.Draw(spriteBatch, location);
         }
         public void Move(Vector2 motion)  // This includes left and right
         {
@@ -54,12 +49,12 @@ namespace SuperMarioBros.Class.Object.GoombaObject
         public void Update()
         {
             state.Update();
-            sprite.Update();
+            Sprite.Update();
         }
 
         public void ChangeSprite(ISprite sprite)
         {
-            this.sprite = sprite;
+            this.Sprite = sprite;
         }
         public bool CheckLeftEdge()
         {

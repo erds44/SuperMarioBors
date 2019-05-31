@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using SuperMarioBros.Interface.State;
-using SuperMarioBros.Class.Object.KoopaObject;
 
 namespace SuperMarioBros.Class.Object.KoopaObject.KoopaState
 {
     public class LeftMovingKoopaState : IGoombaState
     {
-        private KoopaObject koopa;
+        private readonly KoopaObject koopa;
         public LeftMovingKoopaState(KoopaObject koopa)
         {
             this.koopa = koopa;

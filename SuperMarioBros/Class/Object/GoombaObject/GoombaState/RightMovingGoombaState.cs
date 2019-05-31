@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using SuperMarioBros.Interface.State;
-using SuperMarioBros.Class.Object.GoombaObject;
 
 namespace SuperMarioBros.Class.Object.GoombaObject.GoombaState
 {
     public class RightMovingGoombaState : IGoombaState
     {
-        private GoombaObject goomba;
+        private readonly GoombaObject goomba;
         public RightMovingGoombaState(GoombaObject goomba)
         {
             this.goomba = goomba;

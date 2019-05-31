@@ -1,35 +1,30 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperMarioBros.Class.Object.ItemObject
 {
-   public class FlowerObject :IObject
+    public class FlowerObject :IObject
    {
         private Vector2 location;
-        public ISprite flowerSprite { get; set; }
+        public ISprite FlowerSprite { get; set; }
         public FlowerObject(Vector2 location)
         {
             this.location = location;
-            flowerSprite = SpriteFactory.CreateSprite("Flower");
+            FlowerSprite = SpriteFactory.CreateSprite("Flower");
         }
         public void Update()
         {
-            flowerSprite.Update();
+            FlowerSprite.Update();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             
-            flowerSprite.Draw(spriteBatch, location);
+            FlowerSprite.Draw(spriteBatch, location);
         }
         public void UpdateSprite(ISprite sprite)
         {
-            flowerSprite = sprite;
+            FlowerSprite = sprite;
         }
 
         public void ChangeSprite(ISprite sprite)

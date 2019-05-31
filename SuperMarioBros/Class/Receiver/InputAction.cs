@@ -6,9 +6,9 @@ namespace SuperMarioBros
 {
     class InputAction : IReceiver
     {
-        private MarioObject mario;
-        private MarioGame game;
-        private BlockObject blockObject;
+        private readonly MarioObject mario;
+        private readonly MarioGame game;
+        private readonly BlockObject blockObject;
         public InputAction(MarioObject mario)
         {
             this.mario = mario;

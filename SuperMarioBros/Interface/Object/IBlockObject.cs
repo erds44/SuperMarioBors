@@ -1,12 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.Interface;
-using SuperMarioBros.Interface.State;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SuperMarioBros.Interface.State;
 
 namespace SuperMarioBros.Interface.Object.BlockObject
 {

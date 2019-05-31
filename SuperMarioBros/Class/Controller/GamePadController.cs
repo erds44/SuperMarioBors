@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Interface;
-using SuperMarioBros.Class.Command;
 
 namespace SuperMarioBros.Class.Controller
 {
     class GamePadController : IController
     {
-        private Dictionary<GamePadButtons, ICommand> inputKeys;
+        private readonly Dictionary<GamePadButtons, ICommand> inputKeys;
         public GamePadController(params (GamePadButtons key, ICommand command)[] args)
         {
             inputKeys = new Dictionary<GamePadButtons, ICommand>();
@@ -38,8 +32,7 @@ namespace SuperMarioBros.Class.Controller
         public void Update()
         {
             GamePadButtons button = GamePad.GetState(PlayerIndex.One).Buttons;
-            ICommand command;
-            if (inputKeys.TryGetValue(button, out command))
+            if (inputKeys.TryGetValue(button, out ICommand command))
             {
                 command.Execute();
             }
