@@ -21,9 +21,9 @@ Specific comments on what is readable and what is not:
     3. May throw NotImplementedException in state classes.
 
 # Maintainability Review  
-Date of the code review: 5/31/2019
-Name of the .cs file being reviewed: UniversalSprite.cs
-Author of the .cs file being reviewed: Zhijian Yao  
+Date of the code review: 5/31/2019  
+Name of the .cs file being reviewed: UniversalSprite.cs  
+Author of the .cs file being reviewed: Zhijian Yao    
 * Good Maintainability
 	1. Provided universal interface.  
 	2. Clear variable and function name.  
@@ -35,9 +35,9 @@ Author of the .cs file being reviewed: Zhijian Yao
 * Future change
 	Change the type of size field, and add some readonly modifier to fields. Add a change rate parameter.
 
-Date of the code review: 5/31/2019
-Name of the .cs file being reviewed: MushroomObject.cs
-Author of the .cs file being reviewed: Keyu Bao
+Date of the code review: 5/31/2019  
+Name of the .cs file being reviewed: MushroomObject.cs  
+Author of the .cs file being reviewed: Keyu Bao  
 * Good Maintainability
 	1. Using edge parameters, allows flexible construction
 	2. Using velocity parameter, for better customization.
