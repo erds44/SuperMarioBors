@@ -47,6 +47,6 @@ Author of the .cs file being reviewed: Keyu Bao
 	2. No comment in unimplemented methods.
 	3. Some members of the class is public. Bad encapsulation.
 * Future change
-	Change the visibility of fields. 
+	Change the visibility of fields. Implement BeKicked() method. Trim some unused method.  
 
 
