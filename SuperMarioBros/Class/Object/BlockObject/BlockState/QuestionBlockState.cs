@@ -1,17 +1,12 @@
 ﻿using SuperMarioBros.Interface.Object.BlockObject;
 using SuperMarioBros.Interface.State;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperMarioBros.Class.Object.BlockObject.BlockState
 {
     public class QuestionBlockState : IBlockState
     {
-        private static string type = "QuestionBlock";
-        private IBlockObject block;
+        private readonly static string type = "QuestionBlock";
+        private readonly IBlockObject block;
 
         public QuestionBlockState(IBlockObject block)
         {

@@ -9,12 +9,14 @@ using SuperMarioBros.Class.Object.GoombaObject;
 using SuperMarioBros.Class.Object.KoopaObject;
 using SuperMarioBros.Class.Command;
 using SuperMarioBros.Class.Object.BlockObject;
-using SuperMarioBros.Interface.Object.BlockObject;
 using SuperMarioBros.Class.Object.MushroomObject;
 using SuperMarioBros.Class.Object.ItemObject;
+using System.Runtime.InteropServices;
 
+[assembly: ComVisible(false)]
 namespace SuperMarioBros
 {
+    [ComVisible(false)]
     public class MarioGame : Game
     {
         private KeyboardController controller;

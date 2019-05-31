@@ -5,8 +5,8 @@ namespace SuperMarioBros.Class.Object.MarioObject.MarioState
 {
     public class DeadMarioState : IMarioState
     {
-        private MarioObject mario;
-        private String type;
+        private readonly MarioObject mario;
+        private readonly String type;
 
         public DeadMarioState(MarioObject mario, string type)
         {

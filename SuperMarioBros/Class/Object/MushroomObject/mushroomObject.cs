@@ -2,12 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Interface;
 using SuperMarioBros.Interface.Object;
-using SuperMarioBros.Interface.State;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperMarioBros.Class.Object.MushroomObject
 {
@@ -15,7 +10,7 @@ namespace SuperMarioBros.Class.Object.MushroomObject
     {
         
         public Vector2 location;
-        public ISprite sprite { get; set; }
+        public ISprite Sprite { get; set; }
         public int velocity;
         public int leftEdge;
         public int rightEdge;
@@ -28,29 +23,29 @@ namespace SuperMarioBros.Class.Object.MushroomObject
             if (type == "Green")
             {
                 velocity = 10;
-                sprite = SpriteFactory.CreateSprite("GreenMushroom");
+                Sprite = SpriteFactory.CreateSprite("GreenMushroom");
             }
             else
             {
                 velocity = 5;
-                sprite = SpriteFactory.CreateSprite("RedMushroom");
+                Sprite = SpriteFactory.CreateSprite("RedMushroom");
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch SpriteBatch)
         {
-            sprite.Draw(spriteBatch, location);
+            Sprite.Draw(SpriteBatch, location);
         }
 
         public void Update()
         {
             this.Move();
-            sprite.Update();
+            Sprite.Update();
         }
 
-        public void UpdateSprite(ISprite sprite)
+        public void UpdateSprite(ISprite Sprite)
         {
-            this.sprite = sprite;
+            this.Sprite = Sprite;
         }
         public void Move()
         {
@@ -77,7 +72,7 @@ namespace SuperMarioBros.Class.Object.MushroomObject
 
         }
 
-        public void ChangeSprite(ISprite sprite)
+        public void ChangeSprite(ISprite Sprite)
         {
             // Do Nothing
         }

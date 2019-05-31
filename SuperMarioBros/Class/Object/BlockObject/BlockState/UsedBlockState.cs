@@ -1,20 +1,15 @@
 ﻿using SuperMarioBros.Interface.Object.BlockObject;
 using SuperMarioBros.Interface.State;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperMarioBros.Class.Object.BlockObject.BlockState
 {
     public class UsedBlockState : IBlockState
     {
-        private static string type = "EmptyBlock";
-        private IBlockObject block;
+        private readonly static string type = "EmptyBlock";
+       // private readonly IBlockObject block;
         public UsedBlockState(IBlockObject block)
         {
-            this.block = block;
+           // this.block = block;
             block.ChangeSprite(SpriteFactory.CreateSprite(type));
         }
 

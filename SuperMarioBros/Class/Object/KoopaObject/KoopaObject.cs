@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Interface;
 using SuperMarioBros.Interface.State;
@@ -15,7 +10,7 @@ namespace SuperMarioBros.Class.Object.KoopaObject
     {
         private IGoombaState state;
         private Vector2 location;
-        public ISprite sprite { get; set; }
+        public ISprite Sprite { get; set; }
         public KoopaObject(Vector2 location)
         {
             state = new LeftMovingKoopaState(this);
@@ -35,9 +30,9 @@ namespace SuperMarioBros.Class.Object.KoopaObject
         {
             state.BeFlipped();
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch SpriteBatch)
         {
-            sprite.Draw(spriteBatch, location);
+            Sprite.Draw(SpriteBatch, location);
         }
         public void Move(Vector2 motion)  // This includes left and right
         {
@@ -54,12 +49,12 @@ namespace SuperMarioBros.Class.Object.KoopaObject
         public void Update()
         {
             state.Update();
-            sprite.Update();
+            Sprite.Update();
         }
 
-        public void ChangeSprite(ISprite sprite)
+        public void ChangeSprite(ISprite Sprite)
         {
-            this.sprite = sprite;
+            this.Sprite = Sprite;
         }
         public bool CheckLeftEdge()
         {
