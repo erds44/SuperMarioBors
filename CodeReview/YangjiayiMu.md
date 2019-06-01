@@ -46,6 +46,7 @@ Author of the .cs file being reviewed: Keyu Bao
 	1. I don't think we really need to use {get; set;} for sprite fields.
 	2. No comment in unimplemented methods.
 	3. Some members of the class is public. Bad encapsulation.
+	4. Use new interface for MushroomObject and other items. They may have same methods(collide with Mario).
 * Future change
 	Change the visibility of fields. Implement BeKicked() method. Trim some unused method.  
 
