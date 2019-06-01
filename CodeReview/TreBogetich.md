@@ -2,7 +2,7 @@ Author of the review: Tre
 Date of the review: 28 May 2019  
 Sprint Number: 2  
 
-## Readability Review
+## Readability & Quality Review
 Class Name: MarioObject.cs  
 Author of the code: Yangjiayi Mu and Zhijian Yao  
 Time for the review: 20 min  
@@ -37,7 +37,7 @@ Comments:
         Specific comments on quality: The code is alright, but Mario should not be continually performing an action.  
         Change: Mario needs to do tasks only when a button is pressed and return to the idle state otherwise.    
 
-## Quality Review
-Review Goes here
+
+
 
 
