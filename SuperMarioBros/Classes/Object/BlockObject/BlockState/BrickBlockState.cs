@@ -5,7 +5,7 @@ namespace SuperMarioBros.Classes.Objects.BlockObjects.BlockStates
 {
     public class BrickBlockState : IBlockState
     {
-        private readonly static string type = "BrickBlock";
+        private readonly string type = "BrickBlock";
         private readonly IBlockObject block;
 
         public BrickBlockState(IBlockObject block)
