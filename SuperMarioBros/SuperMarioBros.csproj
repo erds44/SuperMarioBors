@@ -29,6 +29,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BuildToolsFxCopVersion>1.0.1</BuildToolsFxCopVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,21 +40,28 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>False</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>CodeAnalysisRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisTreatWarningsAsErrors>True</CodeAnalysisTreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;CODE_ANALYSIS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>True</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>CodeAnalysisRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisTreatWarningsAsErrors>True</CodeAnalysisTreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="CodeAnalysisRules.ruleset" />
     <None Include="Content\BigMarioLeftCrouching.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -180,70 +188,71 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\Command\DieCommand.cs" />
-    <Compile Include="Class\Command\DownCommand.cs" />
-    <Compile Include="Class\Command\RightCommand.cs" />
-    <Compile Include="Class\Command\SmallMarioCommand.cs" />
-    <Compile Include="Class\Command\BigMarioCommand.cs" />
-    <Compile Include="Class\Command\FireMarioCommand.cs" />
-    <Compile Include="Class\Command\ResetCommand.cs" />
-    <Compile Include="Class\Command\HiddenToUsedCommand.cs" />
-    <Compile Include="Class\Command\BrickToDisappearCommand.cs" />
-    <Compile Include="Class\Command\QuestionToUsedCommand.cs" />
-    <Compile Include="Class\Command\UpCommand.cs" />
-    <Compile Include="Class\Command\LeftCommand.cs" />
-    <Compile Include="Class\Command\Quit.cs" />
-    <Compile Include="Class\Controller\KeyboardController.cs" />
-    <Compile Include="Class\Controller\GamePadController.cs" />
-    <Compile Include="Class\Object\BlockObject\BlockObject.cs" />
-    <Compile Include="Class\Object\BlockObject\BlockState\ConcreteBlockState.cs" />
-    <Compile Include="Class\Object\BlockObject\BlockState\RockBlockState.cs" />
-    <Compile Include="Class\Object\BlockObject\BrickBlockObject.cs" />
-    <Compile Include="Class\Object\BlockObject\BlockState\BrickBlockState.cs" />
-    <Compile Include="Class\Object\BlockObject\BlockState\DisappearBlockState.cs" />
-    <Compile Include="Class\Object\BlockObject\ConcreteBlock.cs" />
-    <Compile Include="Class\Object\BlockObject\RockBlock.cs" />
-    <Compile Include="Class\Object\GoombaObject\GoombaObject.cs" />
-    <Compile Include="Class\Object\GoombaObject\GoombaState\LeftMovingGoombaState.cs" />
-    <Compile Include="Class\Object\GoombaObject\GoombaState\RightMovingGoombaState.cs" />
-    <Compile Include="Class\Object\BlockObject\HiddenBlockObject.cs" />
-    <Compile Include="Class\Object\BlockObject\BlockState\HiddenBlockState.cs" />
-    <Compile Include="Class\Object\BlockObject\QuestionBlockObject.cs" />
-    <Compile Include="Class\Object\BlockObject\BlockState\QuestionBlockState.cs" />
-    <Compile Include="Class\Object\BlockObject\BlockState\UsedBlockState.cs" />
-    <Compile Include="Class\Object\ItemObject\CoinObject.cs" />
-    <Compile Include="Class\Object\ItemObject\FlowerObject.cs" />
-    <Compile Include="Class\Object\ItemObject\PipeObject.cs" />
-    <Compile Include="Class\Object\ItemObject\StarObject.cs" />
-    <Compile Include="Class\Object\KoopaObject\KoopaObject.cs" />
-    <Compile Include="Class\Object\KoopaObject\KoopaState\LeftMovingKoopaState.cs" />
-    <Compile Include="Class\Object\KoopaObject\KoopaState\RightMovingKoopaState.cs" />
-    <Compile Include="Class\Object\MushroomObject\mushroomObject.cs" />
-    <Compile Include="Class\SpriteFactory\SpriteFactory.cs" />
-    <Compile Include="Interface\Object\IBlockObject.cs" />
-    <Compile Include="Class\Object\MarioObject\MarioState\DeadMarioState.cs" />
-    <Compile Include="Class\Object\MarioObject\MarioState\LeftCrouchingMarioState.cs" />
-    <Compile Include="Class\Object\MarioObject\MarioState\LeftJumpingMarioState.cs" />
-    <Compile Include="Class\Object\MarioObject\MarioState\LeftIdleMarioState.cs" />
-    <Compile Include="Class\Object\MarioObject\MarioState\RightCrouchingMarioState.cs" />
-    <Compile Include="Class\Object\MarioObject\MarioState\RightIdleMarioState.cs" />
-    <Compile Include="Class\Object\MarioObject\MarioState\RightJumpingMarioState.cs" />
-    <Compile Include="Class\Object\MarioObject\MarioState\RightMovingMarioState.cs" />
-    <Compile Include="Class\Object\MarioObject\MarioState\LeftMovingMarioState.cs" />
-    <Compile Include="Class\Object\MarioObject\MarioObject.cs" />
-    <Compile Include="Class\Receiver\InputAction.cs" />
-    <Compile Include="Class\Sprite\UniversalSprite.cs" />
-    <Compile Include="Interface\Object\IMushroomObject.cs" />
-    <Compile Include="Interface\State\IBlockState.cs" />
-    <Compile Include="Interface\ICommand.cs" />
-    <Compile Include="Interface\IController.cs" />
-    <Compile Include="Interface\State\IGoombaState.cs" />
-    <Compile Include="Interface\State\IKoopaState.cs" />
-    <Compile Include="Interface\State\IMarioState.cs" />
-    <Compile Include="Interface\Object\IObject.cs" />
-    <Compile Include="Interface\ISprite.cs" />
-    <Compile Include="Interface\IReceiver.cs" />
-    <Compile Include="Interface\State\IState.cs" />
+    <Compile Include="Classes\Command\DieCommand.cs" />
+    <Compile Include="Classes\Command\DownCommand.cs" />
+    <Compile Include="Classes\Command\RightCommand.cs" />
+    <Compile Include="Classes\Command\SmallMarioCommand.cs" />
+    <Compile Include="Classes\Command\BigMarioCommand.cs" />
+    <Compile Include="Classes\Command\FireMarioCommand.cs" />
+    <Compile Include="Classes\Command\ResetCommand.cs" />
+    <Compile Include="Classes\Command\HiddenToUsedCommand.cs" />
+    <Compile Include="Classes\Command\BrickToDisappearCommand.cs" />
+    <Compile Include="Classes\Command\QuestionToUsedCommand.cs" />
+    <Compile Include="Classes\Command\UpCommand.cs" />
+    <Compile Include="Classes\Command\LeftCommand.cs" />
+    <Compile Include="Classes\Command\Quit.cs" />
+    <Compile Include="Classes\Controller\KeyboardController.cs" />
+    <Compile Include="Classes\Controller\GamePadController.cs" />
+    <Compile Include="Classes\Object\BlockObject\BlockObject.cs" />
+    <Compile Include="Classes\Object\BlockObject\BlockState\ConcreteBlockState.cs" />
+    <Compile Include="Classes\Object\BlockObject\BlockState\RockBlockState.cs" />
+    <Compile Include="Classes\Object\BlockObject\BrickBlockObject.cs" />
+    <Compile Include="Classes\Object\BlockObject\BlockState\BrickBlockState.cs" />
+    <Compile Include="Classes\Object\BlockObject\BlockState\DisappearBlockState.cs" />
+    <Compile Include="Classes\Object\BlockObject\ConcreteBlock.cs" />
+    <Compile Include="Classes\Object\BlockObject\RockBlock.cs" />
+    <Compile Include="Classes\Object\GoombaObject\GoombaObject.cs" />
+    <Compile Include="Classes\Object\GoombaObject\GoombaState\LeftMovingGoombaState.cs" />
+    <Compile Include="Classes\Object\GoombaObject\GoombaState\RightMovingGoombaState.cs" />
+    <Compile Include="Classes\Object\BlockObject\HiddenBlockObject.cs" />
+    <Compile Include="Classes\Object\BlockObject\BlockState\HiddenBlockState.cs" />
+    <Compile Include="Classes\Object\BlockObject\QuestionBlockObject.cs" />
+    <Compile Include="Classes\Object\BlockObject\BlockState\QuestionBlockState.cs" />
+    <Compile Include="Classes\Object\BlockObject\BlockState\UsedBlockState.cs" />
+    <Compile Include="Classes\Object\ItemObject\CoinObject.cs" />
+    <Compile Include="Classes\Object\ItemObject\FlowerObject.cs" />
+    <Compile Include="Classes\Object\ItemObject\PipeObject.cs" />
+    <Compile Include="Classes\Object\ItemObject\StarObject.cs" />
+    <Compile Include="Classes\Object\KoopaObject\KoopaObject.cs" />
+    <Compile Include="Classes\Object\KoopaObject\KoopaState\LeftMovingKoopaState.cs" />
+    <Compile Include="Classes\Object\KoopaObject\KoopaState\RightMovingKoopaState.cs" />
+    <Compile Include="Classes\Object\MushroomObject\MushroomObject.cs" />
+    <Compile Include="Classes\SpriteFactory\SpriteFactory.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Interfaces\Object\IBlockObject.cs" />
+    <Compile Include="Classes\Object\MarioObject\MarioState\DeadMarioState.cs" />
+    <Compile Include="Classes\Object\MarioObject\MarioState\LeftCrouchingMarioState.cs" />
+    <Compile Include="Classes\Object\MarioObject\MarioState\LeftJumpingMarioState.cs" />
+    <Compile Include="Classes\Object\MarioObject\MarioState\LeftIdleMarioState.cs" />
+    <Compile Include="Classes\Object\MarioObject\MarioState\RightCrouchingMarioState.cs" />
+    <Compile Include="Classes\Object\MarioObject\MarioState\RightIdleMarioState.cs" />
+    <Compile Include="Classes\Object\MarioObject\MarioState\RightJumpingMarioState.cs" />
+    <Compile Include="Classes\Object\MarioObject\MarioState\RightMovingMarioState.cs" />
+    <Compile Include="Classes\Object\MarioObject\MarioState\LeftMovingMarioState.cs" />
+    <Compile Include="Classes\Object\MarioObject\MarioObject.cs" />
+    <Compile Include="Classes\Receiver\InputAction.cs" />
+    <Compile Include="Classes\Sprite\UniversalSprite.cs" />
+    <Compile Include="Interfaces\Object\IMushroomObject.cs" />
+    <Compile Include="Interfaces\State\IBlockState.cs" />
+    <Compile Include="Interfaces\ICommand.cs" />
+    <Compile Include="Interfaces\IController.cs" />
+    <Compile Include="Interfaces\State\IGoombaState.cs" />
+    <Compile Include="Interfaces\State\IKoopaState.cs" />
+    <Compile Include="Interfaces\State\IMarioState.cs" />
+    <Compile Include="Interfaces\IObject.cs" />
+    <Compile Include="Interfaces\ISprite.cs" />
+    <Compile Include="Interfaces\IReceiver.cs" />
+    <Compile Include="Interfaces\IState.cs" />
     <Compile Include="MarioGame.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>

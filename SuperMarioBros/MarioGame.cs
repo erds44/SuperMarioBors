@@ -2,18 +2,17 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using SuperMarioBros.Interface;
-using SuperMarioBros.Class.Object.MarioObject;
-using SuperMarioBros.Class.Controller;
-using SuperMarioBros.Class.Object.GoombaObject;
-using SuperMarioBros.Class.Object.KoopaObject;
-using SuperMarioBros.Class.Command;
-using SuperMarioBros.Class.Object.BlockObject;
-using SuperMarioBros.Class.Object.MushroomObject;
-using SuperMarioBros.Class.Object.ItemObject;
+using SuperMarioBros.Interfaces;
+using SuperMarioBros.Classes.Controller;
+using SuperMarioBros.Classes.Objects.GoombaObject;
+using SuperMarioBros.Classes.Objects.KoopaObject;
+using SuperMarioBros.Classes.Command;
+using SuperMarioBros.Classes.Objects.BlockObjects;
+using SuperMarioBros.Classes.Objects.MushroomObject;
+using SuperMarioBros.Classes.Objects.ItemObject;
 using System.Runtime.InteropServices;
+using SuperMarioBros.Classes.Objects.MarioObjects;
 
-[assembly: ComVisible(false)]
 namespace SuperMarioBros
 {
     [ComVisible(false)]
