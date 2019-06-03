@@ -15,6 +15,7 @@
         void QuestionBlockToUsedBlock();
         void HiddenBlockToUsedBlock();
         void BrickBlockDisappear();
+        void Idle();
 
     }
 }

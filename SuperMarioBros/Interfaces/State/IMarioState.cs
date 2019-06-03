@@ -1,15 +1,16 @@
-﻿namespace SuperMarioBros.Interfaces.States
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
+namespace SuperMarioBros.Interfaces.State
 {
-    public interface IMarioState : IState
+    public interface IMarioState 
     {
-        void Left();
-        void Down();
-        void Up();
-        void Right();
-        void ToSmall();
-        void ToBig();
-        void ToFire();
-        void Fire();
-        void Die();
+        /* powerup always follows small-big-fire
+           void PowerUp();
+           For Sprint3, we assume RedMushroom and FireFlower can appear at the same time;
+        */
+        void TakeDamage();
+        void RedMushroom();
+        void FireFlower();
     }
 }

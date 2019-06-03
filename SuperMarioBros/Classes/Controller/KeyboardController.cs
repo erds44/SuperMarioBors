@@ -8,6 +8,7 @@ namespace SuperMarioBros.Classes.Controller
     class KeyboardController : IController
     {
         private readonly Dictionary<Keys, ICommand> inputKeys;
+        private ICommand IdleCommand;
         public KeyboardController(params (Keys key, ICommand command)[] args)
         {
             inputKeys = new Dictionary<Keys, ICommand>();
@@ -16,19 +17,30 @@ namespace SuperMarioBros.Classes.Controller
                 inputKeys.Add(element.Item1, element.Item2);
             }
         }
-        public void Add(Keys key, ICommand command)
+        public void Add(ICommand command)
         {
-            inputKeys.Add(key, command);
+            IdleCommand = command;
         }
         public void Update()
         {
             Keys[] key = Keyboard.GetState().GetPressedKeys();
             if (key.Count() > 0)
             {
-                if (inputKeys.TryGetValue(key[0], out ICommand command))
+                foreach(Keys keyPressed in key)
                 {
-                    command.Execute();
+                    if (inputKeys.TryGetValue(keyPressed, out ICommand command))
+                    {
+                        command.Execute();
+                    }
+                    else
+                    {
+                        IdleCommand.Execute();
+                    }
                 }
+            }
+            else
+            {
+                IdleCommand.Execute();
             }
         }
     }

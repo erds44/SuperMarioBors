@@ -11,17 +11,18 @@ using SuperMarioBros.Classes.Objects.BlockObjects;
 using SuperMarioBros.Classes.Objects.MushroomObject;
 using SuperMarioBros.Classes.Objects.ItemObject;
 using System.Runtime.InteropServices;
-using SuperMarioBros.Classes.Objects.MarioObjects;
+using SuperMarioBros.Interfaces.Object;
+using SuperMarioBros.Classes.Object.MarioObject;
 
 namespace SuperMarioBros
 {
     [ComVisible(false)]
     public class MarioGame : Game
     {
-        private IController controller;
+        private KeyboardController controller;
         private SpriteBatch spriteBatch;
         private int delay;
-        private MarioObject mario;
+        private IMario mario;
         private List<IObject> objects;
         private BlockObject brickBlock;
         private BlockObject hiddenBlock;
@@ -90,11 +91,12 @@ namespace SuperMarioBros
                     (Keys.X, new BrickToDisappearCommand(brickBlockReceiver)),
                     (Keys.C, new HiddenToUsedCommand(hiddenBlockReceiver))
                 );
+            controller.Add(new MarioIdleCommand(marioReceiver));
         }
         public void InitializeObjectsAndKeys()
         {
             objects = new List<IObject>();
-            mario = new MarioObject(new Vector2(400, 300), "SmallMario");
+            mario = new Mario(new Vector2(400, 300));
             brickBlock = new BrickBlockObject(new Vector2(50, 150));
             hiddenBlock = new HiddenBlockObject(new Vector2(100, 150));
             questionBlock = new QuestionBlockObject(new Vector2(150, 150));

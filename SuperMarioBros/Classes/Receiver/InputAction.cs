@@ -1,15 +1,15 @@
 ﻿using SuperMarioBros.Classes.Objects.BlockObjects;
-using SuperMarioBros.Classes.Objects.MarioObjects;
 using SuperMarioBros.Interfaces;
+using SuperMarioBros.Interfaces.Object;
 
 namespace SuperMarioBros
 {
     class InputAction : IReceiver
     {
-        private readonly MarioObject mario;
+        private readonly IMario mario;
         private readonly MarioGame game;
         private readonly BlockObject blockObject;
-        public InputAction(MarioObject mario)
+        public InputAction(IMario mario)
         {
             this.mario = mario;
         }
@@ -40,20 +40,20 @@ namespace SuperMarioBros
         }
         public void BigMario()
         {
-            mario.ToBig();
+            
         }
         public void SmallMario()
         {
-            mario.ToSmall();
+            
 
         }
         public void FireMario()
         {
-            mario.ToFire();
+           
         }
         public void DeadMario()
         {
-            mario.Die();
+            
         }
         public void Reset()
         {
@@ -78,6 +78,11 @@ namespace SuperMarioBros
         public void BrickBlockDisappear()
         {
             blockObject.Disappear();
+        }
+
+        public void Idle()
+        {
+            mario.Idle();
         }
     }
 }
