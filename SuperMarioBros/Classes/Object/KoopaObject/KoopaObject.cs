@@ -10,7 +10,7 @@ namespace SuperMarioBros.Classes.Objects.KoopaObject
     {
         private IGoombaState state;
         private Vector2 location;
-        private ISprite Sprite; 
+        private ISprite sprite; 
         public KoopaObject(Vector2 location)
         {
             state = new LeftMovingKoopaState(this);
@@ -32,7 +32,7 @@ namespace SuperMarioBros.Classes.Objects.KoopaObject
         }
         public void Draw(SpriteBatch SpriteBatch)
         {
-            Sprite.Draw(SpriteBatch, location);
+            sprite.Draw(SpriteBatch, location);
         }
         public void Move(Vector2 motion)  // This includes left and right
         {
@@ -49,12 +49,12 @@ namespace SuperMarioBros.Classes.Objects.KoopaObject
         public void Update()
         {
             state.Update();
-            Sprite.Update();
+            sprite.Update();
         }
 
-        public void ChangeSprite(ISprite Sprite)
+        public void ChangeSprite(ISprite sprite)
         {
-            this.Sprite = Sprite;
+            this.sprite = sprite;
         }
         public bool CheckLeftEdge()
         {
@@ -81,6 +81,11 @@ namespace SuperMarioBros.Classes.Objects.KoopaObject
         public void ChangeState(IGoombaState state)
         {
             this.state = state;
+        }
+
+        public Rectangle HitBox()
+        {
+            return new Rectangle((int)location.X, (int)(location.Y - sprite.Height()), sprite.Width(), sprite.Height());
         }
     }
 }

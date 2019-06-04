@@ -13,6 +13,8 @@ using SuperMarioBros.Classes.Objects.ItemObject;
 using System.Runtime.InteropServices;
 using SuperMarioBros.Interfaces.Object;
 using SuperMarioBros.Classes.Object.MarioObject;
+using System.Runtime.Serialization;
+using SuperMarioBros.Classes.Object;
 
 namespace SuperMarioBros
 {
@@ -23,12 +25,13 @@ namespace SuperMarioBros
         private SpriteBatch spriteBatch;
         private int delay;
         private IMario mario;
-        private List<IObject> objects;
-        private BlockObject brickBlock;
-        private BlockObject hiddenBlock;
-        private BlockObject questionBlock;
-        private BlockObject concreteBlock;
-        private BlockObject rockBlock;
+        private ObjectsManager objectsManager;
+        //private List<IObject> objects;
+        //private BlockObject brickBlock;
+        //private BlockObject hiddenBlock;
+        //private BlockObject questionBlock;
+        //private BlockObject concreteBlock;
+        //private BlockObject rockBlock;
         public MarioGame()
         {
             var graphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -53,8 +56,9 @@ namespace SuperMarioBros
             if (delay % 5 == 0)
             {
                 controller.Update();
-                mario.Update();
-                objects.ForEach(element => element.Update());
+                objectsManager.Update();
+                //mario.Update();
+                //objects.ForEach(element => element.Update());
                 base.Update(gameTime);
                 delay = 0;
             }
@@ -64,17 +68,18 @@ namespace SuperMarioBros
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            mario.Draw(spriteBatch);
-            objects.ForEach(element => element.Draw(spriteBatch));
+            //mario.Draw(spriteBatch);
+            //objects.ForEach(element => element.Draw(spriteBatch));
+            objectsManager.Draw(spriteBatch);
             base.Draw(gameTime);
         }
         public void KeyBinding()
         {
             IReceiver marioReceiver = new InputAction(mario);
             IReceiver gameReceiver = new InputAction(this);
-            IReceiver brickBlockReceiver = new InputAction(brickBlock);
-            IReceiver hiddenBlockReceiver = new InputAction(hiddenBlock);
-            IReceiver questionBlockReceiver = new InputAction(questionBlock);
+            //IReceiver brickBlockReceiver = new InputAction(brickBlock);
+            //IReceiver hiddenBlockReceiver = new InputAction(hiddenBlock);
+            //IReceiver questionBlockReceiver = new InputAction(questionBlock);
             controller = new KeyboardController
                 (
                     (Keys.Q, new Quit(gameReceiver)),
@@ -86,37 +91,38 @@ namespace SuperMarioBros
                     (Keys.U, new BigMarioCommand(marioReceiver)),
                     (Keys.I, new FireMarioCommand(marioReceiver)),
                     (Keys.O, new DieCommand(marioReceiver)),
-                    (Keys.R, new ResetCommand(gameReceiver)),
-                    (Keys.Z, new QuestionToUsedCommand(questionBlockReceiver)),
-                    (Keys.X, new BrickToDisappearCommand(brickBlockReceiver)),
-                    (Keys.C, new HiddenToUsedCommand(hiddenBlockReceiver))
+                    (Keys.R, new ResetCommand(gameReceiver))/*,*/
+                    //(Keys.Z, new QuestionToUsedCommand(questionBlockReceiver)),
+                    //(Keys.X, new BrickToDisappearCommand(brickBlockReceiver)),
+                    //(Keys.C, new HiddenToUsedCommand(hiddenBlockReceiver))
                 );
             controller.Add(new MarioIdleCommand(marioReceiver));
         }
         public void InitializeObjectsAndKeys()
         {
-            objects = new List<IObject>();
+            //objects = new List<IObject>();
             mario = new Mario(new Vector2(400, 300));
-            brickBlock = new BrickBlockObject(new Vector2(50, 150));
-            hiddenBlock = new HiddenBlockObject(new Vector2(100, 150));
-            questionBlock = new QuestionBlockObject(new Vector2(150, 150));
-            rockBlock = new RockBlockObject(new Vector2(200, 150));
-            concreteBlock = new ConcreteBlockObject(new Vector2(250, 150));
+            objectsManager = new ObjectsManager(mario);
+            //brickBlock = new BrickBlockObject(new Vector2(50, 150));
+            //hiddenBlock = new HiddenBlockObject(new Vector2(100, 150));
+            //questionBlock = new QuestionBlockObject(new Vector2(150, 150));
+            //rockBlock = new RockBlockObject(new Vector2(200, 150));
+            //concreteBlock = new ConcreteBlockObject(new Vector2(250, 150));
 
-            objects.Add(mario);
-            objects.Add(brickBlock);
-            objects.Add(hiddenBlock);
-            objects.Add(questionBlock);
-            objects.Add(concreteBlock);
-            objects.Add(rockBlock);
-            objects.Add(new GoombaObject(new Vector2(100, 100)));
-            objects.Add(new KoopaObject(new Vector2(100, 225)));
-            objects.Add(new MushroomObject(new Vector2(100, 50), 20, 120, "Green"));
-            objects.Add(new MushroomObject(new Vector2(150, 50), 150, 250, "Red"));
-            objects.Add(new CoinObject(new Vector2(50, 400)));
-            objects.Add(new FlowerObject(new Vector2(100, 400)));
-            objects.Add(new PipeObject(new Vector2(200, 400)));
-            objects.Add(new StarObject(new Vector2(350, 400)));
+            //objects.Add(mario);
+            //objects.Add(brickBlock);
+            //objects.Add(hiddenBlock);
+            //objects.Add(questionBlock);
+            //objects.Add(concreteBlock);
+            //objects.Add(rockBlock);
+            //objects.Add(new GoombaObject(new Vector2(100, 100)));
+            //objects.Add(new KoopaObject(new Vector2(100, 225)));
+            //objects.Add(new MushroomObject(new Vector2(100, 50), 20, 120, "Green"));
+            //objects.Add(new MushroomObject(new Vector2(150, 50), 150, 250, "Red"));
+            //objects.Add(new CoinObject(new Vector2(50, 400)));
+            //objects.Add(new FlowerObject(new Vector2(100, 400)));
+            //objects.Add(new PipeObject(new Vector2(200, 400)));
+            //objects.Add(new StarObject(new Vector2(350, 400)));
         }
 
     }

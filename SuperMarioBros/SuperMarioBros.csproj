@@ -191,6 +191,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Collision\CollisionDetection.cs" />
+    <Compile Include="Classes\Collision\MarioMushroomCollisionHandler.cs" />
     <Compile Include="Classes\Command\MarioIdleCommand.cs" />
     <Compile Include="Classes\Command\DieCommand.cs" />
     <Compile Include="Classes\Command\DownCommand.cs" />
@@ -223,6 +225,7 @@
     <Compile Include="Classes\Object\BlockObject\QuestionBlockObject.cs" />
     <Compile Include="Classes\Object\BlockObject\BlockState\QuestionBlockState.cs" />
     <Compile Include="Classes\Object\BlockObject\BlockState\UsedBlockState.cs" />
+    <Compile Include="Classes\Object\ItemObject\AbstractItem.cs" />
     <Compile Include="Classes\Object\ItemObject\CoinObject.cs" />
     <Compile Include="Classes\Object\ItemObject\FlowerObject.cs" />
     <Compile Include="Classes\Object\ItemObject\PipeObject.cs" />
@@ -236,7 +239,8 @@
     <Compile Include="Classes\Object\MarioObject\MarioState\DeadMario.cs" />
     <Compile Include="Classes\Object\MarioObject\MarioState\FireMario.cs" />
     <Compile Include="Classes\Object\MarioObject\MarioState\SmallMario.cs" />
-    <Compile Include="Classes\Object\MushroomObject\MushroomObject.cs" />
+    <Compile Include="Classes\Object\MushroomObject\Mushroom.cs" />
+    <Compile Include="Classes\Object\ObjectsManager.cs" />
     <Compile Include="Classes\Object\Physics.cs" />
     <Compile Include="Classes\SpriteFactory\SpriteFactory.cs" />
     <Compile Include="GlobalSuppressions.cs" />
@@ -252,7 +256,7 @@
     <Compile Include="Classes\Receiver\InputAction.cs" />
     <Compile Include="Classes\Sprite\UniversalSprite.cs" />
     <Compile Include="Interfaces\Object\IMario.cs" />
-    <Compile Include="Interfaces\Object\IMushroomObject.cs" />
+    <Compile Include="Interfaces\Object\IMushroom.cs" />
     <Compile Include="Interfaces\State\IBlockState.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IController.cs" />

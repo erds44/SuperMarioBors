@@ -33,8 +33,8 @@ namespace SuperMarioBros.Classes.Objects.GoombaObject.GoombaState
 
         public void Update()
         {
-            goomba.Move(new Vector2(5, 0));
-            ChangeDirection();
+            //goomba.Move(new Vector2(5, 0));
+            //ChangeDirection();
         }
     }
 }

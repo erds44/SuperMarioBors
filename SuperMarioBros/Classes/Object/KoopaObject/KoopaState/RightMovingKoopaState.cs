@@ -33,8 +33,8 @@ namespace SuperMarioBros.Classes.Objects.KoopaObject.KoopaState
 
         public void Update()
         {
-            koopa.Move(new Vector2(5, 0));
-            ChangeDirection();
+           // koopa.Move(new Vector2(5, 0));
+           // ChangeDirection();
         }
     }
 }

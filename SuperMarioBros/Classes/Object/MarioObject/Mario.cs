@@ -16,7 +16,7 @@ namespace SuperMarioBros.Classes.Object.MarioObject
         private readonly Physics marioPhysics;
         public Mario(Vector2 location)
         {
-            marioState = new BigMario(this);
+            marioState = new SmallMario(this);
             /*
              * Hard Code for now
              * Since GetType().ToString() returns the whole namespace
@@ -101,6 +101,9 @@ namespace SuperMarioBros.Classes.Object.MarioObject
             movementState.Idle();
         }
 
-
+        public Rectangle HitBox()
+        {
+            return new Rectangle(marioPhysics.XPosition(), marioPhysics.YPosition()- sprite.Height(), sprite.Width(), sprite.Height());
+        }
     }
 }

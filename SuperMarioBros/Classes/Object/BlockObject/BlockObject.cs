@@ -46,5 +46,10 @@ namespace SuperMarioBros.Classes.Objects.BlockObjects
         {
             this.state.ToUsed();
         }
+
+        public Rectangle HitBox()
+        {
+            return new Rectangle((int)location.X, (int)(location.Y - sprite.Height()), sprite.Width(), sprite.Height());
+        }
     }
 }

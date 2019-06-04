@@ -49,5 +49,13 @@ namespace SuperMarioBros.Classes.Object
         {
             return position;
         }
+        public int XPosition()
+        {
+            return (int)position.X;
+        }
+        public int YPosition()
+        {
+            return (int)position.Y;
+        }
     }
 }

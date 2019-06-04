@@ -43,7 +43,7 @@ namespace SuperMarioBros.Classes.Objects.MarioObjects.MarioMovementState
 
         public void Left()
         {
-            // Do Nothing
+            marioPhysics.Left();
         }
 
         public void Right()
@@ -58,7 +58,7 @@ namespace SuperMarioBros.Classes.Objects.MarioObjects.MarioMovementState
 
         public void Update()
         {
-            marioPhysics.Left();
+            //marioPhysics.Left();
         }
     }
 }

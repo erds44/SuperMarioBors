@@ -33,7 +33,7 @@ namespace SuperMarioBros.Classes.Objects.MarioObjects.MarioMovementState
 
         public void Right()
         {
-            // Do Nothing
+            marioPhysics.Right();
         }
 
         public void Left()
@@ -48,7 +48,7 @@ namespace SuperMarioBros.Classes.Objects.MarioObjects.MarioMovementState
 
         public void Update()
         {
-            marioPhysics.Right();
+            //marioPhysics.Right();
         }
 
         public void ChangeSprite(string type)

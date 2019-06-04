@@ -32,17 +32,17 @@ namespace SuperMarioBros.Classes.Objects.MarioObjects.MarioMovementState
 
         public void Left()
         {
-            marioPhysics.Left();
+            // Do Nothing
         }
 
         public void Up()
         {
-            // Do Nothing
+            marioPhysics.Up();
         }
 
         public void Update()
         {
-            marioPhysics.Up();
+            //marioPhysics.Up();
         }
 
         public void ChangeSprite(string type)

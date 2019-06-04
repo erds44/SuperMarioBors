@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SuperMarioBros.Interfaces
 {
@@ -10,6 +11,7 @@ namespace SuperMarioBros.Interfaces
         void Draw(SpriteBatch spriteBatch);
         void Update();
         void ChangeSprite(ISprite sprite);
+        Rectangle HitBox();
         
         //void ReportHitBox();
     }

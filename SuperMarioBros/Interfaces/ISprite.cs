@@ -7,6 +7,7 @@ namespace SuperMarioBros.Interfaces
     {
         void Update();
         void Draw(SpriteBatch spriteBatch, Vector2 location);
-        Vector2 Size();
+        int Width();
+        int Height();
     }
 }

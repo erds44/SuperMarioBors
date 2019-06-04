@@ -6,11 +6,11 @@ namespace SuperMarioBros.Classes.Sprite
 {
     class UniversalSprite : ISprite
     {
-        private Texture2D texture;
+        private readonly Texture2D texture;
         private int currentFrame;
-        private int width;
-        private int height;
-        private int totalFrame;
+        private readonly int width;
+        private readonly int height;
+        private readonly int totalFrame;
         public UniversalSprite(Texture2D texture, int frame)
         {
             this.texture = texture;
@@ -40,9 +40,14 @@ namespace SuperMarioBros.Classes.Sprite
             spriteBatch.End();
         }
 
-        public Vector2 Size()
+        public int Width()
         {
-            return new Vector2((float)width, (float)height);
+            return width;
+        }
+
+        public int Height()
+        {
+            return height;
         }
     }
 }

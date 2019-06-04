@@ -9,6 +9,7 @@ namespace SuperMarioBros.Classes.Controller
     class GamePadController : IController
     {
         private readonly Dictionary<GamePadButtons, ICommand> inputKeys;
+        //private ICommand IdleCommand;
         public GamePadController(params (GamePadButtons key, ICommand command)[] args)
         {
             inputKeys = new Dictionary<GamePadButtons, ICommand>();
@@ -18,9 +19,9 @@ namespace SuperMarioBros.Classes.Controller
             }
         }
 
-        public  void Add (GamePadButtons key, ICommand command)
+        public  void Add (ICommand command)
         {
-            inputKeys.Add(key, command);
+            //IdleCommand = command;
         }
 
 

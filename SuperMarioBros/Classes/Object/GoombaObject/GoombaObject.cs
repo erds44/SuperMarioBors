@@ -10,7 +10,7 @@ namespace SuperMarioBros.Classes.Objects.GoombaObject
     {
         private IGoombaState state;
         private Vector2 location;
-        private ISprite Sprite;
+        private ISprite sprite;
         public GoombaObject( Vector2 location)
         {
             state = new LeftMovingGoombaState(this);
@@ -32,7 +32,7 @@ namespace SuperMarioBros.Classes.Objects.GoombaObject
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            Sprite.Draw(spriteBatch, location);
+            sprite.Draw(spriteBatch, location);
         }
         public void Move(Vector2 motion)  // This includes left and right
         {
@@ -49,12 +49,12 @@ namespace SuperMarioBros.Classes.Objects.GoombaObject
         public void Update()
         {
             state.Update();
-            Sprite.Update();
+            sprite.Update();
         }
 
         public void ChangeSprite(ISprite sprite)
         {
-            this.Sprite = sprite;
+            this.sprite = sprite;
         }
         public bool CheckLeftEdge()
         {
@@ -81,6 +81,11 @@ namespace SuperMarioBros.Classes.Objects.GoombaObject
         public void ChangeState(IGoombaState state)
         {
             this.state = state;
+        }
+
+        public Rectangle HitBox()
+        {
+            return new Rectangle((int)location.X, (int)(location.Y - sprite.Height()), sprite.Width(), sprite.Height());
         }
     }
 }

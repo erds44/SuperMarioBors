@@ -47,12 +47,12 @@ namespace SuperMarioBros.Classes.Objects.MarioObjects.MarioMovementState
 
         public void Up()
         {
-           // Do Nothing
+            marioPhysics.Up();
         }
 
         public void Update()
         {
-            marioPhysics.Up();
+            //marioPhysics.Up();
         }
     }
 }
