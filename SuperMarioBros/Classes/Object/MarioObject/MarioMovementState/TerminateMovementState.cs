@@ -2,7 +2,7 @@
 
 namespace SuperMarioBros.Classes.Object.MarioObject.MarioMovementState
 {
-    class TerminateMovementState : IMarioMovementState
+    public class TerminateMovementState : IMarioMovementState
     {
         public void ChangeSprite(string type)
         {
@@ -22,6 +22,11 @@ namespace SuperMarioBros.Classes.Object.MarioObject.MarioMovementState
         public void Left()
         {
            // Do Nothing
+        }
+
+        public void Obstacle()
+        {
+            // Do Nothing
         }
 
         public void Right()

@@ -1,38 +1,29 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.Classes.Object.MarioObject.MarioMovementState;
-using SuperMarioBros.Classes.Objects.MarioObjects.MarioMovementState;
 using SuperMarioBros.Interfaces;
 using SuperMarioBros.Interfaces.Object;
 using SuperMarioBros.Interfaces.State;
 
 namespace SuperMarioBros.Classes.Object.MarioObject
 {
-    public class Mario : IMario
+    public class StarMario : IMario
     {
-        private IMarioState marioState;
-        private IMarioMovementState movementState;
-        private ISprite sprite;
-        private readonly Physics marioPhysics;
-        public Mario(Vector2 location)
+        private readonly IMario mario;
+        private readonly ISprite sprite;
+        private Vector2 location;
+        private int timer;
+        private readonly ObjectsManager objectsManager;
+        public StarMario(IMario mario, ObjectsManager objectsManager)
         {
-            marioState = new SmallMario(this);
-            /*
-             * Hard Code for now
-             * Since GetType().ToString() returns the whole namespace
-             * i.e.: SuperMarioBros.Classes.Object.MarioObject.SmallMario
-             */
-            marioPhysics = new Physics(
-                new Vector2(0, -1),
-                new Vector2(0, 1),
-                new Vector2(-1,0),
-                new Vector2(1, 0),
-                location
-                );
-            movementState = new RightIdleMarioState(this, marioState.GetType().ToString().Substring(42),marioPhysics);
+            this.mario = mario;
+            sprite = SpriteFactory.CreateSprite("Star");
+            timer = 60;
+            this.objectsManager = objectsManager;
+            // Change Sprite
         }
         public void ChangeMarioState(IMarioState marioState) // Help method for marioState
         {
+            /*
             string type = marioState.GetType().ToString().Substring(42);
             this.marioState = marioState;
             movementState.ChangeSprite(type);
@@ -40,70 +31,91 @@ namespace SuperMarioBros.Classes.Object.MarioObject
             {
                 movementState = new TerminateMovementState();
             }
+            */
+            mario.ChangeMarioState(marioState);
         }
         
         public void ChangeSprite(ISprite sprite) // Help method for movementState
         {
+            /*
             this.sprite = sprite;
+            */
+            mario.ChangeSprite(sprite);
         }
         public void ChangeMovementState(IMarioMovementState movementState) // Help method for movementState
         {
-            this.movementState = movementState;
+            mario.ChangeMovementState(movementState);
         }
         public void Down()
         {
-            movementState.Down();
+            mario.Down();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, marioPhysics.Position());
+            mario.Draw(spriteBatch);
+            sprite.Draw(spriteBatch, location);
         }
 
         public void FireFlower()
         {
+            /*
             marioState.FireFlower();
+            */
+            mario.FireFlower();
         }
 
         public void Left()
         {
-            movementState.Left();
+            mario.Left();
         }
 
         public void RedMushroom()
         {
-            marioState.RedMushroom();
+            /*marioState.RedMushroom();
+             */
+            mario.RedMushroom();
         }
 
         public void Right()
         {
-            movementState.Right();
+            mario.Right();
         }
 
         public void TakeDamage()
         {
-            marioState.TakeDamage();
+            // Do Nothing
         }
 
         public void Up()
         {
-            movementState.Up();
+            mario.Up();
         }
 
         public void Update()
         {
-            movementState.Update();
-            sprite.Update();
+            mario.Update();
+            timer--;
+            if(timer == 0)
+            {
+                objectsManager.DecorateMario(mario);
+            }
+            else
+            {
+                location.X = mario.HitBox().X + 10;
+                location.Y = mario.HitBox().Y - 5;
+                sprite.Update();
+            }
         }
 
         public void Idle()
         {
-            movementState.Idle();
+            mario.Idle();
         }
 
         public Rectangle HitBox()
         {
-            return new Rectangle(marioPhysics.XPosition(), marioPhysics.YPosition()- sprite.Height(), sprite.Width(), sprite.Height());
+            return mario.HitBox();
         }
 
         public void GreenMushroom()
@@ -113,7 +125,7 @@ namespace SuperMarioBros.Classes.Object.MarioObject
 
         public void Obstacle()
         {
-            movementState.Obstacle();
+            mario.Obstacle();
         }
     }
 }

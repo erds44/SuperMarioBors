@@ -1,25 +1,21 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Classes.Collision;
-using SuperMarioBros.Classes.Objects.GoombaObject;
 using SuperMarioBros.Classes.Objects.ItemObject;
-using SuperMarioBros.Classes.Objects.KoopaObject;
 using SuperMarioBros.Classes.Objects.MushroomObject;
-using SuperMarioBros.Interfaces;
 using SuperMarioBros.Interfaces.Object;
-using SuperMarioBros.Interfaces.Objects;
-using System;
 using System.Collections.Generic;
 
 namespace SuperMarioBros.Classes.Object
 {
-    class ObjectsManager
+    public class ObjectsManager
     {
-        private List<IObject> enermy;
+        //private List<IObject> enermy;
         //private List<IObject> block;
-        private List<IMushroom> mushroom;
-        private List<IObject> item;
-        private readonly IMario mario;
+        private List<IItem> items;
+        private List<IStar> stars;
+        private List<IItem> pipes;
+        private IMario mario;
         public ObjectsManager(IMario mario)
         {
             this.mario = mario;
@@ -27,51 +23,73 @@ namespace SuperMarioBros.Classes.Object
         }
         private void Initialize()
         {
-            enermy = new List<IObject>
+            //enermy = new List<IObject>
+            //{
+            //    new GoombaObject(new Vector2(100, 100)),
+            //    new KoopaObject(new Vector2(100, 225))
+            //};
+            items = new List<IItem>
             {
-                new GoombaObject(new Vector2(100, 100)),
-                new KoopaObject(new Vector2(100, 225))
+                new GreenMushroom(new Vector2(100, 100), 20, 120),
+                new RedMushroom(new Vector2(150, 100), 150, 250),
+                new FlowerObject(new Vector2(300, 100))
             };
-            mushroom = new List<IMushroom>
+            stars = new List<IStar>
             {
-                new Mushroom(new Vector2(100, 50), 20, 120, "Green"),
-                new Mushroom(new Vector2(150, 50), 150, 250, "Red"),
-                new Mushroom(new Vector2(400, 50), 150, 250, "Red")
+                new StarObject(new Vector2(400,100))
             };
-            item = new List<IObject>
+            pipes = new List<IItem>
             {
-                new FlowerObject(new Vector2(200, 50))
+                new PipeObject(new Vector2(500,300))
             };
-            
-            
-                
         }
         public void Update()
         {
+            items.ForEach(element => element.Update());
+            stars.ForEach(element => element.Update());
+            pipes.ForEach(element => element.Update());
             mario.Update();
-            enermy.ForEach(element => element.Update());
-            mushroom.ForEach(element => element.Update());
-            item.ForEach(element => element.Update());
-            CollisionAgainstMushroom();
-
-            
+            CollisionAgainstItems();
+            CollisionAgainstStars();
+            CollisionAgainstPipes();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             mario.Draw(spriteBatch);
-            enermy.ForEach(element => element.Draw(spriteBatch));
-            mushroom.ForEach(element => element.Draw(spriteBatch));
-            item.ForEach(element => element.Draw(spriteBatch));
+            items.ForEach(element => element.Draw(spriteBatch));
+            stars.ForEach(element => element.Draw(spriteBatch));
+            pipes.ForEach(element => element.Draw(spriteBatch));
         }
-        private void CollisionAgainstMushroom()
+        private void CollisionAgainstItems()
         {
-            for (int i = 0; i < mushroom.Count; i++)
+            for (int i = 0; i < items.Count; i++)
             {
-               if(MarioMushroomCollisionHandler.HandleCollision(mario, mushroom[i], CollisionDetection.Detect(mario, mushroom[i])))
+               if(MarioItemCollisionHandler.HandleCollision(mario, items[i], CollisionDetection.Detect(mario, items[i])))
                 {
-                    mushroom.RemoveAt(i);
+                    items.RemoveAt(i);
                 }
             }
+        }
+        private void CollisionAgainstStars()
+        {
+            for (int i = 0; i < stars.Count; i++)
+            {
+                if (MarioStarCollisionHandler.HandleCollision(this, mario, stars[i], CollisionDetection.Detect(mario, stars[i])))
+                {
+                    stars.RemoveAt(i);
+                }
+            }
+        }
+        private void CollisionAgainstPipes()
+        {
+            for (int i = 0; i <pipes.Count; i++)
+            {
+                MarioItemCollisionHandler.HandleCollision(mario, pipes[i], CollisionDetection.Detect(mario, pipes[i]));
+            }
+        }
+        public void DecorateMario(IMario mario)
+        {
+            this.mario = mario;
         }
 
     }

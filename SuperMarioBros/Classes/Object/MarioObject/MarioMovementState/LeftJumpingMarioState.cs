@@ -5,11 +5,8 @@ using SuperMarioBros.Interfaces.State;
 
 namespace SuperMarioBros.Classes.Objects.MarioObjects.MarioMovementState
 {
-    public class LeftJumpingMarioState : IMarioMovementState
+    public class LeftJumpingMarioState : AbstractMovementState, IMarioMovementState
     {
-        private readonly IMario mario;
-        private string type;
-        private readonly Physics marioPhysics;
         public LeftJumpingMarioState(IMario mario, string type, Physics marioPhysics)
         {
             this.mario = mario;

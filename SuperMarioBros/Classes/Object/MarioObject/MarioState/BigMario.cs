@@ -17,6 +17,11 @@ namespace SuperMarioBros.Classes.Object.MarioObject
             mario.ChangeMarioState(new FireMario(mario));
         }
 
+        public void GreenMushroom()
+        {
+            // Do Nothing
+        }
+
         public void RedMushroom()
         {
             // Do Nothing

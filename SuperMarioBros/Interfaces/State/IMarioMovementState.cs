@@ -10,5 +10,6 @@ namespace SuperMarioBros.Interfaces.State
         void Right();
         void Idle();
         void ChangeSprite(string type);
+        void Obstacle();
     }
 }

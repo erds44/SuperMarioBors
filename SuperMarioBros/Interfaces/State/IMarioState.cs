@@ -12,5 +12,6 @@ namespace SuperMarioBros.Interfaces.State
         void TakeDamage();
         void RedMushroom();
         void FireFlower();
+        void GreenMushroom();
     }
 }

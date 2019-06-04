@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{50EBA22A-24A6-4C54-BC00-5DA4D2F55004}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>SuperMarioBros</RootNamespace>
     <AssemblyName>SuperMarioBros</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -192,7 +192,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Collision\CollisionDetection.cs" />
-    <Compile Include="Classes\Collision\MarioMushroomCollisionHandler.cs" />
+    <Compile Include="Classes\Collision\MarioEnermyCollisionHandler.cs" />
+    <Compile Include="Classes\Collision\MarioStarCollisionHandler.cs" />
+    <Compile Include="Classes\Collision\MarioItemCollisionHandler.cs" />
     <Compile Include="Classes\Command\MarioIdleCommand.cs" />
     <Compile Include="Classes\Command\DieCommand.cs" />
     <Compile Include="Classes\Command\DownCommand.cs" />
@@ -233,13 +235,16 @@
     <Compile Include="Classes\Object\KoopaObject\KoopaObject.cs" />
     <Compile Include="Classes\Object\KoopaObject\KoopaState\LeftMovingKoopaState.cs" />
     <Compile Include="Classes\Object\KoopaObject\KoopaState\RightMovingKoopaState.cs" />
+    <Compile Include="Classes\Object\MarioObject\MarioMovementState\AbstractMovementState.cs" />
+    <Compile Include="Classes\Object\MarioObject\StarMario.cs" />
     <Compile Include="Classes\Object\MarioObject\Mario.cs" />
     <Compile Include="Classes\Object\MarioObject\MarioMovementState\TerminateMovementState.cs" />
     <Compile Include="Classes\Object\MarioObject\MarioState\BigMario.cs" />
     <Compile Include="Classes\Object\MarioObject\MarioState\DeadMario.cs" />
     <Compile Include="Classes\Object\MarioObject\MarioState\FireMario.cs" />
     <Compile Include="Classes\Object\MarioObject\MarioState\SmallMario.cs" />
-    <Compile Include="Classes\Object\MushroomObject\Mushroom.cs" />
+    <Compile Include="Classes\Object\MushroomObject\RedMushroom.cs" />
+    <Compile Include="Classes\Object\MushroomObject\GreenMushroom.cs" />
     <Compile Include="Classes\Object\ObjectsManager.cs" />
     <Compile Include="Classes\Object\Physics.cs" />
     <Compile Include="Classes\SpriteFactory\SpriteFactory.cs" />
@@ -255,8 +260,9 @@
     <Compile Include="Classes\Object\MarioObject\MarioMovementState\LeftMovingMarioState.cs" />
     <Compile Include="Classes\Receiver\InputAction.cs" />
     <Compile Include="Classes\Sprite\UniversalSprite.cs" />
+    <Compile Include="Interfaces\Object\IStar.cs" />
+    <Compile Include="Interfaces\Object\IItem.cs" />
     <Compile Include="Interfaces\Object\IMario.cs" />
-    <Compile Include="Interfaces\Object\IMushroom.cs" />
     <Compile Include="Interfaces\State\IBlockState.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\IController.cs" />

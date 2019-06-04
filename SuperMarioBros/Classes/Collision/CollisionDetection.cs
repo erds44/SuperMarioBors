@@ -1,9 +1,11 @@
 ﻿using SuperMarioBros.Interfaces;
+using System;
 
 namespace SuperMarioBros.Classes.Collision
 {
     public static class CollisionDetection
     {
+        // This Method is broken !!!
         private static int obj1x;
         private static int obj1y;
         private static int obj1Width;
@@ -27,7 +29,7 @@ namespace SuperMarioBros.Classes.Collision
                 obj2Height = object2.HitBox().Height;
 
                 int dx = obj2x + 1 / 2 * obj2Width - obj1x - 1 / 2 * obj1Width;
-                int dy = obj1y + 1 / 2 * obj1Height - obj2y - 1 / 2 * obj2Height;
+                int dy = obj1y - 1 / 2 * obj1Height - obj2y + 1 / 2 * obj2Height;
 
                 return Compare(dx, dy);
             }
@@ -40,23 +42,27 @@ namespace SuperMarioBros.Classes.Collision
             {
                 if(dy > 0)
                 {
-                    if(obj1Width + obj1x - obj2x > obj2y + obj2Height - obj1y)
+                    if(obj1Width + obj1x - obj2x > obj2y + obj1Height - obj1y)
                     {
+                        Console.WriteLine("Bottom");
                         return "Bottom";
                     }
                     else
                     {
+                        Console.WriteLine("Left");
                         return "Left";
                     }
                 }
                 else
                 {
-                    if(obj1Width + obj1x - obj2x > obj1y + obj1Height - obj2y)
+                    if(obj1Width + obj1x - obj2x > obj1y + obj2Height - obj2y)
                     {
+                        Console.WriteLine("Top");
                         return "Top";
                     }
                     else
                     {
+                        Console.WriteLine("Left");
                         return "Left";
                     }
                 }
@@ -65,23 +71,27 @@ namespace SuperMarioBros.Classes.Collision
             {
                 if(dy > 0)
                 {
-                    if(obj2x + obj2Width - obj1x > obj2y + obj2Height - obj1y)
+                    if(obj2x + obj2Width - obj1x > obj2y + obj1Height - obj1y)
                     {
+                        Console.WriteLine("Bottom");
                         return "Bottom";
                     }
                     else
                     {
+                        Console.WriteLine("Right");
                         return "Right";
                     }
                 }
                 else
                 {
-                    if(obj2x + obj2Width - obj1x > obj1y + obj1Height - obj2y)
+                    if(obj2x + obj2Width - obj1x > obj1y + obj2Height - obj2y)
                     {
+                        Console.WriteLine("Top");
                         return "Top";
                     }
                     else
                     {
+                        Console.WriteLine("Right");
                         return "Right";
                     }
                 }

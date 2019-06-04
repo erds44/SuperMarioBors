@@ -5,11 +5,8 @@ using SuperMarioBros.Interfaces.State;
 
 namespace SuperMarioBros.Classes.Objects.MarioObjects.MarioMovementState
 {
-    public class RightCrouchingMarioState : IMarioMovementState
-    {
-        private readonly IMario mario;
-        private string type;
-        private readonly Physics marioPhysics;
+    public class RightCrouchingMarioState : AbstractMovementState, IMarioMovementState
+    { 
         public RightCrouchingMarioState(IMario mario, string type, Physics marioPhysics)
         {
             this.mario = mario;

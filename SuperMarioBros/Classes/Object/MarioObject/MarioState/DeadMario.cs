@@ -15,6 +15,11 @@ namespace SuperMarioBros.Classes.Object.MarioObject
             // Do Nothing
         }
 
+        public void GreenMushroom()
+        {
+           // Do Nothing
+        }
+
         public void RedMushroom()
         {
             // Do Nothing

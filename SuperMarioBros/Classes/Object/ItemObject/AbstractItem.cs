@@ -1,18 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Interfaces;
-using System;
 
 namespace SuperMarioBros.Classes.Object.ItemObject
 {
-    public abstract class AbstractItem : IObject
+    public abstract class AbstractItem
     {
         protected ISprite sprite;
         protected Vector2 location;
-        public void ChangeSprite(ISprite sprite)
-        {
-            // Do Nothing
-        }
 
         public void Draw(SpriteBatch spriteBatch)
         {

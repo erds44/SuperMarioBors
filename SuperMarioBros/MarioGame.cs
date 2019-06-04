@@ -1,19 +1,12 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.Interfaces;
 using SuperMarioBros.Classes.Controller;
-using SuperMarioBros.Classes.Objects.GoombaObject;
-using SuperMarioBros.Classes.Objects.KoopaObject;
 using SuperMarioBros.Classes.Command;
-using SuperMarioBros.Classes.Objects.BlockObjects;
-using SuperMarioBros.Classes.Objects.MushroomObject;
-using SuperMarioBros.Classes.Objects.ItemObject;
 using System.Runtime.InteropServices;
 using SuperMarioBros.Interfaces.Object;
 using SuperMarioBros.Classes.Object.MarioObject;
-using System.Runtime.Serialization;
 using SuperMarioBros.Classes.Object;
 
 namespace SuperMarioBros
@@ -23,7 +16,6 @@ namespace SuperMarioBros
     {
         private KeyboardController controller;
         private SpriteBatch spriteBatch;
-        private int delay;
         private IMario mario;
         private ObjectsManager objectsManager;
         //private List<IObject> objects;
@@ -40,7 +32,6 @@ namespace SuperMarioBros
                 spriteBatch = new SpriteBatch((o as GraphicsDeviceManager).GraphicsDevice);
             };
             Content.RootDirectory = "Content";
-            delay = 0;
         }
         protected override void Initialize()
         {
@@ -52,16 +43,11 @@ namespace SuperMarioBros
         protected override void Update(GameTime gameTime)
         {
             //controllers.ForEach(element => element.Update());
-            delay++;
-            if (delay % 5 == 0)
-            {
                 controller.Update();
                 objectsManager.Update();
                 //mario.Update();
                 //objects.ForEach(element => element.Update());
                 base.Update(gameTime);
-                delay = 0;
-            }
 
         }
 

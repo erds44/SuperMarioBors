@@ -6,11 +6,8 @@ using System;
 
 namespace SuperMarioBros.Classes.Objects.MarioObjects.MarioMovementState
 {
-    public class RightMovingMarioState : IMarioMovementState
+    public class RightMovingMarioState : AbstractMovementState, IMarioMovementState
     {
-        private readonly IMario mario;
-        private string type;
-        private readonly Physics marioPhysics;
         public RightMovingMarioState(IMario mario, string type, Physics marioPhysics)
         {
             this.mario = mario;

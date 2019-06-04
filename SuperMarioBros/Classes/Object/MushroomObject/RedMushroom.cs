@@ -2,37 +2,25 @@
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Interfaces;
 using SuperMarioBros.Interfaces.Object;
-using SuperMarioBros.Interfaces.Objects;
-using System;
 
 namespace SuperMarioBros.Classes.Objects.MushroomObject
 {
-    public class Mushroom : IMushroom
+    public class RedMushroom : IItem
     {
         
         private Vector2 location;
-        private ISprite sprite;
+        private readonly ISprite sprite;
         private int velocity;
-        private string type;
         private readonly int leftEdge;
         private readonly int rightEdge;
-        public Mushroom(Vector2 location, int leftEdge, int rightEdge, string type)
+        public RedMushroom(Vector2 location, int leftEdge, int rightEdge)
         {
             
             this.location = location;
             this.leftEdge = leftEdge;
             this.rightEdge = rightEdge;
-            this.type = type;
-            if (type == "Green")
-            {
-                velocity = 10;
-                sprite = SpriteFactory.CreateSprite("GreenMushroom");
-            }
-            else
-            {
-                velocity = 5;
-                sprite = SpriteFactory.CreateSprite("RedMushroom");
-            }
+            velocity = 1;
+            sprite = SpriteFactory.CreateSprite("RedMushroom");        
         }
 
         public void Draw(SpriteBatch SpriteBatch)
@@ -46,14 +34,10 @@ namespace SuperMarioBros.Classes.Objects.MushroomObject
             sprite.Update();
         }
 
-        public void UpdateSprite(ISprite Sprite)
-        {
-            this.sprite = Sprite;
-        }
         public void Move()
         {
-            //this.location.X += this.velocity;
-            //this.CheckEdge();
+            this.location.X += this.velocity;
+            this.CheckEdge();
         }
 
         private void CheckEdge()
@@ -70,15 +54,6 @@ namespace SuperMarioBros.Classes.Objects.MushroomObject
             }
         }
 
-        public void BeKicked()
-        {
-            // Do Nothing
-        }
-
-        public void ChangeSprite(ISprite Sprite)
-        {
-            // Do Nothing
-        }
 
         public Rectangle HitBox()
         {
@@ -86,10 +61,7 @@ namespace SuperMarioBros.Classes.Objects.MushroomObject
         }
         public void Collide(IMario mario)
         {
-            if(type == "Red")
-            {
-                mario.RedMushroom();
-            }
+            mario.RedMushroom();
         }
 
     }

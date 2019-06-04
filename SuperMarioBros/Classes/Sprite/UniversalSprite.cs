@@ -11,6 +11,7 @@ namespace SuperMarioBros.Classes.Sprite
         private readonly int width;
         private readonly int height;
         private readonly int totalFrame;
+        private int delay;
         public UniversalSprite(Texture2D texture, int frame)
         {
             this.texture = texture;
@@ -18,13 +19,19 @@ namespace SuperMarioBros.Classes.Sprite
             width = texture.Width / totalFrame;
             height = texture.Height;
             currentFrame = 0;
+            delay = 0;
         }
         public void Update()
         {
-            currentFrame++;
-            if (currentFrame == totalFrame)
+            delay++;
+            if (delay % 5 == 0)
             {
-               currentFrame = 0;
+                currentFrame++;
+                if (currentFrame == totalFrame)
+                {
+                    currentFrame = 0;
+                }
+                delay = 0;
             }
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)

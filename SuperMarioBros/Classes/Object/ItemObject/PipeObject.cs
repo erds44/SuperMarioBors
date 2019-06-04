@@ -1,16 +1,20 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Classes.Object.ItemObject;
-using SuperMarioBros.Interfaces;
+using SuperMarioBros.Interfaces.Object;
 
 namespace SuperMarioBros.Classes.Objects.ItemObject
 {
-    public class PipeObject : AbstractItem, IObject
+    public class PipeObject : AbstractItem, IItem
     {
         public PipeObject(Vector2 location)
         {
             this.location = location;
             sprite = SpriteFactory.CreateSprite("Pipe");
+        }
+
+        public void Collide(IMario mario)
+        {
+            mario.Obstacle();
         }
     }
 }
