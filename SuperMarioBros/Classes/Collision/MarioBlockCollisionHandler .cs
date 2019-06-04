@@ -3,10 +3,10 @@ using SuperMarioBros.Interfaces.Object;
 
 namespace SuperMarioBros.Classes.Collision
 {
-    public static class MarioEnermyCollisionHandler
+    public static class MarioBlockCollisionHandler
     {
         /*
-        public static void HandleCollision()
+        public static bool HandleCollision()
         {
           // TODO
         }

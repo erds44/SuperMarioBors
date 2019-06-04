@@ -192,6 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Collision\CollisionDetection.cs" />
+    <Compile Include="Classes\Collision\MarioBlockCollisionHandler .cs" />
     <Compile Include="Classes\Collision\MarioEnermyCollisionHandler.cs" />
     <Compile Include="Classes\Collision\MarioStarCollisionHandler.cs" />
     <Compile Include="Classes\Collision\MarioItemCollisionHandler.cs" />

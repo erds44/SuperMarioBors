@@ -17,7 +17,7 @@ namespace SuperMarioBros.Classes.Object.MarioObject
         {
             this.mario = mario;
             sprite = SpriteFactory.CreateSprite("Star");
-            timer = 60;
+            timer = 300;
             this.objectsManager = objectsManager;
             // Change Sprite
         }
