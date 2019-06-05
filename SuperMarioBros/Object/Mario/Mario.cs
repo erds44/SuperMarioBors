@@ -117,5 +117,10 @@ namespace SuperMarioBros.Marios
         {
             movementState.Obstacle();
         }
+
+        public void Coin()
+        {
+            //Do Nothing
+        }
     }
 }

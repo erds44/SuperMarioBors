@@ -16,5 +16,6 @@ namespace SuperMarioBros.Marios
         void Right();
         void Idle();
         void Obstacle();
+        void Coin();
     }
 }

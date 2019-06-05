@@ -1,37 +1,39 @@
-﻿using SuperMarioBros.Commands;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Commands;
 using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace SuperMarioBros.Collisions
 {
     public static class MarioItemCollisionHandler
     {
-        //private static Dictionary<Type, ICommand> collisionDictionary;
+        private static Dictionary<Type, Type> collisionDictionary = new Dictionary<Type, Type>
+        {
+            { typeof(RedMushroom), typeof(RedMushroomCommand) },
+            { typeof(GreenMushroom), typeof(GreenMushroomCommand) },
+            { typeof(Pipe), typeof(ObstacleCommand) },
+            { typeof(Coin), typeof(CoinCommand) },
+            { typeof(Flower), typeof(FlowerCommand) }
+        };
         public static bool HandleCollision(IMario mario, IItem item, Direction direction)
         {
             if (direction != Direction.none)
             {
-                item.Collide(mario);
-                if(item is Pipe)
+                if (collisionDictionary.TryGetValue(item.GetType(), out Type type))
                 {
-                    return false;
-                }
-                else
-                {
+                    ((ICommand)Activator.CreateInstance(type, mario)).Execute();
+                    if(item is Pipe)
+                    {
+                        return false;
+                    }
                     return true;
                 }
             }
-            else
-            {
-                return false;
-            }
+       
+            return false;
         }
-        //private static void Initialize()
-        //{
-        //    collisionDictionary = new Dictionary<Type, ICommand>();
-            
-        //}
     }
 }

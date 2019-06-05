@@ -130,5 +130,9 @@ namespace SuperMarioBros.Marios
             mario.Obstacle();
         }
 
+        public void Coin()
+        {
+            // Do Nothing
+        }
     }
 }

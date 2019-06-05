@@ -11,10 +11,15 @@ using SuperMarioBros.Marios;
 namespace SuperMarioBros
 {
     /* Fix Sprint 2 Prob2 : Naming of NameSpace */
+    /* To be fixed:
+     * Abusing string, i.e. SpriteFacotry
+     * Generate a Widht, Height staitc class served for hitbox
+     * 
+     */
     [ComVisible(false)]
     public class MarioGame : Game
     {
-        private KeyboardController controller;
+        private IController controller;
         private SpriteBatch spriteBatch;
         private IMario mario;
         private ObjectsManager objectsManager;

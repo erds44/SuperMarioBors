@@ -7,9 +7,9 @@ namespace SuperMarioBros.Collisions
 {
     public class CollisionManager 
     {
-        private IMario mario;
-        private List<IObject> objects;
-        private ObjectsManager objectsManager;
+        private readonly IMario mario;
+        private readonly List<IObject> objects;
+        private readonly ObjectsManager objectsManager;
         public CollisionManager(ObjectsManager objectsManager, IMario mario, List<IObject> objects)
         {
             this.mario = mario;

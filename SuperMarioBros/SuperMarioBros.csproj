@@ -198,6 +198,8 @@
     <Compile Include="Collision\MarioItemCollisionHandler.cs" />
     <Compile Include="Collision\MarioStarCollisionHandler.cs" />
     <Compile Include="Command\BlockCommand\BlockDisappearCommand.cs" />
+    <Compile Include="Command\MarioCommand\CoinCommand.cs" />
+    <Compile Include="Command\MarioCommand\FlowerCommand.cs" />
     <Compile Include="Command\MarioCommand\DownCommand.cs" />
     <Compile Include="Command\BlockCommand\BlockUsedCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
