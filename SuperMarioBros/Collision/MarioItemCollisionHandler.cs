@@ -10,32 +10,33 @@ namespace SuperMarioBros.Collisions
 {
     public static class MarioItemCollisionHandler
     {
-        private static readonly Dictionary<Type, Type> collisionDictionary = new Dictionary<Type, Type>
+        private static readonly Dictionary<Type, (Type, Type)> collisionDictionary = new Dictionary<Type, (Type,Type)>
         {
-            { typeof(RedMushroom), typeof(RedMushroomCommand) },
-            { typeof(GreenMushroom), typeof(GreenMushroomCommand) },
-            { typeof(Pipe), typeof(ObstacleCommand) },
-            { typeof(Coin), typeof(CoinCommand) },
-            { typeof(Flower), typeof(FlowerCommand) },
-            { typeof(Star), typeof(StarMarioCommand) }
+            { typeof(RedMushroom), (typeof(RedMushroomCommand), typeof(DisappearCommand)) },
+            { typeof(GreenMushroom), (typeof(GreenMushroomCommand) ,  typeof(DisappearCommand))},
+            { typeof(Pipe), (typeof(ObstacleCommand) , typeof(Nullable))},
+            { typeof(Coin), (typeof(CoinCommand), typeof(DisappearCommand)) },
+            { typeof(Flower), (typeof(FlowerCommand) , typeof(DisappearCommand))},
+            { typeof(Star), (typeof(StarMarioCommand) , typeof(DisappearCommand))}
         };
-        public static bool HandleCollision(IMario mario, IItem item, Direction direction)
+        public static void HandleCollision(IMario mario, IItem item, Direction direction, int index)
         {
             if (direction != Direction.none)
             {
-                if (collisionDictionary.TryGetValue(item.GetType(), out Type type))
+                if (collisionDictionary.TryGetValue(item.GetType(), out var tuple))
                 {
-                    Console.WriteLine(direction);
-                    ((ICommand)Activator.CreateInstance(type, mario)).Execute();
-                    if(item is Pipe)
+                    Type typ1 = tuple.Item1;
+                    Type typ2 = tuple.Item2;
+                    if (typ1 != typeof(Nullable))
                     {
-                        return false;
+                        ((ICommand)Activator.CreateInstance(typ1, mario)).Execute();
                     }
-                    return true;
+                    if(typ2 != typeof(Nullable))
+                    {
+                        ((ICommand)Activator.CreateInstance(typ2, item, index)).Execute();
+                    }
                 }
             }
-       
-            return false;
         }
     }
 }

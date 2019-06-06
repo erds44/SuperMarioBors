@@ -1,9 +1,11 @@
 ﻿using SuperMarioBros.Objects;
+using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Object.Enemy
 {
-    public interface IEnemy : IObject, IEnemyState
+    public interface IEnemy : IObject, IEnemyMovementState
     {
-        // More to add
+        void ChangeState(IEnemyMovementState enemyMovementState);
+        void ChangeSprite(ISprite sprite);
     }
 }

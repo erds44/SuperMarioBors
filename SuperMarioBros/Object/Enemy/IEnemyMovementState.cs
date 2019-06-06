@@ -1,9 +1,7 @@
 ﻿namespace SuperMarioBros.Object.Enemy
 {
-    public interface IEnemyState 
+    public interface IEnemyMovementState 
     {
         void ChangeDirection();
-        void BeStomped();
-        void BeFlipped();
     }
 }

@@ -15,7 +15,7 @@ namespace SuperMarioBros.Objects
         private List<IObject> objects;
         private IMario mario;
         private CollisionManager collisionManager;
-        private static ObjectsManager instance = new ObjectsManager();
+        private readonly static ObjectsManager instance = new ObjectsManager();
         public static ObjectsManager Instance { get { return instance; } }
         private ObjectsManager() { }
 
@@ -49,6 +49,17 @@ namespace SuperMarioBros.Objects
         public void DecorateMario(IMario mario)
         {
             this.mario = mario;
+        }
+        public void Remove(IObject gameObject, int index)
+        {
+            if(gameObject != null)
+            {
+                objects.RemoveAt(index);
+            }
+        }
+        public void DecorateObject( IObject obj1, int index)
+        {
+            objects[index] = obj1;
         }
 
     }

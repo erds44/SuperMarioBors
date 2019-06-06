@@ -22,24 +22,16 @@ namespace SuperMarioBros.Collisions
             for (int i = 0; i < objects.Count; i++)
             {
                 Direction direction = CollisionDetection.Detect(mario, objects[i]);
-                bool delete = false;
                 if (objects[i] is IItem)
                 {
-                    delete = MarioItemCollisionHandler.HandleCollision(mario, (IItem)objects[i], direction);
+                    MarioItemCollisionHandler.HandleCollision(mario, (IItem)objects[i], direction, i);
                 }else if(objects[i] is IEnemy)
                 {
-                    delete = MarioEnemyCollisionHandler.HandleCollision(mario, (IEnemy)objects[i], direction);
-                } //else if(objects[i] is IEnemy)
-                //{
-                //    // Eenemy
-                //}
-                //else
-                //{
-                //    // Block 
-                //}
-                if (delete)
+                   MarioEnemyCollisionHandler.HandleCollision(mario,  (IEnemy)objects[i], direction, i);
+                } 
+                else
                 {
-                    objects.RemoveAt(i);
+                    // Block 
                 }
             }
         }

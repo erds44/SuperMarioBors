@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using SuperMarioBros.Sprites;
+using System;
 
 namespace SuperMarioBros.SpriteFactories
 {
@@ -37,13 +38,14 @@ namespace SuperMarioBros.SpriteFactories
                 { "FireMarioRightJumping", new UniversalSprite(content.Load<Texture2D>("FireMarioRightJumping"), 1) },
                 { "FireMarioRightMoving", new UniversalSprite(content.Load<Texture2D>("FireMarioRightMoving"), 6) },
                 { "Flower", new UniversalSprite(content.Load<Texture2D>("Flower"), 5) },
-                { "Goomba", new UniversalSprite(content.Load<Texture2D>("Goomba"), 5) },
-                { "GoombaStomped", new UniversalSprite(content.Load<Texture2D>("GoombaStomped"), 1) },
+                { "GoombaLeftMoving", new UniversalSprite(content.Load<Texture2D>("Goomba"), 5) },
+                { "GoombaRightMoving", new UniversalSprite(content.Load<Texture2D>("Goomba"), 5) },
+                { "StompedGoomba", new UniversalSprite(content.Load<Texture2D>("GoombaStomped"), 1) },
                 { "GreenMushroom", new UniversalSprite(content.Load<Texture2D>("GreenMushroom"), 1) },
                 { "HiddenBlock", new UniversalSprite(content.Load<Texture2D>("HiddenBlock"), 1) },
-                { "KoopaMovingLeft", new UniversalSprite(content.Load<Texture2D>("KoopaMovingLeft"), 5) },
-                { "KoopaMovingRight", new UniversalSprite(content.Load<Texture2D>("KoopaMovingRight"), 5) },
-                { "KoopaStomped", new UniversalSprite(content.Load<Texture2D>("KoopaStomped"), 1) },
+                { "KoopaLeftMoving", new UniversalSprite(content.Load<Texture2D>("KoopaMovingLeft"), 5) },
+                { "KoopaRightMoving", new UniversalSprite(content.Load<Texture2D>("KoopaMovingRight"), 5) },
+                { "StompedKoopa", new UniversalSprite(content.Load<Texture2D>("KoopaStomped"), 1) },
                 { "Pipe", new UniversalSprite(content.Load<Texture2D>("Pipe"), 1) },
                 { "QuestionBlock", new UniversalSprite(content.Load<Texture2D>("QuestionBlock"), 5) },
                 { "RedMushroom", new UniversalSprite(content.Load<Texture2D>("RedMushroom"), 1) },
@@ -62,6 +64,7 @@ namespace SuperMarioBros.SpriteFactories
 
         public static ISprite CreateSprite(string type)
         {
+            Console.WriteLine(type);
             spriteInfo.TryGetValue(type, out sprite);
             return sprite;
         }
