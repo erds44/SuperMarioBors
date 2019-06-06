@@ -22,7 +22,6 @@ namespace SuperMarioBros
         private IController controller;
         private SpriteBatch spriteBatch;
         private IMario mario;
-        private ObjectsManager objectsManager;
         public MarioGame()
         {
             var graphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -35,14 +34,14 @@ namespace SuperMarioBros
         protected override void Initialize()
         {
             SpriteFactory.Initialize(Content);
-            InitializeObjectsAndKeys();
+            InitializeObjects();
             KeyBinding();
             base.Initialize();
         }
         protected override void Update(GameTime gameTime)
         {
             controller.Update();
-            objectsManager.Update();
+            ObjectsManager.Instance.Update();
             base.Update(gameTime);
 
         }
@@ -52,7 +51,7 @@ namespace SuperMarioBros
             /* Fix: Sprint 2 Prob6 Usage of spriteBatch */
             spriteBatch.Begin();
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            objectsManager.Draw(spriteBatch);
+            ObjectsManager.Instance.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
@@ -69,10 +68,10 @@ namespace SuperMarioBros
                 );
             controller.Add(new IdleCommand(mario));
         }
-        public void InitializeObjectsAndKeys()
+        public void InitializeObjects()
         {
             mario = new Mario(new Vector2(400, 300));
-            objectsManager = new ObjectsManager(mario);
+            ObjectsManager.Instance.Initialize(mario);
         }
 
     }

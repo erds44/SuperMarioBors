@@ -11,10 +11,5 @@ namespace SuperMarioBros.Items
             this.location = location;
             sprite = SpriteFactory.CreateSprite("Flower");
         }
-
-        public void Collide(IMario mario)
-        {
-            mario.FireFlower();
-        }
     }
 }

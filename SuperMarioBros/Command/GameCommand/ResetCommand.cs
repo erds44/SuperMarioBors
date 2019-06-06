@@ -9,7 +9,7 @@
         }
         public void Execute()
         {
-            game.InitializeObjectsAndKeys();
+            game.InitializeObjects();
             game.KeyBinding();
         }
     }

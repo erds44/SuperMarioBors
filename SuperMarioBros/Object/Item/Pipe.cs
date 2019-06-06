@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Marios;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Items
@@ -12,9 +11,5 @@ namespace SuperMarioBros.Items
             sprite = SpriteFactory.CreateSprite("Pipe");
         }
 
-        public void Collide(IMario mario)
-        {
-            mario.Obstacle();
-        }
     }
 }

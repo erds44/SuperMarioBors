@@ -37,7 +37,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Right()
         {
-           // Do Nothing
+            marioPhysics.Right();
         }
 
         public void Up()

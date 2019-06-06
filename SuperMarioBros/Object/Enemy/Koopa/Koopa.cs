@@ -1,15 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.GoombaStates;
 using SuperMarioBros.Koopas.KoopaStates;
+using SuperMarioBros.Object.Enemy;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Koopas
 {
-    public class Koopa : IObject
+    public class Koopa : IEnemy
     {
-        private IGoombaState state;
+        private IEnemyState state;
         private Vector2 location;
         private ISprite sprite; 
         public Koopa(Vector2 location)
@@ -46,7 +46,7 @@ namespace SuperMarioBros.Koopas
             this.sprite = sprite;
         }
 
-        public void ChangeState(IGoombaState state)
+        public void ChangeState(IEnemyState state)
         {
             this.state = state;
         }

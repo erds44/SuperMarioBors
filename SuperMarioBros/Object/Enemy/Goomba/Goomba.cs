@@ -1,15 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Objects;
-using SuperMarioBros.GoombaStates;
 using SuperMarioBros.Sprites;
 using SuperMarioBros.Goombas.GoombaStates;
+using SuperMarioBros.Object.Enemy;
 
 namespace SuperMarioBros.Goombas
 {
-    public class Goomba : IObject
+    public class Goomba : IEnemy
     {
-        private IGoombaState state;
+        private IEnemyState state;
         private Vector2 location;
         private ISprite sprite;
         public Goomba( Vector2 location)
@@ -47,7 +47,7 @@ namespace SuperMarioBros.Goombas
             this.sprite = sprite;
         }
 
-        public void ChangeState(IGoombaState state)
+        public void ChangeState(IEnemyState state)
         {
             this.state = state;
         }

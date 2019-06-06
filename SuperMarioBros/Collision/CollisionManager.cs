@@ -1,6 +1,8 @@
 ﻿using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
+using SuperMarioBros.Object.Enemy;
 using SuperMarioBros.Objects;
+using System;
 using System.Collections.Generic;
 
 namespace SuperMarioBros.Collisions
@@ -9,12 +11,10 @@ namespace SuperMarioBros.Collisions
     {
         private readonly IMario mario;
         private readonly List<IObject> objects;
-        private readonly ObjectsManager objectsManager;
-        public CollisionManager(ObjectsManager objectsManager, IMario mario, List<IObject> objects)
+        public CollisionManager( IMario mario, List<IObject> objects)
         {
             this.mario = mario;
             this.objects = objects;
-            this.objectsManager = objectsManager;
         }
 
         public void HandleCollision()
@@ -26,9 +26,9 @@ namespace SuperMarioBros.Collisions
                 if (objects[i] is IItem)
                 {
                     delete = MarioItemCollisionHandler.HandleCollision(mario, (IItem)objects[i], direction);
-                }else if(objects[i] is IStar)
+                }else if(objects[i] is IEnemy)
                 {
-                    delete = MarioStarCollisionHandler.HandleCollision(objectsManager, mario, (IStar)objects[i], direction);
+                    delete = MarioEnemyCollisionHandler.HandleCollision(mario, (IEnemy)objects[i], direction);
                 } //else if(objects[i] is IEnemy)
                 //{
                 //    // Eenemy

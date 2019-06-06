@@ -4,13 +4,13 @@ using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Koopas.KoopaStates
 {
-    public class RightMovingGoombaState : IEnemyState
+    public class KoopaStompedState : IEnemyState
     {
         private readonly Koopa koopa;
-        public RightMovingGoombaState(Koopa koopa)
+        public KoopaStompedState (Koopa koopa)
         {
             this.koopa = koopa;
-            koopa.ChangeSprite(SpriteFactory.CreateSprite("KoopaMovingRight"));
+            koopa.ChangeSprite(SpriteFactory.CreateSprite("KoopaStomped"));
         }
         public void BeFlipped()
         {
@@ -19,7 +19,7 @@ namespace SuperMarioBros.Koopas.KoopaStates
 
         public void BeStomped()
         {
-            koopa.ChangeState(new KoopaStompedState(koopa));
+            // Do Nothing
         }
 
         public void ChangeDirection()

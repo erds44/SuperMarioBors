@@ -14,34 +14,20 @@ namespace SuperMarioBros.Marios
         private readonly ISprite sprite;
         private Vector2 location;
         private int timer;
-        private readonly ObjectsManager objectsManager;
-        public StarMario(IMario mario, ObjectsManager objectsManager)
+        public StarMario(IMario mario)
         {
             this.mario = mario;
             sprite = SpriteFactory.CreateSprite("Star");
             timer = 300;
-            this.objectsManager = objectsManager;
             // Change Sprite
         }
         public void ChangeMarioState(IMarioState marioState) // Help method for marioState
         {
-            /*
-            string type = marioState.GetType().ToString().Substring(42);
-            this.marioState = marioState;
-            movementState.ChangeSprite(type);
-            if (type.Equals("DeadMario"))
-            {
-                movementState = new TerminateMovementState();
-            }
-            */
             mario.ChangeMarioState(marioState);
         }
         
         public void ChangeSprite(ISprite sprite) // Help method for movementState
         {
-            /*
-            this.sprite = sprite;
-            */
             mario.ChangeSprite(sprite);
         }
         public void ChangeMovementState(IMarioMovementState movementState) // Help method for movementState
@@ -61,9 +47,6 @@ namespace SuperMarioBros.Marios
 
         public void FireFlower()
         {
-            /*
-            marioState.FireFlower();
-            */
             mario.FireFlower();
         }
 
@@ -74,8 +57,6 @@ namespace SuperMarioBros.Marios
 
         public void RedMushroom()
         {
-            /*marioState.RedMushroom();
-             */
             mario.RedMushroom();
         }
 
@@ -100,7 +81,7 @@ namespace SuperMarioBros.Marios
             timer--;
             if(timer == 0)
             {
-                objectsManager.DecorateMario(mario);
+                ObjectsManager.Instance.DecorateMario(mario);
             }
             else
             {
@@ -132,7 +113,7 @@ namespace SuperMarioBros.Marios
 
         public void Coin()
         {
-            // Do Nothing
+            mario.Coin();
         }
     }
 }

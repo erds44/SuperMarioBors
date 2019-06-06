@@ -1,10 +1,10 @@
 ﻿using System;
-using SuperMarioBros.GoombaStates;
+using SuperMarioBros.Object.Enemy;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Koopas.KoopaStates
 {
-    public class LeftMovingKoopaState : IGoombaState
+    public class LeftMovingKoopaState : IEnemyState
     {
         private readonly Koopa koopa;
         public LeftMovingKoopaState(Koopa koopa)
@@ -19,7 +19,7 @@ namespace SuperMarioBros.Koopas.KoopaStates
 
         public void BeStomped()
         {
-            throw new NotImplementedException();
+            koopa.ChangeState(new KoopaStompedState(koopa));
         }
 
         public void ChangeDirection()

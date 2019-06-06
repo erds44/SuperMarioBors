@@ -2,16 +2,16 @@
 
 namespace SuperMarioBros.Commands
 {
-    class UpCommand : ICommand
+    class TakeDamageCommand : ICommand
     {
         private readonly IMario mario;
-        public UpCommand(IMario mario)
+        public TakeDamageCommand(IMario mario)
         {
             this.mario = mario;
         }
         public void Execute()
         {
-            mario.Up();
+            mario.TakeDamage();
         }
     }
 }

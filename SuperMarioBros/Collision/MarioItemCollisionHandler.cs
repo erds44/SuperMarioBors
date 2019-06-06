@@ -10,13 +10,14 @@ namespace SuperMarioBros.Collisions
 {
     public static class MarioItemCollisionHandler
     {
-        private static Dictionary<Type, Type> collisionDictionary = new Dictionary<Type, Type>
+        private static readonly Dictionary<Type, Type> collisionDictionary = new Dictionary<Type, Type>
         {
             { typeof(RedMushroom), typeof(RedMushroomCommand) },
             { typeof(GreenMushroom), typeof(GreenMushroomCommand) },
             { typeof(Pipe), typeof(ObstacleCommand) },
             { typeof(Coin), typeof(CoinCommand) },
-            { typeof(Flower), typeof(FlowerCommand) }
+            { typeof(Flower), typeof(FlowerCommand) },
+            { typeof(Star), typeof(StarMarioCommand) }
         };
         public static bool HandleCollision(IMario mario, IItem item, Direction direction)
         {

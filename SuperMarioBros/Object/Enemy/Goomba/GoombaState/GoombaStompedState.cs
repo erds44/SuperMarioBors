@@ -1,15 +1,16 @@
 ﻿using System;
 using SuperMarioBros.Object.Enemy;
+using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Goombas.GoombaStates
 {
-    public class RightMovingGoombaState : IEnemyState
+    public class GoombaStompedState : IEnemyState
     {
         private readonly Goomba goomba;
-        public RightMovingGoombaState(Goomba goomba)
+        public GoombaStompedState(Goomba goomba)
         {
             this.goomba = goomba;
-            //Goomba moves left and right using the same sprite
+            goomba.ChangeSprite(SpriteFactory.CreateSprite("GoombaStomped"));
         }
         public void BeFlipped()
         {
@@ -18,13 +19,12 @@ namespace SuperMarioBros.Goombas.GoombaStates
 
         public void BeStomped()
         {
-            goomba.ChangeState(new GoombaStompedState(goomba));
+            // Do Nothing
         }
 
         public void ChangeDirection()
         {
-            goomba.ChangeState(new LeftMovingGoombaState(goomba));
-            // More to do
+            // Do Nothing
         }
     }
 }

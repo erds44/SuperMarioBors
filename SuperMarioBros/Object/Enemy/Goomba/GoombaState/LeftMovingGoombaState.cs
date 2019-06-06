@@ -1,10 +1,10 @@
 ﻿using System;
-using SuperMarioBros.GoombaStates;
+using SuperMarioBros.Object.Enemy;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Goombas.GoombaStates
 {
-    public class LeftMovingGoombaState : IGoombaState
+    public class LeftMovingGoombaState : IEnemyState
     {
         private readonly Goomba goomba;
         public LeftMovingGoombaState(Goomba goomba)

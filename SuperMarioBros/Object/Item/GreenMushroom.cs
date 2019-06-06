@@ -14,8 +14,7 @@ namespace SuperMarioBros.Items
         private Vector2 location;
         private readonly ISprite sprite;
         public GreenMushroom(Vector2 location)
-        {
-            
+        {           
             this.location = location;
             sprite = SpriteFactory.CreateSprite("GreenMushroom");
         }
@@ -35,9 +34,5 @@ namespace SuperMarioBros.Items
             return new Rectangle((int)location.X, (int)(location.Y - sprite.Height()), sprite.Width(), sprite.Height());
         }
 
-        public void Collide(IMario mario)
-        {
-            mario.GreenMushroom();
-        }
     }
 }

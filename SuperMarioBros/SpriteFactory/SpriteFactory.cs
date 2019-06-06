@@ -48,7 +48,7 @@ namespace SuperMarioBros.SpriteFactories
                 { "QuestionBlock", new UniversalSprite(content.Load<Texture2D>("QuestionBlock"), 5) },
                 { "RedMushroom", new UniversalSprite(content.Load<Texture2D>("RedMushroom"), 1) },
                 { "RockBlock", new UniversalSprite(content.Load<Texture2D>("RockBlock"), 1) },
-                { "SmallMarioDead", new UniversalSprite(content.Load<Texture2D>("SmallMarioDead"), 1) },
+                { "DeadMario", new UniversalSprite(content.Load<Texture2D>("DeadMario"), 1) },
                 { "SmallMarioLeftIdle", new UniversalSprite(content.Load<Texture2D>("SmallMarioLeftIdle"), 1) },
                 { "SmallMarioLeftJumping", new UniversalSprite(content.Load<Texture2D>("SmallMarioLeftJumping"), 1) },
                 { "SmallMarioLeftMoving", new UniversalSprite(content.Load<Texture2D>("SmallMarioLeftMoving"), 5) },

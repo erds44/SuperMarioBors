@@ -1,6 +1,4 @@
 ﻿using SuperMarioBros.Blocks.BlockStates;
-using SuperMarioBros.Interfaces;
-using SuperMarioBros.Interfaces.States;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Sprites;
 

@@ -25,7 +25,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Left()
         {
-           // TO DO
+            marioPhysics.Left();
         }
 
         public void Up()

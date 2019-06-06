@@ -35,9 +35,9 @@ namespace SuperMarioBros.Marios
         public void ChangeMarioState(IMarioState marioState) // Help method for marioState
         {
             string type = marioState.GetType().ToString().Substring(38);
-            this.marioState = marioState;
             movementState.ChangeSprite(type);
-            if (type.Equals("DeadMario"))
+            this.marioState = marioState;
+            if (marioState is DeadMario)
             {
                 movementState = new TerminateMovementState();
             }
