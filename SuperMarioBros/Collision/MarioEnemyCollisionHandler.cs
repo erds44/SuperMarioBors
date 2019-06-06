@@ -16,7 +16,7 @@ namespace SuperMarioBros.Collisions
             { (typeof(Goomba), Direction.right), (typeof(TakeDamageCommand),typeof(Nullable)) },
             { (typeof(Goomba), Direction.bottom),(typeof(TakeDamageCommand),typeof(Nullable)) },
             { (typeof(Goomba), Direction.top),   (typeof(Nullable),typeof(GoombaStompedCommand)) },
-            { (typeof(StompedGoomba), Direction.none),  (typeof(Nullable),typeof(EnemyDisappearCommand)) },
+            { (typeof(StompedGoomba), Direction.none),  (typeof(Nullable),typeof(DisappearCommand)) },
             { (typeof(Koopa), Direction.left),   (typeof(TakeDamageCommand),typeof(Nullable)) },
             { (typeof(Koopa), Direction.right),  (typeof(TakeDamageCommand),typeof(Nullable)) },
             { (typeof(Koopa), Direction.bottom), (typeof(TakeDamageCommand),typeof(Nullable)) },

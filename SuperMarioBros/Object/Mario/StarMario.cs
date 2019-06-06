@@ -19,7 +19,7 @@ namespace SuperMarioBros.Marios
         {
             this.mario = mario;
             sprite = SpriteFactory.CreateSprite("Star");
-            timer = 3000;
+            timer = 300;
             // Change Sprite
         }
         public void ChangeMarioState(IMarioState marioState) // Help method for marioState
@@ -69,7 +69,6 @@ namespace SuperMarioBros.Marios
         public void TakeDamage()
         {
             // Do Nothing
-            Console.WriteLine("123");
         }
 
         public void Up()

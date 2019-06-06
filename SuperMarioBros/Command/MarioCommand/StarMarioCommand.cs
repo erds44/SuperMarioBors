@@ -5,16 +5,14 @@ namespace SuperMarioBros.Commands
 {
     class StarMarioCommand : ICommand
     {
-        private  IMario mario;
+        private  readonly IMario mario;
         public StarMarioCommand( IMario mario)
         {
             this.mario = mario;
         }
         public void Execute()
         {
-            mario = new StarMario(mario);
-            mario.TakeDamage();
-            ObjectsManager.Instance.DecorateMario(mario);
+            ObjectsManager.Instance.DecorateMario(new StarMario(mario));
         }
     }
 }

@@ -70,7 +70,7 @@ namespace SuperMarioBros
         }
         public void InitializeObjects()
         {
-            mario = new Mario(new Vector2(400, 300));
+            mario = new Mario(new Vector2(400, 400));
             ObjectsManager.Instance.Initialize(mario);
         }
 

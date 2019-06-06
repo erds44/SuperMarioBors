@@ -64,7 +64,6 @@ namespace SuperMarioBros.SpriteFactories
 
         public static ISprite CreateSprite(string type)
         {
-            Console.WriteLine(type);
             spriteInfo.TryGetValue(type, out sprite);
             return sprite;
         }

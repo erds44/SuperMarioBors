@@ -196,8 +196,6 @@
     <Compile Include="Collision\MarioBlockCollisionHandler .cs" />
     <Compile Include="Collision\MarioEnemyCollisionHandler.cs" />
     <Compile Include="Collision\MarioItemCollisionHandler.cs" />
-    <Compile Include="Command\BlockCommand\BlockDisappearCommand.cs" />
-    <Compile Include="Command\EnemyCommand\EnemyDisappearCommand.cs" />
     <Compile Include="Command\EnemyCommand\KoopaStompedCommand.cs" />
     <Compile Include="Command\EnemyCommand\GoombaStompedCommand.cs" />
     <Compile Include="Command\DisappearCommand.cs" />
