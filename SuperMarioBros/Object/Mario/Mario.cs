@@ -4,6 +4,7 @@ using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Objects;
+using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
 using System;
 
@@ -35,12 +36,16 @@ namespace SuperMarioBros.Marios
         public void ChangeMarioState(IMarioState marioState) // Help method for marioState
         {
             string type = marioState.GetType().ToString().Substring(38);
-            movementState.ChangeSprite(type);
-            this.marioState = marioState;
-            if (marioState is DeadMario)
+            if (!type.Equals("DeadMario"))
             {
+                movementState.ChangeSprite(type);
+            }
+            else
+            {
+                sprite = SpriteFactory.CreateSprite("DeadMario");
                 movementState = new TerminateMovementState();
             }
+            this.marioState = marioState;
         }
         
         public void ChangeSprite(ISprite sprite) // Help method for movementState
@@ -105,7 +110,7 @@ namespace SuperMarioBros.Marios
         public Rectangle HitBox()
         {
             return new Rectangle(marioPhysics.XPosition(), marioPhysics.YPosition()- sprite.Height(), sprite.Width(), sprite.Height());
-            // return new Rectangle(marioPhysics.XPosition(), marioPhysics.YPosition() - 32, 32, 32);
+             //return new Rectangle(marioPhysics.XPosition(), marioPhysics.YPosition() - 32, 32, 32);
         }
 
         public void GreenMushroom()

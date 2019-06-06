@@ -27,22 +27,23 @@ namespace SuperMarioBros.Collisions
         {
             if (direction != Direction.none)
             {
+                Console.WriteLine(direction);
                 if ( collisionDictionary.TryGetValue((enemy.GetType(), direction),  out var type ))
                 {
                     Type tpy1 = type.Item1;
                     Type tpy2 = type.Item2;
-                    Console.WriteLine(tpy1);
-                    if(Nullable.GetUnderlyingType(tpy1) != null)
+                    if( tpy1 == typeof(TakeDamageCommand))
                     {
-                        Console.WriteLine(tpy1);
+                   
                         ((ICommand)Activator.CreateInstance(tpy1, mario)).Execute();
                     }
-                    if(Nullable.GetUnderlyingType(tpy2) != null)
+                    if(tpy2 == typeof(StompedCommand))
                     {
                         ((ICommand)Activator.CreateInstance(tpy2, enemy)).Execute();
                     }
 
                 }
+              
             }
 
             return false;

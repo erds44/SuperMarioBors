@@ -25,6 +25,7 @@ namespace SuperMarioBros.Collisions
             {
                 if (collisionDictionary.TryGetValue(item.GetType(), out Type type))
                 {
+                    Console.WriteLine(direction);
                     ((ICommand)Activator.CreateInstance(type, mario)).Execute();
                     if(item is Pipe)
                     {

@@ -9,6 +9,7 @@ namespace SuperMarioBros.Collisions
         private static int obj2x;
         private static int obj2y;
         private static int obj2Width;
+        private static int obj2Height;
 
         public static Direction Detect(IObject object1, IObject object2)
         {
@@ -18,14 +19,20 @@ namespace SuperMarioBros.Collisions
                 Rectangle overlap = Rectangle.Intersect(object1.HitBox(), object2.HitBox());
 
                 int overlapx = overlap.X;
+                int overlapy = overlap.Y;
                 int overlapWidth = overlap.Width;
                 int overlapHeight = overlap.Height;
 
                 obj2x = object2.HitBox().X;
                 obj2y = object2.HitBox().Y;
                 obj2Width = object2.HitBox().Width;
+                obj2Height = object2.HitBox().Height;
 
-                if (overlapx == obj2x)
+                if(overlapy == obj2y)
+                {
+                    return Direction.top;
+                }
+                else if (overlapx == obj2x)
                 {
                     return Direction.left;
                 }
@@ -33,13 +40,9 @@ namespace SuperMarioBros.Collisions
                 {
                     return Direction.right;
                 }
-                else if (obj2y - overlapHeight == obj2y)
-                {
-                    return Direction.bottom;
-                }
                 else
                 {
-                    return Direction.top;
+                    return Direction.bottom;
                 }
 
             }

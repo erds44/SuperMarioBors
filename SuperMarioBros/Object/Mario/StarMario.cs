@@ -5,6 +5,7 @@ using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Objects;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
+using System;
 
 namespace SuperMarioBros.Marios
 {
@@ -18,7 +19,7 @@ namespace SuperMarioBros.Marios
         {
             this.mario = mario;
             sprite = SpriteFactory.CreateSprite("Star");
-            timer = 300;
+            timer = 3000;
             // Change Sprite
         }
         public void ChangeMarioState(IMarioState marioState) // Help method for marioState
@@ -68,6 +69,7 @@ namespace SuperMarioBros.Marios
         public void TakeDamage()
         {
             // Do Nothing
+            Console.WriteLine("123");
         }
 
         public void Up()

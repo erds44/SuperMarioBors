@@ -41,7 +41,14 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         public void ChangeSprite(string type)
         {
             this.type = type;
-            this.mario.ChangeSprite(SpriteFactory.CreateSprite(type + "RightCrouching"));
+            if (!type.Equals("SmallMario"))
+            {
+                this.mario.ChangeSprite(SpriteFactory.CreateSprite(type + "RightCrouching"));
+            }
+            else
+            {
+                mario.ChangeSprite(SpriteFactory.CreateSprite(type + "RightIdle"));
+            }
         }
 
         public void Idle()

@@ -19,7 +19,7 @@ namespace SuperMarioBros.Goombas.GoombaStates
 
         public void BeStomped()
         {
-            throw new NotImplementedException();
+            goomba.ChangeState(new GoombaStompedState(goomba));
         }
 
         public void ChangeDirection()
