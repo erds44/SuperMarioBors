@@ -5,9 +5,9 @@ namespace SuperMarioBros.Blocks.BlockStates
     public class BrickBlockState : IBlockState
     {
         private readonly string type = "BrickBlock";
-        private readonly IBlock block;
+        private IBlock block;
 
-        public BrickBlockState(IBlock block)
+        public BrickBlockState(ref IBlock block)
         {
             this.block = block;
             block.ChangeSprite(SpriteFactory.CreateSprite(type));
@@ -15,7 +15,7 @@ namespace SuperMarioBros.Blocks.BlockStates
 
         public void ToUsed()
         {
-            block.ChangeState(new DisappearBlockState(block));
+            block = new DisappearBlock(location, ref block);
         }
     }
 }

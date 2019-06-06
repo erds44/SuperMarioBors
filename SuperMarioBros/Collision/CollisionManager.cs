@@ -32,7 +32,7 @@ namespace SuperMarioBros.Collisions
                 } 
                 else
                 {
-                    MarioBlockCollisionHandler.HandleCollision(Mario, (IBlock) objects[i], direction, i);
+                    MarioBlockCollisionHandler.HandleCollision(Mario, (IBlock)objects[i], direction, i);
                 }
             }
         }

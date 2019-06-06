@@ -32,10 +32,12 @@ namespace SuperMarioBros.Objects
                 new Coin(new Point(500,300)),
                 new Koopa(new Point(100,200)),
                 new Goomba(new Point(200,200)),
-                new BrickBlock(new Point(300,100)),
-                new HiddenBlock(new Point(350, 100)),
-                new RockBlock(new Point(400,100)),
-                new QuestionBlock(new Point(450,100))
+                new Block(new BrickBlock(new Point(200,100))),
+                new Block(new RockBlock(new Point(250,100))),
+                new Block(new QuestionBlock(new Point(300,100))),
+                new Block(new ConcreteBlock(new Point(350,100))),
+                new Block(new HiddenBlock(new Point(400,100)))
+
             };
             collisionManager = new CollisionManager(mario, objects);
         }

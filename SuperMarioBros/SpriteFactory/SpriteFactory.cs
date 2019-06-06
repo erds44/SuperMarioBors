@@ -28,7 +28,7 @@ namespace SuperMarioBros.SpriteFactories
                 { "BrickDebris", new UniversalSprite(content.Load<Texture2D>("BrickDebris"), 1) },
                 { "Coin", new UniversalSprite(content.Load<Texture2D>("Coin"), 5) },
                 { "ConcreteBlock", new UniversalSprite(content.Load<Texture2D>("ConcreteBlock"), 1) },
-                { "EmptyBlock", new UniversalSprite(content.Load<Texture2D>("EmptyBlock"), 1) },
+                { "UsedBlock", new UniversalSprite(content.Load<Texture2D>("UsedBlock"), 1) },
                 { "FireMarioLeftCrouching", new UniversalSprite(content.Load<Texture2D>("FireMarioLeftCrouching"), 1) },
                 { "FireMarioLeftIdle", new UniversalSprite(content.Load<Texture2D>("FireMarioLeftIdle"), 1) },
                 { "FireMarioLeftJumping", new UniversalSprite(content.Load<Texture2D>("FireMarioLeftJumping"), 1) },
@@ -63,7 +63,7 @@ namespace SuperMarioBros.SpriteFactories
         }
 
         public static ISprite CreateSprite(string type)
-        {
+        { 
             spriteInfo.TryGetValue(type, out sprite);
             return sprite;
         }

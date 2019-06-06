@@ -10,19 +10,23 @@ namespace SuperMarioBros.Collisions
     {
         private static readonly Dictionary<(Type, Direction), (Type, Type)> collisionDictionary = new Dictionary<(Type, Direction), (Type, Type)>
         {
+            {(typeof(UsedBlock), Direction.bottom), (typeof(ObstacleCommand), typeof(Nullable))},
             {(typeof(BrickBlock), Direction.bottom), (typeof(ObstacleCommand), typeof(BlockUsedCommand))},
             {(typeof(QuestionBlock), Direction.bottom), (typeof(ObstacleCommand), typeof(BlockUsedCommand))},
             {(typeof(HiddenBlock), Direction.bottom), (typeof(ObstacleCommand), typeof(BlockUsedCommand))},
             {(typeof(ConcreteBlock), Direction.bottom), (typeof(ObstacleCommand), typeof(Nullable))},
             {(typeof(RockBlock), Direction.bottom), (typeof(ObstacleCommand), typeof(Nullable))},
+            {(typeof(UsedBlock), Direction.top), (typeof(ObstacleCommand), typeof(Nullable))},
             {(typeof(ConcreteBlock), Direction.top), (typeof(ObstacleCommand), typeof(Nullable))},
             {(typeof(RockBlock), Direction.top), (typeof(ObstacleCommand), typeof(Nullable))},
             {(typeof(QuestionBlock), Direction.top), (typeof(ObstacleCommand), typeof(Nullable))},
             {(typeof(BrickBlock), Direction.top), (typeof(ObstacleCommand), typeof(Nullable))},
+            {(typeof(UsedBlock), Direction.left), (typeof(ObstacleCommand), typeof(Nullable))},
             {(typeof(ConcreteBlock), Direction.left), (typeof(ObstacleCommand), typeof(Nullable))},
             {(typeof(RockBlock), Direction.left), (typeof(ObstacleCommand), typeof(Nullable))},
             {(typeof(QuestionBlock), Direction.left), (typeof(ObstacleCommand), typeof(Nullable))},
             {(typeof(BrickBlock), Direction.left), (typeof(ObstacleCommand), typeof(Nullable))},
+            {(typeof(UsedBlock), Direction.right), (typeof(ObstacleCommand), typeof(Nullable))},
             {(typeof(ConcreteBlock), Direction.right), (typeof(ObstacleCommand), typeof(Nullable))},
             {(typeof(RockBlock), Direction.right), (typeof(ObstacleCommand), typeof(Nullable))},
             {(typeof(QuestionBlock), Direction.right), (typeof(ObstacleCommand), typeof(Nullable))},
@@ -31,9 +35,9 @@ namespace SuperMarioBros.Collisions
         
         public static void HandleCollision(IMario mario, IBlock block, Direction direction, int index)
         {
-            if (collisionDictionary.TryGetValue((block.GetType(), direction), out var type))
+            if (collisionDictionary.TryGetValue((block.GetRealType(), direction), out var type))
             {
-                Console.WriteLine(block);
+                Console.WriteLine(block.GetRealType());
                 Type typ1 = type.Item1;
                 Type typ2 = type.Item2;
                 if (typ1 != typeof(Nullable))

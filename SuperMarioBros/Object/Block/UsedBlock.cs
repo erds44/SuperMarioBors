@@ -1,11 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.SpriteFactories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SuperMarioBros.Blocks
 {
-    public class HiddenBlock : AbstractBlock
+    public class UsedBlock : AbstractBlock
     {
-        public HiddenBlock(Point location)
+        public UsedBlock(Point location)
         {
             this.location = location;
             this.sprite = SpriteFactory.CreateSprite(this.GetType().Name);
@@ -17,7 +22,7 @@ namespace SuperMarioBros.Blocks
         }
         public override void Used()
         {
-            block.ChangeBlock(new UsedBlock(location));
+            //Do nothing.
         }
     }
 }

@@ -1,24 +1,23 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.Blocks.BlockStates;
 using SuperMarioBros.Sprites;
+using System;
 
 namespace SuperMarioBros.Blocks
 {
     public abstract class AbstractBlock : IBlock
     {
-        protected IBlockState state;
+        protected Block block;
         protected Point location;
         protected ISprite sprite;
-
-        public void ChangeState(IBlockState state)
-        {
-            this.state = state;
-        }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, location);
+        }
+        public void SetRef(Block block)
+        {
+            this.block = block;
         }
 
         public void Move(Point motion)
@@ -35,15 +34,13 @@ namespace SuperMarioBros.Blocks
         {
             this.sprite = sprite;
         }
-        public void Used()
-        {
-            this.state.ToUsed();
-        }
+        public abstract void Used();
 
-        public Rectangle HitBox()
+        public abstract Rectangle HitBox();
+
+        public Type GetRealType()
         {
-            if (this.state is DisappearBlockState) return new Rectangle();
-            return new Rectangle(location.X, location.Y - sprite.Height(), sprite.Width(), sprite.Height());
+            return this.block.GetType();
         }
     }
 }

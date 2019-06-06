@@ -4,8 +4,8 @@ namespace SuperMarioBros.Commands
 {
     class BlockUsedCommand : ICommand
     {
-        private readonly IBlock block;
-        public BlockUsedCommand(IBlock block)
+        private readonly Block block;
+        public BlockUsedCommand(Block block)
         {
             this.block = block;
         }

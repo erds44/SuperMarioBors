@@ -101,7 +101,7 @@
     <None Include="Content\ConcreteBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\EmptyBlock.xnb">
+    <None Include="Content\UsedBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\FireMarioLeftCrouching.xnb">
@@ -220,7 +220,10 @@
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Interfaces\IDraw.cs" />
+    <Compile Include="Object\Block\Block.cs" />
+    <Compile Include="Object\Block\DisappearBlock.cs" />
     <Compile Include="Object\Block\IBlock.cs" />
+    <Compile Include="Object\Block\UsedBlock.cs" />
     <Compile Include="Object\Enemy\EnemyMovementState\LeftMovingEnemyState.cs" />
     <Compile Include="Object\Enemy\EnemyMovementState\IdleEnemyState.cs" />
     <Compile Include="Object\Enemy\EnemyMovementState\RightMovingEnemyState.cs" />
@@ -232,7 +235,6 @@
     <Compile Include="Object\Item\IStar.cs" />
     <Compile Include="Object\Item\IItem.cs" />
     <Compile Include="Object\Mario\IMario.cs" />
-    <Compile Include="Object\Block\BlockState\IBlockState.cs" />
     <Compile Include="Object\Mario\MarioMovementState\IMarioMovementState.cs" />
     <Compile Include="Object\IObject.cs" />
     <Compile Include="Object\ObjectSizeManager.cs" />
@@ -241,13 +243,6 @@
     <Compile Include="Object\Mario\MarioTypeState\IMarioState.cs" />
     <Compile Include="MarioGame.cs" />
     <Compile Include="Object\Block\AbstractBlock.cs" />
-    <Compile Include="Object\Block\BlockState\BrickBlockState.cs" />
-    <Compile Include="Object\Block\BlockState\ConcreteBlockState.cs" />
-    <Compile Include="Object\Block\BlockState\DisappearBlockState.cs" />
-    <Compile Include="Object\Block\BlockState\HiddenBlockState.cs" />
-    <Compile Include="Object\Block\BlockState\QuestionBlockState.cs" />
-    <Compile Include="Object\Block\BlockState\RockBlockState.cs" />
-    <Compile Include="Object\Block\BlockState\UsedBlockState.cs" />
     <Compile Include="Object\Block\BrickBlock.cs" />
     <Compile Include="Object\Block\ConcreteBlock.cs" />
     <Compile Include="Object\Block\HiddenBlock.cs" />
