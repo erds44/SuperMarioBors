@@ -5,7 +5,7 @@ namespace SuperMarioBros.Items
 {
     public class Pipe : AbstractItem, IItem
     {
-        public Pipe(Vector2 location)
+        public Pipe(Point location)
         {
             this.location = location;
             sprite = SpriteFactory.CreateSprite("Pipe");

@@ -1,7 +1,7 @@
 ﻿using SuperMarioBros.Objects;
 using SuperMarioBros.Sprites;
 
-namespace SuperMarioBros.Object.Enemy
+namespace SuperMarioBros.Objects.Enemy
 {
     public interface IEnemy : IObject, IEnemyMovementState
     {

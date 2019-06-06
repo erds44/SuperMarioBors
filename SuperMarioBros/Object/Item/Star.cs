@@ -5,7 +5,7 @@ namespace SuperMarioBros.Items
 {
     public class Star : AbstractItem, IItem
     {
-        public Star(Vector2 location)
+        public Star(Point location)
         {
             this.location = location;
             sprite = SpriteFactory.CreateSprite("Star");

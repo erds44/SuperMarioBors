@@ -2,7 +2,7 @@
 using SuperMarioBros.Goombas;
 using SuperMarioBros.Koopas;
 using SuperMarioBros.Marios;
-using SuperMarioBros.Object.Enemy;
+using SuperMarioBros.Objects.Enemy;
 using System;
 using System.Collections.Generic;
 

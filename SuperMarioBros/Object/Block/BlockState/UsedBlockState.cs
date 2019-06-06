@@ -2,29 +2,19 @@
 
 namespace SuperMarioBros.Blocks.BlockStates
 {
-    public class UsedBlockState : IBlockState
+    public class EmptyBlockState : IBlockState
     {
         private readonly static string type = "EmptyBlock";
        // private readonly IBlockObject block;
-        public UsedBlockState(IBlock block)
+        public EmptyBlockState(IBlock block)
         {
            // this.block = block;
             block.ChangeSprite(SpriteFactory.CreateSprite(type));
         }
 
-        public void ToDisappear()
-        {
-            //Do nothing.
-        }
-
         public void ToUsed()
         {
             // Do Nothing
-        }
-
-        public void Update()
-        {
-            //Do nothing.
         }
     }
 }

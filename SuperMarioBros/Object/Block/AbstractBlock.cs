@@ -8,7 +8,7 @@ namespace SuperMarioBros.Blocks
     public abstract class AbstractBlock : IBlock
     {
         protected IBlockState state;
-        protected Vector2 location;
+        protected Point location;
         protected ISprite sprite;
 
         public void ChangeState(IBlockState state)
@@ -21,7 +21,7 @@ namespace SuperMarioBros.Blocks
             sprite.Draw(spriteBatch, location);
         }
 
-        public void Move(Vector2 motion)
+        public void Move(Point motion)
         {
             this.location += motion;
         }
@@ -35,10 +35,6 @@ namespace SuperMarioBros.Blocks
         {
             this.sprite = sprite;
         }
-        public void Disappear()
-        {
-            this.state.ToDisappear();
-        }
         public void Used()
         {
             this.state.ToUsed();
@@ -46,7 +42,8 @@ namespace SuperMarioBros.Blocks
 
         public Rectangle HitBox()
         {
-            return new Rectangle((int)location.X, (int)(location.Y - sprite.Height()), sprite.Width(), sprite.Height());
+            if (this.state is DisappearBlockState) return new Rectangle();
+            return new Rectangle(location.X, location.Y - sprite.Height(), sprite.Width(), sprite.Height());
         }
     }
 }

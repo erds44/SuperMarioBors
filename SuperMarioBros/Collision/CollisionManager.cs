@@ -1,9 +1,10 @@
 ﻿using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
-using SuperMarioBros.Object.Enemy;
+using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Objects;
 using System;
 using System.Collections.Generic;
+using SuperMarioBros.Blocks;
 
 namespace SuperMarioBros.Collisions
 {
@@ -31,7 +32,7 @@ namespace SuperMarioBros.Collisions
                 } 
                 else
                 {
-                    // Block 
+                    MarioBlockCollisionHandler.HandleCollision(Mario, (IBlock) objects[i], direction, i);
                 }
             }
         }

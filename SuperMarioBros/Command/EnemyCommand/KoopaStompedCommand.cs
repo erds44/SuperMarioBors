@@ -1,6 +1,6 @@
 ﻿using SuperMarioBros.Goombas;
 using SuperMarioBros.Koopas;
-using SuperMarioBros.Object.Enemy;
+using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Commands

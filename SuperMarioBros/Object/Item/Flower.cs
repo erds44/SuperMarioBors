@@ -6,7 +6,7 @@ namespace SuperMarioBros.Items
 {
     public class Flower :AbstractItem, IItem
    {
-        public Flower(Vector2 location)
+        public Flower(Point location)
         {
             this.location = location;
             sprite = SpriteFactory.CreateSprite("Flower");

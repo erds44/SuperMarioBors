@@ -5,7 +5,7 @@ namespace SuperMarioBros.Blocks
 {
     public class QuestionBlock : AbstractBlock
     {
-        public QuestionBlock( Vector2 location)
+        public QuestionBlock( Point location)
         {
             this.location = location;
             this.state = new QuestionBlockState(this);

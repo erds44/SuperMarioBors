@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.Blocks;
 using SuperMarioBros.Collisions;
 using SuperMarioBros.Goombas;
 using SuperMarioBros.Items;
@@ -23,14 +24,18 @@ namespace SuperMarioBros.Objects
             this.mario = mario;
             objects = new List<IObject>
             {
-                new GreenMushroom(new Vector2(100, 300)),
-                new RedMushroom(new Vector2(200, 300)),
-                new Flower(new Vector2(300, 300)),
-                new Star(new Vector2(400,300)),
-                new Pipe(new Vector2(600,300)),
-                new Coin(new Vector2(500,300)),
-                new Koopa(new Vector2(100,200)),
-                new Goomba(new Vector2(200,200))
+                new GreenMushroom(new Point(100, 300)),
+                new RedMushroom(new Point(200, 300)),
+                new Flower(new Point(300, 300)),
+                new Star(new Point(400,300)),
+                new Pipe(new Point(600,300)),
+                new Coin(new Point(500,300)),
+                new Koopa(new Point(100,200)),
+                new Goomba(new Point(200,200)),
+                new BrickBlock(new Point(300,100)),
+                new HiddenBlock(new Point(350, 100)),
+                new RockBlock(new Point(400,100)),
+                new QuestionBlock(new Point(450,100))
             };
             collisionManager = new CollisionManager(mario, objects);
         }

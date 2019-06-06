@@ -12,14 +12,14 @@ namespace SuperMarioBros.Objects
         /* all the size infomation will not get from texture width and height any more 
            we have to predefine a size infomation
         */
-        private readonly static Dictionary<Type, Vector2> objectDictionary = new Dictionary<Type, Vector2>
+        private readonly static Dictionary<Type, Point> objectDictionary = new Dictionary<Type, Point>
         {
-           { typeof(Goomba), new Vector2(15,20) },
+           { typeof(Goomba), new Point(15,20) },
                 // More to add
         };
-        private readonly static Dictionary<(Type, Type), Vector2> marioDictionary = new Dictionary<(Type, Type), Vector2>
+        private readonly static Dictionary<(Type, Type), Point> marioDictionary = new Dictionary<(Type, Type), Point>
         {
-           { (typeof(BigMario),typeof(LeftCrouchingMarioState)), new Vector2(1,1) }
+           { (typeof(BigMario),typeof(LeftCrouchingMarioState)), new Point(1,1) }
             // more to add
         };
 

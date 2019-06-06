@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Goombas.GoombaStates;
-using SuperMarioBros.Object.Enemy;
+using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Koopas
@@ -10,7 +10,7 @@ namespace SuperMarioBros.Koopas
     {
       //  private IEnemyMovementState state;
         private readonly IEnemy enemy;
-       // private Vector2 location;
+       // private Point location;
         public StompedKoopa(IEnemy enemy)
         {
             enemy.ChangeState(new IdleEnemyState(enemy));

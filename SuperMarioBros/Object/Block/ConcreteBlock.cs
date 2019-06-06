@@ -5,7 +5,7 @@ namespace SuperMarioBros.Blocks
 {
     public class ConcreteBlock : AbstractBlock
     {
-        public ConcreteBlock( Vector2 location)
+        public ConcreteBlock( Point location)
         {
             this.location = location;
             this.state = new ConcreteBlockState(this);

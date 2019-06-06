@@ -1,4 +1,4 @@
-﻿namespace SuperMarioBros.Object.Enemy
+﻿namespace SuperMarioBros.Objects.Enemy
 {
     public interface IEnemyMovementState 
     {

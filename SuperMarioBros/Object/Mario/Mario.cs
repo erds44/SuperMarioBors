@@ -16,7 +16,7 @@ namespace SuperMarioBros.Marios
         private IMarioMovementState movementState;
         private ISprite sprite;
         private readonly Physics marioPhysics;
-        public Mario(Vector2 location)
+        public Mario(Point location)
         {
             marioState = new SmallMario(this);
             /*
@@ -25,10 +25,10 @@ namespace SuperMarioBros.Marios
              * i.e.: SuperMarioBros.Classes.Object.MarioObject.SmallMario
              */
             marioPhysics = new Physics(
-                new Vector2(0, -1),
-                new Vector2(0, 1),
-                new Vector2(-1,0),
-                new Vector2(1, 0),
+                new Point(0, -1),
+                new Point(0, 1),
+                new Point(-1,0),
+                new Point(1, 0),
                 location
                 );
             movementState = new RightIdleMarioState(this, marioState.GetType().ToString().Substring(38),marioPhysics);

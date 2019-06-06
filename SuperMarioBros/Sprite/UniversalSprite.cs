@@ -34,13 +34,13 @@ namespace SuperMarioBros.Sprites
                 delay = 0;
             }
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        public void Draw(SpriteBatch spriteBatch, Point location)
         {
             int row = (int)((float)currentFrame / (float)totalFrame);
             int column = currentFrame % totalFrame;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y - height, width, height);
+            Rectangle destinationRectangle = new Rectangle(location.X, location.Y - height, width, height);
 
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, Color.White);
         }

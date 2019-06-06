@@ -4,13 +4,13 @@ namespace SuperMarioBros.Objects
 {
     public class Physics
     {
-        private Vector2 upMotion;
-        private Vector2 downMotion;
-        private Vector2 leftMotion;
-        private Vector2 rightMotion;
-        private Vector2 position;
-        private Vector2 prePosition;
-        public Physics(Vector2 upMotion, Vector2 downMotion, Vector2 leftMotion, Vector2 rightMotion, Vector2 position)
+        private Point upMotion;
+        private Point downMotion;
+        private Point leftMotion;
+        private Point rightMotion;
+        private Point position;
+        private Point prePosition;
+        public Physics(Point upMotion, Point downMotion, Point leftMotion, Point rightMotion, Point position)
         {
             this.upMotion = upMotion;
             this.downMotion = downMotion;
@@ -46,7 +46,7 @@ namespace SuperMarioBros.Objects
                 position += downMotion;
             }
         }
-        public Vector2 Position()
+        public Point Position()
         {
             prePosition = position;
             return position;

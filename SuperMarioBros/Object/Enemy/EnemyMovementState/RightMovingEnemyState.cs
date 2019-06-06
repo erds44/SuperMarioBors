@@ -1,5 +1,5 @@
 ﻿using System;
-using SuperMarioBros.Object.Enemy;
+using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Goombas.GoombaStates

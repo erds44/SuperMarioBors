@@ -1,16 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.Objects;
 using SuperMarioBros.Sprites;
-using SuperMarioBros.Goombas.GoombaStates;
-using SuperMarioBros.Object.Enemy;
+using SuperMarioBros.Objects.Enemy;
 
 namespace SuperMarioBros.Goombas
 {
-    public abstract class AbstractEnemy 
+    public abstract class AbstractEnemy : IEnemy
     {
         protected IEnemyMovementState state;
-        protected Vector2 location;
+        protected Point location;
         protected ISprite sprite;
 
         public void ChangeDirection()

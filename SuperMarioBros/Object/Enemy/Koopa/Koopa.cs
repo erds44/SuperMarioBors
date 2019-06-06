@@ -1,13 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Goombas;
 using SuperMarioBros.Goombas.GoombaStates;
-using SuperMarioBros.Object.Enemy;
 
 namespace SuperMarioBros.Koopas
 {
-    public class Koopa : AbstractEnemy, IEnemy
+    public class Koopa : AbstractEnemy
     {
-        public Koopa(Vector2 location)
+        public Koopa(Point location)
         {
             state = new LeftMovingEnemyState(this);
             this.location = location;

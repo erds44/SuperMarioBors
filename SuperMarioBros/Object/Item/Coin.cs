@@ -6,7 +6,7 @@ namespace SuperMarioBros.Items
     public class Coin : AbstractItem, IItem
 
     {
-        public Coin(Vector2 location)
+        public Coin(Point location)
         {
             this.location = location;
             sprite = SpriteFactory.CreateSprite("Coin");

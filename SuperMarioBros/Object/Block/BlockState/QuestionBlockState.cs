@@ -15,12 +15,7 @@ namespace SuperMarioBros.Blocks.BlockStates
 
         public void ToUsed()
         {
-            block.ChangeState(new UsedBlockState(block));
-        }
-
-        public void ToDisappear()
-        {
-            //Do nothing.
+            block.ChangeState(new EmptyBlockState(block));
         }
     }
 }

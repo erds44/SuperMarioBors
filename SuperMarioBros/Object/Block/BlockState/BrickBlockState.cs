@@ -13,14 +13,9 @@ namespace SuperMarioBros.Blocks.BlockStates
             block.ChangeSprite(SpriteFactory.CreateSprite(type));
         }
 
-        public void ToDisappear()
-        {
-            block.ChangeState(new DisappearBlockState(block));
-        }
-
         public void ToUsed()
         {
-            //Do nothing.
+            block.ChangeState(new DisappearBlockState(block));
         }
     }
 }

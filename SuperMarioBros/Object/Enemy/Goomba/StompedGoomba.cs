@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Sprites;
 using SuperMarioBros.Goombas.GoombaStates;
-using SuperMarioBros.Object.Enemy;
+using SuperMarioBros.Objects.Enemy;
 
 namespace SuperMarioBros.Goombas
 {

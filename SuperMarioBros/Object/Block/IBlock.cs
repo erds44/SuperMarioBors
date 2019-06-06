@@ -9,6 +9,5 @@ namespace SuperMarioBros.Blocks
         void ChangeState(IBlockState state);
         void ChangeSprite(ISprite sprite);
         void Used();
-        void Disappear();
     }
 }

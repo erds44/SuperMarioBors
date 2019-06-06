@@ -8,9 +8,9 @@ namespace SuperMarioBros.Items
     public class RedMushroom : IItem
     {
         
-        private Vector2 location;
+        private Point location;
         private readonly ISprite sprite;
-        public RedMushroom(Vector2 location)
+        public RedMushroom(Point location)
         {
             this.location = location;
             sprite = SpriteFactory.CreateSprite("RedMushroom");        

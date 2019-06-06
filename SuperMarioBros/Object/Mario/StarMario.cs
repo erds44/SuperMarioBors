@@ -13,7 +13,7 @@ namespace SuperMarioBros.Marios
     {
         private readonly IMario mario;
         private readonly ISprite sprite;
-        private Vector2 location;
+        private Point location;
         private int timer;
         public StarMario(IMario mario)
         {

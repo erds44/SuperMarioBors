@@ -1,5 +1,5 @@
 ﻿using SuperMarioBros.Goombas;
-using SuperMarioBros.Object.Enemy;
+using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Commands

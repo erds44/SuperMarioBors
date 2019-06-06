@@ -7,7 +7,7 @@ namespace SuperMarioBros.Items
     public abstract class AbstractItem
     {
         protected ISprite sprite;
-        protected Vector2 location;
+        protected Point location;
 
         public void Draw(SpriteBatch spriteBatch)
         {

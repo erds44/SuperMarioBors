@@ -1,4 +1,6 @@
-﻿using SuperMarioBros.SpriteFactories;
+﻿using SuperMarioBros.Commands;
+using SuperMarioBros.SpriteFactories;
+using System;
 
 namespace SuperMarioBros.Blocks.BlockStates
 {
@@ -8,12 +10,7 @@ namespace SuperMarioBros.Blocks.BlockStates
         public DisappearBlockState(IBlock block)
         {
             //this.block = block;
-            block.ChangeSprite(SpriteFactory.CreateSprite("HiddenBlock"));
-        }
-
-        public void ToDisappear()
-        {
-            //Do nothing.
+            block.ChangeState(new HiddenBlockState(block));
         }
 
         public void ToUsed()
