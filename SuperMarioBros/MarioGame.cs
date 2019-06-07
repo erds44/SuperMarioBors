@@ -70,8 +70,11 @@ namespace SuperMarioBros
         }
         public void InitializeObjects()
         {
-            mario = new Mario(new Point(100, 100));
-            ObjectsManager.Instance.Initialize(mario);
+            //mario = new Mario(new Point(100, 100));
+            //ObjectsManager.Instance.Initialize(mario);
+            ObjectLoading.LevelLoading(Content, @"PartialLevelOne");
+            mario = ObjectsManager.Instance.mario;
+            ObjectsManager.Instance.Initialize();
         }
 
     }

@@ -65,6 +65,15 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Content\BigBush.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BigCloud.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BigHill.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\BigMarioLeftCrouching.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -99,6 +108,24 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\ConcreteBlock.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\MiddleCloud.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\MiddleHill.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\PartialLevelOne.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallBush.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallCloud.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallHill.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\UsedBlock.xnb">
@@ -220,6 +247,11 @@
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Interfaces\IDraw.cs" />
+    <Compile Include="ObjectLoading.cs" />
+    <Compile Include="Object\Background\AbstractBackGround.cs" />
+    <Compile Include="Object\Background\BigBush.cs" />
+    <Compile Include="Object\Background\BigCloud.cs" />
+    <Compile Include="Object\Background\BigHill.cs" />
     <Compile Include="Object\Block\Block.cs" />
     <Compile Include="Object\Block\DisappearBlock.cs" />
     <Compile Include="Object\Block\IBlock.cs" />
@@ -232,12 +264,15 @@
     <Compile Include="Object\Enemy\IEnemyMovementState.cs" />
     <Compile Include="Object\Enemy\IEnemy.cs" />
     <Compile Include="Object\Enemy\Koopa\StompedKoopa.cs" />
-    <Compile Include="Object\Item\IStar.cs" />
     <Compile Include="Object\Item\IItem.cs" />
     <Compile Include="Object\Mario\IMario.cs" />
     <Compile Include="Object\Mario\MarioMovementState\IMarioMovementState.cs" />
     <Compile Include="Object\IObject.cs" />
+    <Compile Include="Object\Background\MiddleCloud.cs" />
     <Compile Include="Object\ObjectSizeManager.cs" />
+    <Compile Include="Object\Background\SmallBush.cs" />
+    <Compile Include="Object\Background\SmallCloud.cs" />
+    <Compile Include="Object\Background\SmallHill.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Interfaces\IUpdate.cs" />
     <Compile Include="Object\Mario\MarioTypeState\IMarioState.cs" />
@@ -296,7 +331,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Desktop\SuperMarioBros\levelLoading\levelLoading.csproj">
+      <Project>{607dee91-2680-4bde-9b78-0941183a8292}</Project>
+      <Name>levelLoading</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets" Condition="Exists('..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

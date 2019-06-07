@@ -30,9 +30,10 @@ namespace SuperMarioBros.Collisions
                 {
                    MarioEnemyCollisionHandler.HandleCollision(Mario,  (IEnemy)objects[i], direction, i);
                 } 
-                else
+                else if(objects[i] is IBlock)
                 {
-                    MarioBlockCollisionHandler.HandleCollision(Mario, (IBlock)objects[i], direction, i);
+                    Console.WriteLine(i);
+                    MarioBlockCollisionHandler.HandleCollision(Mario, (IBlock)objects[i], direction);
                 }
             }
         }

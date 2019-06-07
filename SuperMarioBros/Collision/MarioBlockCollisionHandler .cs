@@ -33,9 +33,9 @@ namespace SuperMarioBros.Collisions
             {(typeof(BrickBlock), Direction.right), (typeof(ObstacleCommand), typeof(Nullable))},
         };
         
-        public static void HandleCollision(IMario mario, IBlock block, Direction direction, int index)
+        public static void HandleCollision(IMario mario, IBlock block, Direction direction)
         {
-            if (collisionDictionary.TryGetValue((block.GetRealType(), direction), out var type))
+            if (collisionDictionary.TryGetValue((block.GetType(), direction), out var type)) //BUG Here used to be block.GetRealType()
             {
                 Console.WriteLine(block.GetRealType());
                 Type typ1 = type.Item1;
