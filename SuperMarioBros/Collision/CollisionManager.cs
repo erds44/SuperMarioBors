@@ -32,8 +32,7 @@ namespace SuperMarioBros.Collisions
                 } 
                 else if(objects[i] is IBlock)
                 {
-                    Console.WriteLine(i);
-                    MarioBlockCollisionHandler.HandleCollision(Mario, (IBlock)objects[i], direction);
+                    MarioBlockCollisionHandler.HandleCollision(Mario, (IBlock)objects[i], direction, i);
                 }
             }
         }

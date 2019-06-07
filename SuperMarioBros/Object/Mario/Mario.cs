@@ -15,7 +15,7 @@ namespace SuperMarioBros.Marios
         private IMarioState marioState;
         private IMarioMovementState movementState;
         private ISprite sprite;
-        private readonly Physics marioPhysics;
+        public Physics MarioPhysics { get; }
         public Mario(Point location)
         {
             marioState = new SmallMario(this);
@@ -24,14 +24,14 @@ namespace SuperMarioBros.Marios
              * Since GetType().ToString() returns the whole namespace
              * i.e.: SuperMarioBros.Classes.Object.MarioObject.SmallMario
              */
-            marioPhysics = new Physics(
-                new Point(0, -1),
-                new Point(0, 1),
-                new Point(-1,0),
-                new Point(1, 0),
+            MarioPhysics = new Physics(
+                new Point(0, -3),
+                new Point(0, 3),
+                new Point(-3,0),
+                new Point(3, 0),
                 location
                 );
-            movementState = new RightIdleMarioState(this, marioState.GetType().ToString().Substring(38),marioPhysics);
+            movementState = new RightIdleMarioState(this, marioState.GetType().ToString().Substring(38),MarioPhysics);
         }
         public void ChangeMarioState(IMarioState marioState) // Help method for marioState
         {
@@ -63,7 +63,7 @@ namespace SuperMarioBros.Marios
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, marioPhysics.Position());
+            sprite.Draw(spriteBatch, MarioPhysics.Position());
         }
 
         public void FireFlower()
@@ -109,7 +109,7 @@ namespace SuperMarioBros.Marios
 
         public Rectangle HitBox()
         {
-            return new Rectangle(marioPhysics.XPosition(), marioPhysics.YPosition()- sprite.Height(), sprite.Width(), sprite.Height());
+            return new Rectangle(MarioPhysics.XPosition(), MarioPhysics.YPosition()- sprite.Height(), sprite.Width(), sprite.Height());
              //return new Rectangle(marioPhysics.XPosition(), marioPhysics.YPosition() - 32, 32, 32);
         }
 

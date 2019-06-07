@@ -1,46 +1,51 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Sprites;
-using System;
 
 namespace SuperMarioBros.Blocks
 {
     public abstract class AbstractBlock : IBlock
     {
-        protected Block block;
+        //protected IBlockState state;
         protected Point location;
         protected ISprite sprite;
+
+        //public void ChangeState(IBlockState state)
+        //{
+        //    this.state = state;
+        //}
 
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, location);
         }
-        public void SetRef(Block block)
-        {
-            this.block = block;
-        }
 
-        public void Move(Point motion)
-        {
-            this.location += motion;
-        }
+        //public void Move(Point motion)
+        //{
+        //    this.location += motion;
+        //}
 
         public void Update()
         {
             this.sprite.Update();
         }
 
-        public void ChangeSprite(ISprite sprite)
-        {
-            this.sprite = sprite;
-        }
-        public abstract void Used();
+        //public void ChangeSprite(ISprite sprite)
+        //{
+        //    this.sprite = sprite;
+        //}
+        //public void Disappear()
+        //{
+        //    this.state.ToDisappear();
+        //}
+        //public void Used()
+        //{
+        //    this.state.ToUsed();
+        //}
 
-        public abstract Rectangle HitBox();
-
-        public Type GetRealType()
+        public Rectangle HitBox()
         {
-            return this.block.GetType();
+            return new Rectangle((int)location.X, (int)(location.Y - sprite.Height()), sprite.Width(), sprite.Height());
         }
     }
 }

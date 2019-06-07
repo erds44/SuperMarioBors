@@ -63,5 +63,9 @@ namespace SuperMarioBros.Objects
         {
             position = prePosition;
         }
+        public int Direction()
+        {
+            return prePosition.Y - position.Y;
+        }
     }
 }

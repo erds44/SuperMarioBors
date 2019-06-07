@@ -110,6 +110,12 @@
     <None Include="Content\ConcreteBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\GoombaStomped.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\KoopaStomped.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\MiddleCloud.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -161,9 +167,6 @@
     <None Include="Content\Goomba.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\GoombaStomped.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Content\GreenMushroom.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -174,9 +177,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\KoopaMovingRight.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\KoopaStomped.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\Pipe.xnb">
@@ -223,6 +223,7 @@
     <Compile Include="Collision\MarioBlockCollisionHandler .cs" />
     <Compile Include="Collision\MarioEnemyCollisionHandler.cs" />
     <Compile Include="Collision\MarioItemCollisionHandler.cs" />
+    <Compile Include="Command\BlockCommand\HiddenBlockUsedCommand .cs" />
     <Compile Include="Command\EnemyCommand\KoopaStompedCommand.cs" />
     <Compile Include="Command\EnemyCommand\GoombaStompedCommand.cs" />
     <Compile Include="Command\DisappearCommand.cs" />
@@ -235,6 +236,7 @@
     <Compile Include="Command\MarioCommand\IdleCommand.cs" />
     <Compile Include="Command\GameCommand\Quit.cs" />
     <Compile Include="Command\GameCommand\ResetCommand.cs" />
+    <Compile Include="Command\MarioCommand\HiddenObstacleCommand.cs" />
     <Compile Include="Command\MarioCommand\RightCommand.cs" />
     <Compile Include="Command\MarioCommand\GreenMushroomCommand.cs" />
     <Compile Include="Command\MarioCommand\RedMushroomCommand.cs" />
@@ -252,10 +254,14 @@
     <Compile Include="Object\Background\BigBush.cs" />
     <Compile Include="Object\Background\BigCloud.cs" />
     <Compile Include="Object\Background\BigHill.cs" />
-    <Compile Include="Object\Block\Block.cs" />
-    <Compile Include="Object\Block\DisappearBlock.cs" />
+    <Compile Include="Object\Block\AbstractBlock.cs" />
+    <Compile Include="Object\Block\BrickBlock.cs" />
+    <Compile Include="Object\Block\ConcreteBlock.cs" />
+    <Compile Include="Object\Block\HiddenBlock.cs" />
     <Compile Include="Object\Block\IBlock.cs" />
+    <Compile Include="Object\Block\QuestionBlock.cs" />
     <Compile Include="Object\Block\UsedBlock.cs" />
+    <Compile Include="Object\Block\RockBlock.cs" />
     <Compile Include="Object\Enemy\EnemyMovementState\LeftMovingEnemyState.cs" />
     <Compile Include="Object\Enemy\EnemyMovementState\IdleEnemyState.cs" />
     <Compile Include="Object\Enemy\EnemyMovementState\RightMovingEnemyState.cs" />
@@ -277,12 +283,6 @@
     <Compile Include="Interfaces\IUpdate.cs" />
     <Compile Include="Object\Mario\MarioTypeState\IMarioState.cs" />
     <Compile Include="MarioGame.cs" />
-    <Compile Include="Object\Block\AbstractBlock.cs" />
-    <Compile Include="Object\Block\BrickBlock.cs" />
-    <Compile Include="Object\Block\ConcreteBlock.cs" />
-    <Compile Include="Object\Block\HiddenBlock.cs" />
-    <Compile Include="Object\Block\QuestionBlock.cs" />
-    <Compile Include="Object\Block\RockBlock.cs" />
     <Compile Include="Object\Enemy\Goomba\Goomba.cs" />
     <Compile Include="Object\Enemy\Koopa\Koopa.cs" />
     <Compile Include="Object\Item\AbstractItem.cs" />
@@ -335,6 +335,8 @@
     <ProjectReference Include="..\..\..\..\Desktop\SuperMarioBros\levelLoading\levelLoading.csproj">
       <Project>{607dee91-2680-4bde-9b78-0941183a8292}</Project>
       <Name>levelLoading</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

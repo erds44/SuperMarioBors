@@ -1,12 +1,12 @@
-﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Objects;
-using System;
+﻿using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Blocks
 {
     public interface IBlock : IObject
     {
-        void Used();
-        Type GetRealType();
+        //void ChangeState(IBlockState state);
+        //void ChangeSprite(ISprite sprite);
+        //void Used();
+        //void Disappear();
     }
 }

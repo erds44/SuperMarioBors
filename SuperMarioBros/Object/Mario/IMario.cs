@@ -17,5 +17,6 @@ namespace SuperMarioBros.Marios
         void Idle();
         void Obstacle();
         void Coin();
+        Physics MarioPhysics { get; }
     }
 }

@@ -15,6 +15,7 @@ namespace SuperMarioBros.Marios
         private readonly ISprite sprite;
         private Point location;
         private int timer;
+        public Physics MarioPhysics { get; }
         public StarMario(IMario mario)
         {
             this.mario = mario;

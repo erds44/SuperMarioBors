@@ -5,19 +5,10 @@ namespace SuperMarioBros.Blocks
 {
     public class HiddenBlock : AbstractBlock
     {
-        public HiddenBlock(Point location)
+        public HiddenBlock( Point location)
         {
             this.location = location;
-            this.sprite = SpriteFactory.CreateSprite(this.GetType().Name);
-        }
-
-        public override Rectangle HitBox()
-        {
-            return new Rectangle(location.X, location.Y - sprite.Height(), sprite.Width(), sprite.Height());
-        }
-        public override void Used()
-        {
-            block.ChangeBlock(new UsedBlock(location));
+            sprite = SpriteFactory.CreateSprite(this.GetType().Name);
         }
     }
 }
