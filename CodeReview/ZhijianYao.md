@@ -40,3 +40,19 @@ like small Mario eating fire flower becoming  fire Mario, fire Mario
 taking damage becomes super Mario etc. These relations form another   
 state pattern, which makes state as a class memeber.
 
+
+## Sprint: 3   
+## Readability Review 
+Date: 7 June, 2019  
+Name of .cs file: AbstractBackground.cs  
+Author of .cs file: Keyu Bao  
+Number of minutes taken to complete the review: 20 minutes  
+1. Instance variables in the class are easy to read 
+2. In the update method, the actualy backgrond sprite only has one frame  
+no sprite update required  
+3. Notice that in background object, there is one abstract calss, and  
+evey other background objects extend on the abstract class, in fact  
+this can be accomplished by making a general class such that all the  
+different background objects can be passed by a xml file  
+4. In background objetcs, avoid abusing the string, even though string is  
+clear, but it is hard to debug once there is something wrong with the string
