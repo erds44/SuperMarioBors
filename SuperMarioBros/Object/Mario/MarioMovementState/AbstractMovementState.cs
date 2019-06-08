@@ -1,4 +1,5 @@
 ﻿using SuperMarioBros.Objects;
+using SuperMarioBros.Physicses;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
@@ -7,10 +8,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         protected private IMario mario;
         protected string type;
         protected private Physics marioPhysics;
-        public void Obstacle()
-        {
-            marioPhysics.Undo();
-        }
 
     }
 }

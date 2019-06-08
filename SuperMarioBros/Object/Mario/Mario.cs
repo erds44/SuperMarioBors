@@ -3,39 +3,29 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
-using SuperMarioBros.Objects;
+using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
-using System;
 
 namespace SuperMarioBros.Marios
 {
     public class Mario : IMario
     {
-        private IMarioState marioState;
+        private IMarioHealthState healthState;
         private IMarioMovementState movementState;
         private ISprite sprite;
-        public Physics MarioPhysics { get; }
+        private readonly Physics physics;
+        private Point location;
         public Mario(Point location)
         {
-            marioState = new SmallMario(this);
-            /*
-             * Hard Code for now
-             * Since GetType().ToString() returns the whole namespace
-             * i.e.: SuperMarioBros.Classes.Object.MarioObject.SmallMario
-             */
-            MarioPhysics = new Physics(
-                new Point(0, -3),
-                new Point(0, 3),
-                new Point(-3,0),
-                new Point(3, 0),
-                location
-                );
-            movementState = new RightIdleMarioState(this, marioState.GetType().ToString().Substring(38),MarioPhysics);
+            healthState = new SmallMario(this);
+            physics = new Physics(3, 3);
+            this.location = location;
+            movementState = new RightIdleMarioState(this, healthState.GetType().Name,physics);
         }
-        public void ChangeMarioState(IMarioState marioState) // Help method for marioState
+        public void ChangHealthState(IMarioHealthState healthState) // Help method for marioState
         {
-            string type = marioState.GetType().ToString().Substring(38);
+            string type = healthState.GetType().Name;
             if (!type.Equals("DeadMario"))
             {
                 movementState.ChangeSprite(type);
@@ -45,7 +35,7 @@ namespace SuperMarioBros.Marios
                 sprite = SpriteFactory.CreateSprite("DeadMario");
                 movementState = new TerminateMovementState();
             }
-            this.marioState = marioState;
+            this.healthState = healthState;
         }
         
         public void ChangeSprite(ISprite sprite) // Help method for movementState
@@ -63,12 +53,12 @@ namespace SuperMarioBros.Marios
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, MarioPhysics.Position());
+            sprite.Draw(spriteBatch, location);
         }
 
         public void FireFlower()
         {
-            marioState.FireFlower();
+            healthState.FireFlower();
         }
 
         public void Left()
@@ -78,7 +68,7 @@ namespace SuperMarioBros.Marios
 
         public void RedMushroom()
         {
-            marioState.RedMushroom();
+            healthState.RedMushroom();
         }
 
         public void Right()
@@ -88,7 +78,7 @@ namespace SuperMarioBros.Marios
 
         public void TakeDamage()
         {
-            marioState.TakeDamage();
+            healthState.TakeDamage();
         }
 
         public void Up()
@@ -100,6 +90,7 @@ namespace SuperMarioBros.Marios
         {
             movementState.Update();
             sprite.Update();
+            location += physics.Motion();
         }
 
         public void Idle()
@@ -109,8 +100,7 @@ namespace SuperMarioBros.Marios
 
         public Rectangle HitBox()
         {
-            return new Rectangle(MarioPhysics.XPosition(), MarioPhysics.YPosition()- sprite.Height(), sprite.Width(), sprite.Height());
-             //return new Rectangle(marioPhysics.XPosition(), marioPhysics.YPosition() - 32, 32, 32);
+            return new Rectangle(location.X, location.Y- sprite.Height(), sprite.Width(), sprite.Height());
         }
 
         public void GreenMushroom()
@@ -120,7 +110,7 @@ namespace SuperMarioBros.Marios
 
         public void Obstacle()
         {
-            movementState.Obstacle();
+            location -= physics.Revert();
         }
 
         public void Coin()

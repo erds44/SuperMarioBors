@@ -1,6 +1,6 @@
 ﻿namespace SuperMarioBros.Interfaces.State
 {
-    public interface IMarioState 
+    public interface IMarioHealthState 
     {
         /* powerup always follows small-big-fire
            void PowerUp();

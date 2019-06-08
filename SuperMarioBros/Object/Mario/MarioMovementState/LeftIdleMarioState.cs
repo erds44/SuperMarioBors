@@ -1,11 +1,12 @@
 ﻿using SuperMarioBros.Objects;
+using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 { 
     public class LeftIdleMarioState : AbstractMovementState, IMarioMovementState
     {
-        public LeftIdleMarioState(IMario mario, string type,Physics marioPhysics)
+        public LeftIdleMarioState(IMario mario, string type, Physics marioPhysics)
         {
             this.mario = mario;
             this.type = type;

@@ -2,16 +2,21 @@
 
 namespace SuperMarioBros.Marios.MarioTypeStates
 {
-    public class DeadMario : IMarioState
+    public class BigMario : IMarioHealthState
     {
+        private readonly IMario mario;
+        public BigMario(IMario mario)
+        {
+            this.mario = mario;
+        }
         public void FireFlower()
         {
-            // Do Nothing
+            mario.ChangHealthState(new FireMario(mario));
         }
 
         public void GreenMushroom()
         {
-           // Do Nothing
+            // Do Nothing
         }
 
         public void RedMushroom()
@@ -21,8 +26,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
 
         public void TakeDamage()
         {
-            // Do Nothing
+            mario.ChangHealthState(new SmallMario(mario));
         }
-
     }
 }

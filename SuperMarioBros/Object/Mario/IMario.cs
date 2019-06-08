@@ -5,9 +5,9 @@ using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Marios
 {
-    public interface IMario : IObject, IMarioState
+    public interface IMario : IObject, IMarioHealthState
     {
-        void ChangeMarioState(IMarioState marioState);
+        void ChangHealthState(IMarioHealthState marioState);
         void ChangeMovementState(IMarioMovementState movementState);
         void ChangeSprite(ISprite sprite);
         void Up();
@@ -17,6 +17,6 @@ namespace SuperMarioBros.Marios
         void Idle();
         void Obstacle();
         void Coin();
-        Physics MarioPhysics { get; }
+        //Physics MarioPhysics { get; }
     }
 }

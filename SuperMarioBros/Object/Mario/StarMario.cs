@@ -15,18 +15,18 @@ namespace SuperMarioBros.Marios
         private readonly ISprite sprite;
         private Point location;
         private int timer;
-        public Physics MarioPhysics { get; }
+       // public Physics MarioPhysics { get; }
         public StarMario(IMario mario)
         {
             this.mario = mario;
             sprite = SpriteFactory.CreateSprite("Star");
             timer = 300;
-            MarioPhysics = mario.MarioPhysics;
+           // MarioPhysics = mario.MarioPhysics;
             // Change Sprite
         }
-        public void ChangeMarioState(IMarioState marioState) // Help method for marioState
+        public void ChangHealthState(IMarioHealthState marioState) // Help method for marioState
         {
-            mario.ChangeMarioState(marioState);
+            mario.ChangHealthState(marioState);
         }
         
         public void ChangeSprite(ISprite sprite) // Help method for movementState

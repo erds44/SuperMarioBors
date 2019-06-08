@@ -10,6 +10,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         void Right();
         void Idle();
         void ChangeSprite(string type);
-        void Obstacle();
+       // void Obstacle();
     }
 }
