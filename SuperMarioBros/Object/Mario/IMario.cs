@@ -1,22 +1,17 @@
 ﻿using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Physicses;
 using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Marios
 {
-    public interface IMario : IObject, IMarioHealthState
+    public interface IMario : IObject, IMarioHealthState, IMarioMovementState
     {
-        void ChangHealthState(IMarioHealthState marioState);
-        void ChangeMovementState(IMarioMovementState movementState);
-        void ChangeSprite(ISprite sprite);
-        void Up();
-        void Down();
-        void Left();
-        void Right();
-        void Idle();
+        ISprite Sprite { get; set; }
+        IMarioHealthState HealthState { get; set; }
+        IMarioMovementState MovementState { get; set; }
+        Physics MarioPhysics { get; }
         void Obstacle();
-        void Coin();
-        //Physics MarioPhysics { get; }
     }
 }

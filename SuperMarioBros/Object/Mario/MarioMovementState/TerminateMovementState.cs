@@ -3,7 +3,7 @@
 
     public class TerminateMovementState : IMarioMovementState
     {
-        public void ChangeSprite(string type)
+        public void ChangeSprite()
         {
             // Do Nothing
         }

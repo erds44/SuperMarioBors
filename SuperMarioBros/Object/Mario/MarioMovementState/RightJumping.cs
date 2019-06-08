@@ -4,19 +4,18 @@ using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
-    public class RightJumpingMarioState : AbstractMovementState, IMarioMovementState
+    public class RightJumping : AbstractMovementState, IMarioMovementState
     {
-        public RightJumpingMarioState(IMario mario, string type, Physics marioPhysics)
+        public RightJumping(IMario mario,  Physics marioPhysics)
         {
             this.mario = mario;
-            this.type = type;
-            this.mario.ChangeSprite(SpriteFactory.CreateSprite(type + "RightJumping"));
+            this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
             this.marioPhysics = marioPhysics;
         }
 
         public void Down()
         {
-            mario.ChangeMovementState(new RightIdleMarioState(mario, type, marioPhysics));
+            mario.MovementState = new RightIdle(mario, marioPhysics);
         }
 
         public void Right()
@@ -39,15 +38,14 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             //marioPhysics.Up();
         }
 
-        public void ChangeSprite(string type)
+        public void ChangeSprite()
         { 
-            this.type = type;
-            mario.ChangeSprite(SpriteFactory.CreateSprite(type + "RightJumping"));
+            mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
         }
 
         public void Idle()
         {
-            mario.ChangeMovementState(new RightIdleMarioState(mario, type, marioPhysics));
+            mario.MovementState= new RightIdle(mario, marioPhysics);
         }
     }
 }

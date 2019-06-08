@@ -10,5 +10,6 @@
         void RedMushroom();
         void FireFlower();
         void GreenMushroom();
+        void Coin();
     }
 }

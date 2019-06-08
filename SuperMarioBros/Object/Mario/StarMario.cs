@@ -3,40 +3,27 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
-using System;
 
 namespace SuperMarioBros.Marios
 {
     public class StarMario : IMario
     {
+        public IMarioHealthState HealthState { get; set; }
+        public IMarioMovementState MovementState { get; set; }
+        public Physics MarioPhysics { get; }
         private readonly IMario mario;
-        private readonly ISprite sprite;
-        private Point location;
+        public ISprite Sprite { get; set; }
         private int timer;
-       // public Physics MarioPhysics { get; }
         public StarMario(IMario mario)
         {
             this.mario = mario;
-            sprite = SpriteFactory.CreateSprite("Star");
+            MarioPhysics = mario.MarioPhysics;
             timer = 300;
-           // MarioPhysics = mario.MarioPhysics;
-            // Change Sprite
         }
-        public void ChangHealthState(IMarioHealthState marioState) // Help method for marioState
-        {
-            mario.ChangHealthState(marioState);
-        }
-        
-        public void ChangeSprite(ISprite sprite) // Help method for movementState
-        {
-            mario.ChangeSprite(sprite);
-        }
-        public void ChangeMovementState(IMarioMovementState movementState) // Help method for movementState
-        {
-            mario.ChangeMovementState(movementState);
-        }
+
         public void Down()
         {
             mario.Down();
@@ -44,8 +31,8 @@ namespace SuperMarioBros.Marios
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            mario.Draw(spriteBatch);
-            sprite.Draw(spriteBatch, location);
+            Sprite = new DecorationSprite(mario.Sprite);
+            Sprite.Draw(spriteBatch, new Point(mario.HitBox().X, mario.HitBox().Y + mario.HitBox().Height));
         }
 
         public void FireFlower()
@@ -88,9 +75,7 @@ namespace SuperMarioBros.Marios
             }
             else
             {
-                location.X = mario.HitBox().X + 10;
-                location.Y = mario.HitBox().Y - 5;
-                sprite.Update();
+                Sprite.Update();
             }
         }
 

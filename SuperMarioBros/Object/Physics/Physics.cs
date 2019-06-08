@@ -43,6 +43,10 @@ namespace SuperMarioBros.Physicses
         {
             return prevMotion;
         }
+        public int Direction()
+        {
+            return prevMotion.Y;
+        }
         
     }
 }

@@ -20,7 +20,7 @@ namespace SuperMarioBros.Objects
         };
         private readonly static Dictionary<(Type, Type), Point> marioDictionary = new Dictionary<(Type, Type), Point>
         {
-           { (typeof(BigMario),typeof(LeftCrouchingMarioState)), new Point(1,1) }
+           { (typeof(BigMario),typeof(LeftCrouching)), new Point(1,1) }
             // more to add
         };
 

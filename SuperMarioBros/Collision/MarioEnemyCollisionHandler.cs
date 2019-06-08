@@ -40,7 +40,6 @@ namespace SuperMarioBros.Collisions
         {
                 if ( collisionDictionary.TryGetValue((mario.GetType(),enemy.GetType(), direction),  out var type ))
                 {
-                Console.WriteLine(enemy);
                     Type typ1 = type.Item1;
                     Type typ2 = type.Item2;
                     if(typ1 != typeof(Nullable))

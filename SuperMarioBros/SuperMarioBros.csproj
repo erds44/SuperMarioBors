@@ -279,7 +279,7 @@
     <Compile Include="Object\Background\SmallHill.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Interfaces\IUpdate.cs" />
-    <Compile Include="Object\Mario\MarioHealthState\IMarioState.cs" />
+    <Compile Include="Object\Mario\MarioHealthState\IMarioHealthState.cs" />
     <Compile Include="MarioGame.cs" />
     <Compile Include="Object\Enemy\Goomba\Goomba.cs" />
     <Compile Include="Object\Enemy\Koopa\Koopa.cs" />
@@ -290,14 +290,14 @@
     <Compile Include="Object\Item\Star.cs" />
     <Compile Include="Object\Mario\Mario.cs" />
     <Compile Include="Object\Mario\MarioMovementState\AbstractMovementState.cs" />
-    <Compile Include="Object\Mario\MarioMovementState\LeftCrouchingMarioState.cs" />
-    <Compile Include="Object\Mario\MarioMovementState\LeftIdleMarioState.cs" />
-    <Compile Include="Object\Mario\MarioMovementState\LeftJumpingMarioState.cs" />
-    <Compile Include="Object\Mario\MarioMovementState\LeftMovingMarioState.cs" />
-    <Compile Include="Object\Mario\MarioMovementState\RightCrouchingMarioState.cs" />
-    <Compile Include="Object\Mario\MarioMovementState\RightIdleMarioState.cs" />
-    <Compile Include="Object\Mario\MarioMovementState\RightJumpingMarioState.cs" />
-    <Compile Include="Object\Mario\MarioMovementState\RightMovingMarioState.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\LeftCrouching.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\LeftIdle.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\LeftJumping.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\LeftMoving.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\RightCrouching.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\RightIdle.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\RightJumping.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\RightMoving.cs" />
     <Compile Include="Object\Mario\MarioMovementState\TerminateMovementState.cs" />
     <Compile Include="Object\Mario\MarioHealthState\BigMario.cs" />
     <Compile Include="Object\Mario\MarioHealthState\DeadMario.cs" />
@@ -310,6 +310,7 @@
     <Compile Include="Object\Physics\Physics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="SpriteFactory\SpriteFactory.cs" />
+    <Compile Include="Sprite\DecorationSprite.cs" />
     <Compile Include="Sprite\UniversalSprite.cs" />
   </ItemGroup>
   <ItemGroup>

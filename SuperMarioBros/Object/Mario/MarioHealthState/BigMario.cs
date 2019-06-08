@@ -1,4 +1,5 @@
 ﻿using SuperMarioBros.Interfaces.State;
+using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioTypeStates
 {
@@ -8,10 +9,17 @@ namespace SuperMarioBros.Marios.MarioTypeStates
         public BigMario(IMario mario)
         {
             this.mario = mario;
+            mario.Sprite = SpriteFactory.CreateSprite(GetType().Name + mario.MovementState.GetType().Name);
         }
+
+        public void Coin()
+        {
+            // To do
+        }
+
         public void FireFlower()
         {
-            mario.ChangHealthState(new FireMario(mario));
+            mario.HealthState = new FireMario(mario);
         }
 
         public void GreenMushroom()
@@ -26,7 +34,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
 
         public void TakeDamage()
         {
-            mario.ChangHealthState(new SmallMario(mario));
+            mario.HealthState = new SmallMario(mario);
         }
     }
 }
