@@ -236,7 +236,6 @@
     <Compile Include="Command\MarioCommand\IdleCommand.cs" />
     <Compile Include="Command\GameCommand\Quit.cs" />
     <Compile Include="Command\GameCommand\ResetCommand.cs" />
-    <Compile Include="Command\MarioCommand\HiddenObstacleCommand.cs" />
     <Compile Include="Command\MarioCommand\RightCommand.cs" />
     <Compile Include="Command\MarioCommand\GreenMushroomCommand.cs" />
     <Compile Include="Command\MarioCommand\RedMushroomCommand.cs" />

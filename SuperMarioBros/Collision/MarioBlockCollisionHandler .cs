@@ -13,7 +13,7 @@ namespace SuperMarioBros.Collisions
             {(typeof(UsedBlock), Direction.bottom), (typeof(ObstacleCommand), typeof(Nullable))},
             { (typeof(BrickBlock), Direction.bottom), (typeof(Nullable), typeof(DisappearCommand))},
             {(typeof(QuestionBlock), Direction.bottom), (typeof(ObstacleCommand), typeof(BlockUsedCommand))},
-            {(typeof(HiddenBlock), Direction.bottom), (typeof(HiddenObstacleCommand), typeof(HiddenBlockUsedCommand))},
+            {(typeof(HiddenBlock), Direction.bottom), (typeof(Nullable), typeof(HiddenBlockUsedCommand))},
             {(typeof(ConcreteBlock), Direction.bottom), (typeof(ObstacleCommand), typeof(Nullable))},
             {(typeof(RockBlock), Direction.bottom), (typeof(ObstacleCommand), typeof(Nullable))},
             {(typeof(UsedBlock), Direction.top), (typeof(ObstacleCommand), typeof(Nullable))},
