@@ -13,8 +13,8 @@ namespace SuperMarioBros.Objects
 {
     public  class ObjectsManager
     {
-        public List<IObject> objects { get; set; }
-        public IMario mario { get; set; }
+        public List<IObject> Objects { get; set; }
+        public IMario Mario { get; set; }
         private CollisionManager collisionManager;
         private readonly static ObjectsManager instance = new ObjectsManager();
         public static ObjectsManager Instance { get { return instance; } }
@@ -40,34 +40,34 @@ namespace SuperMarioBros.Objects
             //    new Block(new HiddenBlock(new Point(400,100)))
 
             //};
-            collisionManager = new CollisionManager(mario, objects);
+            collisionManager = new CollisionManager(Mario, Objects);
         }
         public void Update()
         {
-            objects.ForEach(element => element.Update());
-            mario.Update();
+            Objects.ForEach(element => element.Update());
+            Mario.Update();
             collisionManager.HandleCollision();
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            mario.Draw(spriteBatch);
-            objects.ForEach(element => element.Draw(spriteBatch));
+            Mario.Draw(spriteBatch);
+            Objects.ForEach(element => element.Draw(spriteBatch));
         }
         public void DecorateMario(IMario mario)
         {
-            this.mario = mario;
+            this.Mario = mario;
             collisionManager.Mario = mario;
         }
         public void Remove(IObject gameObject, int index)
         {
             if(gameObject != null)
             {
-                objects.RemoveAt(index);
+                Objects.RemoveAt(index);
             }
         }
         public void DecorateObject( IObject obj1, int index)
         {
-            objects[index] = obj1;
+            Objects[index] = obj1;
         }
 
     }

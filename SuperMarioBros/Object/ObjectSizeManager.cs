@@ -11,6 +11,7 @@ namespace SuperMarioBros.Objects
     {
         /* all the size infomation will not get from texture width and height any more 
            we have to predefine a size infomation
+           This class is not in used currently, but used in refactor part
         */
         private readonly static Dictionary<Type, Point> objectDictionary = new Dictionary<Type, Point>
         {

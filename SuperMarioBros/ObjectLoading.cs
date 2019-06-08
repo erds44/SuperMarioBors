@@ -16,15 +16,15 @@ namespace SuperMarioBros
         public static void LevelLoading(ContentManager content, String path)
         {
             objectNodes = content.Load<ObjectList>(path);
-            ObjectsManager.Instance.objects = new List<IObject>();
-            ObjectsManager.Instance.mario = new Mario(objectNodes.objectList[0].Position);
+            ObjectsManager.Instance.Objects = new List<IObject>();
+            ObjectsManager.Instance.Mario = new Mario(objectNodes.objectList[0].Position);
             for(int i = 1; i < objectNodes.objectList.Count; i++)
             {
                 String objectType = objectNodes.objectList[i].ObjectType;
                 Type t = Type.GetType(objectType);
                 Point objectPosition = objectNodes.objectList[i].Position;
                 var obj = Activator.CreateInstance(t,objectPosition);
-                ObjectsManager.Instance.objects.Add((IObject)obj);
+                ObjectsManager.Instance.Objects.Add((IObject)obj);
             }
         }
     }
