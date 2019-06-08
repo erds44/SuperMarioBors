@@ -21,6 +21,7 @@ namespace SuperMarioBros.Marios
             this.mario = mario;
             sprite = SpriteFactory.CreateSprite("Star");
             timer = 300;
+            MarioPhysics = mario.MarioPhysics;
             // Change Sprite
         }
         public void ChangeMarioState(IMarioState marioState) // Help method for marioState
