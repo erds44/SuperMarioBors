@@ -72,6 +72,8 @@ namespace SuperMarioBros
         {
             //mario = new Mario(new Point(100, 100));
             //ObjectsManager.Instance.Initialize(mario);
+            ObjectSizeManager.LoadItemSize(Content, @"SizeLoading");
+            ObjectSizeManager.LoadMarioSize(Content, @"MarioSizeLoading");
             ObjectLoading.LevelLoading(Content, @"PartialLevelOne");
             mario = ObjectsManager.Instance.Mario;
             ObjectsManager.Instance.Initialize();
