@@ -2,13 +2,14 @@
 using SuperMarioBros.Goombas;
 using SuperMarioBros.Koopas;
 using SuperMarioBros.Marios;
+using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Enemy;
 using System;
 using System.Collections.Generic;
 
 namespace SuperMarioBros.Collisions
 {
-    public static class MarioEnemyCollisionHandler
+    public static class MarioEnemyCollisionHandler 
     {
         private static readonly Dictionary<(Type,Type,Direction),(Type,Type)> collisionDictionary = new Dictionary<(Type,Type, Direction), (Type, Type)>
         {
@@ -36,7 +37,7 @@ namespace SuperMarioBros.Collisions
 
 
         };
-        public static void HandleCollision(IMario mario,  IEnemy enemy, Direction direction, int index)
+        public static  void HandleCollision(IObject mario,  IObject enemy, Direction direction, int index)
         {
                 if ( collisionDictionary.TryGetValue((mario.GetType(),enemy.GetType(), direction),  out var type ))
                 {
@@ -44,11 +45,11 @@ namespace SuperMarioBros.Collisions
                     Type typ2 = type.Item2;
                     if(typ1 != typeof(Nullable))
                     {
-                        ((ICommand)Activator.CreateInstance(typ1, mario)).Execute();
+                        ((ICommand)Activator.CreateInstance(typ1, (IMario)mario)).Execute();
                     }
                     if(typ2 != typeof(Nullable))
                     {
-                        ((ICommand)Activator.CreateInstance(typ2, enemy, index)).Execute();
+                        ((ICommand)Activator.CreateInstance(typ2, (IEnemy)enemy, index)).Execute();
                     }       
             }
 

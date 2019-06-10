@@ -14,7 +14,7 @@ namespace SuperMarioBros.Collisions
         private readonly List<IObject> objects;
         public CollisionManager( IMario mario, List<IObject> objects)
         {
-            this.Mario = mario;
+            Mario = mario;
             this.objects = objects;
         }
 
@@ -25,14 +25,14 @@ namespace SuperMarioBros.Collisions
                 Direction direction = CollisionDetection.Detect(Mario, objects[i]);
                 if (objects[i] is IItem)
                 {
-                    MarioItemCollisionHandler.HandleCollision(Mario, (IItem)objects[i], direction, i);
+                    MarioItemCollisionHandler.HandleCollision(Mario, objects[i], direction, i);
                 }else if(objects[i] is IEnemy)
                 {
-                   MarioEnemyCollisionHandler.HandleCollision(Mario,  (IEnemy)objects[i], direction, i);
+                   MarioEnemyCollisionHandler.HandleCollision(Mario,  objects[i], direction, i);
                 } 
                 else if(objects[i] is IBlock)
                 {
-                    MarioBlockCollisionHandler.HandleCollision(Mario, (IBlock)objects[i], direction, i);
+                    MarioBlockCollisionHandler.HandleCollision(Mario, objects[i], direction, i);
                 }
             }
         }

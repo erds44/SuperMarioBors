@@ -1,12 +1,13 @@
 ﻿using SuperMarioBros.Blocks;
 using SuperMarioBros.Commands;
 using SuperMarioBros.Marios;
+using SuperMarioBros.Objects;
 using System;
 using System.Collections.Generic;
 
 namespace SuperMarioBros.Collisions
 {
-    public static class MarioBlockCollisionHandler
+    public static class MarioBlockCollisionHandler 
     {
         private static readonly Dictionary<(Type, Direction), (Type, Type)> collisionDictionary = new Dictionary<(Type, Direction), (Type, Type)>
         {
@@ -32,7 +33,8 @@ namespace SuperMarioBros.Collisions
             {(typeof(QuestionBlock), Direction.right), (typeof(ObstacleCommand), typeof(Nullable))},
             { (typeof(BrickBlock), Direction.right), (typeof(ObstacleCommand), typeof(Nullable))}
         };
-        public static void HandleCollision(IMario mario, IBlock block, Direction direction, int index)
+
+        public static void HandleCollision(IObject mario, IObject block, Direction direction, int index)
         {
             if (collisionDictionary.TryGetValue((block.GetType(), direction), out var type)) 
             {
@@ -40,11 +42,11 @@ namespace SuperMarioBros.Collisions
                 Type typ2 = type.Item2;
                 if (typ1 != typeof(Nullable))
                 {
-                    ((ICommand)Activator.CreateInstance(typ1, mario)).Execute();
+                    ((ICommand)Activator.CreateInstance(typ1, (IMario)mario)).Execute();
                 }
                 if (typ2 != typeof(Nullable))
                 {
-                    ((ICommand)Activator.CreateInstance(typ2, block, index)).Execute();
+                    ((ICommand)Activator.CreateInstance(typ2, (IBlock)block, index)).Execute();
                 }
             }
         }

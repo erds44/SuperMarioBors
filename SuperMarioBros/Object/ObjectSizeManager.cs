@@ -15,12 +15,13 @@ namespace SuperMarioBros.Objects
         */
         private readonly static Dictionary<Type, Point> objectDictionary = new Dictionary<Type, Point>
         {
-           { typeof(Goomba), new Point(15,20) },
+           { typeof(Goomba), new Point(1,1) }, // Width, Height
                 // More to add
         };
         private readonly static Dictionary<(Type, Type), Point> marioDictionary = new Dictionary<(Type, Type), Point>
         {
-           { (typeof(BigMario),typeof(LeftCrouching)), new Point(1,1) }
+           { (typeof(BigMario),typeof(LeftCrouching)), new Point(1,1) },
+            { (typeof(DeadMario), typeof(TerminateMovementState)), new Point(1,1)} // Width Height
             // more to add
         };
 

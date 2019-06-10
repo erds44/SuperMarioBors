@@ -1,14 +1,13 @@
-﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Commands;
+﻿using SuperMarioBros.Commands;
 using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
+using SuperMarioBros.Objects;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace SuperMarioBros.Collisions
 {
-    public static class MarioItemCollisionHandler
+    public static class MarioItemCollisionHandler 
     {
         private static readonly Dictionary<Type, (Type, Type)> collisionDictionary = new Dictionary<Type, (Type,Type)>
         {
@@ -19,7 +18,7 @@ namespace SuperMarioBros.Collisions
             { typeof(Flower), (typeof(FlowerCommand) , typeof(DisappearCommand))},
             { typeof(Star), (typeof(StarMarioCommand) , typeof(DisappearCommand))}
         };
-        public static void HandleCollision(IMario mario, IItem item, Direction direction, int index)
+        public static void HandleCollision(IObject mario, IObject item, Direction direction, int index)
         {
             if (direction != Direction.none)
             {
@@ -29,11 +28,11 @@ namespace SuperMarioBros.Collisions
                     Type typ2 = tuple.Item2;
                     if (typ1 != typeof(Nullable))
                     {
-                        ((ICommand)Activator.CreateInstance(typ1, mario)).Execute();
+                        ((ICommand)Activator.CreateInstance(typ1, (IMario)mario)).Execute();
                     }
                     if(typ2 != typeof(Nullable))
                     {
-                        ((ICommand)Activator.CreateInstance(typ2, item, index)).Execute();
+                        ((ICommand)Activator.CreateInstance(typ2, (IItem)item, index)).Execute();
                     }
                 }
             }
