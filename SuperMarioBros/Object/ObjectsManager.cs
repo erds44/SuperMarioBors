@@ -13,43 +13,39 @@ namespace SuperMarioBros.Objects
 {
     public  class ObjectsManager
     {
-        public List<IObject> Objects { get; set; }
-        public IMario Mario { get; set; }
-        private CollisionManager collisionManager;
+        public List<IObject> StaticObjects { get; set; }
+        public List<IMario> Mario { get; set; } // For now it is a list of maro, later it is a list of dynamic objects
         private readonly static ObjectsManager instance = new ObjectsManager();
         public static ObjectsManager Instance { get { return instance; } }
         private ObjectsManager() { }
-
-        public void Initialize()
-        {
-            collisionManager = new CollisionManager(Mario, Objects);
-        }
         public void Update()
         {
-            Objects.ForEach(element => element.Update());
-            Mario.Update();
-            collisionManager.HandleCollision();
+            StaticObjects.ForEach(element => element.Update());
+            for (int i = 0; i < Mario.Count; i++)
+            {
+                Mario[i].Update();
+            }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            Mario.Draw(spriteBatch);
-            Objects.ForEach(element => element.Draw(spriteBatch));
+            Mario.ForEach(element => element.Draw(spriteBatch));
+            StaticObjects.ForEach(element => element.Draw(spriteBatch));
         }
-        public void DecorateMario(IMario mario)
+        public void DecorateMario(IMario mario, int index)
         {
-            this.Mario = mario;
-            collisionManager.Mario = mario;
+            Mario[index] = mario;
+           // collisionManager.Mario = mario;
         }
         public void Remove(IObject gameObject, int index)
         {
             if(gameObject != null)
             {
-                Objects.RemoveAt(index);
+                StaticObjects.RemoveAt(index);
             }
         }
         public void DecorateObject( IObject obj1, int index)
         {
-            Objects[index] = obj1;
+            StaticObjects[index] = obj1;
         }
 
     }

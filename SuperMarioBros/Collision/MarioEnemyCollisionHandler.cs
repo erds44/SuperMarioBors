@@ -26,18 +26,18 @@ namespace SuperMarioBros.Collisions
             { (typeof(Mario),typeof(StompedKoopa), Direction.left),    (typeof(ObstacleCommand),typeof(Nullable)) },
             { (typeof(Mario),typeof(StompedKoopa), Direction.right),    (typeof(ObstacleCommand),typeof(Nullable)) },
             { (typeof(Mario),typeof(StompedKoopa), Direction.bottom),    (typeof(ObstacleCommand),typeof(Nullable)) },
-            { (typeof(StarMario),typeof(Goomba), Direction.left),  (typeof(TakeDamageCommand),typeof(DisappearCommand)) },
-            { (typeof(StarMario),typeof(Goomba), Direction.right), (typeof(TakeDamageCommand),typeof(DisappearCommand)) },
-            { (typeof(StarMario),typeof(Goomba), Direction.bottom),(typeof(TakeDamageCommand),typeof(DisappearCommand)) },
+            { (typeof(StarMario),typeof(Goomba), Direction.left),  (typeof(Nullable),typeof(DisappearCommand)) },
+            { (typeof(StarMario),typeof(Goomba), Direction.right), (typeof(Nullable),typeof(DisappearCommand)) },
+            { (typeof(StarMario),typeof(Goomba), Direction.bottom),(typeof(Nullable),typeof(DisappearCommand)) },
             { (typeof(StarMario),typeof(Goomba), Direction.top),   (typeof(Nullable),typeof(DisappearCommand)) },
-            { (typeof(StarMario),typeof(Koopa), Direction.left),   (typeof(TakeDamageCommand),typeof(DisappearCommand)) },
-            { (typeof(StarMario),typeof(Koopa), Direction.right),  (typeof(TakeDamageCommand),typeof(DisappearCommand)) },
-            { (typeof(StarMario),typeof(Koopa), Direction.bottom), (typeof(TakeDamageCommand),typeof(DisappearCommand)) },
+            { (typeof(StarMario),typeof(Koopa), Direction.left),   (typeof(Nullable),typeof(DisappearCommand)) },
+            { (typeof(StarMario),typeof(Koopa), Direction.right),  (typeof(Nullable),typeof(DisappearCommand)) },
+            { (typeof(StarMario),typeof(Koopa), Direction.bottom), (typeof(Nullable),typeof(DisappearCommand)) },
             { (typeof(StarMario),typeof(Koopa), Direction.top),    (typeof(Nullable),typeof(DisappearCommand)) }
 
 
         };
-        public static  void HandleCollision(IObject mario,  IObject enemy, Direction direction, int index)
+        public static  void HandleCollision(IObject mario,  IObject enemy, Direction direction, int enemyIndex, int marioIndex)
         {
                 if ( collisionDictionary.TryGetValue((mario.GetType(),enemy.GetType(), direction),  out var type ))
                 {
@@ -45,13 +45,21 @@ namespace SuperMarioBros.Collisions
                     Type typ2 = type.Item2;
                     if(typ1 != typeof(Nullable))
                     {
-                        ((ICommand)Activator.CreateInstance(typ1, (IMario)mario)).Execute();
+                        if(typ1 == typeof(TakeDamageCommand))
+                        {
+                            ((ICommand)Activator.CreateInstance(typ1, (IMario)mario, marioIndex)).Execute();
+                        }
+                        else
+                        {
+                            ((ICommand)Activator.CreateInstance(typ1, (IMario)mario)).Execute();
+                        }
                     }
+
                     if(typ2 != typeof(Nullable))
                     {
-                        ((ICommand)Activator.CreateInstance(typ2, (IEnemy)enemy, index)).Execute();
+                        ((ICommand)Activator.CreateInstance(typ2, (IEnemy)enemy, enemyIndex)).Execute();
                     }       
-            }
+                }
 
         }
     }

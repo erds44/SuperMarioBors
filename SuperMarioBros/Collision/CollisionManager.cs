@@ -2,7 +2,6 @@
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Objects;
-using System;
 using System.Collections.Generic;
 using SuperMarioBros.Blocks;
 
@@ -10,29 +9,33 @@ namespace SuperMarioBros.Collisions
 {
     public class CollisionManager 
     {
-        public IMario Mario { get; set; }
-        private readonly List<IObject> objects;
-        public CollisionManager( IMario mario, List<IObject> objects)
+        private readonly List<IObject> staticObjects;
+        private readonly List<IMario> mario;
+        public CollisionManager()
         {
-            Mario = mario;
-            this.objects = objects;
+            mario = ObjectsManager.Instance.Mario;
+            staticObjects = ObjectsManager.Instance.StaticObjects;
         }
 
         public void HandleCollision()
         {
-            for (int i = 0; i < objects.Count; i++)
+            for (int j = 0; j < mario.Count; j++)
             {
-                Direction direction = CollisionDetection.Detect(Mario, objects[i]);
-                if (objects[i] is IItem)
+                for (int i = 0; i < staticObjects.Count; i++)
                 {
-                    MarioItemCollisionHandler.HandleCollision(Mario, objects[i], direction, i);
-                }else if(objects[i] is IEnemy)
-                {
-                   MarioEnemyCollisionHandler.HandleCollision(Mario,  objects[i], direction, i);
-                } 
-                else if(objects[i] is IBlock)
-                {
-                    MarioBlockCollisionHandler.HandleCollision(Mario, objects[i], direction, i);
+                    Direction direction = CollisionDetection.Detect(mario[j], staticObjects[i]);
+                    if (staticObjects[i] is IItem)
+                    {
+                        MarioItemCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction, i, j);
+                    }
+                    else if (staticObjects[i] is IEnemy)
+                    {
+                        MarioEnemyCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction, i, j);
+                    }
+                    else if (staticObjects[i] is IBlock)
+                    {
+                        MarioBlockCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction, i);
+                    }
                 }
             }
         }

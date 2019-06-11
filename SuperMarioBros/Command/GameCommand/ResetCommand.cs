@@ -10,7 +10,6 @@
         public void Execute()
         {
             game.InitializeObjects();
-            game.KeyBinding();
         }
     }
 }

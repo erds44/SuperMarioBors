@@ -7,6 +7,7 @@ using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Commands;
 using SuperMarioBros.Controllers;
 using SuperMarioBros.Marios;
+using SuperMarioBros.Collisions;
 
 namespace SuperMarioBros
 {
@@ -21,7 +22,7 @@ namespace SuperMarioBros
     {
         private IController controller;
         private SpriteBatch spriteBatch;
-        private IMario mario;
+        private CollisionManager collisionManager;
         public MarioGame()
         {
             var graphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -35,13 +36,13 @@ namespace SuperMarioBros
         {
             SpriteFactory.Initialize(Content);
             InitializeObjects();
-            KeyBinding();
             base.Initialize();
         }
         protected override void Update(GameTime gameTime)
         {
             controller.Update();
             ObjectsManager.Instance.Update();
+            collisionManager.HandleCollision();
             base.Update(gameTime);
 
         }
@@ -57,6 +58,7 @@ namespace SuperMarioBros
         }
         public void KeyBinding()
         {
+            IMario mario = ObjectsManager.Instance.Mario[0];
             controller = new KeyboardController
                 (
                     (Keys.Q, new Quit(this)),
@@ -68,13 +70,12 @@ namespace SuperMarioBros
                 );
             controller.Add(new IdleCommand(mario));
         }
+        // This method used for reset command 
         public void InitializeObjects()
         {
-            //mario = new Mario(new Point(100, 100));
-            //ObjectsManager.Instance.Initialize(mario);
             ObjectLoading.LevelLoading(Content, @"PartialLevelOne");
-            mario = ObjectsManager.Instance.Mario;
-            ObjectsManager.Instance.Initialize();
+            collisionManager = new CollisionManager();
+            KeyBinding();
         }
 
     }

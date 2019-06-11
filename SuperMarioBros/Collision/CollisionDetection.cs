@@ -13,8 +13,6 @@ namespace SuperMarioBros.Collisions
 
         public static Direction Detect(IObject object1, IObject object2)
         {
-
-            
             if (object1.HitBox().Intersects(object2.HitBox()))
             {
                 Rectangle overlap = Rectangle.Intersect(object1.HitBox(), object2.HitBox());

@@ -18,7 +18,7 @@ namespace SuperMarioBros.Collisions
             { typeof(Flower), (typeof(FlowerCommand) , typeof(DisappearCommand))},
             { typeof(Star), (typeof(StarMarioCommand) , typeof(DisappearCommand))}
         };
-        public static void HandleCollision(IObject mario, IObject item, Direction direction, int index)
+        public static void HandleCollision(IObject mario, IObject item, Direction direction, int objectIndex, int marioIndex)
         {
             if (direction != Direction.none)
             {
@@ -28,11 +28,18 @@ namespace SuperMarioBros.Collisions
                     Type typ2 = tuple.Item2;
                     if (typ1 != typeof(Nullable))
                     {
-                        ((ICommand)Activator.CreateInstance(typ1, (IMario)mario)).Execute();
+                        if (typ1 == typeof(StarMarioCommand))
+                        {
+                            ((ICommand)Activator.CreateInstance(typ1, (IMario)mario, marioIndex)).Execute();
+                        }
+                        else
+                        {
+                            ((ICommand)Activator.CreateInstance(typ1, (IMario)mario)).Execute();
+                        }
                     }
                     if(typ2 != typeof(Nullable))
                     {
-                        ((ICommand)Activator.CreateInstance(typ2, (IItem)item, index)).Execute();
+                        ((ICommand)Activator.CreateInstance(typ2, (IItem)item, objectIndex)).Execute();
                     }
                 }
             }

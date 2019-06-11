@@ -273,10 +273,12 @@
     <Compile Include="Object\Mario\MarioMovementState\IMarioMovementState.cs" />
     <Compile Include="Object\IObject.cs" />
     <Compile Include="Object\Background\MiddleCloud.cs" />
+    <Compile Include="Object\Mario\FlashingMario.cs" />
     <Compile Include="Object\ObjectSizeManager.cs" />
     <Compile Include="Object\Background\SmallBush.cs" />
     <Compile Include="Object\Background\SmallCloud.cs" />
     <Compile Include="Object\Background\SmallHill.cs" />
+    <Compile Include="Sprite\DecorationSprite.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Interfaces\IUpdate.cs" />
     <Compile Include="Object\Mario\MarioHealthState\IMarioHealthState.cs" />
@@ -310,7 +312,7 @@
     <Compile Include="Object\Physics\Physics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="SpriteFactory\SpriteFactory.cs" />
-    <Compile Include="Sprite\DecorationSprite.cs" />
+    <Compile Include="Sprite\FlashingSprite.cs" />
     <Compile Include="Sprite\UniversalSprite.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -13,18 +13,18 @@ namespace SuperMarioBros
         private static ObjectList objectNodes;
         //public static List<IObject> objectList { get; set; }
         //public static Mario mario;
-        public static void LevelLoading(ContentManager content, String path)
+        public static void LevelLoading(ContentManager content, string path)
         {
             objectNodes = content.Load<ObjectList>(path);
-            ObjectsManager.Instance.Objects = new List<IObject>();
-            ObjectsManager.Instance.Mario = new Mario(objectNodes.objectList[0].Position);
+            ObjectsManager.Instance.StaticObjects = new List<IObject>();
+            ObjectsManager.Instance.Mario = new List<IMario> { new Mario(objectNodes.objectList[0].Position) };
             for(int i = 1; i < objectNodes.objectList.Count; i++)
             {
-                String objectType = objectNodes.objectList[i].ObjectType;
+                string objectType = objectNodes.objectList[i].ObjectType;
                 Type t = Type.GetType(objectType);
                 Point objectPosition = objectNodes.objectList[i].Position;
                 var obj = Activator.CreateInstance(t,objectPosition);
-                ObjectsManager.Instance.Objects.Add((IObject)obj);
+                ObjectsManager.Instance.StaticObjects.Add((IObject)obj);
             }
         }
     }

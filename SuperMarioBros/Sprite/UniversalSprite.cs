@@ -48,7 +48,7 @@ namespace SuperMarioBros.Sprites
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle(location.X, location.Y - height, width, height);
 
-            if (count % SpriteColor.Count == 0)
+            if (count % SpriteColor.Count == 0 || count > SpriteColor.Count)
             {
                 count = 0;
             }

@@ -15,10 +15,10 @@ namespace SuperMarioBros.Commands
         }
         public void Execute()
         {
-            if (ObjectsManager.Instance.Mario.MarioPhysics.Direction() < 0)
-            {
-                ObjectsManager.Instance.DecorateObject(new UsedBlock(new Point(block.HitBox().X, block.HitBox().Y + block.HitBox().Height)), index);
-            }
+            //if (ObjectsManager.Instance.Mario.MarioPhysics.Direction() < 0)
+            //{
+            //    ObjectsManager.Instance.DecorateObject(new UsedBlock(new Point(block.HitBox().X, block.HitBox().Y + block.HitBox().Height)), index);
+            //}
         }
     }
 }

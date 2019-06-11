@@ -6,6 +6,7 @@ using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
+using System;
 
 namespace SuperMarioBros.Marios
 {
@@ -16,12 +17,19 @@ namespace SuperMarioBros.Marios
         public Physics MarioPhysics { get; }
         private readonly IMario mario;
         public ISprite Sprite { get; set; }
-        private int timer;
-        public StarMario(IMario mario)
+        public int Timer { get; set; }
+        private readonly int index;
+        public StarMario(IMario mario, int index)
         {
             this.mario = mario;
             MarioPhysics = mario.MarioPhysics;
-            timer = 300;
+            Timer = 300;
+            this.index = index;
+            if(mario is FlashingMario)
+            {
+                mario.Timer = 0;
+                mario.Update();
+            }
         }
 
         public void Down()
@@ -68,10 +76,10 @@ namespace SuperMarioBros.Marios
         public void Update()
         {
             mario.Update();
-            timer--;
-            if(timer == 0)
+            Timer--;
+            if(Timer == 0)
             {
-                ObjectsManager.Instance.DecorateMario(mario);
+                ObjectsManager.Instance.DecorateMario(mario, index);
             }
             else
             {
