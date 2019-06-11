@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using SuperMarioBros.Sprites;
-using System;
 
 namespace SuperMarioBros.SpriteFactories
 {
@@ -19,11 +18,11 @@ namespace SuperMarioBros.SpriteFactories
                 { "BigMarioLeftCrouching", new UniversalSprite(content.Load<Texture2D>("BigMarioLeftCrouching"), 1) },
                 { "BigMarioLeftIdle", new UniversalSprite(content.Load<Texture2D>("BigMarioLeftIdle"), 1) },
                 { "BigMarioLeftJumping", new UniversalSprite(content.Load<Texture2D>("BigMarioLeftJumping"), 1) },
-                { "BigMarioLeftMoving", new UniversalSprite(content.Load<Texture2D>("BigMarioLeftMoving"), 5) },
+                { "BigMarioLeftMoving", new UniversalSprite(content.Load<Texture2D>("BigMarioLeftMoving"), 4) },
                 { "BigMarioRightCrouching", new UniversalSprite(content.Load<Texture2D>("BigMarioRightCrouching"), 1) },
                 { "BigMarioRightIdle", new UniversalSprite(content.Load<Texture2D>("BigMarioRightIdle"), 1) },
                 { "BigMarioRightJumping", new UniversalSprite(content.Load<Texture2D>("BigMarioRightJumping"), 1) },
-                { "BigMarioRightMoving", new UniversalSprite(content.Load<Texture2D>("BigMarioRightMoving"), 5) },
+                { "BigMarioRightMoving", new UniversalSprite(content.Load<Texture2D>("BigMarioRightMoving"), 4) },
                 { "BrickBlock", new UniversalSprite(content.Load<Texture2D>("BrickBlock"), 1) },
                 { "BrickDebris", new UniversalSprite(content.Load<Texture2D>("BrickDebris"), 1) },
                 { "Coin", new UniversalSprite(content.Load<Texture2D>("Coin"), 5) },
@@ -32,11 +31,11 @@ namespace SuperMarioBros.SpriteFactories
                 { "FireMarioLeftCrouching", new UniversalSprite(content.Load<Texture2D>("FireMarioLeftCrouching"), 1) },
                 { "FireMarioLeftIdle", new UniversalSprite(content.Load<Texture2D>("FireMarioLeftIdle"), 1) },
                 { "FireMarioLeftJumping", new UniversalSprite(content.Load<Texture2D>("FireMarioLeftJumping"), 1) },
-                { "FireMarioLeftMoving", new UniversalSprite(content.Load<Texture2D>("FireMarioLeftMoving"), 6) },
+                { "FireMarioLeftMoving", new UniversalSprite(content.Load<Texture2D>("FireMarioLeftMoving"), 5) },
                 { "FireMarioRightCrouching", new UniversalSprite(content.Load<Texture2D>("FireMarioRightCrouching"), 1) },
                 { "FireMarioRightIdle", new UniversalSprite(content.Load<Texture2D>("FireMarioRightIdle"), 1) },
                 { "FireMarioRightJumping", new UniversalSprite(content.Load<Texture2D>("FireMarioRightJumping"), 1) },
-                { "FireMarioRightMoving", new UniversalSprite(content.Load<Texture2D>("FireMarioRightMoving"), 6) },
+                { "FireMarioRightMoving", new UniversalSprite(content.Load<Texture2D>("FireMarioRightMoving"), 5) },
                 { "Flower", new UniversalSprite(content.Load<Texture2D>("Flower"), 5) },
                 { "GoombaLeftMoving", new UniversalSprite(content.Load<Texture2D>("Goomba"), 5) },
                 { "GoombaRightMoving", new UniversalSprite(content.Load<Texture2D>("Goomba"), 5) },
@@ -53,10 +52,10 @@ namespace SuperMarioBros.SpriteFactories
                 { "DeadMario", new UniversalSprite(content.Load<Texture2D>("DeadMario"), 1) },
                 { "SmallMarioLeftIdle", new UniversalSprite(content.Load<Texture2D>("SmallMarioLeftIdle"), 1) },
                 { "SmallMarioLeftJumping", new UniversalSprite(content.Load<Texture2D>("SmallMarioLeftJumping"), 1) },
-                { "SmallMarioLeftMoving", new UniversalSprite(content.Load<Texture2D>("SmallMarioLeftMoving"), 5) },
+                { "SmallMarioLeftMoving", new UniversalSprite(content.Load<Texture2D>("SmallMarioLeftMoving"), 4) },
                 { "SmallMarioRightIdle", new UniversalSprite(content.Load<Texture2D>("SmallMarioRightIdle"), 1) },
                 { "SmallMarioRightJumping", new UniversalSprite(content.Load<Texture2D>("SmallMarioRightJumping"), 1) },
-                { "SmallMarioRightMoving", new UniversalSprite(content.Load<Texture2D>("SmallMarioRightMoving"), 5) },
+                { "SmallMarioRightMoving", new UniversalSprite(content.Load<Texture2D>("SmallMarioRightMoving"), 4) },
                 { "Star", new UniversalSprite(content.Load<Texture2D>("Star"), 4) },
                 { "BigHill", new UniversalSprite(content.Load<Texture2D>("BigHill"), 1) },
                 { "BigBush", new UniversalSprite(content.Load<Texture2D>("BigBush"), 1) },

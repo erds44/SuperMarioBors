@@ -88,12 +88,12 @@
 <Item>
       <ObjectType>SuperMarioBros.Marios.MarioTypeStates.SmallMario</ObjectType>
       <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftIdle</StateType>
-	<Size>26 32</Size>
+	<Size>34 32</Size>
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Marios.MarioTypeStates.SmallMario</ObjectType>
       <StateType>SuperMarioBros.Marios.MarioMovementStates.RightIdle</StateType>
-	<Size>26 32</Size>
+	<Size>34 32</Size>
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Marios.MarioTypeStates.SmallMario</ObjectType>
@@ -113,7 +113,7 @@
 <Item>
       <ObjectType>SuperMarioBros.Marios.MarioTypeStates.SmallMario</ObjectType>
       <StateType>SuperMarioBros.Marios.MarioMovementStates.RightMoving</StateType>
-	<Size>32 32</Size>
+	<Size>34 32</Size>
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Marios.MarioTypeStates.DeadMario</ObjectType>

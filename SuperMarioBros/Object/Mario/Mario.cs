@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
+using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.Sprites;
 
@@ -79,7 +80,8 @@ namespace SuperMarioBros.Marios
 
         public Rectangle HitBox()
         {
-            return new Rectangle(location.X, location.Y- Sprite.Height(), Sprite.Width(), Sprite.Height());
+            Point size = ObjectSizeManager.MarioSize(HealthState.GetType(), MovementState.GetType());
+            return new Rectangle(location.X, location.Y- size.Y, size.X, size.Y);
         }
 
         public void GreenMushroom()

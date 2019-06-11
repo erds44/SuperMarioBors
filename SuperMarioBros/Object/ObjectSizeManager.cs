@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using SuperMarioBros.Goombas;
-using SuperMarioBros.Marios.MarioMovementStates;
-using SuperMarioBros.Marios.MarioTypeStates;
 using System;
 using System.Collections.Generic;
 
@@ -53,6 +50,23 @@ namespace SuperMarioBros.Objects
             //{
             //    Console.WriteLine(ele);
             //}
+        }
+        public static Point ObjectSize(Type type)
+        {
+           if(objectDictionary.TryGetValue(type, out Point size))
+            {
+                return size;
+            }
+            return new Point(-1, -1);
+        }
+        public static Point MarioSize(Type typ1, Type typ2)
+        {
+
+            if (marioDictionary.TryGetValue((typ1, typ2), out Point size))
+            {
+                return size;
+            }
+            return new Point(-1, -1);
         }
     }
 }
