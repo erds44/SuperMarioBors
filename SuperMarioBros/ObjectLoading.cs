@@ -11,8 +11,6 @@ namespace SuperMarioBros
     public class ObjectLoading
     {
         private static ObjectList objectNodes;
-        //public static List<IObject> objectList { get; set; }
-        //public static Mario mario;
         public static void LevelLoading(ContentManager content, string path)
         {
             objectNodes = content.Load<ObjectList>(path);

@@ -74,6 +74,8 @@ namespace SuperMarioBros
         public void InitializeObjects()
         {
             ObjectLoading.LevelLoading(Content, @"PartialLevelOne");
+            ObjectSizeManager.LoadItemSize(Content, @"SizeLoading");
+            ObjectSizeManager.LoadMarioSize(Content, @"MarioSizeLoading");
             collisionManager = new CollisionManager();
             KeyBinding();
         }
