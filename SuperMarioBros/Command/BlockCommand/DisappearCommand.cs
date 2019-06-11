@@ -3,16 +3,16 @@ using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Commands
 {
-    class HiddenBlockUsedCommand : ICommand
+    public class BrickDisappearCommand : ICommand
     {
         private readonly IBlock block;
-        public HiddenBlockUsedCommand(IBlock block)
+        public BrickDisappearCommand(IBlock block)
         {
             this.block = block;
         }
         public void Execute()
         {
-            ObjectsManager.Instance.HiddenUsed(block);
+            ObjectsManager.Instance.BrickDisappear(block);
         }
     }
 }

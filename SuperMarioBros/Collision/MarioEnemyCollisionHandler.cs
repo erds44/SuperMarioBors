@@ -37,7 +37,7 @@ namespace SuperMarioBros.Collisions
 
 
         };
-        public static  void HandleCollision(IObject mario,  IObject enemy, Direction direction, int enemyIndex, int marioIndex)
+        public static  void HandleCollision(IObject mario,  IObject enemy, Direction direction)
         {
                 if ( collisionDictionary.TryGetValue((mario.GetType(),enemy.GetType(), direction),  out var type ))
                 {
@@ -45,19 +45,13 @@ namespace SuperMarioBros.Collisions
                     Type typ2 = type.Item2;
                     if(typ1 != typeof(Nullable))
                     {
-                        if(typ1 == typeof(TakeDamageCommand))
-                        {
-                            ((ICommand)Activator.CreateInstance(typ1, (IMario)mario, marioIndex)).Execute();
-                        }
-                        else
-                        {
-                            ((ICommand)Activator.CreateInstance(typ1, (IMario)mario)).Execute();
-                        }
+                       ((ICommand)Activator.CreateInstance(typ1, (IMario)mario)).Execute();
+
                     }
 
                     if(typ2 != typeof(Nullable))
                     {
-                        ((ICommand)Activator.CreateInstance(typ2, (IEnemy)enemy, enemyIndex)).Execute();
+                        ((ICommand)Activator.CreateInstance(typ2, (IEnemy)enemy)).Execute();
                     }       
                 }
 

@@ -43,9 +43,13 @@ namespace SuperMarioBros.Physicses
         {
             return prevMotion;
         }
-        public int Direction()
+        public bool HitHidden(int dy)
         {
-            return prevMotion.Y;
+            if(verticalMotion >= dy && prevMotion.Y < 0)
+            {
+                return true;
+            }
+            return false;
         }
         
     }

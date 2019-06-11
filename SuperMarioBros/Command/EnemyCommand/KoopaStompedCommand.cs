@@ -8,15 +8,13 @@ namespace SuperMarioBros.Commands
     class KoopaStompedCommand : ICommand
     {
         private readonly IEnemy enemy;
-        private readonly int index;
-        public KoopaStompedCommand(IEnemy enemy, int index)
+        public KoopaStompedCommand(IEnemy enemy)
         {
             this.enemy = enemy;
-            this.index = index;
         }
         public void Execute()
         {
-            ObjectsManager.Instance.DecorateObject(new StompedKoopa(enemy), index);
+            ObjectsManager.Instance.DecorateObject(enemy, new StompedKoopa(enemy));
         }
     }
 }

@@ -7,8 +7,8 @@ namespace SuperMarioBros.Objects
 {
     public static class ObjectSizeManager
     {
-        private static Dictionary<Type, Point> objectDictionary = new Dictionary<Type, Point>();
-        private static Dictionary<(Type, Type), Point> marioDictionary = new Dictionary<(Type, Type), Point>();
+        private readonly static Dictionary<Type, Point> objectDictionary = new Dictionary<Type, Point>();
+        private readonly static Dictionary<(Type, Type), Point> marioDictionary = new Dictionary<(Type, Type), Point>();
 
         public static void LoadItemSize(ContentManager content, string path)
         {

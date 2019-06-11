@@ -26,15 +26,15 @@ namespace SuperMarioBros.Collisions
                     Direction direction = CollisionDetection.Detect(mario[j], staticObjects[i]);
                     if (staticObjects[i] is IItem)
                     {
-                        MarioItemCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction, i, j);
+                        MarioItemCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction);
                     }
                     else if (staticObjects[i] is IEnemy)
                     {
-                        MarioEnemyCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction, i, j);
+                        MarioEnemyCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction);
                     }
                     else if (staticObjects[i] is IBlock)
                     {
-                        MarioBlockCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction, i);
+                        MarioBlockCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction);
                     }
                 }
             }
