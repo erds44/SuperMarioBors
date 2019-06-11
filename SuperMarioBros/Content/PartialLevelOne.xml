@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <Asset Type="SuperMarioBros.LevelLoading.ObjectList">
+    <objectList>
+    <!-- Start Objects before first gap -->
+    <Item>
+      <ObjectType>GreenMushroom</ObjectType>
+      <Position>0 165</Position>
+    </Item>
+    <Item>
+      <ObjectType>RedMushroom</ObjectType>
+      <Position>300 165</Position>
+    </Item>
+</objectList>
+  </Asset>
+</XnaContent>

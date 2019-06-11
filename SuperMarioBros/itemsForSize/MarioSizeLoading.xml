@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <Asset Type="SuperMarioBros.Objects.MarioList">
+    <MariosList>
+    <!-- Start Objects before first gap -->
+    <Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.BigMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftCrouching</StateType>
+	<Size>32 44</Size>
+    </Item>
+	<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.BigMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.RightCrouching</StateType>
+	<Size>32 44</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.BigMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftIdle</StateType>
+	<Size>32 64</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.BigMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.RightIdle</StateType>
+	<Size>32 64</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.BigMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftJumping</StateType>
+	<Size>32 65</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.BigMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.RightJumping</StateType>
+	<Size>32 65</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.BigMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftMoving</StateType>
+	<Size>32 64</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.BigMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.RightMoving</StateType>
+	<Size>32 64</Size>
+    </Item>
+
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.FireMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftCrouching</StateType>
+	<Size>32 44</Size>
+    </Item>
+	<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.FireMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.RightCrouching</StateType>
+	<Size>32 44</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.FireMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftIdle</StateType>
+	<Size>32 64</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.FireMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.RightIdle</StateType>
+	<Size>32 64</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.FireMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftJumping</StateType>
+	<Size>32 65</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.FireMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.RightJumping</StateType>
+	<Size>32 65</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.FireMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftMoving</StateType>
+	<Size>32 64</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.FireMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.RightMoving</StateType>
+	<Size>32 64</Size>
+    </Item>
+
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.SmallMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftIdle</StateType>
+	<Size>26 32</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.SmallMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.RightIdle</StateType>
+	<Size>26 32</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.SmallMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftJumping</StateType>
+	<Size>34 31</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.SmallMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.RightJumping</StateType>
+	<Size>34 31</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.SmallMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftMoving</StateType>
+	<Size>32 32</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.SmallMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.RightMoving</StateType>
+	<Size>32 32</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.DeadMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.TerminateMovementState</StateType>
+	<Size>31 28</Size>
+    </Item>
+</MariosList>
+</Asset>
+</XnaContent>

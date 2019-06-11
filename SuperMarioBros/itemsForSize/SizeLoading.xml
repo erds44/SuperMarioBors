@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <Asset Type="SuperMarioBros.Objects.SpriteList">
+    <SpritesList>
+    <!-- Start Objects before first gap -->
+    <Item>
+      <ObjectType>SuperMarioBros.Items.GreenMushroom</ObjectType>
+      <Size>29 29</Size>
+    </Item>
+    <Item>
+      <ObjectType>SuperMarioBros.Items.RedMushroom</ObjectType>
+      <Size>28 28</Size>
+    </Item>
+    <Item>
+      <ObjectType>SuperMarioBros.Items.Flower</ObjectType>
+      <Size>32 32</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Items.Star</ObjectType>
+      <Size>35 40</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Items.Pipe</ObjectType>
+      <Size>72 74</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Items.Coin</ObjectType>
+      <Size>14 26</Size>
+    </Item>
+
+<Item>
+      <ObjectType>SuperMarioBros.Blocks.BrickBlock</ObjectType>
+      <Size>40 40</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Blocks.ConcreteBlock</ObjectType>
+      <Size>40 40</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Blocks.HiddenBlock</ObjectType>
+      <Size>0 0</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Blocks.QuestionBlock</ObjectType>
+      <Size>40 40</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Blocks.RockBlock</ObjectType>
+      <Size>40 40</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Koopas.Koopa</ObjectType>
+      <Size>30 45</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Koopas.StompedKoopa</ObjectType>
+      <Size>32 28</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Goombas.Goomba</ObjectType>
+      <Size>31 30</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Goombas.StompedGoomba</ObjectType>
+      <Size>32 16</Size>
+    </Item>
+</SpritesList>
+</Asset>
+</XnaContent>

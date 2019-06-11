@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<XnaContent>
+  <Asset Type="SuperMarioBros.Objects.MarioList">
+    <MariosList>
+    <!-- Start Objects before first gap -->
+    <Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.BigMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftCrouching</StateType>
+	<Size>32 44</Size>
+    </Item>
+</MariosList>
+</Asset>
+</XnaContent>

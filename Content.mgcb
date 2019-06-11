@@ -1,0 +1,27 @@
+
+#----------------------------- Global Properties ----------------------------#
+
+/outputDir:bin
+/intermediateDir:obj
+/platform:Windows
+/config:
+/profile:Reach
+/compress:False
+
+#-------------------------------- References --------------------------------#
+
+/reference:levelLoading\bin\Debug\levelLoading.dll
+/reference:SpriteLoading\bin\Debug\SpriteLoading.dll
+
+#---------------------------------- Content ---------------------------------#
+
+#begin MarioSizeLoading.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:MarioSizeLoading.xml
+
+#begin SizeLoading.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:SizeLoading.xml
+

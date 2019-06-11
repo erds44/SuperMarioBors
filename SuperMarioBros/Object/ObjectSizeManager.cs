@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using SuperMarioBros.Goombas;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
@@ -13,17 +14,40 @@ namespace SuperMarioBros.Objects
            we have to predefine a size infomation
            This class is not in used currently, but used in refactor part
         */
-        private readonly static Dictionary<Type, Point> objectDictionary = new Dictionary<Type, Point>
-        {
-           { typeof(Goomba), new Point(1,1) }, // Width, Height
-                // More to add
-        };
-        private readonly static Dictionary<(Type, Type), Point> marioDictionary = new Dictionary<(Type, Type), Point>
-        {
-           { (typeof(BigMario),typeof(LeftCrouching)), new Point(1,1) },
-            { (typeof(DeadMario), typeof(TerminateMovementState)), new Point(1,1)} // Width Height
-            // more to add
-        };
+        private static Dictionary<Type, Point> objectDictionary = new Dictionary<Type, Point>();
+        private static Dictionary<(Type, Type), Point> marioDictionary = new Dictionary<(Type, Type), Point>();
 
+        public static void LoadItemSize(ContentManager content, String path)
+        {
+            SpriteList spriteList = content.Load<SpriteList>(path);
+            for (int i = 1; i < spriteList.SpritesList.Count; i++)
+            {
+                String objectType = spriteList.SpritesList[i].ObjectType;
+                Type t = Type.GetType(objectType);
+                Point objectSize = spriteList.SpritesList[i].Size;
+                if (!objectDictionary.ContainsKey(t))
+                {
+                    objectDictionary.Add(t, objectSize);
+                }
+            }
+
+        }
+
+        public static void LoadMarioSize(ContentManager content, String path)
+        {
+            MarioList marioList = content.Load<MarioList>(path);
+            for (int i = 1; i < marioList.MariosList.Count; i++)
+            {
+                String objectType = marioList.MariosList[i].ObjectType;
+                String stateType = marioList.MariosList[i].StateType;
+                Type tObject = Type.GetType(objectType);
+                Type tState = Type.GetType(stateType);
+                Point objectSize = marioList.MariosList[i].Size;
+                if (!marioDictionary.ContainsKey((tObject, tState)))
+                {
+                    marioDictionary.Add((tObject, tState), objectSize);
+                }
+            }
+        }
     }
 }
