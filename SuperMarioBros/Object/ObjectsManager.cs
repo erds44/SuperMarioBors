@@ -28,8 +28,8 @@ namespace SuperMarioBros.Objects
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            Mario.ForEach(element => element.Draw(spriteBatch));
             StaticObjects.ForEach(element => element.Draw(spriteBatch));
+            Mario.ForEach(element => element.Draw(spriteBatch));
         }
         public void DecorateMario(IMario mario, int index)
         {

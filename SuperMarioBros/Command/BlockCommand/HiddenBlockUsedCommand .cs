@@ -15,10 +15,11 @@ namespace SuperMarioBros.Commands
         }
         public void Execute()
         {
-            //if (ObjectsManager.Instance.Mario.MarioPhysics.Direction() < 0)
-            //{
-            //    ObjectsManager.Instance.DecorateObject(new UsedBlock(new Point(block.HitBox().X, block.HitBox().Y + block.HitBox().Height)), index);
-            //}
+            // Hard code for now, assume Mairo has only one element
+            if (ObjectsManager.Instance.Mario[0].MarioPhysics.Direction() < 0)
+            {
+                ObjectsManager.Instance.DecorateObject(new UsedBlock(new Point(block.HitBox().X, block.HitBox().Y + block.HitBox().Height)), index);
+            }
         }
     }
 }
