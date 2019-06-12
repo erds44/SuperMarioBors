@@ -1,59 +1,26 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.Objects;
-using SuperMarioBros.Sprites;
 using SuperMarioBros.Goombas.GoombaStates;
-using SuperMarioBros.Objects.Enemy;
 
 namespace SuperMarioBros.Goombas
 {
-    public class StompedGoomba : IEnemy
+    public class StompedGoomba : AbstractEnemy
     {
-        private readonly IEnemy enemy;
-        public StompedGoomba( IEnemy enemy)
+        public StompedGoomba(Point position)
         {
-            enemy.ChangeState(new IdleEnemyState(enemy));
-            this.enemy = enemy;
+            state = new IdleEnemyState(this);
+            this.location = position;
         }
 
-        public void ChangeDirection()
-        {
-           // Do Nothing
-        }
 
-        public void BeStomped()
+        public static void BeStomped()
         {
             // Do Nothing
         }
 
-        public void BeFlipped()
-        {
-            // Do Nothing
-        }
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            enemy.Draw(spriteBatch);
-        }
-
-        public void Update()
-        {
-            enemy.Update();
-        }
-
-        public void ChangeSprite(ISprite sprite)
+        public static void BeFlipped()
         {
             // Do Nothing
         }
 
-
-        public Rectangle HitBox()
-        {
-            return enemy.HitBox();
-        }
-
-        public void ChangeState(IEnemyMovementState enemyMovementState)
-        {
-            // Do Nothing
-        }
     }
 }

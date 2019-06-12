@@ -36,9 +36,9 @@ namespace SuperMarioBros.Marios
             Sprite.Draw(spriteBatch, location);
         }
 
-        public void FireFlower()
+        public void OnFireFlower()
         {
-            HealthState.FireFlower();
+            HealthState.OnFireFlower();
         }
 
         public void Left()

@@ -31,7 +31,8 @@ namespace SuperMarioBros.Items
 
         public Rectangle HitBox()
         {
-            return new Rectangle((int)location.X, (int)(location.Y - sprite.Height()), sprite.Width(), sprite.Height());
+            Point size = ObjectSizeManager.ObjectSize(GetType());
+            return new Rectangle(location.X, location.Y - size.Y, size.X, size.Y);
         }
 
     }

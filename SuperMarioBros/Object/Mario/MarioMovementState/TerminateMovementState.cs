@@ -3,7 +3,7 @@
 
     public class TerminateMovementState : IMarioMovementState
     {
-        public void ChangeSprite()
+        public static void ChangeSprite()
         {
             // Do Nothing
         }
@@ -23,7 +23,7 @@
            // Do Nothing
         }
 
-        public void Obstacle()
+        public static void Obstacle()
         {
             // Do Nothing
         }

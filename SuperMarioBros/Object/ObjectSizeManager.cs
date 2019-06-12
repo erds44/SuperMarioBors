@@ -33,7 +33,7 @@ namespace SuperMarioBros.Objects
         public static void LoadMarioSize(ContentManager content, string path)
         {
             MarioList marioList = content.Load<MarioList>(path);
-            for (int i = 1; i < marioList.MariosList.Count; i++)
+            for (int i = 0; i < marioList.MariosList.Count; i++)
             {
                 string objectType = marioList.MariosList[i].ObjectType;
                 string stateType = marioList.MariosList[i].StateType;
@@ -45,11 +45,11 @@ namespace SuperMarioBros.Objects
                     marioDictionary.Add((tObject, tState), objectSize);
                 }
             }
-            // Used for debug
-            //foreach (KeyValuePair<(Type,Type), Point> ele in marioDictionary)
-            //{
-            //    Console.WriteLine(ele);
-            //}
+            //Used for debug
+            //foreach (KeyValuePair<(Type, Type), Point> ele in marioDictionary)
+            //    {
+            //        Console.WriteLine(ele);
+            //    }
         }
         public static Point ObjectSize(Type type)
         {

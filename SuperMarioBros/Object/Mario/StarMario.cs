@@ -41,9 +41,9 @@ namespace SuperMarioBros.Marios
             Sprite.Draw(spriteBatch, new Point(mario.HitBox().X, mario.HitBox().Y + mario.HitBox().Height));
         }
 
-        public void FireFlower()
+        public void OnFireFlower()
         {
-            mario.FireFlower();
+            mario.OnFireFlower();
         }
 
         public void Left()

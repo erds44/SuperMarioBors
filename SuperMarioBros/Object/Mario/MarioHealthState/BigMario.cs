@@ -17,7 +17,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
             // To do
         }
 
-        public void FireFlower()
+        public void OnFireFlower()
         {
             mario.HealthState = new FireMario(mario);
         }

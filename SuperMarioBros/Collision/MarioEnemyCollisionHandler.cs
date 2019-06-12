@@ -33,7 +33,11 @@ namespace SuperMarioBros.Collisions
             { (typeof(StarMario),typeof(Koopa), Direction.left),   (typeof(Nullable),typeof(DisappearCommand)) },
             { (typeof(StarMario),typeof(Koopa), Direction.right),  (typeof(Nullable),typeof(DisappearCommand)) },
             { (typeof(StarMario),typeof(Koopa), Direction.bottom), (typeof(Nullable),typeof(DisappearCommand)) },
-            { (typeof(StarMario),typeof(Koopa), Direction.top),    (typeof(Nullable),typeof(DisappearCommand)) }
+            { (typeof(StarMario),typeof(Koopa), Direction.top),    (typeof(Nullable),typeof(DisappearCommand)) },
+            { (typeof(StarMario),typeof(StompedKoopa), Direction.top),    (typeof(Nullable),typeof(DisappearCommand)) },
+            { (typeof(StarMario),typeof(StompedKoopa), Direction.left),    (typeof(Nullable),typeof(DisappearCommand)) },
+            { (typeof(StarMario),typeof(StompedKoopa), Direction.right),    (typeof(Nullable),typeof(DisappearCommand)) },
+            { (typeof(StarMario),typeof(StompedKoopa), Direction.bottom),    (typeof(Nullable),typeof(DisappearCommand)) }
 
 
         };

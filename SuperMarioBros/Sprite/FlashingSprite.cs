@@ -2,13 +2,13 @@
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Interfaces;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Sprites
 {
-    class FlashingSprite : ISprite
+    public class FlashingSprite : ISprite
     {
         private readonly ISprite sprite;
-        public List<Color> SpriteColor { get; set; }
         public FlashingSprite(ISprite sprite)
         {
             this.sprite = sprite;
@@ -19,19 +19,13 @@ namespace SuperMarioBros.Sprites
         }
         public void Draw(SpriteBatch spriteBatch, Point location)
         {
-            sprite.SpriteColor = new List<Color> { Color.White, Color.White * 0.5f };
+            sprite.SetColor( new Collection<Color> { Color.White, Color.White * 0.5f });
             sprite.Draw(spriteBatch, location);
-            sprite.SpriteColor = new List<Color> { Color.White };
+            sprite.SetColor(new Collection<Color> { Color.White });
         }
-
-        public int Width()
+        public void SetColor(Collection<Color> colors)
         {
-            return sprite.Width();
-        }
-
-        public int Height()
-        {
-            return sprite.Height();
+            // Do Nothing
         }
     }
 }

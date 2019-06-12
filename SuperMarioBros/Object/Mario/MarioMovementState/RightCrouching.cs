@@ -38,19 +38,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             // Do nothing.
         }
 
-        public void ChangeSprite()
-        {
-            string type = mario.HealthState.GetType().Name;
-            if (!(mario.HealthState is SmallMario))
-            {
-                mario.Sprite = SpriteFactory.CreateSprite(type + GetType().Name);
-            }
-            else
-            {
-                mario.Sprite = SpriteFactory.CreateSprite(type + nameof(RightIdle));
-            }
-        }
-
         public void Idle()
         {
             mario.MovementState = new RightIdle(mario,marioPhysics);

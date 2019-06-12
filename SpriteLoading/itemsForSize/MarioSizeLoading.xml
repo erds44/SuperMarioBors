@@ -3,12 +3,12 @@
   <Asset Type="SuperMarioBros.Objects.MarioList">
     <MariosList>
     <!-- Start Objects before first gap -->
-    <Item>
+<Item>
       <ObjectType>SuperMarioBros.Marios.MarioTypeStates.BigMario</ObjectType>
       <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftCrouching</StateType>
 	<Size>32 44</Size>
     </Item>
-	<Item>
+<Item>
       <ObjectType>SuperMarioBros.Marios.MarioTypeStates.BigMario</ObjectType>
       <StateType>SuperMarioBros.Marios.MarioMovementStates.RightCrouching</StateType>
 	<Size>32 44</Size>

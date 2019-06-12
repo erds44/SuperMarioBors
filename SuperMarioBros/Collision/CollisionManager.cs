@@ -2,19 +2,21 @@
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Objects;
-using System.Collections.Generic;
 using SuperMarioBros.Blocks;
+using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Collisions
 {
     public class CollisionManager 
     {
-        private readonly List<IObject> staticObjects;
-        private readonly List<IMario> mario;
+        private readonly Collection<IObject> staticObjects;
+        private readonly Collection<IMario> mario;
         public CollisionManager()
         {
-            mario = ObjectsManager.Instance.Mario;
-            staticObjects = ObjectsManager.Instance.StaticObjects;
+            //mario = ObjectsManager.Instance.Mario;
+            //staticObjects = ObjectsManager.Instance.StaticObjects;
+            staticObjects = ObjectLoading.LoadObject();
+            mario = ObjectLoading.LoadMario();
         }
 
         public void HandleCollision()

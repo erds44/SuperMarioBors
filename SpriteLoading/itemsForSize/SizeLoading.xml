@@ -38,7 +38,7 @@
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Blocks.HiddenBlock</ObjectType>
-      <Size>0 0</Size>
+      <Size>40 40</Size>
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Blocks.QuestionBlock</ObjectType>
@@ -46,6 +46,10 @@
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Blocks.RockBlock</ObjectType>
+      <Size>40 40</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Blocks.UsedBlock</ObjectType>
       <Size>40 40</Size>
     </Item>
 <Item>
@@ -58,11 +62,11 @@
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Goombas.Goomba</ObjectType>
-      <Size>31 30</Size>
+      <Size>39 30</Size>
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Goombas.StompedGoomba</ObjectType>
-      <Size>32 16</Size>
+      <Size>39 16</Size>
     </Item>
 </SpritesList>
 </Asset>

@@ -58,7 +58,7 @@ namespace SuperMarioBros
         }
         public void KeyBinding()
         {
-            IMario mario = ObjectsManager.Instance.Mario[0];
+            IMario mario = ObjectsManager.Instance.MarioObject()[0];
             controller = new KeyboardController
                 (
                     (Keys.Q, new Quit(this)),
@@ -76,6 +76,7 @@ namespace SuperMarioBros
             ObjectLoading.LevelLoading(Content, @"PartialLevelOne");
             ObjectSizeManager.LoadItemSize(Content, @"SizeLoading");
             ObjectSizeManager.LoadMarioSize(Content, @"MarioSizeLoading");
+            ObjectsManager.Instance.Initialize();
             collisionManager = new CollisionManager();
             KeyBinding();
         }

@@ -2,14 +2,16 @@
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Sprites;
 using SuperMarioBros.Objects.Enemy;
+using SuperMarioBros.Objects;
+using System;
 
 namespace SuperMarioBros.Goombas
 {
     public abstract class AbstractEnemy : IEnemy
     {
-        protected IEnemyMovementState state;
-        protected Point location;
-        protected ISprite sprite;
+        private protected IEnemyMovementState state;
+        private protected Point location;
+        private protected ISprite sprite;
 
         public void ChangeDirection()
         {
@@ -27,19 +29,20 @@ namespace SuperMarioBros.Goombas
             sprite.Update();
         }
 
-        public void ChangeSprite(ISprite sprite)
+        public void ChangeSprite(ISprite inputSprite)
         {
-            this.sprite = sprite;
+            this.sprite = inputSprite;
         }
 
-        public void ChangeState(IEnemyMovementState state)
+        public void ChangeState(IEnemyMovementState inputState)
         {
-            this.state = state;
+            this.state = inputState;
         }
 
         public Rectangle HitBox()
         {
-            return new Rectangle((int)location.X, (int)(location.Y - sprite.Height()), sprite.Width(), sprite.Height());
+            Point size = ObjectSizeManager.ObjectSize(GetType());
+            return new Rectangle(location.X, location.Y - size.Y, size.X, size.Y);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using SuperMarioBros.Goombas;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Objects;
+using Microsoft.Xna.Framework;
 
 namespace SuperMarioBros.Commands
 {
@@ -13,7 +14,7 @@ namespace SuperMarioBros.Commands
         }
         public void Execute()
         {
-            ObjectsManager.Instance.DecorateObject(enemy , new StompedGoomba(enemy));
+            ObjectsManager.Instance.ChangeEnemy(enemy , new StompedGoomba(new Point(enemy.HitBox().X, enemy.HitBox().Y + enemy.HitBox().Height)));
         }
     }
 }

@@ -1,27 +1,31 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Blocks;
-using SuperMarioBros.Collisions;
-using SuperMarioBros.Goombas;
-using SuperMarioBros.Items;
-using SuperMarioBros.Koopas;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Marios.MarioTypeStates;
-using System;
-using System.Collections.Generic;
+using SuperMarioBros.Objects.Enemy;
+using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Objects
 {
     public  class ObjectsManager
     {
-        public List<IObject> StaticObjects { get; set; }
-        public List<IMario> Mario { get; set; } // For now it is a list of maro, later it is a list of dynamic objects
+        private Collection<IObject> StaticObjects;
+        private Collection<IMario> Mario; // For now it is a list of maro, later it is a list of dynamic objects
         private readonly static ObjectsManager instance = new ObjectsManager();
         public static ObjectsManager Instance { get { return instance; } }
         private ObjectsManager() { }
+        public void Initialize()
+        {
+            StaticObjects = ObjectLoading.LoadObject();
+            Mario = ObjectLoading.LoadMario();
+        }
         public void Update()
         {
-            StaticObjects.ForEach(element => element.Update());
+            foreach (IObject obj in StaticObjects)
+            {
+                obj.Update();
+            }
             for (int i = 0; i < Mario.Count; i++)
             {
                 // The update method might change element in the list, so no for each loop
@@ -30,8 +34,14 @@ namespace SuperMarioBros.Objects
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            StaticObjects.ForEach(element => element.Draw(spriteBatch));
-            Mario.ForEach(element => element.Draw(spriteBatch));
+            foreach (IObject obj in StaticObjects)
+            {
+                obj.Draw(spriteBatch);
+            }
+            foreach (IMario mario in Mario)
+            {
+                mario.Draw(spriteBatch);
+            }
         }
         public void DecorateMario(IMario oldMario, IMario newMario)
         {
@@ -49,6 +59,10 @@ namespace SuperMarioBros.Objects
         public void DecorateObject(IObject oldObject, IObject newObject)
         {
             StaticObjects[StaticObjects.IndexOf(oldObject)] = newObject;
+        }
+        public void ChangeEnemy(IEnemy oldEnemy, IEnemy newEnemy)
+        {
+            StaticObjects[StaticObjects.IndexOf(oldEnemy)] = newEnemy;
         }
         public void RemoveDecoration(IMario oldMario, IMario newMario)
         {
@@ -84,6 +98,10 @@ namespace SuperMarioBros.Objects
             {
                 StaticObjects.Remove(block);
             }
+        }
+        public Collection<IMario> MarioObject()
+        {
+            return Mario;
         }
     }
 }

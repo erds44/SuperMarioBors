@@ -14,11 +14,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             
         }
 
-        public void ChangeSprite()
-        {
-            this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
-        }
-
         public void Down()
         {
             mario.MovementState = new LeftIdle(mario,marioPhysics);

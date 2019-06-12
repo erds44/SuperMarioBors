@@ -2,14 +2,13 @@
 using Microsoft.Xna.Framework;
 using SuperMarioBros.Interfaces;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Sprites
 {
     public interface ISprite : IUpdate
     {
         void Draw(SpriteBatch spriteBatch, Point location);
-        int Width();
-        int Height();
-        List<Color> SpriteColor { get; set; }
+        void SetColor(Collection<Color> colors);
     }
 }
