@@ -46,10 +46,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             // Do Nothing
         }
 
-        public void ChangeSprite()
-        {
-            this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
-        }
 
         public void Idle()
         {

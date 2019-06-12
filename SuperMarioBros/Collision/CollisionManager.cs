@@ -2,19 +2,21 @@
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Objects;
-using System.Collections.Generic;
 using SuperMarioBros.Blocks;
+using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Collisions
 {
     public class CollisionManager 
     {
-        private readonly List<IObject> staticObjects;
-        private readonly List<IMario> mario;
+        private readonly Collection<IObject> staticObjects;
+        private readonly Collection<IMario> mario;
         public CollisionManager()
         {
-            mario = ObjectsManager.Instance.Mario;
-            staticObjects = ObjectsManager.Instance.StaticObjects;
+            //mario = ObjectsManager.Instance.Mario;
+            //staticObjects = ObjectsManager.Instance.StaticObjects;
+            staticObjects = ObjectLoading.LoadObject();
+            mario = ObjectLoading.LoadMario();
         }
 
         public void HandleCollision()
@@ -26,15 +28,15 @@ namespace SuperMarioBros.Collisions
                     Direction direction = CollisionDetection.Detect(mario[j], staticObjects[i]);
                     if (staticObjects[i] is IItem)
                     {
-                        MarioItemCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction, i, j);
+                        MarioItemCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction);
                     }
                     else if (staticObjects[i] is IEnemy)
                     {
-                        MarioEnemyCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction, i, j);
+                        MarioEnemyCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction);
                     }
                     else if (staticObjects[i] is IBlock)
                     {
-                        MarioBlockCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction, i);
+                        MarioBlockCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction);
                     }
                 }
             }

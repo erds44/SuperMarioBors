@@ -18,13 +18,11 @@ namespace SuperMarioBros.Marios
         private readonly IMario mario;
         public ISprite Sprite { get; set; }
         public int Timer { get; set; }
-        private readonly int index;
-        public StarMario(IMario mario, int index)
+        public StarMario(IMario mario)
         {
             this.mario = mario;
             MarioPhysics = mario.MarioPhysics;
             Timer = 300;
-            this.index = index;
             if(mario is FlashingMario)
             {
                 mario.Timer = 0;
@@ -43,9 +41,9 @@ namespace SuperMarioBros.Marios
             Sprite.Draw(spriteBatch, new Point(mario.HitBox().X, mario.HitBox().Y + mario.HitBox().Height));
         }
 
-        public void FireFlower()
+        public void OnFireFlower()
         {
-            mario.FireFlower();
+            mario.OnFireFlower();
         }
 
         public void Left()
@@ -79,7 +77,7 @@ namespace SuperMarioBros.Marios
             Timer--;
             if(Timer == 0)
             {
-                ObjectsManager.Instance.DecorateMario(mario, index);
+                ObjectsManager.Instance.RemoveDecoration(this, mario);
             }
             else
             {

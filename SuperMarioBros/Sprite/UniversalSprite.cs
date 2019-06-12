@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.Interfaces;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Sprites
 {
@@ -13,7 +12,7 @@ namespace SuperMarioBros.Sprites
         private readonly int height;
         private readonly int totalFrame;
         private int delay;
-        public  List<Color> SpriteColor { get; set; }
+        private Collection<Color> SpriteColor;
         private int count;
         public UniversalSprite(Texture2D texture, int frame)
         {
@@ -23,8 +22,12 @@ namespace SuperMarioBros.Sprites
             height = texture.Height;
             currentFrame = 0;
             delay = 0;
-            SpriteColor = new List<Color> { Color.White };
+            SpriteColor = new Collection<Color> { Color.White };
             count = 0;
+        }
+        public void SetColor(Collection<Color> colors)
+        {
+            SpriteColor = colors;
         }
         public void Update()
         {
@@ -55,16 +58,6 @@ namespace SuperMarioBros.Sprites
             Color spriteColor = SpriteColor[count];
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, spriteColor);
         
-        }
-
-        public int Width()
-        {
-            return width;
-        }
-
-        public int Height()
-        {
-            return height;
         }
     }
 }

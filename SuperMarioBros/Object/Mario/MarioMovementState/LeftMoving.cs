@@ -13,11 +13,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
         }
 
-        public void ChangeSprite()
-        {
-            mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
-        }
-
         public void Down()
         {
             if (!(mario.HealthState is SmallMario))

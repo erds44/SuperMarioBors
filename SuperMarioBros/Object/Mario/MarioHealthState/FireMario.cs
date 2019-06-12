@@ -17,7 +17,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
             // To Do
         }
 
-        public void FireFlower()
+        public void OnFireFlower()
         {
             // Do Nothing
         }

@@ -12,7 +12,7 @@ namespace SuperMarioBros.Collisions
         private static readonly Dictionary<(Type, Direction), (Type, Type)> collisionDictionary = new Dictionary<(Type, Direction), (Type, Type)>
         {
             {(typeof(UsedBlock), Direction.bottom), (typeof(ObstacleCommand), typeof(Nullable))},
-            { (typeof(BrickBlock), Direction.bottom), (typeof(Nullable), typeof(DisappearCommand))},
+            { (typeof(BrickBlock), Direction.bottom), (typeof(Nullable), typeof(BrickDisappearCommand))},
             {(typeof(QuestionBlock), Direction.bottom), (typeof(ObstacleCommand), typeof(BlockUsedCommand))},
             {(typeof(HiddenBlock), Direction.bottom), (typeof(Nullable), typeof(HiddenBlockUsedCommand))},
             {(typeof(ConcreteBlock), Direction.bottom), (typeof(ObstacleCommand), typeof(Nullable))},
@@ -34,7 +34,7 @@ namespace SuperMarioBros.Collisions
             { (typeof(BrickBlock), Direction.right), (typeof(ObstacleCommand), typeof(Nullable))}
         };
 
-        public static void HandleCollision(IObject mario, IObject block, Direction direction, int index)
+        public static void HandleCollision(IObject mario, IObject block, Direction direction)
         {
             if (collisionDictionary.TryGetValue((block.GetType(), direction), out var type)) 
             {
@@ -46,7 +46,7 @@ namespace SuperMarioBros.Collisions
                 }
                 if (typ2 != typeof(Nullable))
                 {
-                    ((ICommand)Activator.CreateInstance(typ2, (IBlock)block, index)).Execute();
+                    ((ICommand)Activator.CreateInstance(typ2, (IBlock)block)).Execute();
                 }
             }
         }

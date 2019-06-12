@@ -38,10 +38,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             //marioPhysics.Up();
         }
 
-        public void ChangeSprite()
-        { 
-            mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
-        }
 
         public void Idle()
         {

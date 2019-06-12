@@ -7,8 +7,8 @@ namespace SuperMarioBros.Objects
 {
     public static class ObjectSizeManager
     {
-        private static Dictionary<Type, Point> objectDictionary = new Dictionary<Type, Point>();
-        private static Dictionary<(Type, Type), Point> marioDictionary = new Dictionary<(Type, Type), Point>();
+        private readonly static Dictionary<Type, Point> objectDictionary = new Dictionary<Type, Point>();
+        private readonly static Dictionary<(Type, Type), Point> marioDictionary = new Dictionary<(Type, Type), Point>();
 
         public static void LoadItemSize(ContentManager content, string path)
         {
@@ -33,7 +33,7 @@ namespace SuperMarioBros.Objects
         public static void LoadMarioSize(ContentManager content, string path)
         {
             MarioList marioList = content.Load<MarioList>(path);
-            for (int i = 1; i < marioList.MariosList.Count; i++)
+            for (int i = 0; i < marioList.MariosList.Count; i++)
             {
                 string objectType = marioList.MariosList[i].ObjectType;
                 string stateType = marioList.MariosList[i].StateType;
@@ -45,11 +45,11 @@ namespace SuperMarioBros.Objects
                     marioDictionary.Add((tObject, tState), objectSize);
                 }
             }
-            // Used for debug
-            //foreach (KeyValuePair<(Type,Type), Point> ele in marioDictionary)
-            //{
-            //    Console.WriteLine(ele);
-            //}
+            //Used for debug
+            //foreach (KeyValuePair<(Type, Type), Point> ele in marioDictionary)
+            //    {
+            //        Console.WriteLine(ele);
+            //    }
         }
         public static Point ObjectSize(Type type)
         {

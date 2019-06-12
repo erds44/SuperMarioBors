@@ -8,7 +8,8 @@
         */
         void TakeDamage();
         void RedMushroom();
-        void FireFlower();
+        // gives error to use event if not start with On
+        void OnFireFlower();
         void GreenMushroom();
         void Coin();
     }

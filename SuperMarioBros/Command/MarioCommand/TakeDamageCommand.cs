@@ -7,19 +7,14 @@ namespace SuperMarioBros.Commands
     class TakeDamageCommand : ICommand
     {
         private readonly IMario mario;
-        private readonly int index;
-        public TakeDamageCommand(IMario mario, int index)
+        public TakeDamageCommand(IMario mario)
         {
             this.mario = mario;
-            this.index = index;
         }
         public void Execute()
         {
             mario.TakeDamage();
-            if (!(mario.HealthState is DeadMario))
-            {
-                ObjectsManager.Instance.DecorateMario(new FlashingMario(mario, index), index);
-            }
+            ObjectsManager.Instance.DecorateMario(mario, new FlashingMario(mario));
         }
     }
 }

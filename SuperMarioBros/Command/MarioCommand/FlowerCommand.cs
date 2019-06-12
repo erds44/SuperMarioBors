@@ -11,7 +11,7 @@ namespace SuperMarioBros.Commands
         }
         public void Execute()
         {
-            mario.FireFlower();
+            mario.OnFireFlower();
         }
     }
 }

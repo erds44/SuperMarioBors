@@ -33,11 +33,15 @@ namespace SuperMarioBros.Collisions
             { (typeof(StarMario),typeof(Koopa), Direction.left),   (typeof(Nullable),typeof(DisappearCommand)) },
             { (typeof(StarMario),typeof(Koopa), Direction.right),  (typeof(Nullable),typeof(DisappearCommand)) },
             { (typeof(StarMario),typeof(Koopa), Direction.bottom), (typeof(Nullable),typeof(DisappearCommand)) },
-            { (typeof(StarMario),typeof(Koopa), Direction.top),    (typeof(Nullable),typeof(DisappearCommand)) }
+            { (typeof(StarMario),typeof(Koopa), Direction.top),    (typeof(Nullable),typeof(DisappearCommand)) },
+            { (typeof(StarMario),typeof(StompedKoopa), Direction.top),    (typeof(Nullable),typeof(DisappearCommand)) },
+            { (typeof(StarMario),typeof(StompedKoopa), Direction.left),    (typeof(Nullable),typeof(DisappearCommand)) },
+            { (typeof(StarMario),typeof(StompedKoopa), Direction.right),    (typeof(Nullable),typeof(DisappearCommand)) },
+            { (typeof(StarMario),typeof(StompedKoopa), Direction.bottom),    (typeof(Nullable),typeof(DisappearCommand)) }
 
 
         };
-        public static  void HandleCollision(IObject mario,  IObject enemy, Direction direction, int enemyIndex, int marioIndex)
+        public static  void HandleCollision(IObject mario,  IObject enemy, Direction direction)
         {
                 if ( collisionDictionary.TryGetValue((mario.GetType(),enemy.GetType(), direction),  out var type ))
                 {
@@ -45,19 +49,13 @@ namespace SuperMarioBros.Collisions
                     Type typ2 = type.Item2;
                     if(typ1 != typeof(Nullable))
                     {
-                        if(typ1 == typeof(TakeDamageCommand))
-                        {
-                            ((ICommand)Activator.CreateInstance(typ1, (IMario)mario, marioIndex)).Execute();
-                        }
-                        else
-                        {
-                            ((ICommand)Activator.CreateInstance(typ1, (IMario)mario)).Execute();
-                        }
+                       ((ICommand)Activator.CreateInstance(typ1, (IMario)mario)).Execute();
+
                     }
 
                     if(typ2 != typeof(Nullable))
                     {
-                        ((ICommand)Activator.CreateInstance(typ2, (IEnemy)enemy, enemyIndex)).Execute();
+                        ((ICommand)Activator.CreateInstance(typ2, (IEnemy)enemy)).Execute();
                     }       
                 }
 
