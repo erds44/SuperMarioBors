@@ -66,7 +66,12 @@ namespace SuperMarioBros
                     (Keys.S, new DownCommand(mario)),
                     (Keys.D, new RightCommand(mario)),
                     (Keys.W, new UpCommand(mario)),
-                    (Keys.R, new ResetCommand(this))
+                    (Keys.R, new ResetCommand(this)),
+                    (Keys.Left, new LeftCommand(mario)),
+                    (Keys.Down, new DownCommand(mario)),
+                    (Keys.Right, new RightCommand(mario)),
+                    (Keys.Up, new UpCommand(mario))
+              
                 );
             controller.Add(new IdleCommand(mario));
         }
