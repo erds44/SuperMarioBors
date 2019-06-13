@@ -8,8 +8,8 @@ namespace SuperMarioBros.Blocks
     {
         public BrickBlock( Point location)
         {
-            this.location = location;
-            this.state = new BrickBlockState(this);
+            this.Location = location;
+            this.State = new BrickBlockState(this);
         }
 
     }

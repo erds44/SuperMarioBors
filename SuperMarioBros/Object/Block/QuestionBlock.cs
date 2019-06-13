@@ -7,8 +7,8 @@ namespace SuperMarioBros.Blocks
     {
         public QuestionBlock(Point location)
         {
-            this.location = location;
-            state = new QuestionBlockState(this);
+            this.Location = location;
+            State = new QuestionBlockState(this);
         }
     }
 }

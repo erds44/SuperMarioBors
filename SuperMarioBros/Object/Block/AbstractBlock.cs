@@ -8,43 +8,43 @@ namespace SuperMarioBros.Blocks
 {
     public abstract class AbstractBlock : IBlock
     {
-        public IBlockState state { get; protected set; }
-        public Point location { get; protected set; }
-        public ISprite sprite { get; protected set; }
+        public IBlockState State { get; protected set; }
+        public Point Location { get; protected set; }
+        public ISprite Sprite { get; protected set; }
 
         public void ChangeState(IBlockState state)
         {
-            this.state = state;
+            this.State = state;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, location);
+            Sprite.Draw(spriteBatch, Location);
         }
 
         public void Move(Point motion)
         {
-            this.location += motion;
+            this.Location += motion;
         }
 
         public void Update()
         {
-            this.sprite.Update();
+            this.Sprite.Update();
         }
 
         public void ChangeSprite(ISprite sprite)
         {
-            this.sprite = sprite;
+            this.Sprite = sprite;
         }
         public void Used()
         {
-            this.state.ToUsed();
+            this.State.ToUsed();
         }
 
         public Rectangle HitBox()
         {
             Point size = ObjectSizeManager.ObjectSize(GetType());
-            return new Rectangle(location.X, location.Y - size.Y, size.X, size.Y);
+            return new Rectangle(Location.X, Location.Y - size.Y, size.X, size.Y);
         }
     }
 }

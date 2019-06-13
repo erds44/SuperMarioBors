@@ -8,7 +8,7 @@ namespace SuperMarioBros.Backgrounds
         public SmallCloud(Point location)
         {
             this.location = location;
-            sprite = SpriteFactory.CreateSprite("SmallCloud");
+            sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
     }
 }

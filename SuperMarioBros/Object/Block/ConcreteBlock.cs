@@ -7,8 +7,8 @@ namespace SuperMarioBros.Blocks
     {
         public ConcreteBlock( Point location)
         {
-            this.location = location;
-            this.state = new ConcreteBlockState(this);
+            this.Location = location;
+            this.State = new ConcreteBlockState(this);
         }
     }
 }

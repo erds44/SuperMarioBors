@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 
-namespace SuperMarioBros.Interfaces
+namespace SuperMarioBros
 {
     public interface IDraw
     {

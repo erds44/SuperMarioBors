@@ -10,7 +10,7 @@ namespace SuperMarioBros.Backgrounds
         public BigCloud(Point location)
         {
             this.location = location;
-            sprite = SpriteFactory.CreateSprite("BigCloud");
+            sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
     }
 }

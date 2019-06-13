@@ -8,7 +8,7 @@ namespace SuperMarioBros.Backgrounds
         public MiddleCloud(Point location)
         {
             this.location = location;
-            sprite = SpriteFactory.CreateSprite("MiddleCloud");
+            sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
     }
 }

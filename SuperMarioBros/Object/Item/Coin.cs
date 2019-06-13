@@ -9,7 +9,7 @@ namespace SuperMarioBros.Items
         public Coin(Point location)
         {
             this.location = location;
-            sprite = SpriteFactory.CreateSprite("Coin");
+            sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
 
     }

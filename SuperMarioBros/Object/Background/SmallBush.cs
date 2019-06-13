@@ -10,7 +10,7 @@ namespace SuperMarioBros.Backgrounds
         public SmallBush(Point location)
         {
             this.location = location;
-            sprite = SpriteFactory.CreateSprite("SmallBush");
+            sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
     }
 }

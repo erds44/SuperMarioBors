@@ -31,6 +31,9 @@ namespace SuperMarioBros.Sprites
         }
         public void Update()
         {
+            /* the delay here is to slow doown the animation
+             * There might be a better solution to do this
+             */
             delay++;
             if (delay % 5 == 0)
             {
@@ -51,6 +54,7 @@ namespace SuperMarioBros.Sprites
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle(location.X, location.Y - height, width, height);
 
+            /* This condition is used for alternating colors for star mario */
             if (count % SpriteColor.Count == 0 || count > SpriteColor.Count)
             {
                 count = 0;

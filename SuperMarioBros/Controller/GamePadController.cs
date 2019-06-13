@@ -9,7 +9,6 @@ namespace SuperMarioBros.Controllers
     class GamePadController : IController
     {
         private readonly Dictionary<GamePadButtons, ICommand> inputKeys;
-        //private ICommand IdleCommand;
         public GamePadController(params (GamePadButtons key, ICommand command)[] args)
         {
             inputKeys = new Dictionary<GamePadButtons, ICommand>();
@@ -25,13 +24,6 @@ namespace SuperMarioBros.Controllers
             throw new System.NotImplementedException();
         }
 
-
-        //private void Initialize()
-        //{
-        //    inputKeys.Add(new GamePadButtons(Buttons.Start), new Quit(receiver));
-        //    // More Keys TBD
-
-        //}
         public void Update()
         {
             GamePadButtons button = GamePad.GetState(PlayerIndex.One).Buttons;

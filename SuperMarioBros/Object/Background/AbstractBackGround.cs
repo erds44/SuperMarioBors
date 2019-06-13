@@ -19,7 +19,10 @@ namespace SuperMarioBros.Backgrounds
         {
             sprite.Update();
         }
-
+        /* For background, We treate the hit box is empty
+         * We can later make backgournd as non-cllideable object 
+         * such that it does not have bitbox method at all
+         */
         public Rectangle HitBox()
         {
             return new Rectangle(location.X,location.Y , 0, 0);

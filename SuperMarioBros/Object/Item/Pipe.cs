@@ -8,7 +8,7 @@ namespace SuperMarioBros.Items
         public Pipe(Point location)
         {
             this.location = location;
-            sprite = SpriteFactory.CreateSprite("Pipe");
+            sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
 
     }

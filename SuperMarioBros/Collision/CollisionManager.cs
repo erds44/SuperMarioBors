@@ -13,8 +13,6 @@ namespace SuperMarioBros.Collisions
         private readonly Collection<IMario> mario;
         public CollisionManager()
         {
-            //mario = ObjectsManager.Instance.Mario;
-            //staticObjects = ObjectsManager.Instance.StaticObjects;
             staticObjects = ObjectLoading.LoadObject();
             mario = ObjectLoading.LoadMario();
         }

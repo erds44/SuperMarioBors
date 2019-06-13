@@ -10,7 +10,12 @@ namespace SuperMarioBros.Collisions
         private static int obj2y;
         private static int obj2Width;
         private static int obj2Height;
-
+        /*
+          The Collision Detection Method has many branches,
+          It is hard to make it elegent right now
+          Basically, it covers 8 different cases of collision
+          4 caes for sides, 4 cases for corners              
+        */
         public static Direction Detect(IObject object1, IObject object2)
         {
             if (object1.HitBox().Intersects(object2.HitBox()))

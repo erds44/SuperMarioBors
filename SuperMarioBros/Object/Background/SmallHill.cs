@@ -8,7 +8,7 @@ namespace SuperMarioBros.Backgrounds
         public SmallHill(Point location)
         {
             this.location = location;
-            sprite = SpriteFactory.CreateSprite("SmallHill");
+            sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace SuperMarioBros.Backgrounds
         public BigBush(Point location)
         {
             this.location = location;
-            sprite = SpriteFactory.CreateSprite("BigBush");
+            sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
     }
 }

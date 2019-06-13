@@ -8,7 +8,7 @@ namespace SuperMarioBros.Items
         public Star(Point location)
         {
             this.location = location;
-            sprite = SpriteFactory.CreateSprite("Star");
+            sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
     }
 }

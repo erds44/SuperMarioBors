@@ -15,6 +15,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <BuildToolsFxCopVersion>1.0.1</BuildToolsFxCopVersion>
     <PublishUrl>C:\Users\Allen\Desktop\新建文件夹 %282%29\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -29,7 +30,6 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <BuildToolsFxCopVersion>1.0.1</BuildToolsFxCopVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -274,9 +274,9 @@
     <Compile Include="Object\Block\BlockState\IBlockState.cs" />
     <Compile Include="Object\Block\QuestionBlock.cs" />
     <Compile Include="Object\Block\RockBlock.cs" />
-    <Compile Include="Object\Enemy\EnemyMovementState\LeftMovingEnemyState.cs" />
+    <Compile Include="Object\Enemy\EnemyMovementState\LeftMoving.cs" />
     <Compile Include="Object\Enemy\EnemyMovementState\IdleEnemyState.cs" />
-    <Compile Include="Object\Enemy\EnemyMovementState\RightMovingEnemyState.cs" />
+    <Compile Include="Object\Enemy\EnemyMovementState\RightMoving.cs" />
     <Compile Include="Object\Enemy\AbstractEnemy.cs" />
     <Compile Include="Object\Enemy\Goomba\StompedGoomba.cs" />
     <Compile Include="Object\Enemy\IEnemyMovementState.cs" />
