@@ -57,7 +57,11 @@ namespace SuperMarioBros.Objects
             {
                 return size;
             }
-            return new Point(-1, -1);
+            else
+            {
+                throw new System.ArgumentException("ERROR: The size of " + type + " is not loaded");
+            }
+ 
         }
         public static Point MarioSize(Type typ1, Type typ2)
         {
@@ -66,7 +70,10 @@ namespace SuperMarioBros.Objects
             {
                 return size;
             }
-            return new Point(-1, -1);
-        }
+            else
+            {
+                throw new System.ArgumentException("ERROR: The size of mario in " + typ1 + " and " + typ2 + " state is not loaded.");
+            }
+        }   
     }
 }
