@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.SpriteFactories;
+using SuperMarioBros.Blocks.BlockStates;
 
 namespace SuperMarioBros.Blocks
 {
@@ -8,7 +8,7 @@ namespace SuperMarioBros.Blocks
         public RockBlock( Point location)
         {
             this.location = location;
-            sprite = SpriteFactory.CreateSprite(this.GetType().Name);
+            state = new RockBlockState(this);
         }
     }
 }

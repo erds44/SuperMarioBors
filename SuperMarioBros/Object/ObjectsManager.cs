@@ -83,7 +83,7 @@ namespace SuperMarioBros.Objects
             int height = Rectangle.Intersect(Mario[0].HitBox(), block.HitBox()).Height;
             if (Mario[0].MarioPhysics.HitHidden(height))
             {
-                StaticObjects[StaticObjects.IndexOf(block)] = new UsedBlock(new Point(block.HitBox().X, block.HitBox().Y + block.HitBox().Height));
+                block.Used();
                 Mario[0].MarioPhysics.Down();
                 Mario[0].Update();
             }

@@ -49,10 +49,6 @@
       <Size>40 40</Size>
     </Item>
 <Item>
-      <ObjectType>SuperMarioBros.Blocks.UsedBlock</ObjectType>
-      <Size>40 40</Size>
-    </Item>
-<Item>
       <ObjectType>SuperMarioBros.Koopas.Koopa</ObjectType>
       <Size>30 45</Size>
     </Item>
