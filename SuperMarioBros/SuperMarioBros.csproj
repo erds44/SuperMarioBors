@@ -252,7 +252,6 @@
     <Compile Include="Controller\GamePadController.cs" />
     <Compile Include="Controller\IController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Interfaces\IDraw.cs" />
     <Compile Include="ObjectLoading.cs" />
     <Compile Include="Object\Background\AbstractBackGround.cs" />

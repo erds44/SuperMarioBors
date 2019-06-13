@@ -17,10 +17,12 @@ namespace SuperMarioBros.Marios
         public Physics MarioPhysics { get; }
         private Point location;
         public int Timer { get; set; }
+        private readonly int xVelocity = 3;
+        private readonly int yVelocity = 3;
         public Mario(Point location)
         {
             HealthState = new SmallMario(this);
-            MarioPhysics = new Physics(3, 3);
+            MarioPhysics = new Physics(xVelocity, yVelocity);
             MovementState = new RightIdle(this, MarioPhysics);
             this.location = location;
         }
@@ -70,7 +72,7 @@ namespace SuperMarioBros.Marios
         {
             MovementState.Update();
             Sprite.Update();
-            location += MarioPhysics.Motion();
+            location += MarioPhysics.Displacement();
         }
 
         public void Idle()

@@ -4,48 +4,48 @@ namespace SuperMarioBros.Physicses
 {
     public class Physics
     {
-        private readonly int horizontalMotion;
-        private readonly int verticalMotion;
-        private Point motion;
-        private Point prevMotion;
-        public Physics(int horizontalMotion, int verticalMotion)
+        private readonly int xVelocity;
+        private readonly int yVelocity;
+        private Point displacement;
+        private Point prevDisplacement;
+        public Physics(int xVelocity, int yVelocity)
         {
-            this.horizontalMotion = horizontalMotion;
-            this.verticalMotion = verticalMotion;
-            motion = new Point(0, 0);
+            this.xVelocity = xVelocity;
+            this.yVelocity = yVelocity;
+            displacement = new Point(0, 0);
         }
         public void Left()
         {
-            motion.X -= horizontalMotion;
+            displacement.X -= xVelocity;
         }
         public void Right()
         {
-            motion.X += horizontalMotion;
+            displacement.X += xVelocity;
         }
         public void Up()
         {
-            motion.Y -= verticalMotion;
+            displacement.Y -= yVelocity;
         }
         public void Down()
         {
-            motion.Y += verticalMotion;
+            displacement.Y += yVelocity;
         }
-        public Point Motion()
+        public Point Displacement()
         {
             /* If making motion as property, it will be tedious to make changes to motion
              * since it is a struct and instantiation is requried each time we make changes
              * on motion*/
-            prevMotion = motion;
-            motion = new Point(0, 0);
-            return prevMotion;      
+            prevDisplacement = displacement;
+            displacement = new Point(0, 0);
+            return prevDisplacement;      
         }
         public Point Revert()
         {
-            return prevMotion;
+            return prevDisplacement;
         }
         public bool HitHidden(int dy)
         {
-            if(verticalMotion >= dy && prevMotion.Y < 0)
+            if(yVelocity >= dy && prevDisplacement.Y < 0)
             {
                 return true;
             }

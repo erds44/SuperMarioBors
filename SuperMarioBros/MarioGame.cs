@@ -1,23 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Runtime.InteropServices;
 using SuperMarioBros.Objects;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Commands;
 using SuperMarioBros.Controllers;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Collisions;
+using System;
 
 namespace SuperMarioBros
 {
-    /* Fix Sprint 2 Prob2 : Naming of NameSpace */
-    /* To be fixed:
-     * Abusing string, i.e. SpriteFacotry
-     * Generate a Widht, Height staitc class served for hitbox
-     * 
-     */
-    [ComVisible(false)]
+    // [ComVisible(false)]
     public class MarioGame : Game
     {
         private IController controller;
@@ -49,7 +43,6 @@ namespace SuperMarioBros
 
         protected override void Draw(GameTime gameTime)
         {
-            /* Fix: Sprint 2 Prob6 Usage of spriteBatch */
             spriteBatch.Begin();
             GraphicsDevice.Clear(Color.CornflowerBlue);
             ObjectsManager.Instance.Draw(spriteBatch);
@@ -75,7 +68,7 @@ namespace SuperMarioBros
                 );
             controller.Add(new IdleCommand(mario));
         }
-        // This method used for reset command 
+
         public void InitializeObjects()
         {
            
