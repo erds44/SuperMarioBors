@@ -6,6 +6,7 @@ using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Blocks
 {
+
     public abstract class AbstractBlock : IBlock
     {
         public IBlockState State { get; protected set; }
