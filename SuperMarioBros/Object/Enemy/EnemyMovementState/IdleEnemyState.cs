@@ -7,7 +7,7 @@ namespace SuperMarioBros.Goombas.GoombaStates
     {
         public IdleEnemyState(IEnemy enemy)
         {
-            enemy.ChangeSprite(SpriteFactory.CreateSprite(enemy.GetType().Name));
+            enemy.Sprite = SpriteFactory.CreateSprite(enemy.GetType().Name);
         }
 
         public void ChangeDirection()

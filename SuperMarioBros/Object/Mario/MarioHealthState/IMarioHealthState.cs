@@ -8,9 +8,10 @@
         */
         void TakeDamage();
         void RedMushroom();
-        // gives error to use event if not start with On
         void OnFireFlower();
         void GreenMushroom();
         void Coin();
+        // Coin might not be implemented in Mario Class
+        // We put the mehtod here for now
     }
 }

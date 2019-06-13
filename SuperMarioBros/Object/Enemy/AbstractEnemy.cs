@@ -3,40 +3,29 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Sprites;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Objects;
-using System;
 
 namespace SuperMarioBros.Goombas
 {
     public abstract class AbstractEnemy : IEnemy
     {
-        private protected IEnemyMovementState state;
+        public IEnemyMovementState State { get; set; }
         private protected Point location;
-        private protected ISprite sprite;
+        public ISprite Sprite { get; set; }
 
         public void ChangeDirection()
         {
-            state.ChangeDirection();
+            State.ChangeDirection();
         }
 
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, location);
+            Sprite.Draw(spriteBatch, location);
         }
 
         public void Update()
         {
-            sprite.Update();
-        }
-
-        public void ChangeSprite(ISprite inputSprite)
-        {
-            this.sprite = inputSprite;
-        }
-
-        public void ChangeState(IEnemyMovementState inputState)
-        {
-            this.state = inputState;
+            Sprite.Update();
         }
 
         public Rectangle HitBox()

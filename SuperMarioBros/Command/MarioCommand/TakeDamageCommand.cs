@@ -14,6 +14,10 @@ namespace SuperMarioBros.Commands
         public void Execute()
         {
             mario.TakeDamage();
+            /* Add feature for invisible Mario when taking dmg 
+               It might not be the correct place to do so
+               we might change later
+            */
             ObjectsManager.Instance.DecorateMario(mario, new FlashingMario(mario));
         }
     }

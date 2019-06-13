@@ -48,13 +48,15 @@ namespace SuperMarioBros.Objects
             {
                 Mario.Remove(oldMario);
                 Mario.Add(newMario);
-                //Mario[Mario.IndexOf(oldMario)] = newMario;
             }
         }
         public void Remove(IObject gameObject)
         {
             StaticObjects.Remove(gameObject);
         }
+        /*  The following methods might not be put in the ObjetcsManager class
+         *  They will be refactored later
+         */
         public void ChangeObject(IObject oldObject, IObject newObject)
         {
             StaticObjects.Remove(oldObject);

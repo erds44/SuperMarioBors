@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
-using SuperMarioBros.Interfaces;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Sprites

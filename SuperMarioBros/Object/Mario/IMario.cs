@@ -14,5 +14,6 @@ namespace SuperMarioBros.Marios
         IMarioMovementState MovementState { get; set; }
         Physics MarioPhysics { get; }
         void Obstacle();
+        /* Obstacle should be in MovementState, to be refacoted */
     }
 }

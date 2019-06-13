@@ -23,7 +23,7 @@ namespace SuperMarioBros.Controllers
         }
         public void Update()
         {
-            /* Fix: Sprint 2 prob7, accept multiple keys */
+            /* The idle command is called when player release any movement keys for Mario*/
             Keys[] key = Keyboard.GetState().GetPressedKeys();
             if (key.Count() > 0)
             {

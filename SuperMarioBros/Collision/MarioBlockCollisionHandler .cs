@@ -10,6 +10,7 @@ namespace SuperMarioBros.Collisions
 {
     public static class MarioBlockCollisionHandler 
     {
+        /* All CollisionHandler class will be refactored using delegate */
         private static readonly Dictionary<(Type, Direction), (Type, Type)> collisionDictionary = new Dictionary<(Type, Direction), (Type, Type)>
         {
             {(typeof(UsedBlockState), Direction.bottom), (typeof(ObstacleCommand), typeof(Nullable))},
@@ -37,7 +38,7 @@ namespace SuperMarioBros.Collisions
 
         public static void HandleCollision(IObject mario, IBlock Block, Direction direction)
         {
-            if (collisionDictionary.TryGetValue((Block.state.GetType(), direction), out var type)) 
+            if (collisionDictionary.TryGetValue((Block.State.GetType(), direction), out var type)) 
             {
                 Type typ1 = type.Item1;
                 Type typ2 = type.Item2;

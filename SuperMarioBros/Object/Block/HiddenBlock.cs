@@ -8,8 +8,8 @@ namespace SuperMarioBros.Blocks
     {
         public HiddenBlock( Point location)
         {
-            this.location = location;
-            this.state = new HiddenBlockState(this);
+            this.Location = location;
+            this.State = new HiddenBlockState(this);
         }
     }
 }

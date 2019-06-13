@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Goombas;
-using SuperMarioBros.Goombas.GoombaStates;
+using SuperMarioBros.Objects.Enemy;
 
 namespace SuperMarioBros.Koopas
 {
@@ -8,7 +8,7 @@ namespace SuperMarioBros.Koopas
     {
         public Koopa(Point location)
         {
-            state = new LeftMovingEnemyState(this);
+            State = new LeftMoving(this);
             this.location = location;
         }
     }

@@ -7,8 +7,8 @@ namespace SuperMarioBros.Blocks
 {
     public interface IBlock : IObject
     {
-        IBlockState state { get; }
-        Point location { get; }
+        IBlockState State { get; }
+        Point Location { get; }
         void Used();
         void ChangeSprite(ISprite sprite);
         void ChangeState(IBlockState blockState);

@@ -5,7 +5,7 @@ namespace SuperMarioBros.Objects.Enemy
 {
     public interface IEnemy : IObject, IEnemyMovementState
     {
-        void ChangeState(IEnemyMovementState enemyMovementState);
-        void ChangeSprite(ISprite sprite);
+        IEnemyMovementState State { get; set; }
+        ISprite Sprite { get; set; }
     }
 }

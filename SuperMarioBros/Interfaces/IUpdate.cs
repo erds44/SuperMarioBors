@@ -1,4 +1,4 @@
-﻿namespace SuperMarioBros.Interfaces
+﻿namespace SuperMarioBros
 {
     public interface IUpdate
     {

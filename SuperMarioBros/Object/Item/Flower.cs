@@ -9,7 +9,7 @@ namespace SuperMarioBros.Items
         public Flower(Point location)
         {
             this.location = location;
-            sprite = SpriteFactory.CreateSprite("Flower");
+            sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
     }
 }

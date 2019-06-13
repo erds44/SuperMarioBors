@@ -16,7 +16,7 @@ namespace SuperMarioBros.Items
         public GreenMushroom(Point location)
         {           
             this.location = location;
-            sprite = SpriteFactory.CreateSprite("GreenMushroom");
+            sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
 
         public void Draw(SpriteBatch SpriteBatch)

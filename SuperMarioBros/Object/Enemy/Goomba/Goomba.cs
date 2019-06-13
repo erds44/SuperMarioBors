@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Goombas.GoombaStates;
+using SuperMarioBros.Objects.Enemy;
 
 namespace SuperMarioBros.Goombas
 {
@@ -7,7 +7,7 @@ namespace SuperMarioBros.Goombas
     {
         public Goomba( Point location)
         {
-            state = new LeftMovingEnemyState(this);
+            State = new LeftMoving(this);
             this.location = location;
         }
 
