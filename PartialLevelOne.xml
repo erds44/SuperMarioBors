@@ -41,23 +41,23 @@
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Blocks.BrickBlock</ObjectType>
-      <Position>200 300</Position>
+      <Position>200 400</Position>
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Blocks.ConcreteBlock</ObjectType>
-      <Position>300 300</Position>
+      <Position>300 400</Position>
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Blocks.HiddenBlock</ObjectType>
-      <Position>400 300</Position>
+      <Position>400 400</Position>
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Blocks.QuestionBlock</ObjectType>
-      <Position>500 300</Position>
+      <Position>500 400</Position>
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Blocks.RockBlock</ObjectType>
-      <Position>600 300</Position>
+      <Position>600 400</Position>
     </Item>
 <Item>
   <ObjectType>SuperMarioBros.Backgrounds.BigHill</ObjectType>
