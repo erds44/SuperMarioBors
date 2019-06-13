@@ -76,7 +76,7 @@ namespace SuperMarioBros.Collisions
         //}
         //private static Dictionary<(Type, Type), MarioBlockHandler> handler = new Dictionary<(Type, Type), MarioBlockHandler>
         //{
-        //    // Different caes to add
+        //    // Different cases to add
         //};
     }
 }
