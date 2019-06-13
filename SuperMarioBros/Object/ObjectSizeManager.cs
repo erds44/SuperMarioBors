@@ -13,7 +13,7 @@ namespace SuperMarioBros.Objects
         public static void LoadItemSize(ContentManager content, string path)
         {
             SpriteList spriteList = content.Load<SpriteList>(path);
-            for (int i = 1; i < spriteList.SpritesList.Count; i++)
+            for (int i = 0; i < spriteList.SpritesList.Count; i++)
             {
                 string objectType = spriteList.SpritesList[i].ObjectType;
                 Type t = Type.GetType(objectType);
