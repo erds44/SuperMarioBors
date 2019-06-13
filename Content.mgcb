@@ -12,6 +12,8 @@
 
 /reference:levelLoading\bin\Debug\levelLoading.dll
 /reference:SpriteLoading\bin\Debug\SpriteLoading.dll
+/reference:SpriteLoading\itemsForSize\SpriteLoading.dll
+/reference:levelLoading\levelLoading.dll
 
 #---------------------------------- Content ---------------------------------#
 
@@ -24,4 +26,14 @@
 /importer:XmlImporter
 /processor:PassThroughProcessor
 /build:SizeLoading.xml
+
+#begin SpriteLoading/itemsForSize/MarioSizeLoading.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:SpriteLoading/itemsForSize/MarioSizeLoading.xml
+
+#begin SpriteLoading/itemsForSize/SizeLoading.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:SpriteLoading/itemsForSize/SizeLoading.xml
 
