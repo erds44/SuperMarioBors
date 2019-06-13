@@ -14,7 +14,7 @@ namespace SuperMarioBros.Commands
         }
         public void Execute()
         {
-            ObjectsManager.Instance.ChangeEnemy(enemy , new StompedGoomba(new Point(enemy.HitBox().X, enemy.HitBox().Y + enemy.HitBox().Height)));
+            ObjectsManager.Instance.ChangeObject(enemy , new StompedGoomba(new Point(enemy.HitBox().X, enemy.HitBox().Y + enemy.HitBox().Height)));
         }
     }
 }

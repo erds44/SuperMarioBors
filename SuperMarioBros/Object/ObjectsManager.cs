@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Blocks;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Marios.MarioTypeStates;
-using SuperMarioBros.Objects.Enemy;
 using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Objects
@@ -47,26 +46,24 @@ namespace SuperMarioBros.Objects
         {
             if(!(oldMario.HealthState is DeadMario))
             {
-                Mario[Mario.IndexOf(oldMario)] = newMario;
+                Mario.Remove(oldMario);
+                Mario.Add(newMario);
+                //Mario[Mario.IndexOf(oldMario)] = newMario;
             }
-            // This method is used for flashing mario
-            // No need to chekc if oldMario in Mario
         }
         public void Remove(IObject gameObject)
         {
             StaticObjects.Remove(gameObject);
         }
-        public void DecorateObject(IObject oldObject, IObject newObject)
+        public void ChangeObject(IObject oldObject, IObject newObject)
         {
-            StaticObjects[StaticObjects.IndexOf(oldObject)] = newObject;
-        }
-        public void ChangeEnemy(IEnemy oldEnemy, IEnemy newEnemy)
-        {
-            StaticObjects[StaticObjects.IndexOf(oldEnemy)] = newEnemy;
+            StaticObjects.Remove(oldObject);
+            StaticObjects.Add(newObject);
         }
         public void RemoveDecoration(IMario oldMario, IMario newMario)
         {
-            Mario[Mario.IndexOf(oldMario)] = newMario;
+            Mario.Remove(oldMario);
+            Mario.Add(newMario);
         }
         public void StarMario(IMario mario)
         {
@@ -76,7 +73,10 @@ namespace SuperMarioBros.Objects
                 mario.Timer = 0;
                 mario.Update();
             }
-            Mario[index] = new StarMario(Mario[index]);
+            Mario[index] = new StarMario(Mario[index]); 
+            // the usage of indeof is necessary here
+            // if mario is flashing and hits a star
+            // mario will end flashing state then become star mario
         }
         public void HiddenUsed(IBlock block)
         {
