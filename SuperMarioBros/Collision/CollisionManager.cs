@@ -36,7 +36,7 @@ namespace SuperMarioBros.Collisions
                     }
                     else if (staticObjects[i] is IBlock)
                     {
-                        MarioBlockCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction);
+                        MarioBlockCollisionHandler.HandleCollision(mario[j], (IBlock)staticObjects[i], direction);
                     }
                 }
             }

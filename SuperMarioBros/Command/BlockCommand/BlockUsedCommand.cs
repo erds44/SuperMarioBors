@@ -13,7 +13,7 @@ namespace SuperMarioBros.Commands
         }
         public void Execute()
         {
-            ObjectsManager.Instance.DecorateObject(block , new UsedBlock(new Point(block.HitBox().X, block.HitBox().Y + block.HitBox().Height)));  
+            block.Used();
         }
     }
 }

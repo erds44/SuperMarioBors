@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Blocks.BlockStates;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Blocks
@@ -8,7 +9,7 @@ namespace SuperMarioBros.Blocks
         public BrickBlock( Point location)
         {
             this.location = location;
-            sprite = SpriteFactory.CreateSprite(this.GetType().Name);
+            this.state = new BrickBlockState(this);
         }
 
     }
