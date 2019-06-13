@@ -11,8 +11,7 @@ namespace SuperMarioBros.Objects
     {
         private Collection<IObject> StaticObjects;
         private Collection<IMario> Mario; // For now it is a list of maro, later it is a list of dynamic objects
-        private readonly static ObjectsManager instance = new ObjectsManager();
-        public static ObjectsManager Instance { get { return instance; } }
+        public static ObjectsManager Instance { get; } = new ObjectsManager();
         private ObjectsManager() { }
         public void Initialize()
         {
