@@ -66,7 +66,7 @@ namespace SuperMarioBros
                     (Keys.Up, new UpCommand(mario))
               
                 );
-            controller.Add(new IdleCommand(mario));
+            controller.SetIdle(new IdleCommand(mario));
         }
 
         public void InitializeObjects()

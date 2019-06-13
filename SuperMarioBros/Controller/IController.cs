@@ -5,6 +5,6 @@ namespace SuperMarioBros.Controllers
 {
     public interface IController : IUpdate
     {
-        void Add(ICommand command);
+        void SetIdle(ICommand idleCommand);
     }
 }

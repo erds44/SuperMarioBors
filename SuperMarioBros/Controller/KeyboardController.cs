@@ -17,7 +17,7 @@ namespace SuperMarioBros.Controllers
                 inputKeys.Add(element.Item1, element.Item2);
             }
         }
-        public void Add(ICommand command)
+        public void SetIdle(ICommand command)
         {
             IdleCommand = command;
         }

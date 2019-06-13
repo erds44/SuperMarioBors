@@ -19,7 +19,7 @@ namespace SuperMarioBros.Controllers
         }
 
 
-        public void Add(ICommand command)
+        public void SetIdle(ICommand command)
         {
             throw new System.NotImplementedException();
         }
