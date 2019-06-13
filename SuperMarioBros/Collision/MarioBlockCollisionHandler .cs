@@ -50,6 +50,31 @@ namespace SuperMarioBros.Collisions
                 }
             }
         }
-        
+        //private delegate void MarioBlockHandler(IMario mario, IBlock block, Direction direction);
+        //private static void MarioObstacleAndBlockUsed(IMario mario, IBlock block, Direction direction)
+        //{
+        //    // work for Mario vs Question / Hidden
+        //    mario.Obstacle();
+        //    if (direction == Direction.bottom)
+        //    {
+        //        block.Used();
+        //    }
+        //}
+        //private static void MarioObstacleAndBlockBumped(IMario mario, IBlock block, Direction direction)
+        //{
+        //    // work for smallMario vs Brick
+        //}
+        //private static void MarioObstacleAndBlockBroken(IMario mario, IBlock block, Direction direction)
+        //{
+        //    // work for big/fire Mario vs Brick
+        //}
+        //private static void MarioObstacle(IMario mario, IBlock block, Direction direction)
+        //{
+        //    // work for big/fire Mario vs rock, concrete, used block
+        //}
+        //private static Dictionary<(Type, Type), MarioBlockHandler> handler = new Dictionary<(Type, Type), MarioBlockHandler>
+        //{
+        //    // Different caes to add
+        //};
     }
 }
