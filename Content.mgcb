@@ -10,39 +10,12 @@
 
 #-------------------------------- References --------------------------------#
 
-/reference:levelLoading\bin\Debug\levelLoading.dll
-/reference:SpriteLoading\bin\Debug\SpriteLoading.dll
-/reference:SpriteLoading\itemsForSize\SpriteLoading.dll
 /reference:levelLoading\levelLoading.dll
 
 #---------------------------------- Content ---------------------------------#
 
-#begin greenMushroom.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=0,0,0,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:greenMushroom.png
-
-#begin PartialLevelOne.xml
+#begin levelLoading/PartialLevelOne.xml
 /importer:XmlImporter
 /processor:PassThroughProcessor
-/build:PartialLevelOne.xml
-
-#begin redMushroom.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=0,0,0,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:redMushroom.png
+/build:levelLoading/PartialLevelOne.xml
 

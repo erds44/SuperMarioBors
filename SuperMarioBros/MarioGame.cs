@@ -78,6 +78,7 @@ namespace SuperMarioBros
         // This method used for reset command 
         public void InitializeObjects()
         {
+           
             ObjectLoading.LevelLoading(Content, @"PartialLevelOne");
             ObjectSizeManager.LoadItemSize(Content, @"SizeLoading");
             ObjectSizeManager.LoadMarioSize(Content, @"MarioSizeLoading");
