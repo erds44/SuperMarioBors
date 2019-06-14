@@ -1,7 +1,4 @@
-﻿using SuperMarioBros.Commands;
-using SuperMarioBros.Interfaces;
-
-namespace SuperMarioBros.Controllers
+﻿namespace SuperMarioBros.Controllers
 {
     public interface IController : IUpdate
     {
