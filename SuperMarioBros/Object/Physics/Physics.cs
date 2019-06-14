@@ -1,40 +1,58 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace SuperMarioBros.Physicses
 {
     public class Physics
     {
-        private readonly int xVelocity;
-        private readonly int yVelocity;
+        private int xVelocity = 0;
+        private int yVelocity = 0;
+        private readonly int forwardAcceleration;
+        private readonly int backwardAcceleration = 1;
+        private readonly int gravity;
+        private readonly int minClamping = -3;
+        private readonly int maxClamping = 3;
         private Point displacement;
         private Point prevDisplacement;
-        public Physics(int xVelocity, int yVelocity)
+        private int count;
+        public Physics(int forwardAcceleration)
         {
-            this.xVelocity = xVelocity;
-            this.yVelocity = yVelocity;
+            this.forwardAcceleration = forwardAcceleration;
             displacement = new Point(0, 0);
+            count = 0;
         }
         public void Left()
         {
-            displacement.X -= xVelocity;
+            if(count % 5 == 0)
+            {
+                xVelocity -= (forwardAcceleration - backwardAcceleration);
+                count = 0;
+            }
+           
         }
         public void Right()
         {
-            displacement.X += xVelocity;
+            if(count % 5 == 0)
+            {
+                xVelocity += (forwardAcceleration - backwardAcceleration);
+                count = 0;
+            }
+           
         }
         public void Up()
         {
-            displacement.Y -= yVelocity;
+            
         }
         public void Down()
         {
-            displacement.Y += yVelocity;
+            
         }
         public Point Displacement()
         {
             /* If making motion as property, it will be tedious to make changes to motion
              * since it is a struct and instantiation is requried each time we make changes
              * on motion*/
+            Update();
             prevDisplacement = displacement;
             displacement = new Point(0, 0);
             return prevDisplacement;      
@@ -51,6 +69,33 @@ namespace SuperMarioBros.Physicses
             }
             return false;
         }
-        
+        public void SpeedDecay()
+        {
+            if( count % 5 == 0)
+            {
+                xVelocity = (int)((float)xVelocity * 0.6);
+            }
+        }
+        private void Update()
+        {
+            if(xVelocity > 0)
+            {
+                Console.WriteLine(xVelocity);
+            }
+            if (xVelocity < minClamping)
+            {
+                xVelocity = minClamping;
+            }
+            else if (xVelocity > maxClamping)
+            {
+                xVelocity = maxClamping;
+            }
+            displacement.X += xVelocity;
+            count++;
+        }
+        private void Break()
+        {
+            xVelocity = (Math.Abs(xVelocity) - backwardAcceleration) * Math.Sign(xVelocity);
+        }
     }
 }

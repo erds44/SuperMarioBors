@@ -20,10 +20,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             {
                 mario.MovementState = new RightCrouching(mario, marioPhysics);
             }
-            else
-            {
-                marioPhysics.Down();
-            }
         }
 
         public void Right()
@@ -49,7 +45,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Idle()
         {
-            // Do Nothing
+            mario.MarioPhysics.SpeedDecay();
         }
     }
 }

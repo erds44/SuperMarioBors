@@ -22,7 +22,7 @@ namespace SuperMarioBros.Marios
         public Mario(Point location)
         {
             HealthState = new SmallMario(this);
-            MarioPhysics = new Physics(xVelocity, yVelocity);
+            MarioPhysics = new Physics(2);
             MovementState = new RightIdle(this, MarioPhysics);
             this.location = location;
         }
