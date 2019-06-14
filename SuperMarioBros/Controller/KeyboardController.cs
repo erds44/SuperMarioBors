@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xna.Framework.Input;
-using SuperMarioBros.Commands;
-using SuperMarioBros.Controller;
 
 namespace SuperMarioBros.Controllers
 {

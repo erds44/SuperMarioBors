@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuperMarioBros.Controller
+namespace SuperMarioBros.Controllers
 {
     public class ControllerMessager : IUpdate
     {
@@ -16,12 +16,10 @@ namespace SuperMarioBros.Controller
         private readonly MarioGame marioGame;
         private readonly IMario marioPlayer;
         private List<IController> controllers;
-        private readonly ICommand idle;
-        public ControllerMessager(MarioGame game, IMario mario, ICommand idleCommand)
+        public ControllerMessager(MarioGame game, IMario mario)
         {
             marioGame = game;
             marioPlayer = mario;
-            idle = idleCommand;
             controllers = new List<IController>();
         }
         public void AddController(IController controller)

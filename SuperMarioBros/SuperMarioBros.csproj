@@ -252,6 +252,7 @@
     <Compile Include="Controller\ControllerMessager.cs" />
     <Compile Include="Controller\GamePadController.cs" />
     <Compile Include="Controller\IController.cs" />
+    <Compile Include="Controller\JoyStickController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Interfaces\IDraw.cs" />
     <Compile Include="ObjectLoading.cs" />

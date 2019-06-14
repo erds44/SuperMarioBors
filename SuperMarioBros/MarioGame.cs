@@ -3,12 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.Objects;
 using SuperMarioBros.SpriteFactories;
-using SuperMarioBros.Commands;
 using SuperMarioBros.Controllers;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Collisions;
-using System;
-using SuperMarioBros.Controller;
 
 namespace SuperMarioBros
 {
@@ -53,7 +50,7 @@ namespace SuperMarioBros
         public void KeyBinding()
         {
             IMario mario = ObjectsManager.Instance.MarioObject()[0];
-            controller = new ControllerMessager(this, mario, new IdleCommand(mario));
+            controller = new ControllerMessager(this, mario);
             IController keyboardController = new KeyboardController
                 (controller,
                     (Keys.Q, ControllerMessager.QUITGAME),
@@ -68,7 +65,8 @@ namespace SuperMarioBros
                     (Keys.Up, ControllerMessager.UPMOVE)
                 );
             controller.AddController(keyboardController);
-            //IController GamePadController = new GamePadController();
+            IController JoyStickController = new JoyStickController(controller);
+            controller.AddController(JoyStickController);
         }
 
         public void InitializeObjects()
