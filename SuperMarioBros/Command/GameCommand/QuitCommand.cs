@@ -1,9 +1,9 @@
 ﻿namespace SuperMarioBros.Commands
 {
-    class Quit : ICommand
+    class QuitCommand : ICommand
     {
         private readonly MarioGame game;
-        public Quit(MarioGame game)
+        public QuitCommand(MarioGame game)
         {
             this.game = game;
         }

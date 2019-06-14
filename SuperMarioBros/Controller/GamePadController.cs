@@ -18,11 +18,10 @@ namespace SuperMarioBros.Controllers
             }
         }
 
-
-        public void SetIdle(ICommand command)
+/*        public void SetIdle(ICommand command)
         {
             throw new System.NotImplementedException();
-        }
+        }*/
 
         public void Update()
         {
