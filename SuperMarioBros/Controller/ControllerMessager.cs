@@ -12,10 +12,20 @@ namespace SuperMarioBros.Controllers
     public class ControllerMessager : IUpdate
     {
         private int flags = 0b000000;
-        public const int NOMOVE = 0b000000, UPMOVE = 0b000001, DOWNMOVE = 0b000010, LEFTMOVE = 0b000100, RIGHTMOVE = 0b001000, RESETGAME = 0b010000, QUITGAME = 0b100000;
+        public const int UPMOVE = 0b000001, DOWNMOVE = 0b000010, LEFTMOVE = 0b000100, RIGHTMOVE = 0b001000, RESETGAME = 0b010000, QUITGAME = 0b100000;
         private readonly MarioGame marioGame;
         private readonly IMario marioPlayer;
-        private List<IController> controllers;
+        private readonly List<IController> controllers;
+        private readonly Dictionary<int, Type> gameCommand = new Dictionary<int, Type>{
+            { QUITGAME, typeof(QuitCommand) },
+            { RESETGAME, typeof(ResetCommand) }
+        };
+        private readonly Dictionary<int, Type> moveCommand = new Dictionary<int, Type> {
+            { LEFTMOVE, typeof(LeftCommand) },
+            { RIGHTMOVE, typeof(RightCommand) },
+            { UPMOVE, typeof(UpCommand) },
+            { DOWNMOVE, typeof(DownCommand) }
+        };
         public ControllerMessager(MarioGame game, IMario mario)
         {
             marioGame = game;
@@ -32,45 +42,23 @@ namespace SuperMarioBros.Controllers
             {
                 controller.Update();
             }
-
-            if ((flags | NOMOVE) == 0)
+            if(flags == 0)
             {
                 new IdleCommand(marioPlayer).Execute();
-                return;
             }
-
-            if ((flags & QUITGAME) != 0) {
-                new QuitCommand(marioGame).Execute();
-                return;
-            } 
-
-            if((flags & RESETGAME) != 0)
+            foreach(KeyValuePair<int, Type> element in gameCommand)
             {
-                new ResetCommand(marioGame).Execute();
-                return;
+                if((flags & element.Key) != 0) { ((ICommand)Activator.CreateInstance(element.Value, marioGame)).Execute(); }
             }
-            
-            if((flags & UPMOVE) != 0)
+            foreach(KeyValuePair<int, Type> element in moveCommand)
             {
-                new UpCommand(marioPlayer).Execute();
+                if((flags & element.Key) != 0) { ((ICommand)Activator.CreateInstance(element.Value, marioPlayer)).Execute(); }
             }
-            if((flags & DOWNMOVE) != 0)
-            {
-                new DownCommand(marioPlayer).Execute();
-            }
-            if((flags & LEFTMOVE) != 0)
-            {
-                new LeftCommand(marioPlayer).Execute();
-            }
-            if((flags & RIGHTMOVE) != 0)
-            {
-                new RightCommand(marioPlayer).Execute();
-            }
-            flags = flags & NOMOVE; //Reset flags.
+            flags = 0b000000; //Reset flags.
         }
         public void ChangeFlags(int command)
         {
-            flags = flags | command; //Bitwise Update.
+            flags |= command; //Bitwise Update.
         }
     }
 }

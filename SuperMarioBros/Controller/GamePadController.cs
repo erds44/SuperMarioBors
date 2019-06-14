@@ -19,11 +19,6 @@ namespace SuperMarioBros.Controllers
             }
         }
 
-        public void SetIdle(ICommand command)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public void Update()
         {
             GamePadButtons button = GamePad.GetState(PlayerIndex.One).Buttons;
