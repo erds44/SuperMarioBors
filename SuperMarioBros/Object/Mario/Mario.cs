@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.Collisions;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
@@ -15,16 +16,14 @@ namespace SuperMarioBros.Marios
         public IMarioMovementState MovementState { get; set; }
         public ISprite Sprite { get; set; }
         public Physics MarioPhysics { get; }
-        private Point location;
+        public Vector2 Position { get; set; }
         public int Timer { get; set; }
-        private readonly int xVelocity = 3;
-        private readonly int yVelocity = 3;
         public Mario(Point location)
         {
             HealthState = new SmallMario(this);
-            MarioPhysics = new Physics(2);
-            MovementState = new RightIdle(this, MarioPhysics);
-            this.location = location;
+            MarioPhysics = new Physics(100);
+            MovementState = new RightIdle(this);
+            Position = new Vector2((float)location.X, (float)location.Y);
         }
 
 
@@ -35,7 +34,8 @@ namespace SuperMarioBros.Marios
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Sprite.Draw(spriteBatch, location);
+            // Sprite.Draw(spriteBatch, location);
+            Sprite.Draw(spriteBatch, new Point((int) Position.X, (int)Position.Y));
         }
 
         public void OnFireFlower()
@@ -70,9 +70,9 @@ namespace SuperMarioBros.Marios
 
         public void Update()
         {
-            MovementState.Update();
-            Sprite.Update();
-            location += MarioPhysics.Displacement();
+            //MovementState.Update();
+            //Sprite.Update();
+            //location += MarioPhysics.Displacement();
         }
 
         public void Idle()
@@ -83,7 +83,7 @@ namespace SuperMarioBros.Marios
         public Rectangle HitBox()
         {
             Point size = ObjectSizeManager.MarioSize(HealthState.GetType(), MovementState.GetType());
-            return new Rectangle(location.X, location.Y- size.Y, size.X, size.Y);
+            return new Rectangle((int)Position.X, (int)Position.Y- size.Y, size.X, size.Y);
         }
 
         public void GreenMushroom()
@@ -91,14 +91,23 @@ namespace SuperMarioBros.Marios
             // TODO
         }
 
-        public void Obstacle()
+        public void Obstacle(Direction direction)
         {
-            location -= MarioPhysics.Revert();
+            MarioPhysics.CollisionDirection = direction;
+            MovementState.Obstacle(direction);
         }
 
         public void Coin()
         {
             HealthState.Coin();
         }
+
+        public void Update(GameTime gameTime)
+        {
+            Sprite.Update();
+           // location += MarioPhysics.Displacement(gameTime);
+            Position += MarioPhysics.Displacement(gameTime);
+        }
+
     }
 }

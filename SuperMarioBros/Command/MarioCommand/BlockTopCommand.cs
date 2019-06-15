@@ -1,17 +1,18 @@
-﻿using SuperMarioBros.Marios;
+﻿using SuperMarioBros.Collisions;
+using SuperMarioBros.Marios;
 
 namespace SuperMarioBros.Commands
 {
-    class ObstacleCommand : ICommand
+    class BlockTopCommand : ICommand
     {
         private readonly IMario mario;
-        public ObstacleCommand(IMario mario)
+        public BlockTopCommand(IMario mario)
         {
             this.mario = mario;
         }
         public void Execute()
         {
-            mario.Obstacle();
+            mario.Obstacle(Direction.top);
         }
     }
 }

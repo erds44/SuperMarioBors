@@ -73,6 +73,9 @@
     <None Include="Content\BigHill.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\BigMarioLeftBreaking.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\BigMarioLeftCrouching.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -83,6 +86,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\BigMarioLeftMoving.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BigMarioRightBreaking.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\BigMarioRightCrouching.xnb">
@@ -109,6 +115,9 @@
     <None Include="Content\ConcreteBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\FireMarioLeftBreaking.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\FireMarioLeftCrouching.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -119,6 +128,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\FireMarioLeftMoving.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\FireMarioRightBreaking.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\FireMarioRightCrouching.xnb">
@@ -163,6 +175,9 @@
     <None Include="Content\SmallHill.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\SmallMarioLeftBreaking.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\SmallMarioLeftIdle.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -170,6 +185,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\SmallMarioLeftMoving.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioRightBreaking.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\SmallMarioRightIdle.xnb">
@@ -242,12 +260,14 @@
     <Compile Include="Command\MarioCommand\IdleCommand.cs" />
     <Compile Include="Command\GameCommand\QuitCommand.cs" />
     <Compile Include="Command\GameCommand\ResetCommand.cs" />
+    <Compile Include="Command\MarioCommand\BlockTopCommand.cs" />
+    <Compile Include="Command\MarioCommand\BlockBottomCommand.cs" />
+    <Compile Include="Command\MarioCommand\BlcokLeftAndRightCommand.cs" />
     <Compile Include="Command\MarioCommand\RightCommand.cs" />
     <Compile Include="Command\MarioCommand\GreenMushroomCommand.cs" />
     <Compile Include="Command\MarioCommand\RedMushroomCommand.cs" />
     <Compile Include="Command\MarioCommand\UpCommand.cs" />
     <Compile Include="Command\MarioCommand\StarMarioCommand.cs" />
-    <Compile Include="Command\MarioCommand\ObstacleCommand.cs" />
     <Compile Include="Command\MarioCommand\TakeDamageCommand.cs" />
     <Compile Include="Controller\ControllerMessager.cs" />
     <Compile Include="Controller\GamePadController.cs" />
@@ -289,6 +309,8 @@
     <Compile Include="Object\IObject.cs" />
     <Compile Include="Object\Background\MiddleCloud.cs" />
     <Compile Include="Object\Mario\FlashingMario.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\RightBreaking.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\LeftBreaking.cs" />
     <Compile Include="Object\ObjectSizeManager.cs" />
     <Compile Include="Object\Background\SmallBush.cs" />
     <Compile Include="Object\Background\SmallCloud.cs" />

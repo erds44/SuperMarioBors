@@ -18,7 +18,7 @@ namespace SuperMarioBros.Objects
             StaticObjects = ObjectLoading.LoadObject();
             Mario = ObjectLoading.LoadMario();
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             foreach (IObject obj in StaticObjects)
             {
@@ -27,7 +27,7 @@ namespace SuperMarioBros.Objects
             for (int i = 0; i < Mario.Count; i++)
             {
                 // The update method might change element in the list, so no for each loop
-                Mario[i].Update(); 
+                Mario[i].Update(gameTime); 
             }
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -85,7 +85,6 @@ namespace SuperMarioBros.Objects
             if (Mario[0].MarioPhysics.HitHidden(height))
             {
                 block.Used();
-                Mario[0].MarioPhysics.Down();
                 Mario[0].Update();
             }
         }
@@ -93,7 +92,7 @@ namespace SuperMarioBros.Objects
         {
             if(Mario[0].HealthState is SmallMario)
             {
-                Mario[0].Obstacle();
+               // Mario[0].Obstacle();
             }
             else
             {

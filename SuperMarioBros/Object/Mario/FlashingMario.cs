@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.Collisions;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Objects;
@@ -16,6 +17,7 @@ namespace SuperMarioBros.Marios
         private readonly IMario mario;
         public ISprite Sprite { get; set; }
         public int Timer { get; set; }
+        public Vector2 Position { get; set; }
         public FlashingMario(IMario mario)
         {
             this.mario = mario;
@@ -93,14 +95,20 @@ namespace SuperMarioBros.Marios
             // TODO
         }
 
-        public void Obstacle()
-        {
-            mario.Obstacle();
-        }
 
         public void Coin()
         {
             mario.Coin();
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            mario.Update(gameTime);
+        }
+
+        public void Obstacle(Direction direction)
+        {
+            mario.Obstacle(direction);
         }
     }
 }

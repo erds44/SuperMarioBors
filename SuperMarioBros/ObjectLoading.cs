@@ -4,7 +4,6 @@ using SuperMarioBros.LevelLoading;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace SuperMarioBros
@@ -33,7 +32,8 @@ namespace SuperMarioBros
             return mario;
         }
         public static Collection<IObject> LoadObject()
-        { 
+        {
+            //objects.Add(new BrickBlock(new Point(400, 240)));
             return objects;
         }
     }

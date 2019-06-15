@@ -1,4 +1,6 @@
-﻿using SuperMarioBros.Interfaces.State;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Collisions;
+using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
@@ -13,7 +15,7 @@ namespace SuperMarioBros.Marios
         IMarioHealthState HealthState { get; set; }
         IMarioMovementState MovementState { get; set; }
         Physics MarioPhysics { get; }
-        void Obstacle();
-        /* Obstacle should be in MovementState, to be refacoted */
+        Vector2 Position { get; set; }
+        void Update(GameTime gameTime);
     }
 }

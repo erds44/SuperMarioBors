@@ -6,7 +6,6 @@ using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Controllers;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Collisions;
-using System;
 
 namespace SuperMarioBros
 {
@@ -34,10 +33,9 @@ namespace SuperMarioBros
         protected override void Update(GameTime gameTime)
         {
             controller.Update();
-            ObjectsManager.Instance.Update();
+            ObjectsManager.Instance.Update(gameTime);
             collisionManager.HandleCollision();
             base.Update(gameTime);
-
         }
 
         protected override void Draw(GameTime gameTime)
@@ -71,8 +69,7 @@ namespace SuperMarioBros
         }
 
         public void InitializeObjects()
-        {
-           
+        {      
             ObjectLoading.LevelLoading(Content, @"PartialLevelOne");
             ObjectSizeManager.LoadItemSize(Content, @"SizeLoading");
             ObjectSizeManager.LoadMarioSize(Content, @"MarioSizeLoading");

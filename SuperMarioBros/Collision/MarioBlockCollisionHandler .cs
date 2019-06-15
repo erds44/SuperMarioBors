@@ -13,33 +13,34 @@ namespace SuperMarioBros.Collisions
         /* All CollisionHandler class will be refactored using delegate */
         private static readonly Dictionary<(Type, Direction), (Type, Type)> collisionDictionary = new Dictionary<(Type, Direction), (Type, Type)>
         {
-            {(typeof(UsedBlockState), Direction.bottom), (typeof(ObstacleCommand), typeof(Nullable))},
+            {(typeof(UsedBlockState), Direction.bottom), (typeof(BlockBottomCommand), typeof(Nullable))},
             {(typeof(BrickBlockState), Direction.bottom), (typeof(Nullable), typeof(BrickDisappearCommand))},
-            {(typeof(QuestionBlockState), Direction.bottom), (typeof(ObstacleCommand), typeof(BlockUsedCommand))},
+            {(typeof(QuestionBlockState), Direction.bottom), (typeof(BlockBottomCommand), typeof(BlockUsedCommand))},
             {(typeof(HiddenBlockState), Direction.bottom), (typeof(Nullable), typeof(HiddenBlockUsedCommand))},
-            {(typeof(ConcreteBlockState), Direction.bottom), (typeof(ObstacleCommand), typeof(Nullable))},
-            {(typeof(RockBlockState), Direction.bottom), (typeof(ObstacleCommand), typeof(Nullable))},
-            {(typeof(UsedBlockState), Direction.top), (typeof(ObstacleCommand), typeof(Nullable))},
-            {(typeof(ConcreteBlockState), Direction.top), (typeof(ObstacleCommand), typeof(Nullable))},
-            {(typeof(RockBlockState), Direction.top), (typeof(ObstacleCommand), typeof(Nullable))},
-            {(typeof(QuestionBlockState), Direction.top), (typeof(ObstacleCommand), typeof(Nullable))},
-            {(typeof(BrickBlockState), Direction.top), (typeof(ObstacleCommand), typeof(Nullable))},
-            {(typeof(UsedBlockState), Direction.left), (typeof(ObstacleCommand), typeof(Nullable))},
-            {(typeof(ConcreteBlockState), Direction.left), (typeof(ObstacleCommand), typeof(Nullable))},
-            {(typeof(RockBlockState), Direction.left), (typeof(ObstacleCommand), typeof(Nullable))},
-            {(typeof(QuestionBlockState), Direction.left), (typeof(ObstacleCommand), typeof(Nullable))},
-            {(typeof(BrickBlockState), Direction.left), (typeof(ObstacleCommand), typeof(Nullable))},
-            {(typeof(UsedBlockState), Direction.right), (typeof(ObstacleCommand), typeof(Nullable))},
-            {(typeof(ConcreteBlockState), Direction.right), (typeof(ObstacleCommand), typeof(Nullable))},
-            {(typeof(RockBlockState), Direction.right), (typeof(ObstacleCommand), typeof(Nullable))},
-            {(typeof(QuestionBlockState), Direction.right), (typeof(ObstacleCommand), typeof(Nullable))},
-            {(typeof(BrickBlockState), Direction.right), (typeof(ObstacleCommand), typeof(Nullable))}
+            {(typeof(ConcreteBlockState), Direction.bottom), (typeof(BlockBottomCommand), typeof(Nullable))},
+            {(typeof(RockBlockState), Direction.bottom), (typeof(BlockBottomCommand), typeof(Nullable))},
+            {(typeof(UsedBlockState), Direction.top), (typeof(BlockTopCommand), typeof(Nullable))},
+            {(typeof(ConcreteBlockState), Direction.top), (typeof(BlockTopCommand), typeof(Nullable))},
+            {(typeof(RockBlockState), Direction.top), (typeof(BlockTopCommand), typeof(Nullable))},
+            {(typeof(QuestionBlockState), Direction.top), (typeof(BlockTopCommand), typeof(Nullable))},
+            {(typeof(BrickBlockState), Direction.top), (typeof(BlockTopCommand), typeof(Nullable))},
+            {(typeof(UsedBlockState), Direction.left), (typeof(BlockLeftAndRightCommand), typeof(Nullable))},
+            {(typeof(ConcreteBlockState), Direction.left), (typeof(BlockLeftAndRightCommand), typeof(Nullable))},
+            {(typeof(RockBlockState), Direction.left), (typeof(BlockLeftAndRightCommand), typeof(Nullable))},
+            {(typeof(QuestionBlockState), Direction.left), (typeof(BlockLeftAndRightCommand), typeof(Nullable))},
+            {(typeof(BrickBlockState), Direction.left), (typeof(BlockLeftAndRightCommand), typeof(Nullable))},
+            {(typeof(UsedBlockState), Direction.right), (typeof(BlockLeftAndRightCommand), typeof(Nullable))},
+            {(typeof(ConcreteBlockState), Direction.right), (typeof(BlockLeftAndRightCommand), typeof(Nullable))},
+            {(typeof(RockBlockState), Direction.right), (typeof(BlockLeftAndRightCommand), typeof(Nullable))},
+            {(typeof(QuestionBlockState), Direction.right), (typeof(BlockLeftAndRightCommand), typeof(Nullable))},
+            {(typeof(BrickBlockState), Direction.right), (typeof(BlockLeftAndRightCommand), typeof(Nullable))}
         };
 
         public static void HandleCollision(IObject mario, IBlock Block, Direction direction)
         {
             if (collisionDictionary.TryGetValue((Block.State.GetType(), direction), out var type)) 
             {
+          
                 Type typ1 = type.Item1;
                 Type typ2 = type.Item2;
                 if (typ1 != typeof(Nullable))

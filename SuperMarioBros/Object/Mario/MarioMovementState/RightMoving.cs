@@ -1,16 +1,15 @@
-﻿using SuperMarioBros.Marios.MarioTypeStates;
-using SuperMarioBros.Objects;
-using SuperMarioBros.Physicses;
+﻿using SuperMarioBros.Collisions;
+using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
+using System;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
     public class RightMoving : AbstractMovementState, IMarioMovementState
     {
-        public RightMoving(IMario mario, Physics marioPhysics)
+        public RightMoving(IMario mario)
         {
             this.mario = mario;
-            this.marioPhysics = marioPhysics;
             this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
         }
 
@@ -18,37 +17,45 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         {
             if (!(mario.HealthState is SmallMario))
             {
-                mario.MovementState = new RightCrouching(mario, marioPhysics);
-            }
-            else
-            {
-                marioPhysics.Down();
+                mario.MovementState = new RightCrouching(mario);
             }
         }
 
         public void Right()
         {
-            marioPhysics.Right();
+            mario.MarioPhysics.Right();
         }
 
         public void Left()
         {
-            mario.MovementState = new RightIdle(mario,marioPhysics);
+            mario.MovementState = new RightBreaking(mario);
         }
 
         public void Up()
         {
-            mario.MovementState = new RightJumping(mario, marioPhysics);
+            mario.MovementState = new RightJumping(mario);
         }
 
         public void Update()
         {
-            //marioPhysics.Right();
+
         }
 
         public void Idle()
         {
-            mario.MovementState = new RightIdle(mario,marioPhysics);
+            if (Math.Round(mario.MarioPhysics.XVelocity) <= 0)
+            {
+                mario.MovementState = new RightIdle(mario);
+            }
+            else
+            {
+                mario.MarioPhysics.SpeedDecay();
+            }
+        }
+
+        public void Obstacle(Direction direction)
+        {
+            
         }
     }
 }

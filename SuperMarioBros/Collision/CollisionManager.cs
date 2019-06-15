@@ -24,6 +24,7 @@ namespace SuperMarioBros.Collisions
                 for (int i = 0; i < staticObjects.Count; i++)
                 {
                     Direction direction = CollisionDetection.Detect(mario[j], staticObjects[i]);
+                    
                     if (staticObjects[i] is IItem)
                     {
                         MarioItemCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction);
@@ -33,7 +34,7 @@ namespace SuperMarioBros.Collisions
                         MarioEnemyCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction);
                     }
                     else if (staticObjects[i] is IBlock)
-                    {
+                    {                       
                         MarioBlockCollisionHandler.HandleCollision(mario[j], (IBlock)staticObjects[i], direction);
                     }
                 }

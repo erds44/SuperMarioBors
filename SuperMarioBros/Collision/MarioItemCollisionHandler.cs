@@ -13,7 +13,7 @@ namespace SuperMarioBros.Collisions
         {
             { typeof(RedMushroom), (typeof(RedMushroomCommand), typeof(DisappearCommand)) },
             { typeof(GreenMushroom), (typeof(GreenMushroomCommand) ,  typeof(DisappearCommand))},
-            { typeof(Pipe), (typeof(ObstacleCommand) , typeof(Nullable))},
+            { typeof(Pipe), (typeof(BlockLeftAndRightCommand) , typeof(Nullable))},
             { typeof(Coin), (typeof(CoinCommand), typeof(DisappearCommand)) },
             { typeof(Flower), (typeof(FlowerCommand) , typeof(DisappearCommand))},
             { typeof(Star), (typeof(StarMarioCommand) , typeof(DisappearCommand))}

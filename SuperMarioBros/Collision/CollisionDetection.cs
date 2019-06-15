@@ -21,7 +21,6 @@ namespace SuperMarioBros.Collisions
             if (object1.HitBox().Intersects(object2.HitBox()))
             {
                 Rectangle overlap = Rectangle.Intersect(object1.HitBox(), object2.HitBox());
-
                 int overlapx = overlap.X;
                 int overlapy = overlap.Y;
                 int overlapWidth = overlap.Width;

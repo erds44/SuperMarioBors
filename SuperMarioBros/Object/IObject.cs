@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Interfaces;
 
 namespace SuperMarioBros.Objects
 {

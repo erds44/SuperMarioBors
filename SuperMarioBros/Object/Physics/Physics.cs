@@ -1,101 +1,135 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Collisions;
 using System;
 
 namespace SuperMarioBros.Physicses
 {
     public class Physics
     {
-        private int xVelocity = 0;
-        private int yVelocity = 0;
-        private readonly int forwardAcceleration;
-        private readonly int backwardAcceleration = 1;
-        private readonly int gravity;
-        private readonly int minClamping = -3;
-        private readonly int maxClamping = 3;
-        private Point displacement;
-        private Point prevDisplacement;
-        private int count;
+        public float XVelocity { get; private set; }
+        public float YVelocity { get; private set; }
+        private readonly float jumpVelocity = -50;
+        private readonly float forwardAcceleration;
+        private readonly float backwardAcceleration;
+        private readonly float gravity;
+        private readonly float minClamping = -200;
+        private readonly float maxClamping = 200;
+        public Direction CollisionDirection { get; set; }
+        private Vector2 displacement;
+        private Vector2 prevDisplacement;
+        private float dt;
+        private bool jump;
         public Physics(int forwardAcceleration)
         {
             this.forwardAcceleration = forwardAcceleration;
-            displacement = new Point(0, 0);
-            count = 0;
+            this.backwardAcceleration = (float) 2 * forwardAcceleration;
+            displacement = new Vector2(0, 0);
+            prevDisplacement = displacement;
+            dt = 0;
+            XVelocity = 0;
+            YVelocity = 0;
+            gravity = 200;
+            jump = false;
         }
         public void Left()
         {
-            if(count % 5 == 0)
-            {
-                xVelocity -= (forwardAcceleration - backwardAcceleration);
-                count = 0;
-            }
+            XVelocity -= forwardAcceleration * dt;
            
         }
         public void Right()
         {
-            if(count % 5 == 0)
-            {
-                xVelocity += (forwardAcceleration - backwardAcceleration);
-                count = 0;
-            }
+            XVelocity += forwardAcceleration * dt;
            
         }
         public void Up()
         {
-            
+            if (!jump)
+            {
+                YVelocity += jumpVelocity;
+                jump = true;
+            }
         }
-        public void Down()
+        public void SpeedDecay()
         {
-            
+            XVelocity *= (float)0.96;
         }
-        public Point Displacement()
+        public void BlockHorizontal()
         {
-            /* If making motion as property, it will be tedious to make changes to motion
-             * since it is a struct and instantiation is requried each time we make changes
-             * on motion*/
-            Update();
+            XVelocity = 0;
+        }
+
+        public void BlockTop()
+        {
+            YVelocity *= -1;
+        }
+        public void BlockBottom()
+        {
+            if (YVelocity > 0)
+            {
+                YVelocity = 0;
+            }
+            jump = false;
+        }
+        public Vector2 Displacement(GameTime gameTime)
+        {
+            Update(gameTime);
             prevDisplacement = displacement;
-            displacement = new Point(0, 0);
-            return prevDisplacement;      
+            displacement = new Vector2(0, 0);                  
+            return prevDisplacement;   
         }
-        public Point Revert()
+        private void Obstacle()
         {
-            return prevDisplacement;
+            if(CollisionDirection == Direction.bottom)
+            {
+                BlockTop();
+            }else if(CollisionDirection == Direction.top)
+            {
+                BlockBottom();
+            }else if(CollisionDirection == Direction.left || CollisionDirection == Direction.right)
+            {
+                BlockHorizontal();
+            }
         }
         public bool HitHidden(int dy)
         {
-            if(yVelocity >= dy && prevDisplacement.Y < 0)
+            if(YVelocity >= dy && prevDisplacement.Y < 0)
             {
                 return true;
             }
             return false;
         }
-        public void SpeedDecay()
+
+        private void Update(GameTime gameTime)
         {
-            if( count % 5 == 0)
+            dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            YVelocity += gravity * dt;
+            Clamping();
+            Obstacle();
+            displacement.X += (XVelocity * dt);
+            displacement.Y += (YVelocity * dt);
+            Console.WriteLine(CollisionDirection);
+            CollisionDirection = Direction.none;
+            
+        }
+        public void Break()
+        {
+            XVelocity -= Math.Sign(XVelocity) * backwardAcceleration * dt;
+        }
+        private void Clamping()
+        {
+            if (Math.Floor(XVelocity) == 0)
             {
-                xVelocity = (int)((float)xVelocity * 0.6);
+                XVelocity = 0;
+            }
+            if (XVelocity < minClamping)
+            {
+                XVelocity = minClamping;
+            }
+            else if (XVelocity > maxClamping)
+            {
+                XVelocity = maxClamping;
             }
         }
-        private void Update()
-        {
-            if(xVelocity > 0)
-            {
-                Console.WriteLine(xVelocity);
-            }
-            if (xVelocity < minClamping)
-            {
-                xVelocity = minClamping;
-            }
-            else if (xVelocity > maxClamping)
-            {
-                xVelocity = maxClamping;
-            }
-            displacement.X += xVelocity;
-            count++;
-        }
-        private void Break()
-        {
-            xVelocity = (Math.Abs(xVelocity) - backwardAcceleration) * Math.Sign(xVelocity);
-        }
+
     }
 }

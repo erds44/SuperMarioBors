@@ -1,9 +1,12 @@
-﻿namespace SuperMarioBros.Marios.MarioMovementStates
+﻿using SuperMarioBros.Collisions;
+
+namespace SuperMarioBros.Marios.MarioMovementStates
 {
 
     public class TerminateMovementState : IMarioMovementState
     {
-        public static void ChangeSprite()
+
+        public void ChangeSprite()
         {
             // Do Nothing
         }
@@ -23,7 +26,7 @@
            // Do Nothing
         }
 
-        public static void Obstacle()
+        public void Obstacle(Direction direction)
         {
             // Do Nothing
         }

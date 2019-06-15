@@ -1,12 +1,13 @@
 ﻿using SuperMarioBros.Collisions;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
+using System;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
-    public class LeftMoving : AbstractMovementState, IMarioMovementState
+    public class RightBreaking : AbstractMovementState, IMarioMovementState
     {
-        public LeftMoving(IMario mario)
+        public RightBreaking(IMario mario)
         {
             this.mario = mario;
             this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
@@ -16,42 +17,52 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         {
             if (!(mario.HealthState is SmallMario))
             {
-                mario.MovementState = new LeftCrouching(mario);
+                mario.MovementState = new RightCrouching(mario);
             }
         }
 
         public void Idle()
         {
             mario.MarioPhysics.SpeedDecay();
-            if ((int)mario.MarioPhysics.XVelocity >= 0)
+            if (Math.Round(mario.MarioPhysics.XVelocity) <= 0)
             {
-                mario.MovementState = new LeftIdle(mario);
+                mario.MovementState = new RightIdle(mario);
             }
         }
 
         public void Left()
         {
-            mario.MarioPhysics.Left();
+            if (Math.Round(mario.MarioPhysics.XVelocity) <= 0)
+            {
+                mario.MovementState = new LeftIdle(mario);
+            }
+            else
+            {
+                mario.MarioPhysics.Break();
+            }
         }
 
         public void Obstacle(Direction direction)
         {
-
+            if(direction == Direction.left)
+            {
+                mario.MovementState = new RightIdle(mario);
+            }
         }
 
         public void Right()
         {
-            mario.MovementState = new LeftBreaking(mario);          
+             mario.MovementState = new RightIdle(mario);
         }
 
         public void Up()
         {
-            mario.MovementState = new LeftJumping(mario);
+            mario.MovementState = new RightJumping(mario);
         }
 
         //public void Update()
         //{
-            
+
         //}
     }
 }
