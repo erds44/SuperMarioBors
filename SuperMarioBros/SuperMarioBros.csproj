@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{50EBA22A-24A6-4C54-BC00-5DA4D2F55004}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>SuperMarioBros</RootNamespace>
     <AssemblyName>SuperMarioBros</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -240,7 +240,7 @@
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\MarioCommand\LeftCommand.cs" />
     <Compile Include="Command\MarioCommand\IdleCommand.cs" />
-    <Compile Include="Command\GameCommand\Quit.cs" />
+    <Compile Include="Command\GameCommand\QuitCommand.cs" />
     <Compile Include="Command\GameCommand\ResetCommand.cs" />
     <Compile Include="Command\MarioCommand\RightCommand.cs" />
     <Compile Include="Command\MarioCommand\GreenMushroomCommand.cs" />
@@ -249,8 +249,10 @@
     <Compile Include="Command\MarioCommand\StarMarioCommand.cs" />
     <Compile Include="Command\MarioCommand\ObstacleCommand.cs" />
     <Compile Include="Command\MarioCommand\TakeDamageCommand.cs" />
+    <Compile Include="Controller\ControllerMessager.cs" />
     <Compile Include="Controller\GamePadController.cs" />
     <Compile Include="Controller\IController.cs" />
+    <Compile Include="Controller\JoyStickController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Interfaces\IDraw.cs" />
     <Compile Include="ObjectLoading.cs" />

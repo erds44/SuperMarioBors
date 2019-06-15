@@ -1,10 +1,7 @@
-﻿using SuperMarioBros.Commands;
-using SuperMarioBros.Interfaces;
-
-namespace SuperMarioBros.Controllers
+﻿namespace SuperMarioBros.Controllers
 {
     public interface IController : IUpdate
     {
-        void SetIdle(ICommand idleCommand);
+        //void SetIdle(ICommand idleCommand);
     }
 }

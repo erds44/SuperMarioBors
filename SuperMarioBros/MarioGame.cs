@@ -3,18 +3,16 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.Objects;
 using SuperMarioBros.SpriteFactories;
-using SuperMarioBros.Commands;
 using SuperMarioBros.Controllers;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Collisions;
-using System;
 
 namespace SuperMarioBros
 {
     // [ComVisible(false)]
     public class MarioGame : Game
     {
-        private IController controller;
+        private ControllerMessager controller;
         private SpriteBatch spriteBatch;
         private CollisionManager collisionManager;
         public MarioGame()
@@ -52,21 +50,23 @@ namespace SuperMarioBros
         public void KeyBinding()
         {
             IMario mario = ObjectsManager.Instance.MarioObject()[0];
-            controller = new KeyboardController
-                (
-                    (Keys.Q, new Quit(this)),
-                    (Keys.A, new LeftCommand(mario)),
-                    (Keys.S, new DownCommand(mario)),
-                    (Keys.D, new RightCommand(mario)),
-                    (Keys.W, new UpCommand(mario)),
-                    (Keys.R, new ResetCommand(this)),
-                    (Keys.Left, new LeftCommand(mario)),
-                    (Keys.Down, new DownCommand(mario)),
-                    (Keys.Right, new RightCommand(mario)),
-                    (Keys.Up, new UpCommand(mario))
-              
+            controller = new ControllerMessager(this, mario);
+            IController keyboardController = new KeyboardController
+                (controller,
+                    (Keys.Q, ControllerMessager.QUITGAME),
+                    (Keys.A, ControllerMessager.LEFTMOVE),
+                    (Keys.S, ControllerMessager.DOWNMOVE),
+                    (Keys.D, ControllerMessager.RIGHTMOVE),
+                    (Keys.W, ControllerMessager.UPMOVE),
+                    (Keys.R, ControllerMessager.RESETGAME),
+                    (Keys.Left, ControllerMessager.LEFTMOVE),
+                    (Keys.Down, ControllerMessager.DOWNMOVE),
+                    (Keys.Right, ControllerMessager.RIGHTMOVE),
+                    (Keys.Up, ControllerMessager.UPMOVE)
                 );
-            controller.SetIdle(new IdleCommand(mario));
+            controller.AddController(keyboardController);
+            IController JoyStickController = new JoyStickController(controller);
+            controller.AddController(JoyStickController);
         }
 
         public void InitializeObjects()
