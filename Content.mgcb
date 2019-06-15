@@ -14,8 +14,8 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin levelLoading/PartialLevelOne.xml
+#begin PartialLevelOne.xml
 /importer:XmlImporter
 /processor:PassThroughProcessor
-/build:levelLoading/PartialLevelOne.xml
+/build:PartialLevelOne.xml
 
