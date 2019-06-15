@@ -9,7 +9,7 @@
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Blocks.BrickBlock</ObjectType>
-      <Position>0 440</Position>
+      <Position>0 520</Position>
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Items.GreenMushroom</ObjectType>
@@ -65,7 +65,7 @@
     </Item>
 <Item>
   <ObjectType>SuperMarioBros.Backgrounds.BigHill</ObjectType>
-      <Position>100 370</Position>
+      <Position>100 400</Position>
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Backgrounds.MiddleCloud</ObjectType>
@@ -89,7 +89,7 @@
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Backgrounds.BigBush</ObjectType>
-      <Position>200 380</Position>
+      <Position>200 400</Position>
     </Item>
 
 </objectList>
