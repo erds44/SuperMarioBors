@@ -21,6 +21,7 @@ namespace SuperMarioBros.Marios
         public StarMario(IMario mario)
         {
             this.mario = mario;
+            this.HealthState = mario.HealthState;
             MarioPhysics = mario.MarioPhysics;
             Timer = 300;
             if(mario is FlashingMario)
