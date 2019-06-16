@@ -9,16 +9,16 @@ namespace SuperMarioBros.Collisions
 {
     public static class MarioItemCollisionHandler 
     {
-        private static readonly Dictionary<Type, (Type, Type)> collisionDictionary = new Dictionary<Type, (Type,Type)>
+        private static readonly Dictionary<Type, MarioItemHandler> collisionDictionary = new Dictionary<Type, MarioItemHandler>
         {
-            { typeof(RedMushroom), (typeof(RedMushroomCommand), typeof(DisappearCommand)) },
-            { typeof(GreenMushroom), (typeof(GreenMushroomCommand) ,  typeof(DisappearCommand))},
-            { typeof(Pipe), (typeof(ObstacleCommand) , typeof(Nullable))},
-            { typeof(Coin), (typeof(CoinCommand), typeof(DisappearCommand)) },
-            { typeof(Flower), (typeof(FlowerCommand) , typeof(DisappearCommand))},
-            { typeof(Star), (typeof(StarMarioCommand) , typeof(DisappearCommand))}
+            { typeof(RedMushroom), new MarioItemHandler(MarioUnchangedRedMushroomDisappear) },
+            { typeof(GreenMushroom), new MarioItemHandler(MarioUnchangedGreenMushroomDisappear)},
+            { typeof(Pipe), new MarioItemHandler(MarioObstacleItemUnchanged)},
+            { typeof(Coin), new MarioItemHandler(MarioUnchangedCoinDisappear)},
+            { typeof(Flower), new MarioItemHandler(MarioUnchangedFlowerDisappear)},
+            { typeof(Star), new MarioItemHandler(MarioUnchangedStarDisappear)}
         };
-        public static void HandleCollision(IObject mario, IObject item, Direction direction)
+      /**  public static void HandleCollisionV1(IObject mario, IObject item, Direction direction)
         {
             if (direction != Direction.none)
             {
@@ -36,6 +36,55 @@ namespace SuperMarioBros.Collisions
                     }
                 }
             }
+        }
+    */
+        public static void HandleCollision(IMario mario, IObject item, Direction direction)
+        {
+            if (direction != Direction.none)
+            {
+                if (collisionDictionary.TryGetValue(item.GetType(), out var handler))
+                {
+                    handler(mario, item);
+                }
+            }
+        }
+        private delegate void MarioItemHandler(IMario mario, IObject item);
+        private static void MarioObstacleItemUnchanged(IMario mario, IObject item)
+        {
+            mario.Obstacle();
+        }
+
+        private static void MarioUnchangedItemDisappear(IMario mario, IObject item)
+        {
+            ObjectsManager.Instance.Remove(item);
+        }
+        private static void MarioUnchangedGreenMushroomDisappear(IMario mario, IObject item)
+        {
+            mario.GreenMushroom();
+            ObjectsManager.Instance.Remove(item);
+        }
+
+        private static void MarioUnchangedRedMushroomDisappear(IMario mario, IObject item)
+        {
+            mario.RedMushroom();
+            ObjectsManager.Instance.Remove(item);
+        }
+        private static void MarioUnchangedCoinDisappear(IMario mario, IObject item)
+        {
+            mario.Coin();
+            ObjectsManager.Instance.Remove(item);
+        }
+
+        private static void MarioUnchangedFlowerDisappear(IMario mario, IObject item)
+        {
+            mario.OnFireFlower();
+            ObjectsManager.Instance.Remove(item);
+        }
+
+        private static void MarioUnchangedStarDisappear(IMario mario, IObject item)
+        {
+            ObjectsManager.Instance.StarMario(mario);
+            ObjectsManager.Instance.Remove(item);
         }
     }
 }
