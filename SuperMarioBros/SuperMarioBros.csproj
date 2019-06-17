@@ -301,7 +301,8 @@
     <Compile Include="Object\Background\SmallBush.cs" />
     <Compile Include="Object\Background\SmallCloud.cs" />
     <Compile Include="Object\Background\SmallHill.cs" />
-    <Compile Include="Object\Physics\ObjectPhysics.cs" />
+    <Compile Include="Object\Physics\EnemyPhysics.cs" />
+    <Compile Include="Object\Physics\StarPhysics.cs" />
     <Compile Include="Sprite\DecorationSprite.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Interfaces\IUpdate.cs" />

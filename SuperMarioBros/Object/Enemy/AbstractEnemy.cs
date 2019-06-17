@@ -12,7 +12,7 @@ namespace SuperMarioBros.Goombas
         public IEnemyMovementState State { get; set; }
         public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
-        protected ObjectPhysics physics;
+        protected EnemyPhysics physics;
 
         public void Draw(SpriteBatch spriteBatch)
         {

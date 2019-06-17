@@ -67,9 +67,15 @@ namespace SuperMarioBros.Collisions
             { (typeof(Star), typeof(Pipe)), MoveDynamic},
 
             { (typeof(Goomba), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(Goomba), typeof(BrickBlockState)), MoveDynamic},
+            { (typeof(Goomba), typeof(QuestionBlockState)), MoveDynamic},
+            { (typeof(Goomba), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(Goomba), typeof(Pipe)), MoveDynamic},
 
             { (typeof(Koopa), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(Koopa), typeof(BrickBlockState)), MoveDynamic},
+            { (typeof(Koopa), typeof(QuestionBlockState)), MoveDynamic},
+            { (typeof(Koopa), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(Koopa), typeof(Pipe)), MoveDynamic},
         };
         private static void MoveMarioBlockBumped(IDynamic obj1, IStatic obj2 ,Direction direction)

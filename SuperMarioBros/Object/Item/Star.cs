@@ -9,14 +9,14 @@ namespace SuperMarioBros.Items
 {
     public class Star : IItem
     {
-        private ObjectPhysics physics;
+        private StarPhysics physics;
         public Vector2 Position { get; set; }
         private readonly ISprite sprite;
         public Star(Vector2 location)
         {
             Position = location;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
-            this.physics = new ObjectPhysics(this, 40, -120);
+            this.physics = new StarPhysics(this, 40, -120);
         }
 
         public Rectangle HitBox()

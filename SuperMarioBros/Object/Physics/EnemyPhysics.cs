@@ -3,7 +3,7 @@ using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Physicses
 {
-    public class ObjectPhysics
+    public class EnemyPhysics
     {
         public float XVelocity { get; private set; }
         public float YVelocity { get; private set; }
@@ -12,7 +12,7 @@ namespace SuperMarioBros.Physicses
         private Vector2 prevDisplacement;
         private float dt = 0;
         private readonly IObject obj;
-        public ObjectPhysics(IObject obj, float XVelocity, float YVelocity)
+        public EnemyPhysics(IObject obj, float XVelocity, float YVelocity)
         {
             this.XVelocity = XVelocity;
             this.YVelocity = YVelocity;
@@ -23,7 +23,7 @@ namespace SuperMarioBros.Physicses
         public void MoveUp()
         {
             obj.Position -= new Vector2(0, prevDisplacement.Y);
-            YVelocity *= -1;
+            YVelocity = 0;
         }
         public void MoveLeft()
         {

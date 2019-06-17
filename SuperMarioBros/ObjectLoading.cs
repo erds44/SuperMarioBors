@@ -18,45 +18,37 @@ namespace SuperMarioBros
         {
             dynamics = new Collection<IDynamic>
             {
-                new Mario(new Vector2(0, 400)),
+                new Mario(new Vector2(0, 410)),
                 new Star(new Vector2(200,400)),
                 new RedMushroom(new Vector2(100,400)),
                 new GreenMushroom(new Vector2(200,400)),
                 new Flower(new Vector2(300,400)),
                // new Koopa(new Vector2(450, 410)),
-                new Goomba(new Vector2(500, 410)),
-                new Goomba(new Vector2(450, 410)),
-                new Koopa(new Vector2(600, 410))
+                new Goomba(new Vector2(550, 410)),
+                new Koopa(new Vector2(600, 410)),
+                new Goomba(new Vector2(500, 60)),
+                new Koopa(new Vector2(600, 60))
             };
             statics = new Collection<IStatic>
             {
-                new RockBlock(new Vector2(0,450)),
-                new RockBlock(new Vector2(40,450)),
-                new RockBlock(new Vector2(80,450)),
-                new RockBlock(new Vector2(120,450)),
-                new RockBlock(new Vector2(160,450)),
-                new RockBlock(new Vector2(200,450)),
-                new RockBlock(new Vector2(240,450)),
-                new RockBlock(new Vector2(280,450)),
-                new RockBlock(new Vector2(320,450)),
-                new RockBlock(new Vector2(360,450)),
-                new RockBlock(new Vector2(400,450)),
-                new RockBlock(new Vector2(440,450)),
-                new RockBlock(new Vector2(480,450)),
-                new RockBlock(new Vector2(520,450)),
-                new RockBlock(new Vector2(560,450)),
-                new RockBlock(new Vector2(600,450)),
-                new RockBlock(new Vector2(640,450)),
-                new RockBlock(new Vector2(680,450)),
-                new Pipe(new Vector2(360,410)),
-                new HiddenBlock(new Vector2 (0, 300)),
-                new BrickBlock(new Vector2 (40, 300)),
-                new ConcreteBlock(new Vector2 (80, 300)),
-                new QuestionBlock(new Vector2 (120, 300)),
-                new RockBlock(new Vector2(550,410)),
-                new RockBlock(new Vector2(650,410))
+                new Pipe(new Vector2(420,410)),
+                new Pipe(new Vector2(700,410)),
+                new BrickBlock(new Vector2(0, 290)),
+                new BrickBlock(new Vector2(100, 290)),
+                new QuestionBlock(new Vector2(200, 290)),
+                new QuestionBlock(new Vector2(240, 290)),
+                new QuestionBlock(new Vector2(280, 290)),
+                new QuestionBlock(new Vector2(320, 290)),
+                new HiddenBlock(new Vector2(50, 150)),
+                new QuestionBlock(new Vector2(520, 250)),
+                new QuestionBlock(new Vector2(560, 250)),
+                new BrickBlock(new Vector2(440, 60)),
+                new BrickBlock(new Vector2(720, 60))
             };
-
+            for (int i = 0; i < 20; i++)
+                statics.Add(new RockBlock(new Vector2(0 + 40 * i, 450)));
+            for (int i = 0; i < 6; i++)
+                statics.Add(new BrickBlock(new Vector2(480 + 40 * i, 100)));
         }
         public static Collection<IStatic> LoadStatics()
         {
