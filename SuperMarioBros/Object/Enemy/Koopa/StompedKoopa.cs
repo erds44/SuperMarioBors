@@ -6,9 +6,9 @@ namespace SuperMarioBros.Koopas
 {
     public class StompedKoopa : AbstractEnemy
     {
-        public StompedKoopa(Point location)
+        public StompedKoopa(Vector2 location)
         {
-            this.location = location;
+            Position = location;
             State = new IdleEnemyState(this);
         }
     }

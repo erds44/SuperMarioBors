@@ -10,21 +10,20 @@ namespace SuperMarioBros.Items
 {
     public class GreenMushroom : IItem
     {
-        
-        private Point location;
         private readonly ISprite sprite;
-        public GreenMushroom(Point location)
+        public Vector2 Position { get; set; }
+        public GreenMushroom(Vector2 location)
         {           
-            this.location = location;
+            Position = location;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
 
         public void Draw(SpriteBatch SpriteBatch)
         {
-            sprite.Draw(SpriteBatch, location);
+            sprite.Draw(SpriteBatch, Position);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             sprite.Update();
         }
@@ -32,8 +31,27 @@ namespace SuperMarioBros.Items
         public Rectangle HitBox()
         {
             Point size = ObjectSizeManager.ObjectSize(GetType());
-            return new Rectangle(location.X, location.Y - size.Y, size.X, size.Y);
+            return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
         }
 
+        public void MoveUp()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void MoveDown()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void MoveLeft()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void MoveRight()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

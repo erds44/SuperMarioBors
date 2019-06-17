@@ -6,9 +6,9 @@ namespace SuperMarioBros.Commands
     class StarMarioCommand : ICommand
     {
         private  readonly IMario mario;
-        public StarMarioCommand(IMario mario)
+        public StarMarioCommand(IDynamic mario)
         {
-            this.mario = mario;
+            this.mario = (IMario)mario;
         }
         public void Execute()
         {

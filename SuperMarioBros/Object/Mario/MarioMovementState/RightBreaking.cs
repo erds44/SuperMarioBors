@@ -1,5 +1,4 @@
-﻿using SuperMarioBros.Collisions;
-using SuperMarioBros.Marios.MarioTypeStates;
+﻿using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
 using System;
 
@@ -42,17 +41,10 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             }
         }
 
-        public void Obstacle(Direction direction)
-        {
-            if(direction == Direction.left)
-            {
-                mario.MovementState = new RightIdle(mario);
-            }
-        }
 
         public void Right()
         {
-             mario.MovementState = new RightIdle(mario);
+            // mario.MovementState = new RightIdle(mario);
         }
 
         public void Up()
@@ -60,9 +52,9 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             mario.MovementState = new RightJumping(mario);
         }
 
-        //public void Update()
-        //{
-
-        //}
+        public void MoveUp()
+        {
+            mario.MarioPhysics.MoveUp();
+        }
     }
 }

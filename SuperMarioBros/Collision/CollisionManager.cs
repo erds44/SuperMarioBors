@@ -1,42 +1,31 @@
-﻿using SuperMarioBros.Items;
-using SuperMarioBros.Marios;
-using SuperMarioBros.Objects.Enemy;
-using SuperMarioBros.Objects;
-using SuperMarioBros.Blocks;
+﻿using SuperMarioBros.Objects;
 using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Collisions
 {
     public class CollisionManager 
     {
-        private readonly Collection<IObject> staticObjects;
-        private readonly Collection<IMario> mario;
+        private readonly Collection<IStatic> staticObjects;
+        private readonly Collection<IDynamic> dynamicObjects;
         public CollisionManager()
         {
-            staticObjects = ObjectLoading.LoadObject();
-            mario = ObjectLoading.LoadMario();
+            staticObjects = ObjectLoading.LoadStatics();
+            dynamicObjects = ObjectLoading.LoadDynamics();
         }
 
         public void HandleCollision()
         {
-            for (int j = 0; j < mario.Count; j++)
+            for (int i = 0; i < dynamicObjects.Count; i++)
             {
-                for (int i = 0; i < staticObjects.Count; i++)
+                for(int j = 0; j < staticObjects.Count; j++)
                 {
-                    Direction direction = CollisionDetection.Detect(mario[j], staticObjects[i]);
-                    
-                    if (staticObjects[i] is IItem)
-                    {
-                        MarioItemCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction);
-                    }
-                    else if (staticObjects[i] is IEnemy)
-                    {
-                        MarioEnemyCollisionHandler.HandleCollision(mario[j], staticObjects[i], direction);
-                    }
-                    else if (staticObjects[i] is IBlock)
-                    {                       
-                        MarioBlockCollisionHandler.HandleCollision(mario[j], (IBlock)staticObjects[i], direction);
-                    }
+                    Direction direction = CollisionDetection.Detect(dynamicObjects[i], staticObjects[j]);
+                    DynamicAndStaticObjectsHandler.HandleCollision(dynamicObjects[i],staticObjects[i], direction);
+                }
+                for(int j = i + 1; j < dynamicObjects.Count; j++)
+                {
+                    Direction direction = CollisionDetection.Detect(dynamicObjects[i], dynamicObjects[j]);
+                    DynamicAndDynamicObjectsHandler.HandleCollision(dynamicObjects[i], dynamicObjects[j], direction);
                 }
             }
         }

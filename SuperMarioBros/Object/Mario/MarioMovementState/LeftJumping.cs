@@ -24,6 +24,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         public void Left()
         {
            mario.MarioPhysics.Left();
+            mario.MarioPhysics.SpeedDecay();
         }
 
         public void Obstacle(Direction direction)
@@ -44,9 +45,14 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             mario.MarioPhysics.Up();
         }
 
-        //public void Update()
-        //{
-        //    //marioPhysics.Up();
-        //}
+        public void MoveUp()
+        {
+            if (mario.MarioPhysics.Jump)
+            {
+                mario.MovementState = new LeftIdle(mario);
+            }
+            mario.MarioPhysics.SpeedDecay();
+            mario.MarioPhysics.MoveUp();
+        }
     }
 }

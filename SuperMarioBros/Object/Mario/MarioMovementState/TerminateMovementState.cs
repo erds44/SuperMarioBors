@@ -26,10 +26,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
            // Do Nothing
         }
 
-        public void Obstacle(Direction direction)
-        {
-            // Do Nothing
-        }
 
         public void Right()
         {
@@ -44,6 +40,25 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         public void Update()
         {
            // Do Nothing
+        }
+        public void MoveUp()
+        {
+            // Do Nothing
+        }
+
+        public void MoveDown()
+        {
+            // Do Nothing
+        }
+
+        public void MoveLeft()
+        {
+           // Do Nothing
+        }
+
+        public void MoveRight()
+        {
+            // Do Nothing
         }
     }
 }

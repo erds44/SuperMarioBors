@@ -15,15 +15,15 @@ namespace SuperMarioBros.Marios
         public IMarioHealthState HealthState { get; set; }
         public IMarioMovementState MovementState { get; set; }
         public ISprite Sprite { get; set; }
-        public Physics MarioPhysics { get; }
+        public MarioPhysics MarioPhysics { get; }
         public Vector2 Position { get; set; }
         public int Timer { get; set; }
-        public Mario(Point location)
+        public Mario(Vector2 location)
         {
             HealthState = new SmallMario(this);
-            MarioPhysics = new Physics(100);
+            MarioPhysics = new MarioPhysics(this,100);
             MovementState = new RightIdle(this);
-            Position = new Vector2((float)location.X, (float)location.Y);
+            Position = location;
         }
 
 
@@ -35,7 +35,7 @@ namespace SuperMarioBros.Marios
         public void Draw(SpriteBatch spriteBatch)
         {
             // Sprite.Draw(spriteBatch, location);
-            Sprite.Draw(spriteBatch, new Point((int) Position.X, (int)Position.Y));
+            Sprite.Draw(spriteBatch, Position);
         }
 
         public void OnFireFlower()
@@ -91,11 +91,6 @@ namespace SuperMarioBros.Marios
             // TODO
         }
 
-        public void Obstacle(Direction direction)
-        {
-            MarioPhysics.CollisionDirection = direction;
-            MovementState.Obstacle(direction);
-        }
 
         public void Coin()
         {
@@ -109,5 +104,24 @@ namespace SuperMarioBros.Marios
             Position += MarioPhysics.Displacement(gameTime);
         }
 
+        public void MoveUp()
+        {
+            MovementState.MoveUp();
+        }
+
+        public void MoveDown()
+        {
+            MovementState.MoveDown();
+        }
+
+        public void MoveLeft()
+        {
+            MovementState.MoveLeft();
+        }
+
+        public void MoveRight()
+        {
+            MovementState.MoveRight();
+        }
     }
 }

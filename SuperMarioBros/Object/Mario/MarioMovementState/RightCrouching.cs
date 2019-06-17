@@ -40,8 +40,9 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             mario.MovementState = new RightIdle(mario);
         }
 
-        public void Obstacle(Direction direction)
+        public void MoveUp()
         {
+            mario.MarioPhysics.MoveUp();
         }
     }
 }

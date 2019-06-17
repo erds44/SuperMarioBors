@@ -5,9 +5,9 @@ namespace SuperMarioBros.Blocks
 {
     public class RockBlock : AbstractBlock
     {
-        public RockBlock( Point location)
+        public RockBlock(Vector2 location)
         {
-            this.Location = location;
+            Position = location;
             State = new RockBlockState(this);
         }
     }

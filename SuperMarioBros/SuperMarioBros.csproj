@@ -243,6 +243,8 @@
   <ItemGroup>
     <Compile Include="Collision\CollisionDetection.cs" />
     <Compile Include="Collision\CollisionManager.cs" />
+    <Compile Include="Collision\DynamicAndDynamicObjectsHandler .cs" />
+    <Compile Include="Collision\DynamicAndStaticObjecstHandler.cs" />
     <Compile Include="Collision\MarioBlockCollisionHandler .cs" />
     <Compile Include="Collision\MarioEnemyCollisionHandler.cs" />
     <Compile Include="Collision\MarioItemCollisionHandler.cs" />
@@ -251,18 +253,23 @@
     <Compile Include="Command\EnemyCommand\KoopaStompedCommand.cs" />
     <Compile Include="Command\EnemyCommand\GoombaStompedCommand.cs" />
     <Compile Include="Command\DisappearCommand.cs" />
+    <Compile Include="Command\DynamicCommand\MoveDynamicLeftCommand.cs" />
+    <Compile Include="Command\DynamicCommand\MoveDynamicRightCommand.cs" />
+    <Compile Include="Command\DynamicCommand\MoveDynamicDownCommand.cs" />
+    <Compile Include="Command\DynamicCommand\MoveDynamicUpCommand.cs" />
     <Compile Include="Command\MarioCommand\CoinCommand.cs" />
     <Compile Include="Command\MarioCommand\FlowerCommand.cs" />
     <Compile Include="Command\MarioCommand\DownCommand.cs" />
     <Compile Include="Command\BlockCommand\BlockUsedCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Command\MarioCommand\MoveMarioDownCommand.cs" />
+    <Compile Include="Command\MarioCommand\MoveMarioRightCommand.cs" />
+    <Compile Include="Command\MarioCommand\MoveMarioLeftCommand.cs" />
+    <Compile Include="Command\MarioCommand\MoveMarioUpCommand.cs" />
     <Compile Include="Command\MarioCommand\LeftCommand.cs" />
     <Compile Include="Command\MarioCommand\IdleCommand.cs" />
     <Compile Include="Command\GameCommand\QuitCommand.cs" />
     <Compile Include="Command\GameCommand\ResetCommand.cs" />
-    <Compile Include="Command\MarioCommand\BlockTopCommand.cs" />
-    <Compile Include="Command\MarioCommand\BlockBottomCommand.cs" />
-    <Compile Include="Command\MarioCommand\BlcokLeftAndRightCommand.cs" />
     <Compile Include="Command\MarioCommand\RightCommand.cs" />
     <Compile Include="Command\MarioCommand\GreenMushroomCommand.cs" />
     <Compile Include="Command\MarioCommand\RedMushroomCommand.cs" />
@@ -303,6 +310,8 @@
     <Compile Include="Object\Enemy\IEnemyMovementState.cs" />
     <Compile Include="Object\Enemy\IEnemy.cs" />
     <Compile Include="Object\Enemy\Koopa\StompedKoopa.cs" />
+    <Compile Include="Object\IDynamic.cs" />
+    <Compile Include="Object\IStatic.cs" />
     <Compile Include="Object\Item\IItem.cs" />
     <Compile Include="Object\Mario\IMario.cs" />
     <Compile Include="Object\Mario\MarioMovementState\IMarioMovementState.cs" />
@@ -315,6 +324,7 @@
     <Compile Include="Object\Background\SmallBush.cs" />
     <Compile Include="Object\Background\SmallCloud.cs" />
     <Compile Include="Object\Background\SmallHill.cs" />
+    <Compile Include="Object\Physics\ObjectPhysics.cs" />
     <Compile Include="Sprite\DecorationSprite.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Interfaces\IUpdate.cs" />
@@ -346,7 +356,7 @@
     <Compile Include="Object\Item\GreenMushroom.cs" />
     <Compile Include="Object\Item\RedMushroom.cs" />
     <Compile Include="Object\ObjectsManager.cs" />
-    <Compile Include="Object\Physics\Physics.cs" />
+    <Compile Include="Object\Physics\MarioPhysics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="SpriteFactory\SpriteFactory.cs" />
     <Compile Include="Sprite\FlashingSprite.cs" />

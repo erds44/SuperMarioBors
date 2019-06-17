@@ -9,13 +9,13 @@ namespace SuperMarioBros.Commands
     class KoopaStompedCommand : ICommand
     {
         private readonly IEnemy enemy;
-        public KoopaStompedCommand(IEnemy enemy)
+        public KoopaStompedCommand(IDynamic enemy)
         {
-            this.enemy = enemy;
+            this.enemy = (IEnemy)enemy;
         }
         public void Execute()
         {
-            ObjectsManager.Instance.ChangeObject(enemy, new StompedKoopa(new Point(enemy.HitBox().X, enemy.HitBox().Y + enemy.HitBox().Height)));
+            ObjectsManager.Instance.ChangeObject(enemy, new StompedKoopa(new Vector2(enemy.HitBox().X, enemy.HitBox().Y + enemy.HitBox().Height)));
         }
     }
 }

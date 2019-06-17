@@ -48,7 +48,7 @@ namespace SuperMarioBros
         }
         public void KeyBinding()
         {
-            IMario mario = ObjectsManager.Instance.MarioObject()[0];
+            IMario mario = ObjectsManager.Instance.MarioObject();
             controller = new ControllerMessager(this, mario);
             IController keyboardController = new KeyboardController
                 (controller,

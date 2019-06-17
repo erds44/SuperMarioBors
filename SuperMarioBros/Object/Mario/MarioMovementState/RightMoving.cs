@@ -43,19 +43,16 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Idle()
         {
+            mario.MarioPhysics.SpeedDecay();
             if (Math.Round(mario.MarioPhysics.XVelocity) <= 0)
             {
                 mario.MovementState = new RightIdle(mario);
             }
-            else
-            {
-                mario.MarioPhysics.SpeedDecay();
-            }
         }
 
-        public void Obstacle(Direction direction)
+        public void MoveUp()
         {
-            
+            mario.MarioPhysics.MoveUp();
         }
     }
 }

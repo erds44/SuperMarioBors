@@ -32,9 +32,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             mario.MovementState  = new LeftMoving(mario);
         }
 
-        public void Obstacle(Direction directio)
-        {
-        }
 
         public void Right()
         {
@@ -46,9 +43,9 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             mario.MovementState = new LeftJumping(mario);
         }
 
-        //public void Update()
-        //{
-        //    mario.MarioPhysics.SpeedDecay();
-        //}
+        public void MoveUp()
+        {
+            mario.MarioPhysics.MoveUp();
+        }
     }
 }

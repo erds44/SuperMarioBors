@@ -6,9 +6,9 @@ namespace SuperMarioBros.Blocks
 {
     public class HiddenBlock : AbstractBlock
     {
-        public HiddenBlock( Point location)
+        public HiddenBlock(Vector2 location)
         {
-            this.Location = location;
+            Position = location;
             this.State = new HiddenBlockState(this);
         }
     }

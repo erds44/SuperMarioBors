@@ -6,10 +6,10 @@ namespace SuperMarioBros.Koopas
 {
     public class Koopa : AbstractEnemy
     {
-        public Koopa(Point location)
+        public Koopa(Vector2 location)
         {
             State = new LeftMoving(this);
-            this.location = location;
+            Position = location;
         }
     }
 }

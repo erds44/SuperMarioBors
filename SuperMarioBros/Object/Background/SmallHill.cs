@@ -5,9 +5,9 @@ namespace SuperMarioBros.Backgrounds
 {
     public class SmallHill : AbstractBackground
     {
-        public SmallHill(Point location)
+        public SmallHill(Vector2 location)
         {
-            this.location = location;
+            Position = location;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
     }

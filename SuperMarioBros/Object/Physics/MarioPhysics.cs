@@ -1,25 +1,26 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Collisions;
+using SuperMarioBros.Marios;
 using System;
 
 namespace SuperMarioBros.Physicses
 {
-    public class Physics
+    public class MarioPhysics
     {
         public float XVelocity { get; private set; }
         public float YVelocity { get; private set; }
-        private readonly float jumpVelocity = -50;
+        private readonly float jumpVelocity = -230;
         private readonly float forwardAcceleration;
         private readonly float backwardAcceleration;
         private readonly float gravity;
         private readonly float minClamping = -200;
         private readonly float maxClamping = 200;
-        public Direction CollisionDirection { get; set; }
         private Vector2 displacement;
         private Vector2 prevDisplacement;
         private float dt;
-        private bool jump;
-        public Physics(int forwardAcceleration)
+        public bool Jump { get; private set; }
+        private readonly IMario mario;
+        public MarioPhysics(IMario mario, int forwardAcceleration)
         {
             this.forwardAcceleration = forwardAcceleration;
             this.backwardAcceleration = (float) 2 * forwardAcceleration;
@@ -29,7 +30,8 @@ namespace SuperMarioBros.Physicses
             XVelocity = 0;
             YVelocity = 0;
             gravity = 200;
-            jump = false;
+            Jump = false;
+            this.mario = mario;
         }
         public void Left()
         {
@@ -43,33 +45,39 @@ namespace SuperMarioBros.Physicses
         }
         public void Up()
         {
-            if (!jump)
+            if (!Jump)
             {
                 YVelocity += jumpVelocity;
-                jump = true;
+                Jump = true;
             }
+        }
+        public void MoveUp()
+        {
+            mario.Position -= new Vector2(0, prevDisplacement.Y);
+            YVelocity = 0;
+            Jump = false;
+        }
+        public void MoveDown()
+        {
+            mario.Position -= new Vector2(0, prevDisplacement.Y);
+             YVelocity *= -1;
+        }
+        public void MoveLeft()
+        {
+            mario.Position -= new Vector2(3*prevDisplacement.X, 0);
+            XVelocity = 0;
+        }
+        public void MoveRight()
+        {
+            mario.Position -= new Vector2(3*prevDisplacement.X, 0);
+            XVelocity = 0;
         }
         public void SpeedDecay()
         {
             XVelocity *= (float)0.96;
-        }
-        public void BlockHorizontal()
-        {
-            XVelocity = 0;
+            Clamping();
         }
 
-        public void BlockTop()
-        {
-            YVelocity *= -1;
-        }
-        public void BlockBottom()
-        {
-            if (YVelocity > 0)
-            {
-                YVelocity = 0;
-            }
-            jump = false;
-        }
         public Vector2 Displacement(GameTime gameTime)
         {
             Update(gameTime);
@@ -77,39 +85,22 @@ namespace SuperMarioBros.Physicses
             displacement = new Vector2(0, 0);                  
             return prevDisplacement;   
         }
-        private void Obstacle()
-        {
-            if(CollisionDirection == Direction.bottom)
-            {
-                BlockTop();
-            }else if(CollisionDirection == Direction.top)
-            {
-                BlockBottom();
-            }else if(CollisionDirection == Direction.left || CollisionDirection == Direction.right)
-            {
-                BlockHorizontal();
-            }
-        }
+
         public bool HitHidden(int dy)
         {
-            if(YVelocity >= dy && prevDisplacement.Y < 0)
+            if(YVelocity * dt >= dy && prevDisplacement.Y < 0)
             {
                 return true;
             }
-            return false;
+            return true;
         }
 
         private void Update(GameTime gameTime)
         {
             dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             YVelocity += gravity * dt;
-            Clamping();
-            Obstacle();
             displacement.X += (XVelocity * dt);
-            displacement.Y += (YVelocity * dt);
-            Console.WriteLine(CollisionDirection);
-            CollisionDirection = Direction.none;
-            
+            displacement.Y += (YVelocity * dt);          
         }
         public void Break()
         {

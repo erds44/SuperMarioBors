@@ -26,9 +26,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         }
 
-        public void Obstacle(Direction direction)
-        {
-        }
 
         public void Right()
         {
@@ -45,6 +42,10 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         public void Update()
         {
             // Do Nothing
+        }
+        public void MoveUp()
+        {
+            mario.MarioPhysics.MoveUp();
         }
 
     }

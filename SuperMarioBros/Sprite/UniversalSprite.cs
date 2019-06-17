@@ -46,13 +46,13 @@ namespace SuperMarioBros.Sprites
                 count++;
             }
         }
-        public void Draw(SpriteBatch spriteBatch, Point location)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             int row = (int)((float)currentFrame / (float)totalFrame);
             int column = currentFrame % totalFrame;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle(location.X, location.Y - height, width, height);
+            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y - height, width, height);
 
             /* This condition is used for alternating colors for star mario */
             if (count % SpriteColor.Count == 0 || count > SpriteColor.Count)

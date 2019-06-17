@@ -6,9 +6,9 @@ namespace SuperMarioBros.Blocks
 {
     public class BrickBlock : AbstractBlock 
     {
-        public BrickBlock( Point location)
+        public BrickBlock(Vector2 location)
         {
-            this.Location = location;
+            Position = location;
             this.State = new BrickBlockState(this);
         }
 

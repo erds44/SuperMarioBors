@@ -6,9 +6,9 @@ namespace SuperMarioBros.Commands
     class HiddenBlockUsedCommand : ICommand
     {
         private readonly IBlock block;
-        public HiddenBlockUsedCommand(IBlock block)
+        public HiddenBlockUsedCommand(IStatic block)
         {
-            this.block = block;
+            this.block = (IBlock)block;
         }
         public void Execute()
         {

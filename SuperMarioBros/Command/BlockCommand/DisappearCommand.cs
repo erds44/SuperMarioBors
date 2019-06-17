@@ -6,9 +6,9 @@ namespace SuperMarioBros.Commands
     public class BrickDisappearCommand : ICommand
     {
         private readonly IBlock block;
-        public BrickDisappearCommand(IBlock block)
+        public BrickDisappearCommand(IStatic block)
         {
-            this.block = block;
+            this.block = (IBlock)block;
         }
         public void Execute()
         {

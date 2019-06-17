@@ -7,9 +7,9 @@ namespace SuperMarioBros.Backgrounds
     public class BigCloud : AbstractBackground
     {
 
-        public BigCloud(Point location)
+        public BigCloud(Vector2 location)
         {
-            this.location = location;
+            Position = location;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
     }

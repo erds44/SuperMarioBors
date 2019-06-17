@@ -14,7 +14,6 @@ namespace SuperMarioBros.Objects.Enemy
         public void ChangeDirection()
         {
             enemy.State = new RightMoving(enemy);
-
         }
 
     }

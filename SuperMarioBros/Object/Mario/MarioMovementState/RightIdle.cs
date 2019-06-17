@@ -1,5 +1,4 @@
-﻿using SuperMarioBros.Collisions;
-using SuperMarioBros.Marios.MarioTypeStates;
+﻿using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
@@ -35,20 +34,14 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             mario.MovementState = new RightJumping(mario);
         }
 
-        //public void Update()
-        //{
-        //    mario.MarioPhysics.SpeedDecay();
-        //}
-
-
         public void Idle()
         {
             mario.MarioPhysics.SpeedDecay();
         }
 
-        public void Obstacle(Direction direction)
+        public void MoveUp()
         {
-
+            mario.MarioPhysics.MoveUp();
         }
     }
 }

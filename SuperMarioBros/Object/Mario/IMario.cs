@@ -8,14 +8,17 @@ using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Marios
 {
-    public interface IMario : IObject, IMarioHealthState, IMarioMovementState
+    public interface IMario : IDynamic, IMarioHealthState
     {
         int Timer { get; set; }
         ISprite Sprite { get; set; }
         IMarioHealthState HealthState { get; set; }
         IMarioMovementState MovementState { get; set; }
-        Physics MarioPhysics { get; }
-        Vector2 Position { get; set; }
-        void Update(GameTime gameTime);
+        MarioPhysics MarioPhysics { get; }
+        void Left();
+        void Down();
+        void Up();
+        void Right();
+        void Idle();
     }
 }

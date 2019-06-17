@@ -8,13 +8,13 @@ namespace SuperMarioBros.Commands
     class GoombaStompedCommand : ICommand
     {
         private readonly IEnemy enemy;
-        public GoombaStompedCommand(IEnemy enemy)
+        public GoombaStompedCommand(IDynamic enemy)
         {
-            this.enemy = enemy;
+            this.enemy =(IEnemy) enemy;
         }
         public void Execute()
         {
-            ObjectsManager.Instance.ChangeObject(enemy , new StompedGoomba(new Point(enemy.HitBox().X, enemy.HitBox().Y + enemy.HitBox().Height)));
+            ObjectsManager.Instance.ChangeObject(enemy , new StompedGoomba(new Vector2(enemy.HitBox().X, enemy.HitBox().Y + enemy.HitBox().Height)));
         }
     }
 }

@@ -5,10 +5,10 @@ namespace SuperMarioBros.Goombas
 {
     public class Goomba : AbstractEnemy
     {
-        public Goomba( Point location)
+        public Goomba( Vector2 location)
         {
             State = new LeftMoving(this);
-            this.location = location;
+            Position = location;
         }
 
     }

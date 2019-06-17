@@ -6,12 +6,36 @@ namespace SuperMarioBros.Items
     public class Coin : AbstractItem, IItem
 
     {
-        public Coin(Point location)
+        public Coin(Vector2 location)
         {
-            this.location = location;
+            Position = location;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
 
+        public void MoveDown()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void MoveLeft()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void MoveRight()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void MoveUp()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            sprite.Update();
+        }
     }
 }
 

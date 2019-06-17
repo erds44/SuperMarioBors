@@ -7,9 +7,9 @@ namespace SuperMarioBros.Commands
     class TakeDamageCommand : ICommand
     {
         private readonly IMario mario;
-        public TakeDamageCommand(IMario mario)
+        public TakeDamageCommand(IDynamic mario)
         {
-            this.mario = mario;
+            this.mario = (IMario)mario;
         }
         public void Execute()
         {

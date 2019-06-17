@@ -15,7 +15,7 @@ namespace SuperMarioBros.Marios
     {
         public IMarioHealthState HealthState { get; set; }
         public IMarioMovementState MovementState { get; set; }
-        public Physics MarioPhysics { get; }
+        public MarioPhysics MarioPhysics { get; }
         private readonly IMario mario;
         public ISprite Sprite { get; set; }
         public int Timer { get; set; }
@@ -25,11 +25,6 @@ namespace SuperMarioBros.Marios
             this.mario = mario;
             MarioPhysics = mario.MarioPhysics;
             Timer = 300;
-            if(mario is FlashingMario)
-            {
-                mario.Timer = 0;
-                mario.Update();
-            }
         }
 
         public void Down()
@@ -40,7 +35,7 @@ namespace SuperMarioBros.Marios
         public void Draw(SpriteBatch spriteBatch)
         {
             Sprite = new DecorationSprite(mario.Sprite);
-            Sprite.Draw(spriteBatch, new Point(mario.HitBox().X, mario.HitBox().Y + mario.HitBox().Height));
+            Sprite.Draw(spriteBatch, new Vector2(mario.HitBox().X, mario.HitBox().Y + mario.HitBox().Height));
         }
 
         public void OnFireFlower()
@@ -73,19 +68,6 @@ namespace SuperMarioBros.Marios
             mario.Up();
         }
 
-        public void Update()
-        {
-            mario.Update();
-            Timer--;
-            if(Timer == 0)
-            {
-                ObjectsManager.Instance.RemoveDecoration(this, mario);
-            }
-            else
-            {
-                Sprite.Update();
-            }
-        }
 
         public void Idle()
         {
@@ -111,11 +93,36 @@ namespace SuperMarioBros.Marios
         public void Update(GameTime gameTime)
         {
             mario.Update(gameTime);
+            Timer--;
+            if (Timer == 0)
+            {
+                ObjectsManager.Instance.RemoveDecoration(this, mario);
+            }
+            else
+            {
+                Sprite.Update();
+            }
         }
 
-        public void Obstacle(Direction direction)
+
+        public void MoveUp()
         {
-            mario.Obstacle(direction);
+            mario.MoveUp();
+        }
+
+        public void MoveDown()
+        {
+            mario.MoveDown();
+        }
+
+        public void MoveLeft()
+        {
+            mario.MoveLeft();
+        }
+
+        public void MoveRight()
+        {
+            mario.MoveRight();
         }
     }
 }

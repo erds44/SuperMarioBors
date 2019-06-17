@@ -2,8 +2,9 @@
 
 namespace SuperMarioBros.Objects
 {
-    public interface IObject : IDraw, IUpdate
+    public interface IObject : IDraw
     {
         Rectangle HitBox();
+        Vector2 Position { get; set; }
     }
 }
