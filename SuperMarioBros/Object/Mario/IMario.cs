@@ -10,7 +10,7 @@ namespace SuperMarioBros.Marios
 {
     public interface IMario : IDynamic, IMarioHealthState
     {
-        int Timer { get; set; }
+        double Timer { get; set; }
         ISprite Sprite { get; set; }
         IMarioHealthState HealthState { get; set; }
         IMarioMovementState MovementState { get; set; }

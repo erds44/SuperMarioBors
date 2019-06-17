@@ -18,12 +18,13 @@ namespace SuperMarioBros.Marios
         public MarioPhysics MarioPhysics { get; }
         private readonly IMario mario;
         public ISprite Sprite { get; set; }
-        public int Timer { get; set; }
+        public double Timer { get; set; }
         public Vector2 Position { get; set; }
         public StarMario(IMario mario)
         {
             this.mario = mario;
             MarioPhysics = mario.MarioPhysics;
+            HealthState = mario.HealthState;
             Timer = 300;
         }
 

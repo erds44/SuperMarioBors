@@ -92,7 +92,7 @@ namespace SuperMarioBros.Physicses
             {
                 return true;
             }
-            return true;
+            return false;
         }
 
         private void Update(GameTime gameTime)

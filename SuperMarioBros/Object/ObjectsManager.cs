@@ -11,46 +11,28 @@ namespace SuperMarioBros.Objects
     {
         private Collection<IStatic> staticObjects;
         private Collection<IDynamic> dynamicObjects;
-        //private Collection<IMario> Mario; 
         public static ObjectsManager Instance { get; } = new ObjectsManager();
         private ObjectsManager() { }
         private GameTime time;
         public void Initialize()
         {
             staticObjects = ObjectLoading.LoadStatics();
-            //Mario = ObjectLoading.LoadMario();
             dynamicObjects = ObjectLoading.LoadDynamics();
         }
         public void Update(GameTime gameTime)
         {
             time = gameTime;
-            foreach (IStatic obj in staticObjects)
-            {
-                obj.Update();
-            }
-            foreach (IDynamic obj in dynamicObjects)
-            {
-                obj.Update(time);
-            }
-            //for (int i = 0; i < Mario.Count; i++)
-            //{
-            //    Mario[i].Update(gameTime); 
-            //}
+            for (int i = 0; i < staticObjects.Count; i++)
+                staticObjects[i].Update();
+            for (int i = 0; i < dynamicObjects.Count; i++)
+                dynamicObjects[i].Update(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (IStatic obj in staticObjects)
-            {
                 obj.Draw(spriteBatch);
-            }
-            foreach (IDynamic obj in dynamicObjects)
-            {
+            foreach (IDynamic obj in dynamicObjects)        
                 obj.Draw(spriteBatch);
-            }
-            //foreach (IMario mario in Mario)
-            //{
-            //    mario.Draw(spriteBatch);
-            //}
         }
         public void DecorateMario(IMario oldMario, IMario newMario)
         {
@@ -69,6 +51,17 @@ namespace SuperMarioBros.Objects
             else
             {
                 dynamicObjects.Remove((IDynamic)gameObject);
+            }
+        }
+        public void Add(IObject gameObject)
+        {
+            if (gameObject is IStatic)
+            {
+                staticObjects.Add((IStatic)gameObject);
+            }
+            else
+            {
+                dynamicObjects.Add((IDynamic)gameObject);
             }
         }
         /*  The following methods might not be put in the ObjetcsManager class
@@ -105,26 +98,7 @@ namespace SuperMarioBros.Objects
             // if mario is flashing and hits a star
             // mario will end flashing state then become star mario
         }
-        public void HiddenUsed(IBlock block)
-        {
-            int height = Rectangle.Intersect(dynamicObjects[0].HitBox(), block.HitBox()).Height;
-            if (((IMario)dynamicObjects[0]).MarioPhysics.HitHidden(height))
-            {
-                block.Used();
-                dynamicObjects[0].Update(time);
-            }
-        }
-        public void BrickDisappear(IBlock block)
-        {
-            if(((IMario)dynamicObjects[0]).HealthState is SmallMario)
-            {
-               // Mario[0].Obstacle();
-            }
-            else
-            {
-                staticObjects.Remove(block);
-            }
-        }
+
         public IMario MarioObject()
         {
             return (IMario)dynamicObjects[0];

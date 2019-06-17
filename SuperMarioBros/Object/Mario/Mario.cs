@@ -17,7 +17,7 @@ namespace SuperMarioBros.Marios
         public ISprite Sprite { get; set; }
         public MarioPhysics MarioPhysics { get; }
         public Vector2 Position { get; set; }
-        public int Timer { get; set; }
+        public double Timer { get; set; }
         public Mario(Vector2 location)
         {
             HealthState = new SmallMario(this);

@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using SuperMarioBros.Blocks;
+using SuperMarioBros.Goombas;
 using SuperMarioBros.Items;
-using SuperMarioBros.LevelLoading;
+using SuperMarioBros.Koopas;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
-using System;
 using System.Collections.ObjectModel;
 
 namespace SuperMarioBros
@@ -19,7 +19,12 @@ namespace SuperMarioBros
             dynamics = new Collection<IDynamic>
             {
                 new Mario(new Vector2(0, 400)),
-                new Star(new Vector2(200,400))
+                new Star(new Vector2(200,400)),
+                new RedMushroom(new Vector2(100,400)),
+                new GreenMushroom(new Vector2(200,400)),
+                new Flower(new Vector2(300,400)),
+                new Koopa(new Vector2(450, 410)),
+                new Goomba(new Vector2(500, 410))
             };
             statics = new Collection<IStatic>
             {
@@ -42,18 +47,10 @@ namespace SuperMarioBros
                 new RockBlock(new Vector2(640,450)),
                 new RockBlock(new Vector2(680,450)),
                 new Pipe(new Vector2(360,410)),
-                new RockBlock(new Vector2(100,410)),
-                new RockBlock(new Vector2(100,370)),
-                new RockBlock(new Vector2(100,330)),
-                
-                new RockBlock(new Vector2(140, 330)),
-                new RockBlock(new Vector2(180, 330)),
-                new RockBlock(new Vector2(220, 330)),
-                new RockBlock(new Vector2(260, 330)),
-
-                new RockBlock(new Vector2(260,330)),
-                new RockBlock(new Vector2(260,370)),
-                new RockBlock(new Vector2(260,410)),
+                new HiddenBlock(new Vector2 (0, 300)),
+                new BrickBlock(new Vector2 (40, 300)),
+                new ConcreteBlock(new Vector2 (80, 300)),
+                new QuestionBlock(new Vector2 (120, 300)),
 
             };
 

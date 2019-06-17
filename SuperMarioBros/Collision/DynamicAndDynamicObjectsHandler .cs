@@ -1,6 +1,5 @@
-﻿using SuperMarioBros.Blocks;
-using SuperMarioBros.Blocks.BlockStates;
-using SuperMarioBros.Commands;
+﻿using SuperMarioBros.Commands;
+using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
 using System;
@@ -10,28 +9,65 @@ namespace SuperMarioBros.Collisions
 {
     public static class DynamicAndDynamicObjectsHandler
     {
-        /* All CollisionHandler class will be refactored using delegate */
-        private static readonly Dictionary<(Type, Type, Direction), (Type, Type)> collisionDictionary = new Dictionary<(Type, Type, Direction), (Type, Type)>
-        {
-
-
-        };
+        private delegate void CollisionHandler(IDynamic obj1, IDynamic obj2, Direction direction);
 
         public static void HandleCollision(IDynamic obj1, IDynamic obj2, Direction direction)
         {
-            if (collisionDictionary.TryGetValue((obj1.GetType(),obj2.GetType(), direction), out var types))
-            {
-                Type typ1 = types.Item1;
-                Type typ2 = types.Item2;
-                if (typ1 != typeof(Nullable))
-                {
-                    ((ICommand)Activator.CreateInstance(typ1, obj1)).Execute();
-                }
-                if (typ2 != typeof(Nullable))
-                {
-                    ((ICommand)Activator.CreateInstance(typ2, obj2)).Execute();
-                }
-            }
+            if (collisionDictionary.TryGetValue((obj1.GetType(), obj2.GetType()), out var handle))
+                handle(obj1, obj2, direction);
+        }
+        private static readonly Dictionary<(Type, Type), CollisionHandler> collisionDictionary = new Dictionary<(Type, Type), CollisionHandler>
+        {
+             {(typeof(Mario), typeof(Star)), StarMario},
+             {(typeof(Mario), typeof(RedMushroom)), RedMushroom},
+             {(typeof(Mario), typeof(GreenMushroom)), GreenMushroom},
+             {(typeof(Mario), typeof(Flower)), FireFlower},
+             {(typeof(Mario), typeof(Coin)), Coin},
+
+             {(typeof(StarMario), typeof(Star)), StarMario},
+             {(typeof(StarMario), typeof(RedMushroom)), RedMushroom},
+             {(typeof(StarMario), typeof(GreenMushroom)), GreenMushroom},
+             {(typeof(StarMario), typeof(Flower)), FireFlower},
+             {(typeof(StarMario), typeof(Coin)), Coin},
+
+             {(typeof(FlashingMario), typeof(Star)), StarMario},
+             {(typeof(FlashingMario), typeof(RedMushroom)), RedMushroom},
+             {(typeof(FlashingMario), typeof(GreenMushroom)), GreenMushroom},
+             {(typeof(FlashingMario), typeof(Flower)), FireFlower},
+             {(typeof(FlashingMario), typeof(Coin)), Coin},
+
+
+
+        };
+        private static void StarMario(IDynamic obj1, IDynamic obj2, Direction direction)
+        {
+            ObjectsManager.Instance.StarMario((IMario)obj1);
+            ObjectsManager.Instance.Remove(obj2);
+        }
+
+        private static void RedMushroom(IDynamic obj1, IDynamic obj2, Direction direction)
+        {
+            IMario mario = (IMario)obj1;
+            mario.RedMushroom();        
+            ObjectsManager.Instance.Remove(obj2);
+        }
+        private static void GreenMushroom(IDynamic obj1, IDynamic obj2, Direction direction)
+        {
+            IMario mario = (IMario)obj1;
+            mario.GreenMushroom();
+            ObjectsManager.Instance.Remove(obj2);
+        }
+        private static void FireFlower(IDynamic obj1, IDynamic obj2, Direction direction)
+        {
+            IMario mario = (IMario)obj1;
+            mario.OnFireFlower();
+            ObjectsManager.Instance.Remove(obj2);
+        }
+        private static void Coin(IDynamic obj1, IDynamic obj2, Direction direction)
+        {
+            IMario mario = (IMario)obj1;
+            mario.Coin();
+            ObjectsManager.Instance.Remove(obj2);
         }
     }
 }

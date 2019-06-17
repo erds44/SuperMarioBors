@@ -1,8 +1,8 @@
 ﻿using SuperMarioBros.Blocks;
 using SuperMarioBros.Blocks.BlockStates;
-using SuperMarioBros.Commands;
 using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
+using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Objects;
 using System;
 using System.Collections.Generic;
@@ -11,78 +11,100 @@ namespace SuperMarioBros.Collisions
 {
     public static class DynamicAndStaticObjectsHandler
     {
-        /* All CollisionHandler class will be refactored using delegate */
-        /* Hidden to check*/
-        private static readonly Dictionary<(Type, Type, Direction), (Type, Type)> collisionDictionary = new Dictionary<(Type, Type, Direction), (Type, Type)>
-        {
-            {(typeof(Mario), typeof(BrickBlockState), Direction.top), (typeof(MoveMarioUpCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(ConcreteBlockState), Direction.top), (typeof(MoveMarioUpCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(QuestionBlockState), Direction.top), (typeof(MoveMarioUpCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(RockBlockState), Direction.top), (typeof(MoveMarioUpCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(UsedBlockState), Direction.top), (typeof(MoveMarioUpCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(Pipe), Direction.top), (typeof(MoveMarioUpCommand), typeof(Nullable))},
 
-            {(typeof(Mario), typeof(BrickBlockState), Direction.left), (typeof(MoveMarioLeftCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(ConcreteBlockState), Direction.left), (typeof(MoveMarioLeftCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(QuestionBlockState), Direction.left), (typeof(MoveMarioLeftCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(RockBlockState), Direction.left), (typeof(MoveMarioLeftCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(UsedBlockState), Direction.left), (typeof(MoveMarioLeftCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(Pipe), Direction.left), (typeof(MoveMarioLeftCommand), typeof(Nullable))},
-
-            {(typeof(Mario), typeof(BrickBlockState), Direction.right), (typeof(MoveMarioRightCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(ConcreteBlockState), Direction.right), (typeof(MoveMarioRightCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(QuestionBlockState), Direction.right), (typeof(MoveMarioRightCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(RockBlockState), Direction.right), (typeof(MoveMarioRightCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(UsedBlockState), Direction.right), (typeof(MoveMarioRightCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(Pipe), Direction.right), (typeof(MoveMarioRightCommand), typeof(Nullable))},
-
-            {(typeof(Mario), typeof(BrickBlockState), Direction.bottom), (typeof(MoveMarioDownCommand), typeof(DisappearCommand))},
-            {(typeof(Mario), typeof(ConcreteBlockState), Direction.bottom), (typeof(MoveMarioDownCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(QuestionBlockState), Direction.bottom), (typeof(MoveMarioDownCommand), typeof(BlockUsedCommand))},
-            {(typeof(Mario), typeof(RockBlockState), Direction.bottom), (typeof(MoveMarioDownCommand), typeof(Nullable))},
-            {(typeof(Mario), typeof(UsedBlockState), Direction.bottom), (typeof(MoveMarioDownCommand), typeof(Nullable))},
-           // {(typeof(Mario), typeof(HiddenBlockState), Direction.bottom), (typeof(MoveMarioDownCommand), typeof(HiddenBlockUsedCommand))},
-            {(typeof(Mario), typeof(Pipe), Direction.bottom), (typeof(MoveMarioDownCommand), typeof(Nullable))},
-
-            { (typeof(Star), typeof(RockBlockState), Direction.top), (typeof(MoveDynamicUpCommand), typeof(Nullable))},
-            { (typeof(Star), typeof(Pipe), Direction.top), (typeof(MoveDynamicUpCommand), typeof(Nullable))},
-
-            { (typeof(Star), typeof(RockBlockState), Direction.bottom), (typeof(MoveDynamicDownCommand), typeof(Nullable))},
-            { (typeof(Star), typeof(Pipe), Direction.bottom), (typeof(MoveDynamicDownCommand), typeof(Nullable))},
-
-            { (typeof(Star), typeof(RockBlockState), Direction.left), (typeof(MoveDynamicLeftCommand), typeof(Nullable))},
-            { (typeof(Star), typeof(Pipe), Direction.left), (typeof(MoveDynamicLeftCommand), typeof(Nullable))},
-
-            { (typeof(Star), typeof(RockBlockState), Direction.right), (typeof(MoveDynamicRightCommand), typeof(Nullable))},
-            { (typeof(Star), typeof(Pipe), Direction.right), (typeof(MoveDynamicRightCommand), typeof(Nullable))}
-
-
-        };
-
+        private delegate void CollisionHandler(IDynamic obj1, IStatic obj2, Direction direction);
         public static void HandleCollision(IDynamic obj1, IStatic obj2, Direction direction)
-        {
+        {         
             Type type;
             if (obj2 is IBlock)
             {
                 type = ((IBlock)obj2).State.GetType();
+  
             }
             else
             {
                 type = obj2.GetType();
             }
-            if (collisionDictionary.TryGetValue((obj1.GetType(),type, direction), out var types))
+            if (collisionDictionary.TryGetValue((obj1.GetType(),type), out var handle))
             {
-                Type typ1 = types.Item1;
-                Type typ2 = types.Item2;
-                if (typ1 != typeof(Nullable))
+                handle(obj1, obj2, direction);
+            }
+        }
+
+        private static readonly Dictionary<(Type, Type), CollisionHandler> collisionDictionary = new Dictionary<(Type, Type), CollisionHandler>
+        {
+            { (typeof(Mario), typeof(BrickBlockState)), MoveMarioBlockBumped},
+            { (typeof(Mario), typeof(ConcreteBlockState)), MoveDynamic},
+            { (typeof(Mario), typeof(QuestionBlockState)), MoveMarioBlockUsed},
+            { (typeof(Mario), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(Mario), typeof(UsedBlockState)), MoveDynamic},
+            { (typeof(Mario), typeof(HiddenBlockState)), HiddenUsed},
+            { (typeof(Mario), typeof(Pipe)), MoveDynamic},
+
+            { (typeof(StarMario), typeof(BrickBlockState)), MoveMarioBlockBumped},
+            { (typeof(StarMario), typeof(ConcreteBlockState)), MoveDynamic},
+            { (typeof(StarMario), typeof(QuestionBlockState)), MoveMarioBlockUsed},
+            { (typeof(StarMario), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(StarMario), typeof(UsedBlockState)), MoveDynamic},
+            { (typeof(StarMario), typeof(HiddenBlockState)), HiddenUsed},
+            { (typeof(StarMario), typeof(Pipe)), MoveDynamic},
+
+            { (typeof(FlashingMario), typeof(BrickBlockState)), MoveMarioBlockBumped},
+            { (typeof(FlashingMario), typeof(ConcreteBlockState)), MoveDynamic},
+            { (typeof(FlashingMario), typeof(QuestionBlockState)), MoveMarioBlockUsed},
+            { (typeof(FlashingMario), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(FlashingMario), typeof(UsedBlockState)), MoveDynamic},
+            { (typeof(FlashingMario), typeof(HiddenBlockState)), HiddenUsed},
+            { (typeof(FlashingMario), typeof(Pipe)), MoveDynamic},
+
+            { (typeof(Star), typeof(BrickBlockState)), MoveDynamic},
+            { (typeof(Star), typeof(ConcreteBlockState)), MoveDynamic},
+            { (typeof(Star), typeof(QuestionBlockState)), MoveDynamic},
+            { (typeof(Star), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(Star), typeof(UsedBlockState)), MoveDynamic},
+            { (typeof(Star), typeof(Pipe)), MoveDynamic},
+
+        };
+        private static void MoveMarioBlockBumped(IDynamic obj1, IStatic obj2 ,Direction direction)
+        {
+            IMario mario = (IMario)obj1;
+            MoveDynamic(obj1, obj2, direction);
+            if ((mario.HealthState is SmallMario))
+            {
+                // Block.Bumped();
+            }
+            else if(direction == Direction.bottom)
+            {
+                ObjectsManager.Instance.Remove(obj2);
+            }
+        }
+        private static void MoveMarioBlockUsed(IDynamic obj1, IStatic obj2, Direction direction)
+        {
+            MoveDynamic(obj1, obj2, direction);
+            if(direction == Direction.bottom)
+                ((IBlock) obj2).Used();
+        }
+        private static void MoveDynamic(IDynamic obj1, IStatic obj2, Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.top : obj1.MoveUp(); break;
+                case Direction.bottom: obj1.MoveDown(); break;
+                case Direction.left: obj1.MoveLeft(); break;
+                case Direction.right: obj1.MoveRight(); break;
+            }
+        }
+        private static void HiddenUsed(IDynamic obj1, IStatic obj2, Direction direction)
+        {
+            if (direction == Direction.bottom)
+            {
+                if (((IMario)obj1).MarioPhysics.YVelocity < 0)
                 {
-                    ((ICommand)Activator.CreateInstance(typ1, obj1)).Execute();
-                }
-                if (typ2 != typeof(Nullable))
-                {
-                    ((ICommand)Activator.CreateInstance(typ2, obj2)).Execute();
+                    ((IBlock)obj2).Used();
+                    MoveDynamic(obj1, obj2, direction);
                 }
             }
         }
+
     }
 }
