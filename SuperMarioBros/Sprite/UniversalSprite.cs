@@ -35,7 +35,7 @@ namespace SuperMarioBros.Sprites
              * There might be a better solution to do this
              */
             delay++;
-            if (delay % 5 == 0)
+            if (delay % 10 == 0)
             {
                 currentFrame++;
                 if (currentFrame == totalFrame)

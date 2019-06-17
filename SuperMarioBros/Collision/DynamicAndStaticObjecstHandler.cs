@@ -1,6 +1,8 @@
 ﻿using SuperMarioBros.Blocks;
 using SuperMarioBros.Blocks.BlockStates;
+using SuperMarioBros.Goombas;
 using SuperMarioBros.Items;
+using SuperMarioBros.Koopas;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Objects;
@@ -64,6 +66,11 @@ namespace SuperMarioBros.Collisions
             { (typeof(Star), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(Star), typeof(Pipe)), MoveDynamic},
 
+            { (typeof(Goomba), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(Goomba), typeof(Pipe)), MoveDynamic},
+
+            { (typeof(Koopa), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(Koopa), typeof(Pipe)), MoveDynamic},
         };
         private static void MoveMarioBlockBumped(IDynamic obj1, IStatic obj2 ,Direction direction)
         {

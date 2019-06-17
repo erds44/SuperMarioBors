@@ -16,7 +16,7 @@ namespace SuperMarioBros.Marios
         public IMarioHealthState HealthState { get; set; }
         public IMarioMovementState MovementState { get; set; }
         public MarioPhysics MarioPhysics { get; }
-        private readonly IMario mario;
+        private IMario mario;
         public ISprite Sprite { get; set; }
         public double Timer { get; set; }
         public Vector2 Position { get; set; }
@@ -25,7 +25,7 @@ namespace SuperMarioBros.Marios
             this.mario = mario;
             MarioPhysics = mario.MarioPhysics;
             HealthState = mario.HealthState;
-            Timer = 300;
+            Timer = 5;
         }
 
         public void Down()
@@ -94,8 +94,8 @@ namespace SuperMarioBros.Marios
         public void Update(GameTime gameTime)
         {
             mario.Update(gameTime);
-            Timer--;
-            if (Timer == 0)
+            Timer -= gameTime.ElapsedGameTime.TotalSeconds;
+            if (Timer <= 0)
             {
                 ObjectsManager.Instance.RemoveDecoration(this, mario);
             }

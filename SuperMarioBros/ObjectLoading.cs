@@ -23,8 +23,10 @@ namespace SuperMarioBros
                 new RedMushroom(new Vector2(100,400)),
                 new GreenMushroom(new Vector2(200,400)),
                 new Flower(new Vector2(300,400)),
-                new Koopa(new Vector2(450, 410)),
-                new Goomba(new Vector2(500, 410))
+               // new Koopa(new Vector2(450, 410)),
+                new Goomba(new Vector2(500, 410)),
+                new Goomba(new Vector2(450, 410)),
+                new Koopa(new Vector2(600, 410))
             };
             statics = new Collection<IStatic>
             {
@@ -51,7 +53,8 @@ namespace SuperMarioBros
                 new BrickBlock(new Vector2 (40, 300)),
                 new ConcreteBlock(new Vector2 (80, 300)),
                 new QuestionBlock(new Vector2 (120, 300)),
-
+                new RockBlock(new Vector2(550,410)),
+                new RockBlock(new Vector2(650,410))
             };
 
         }

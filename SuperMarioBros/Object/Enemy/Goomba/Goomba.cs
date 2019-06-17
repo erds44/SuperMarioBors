@@ -1,14 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Objects.Enemy;
+using SuperMarioBros.Physicses;
 
 namespace SuperMarioBros.Goombas
 {
     public class Goomba : AbstractEnemy
     {
-        public Goomba( Vector2 location)
+        public Goomba(Vector2 location)
         {
-            State = new LeftMoving(this);
             Position = location;
+            physics = new ObjectPhysics(this, -30, 0);
+            State = new LeftMoving(this, physics);
         }
 
     }

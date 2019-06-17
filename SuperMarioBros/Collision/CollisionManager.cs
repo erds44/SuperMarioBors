@@ -1,6 +1,4 @@
-﻿using SuperMarioBros.Items;
-using SuperMarioBros.Objects;
-using System;
+﻿using SuperMarioBros.Objects;
 using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Collisions
@@ -22,7 +20,7 @@ namespace SuperMarioBros.Collisions
                 for (int j = 0; j < staticObjects.Count; j++)
                 {
                     Direction direction = CollisionDetection.Detect(dynamicObjects[i], staticObjects[j]);
-                    if (direction != Direction.none) 
+                    if (direction != Direction.none)
                         DynamicAndStaticObjectsHandler.HandleCollision(dynamicObjects[i],staticObjects[j], direction);
                 }
                 for(int j = i + 1; j < dynamicObjects.Count; j++)

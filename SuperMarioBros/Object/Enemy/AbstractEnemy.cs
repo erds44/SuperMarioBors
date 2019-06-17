@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Sprites;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Physicses;
 
 namespace SuperMarioBros.Goombas
 {
@@ -11,12 +12,7 @@ namespace SuperMarioBros.Goombas
         public IEnemyMovementState State { get; set; }
         public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
-
-        public void ChangeDirection()
-        {
-            State.ChangeDirection();
-        }
-
+        protected ObjectPhysics physics;
 
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -26,6 +22,7 @@ namespace SuperMarioBros.Goombas
         public void Update(GameTime gameTime)
         {
             Sprite.Update();
+            Position += physics.Displacement(gameTime);
         }
 
         public Rectangle HitBox()
@@ -36,22 +33,24 @@ namespace SuperMarioBros.Goombas
 
         public void MoveUp()
         {
-            throw new System.NotImplementedException();
+            physics.MoveUp();
         }
 
         public void MoveDown()
         {
-            throw new System.NotImplementedException();
+            physics.MoveDown();
         }
 
         public void MoveLeft()
         {
-            throw new System.NotImplementedException();
+            State.ChangeDirection();
+            physics.MoveLeft();
         }
 
         public void MoveRight()
         {
-            throw new System.NotImplementedException();
+            State.ChangeDirection();
+            physics.MoveRight();
         }
     }
 }

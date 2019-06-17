@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.Blocks;
 using SuperMarioBros.Marios;
-using SuperMarioBros.Marios.MarioTypeStates;
 using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Objects
@@ -34,14 +32,7 @@ namespace SuperMarioBros.Objects
             foreach (IDynamic obj in dynamicObjects)        
                 obj.Draw(spriteBatch);
         }
-        public void DecorateMario(IMario oldMario, IMario newMario)
-        {
-            if(!(oldMario.HealthState is DeadMario))
-            {
-                dynamicObjects.Remove(oldMario);
-                dynamicObjects.Add(newMario);
-            }
-        }
+
         public void Remove(IObject gameObject)
         {
             if(gameObject is IStatic)
@@ -67,23 +58,10 @@ namespace SuperMarioBros.Objects
         /*  The following methods might not be put in the ObjetcsManager class
          *  They will be refactored later
          */
-        public void ChangeObject(IObject oldObject, IObject newObject)
-        {
-            if (oldObject is IStatic)
-            {
-                staticObjects.Remove((IStatic)oldObject);
-                staticObjects.Add((IStatic)newObject);
-            }
-            else
-            {
-                dynamicObjects.Remove((IDynamic)oldObject);
-                dynamicObjects.Add((IDynamic)newObject);
-            }
-        }
         public void RemoveDecoration(IMario oldMario, IMario newMario)
         {
-            dynamicObjects.Remove(oldMario);
-            dynamicObjects.Add(newMario);
+            int index = dynamicObjects.IndexOf(oldMario);
+            dynamicObjects[index] = newMario;
         }
         public void StarMario(IMario mario)
         {

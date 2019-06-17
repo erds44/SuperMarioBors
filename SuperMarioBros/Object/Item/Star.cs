@@ -16,7 +16,7 @@ namespace SuperMarioBros.Items
         {
             Position = location;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
-            this.physics = new ObjectPhysics(this, 40);
+            this.physics = new ObjectPhysics(this, 40, -120);
         }
 
         public Rectangle HitBox()

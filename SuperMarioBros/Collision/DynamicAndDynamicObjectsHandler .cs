@@ -1,5 +1,7 @@
 ﻿using SuperMarioBros.Commands;
+using SuperMarioBros.Goombas;
 using SuperMarioBros.Items;
+using SuperMarioBros.Koopas;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
 using System;
@@ -36,6 +38,8 @@ namespace SuperMarioBros.Collisions
              {(typeof(FlashingMario), typeof(Flower)), FireFlower},
              {(typeof(FlashingMario), typeof(Coin)), Coin},
 
+             {(typeof(Goomba), typeof(Goomba)), MoveDynamic},
+             {(typeof(Goomba), typeof(Koopa)), MoveDynamic},
 
 
         };
@@ -68,6 +72,14 @@ namespace SuperMarioBros.Collisions
             IMario mario = (IMario)obj1;
             mario.Coin();
             ObjectsManager.Instance.Remove(obj2);
+        }
+        private static void MoveDynamic(IDynamic obj1, IDynamic obj2, Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.left: obj1.MoveRight(); obj2.MoveLeft(); break;
+                case Direction.right: obj1.MoveLeft(); obj2.MoveRight(); break;
+            }
         }
     }
 }

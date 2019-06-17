@@ -245,11 +245,6 @@
     <Compile Include="Collision\CollisionManager.cs" />
     <Compile Include="Collision\DynamicAndDynamicObjectsHandler .cs" />
     <Compile Include="Collision\DynamicAndStaticObjecstHandler.cs" />
-    <Compile Include="Command\EnemyCommand\KoopaStompedCommand.cs" />
-    <Compile Include="Command\EnemyCommand\GoombaStompedCommand.cs" />
-    <Compile Include="Command\DisappearCommand.cs" />
-    <Compile Include="Command\MarioCommand\CoinCommand.cs" />
-    <Compile Include="Command\MarioCommand\FlowerCommand.cs" />
     <Compile Include="Command\MarioCommand\DownCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\MarioCommand\LeftCommand.cs" />
@@ -257,11 +252,7 @@
     <Compile Include="Command\GameCommand\QuitCommand.cs" />
     <Compile Include="Command\GameCommand\ResetCommand.cs" />
     <Compile Include="Command\MarioCommand\RightCommand.cs" />
-    <Compile Include="Command\MarioCommand\GreenMushroomCommand.cs" />
-    <Compile Include="Command\MarioCommand\RedMushroomCommand.cs" />
     <Compile Include="Command\MarioCommand\UpCommand.cs" />
-    <Compile Include="Command\MarioCommand\StarMarioCommand.cs" />
-    <Compile Include="Command\MarioCommand\TakeDamageCommand.cs" />
     <Compile Include="Controller\ControllerMessager.cs" />
     <Compile Include="Controller\GamePadController.cs" />
     <Compile Include="Controller\IController.cs" />

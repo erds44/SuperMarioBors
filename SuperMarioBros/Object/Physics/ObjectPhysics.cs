@@ -7,16 +7,15 @@ namespace SuperMarioBros.Physicses
     {
         public float XVelocity { get; private set; }
         public float YVelocity { get; private set; }
-        private readonly float jumpVelocity = -120;
         private readonly float gravity = 120;
         private Vector2 displacement;
         private Vector2 prevDisplacement;
         private float dt = 0;
         private readonly IObject obj;
-        public ObjectPhysics(IObject obj, float XVelocity)
+        public ObjectPhysics(IObject obj, float XVelocity, float YVelocity)
         {
             this.XVelocity = XVelocity;
-            this.YVelocity = jumpVelocity;
+            this.YVelocity = YVelocity;
             this.obj = obj;
             displacement = new Vector2(0, 0);
             prevDisplacement = displacement;
