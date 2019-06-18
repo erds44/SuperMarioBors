@@ -20,5 +20,6 @@ namespace SuperMarioBros.Marios
         void Up();
         void Right();
         void Idle();
+        void FireBall();
     }
 }

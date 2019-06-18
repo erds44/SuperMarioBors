@@ -9,7 +9,7 @@ namespace SuperMarioBros.Goombas
         public Goomba(Vector2 location)
         {
             Position = location;
-            physics = new EnemyPhysics(this, -30, 0);
+            physics = new EnemyPhysics(this, new Vector2(-30, 0));
             State = new LeftMoving(this, physics);
         }
 

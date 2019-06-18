@@ -123,5 +123,11 @@ namespace SuperMarioBros.Marios
         {
             MovementState.MoveRight();
         }
+
+        public void FireBall()
+        {
+            if (HealthState is FireMario)
+                ObjectsManager.Instance.Add(new FireBall(this));             
+        }
     }
 }

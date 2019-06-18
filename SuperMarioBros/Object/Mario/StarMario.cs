@@ -125,5 +125,10 @@ namespace SuperMarioBros.Marios
         {
             mario.MoveRight();
         }
+
+        public void FireBall()
+        {
+            mario.FireBall();
+        }
     }
 }

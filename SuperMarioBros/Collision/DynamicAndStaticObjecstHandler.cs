@@ -77,6 +77,13 @@ namespace SuperMarioBros.Collisions
             { (typeof(Koopa), typeof(QuestionBlockState)), MoveDynamic},
             { (typeof(Koopa), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(Koopa), typeof(Pipe)), MoveDynamic},
+
+            { (typeof(FireBall), typeof(BrickBlockState)), FireBallDisappear},
+            { (typeof(FireBall), typeof(ConcreteBlockState)), FireBallDisappear},
+            { (typeof(FireBall), typeof(QuestionBlockState)), FireBallDisappear},
+            { (typeof(FireBall), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(FireBall), typeof(UsedBlockState)), FireBallDisappear},
+            { (typeof(FireBall), typeof(Pipe)), FireBallDisappear},
         };
         private static void MoveMarioBlockBumped(IDynamic obj1, IStatic obj2 ,Direction direction)
         {
@@ -117,6 +124,10 @@ namespace SuperMarioBros.Collisions
                     MoveDynamic(obj1, obj2, direction);
                 }
             }
+        }
+        private static void FireBallDisappear(IDynamic obj1, IStatic obj2, Direction direction)
+        {
+           // ObjectsManager.Instance.Remove(obj1);
         }
 
     }
