@@ -11,11 +11,43 @@
 #-------------------------------- References --------------------------------#
 
 /reference:levelLoading\levelLoading.dll
+/reference:SpriteLoading\itemsForSize\SpriteLoading.dll
 
 #---------------------------------- Content ---------------------------------#
 
-#begin PartialLevelOne.xml
-/importer:XmlImporter
-/processor:PassThroughProcessor
-/build:PartialLevelOne.xml
+#begin BigMarioLeftMoving.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=0,0,0,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:BigMarioLeftMoving.png
+
+#begin Goomba.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=0,0,0,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Goomba.png
+
+#begin StompedGoomba.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=0,0,0,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:StompedGoomba.png
 
