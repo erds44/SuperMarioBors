@@ -4,6 +4,7 @@ using SuperMarioBros.Items;
 using SuperMarioBros.Koopas;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Objects.Enemy;
 using System;
 using System.Collections.Generic;
 
@@ -38,7 +39,7 @@ namespace SuperMarioBros.Collisions
              {(typeof(FlashingMario), typeof(Flower)), FireFlower},
              {(typeof(FlashingMario), typeof(Coin)), Coin},
 
-             //{(typeof(Mario), typeof(Goomba)), MarioGoomba},
+            // {(typeof(Mario), typeof(Goomba)), MarioGoomba},
              //{(typeof(Mario), typeof(Koopa)), MarioKoopa},
              
 
@@ -50,10 +51,10 @@ namespace SuperMarioBros.Collisions
              {(typeof(FlashingMario), typeof(Koopa)), RedMushroom},
             
 
-             {(typeof(Goomba), typeof(Goomba)), MoveDynamic},
-             {(typeof(Goomba), typeof(Koopa)), MoveDynamic},
+             {(typeof(Goomba), typeof(Goomba)), MoveEnemy},
+             {(typeof(Goomba), typeof(Koopa)), MoveEnemy},
 
-            
+
         };
         private static void StarMario(IDynamic obj1, IDynamic obj2, Direction direction)
         {
@@ -90,13 +91,19 @@ namespace SuperMarioBros.Collisions
         {
             ObjectsManager.Instance.Remove(obj2);
         }
-        private static void MoveDynamic(IDynamic obj1, IDynamic obj2, Direction direction)
+        private static void MoveEnemy(IDynamic obj1, IDynamic obj2, Direction direction)
         {
+          
             switch (direction)
             {
                 case Direction.left: obj1.MoveRight(); obj2.MoveLeft(); break;
                 case Direction.right: obj1.MoveLeft(); obj2.MoveRight(); break;
             }
+        }
+        
+        private static void MarioGoomba(IDynamic obj1, IDynamic obj2,Direction direction)
+        {
+            
         }
     }
 }
