@@ -9,7 +9,7 @@ namespace SuperMarioBros.Koopas
     {
         public Koopa(Vector2 location)
         {
-            physics = new EnemyPhysics(this, -40, 0);
+            physics = new EnemyPhysics(this, new Vector2(-30, 0));
             State = new LeftMoving(this, physics);
             Position = location;
         }

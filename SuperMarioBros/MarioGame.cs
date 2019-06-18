@@ -61,7 +61,8 @@ namespace SuperMarioBros
                     (Keys.Left, ControllerMessager.LEFTMOVE),
                     (Keys.Down, ControllerMessager.DOWNMOVE),
                     (Keys.Right, ControllerMessager.RIGHTMOVE),
-                    (Keys.Up, ControllerMessager.UPMOVE)
+                    (Keys.Up, ControllerMessager.UPMOVE),
+                    (Keys.X, ControllerMessager.FIREBALL)
                 );
             controller.AddController(keyboardController);
             IController JoyStickController = new JoyStickController(controller);

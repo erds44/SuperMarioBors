@@ -115,6 +115,9 @@
     <None Include="Content\ConcreteBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\FireBall.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\FireMarioLeftBreaking.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -252,6 +255,7 @@
     <Compile Include="Command\GameCommand\QuitCommand.cs" />
     <Compile Include="Command\GameCommand\ResetCommand.cs" />
     <Compile Include="Command\MarioCommand\RightCommand.cs" />
+    <Compile Include="Command\MarioCommand\FireBallCommand.cs" />
     <Compile Include="Command\MarioCommand\UpCommand.cs" />
     <Compile Include="Controller\ControllerMessager.cs" />
     <Compile Include="Controller\GamePadController.cs" />
@@ -297,6 +301,7 @@
     <Compile Include="Object\Mario\FlashingMario.cs" />
     <Compile Include="Object\Mario\MarioMovementState\RightBreaking.cs" />
     <Compile Include="Object\Mario\MarioMovementState\LeftBreaking.cs" />
+    <Compile Include="Object\Mario\FireBall.cs" />
     <Compile Include="Object\ObjectSizeManager.cs" />
     <Compile Include="Object\Background\SmallBush.cs" />
     <Compile Include="Object\Background\SmallCloud.cs" />

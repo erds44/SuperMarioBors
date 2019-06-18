@@ -70,7 +70,8 @@ namespace SuperMarioBros.SpriteFactories
                 { "MiddleCloud", new UniversalSprite(content.Load<Texture2D>("MiddleCloud"), 1) },
                 { "SmallHill", new UniversalSprite(content.Load<Texture2D>("SmallHill"), 1) },
                 { "BigCloud", new UniversalSprite(content.Load<Texture2D>("BigCloud"), 1) },
-                { "SmallCloud", new UniversalSprite(content.Load<Texture2D>("SmallCloud"), 1) }
+                { "SmallCloud", new UniversalSprite(content.Load<Texture2D>("SmallCloud"), 1) },
+                { "FireBall", new UniversalSprite(content.Load<Texture2D>("FireBall"), 1) }
             };
             
         }

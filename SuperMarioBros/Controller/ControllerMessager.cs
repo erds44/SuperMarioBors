@@ -7,8 +7,8 @@ namespace SuperMarioBros.Controllers
 {
     public class ControllerMessager : IUpdate
     {
-        private int flags = 0b000000;
-        public const int UPMOVE = 0b000001, DOWNMOVE = 0b000010, LEFTMOVE = 0b000100, RIGHTMOVE = 0b001000, RESETGAME = 0b010000, QUITGAME = 0b100000;
+        private int flags = 0b0000000;
+        public const int UPMOVE = 0b0000001, DOWNMOVE = 0b0000010, LEFTMOVE = 0b0000100, RIGHTMOVE = 0b0001000, RESETGAME = 0b0010000, QUITGAME = 0b0100000, FIREBALL = 0b1000000;
         private readonly MarioGame marioGame;
         private readonly IMario marioPlayer;
         private readonly List<IController> controllers;
@@ -20,7 +20,8 @@ namespace SuperMarioBros.Controllers
             { LEFTMOVE, typeof(LeftCommand) },
             { RIGHTMOVE, typeof(RightCommand) },
             { UPMOVE, typeof(UpCommand) },
-            { DOWNMOVE, typeof(DownCommand) }
+            { DOWNMOVE, typeof(DownCommand) },
+            { FIREBALL, typeof(FireBallCommand) },
         };
         public ControllerMessager(MarioGame game, IMario mario)
         {
@@ -50,7 +51,7 @@ namespace SuperMarioBros.Controllers
             {
                 if((flags & element.Key) != 0) { ((ICommand)Activator.CreateInstance(element.Value, marioPlayer)).Execute(); }
             }
-            flags = 0b000000; //Reset flags.
+            flags = 0b0000000; //Reset flags.
         }
         public void ChangeFlags(int command)
         {
