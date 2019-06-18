@@ -3,16 +3,16 @@ using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Commands
 {
-    class FireBallCommand : ICommand
+    class PowerCommand : ICommand
     {
         private readonly IMario mario;
-        public FireBallCommand(IDynamic mario)
+        public PowerCommand(IDynamic mario)
         {
             this.mario = (IMario)mario;
         }
         public void Execute()
         {
-            mario.FireBall();
+            mario.PowerFlag = true;
         }
     }
 }

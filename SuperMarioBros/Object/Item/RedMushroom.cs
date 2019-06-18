@@ -8,7 +8,8 @@ namespace SuperMarioBros.Items
 {
     public class RedMushroom : IItem
     {
-       
+        public bool IsInvalid { get; set; }
+
         private readonly ISprite sprite;
         public Vector2 Position { get; set; }
         public RedMushroom(Vector2 location)

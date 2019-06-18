@@ -6,6 +6,7 @@ namespace SuperMarioBros.Items
     public class Coin : AbstractItem, IItem
 
     {
+
         public Coin(Vector2 location)
         {
             Position = location;

@@ -15,6 +15,7 @@ namespace SuperMarioBros.Physicses
         private readonly float gravity;
         private readonly float minClamping = -200;
         private readonly float maxClamping = 200;
+        private float sprintVelocityRate;
         private Vector2 displacement;
         private Vector2 prevDisplacement;
         private float dt;
@@ -32,6 +33,7 @@ namespace SuperMarioBros.Physicses
             gravity = 200;
             Jump = false;
             this.mario = mario;
+            sprintVelocityRate = 1;
         }
         public void Left()
         {
@@ -99,7 +101,7 @@ namespace SuperMarioBros.Physicses
         {
             dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             YVelocity += gravity * dt;
-            displacement.X += (XVelocity * dt);
+            displacement.X += (XVelocity * dt)*sprintVelocityRate;
             displacement.Y += (YVelocity * dt);          
         }
         public void Break()
@@ -120,6 +122,10 @@ namespace SuperMarioBros.Physicses
             {
                 XVelocity = maxClamping;
             }
+        }
+        public void SetSprintVelocityRate(float sprintVelocityRate)
+        {
+            this.sprintVelocityRate = sprintVelocityRate;
         }
 
     }

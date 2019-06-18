@@ -10,6 +10,5 @@ namespace SuperMarioBros.Goombas
             State = new IdleEnemyState(this);
             Position = position;
         }
-
     }
 }

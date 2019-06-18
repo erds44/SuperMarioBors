@@ -8,6 +8,8 @@ namespace SuperMarioBros.Items
 {
     public class Pipe : IStatic
     {
+        public bool IsInvalid { get; set; }
+
         public Vector2 Position { get; set; }
         private ISprite sprite;
         public Pipe(Vector2 location)

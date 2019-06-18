@@ -12,6 +12,8 @@ namespace SuperMarioBros.Marios
 {
     public class Mario : IMario
     {
+        public bool IsInvalid { get; set; }
+        public bool PowerFlag { get; set; }
         public IMarioHealthState HealthState { get; set; }
         public IMarioMovementState MovementState { get; set; }
         public ISprite Sprite { get; set; }
@@ -68,12 +70,12 @@ namespace SuperMarioBros.Marios
             MovementState.Up();
         }
 
-        public void Update()
+/*        public void Update()
         {
             //MovementState.Update();
             //Sprite.Update();
             //location += MarioPhysics.Displacement();
-        }
+        }*/
 
         public void Idle()
         {
@@ -100,7 +102,7 @@ namespace SuperMarioBros.Marios
         public void Update(GameTime gameTime)
         {
             Sprite.Update();
-           // location += MarioPhysics.Displacement(gameTime);
+            HealthState.Update(gameTime);
             Position += MarioPhysics.Displacement(gameTime);
         }
 
@@ -122,12 +124,6 @@ namespace SuperMarioBros.Marios
         public void MoveRight()
         {
             MovementState.MoveRight();
-        }
-
-        public void FireBall()
-        {
-            if (HealthState is FireMario)
-                ObjectsManager.Instance.Add(new FireBall(this));             
         }
     }
 }

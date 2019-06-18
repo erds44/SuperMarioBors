@@ -9,6 +9,8 @@ namespace SuperMarioBros.Blocks
 
     public abstract class AbstractBlock : IBlock
     {
+        public bool IsInvalid { get; set; }
+
         public IBlockState State { get; protected set; }
         public ISprite Sprite { get; protected set; }
         public Vector2 Position { get; set; }

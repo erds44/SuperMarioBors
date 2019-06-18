@@ -9,6 +9,8 @@ namespace SuperMarioBros.Goombas
 {
     public abstract class AbstractEnemy : IEnemy
     {
+        public bool IsInvalid { get; set; }
+
         public IEnemyMovementState State { get; set; }
         public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
