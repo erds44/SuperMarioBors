@@ -38,10 +38,22 @@ namespace SuperMarioBros.Collisions
              {(typeof(FlashingMario), typeof(Flower)), FireFlower},
              {(typeof(FlashingMario), typeof(Coin)), Coin},
 
+             //{(typeof(Mario), typeof(Goomba)), MarioGoomba},
+             //{(typeof(Mario), typeof(Koopa)), MarioKoopa},
+             
+
+             {(typeof(StarMario), typeof(Goomba)), StarMarioEnemy},
+             {(typeof(StarMario), typeof(Koopa)), StarMarioEnemy},
+             
+
+             {(typeof(FlashingMario), typeof(Goomba)), StarMario},
+             {(typeof(FlashingMario), typeof(Koopa)), RedMushroom},
+            
+
              {(typeof(Goomba), typeof(Goomba)), MoveDynamic},
              {(typeof(Goomba), typeof(Koopa)), MoveDynamic},
 
-
+            
         };
         private static void StarMario(IDynamic obj1, IDynamic obj2, Direction direction)
         {
@@ -71,6 +83,11 @@ namespace SuperMarioBros.Collisions
         {
             IMario mario = (IMario)obj1;
             mario.Coin();
+            ObjectsManager.Instance.Remove(obj2);
+        }
+
+        private static void StarMarioEnemy(IDynamic ob1, IDynamic obj2, Direction direction)
+        {
             ObjectsManager.Instance.Remove(obj2);
         }
         private static void MoveDynamic(IDynamic obj1, IDynamic obj2, Direction direction)
