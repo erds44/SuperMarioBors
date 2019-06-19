@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
 
@@ -11,10 +12,16 @@ namespace SuperMarioBros.Items
        
         private readonly ISprite sprite;
         public Vector2 Position { get; set; }
+        private ItemPhysics physics;
+        private float changeSpeedFlag;
+        private Vector2 offset = new Vector2(5, 0);
+       // private Vector2 velocity;
         public RedMushroom(Vector2 location)
         {
-            Position = location;
-            sprite = SpriteFactory.CreateSprite(GetType().Name);        
+            Position = location + offset;
+            sprite = SpriteFactory.CreateSprite(GetType().Name);
+            physics = new ItemPhysics(this, new Vector2(0, -40));
+            changeSpeedFlag = location.Y - 40;
         }
 
         public void Draw(SpriteBatch SpriteBatch)
@@ -25,6 +32,12 @@ namespace SuperMarioBros.Items
         public void Update(GameTime gameTime)
         {
             sprite.Update();
+            Position += physics.Displacement(gameTime);
+            if (Position.Y <= changeSpeedFlag)
+            {
+                physics.SetSpeed(new Vector2(40, 0));
+                ObjectsManager.Instance.Add(this);
+            }
         }
 
 
@@ -36,22 +49,22 @@ namespace SuperMarioBros.Items
 
         public void MoveUp()
         {
-            throw new System.NotImplementedException();
+            physics.MoveUp();
         }
 
         public void MoveDown()
         {
-            throw new System.NotImplementedException();
+            physics.MoveDown();
         }
 
         public void MoveLeft()
         {
-            throw new System.NotImplementedException();
+            physics.MoveLeft();
         }
 
         public void MoveRight()
         {
-            throw new System.NotImplementedException();
+            physics.MoveRight();
         }
     }
 }

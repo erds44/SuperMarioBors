@@ -20,7 +20,7 @@ namespace SuperMarioBros
             {
                 new Mario(new Vector2(0, 410)),
                 new Star(new Vector2(200,400)),
-                new RedMushroom(new Vector2(100,400)),
+                new RedMushroom(new Vector2(240,290)),
                 new GreenMushroom(new Vector2(200,400)),
                 new Flower(new Vector2(300,400)),
                // new Koopa(new Vector2(450, 410)),
