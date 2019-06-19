@@ -39,15 +39,19 @@
 <Item>
       <ObjectType>SuperMarioBros.Blocks.HiddenBlock</ObjectType>
       <Size>40 40</Size>
-    </Item>
+      </Item>
 <Item>
       <ObjectType>SuperMarioBros.Blocks.QuestionBlock</ObjectType>
       <Size>40 40</Size>
-    </Item>
+      </Item>
 <Item>
       <ObjectType>SuperMarioBros.Blocks.RockBlock</ObjectType>
       <Size>40 40</Size>
-    </Item>
+      </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Blocks.ItemBrickBlock</ObjectType>
+      <Size>40 40</Size>
+      </Item>
 <Item>
       <ObjectType>SuperMarioBros.Koopas.Koopa</ObjectType>
       <Size>30 45</Size>

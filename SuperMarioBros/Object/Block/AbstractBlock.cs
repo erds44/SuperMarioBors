@@ -65,7 +65,7 @@ namespace SuperMarioBros.Blocks
         {
             this.Sprite = sprite;
         }
-        public void Used()
+        public virtual void Used()
         {
             this.State.ToUsed();
         }
