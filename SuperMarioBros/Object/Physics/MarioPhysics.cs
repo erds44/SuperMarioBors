@@ -103,6 +103,8 @@ namespace SuperMarioBros.Physicses
         private void Update(GameTime gameTime)
         {
             dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (YVelocity > 0)
+                Jump = true;
             YVelocity += gravity * dt;
             displacement.X += (XVelocity * dt)*sprintVelocityRate;
             displacement.Y += (YVelocity * dt);          

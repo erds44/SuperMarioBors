@@ -41,7 +41,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Update()
         {
-            // Do Nothing
+            // Do Noting
         }
         public void MoveUp()
         {

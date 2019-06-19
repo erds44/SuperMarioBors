@@ -11,5 +11,6 @@
         void MoveDown();
         void MoveLeft();
         void MoveRight();
+        void Update();
     }
 }

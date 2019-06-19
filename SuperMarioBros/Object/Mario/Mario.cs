@@ -103,6 +103,7 @@ namespace SuperMarioBros.Marios
         public void Update(GameTime gameTime)
         {
             HealthState.Update(gameTime);
+            MovementState.Update();
             Sprite.Update();
             Position += MarioPhysics.Displacement(gameTime);
         }

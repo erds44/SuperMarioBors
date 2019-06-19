@@ -38,7 +38,8 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Update()
         {
-
+            if (mario.MarioPhysics.Jump)
+                mario.MovementState = new RightJumping(mario);
         }
 
         public void Idle()
