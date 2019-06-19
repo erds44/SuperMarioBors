@@ -15,7 +15,7 @@ namespace SuperMarioBros.Sprites
         {
             sprite.Update();
         }
-        public void Draw(SpriteBatch spriteBatch, Point location)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
         {
             sprite.SetColor( new Collection<Color> { Color.White, Color.White * 0.5f });
             sprite.Draw(spriteBatch, location);

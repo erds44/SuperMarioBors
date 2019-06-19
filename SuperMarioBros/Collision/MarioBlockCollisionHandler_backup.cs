@@ -9,7 +9,7 @@ using System.Collections.Generic;
 
 namespace SuperMarioBros.Collisions
 {
-    public static class MarioBlockCollisionHandler 
+    public static class MarioBlockCollisionHandler_backup
     {
 
         private static readonly Dictionary<(Type, Type,Direction), MarioBlockHandler> handlerDictionary = new Dictionary<(Type, Type,Direction), MarioBlockHandler>

@@ -5,11 +5,10 @@ namespace SuperMarioBros.Goombas
 {
     public class StompedGoomba : AbstractEnemy
     {
-        public StompedGoomba(Point position)
+        public StompedGoomba(Vector2 position)
         {
             State = new IdleEnemyState(this);
-            this.location = position;
+            Position = position;
         }
-
     }
 }

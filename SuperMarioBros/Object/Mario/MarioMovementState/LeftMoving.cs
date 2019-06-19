@@ -1,15 +1,14 @@
-﻿using SuperMarioBros.Marios.MarioTypeStates;
-using SuperMarioBros.Physicses;
+﻿using SuperMarioBros.Collisions;
+using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
     public class LeftMoving : AbstractMovementState, IMarioMovementState
     {
-        public LeftMoving(IMario mario, Physics marioPhysics)
+        public LeftMoving(IMario mario)
         {
             this.mario = mario;
-            this.marioPhysics = marioPhysics;
             this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
         }
 
@@ -17,37 +16,38 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         {
             if (!(mario.HealthState is SmallMario))
             {
-                mario.MovementState = new LeftCrouching(mario,marioPhysics);
-            }
-            else
-            {
-                marioPhysics.Down();
+                mario.MovementState = new LeftCrouching(mario);
             }
         }
 
         public void Idle()
         {
-            mario.MovementState = new LeftIdle(mario,marioPhysics);
+            mario.MarioPhysics.SpeedDecay();
+            if ((int)mario.MarioPhysics.XVelocity >= 0)
+            {
+                mario.MovementState = new LeftIdle(mario);
+            }
         }
 
         public void Left()
         {
-            marioPhysics.Left();
+            mario.MarioPhysics.Left();
         }
+
 
         public void Right()
         {
-            mario.MovementState = new LeftIdle(mario,marioPhysics);
+            mario.MovementState = new LeftBreaking(mario);          
         }
 
         public void Up()
         {
-            mario.MovementState = new LeftJumping(mario,marioPhysics);
+            mario.MovementState = new LeftJumping(mario);
         }
 
-        public void Update()
+        public void MoveUp()
         {
-            //marioPhysics.Left();
+            mario.MarioPhysics.MoveUp();
         }
     }
 }

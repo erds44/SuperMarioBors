@@ -6,9 +6,9 @@ namespace SuperMarioBros.Backgrounds
 
     public class BigBush : AbstractBackground
     {
-        public BigBush(Point location)
+        public BigBush(Vector2 location)
         {
-            this.location = location;
+            Position = location;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
     }

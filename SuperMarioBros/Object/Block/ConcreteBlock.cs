@@ -5,9 +5,9 @@ namespace SuperMarioBros.Blocks
 {
     public class ConcreteBlock : AbstractBlock
     {
-        public ConcreteBlock( Point location)
+        public ConcreteBlock( Vector2 location)
         {
-            this.Location = location;
+            Position = location;
             this.State = new ConcreteBlockState(this);
             base.Initialize();
         }

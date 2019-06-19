@@ -1,17 +1,18 @@
 ﻿using SuperMarioBros.Marios;
+using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Commands
 {
-    class FlowerCommand : ICommand
+    class PowerCommand : ICommand
     {
         private readonly IMario mario;
-        public FlowerCommand(IMario mario)
+        public PowerCommand(IDynamic mario)
         {
-            this.mario = mario;
+            this.mario = (IMario)mario;
         }
         public void Execute()
         {
-            mario.OnFireFlower();
+            mario.PowerFlag = true;
         }
     }
 }

@@ -1,13 +1,14 @@
 ﻿using SuperMarioBros.Marios;
+using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Commands
 {
     class LeftCommand : ICommand
     {
         private readonly IMario mario;
-        public LeftCommand(IMario mario)
+        public LeftCommand(IDynamic mario)
         {
-            this.mario = mario;
+            this.mario = (IMario)mario;
         }
         public void Execute()
         {

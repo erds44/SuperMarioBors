@@ -33,10 +33,9 @@ namespace SuperMarioBros
         protected override void Update(GameTime gameTime)
         {
             controller.Update();
-            ObjectsManager.Instance.Update();
+            ObjectsManager.Instance.Update(gameTime);
             collisionManager.HandleCollision();
             base.Update(gameTime);
-
         }
 
         protected override void Draw(GameTime gameTime)
@@ -49,7 +48,7 @@ namespace SuperMarioBros
         }
         public void KeyBinding()
         {
-            IMario mario = ObjectsManager.Instance.MarioObject()[0];
+            IMario mario = ObjectsManager.Instance.MarioObject();
             controller = new ControllerMessager(this, mario);
             IController keyboardController = new KeyboardController
                 (controller,
@@ -62,7 +61,8 @@ namespace SuperMarioBros
                     (Keys.Left, ControllerMessager.LEFTMOVE),
                     (Keys.Down, ControllerMessager.DOWNMOVE),
                     (Keys.Right, ControllerMessager.RIGHTMOVE),
-                    (Keys.Up, ControllerMessager.UPMOVE)
+                    (Keys.Up, ControllerMessager.UPMOVE),
+                    (Keys.X, ControllerMessager.POWER)
                 );
             controller.AddController(keyboardController);
             IController JoyStickController = new JoyStickController(controller);
@@ -70,8 +70,7 @@ namespace SuperMarioBros
         }
 
         public void InitializeObjects()
-        {
-           
+        {      
             ObjectLoading.LevelLoading(Content, @"PartialLevelOne");
             ObjectSizeManager.LoadItemSize(Content, @"SizeLoading");
             ObjectSizeManager.LoadMarioSize(Content, @"MarioSizeLoading");

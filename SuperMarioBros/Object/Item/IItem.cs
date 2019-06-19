@@ -3,7 +3,7 @@ using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Items
 {
-    public interface IItem : IObject
+    public interface IItem : IDynamic
     {
     }
 }

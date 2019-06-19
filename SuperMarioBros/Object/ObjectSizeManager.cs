@@ -59,7 +59,7 @@ namespace SuperMarioBros.Objects
             }
             else
             {
-                throw new System.ArgumentException("ERROR: The size of " + type + " is not loaded");
+                throw new ArgumentException("ERROR: The size of " + type + " is not loaded");
             }
  
         }
@@ -72,7 +72,7 @@ namespace SuperMarioBros.Objects
             }
             else
             {
-                throw new System.ArgumentException("ERROR: The size of mario in " + typ1 + " and " + typ2 + " state is not loaded.");
+                throw new ArgumentException("ERROR: The size of mario in " + typ1 + " and " + typ2 + " state is not loaded.");
             }
         }   
     }

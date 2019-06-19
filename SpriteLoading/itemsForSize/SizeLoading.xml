@@ -58,11 +58,11 @@
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Goombas.Goomba</ObjectType>
-      <Size>39 30</Size>
+      <Size>30 30</Size>
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Goombas.StompedGoomba</ObjectType>
-      <Size>39 16</Size>
+      <Size>32 16</Size>
     </Item>
 </SpritesList>
 </Asset>

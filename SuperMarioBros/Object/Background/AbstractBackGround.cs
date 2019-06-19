@@ -5,14 +5,15 @@ using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Backgrounds
 {
-    public abstract class AbstractBackground : IObject
+    public abstract class AbstractBackground : IStatic
     {
         private protected ISprite sprite;
-        private protected Point location;
+        public Vector2 Position { get; set; }
+        public bool IsInvalid { get; set; }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, location);
+            sprite.Draw(spriteBatch, Position);
         }
 
         public void Update()
@@ -25,7 +26,11 @@ namespace SuperMarioBros.Backgrounds
          */
         public Rectangle HitBox()
         {
-            return new Rectangle(location.X,location.Y , 0, 0);
+            return new Rectangle((int)Position.X,(int)Position.Y , 0, 0);
+        }
+        public void Destroy()
+        {
+            //Do nothing.
         }
         public void Destroy()
         {

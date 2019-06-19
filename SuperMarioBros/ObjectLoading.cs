@@ -1,117 +1,62 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using SuperMarioBros.LevelLoading;
+using SuperMarioBros.Blocks;
+using SuperMarioBros.Goombas;
+using SuperMarioBros.Items;
+using SuperMarioBros.Koopas;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace SuperMarioBros
 {
     public static class ObjectLoading
     {
-        private static ObjectList objectNodes;
-        private static Collection<IMario> mario;
-        private static Collection<IObject> objects;
+        private static Collection<IStatic> statics;
+        private static Collection<IDynamic> dynamics;
         public static void LevelLoading(ContentManager content, string path)
         {
-            objectNodes = content.Load<ObjectList>(path);
-            objects = new Collection<IObject>();
-            mario = new Collection<IMario> { new Mario(objectNodes.objectList[0].Position) };
-
-            //This part is only for temprorary test
-            Point firstBlock = objectNodes.objectList[1].Position;
-            Type typeofBlock = Type.GetType(objectNodes.objectList[1].ObjectType);
-            Point currentBlock = firstBlock;
-            currentBlock.Y = 444;
-            while (currentBlock.Y < 600)
+            dynamics = new Collection<IDynamic>
             {
-                var obj = Activator.CreateInstance(typeofBlock, currentBlock);
-                objects.Add((IObject)obj);
-                currentBlock.X += 38;
-                if (currentBlock.X >= 800)
-                {
-                    currentBlock.X = 0;
-                    currentBlock.Y += 38;
-
-                }
-            }
-            firstBlock = objectNodes.objectList[2].Position;
-            typeofBlock = Type.GetType(objectNodes.objectList[2].ObjectType);
-            currentBlock = firstBlock;
-            currentBlock.X = 400;
-            currentBlock.Y = 100;
+                new Mario(new Vector2(0, 410)),
+                new Star(new Vector2(200,400)),
+                new RedMushroom(new Vector2(100,400)),
+                new GreenMushroom(new Vector2(200,400)),
+                new Flower(new Vector2(300,400)),
+               // new Koopa(new Vector2(450, 410)),
+                new Goomba(new Vector2(550, 410)),
+                new Koopa(new Vector2(600, 410)),
+                new Goomba(new Vector2(500, 60)),
+                new Koopa(new Vector2(600, 60))
+            };
+            statics = new Collection<IStatic>
             {
-                var obj = Activator.CreateInstance(typeofBlock, currentBlock);
-                objects.Add((IObject)obj);
-                currentBlock.X += 40;
-                currentBlock.Y += 40;
-                for(int i = 0;i<6; i++)
-                {
-                    obj = Activator.CreateInstance(typeofBlock, currentBlock);
-                    objects.Add((IObject)obj);
-                    currentBlock.X += 40;
-                }
-                currentBlock.Y -= 40;
-                obj = Activator.CreateInstance(typeofBlock, currentBlock);
-                objects.Add((IObject)obj);
-
-                currentBlock.X = 0;
-                currentBlock.Y = 300;
-                obj = Activator.CreateInstance(typeofBlock, currentBlock);
-                objects.Add((IObject)obj);
-
-                currentBlock.X += 100;
-                obj = Activator.CreateInstance(typeofBlock, currentBlock);
-                objects.Add((IObject)obj);
-            }
-
-            firstBlock = objectNodes.objectList[3].Position;
-            typeofBlock = Type.GetType(objectNodes.objectList[3].ObjectType);
-            currentBlock = firstBlock;
-            currentBlock.X = 220;
-            currentBlock.Y = 300;
-            {
-                var obj = Activator.CreateInstance(typeofBlock, currentBlock);
-                for (int i = 0; i < 3; i++)
-                {
-                    obj = Activator.CreateInstance(typeofBlock, currentBlock);
-                    objects.Add((IObject)obj);
-                    currentBlock.X += 40;
-                }
-
-                currentBlock.X = 500;
-                currentBlock.Y = 280;
-                obj = Activator.CreateInstance(typeofBlock, currentBlock);
-                objects.Add((IObject)obj);
-                currentBlock.X += 40;
-                obj = Activator.CreateInstance(typeofBlock, currentBlock);
-                objects.Add((IObject)obj);
-
-            }
-
-            for (int i = 4; i < objectNodes.objectList.Count; i++)
-            {
-                string objectType = objectNodes.objectList[i].ObjectType;
-                Type t = Type.GetType(objectType);
-                Point objectPosition = objectNodes.objectList[i].Position;
-                var obj = Activator.CreateInstance(t, objectPosition);
-                objects.Add((IObject)obj);
-            }
-
-            foreach(IObject obj in objects)
-            {
-                Console.WriteLine(obj.GetType());
-            }
+                new Pipe(new Vector2(420,410)),
+                new Pipe(new Vector2(700,410)),
+                new BrickBlock(new Vector2(0, 290)),
+                new BrickBlock(new Vector2(100, 290)),
+                new QuestionBlock(new Vector2(200, 290)),
+                new QuestionBlock(new Vector2(240, 290)),
+                new QuestionBlock(new Vector2(280, 290)),
+                new QuestionBlock(new Vector2(320, 290)),
+                new HiddenBlock(new Vector2(50, 150)),
+                new QuestionBlock(new Vector2(520, 250)),
+                new QuestionBlock(new Vector2(560, 250)),
+                new BrickBlock(new Vector2(440, 60)),
+                new BrickBlock(new Vector2(720, 60))
+            };
+            for (int i = 0; i < 20; i++)
+                statics.Add(new RockBlock(new Vector2(0 + 40 * i, 450)));
+            for (int i = 0; i < 6; i++)
+                statics.Add(new BrickBlock(new Vector2(480 + 40 * i, 100)));
         }
-        public static Collection<IMario> LoadMario()
+        public static Collection<IStatic> LoadStatics()
         {
-            return mario;
+            return statics;
         }
-        public static Collection<IObject> LoadObject()
-        { 
-            return objects;
+        public static Collection<IDynamic> LoadDynamics()
+        {
+            return dynamics;
         }
     }
 }

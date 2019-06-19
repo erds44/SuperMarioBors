@@ -5,10 +5,9 @@ using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Blocks
 {
-    public interface IBlock : IObject
+    public interface IBlock : IStatic
     {
         IBlockState State { get; }
-        Point Location { get; }
         void Used();
         void Bump();
         void ChangeSprite(ISprite sprite);

@@ -1,4 +1,5 @@
-﻿using SuperMarioBros.Interfaces.State;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.SpriteFactories;
 using System;
@@ -47,12 +48,21 @@ namespace SuperMarioBros.Marios.MarioTypeStates
 
         public void GreenMushroom()
         {
-            //Do Nothing
+            //Do Nothing.
         }
 
         public void Coin()
         {
             // To Do
+        }
+        public void Power()
+        {
+            // Do nothing.
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            mario.MarioPhysics.SetSprintVelocityRate(1);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.Collisions;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
@@ -11,20 +12,20 @@ namespace SuperMarioBros.Marios
 {
     public class Mario : IMario
     {
+        public bool IsInvalid { get; set; }
+        public bool PowerFlag { get; set; }
         public IMarioHealthState HealthState { get; set; }
         public IMarioMovementState MovementState { get; set; }
         public ISprite Sprite { get; set; }
-        public Physics MarioPhysics { get; }
-        private Point location;
-        public int Timer { get; set; }
-        private readonly int xVelocity = 3;
-        private readonly int yVelocity = 3;
-        public Mario(Point location)
+        public MarioPhysics MarioPhysics { get; }
+        public Vector2 Position { get; set; }
+        public double Timer { get; set; }
+        public Mario(Vector2 location)
         {
             HealthState = new SmallMario(this);
-            MarioPhysics = new Physics(xVelocity, yVelocity);
-            MovementState = new RightIdle(this, MarioPhysics);
-            this.location = location;
+            MarioPhysics = new MarioPhysics(this,100);
+            MovementState = new RightIdle(this);
+            Position = location;
         }
 
 
@@ -35,7 +36,8 @@ namespace SuperMarioBros.Marios
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Sprite.Draw(spriteBatch, location);
+            // Sprite.Draw(spriteBatch, location);
+            Sprite.Draw(spriteBatch, Position);
         }
 
         public void OnFireFlower()
@@ -68,12 +70,12 @@ namespace SuperMarioBros.Marios
             MovementState.Up();
         }
 
-        public void Update()
+/*        public void Update()
         {
-            MovementState.Update();
-            Sprite.Update();
-            location += MarioPhysics.Displacement();
-        }
+            //MovementState.Update();
+            //Sprite.Update();
+            //location += MarioPhysics.Displacement();
+        }*/
 
         public void Idle()
         {
@@ -83,7 +85,7 @@ namespace SuperMarioBros.Marios
         public Rectangle HitBox()
         {
             Point size = ObjectSizeManager.MarioSize(HealthState.GetType(), MovementState.GetType());
-            return new Rectangle(location.X, location.Y- size.Y, size.X, size.Y);
+            return new Rectangle((int)Position.X, (int)Position.Y- size.Y, size.X, size.Y);
         }
 
         public void GreenMushroom()
@@ -91,14 +93,42 @@ namespace SuperMarioBros.Marios
             // TODO
         }
 
-        public void Obstacle()
-        {
-            location -= MarioPhysics.Revert();
-        }
 
         public void Coin()
         {
             HealthState.Coin();
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            Sprite.Update();
+            HealthState.Update(gameTime);
+            Position += MarioPhysics.Displacement(gameTime);
+        }
+
+        public void MoveUp()
+        {
+            MovementState.MoveUp();
+        }
+
+        public void MoveDown()
+        {
+            MovementState.MoveDown();
+        }
+
+        public void MoveLeft()
+        {
+            MovementState.MoveLeft();
+        }
+
+        public void MoveRight()
+        {
+            MovementState.MoveRight();
+        }
+
+        public void Destroy()
+        {
+            throw new System.NotImplementedException();
         }
 
         public void Destroy()

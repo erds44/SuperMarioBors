@@ -1,4 +1,6 @@
-﻿using SuperMarioBros.Interfaces.State;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Collisions;
+using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
@@ -6,14 +8,19 @@ using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Marios
 {
-    public interface IMario : IObject, IMarioHealthState, IMarioMovementState
+    public interface IMario : IDynamic, IMarioHealthState
     {
-        int Timer { get; set; }
+        double Timer { get; set; }
+        bool PowerFlag { get; set; }
         ISprite Sprite { get; set; }
         IMarioHealthState HealthState { get; set; }
         IMarioMovementState MovementState { get; set; }
-        Physics MarioPhysics { get; }
-        void Obstacle();
-        /* Obstacle should be in MovementState, to be refacoted */
+        MarioPhysics MarioPhysics { get; }
+        void Left();
+        void Down();
+        void Up();
+        void Right();
+        void Idle();
+        new void Update(GameTime gameTime);
     }
 }

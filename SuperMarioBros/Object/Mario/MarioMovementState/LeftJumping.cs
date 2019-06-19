@@ -1,47 +1,58 @@
-﻿using SuperMarioBros.Objects;
-using SuperMarioBros.Physicses;
+﻿using SuperMarioBros.Collisions;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
     public class LeftJumping : AbstractMovementState, IMarioMovementState
     {
-        public LeftJumping(IMario mario, Physics marioPhysics)
+        public LeftJumping(IMario mario)
         {
             this.mario = mario;
-            this.marioPhysics = marioPhysics;
-            this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
-            
+            this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);           
         }
 
         public void Down()
         {
-            mario.MovementState = new LeftIdle(mario,marioPhysics);
+
         }
 
         public void Idle()
         {
-            mario.MovementState = new LeftIdle(mario,marioPhysics);
+            
         }
 
         public void Left()
         {
-           marioPhysics.Left();
+           mario.MarioPhysics.Left();
+            mario.MarioPhysics.SpeedDecay();
+        }
+
+        public void Obstacle(Direction direction)
+        {
+            if(direction == Direction.top && mario.MarioPhysics.YVelocity > 0)
+            {
+                mario.MovementState = new LeftIdle(mario);
+            }
         }
 
         public void Right()
         {
-            marioPhysics.Right();
+            mario.MarioPhysics.Right();
         }
 
         public void Up()
         {
-            marioPhysics.Up();
+            mario.MarioPhysics.Up();
         }
 
-        public void Update()
+        public void MoveUp()
         {
-            //marioPhysics.Up();
+            if (mario.MarioPhysics.Jump)
+            {
+                mario.MovementState = new LeftIdle(mario);
+            }
+            mario.MarioPhysics.SpeedDecay();
+            mario.MarioPhysics.MoveUp();
         }
     }
 }

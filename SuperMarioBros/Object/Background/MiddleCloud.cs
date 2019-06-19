@@ -5,9 +5,9 @@ namespace SuperMarioBros.Backgrounds
 {
     public class MiddleCloud : AbstractBackground
     {
-        public MiddleCloud(Point location)
+        public MiddleCloud(Vector2 location)
         {
-            this.location = location;
+            Position = location;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
     }

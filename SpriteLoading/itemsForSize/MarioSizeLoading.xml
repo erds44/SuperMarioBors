@@ -10,6 +10,16 @@
     </Item>
 <Item>
       <ObjectType>SuperMarioBros.Marios.MarioTypeStates.BigMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftBreaking</StateType>
+	<Size>32 64</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.BigMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.RightBreaking</StateType>
+	<Size>32 64</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.BigMario</ObjectType>
       <StateType>SuperMarioBros.Marios.MarioMovementStates.RightCrouching</StateType>
 	<Size>32 44</Size>
     </Item>
@@ -48,6 +58,16 @@
       <ObjectType>SuperMarioBros.Marios.MarioTypeStates.FireMario</ObjectType>
       <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftCrouching</StateType>
 	<Size>32 44</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.FireMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.RightBreaking</StateType>
+	<Size>32 64</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.FireMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftBreaking</StateType>
+	<Size>32 64</Size>
     </Item>
 	<Item>
       <ObjectType>SuperMarioBros.Marios.MarioTypeStates.FireMario</ObjectType>
@@ -119,6 +139,16 @@
       <ObjectType>SuperMarioBros.Marios.MarioTypeStates.DeadMario</ObjectType>
       <StateType>SuperMarioBros.Marios.MarioMovementStates.TerminateMovementState</StateType>
 	<Size>31 28</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.SmallMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.RightBreaking</StateType>
+	<Size>34 32</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Marios.MarioTypeStates.SmallMario</ObjectType>
+      <StateType>SuperMarioBros.Marios.MarioMovementStates.LeftBreaking</StateType>
+	<Size>34 32</Size>
     </Item>
 </MariosList>
 </Asset>

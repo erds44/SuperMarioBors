@@ -3,35 +3,61 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Sprites;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Physicses;
 
 namespace SuperMarioBros.Goombas
 {
     public abstract class AbstractEnemy : IEnemy
     {
+        public bool IsInvalid { get; set; }
+
         public IEnemyMovementState State { get; set; }
-        private protected Point location;
         public ISprite Sprite { get; set; }
-
-        public void ChangeDirection()
-        {
-            State.ChangeDirection();
-        }
-
+        public Vector2 Position { get; set; }
+        protected EnemyPhysics physics;
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Sprite.Draw(spriteBatch, location);
+            Sprite.Draw(spriteBatch, Position);
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             Sprite.Update();
+            Position += physics.Displacement(gameTime);
         }
 
         public Rectangle HitBox()
         {
             Point size = ObjectSizeManager.ObjectSize(GetType());
-            return new Rectangle(location.X, location.Y - size.Y, size.X, size.Y);
+            return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
+        }
+
+        public void MoveUp()
+        {
+            physics.MoveUp();
+        }
+
+        public void MoveDown()
+        {
+            physics.MoveDown();
+        }
+
+        public void MoveLeft()
+        {
+            State.ChangeDirection();
+            physics.MoveLeft();
+        }
+
+        public void MoveRight()
+        {
+            State.ChangeDirection();
+            physics.MoveRight();
+        }
+
+        public void Destroy()
+        {
+            //Game.Score += 100;
         }
 
         public void Destroy()

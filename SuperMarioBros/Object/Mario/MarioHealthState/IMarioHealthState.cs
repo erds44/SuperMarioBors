@@ -1,4 +1,6 @@
-﻿namespace SuperMarioBros.Interfaces.State
+﻿using Microsoft.Xna.Framework;
+
+namespace SuperMarioBros.Interfaces.State
 {
     public interface IMarioHealthState 
     {
@@ -13,5 +15,6 @@
         void Coin();
         // Coin might not be implemented in Mario Class
         // We put the mehtod here for now
+        void Update(GameTime gameTime);
     }
 }

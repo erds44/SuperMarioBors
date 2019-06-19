@@ -1,17 +1,22 @@
 ﻿using SuperMarioBros.Marios;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SuperMarioBros.Commands
 {
-    class ObstacleCommand : ICommand
+    class JumpCommand : ICommand
     {
         private readonly IMario mario;
-        public ObstacleCommand(IMario mario)
+        public JumpCommand(IMario mario)
         {
             this.mario = mario;
         }
         public void Execute()
         {
-            mario.Obstacle();
+            //mario.Jump();
         }
     }
 }

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{50EBA22A-24A6-4C54-BC00-5DA4D2F55004}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>SuperMarioBros</RootNamespace>
     <AssemblyName>SuperMarioBros</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -73,6 +73,9 @@
     <None Include="Content\BigHill.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\BigMarioLeftBreaking.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\BigMarioLeftCrouching.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -83,6 +86,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\BigMarioLeftMoving.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BigMarioRightBreaking.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\BigMarioRightCrouching.xnb">
@@ -109,6 +115,12 @@
     <None Include="Content\ConcreteBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\FireBall.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\FireMarioLeftBreaking.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\FireMarioLeftCrouching.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -119,6 +131,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\FireMarioLeftMoving.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\FireMarioRightBreaking.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\FireMarioRightCrouching.xnb">
@@ -163,6 +178,9 @@
     <None Include="Content\SmallHill.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\SmallMarioLeftBreaking.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\SmallMarioLeftIdle.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -170,6 +188,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\SmallMarioLeftMoving.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioRightBreaking.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\SmallMarioRightIdle.xnb">
@@ -225,30 +246,17 @@
   <ItemGroup>
     <Compile Include="Collision\CollisionDetection.cs" />
     <Compile Include="Collision\CollisionManager.cs" />
-    <Compile Include="Collision\MarioBlockCollisionHandler .cs" />
-    <Compile Include="Collision\MarioEnemyCollisionHandler.cs" />
-    <Compile Include="Collision\MarioItemCollisionHandler.cs" />
-    <Compile Include="Command\BlockCommand\DisappearCommand.cs" />
-    <Compile Include="Command\BlockCommand\HiddenBlockUsedCommand .cs" />
-    <Compile Include="Command\EnemyCommand\KoopaStompedCommand.cs" />
-    <Compile Include="Command\EnemyCommand\GoombaStompedCommand.cs" />
-    <Compile Include="Command\DisappearCommand.cs" />
-    <Compile Include="Command\MarioCommand\CoinCommand.cs" />
-    <Compile Include="Command\MarioCommand\FlowerCommand.cs" />
+    <Compile Include="Collision\DynamicAndDynamicObjectsHandler .cs" />
+    <Compile Include="Collision\DynamicAndStaticObjecstHandler.cs" />
     <Compile Include="Command\MarioCommand\DownCommand.cs" />
-    <Compile Include="Command\BlockCommand\BlockUsedCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\MarioCommand\LeftCommand.cs" />
     <Compile Include="Command\MarioCommand\IdleCommand.cs" />
     <Compile Include="Command\GameCommand\QuitCommand.cs" />
     <Compile Include="Command\GameCommand\ResetCommand.cs" />
     <Compile Include="Command\MarioCommand\RightCommand.cs" />
-    <Compile Include="Command\MarioCommand\GreenMushroomCommand.cs" />
-    <Compile Include="Command\MarioCommand\RedMushroomCommand.cs" />
+    <Compile Include="Command\MarioCommand\PowerCommand.cs" />
     <Compile Include="Command\MarioCommand\UpCommand.cs" />
-    <Compile Include="Command\MarioCommand\StarMarioCommand.cs" />
-    <Compile Include="Command\MarioCommand\ObstacleCommand.cs" />
-    <Compile Include="Command\MarioCommand\TakeDamageCommand.cs" />
     <Compile Include="Controller\ControllerMessager.cs" />
     <Compile Include="Controller\GamePadController.cs" />
     <Compile Include="Controller\IController.cs" />
@@ -284,16 +292,23 @@
     <Compile Include="Object\Enemy\IEnemyMovementState.cs" />
     <Compile Include="Object\Enemy\IEnemy.cs" />
     <Compile Include="Object\Enemy\Koopa\StompedKoopa.cs" />
+    <Compile Include="Object\IDynamic.cs" />
+    <Compile Include="Object\IStatic.cs" />
     <Compile Include="Object\Item\IItem.cs" />
     <Compile Include="Object\Mario\IMario.cs" />
     <Compile Include="Object\Mario\MarioMovementState\IMarioMovementState.cs" />
     <Compile Include="Object\IObject.cs" />
     <Compile Include="Object\Background\MiddleCloud.cs" />
     <Compile Include="Object\Mario\FlashingMario.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\RightBreaking.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\LeftBreaking.cs" />
+    <Compile Include="Object\Mario\FireBall.cs" />
     <Compile Include="Object\ObjectSizeManager.cs" />
     <Compile Include="Object\Background\SmallBush.cs" />
     <Compile Include="Object\Background\SmallCloud.cs" />
     <Compile Include="Object\Background\SmallHill.cs" />
+    <Compile Include="Object\Physics\EnemyPhysics.cs" />
+    <Compile Include="Object\Physics\StarPhysics.cs" />
     <Compile Include="Sprite\DecorationSprite.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Interfaces\IUpdate.cs" />
@@ -325,7 +340,7 @@
     <Compile Include="Object\Item\GreenMushroom.cs" />
     <Compile Include="Object\Item\RedMushroom.cs" />
     <Compile Include="Object\ObjectsManager.cs" />
-    <Compile Include="Object\Physics\Physics.cs" />
+    <Compile Include="Object\Physics\MarioPhysics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="SpriteFactory\SpriteFactory.cs" />
     <Compile Include="Sprite\FlashingSprite.cs" />

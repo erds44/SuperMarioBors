@@ -1,47 +1,51 @@
-﻿using SuperMarioBros.Objects;
-using SuperMarioBros.Physicses;
+﻿using SuperMarioBros.Collisions;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
     public class RightJumping : AbstractMovementState, IMarioMovementState
     {
-        public RightJumping(IMario mario,  Physics marioPhysics)
+        public RightJumping(IMario mario)
         {
             this.mario = mario;
             this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
-            this.marioPhysics = marioPhysics;
         }
 
         public void Down()
         {
-            mario.MovementState = new RightIdle(mario, marioPhysics);
+           
         }
 
         public void Right()
         {
-            marioPhysics.Right();
+            mario.MarioPhysics.Right();
+            mario.MarioPhysics.SpeedDecay();
         }
 
         public void Left()
         {
-            marioPhysics.Left();
+            mario.MarioPhysics.Left();
         }
 
         public void Up()
         {
-            marioPhysics.Up();
-        }
-
-        public void Update()
-        {
-            //marioPhysics.Up();
+            mario.MarioPhysics.Up();
         }
 
 
         public void Idle()
         {
-            mario.MovementState= new RightIdle(mario, marioPhysics);
+            
+        }
+
+        public void MoveUp()
+        {
+
+            if (mario.MarioPhysics.Jump)
+            {
+                mario.MovementState = new RightIdle(mario);
+            }
+            mario.MarioPhysics.MoveUp();
         }
     }
 }
