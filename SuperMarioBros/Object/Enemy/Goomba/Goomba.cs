@@ -13,5 +13,15 @@ namespace SuperMarioBros.Goombas
             State = new LeftMoving(this, physics);
         }
 
+        public void Flip()
+        {
+
+        }
+
+        public override void TakeDamage()
+        {
+            
+        }
+
     }
 }

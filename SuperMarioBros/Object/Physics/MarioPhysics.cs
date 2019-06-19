@@ -18,6 +18,7 @@ namespace SuperMarioBros.Physicses
         private Vector2 displacement;
         private Vector2 prevDisplacement;
         private float dt;
+        private float jumpTime;
         public bool Jump { get; private set; }
         private readonly IMario mario;
         public MarioPhysics(IMario mario, int forwardAcceleration)
@@ -45,6 +46,7 @@ namespace SuperMarioBros.Physicses
         }
         public void Up()
         {
+            
             if (!Jump)
             {
                 YVelocity += jumpVelocity;
@@ -78,6 +80,7 @@ namespace SuperMarioBros.Physicses
             Clamping();
         }
 
+
         public Vector2 Displacement(GameTime gameTime)
         {
             Update(gameTime);
@@ -94,6 +97,7 @@ namespace SuperMarioBros.Physicses
             }
             return false;
         }
+        
 
         private void Update(GameTime gameTime)
         {

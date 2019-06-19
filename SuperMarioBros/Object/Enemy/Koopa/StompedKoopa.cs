@@ -11,5 +11,12 @@ namespace SuperMarioBros.Koopas
             Position = location;
             State = new IdleEnemyState(this);
         }
+        //StompedKoopa will return to Koopa if not kicked
+
+
+        public override void TakeDamage()
+        {
+            
+        }
     }
 }

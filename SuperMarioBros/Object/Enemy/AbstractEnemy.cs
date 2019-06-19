@@ -4,6 +4,7 @@ using SuperMarioBros.Sprites;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
+using System;
 
 namespace SuperMarioBros.Goombas
 {
@@ -43,14 +44,23 @@ namespace SuperMarioBros.Goombas
 
         public void MoveLeft()
         {
-            State.ChangeDirection();
+            
+            //if(!(this.State.GetType() == typeof(LeftMoving)))
+            //{
+                //Console.WriteLine(this.State.GetType());
+                //Console.WriteLine(typeof(LeftMoving));
+                State.ChangeDirection();
+            //}
             physics.MoveLeft();
         }
 
         public void MoveRight()
         {
+            
+            
             State.ChangeDirection();
             physics.MoveRight();
         }
+        public abstract void TakeDamage();
     }
 }
