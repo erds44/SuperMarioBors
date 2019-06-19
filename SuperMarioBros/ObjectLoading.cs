@@ -40,9 +40,9 @@ namespace SuperMarioBros
                 new ItemBrickBlock(new Vector2(0, 290), typeof(Coin), 10),
                 new ItemBrickBlock(new Vector2(100, 290), typeof(Star), 1),
 
-                new QuestionBlock(new Vector2(200, 290), typeof(RedMushroom)),
+                new PowerUpBlock(new Vector2(200, 290)),
                 new QuestionBlock(new Vector2(240, 290), typeof(GreenMushroom)),
-                new QuestionBlock(new Vector2(280, 290), typeof(Flower)),
+                new PowerUpBlock(new Vector2(280, 290)),
                 new QuestionBlock(new Vector2(320, 290)),
 
                 new HiddenBlock(new Vector2(50, 150)),            

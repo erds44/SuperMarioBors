@@ -40,7 +40,7 @@ namespace SuperMarioBros
 
         protected override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack);
+            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack,samplerState: SamplerState.PointClamp);
             GraphicsDevice.Clear(Color.CornflowerBlue);
             ObjectsManager.Instance.Draw(spriteBatch);
             spriteBatch.End();
