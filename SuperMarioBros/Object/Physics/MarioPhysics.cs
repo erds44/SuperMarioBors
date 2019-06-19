@@ -21,7 +21,6 @@ namespace SuperMarioBros.Physicses
         private Vector2 prevDisplacement;
         private float dt;
         public bool Jump { get; private set; }
-        public bool nextJump;
         private readonly IMario mario;
         public MarioPhysics(IMario mario, int forwardAcceleration)
         {
@@ -36,7 +35,6 @@ namespace SuperMarioBros.Physicses
             Jump = false;
             this.mario = mario;
             sprintVelocityRate = 1;
-            nextJump = true;
         }
         public void Left()
         {
@@ -54,12 +52,10 @@ namespace SuperMarioBros.Physicses
                 {
                     YVelocity += jumpVelocity;
                     Jump = true;
-                    nextJump = false;
                 }
                 currentGravity -= 20;
                 if (currentGravity <= 100)
                     currentGravity = 100;
-                    nextJump = false;
         
 
         }
@@ -113,10 +109,15 @@ namespace SuperMarioBros.Physicses
         private void Update(GameTime gameTime)
         {
             dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (YVelocity >= 0)
+            if (YVelocity > 0)
+            {
                 YVelocity += (currentGravity + 200) * dt;
+                Jump = true;
+            }
             else
+            {
                 YVelocity += currentGravity * dt;
+            }
             displacement.X += (XVelocity * dt)*sprintVelocityRate;
             displacement.Y += (YVelocity * dt);          
         }

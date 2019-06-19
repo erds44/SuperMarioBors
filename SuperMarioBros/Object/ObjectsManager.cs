@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Objects
 {
-    public  class ObjectsManager
+    public class ObjectsManager
     {
         private Collection<IStatic> staticObjects;
         private Collection<IDynamic> dynamicObjects;
@@ -25,16 +25,16 @@ namespace SuperMarioBros.Objects
         public void Update(GameTime gameTime)
         {
             time = gameTime;
-            for (int i = (staticObjects.Count-1); i >=0; i--)
+            for (int i = (staticObjects.Count - 1); i >= 0; i--)
             {
                 staticObjects[i].Update();
-                InvalidCheck(staticObjects[i],gameTime);
+                InvalidCheck(staticObjects[i], gameTime);
                 if (staticObjects[i].IsInvalid) Remove(staticObjects[i]);
             }
-            for (int i = (dynamicObjects.Count-1); i >=0 ; i--)
+            for (int i = (dynamicObjects.Count - 1); i >= 0; i--)
             {
                 dynamicObjects[i].Update(gameTime);
-                InvalidCheck(dynamicObjects[i],gameTime);
+                InvalidCheck(dynamicObjects[i], gameTime);
                 if (dynamicObjects[i].IsInvalid) Remove(dynamicObjects[i]);
             }
             for (int i = (nonCollidableObjects.Count - 1); i >= 0; i--)
@@ -48,28 +48,31 @@ namespace SuperMarioBros.Objects
         }
         private void InvalidCheck(IObject obj, GameTime gameTime)
         {
-            bool result = false;
-            if (obj.Position.Y < 0) result = true;
-            if (obj.Position.X < -100) result = true;
-            if (obj.Position.X > 1000) result = true;
-            if (obj.GetType() == typeof(StompedGoomba))
+            if (!obj.IsInvalid)
             {
-                StompedGoomba goomba = (StompedGoomba)obj;
-                if (goomba.Delete(gameTime)) result = true;
+                bool result = false;
+                if (obj.Position.Y < 0) result = true;
+                if (obj.Position.X < -100) result = true;
+                if (obj.Position.X > 1000) result = true;
+                if (obj.GetType() == typeof(StompedGoomba))
+                {
+                    StompedGoomba goomba = (StompedGoomba)obj;
+                    if (goomba.Delete(gameTime)) result = true;
+                }
+                if (obj.GetType() == typeof(StompedKoopa))
+                {
+                    StompedKoopa koopa = (StompedKoopa)obj;
+                    if (koopa.Delete(gameTime)) result = true;
+                }
+                obj.IsInvalid = result;
             }
-            if (obj.GetType() == typeof(StompedKoopa))
-            {
-                StompedKoopa koopa = (StompedKoopa)obj;
-                if (koopa.Delete(gameTime)) result = true;
-            }
-            obj.IsInvalid = result;
-            
+
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             foreach (IStatic obj in staticObjects)
                 obj.Draw(spriteBatch);
-            foreach (IDynamic obj in dynamicObjects)        
+            foreach (IDynamic obj in dynamicObjects)
                 obj.Draw(spriteBatch);
             foreach (IObject obj in nonCollidableObjects)
                 obj.Draw(spriteBatch);
@@ -78,7 +81,7 @@ namespace SuperMarioBros.Objects
         public void Remove(IObject gameObject)
         {
             gameObject.Destroy();
-            if(gameObject is IStatic)
+            if (gameObject is IStatic)
             {
                 staticObjects.Remove((IStatic)gameObject);
             }
@@ -118,7 +121,7 @@ namespace SuperMarioBros.Objects
         {
             int index = dynamicObjects.IndexOf(mario);
             ((IMario)dynamicObjects[index]).NoMovementTimer = 0;
-            dynamicObjects[index] = new StarMario(mario); 
+            dynamicObjects[index] = new StarMario(mario);
             // the usage of indeof is necessary here
             // if mario is flashing and hits a star
             // mario will end flashing state then become star mario
