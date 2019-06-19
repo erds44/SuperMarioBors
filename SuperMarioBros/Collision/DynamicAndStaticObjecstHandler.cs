@@ -165,7 +165,7 @@ namespace SuperMarioBros.Collisions
         }
         private static void FireBallDisappear(IDynamic obj1, IStatic obj2, Direction direction)
         {
-           // ObjectsManager.Instance.Remove(obj1);
+            obj1.IsInvalid = true;
         }
 
     }

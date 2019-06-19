@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Commands;
-using SuperMarioBros.Goombas;
+﻿using SuperMarioBros.Goombas;
 using SuperMarioBros.Items;
 using SuperMarioBros.Koopas;
 using SuperMarioBros.Marios;
@@ -59,16 +57,22 @@ namespace SuperMarioBros.Collisions
              {(typeof(Goomba), typeof(Goomba)), GoombaKoopa},
              {(typeof(Goomba), typeof(Koopa)), GoombaKoopa},
              {(typeof(Goomba), typeof(StompedKoopa)), GoombaStompedKoopa},
+             {(typeof(StompedKoopa), typeof(Goomba)), GoombaStompedKoopa},
              {(typeof(Goomba), typeof(Star)), MoveDynamic},
+             {(typeof(Star), typeof(Goomba)), MoveDynamic},
              //{(typeof(Goomba), typeof(GreenMushroom)), MoveDynamic},
              //{(typeof(Goomba), typeof(RedMushroom)), MoveDynamic},
             
 
              {(typeof(Koopa), typeof(Koopa)), GoombaKoopa},
-             {(typeof(StompedKoopa), typeof(StompedKoopa)), MoveEnemy},
+              {(typeof(Koopa), typeof(Goomba)), GoombaKoopa},
+             {(typeof(StompedKoopa), typeof(StompedKoopa)), MoveDynamic},
              //might need changes
               {(typeof(Koopa), typeof(StompedKoopa)), KoopaStompedKoopa},
+              {(typeof(StompedKoopa), typeof(Koopa)), KoopaStompedKoopa},
+
              {(typeof(Koopa), typeof(Star)), MoveDynamic},
+              {(typeof(Star),typeof(Koopa)), MoveDynamic},
              //{(typeof(Koopa), typeof(GreenMushroom)), MoveDynamic},
              //{(typeof(Koopa), typeof(RedMushroom)), MoveDynamic},
 
@@ -78,9 +82,11 @@ namespace SuperMarioBros.Collisions
 
         
              { (typeof(FireBall), typeof(Goomba)), FireBallEnemy},
+              { (typeof(Goomba), typeof(FireBall)), FireBallEnemy},
              { (typeof(FireBall), typeof(Koopa)), FireBallEnemy},
              { (typeof(FireBall), typeof(StompedKoopa)), FireBallEnemy},
-
+             { (typeof(Koopa), typeof(FireBall)), FireBallEnemy},
+             { (typeof(StompedGoomba), typeof(FireBall)), FireBallEnemy},
 
         };
         private static void StarMario(IDynamic obj1, IDynamic obj2, Direction direction)
@@ -119,8 +125,18 @@ namespace SuperMarioBros.Collisions
         }
         private static void FireBallEnemy(IDynamic obj1, IDynamic obj2, Direction direction)
         {
-            ObjectsManager.Instance.Remove(obj1);
-            ((IEnemy)obj2).Flip();
+           // ObjectsManager.Instance.Remove(obj1);
+           // ((IEnemy)obj2).Flip();
+           if(obj1.GetType() == typeof(FireBall))
+            {
+                obj1.IsInvalid = true;
+                ((IEnemy)obj2).Flip();
+            }
+            else
+            {
+                obj2.IsInvalid = true;
+                ((IEnemy)obj1).Flip();
+            }
         }
         
         private static void StarMarioEnemy(IDynamic obj1, IDynamic obj2, Direction direction)
@@ -166,7 +182,7 @@ namespace SuperMarioBros.Collisions
                     ((IEnemy)obj1).TakeDamage();
                     break;
                 default:
-                    MoveEnemy(obj1, obj2, direction);
+                    MoveDynamic(obj1, obj2, direction);
                     break;
             }
         }
@@ -200,16 +216,31 @@ namespace SuperMarioBros.Collisions
         {
 
             //code needed when stopmedkoopa is static
-            Goomba goomba = (Goomba)obj1;
-            goomba.Flip();
+            if(obj1.GetType() == typeof(StompedKoopa))
+            {
+                ((IEnemy)obj2).Flip();
+            }
+            else
+            {
+                ((IEnemy)obj1).Flip();
+            }
+            
+            
         }
 
         private static void KoopaStompedKoopa(IDynamic obj1, IDynamic obj2, Direction direction)
         {
 
             //code needed when stopmedkoopa is static
-            Koopa koopa = (Koopa)obj1;
-            koopa.TakeDamage();
+            if (obj1.GetType() == typeof(StompedKoopa))
+            {
+                ((IEnemy)obj2).Flip();
+            }
+            else
+            {
+                ((IEnemy)obj1).Flip();
+            }
+
         }
 
         private static void MoveDynamic(IDynamic obj1, IDynamic obj2, Direction direction)

@@ -23,14 +23,14 @@ namespace SuperMarioBros.Collisions
                     if (direction != Direction.none)
                         DynamicAndStaticObjectsHandler.HandleCollision(dynamicObjects[i],staticObjects[j], direction);
                 }
-                for(int j = 0; j < dynamicObjects.Count; j++)
+                for(int j = i+1; j < dynamicObjects.Count; j++)
                 {
-                    if (i != j)
-                    {
+                   
+                   
                         Direction direction = CollisionDetection.Detect(dynamicObjects[i], dynamicObjects[j]);
                         if (direction != Direction.none)
                             DynamicAndDynamicObjectsHandler.HandleCollision(dynamicObjects[i], dynamicObjects[j], direction);
-                    }
+                    
                     
                 }
             }
