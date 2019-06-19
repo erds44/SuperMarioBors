@@ -10,6 +10,7 @@ namespace SuperMarioBros.Blocks
         {
             Position = location;
             this.State = new HiddenBlockState(this);
+            base.Initialize();
         }
     }
 }

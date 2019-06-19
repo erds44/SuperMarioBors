@@ -10,6 +10,8 @@ namespace SuperMarioBros.Goombas
 {
     public abstract class AbstractEnemy : IEnemy
     {
+        public bool IsInvalid { get; set; }
+
         public IEnemyMovementState State { get; set; }
         public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
@@ -61,6 +63,12 @@ namespace SuperMarioBros.Goombas
             State.ChangeDirection();
             physics.MoveRight();
         }
+
+        public void Destroy()
+        {
+            //Game.Score += 100;
+        }
+
         public abstract void TakeDamage();
     }
 }

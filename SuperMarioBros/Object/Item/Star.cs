@@ -9,6 +9,7 @@ namespace SuperMarioBros.Items
 {
     public class Star : IItem
     {
+        public bool IsInvalid { get; set; }
         private StarPhysics physics;
         public Vector2 Position { get; set; }
         private readonly ISprite sprite;
@@ -55,6 +56,12 @@ namespace SuperMarioBros.Items
         {
             physics.MoveRight();
         }
+
+        public void Destroy()
+        {
+            //Do nothing.
+        }
+
     }
 }
 

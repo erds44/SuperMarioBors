@@ -9,7 +9,8 @@ namespace SuperMarioBros.Items
 {
     public class RedMushroom : IItem
     {
-       
+        public bool IsInvalid { get; set; }
+
         private readonly ISprite sprite;
         public Vector2 Position { get; set; }
         private ItemPhysics physics;
@@ -68,5 +69,11 @@ namespace SuperMarioBros.Items
         {
             physics.MoveRight();
         }
+
+        public void Destroy()
+        {
+            //Do nothing.
+        }
+
     }
 }

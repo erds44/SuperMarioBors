@@ -6,6 +6,7 @@ namespace SuperMarioBros.Items
     public class Coin : AbstractItem, IItem
 
     {
+
         public Coin(Vector2 location)
         {
             Position = location;
@@ -35,6 +36,11 @@ namespace SuperMarioBros.Items
         public void Update(GameTime gameTime)
         {
             sprite.Update();
+        }
+        public void Destroy()
+        {
+            //Do nothing.
+            //Game.CoinCount++;
         }
     }
 }

@@ -9,6 +9,7 @@ namespace SuperMarioBros.Blocks
         {
             Position = location;
             State = new RockBlockState(this);
+            base.Initialize();
         }
     }
 }

@@ -3,16 +3,28 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Blocks.BlockStates;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Sprites;
+using System;
 
 namespace SuperMarioBros.Blocks
 {
 
     public abstract class AbstractBlock : IBlock
     {
-        public IBlockState State { get; protected set; }
-        public ISprite Sprite { get; protected set; }
-        public Vector2 Position { get; set; }
+        public bool IsInvalid { get; set; }
 
+        public IBlockState State { get; protected set; }
+        public Vector2 Position { get; set; }
+        public ISprite Sprite { get; protected set; }
+
+        protected bool isBumping;
+        protected int bumpingCount;
+        protected Vector2 drawPosition;
+        protected void Initialize()
+        {
+            drawPosition = Position;
+            isBumping = false;
+            bumpingCount = 0;
+        }
         public void ChangeState(IBlockState state)
         {
             this.State = state;
@@ -20,16 +32,32 @@ namespace SuperMarioBros.Blocks
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Sprite.Draw(spriteBatch, Position);
-        }
-
-        public void Move()
-        {
-           // To Do
+            Sprite.Draw(spriteBatch, drawPosition);
         }
 
         public void Update()
         {
+            if (isBumping)
+            {
+                if(bumpingCount == 20) {
+                    isBumping = false;
+                    ((BumpBlockState)State).Restore();
+                    drawPosition = Position;
+                    bumpingCount = 0;
+                }
+                else
+                {
+                    bumpingCount++;
+                    if(bumpingCount < 10)
+                    {
+                        drawPosition.Y -= 3;
+                    }
+                    else
+                    {
+                        drawPosition.Y += 3;
+                    }
+                }
+            }
             this.Sprite.Update();
         }
 
@@ -45,7 +73,19 @@ namespace SuperMarioBros.Blocks
         public Rectangle HitBox()
         {
             Point size = ObjectSizeManager.ObjectSize(GetType());
-            return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
+            return new Rectangle((int)drawPosition.X, (int)drawPosition.Y - size.Y, size.X, size.Y);
+        }
+
+        public void Bump()
+        {
+            Console.WriteLine("Bumping");
+            State = new BumpBlockState(this, State);
+            isBumping = true;
+        }
+
+        public void Destroy()
+        {
+            //Do nothing
         }
     }
 }

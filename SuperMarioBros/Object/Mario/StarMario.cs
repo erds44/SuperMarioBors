@@ -13,6 +13,7 @@ namespace SuperMarioBros.Marios
 {
     public class StarMario : IMario
     {
+        public bool IsInvalid { get; set; }
         public IMarioHealthState HealthState { get; set; }
         public IMarioMovementState MovementState { get; set; }
         public MarioPhysics MarioPhysics { get; }
@@ -20,9 +21,12 @@ namespace SuperMarioBros.Marios
         public ISprite Sprite { get; set; }
         public double Timer { get; set; }
         public Vector2 Position { get; set; }
+        public bool PowerFlag { get => mario.PowerFlag; set => mario.PowerFlag = value; }
+
         public StarMario(IMario mario)
         {
             this.mario = mario;
+            this.HealthState = mario.HealthState;
             MarioPhysics = mario.MarioPhysics;
             HealthState = mario.HealthState;
             Timer = 5;
@@ -126,9 +130,9 @@ namespace SuperMarioBros.Marios
             mario.MoveRight();
         }
 
-        public void FireBall()
+        public void Destroy()
         {
-            mario.FireBall();
+            //Do nothing.
         }
     }
 }

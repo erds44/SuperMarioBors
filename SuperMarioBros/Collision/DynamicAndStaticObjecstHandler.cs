@@ -35,25 +35,25 @@ namespace SuperMarioBros.Collisions
 
         private static readonly Dictionary<(Type, Type), CollisionHandler> collisionDictionary = new Dictionary<(Type, Type), CollisionHandler>
         {
-            { (typeof(Mario), typeof(BrickBlockState)), MoveMarioBlockBumped},
+            { (typeof(Mario), typeof(BrickBlockState)), MarioBrick},
             { (typeof(Mario), typeof(ConcreteBlockState)), MoveDynamic},
-            { (typeof(Mario), typeof(QuestionBlockState)), MoveMarioBlockUsed},
+            { (typeof(Mario), typeof(QuestionBlockState)), MarioQuestion},
             { (typeof(Mario), typeof(RockBlockState)), MoveDynamic},
             { (typeof(Mario), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(Mario), typeof(HiddenBlockState)), HiddenUsed},
             { (typeof(Mario), typeof(Pipe)), MoveDynamic},
 
-            { (typeof(StarMario), typeof(BrickBlockState)), MoveMarioBlockBumped},
+            { (typeof(StarMario), typeof(BrickBlockState)), MarioBrick},
             { (typeof(StarMario), typeof(ConcreteBlockState)), MoveDynamic},
-            { (typeof(StarMario), typeof(QuestionBlockState)), MoveMarioBlockUsed},
+            { (typeof(StarMario), typeof(QuestionBlockState)), MarioQuestion},
             { (typeof(StarMario), typeof(RockBlockState)), MoveDynamic},
             { (typeof(StarMario), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(StarMario), typeof(HiddenBlockState)), HiddenUsed},
             { (typeof(StarMario), typeof(Pipe)), MoveDynamic},
 
-            { (typeof(FlashingMario), typeof(BrickBlockState)), MoveMarioBlockBumped},
+            { (typeof(FlashingMario), typeof(BrickBlockState)), MarioBrick},
             { (typeof(FlashingMario), typeof(ConcreteBlockState)), MoveDynamic},
-            { (typeof(FlashingMario), typeof(QuestionBlockState)), MoveMarioBlockUsed},
+            { (typeof(FlashingMario), typeof(QuestionBlockState)), MarioQuestion},
             { (typeof(FlashingMario), typeof(RockBlockState)), MoveDynamic},
             { (typeof(FlashingMario), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(FlashingMario), typeof(HiddenBlockState)), HiddenUsed},
@@ -87,24 +87,31 @@ namespace SuperMarioBros.Collisions
 
             //mushroom handler
         };
-        private static void MoveMarioBlockBumped(IDynamic obj1, IStatic obj2 ,Direction direction)
+        private static void MarioBrick(IDynamic obj1, IStatic obj2 ,Direction direction)
         {
             IMario mario = (IMario)obj1;
             MoveDynamic(obj1, obj2, direction);
-            if ((mario.HealthState is SmallMario))
+
+            if(direction == Direction.bottom)
             {
-                // Block.Bumped();
-            }
-            else if(direction == Direction.bottom)
-            {
-                ObjectsManager.Instance.Remove(obj2);
+                if (mario.HealthState is SmallMario)
+                {
+                    ((IBlock)obj2).Bump();
+                }
+                else {
+                    ((IBlock)obj2).Used();
+                }
+                
             }
         }
-        private static void MoveMarioBlockUsed(IDynamic obj1, IStatic obj2, Direction direction)
+        private static void MarioQuestion(IDynamic obj1, IStatic obj2, Direction direction)
         {
             MoveDynamic(obj1, obj2, direction);
-            if(direction == Direction.bottom)
-                ((IBlock) obj2).Used();
+            if (direction == Direction.bottom)
+            {
+                ((IBlock)obj2).Used();
+                ((IBlock)obj2).Bump();
+            }
         }
         private static void MoveDynamic(IDynamic obj1, IStatic obj2, Direction direction)
         {

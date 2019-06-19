@@ -1,4 +1,5 @@
-﻿using SuperMarioBros.Interfaces.State;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioTypeStates
@@ -35,6 +36,11 @@ namespace SuperMarioBros.Marios.MarioTypeStates
         public void TakeDamage()
         {
             mario.HealthState = new SmallMario(mario);
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            mario.MarioPhysics.SetSprintVelocityRate(mario.PowerFlag? 3F : 1);
         }
     }
 }

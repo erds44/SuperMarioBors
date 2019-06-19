@@ -20,10 +20,28 @@ namespace SuperMarioBros.Objects
         public void Update(GameTime gameTime)
         {
             time = gameTime;
-            for (int i = 0; i < staticObjects.Count; i++)
+            for (int i = (staticObjects.Count-1); i >=0; i--)
+            {
                 staticObjects[i].Update();
-            for (int i = 0; i < dynamicObjects.Count; i++)
+                InvalidCheck(staticObjects[i]);
+                if (staticObjects[i].IsInvalid) Remove(staticObjects[i]);
+            }
+            for (int i = (dynamicObjects.Count-1); i >=0 ; i--)
+            {
                 dynamicObjects[i].Update(gameTime);
+                InvalidCheck(dynamicObjects[i]);
+                if (dynamicObjects[i].IsInvalid) Remove(dynamicObjects[i]);
+            }
+
+        }
+        private void InvalidCheck(IObject obj)
+        {
+            bool result = false;
+            if (obj.Position.Y < 0) result = true;
+            if (obj.Position.X < -100) result = true;
+            if (obj.Position.X > 1000) result = true;
+            obj.IsInvalid = result;
+            
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -35,6 +53,7 @@ namespace SuperMarioBros.Objects
 
         public void Remove(IObject gameObject)
         {
+            gameObject.Destroy();
             if(gameObject is IStatic)
             {
                 staticObjects.Remove((IStatic)gameObject);

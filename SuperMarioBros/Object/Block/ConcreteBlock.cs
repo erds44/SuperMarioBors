@@ -9,6 +9,7 @@ namespace SuperMarioBros.Blocks
         {
             Position = location;
             this.State = new ConcreteBlockState(this);
+            base.Initialize();
         }
     }
 }
