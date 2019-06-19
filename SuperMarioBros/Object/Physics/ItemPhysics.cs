@@ -23,7 +23,7 @@ namespace SuperMarioBros.Physicses
         }
         public void MoveUp()
         {
-            obj.Position -= new Vector2(0, prevDisplacement.Y);
+            obj.Position -= new Vector2(0, 2*prevDisplacement.Y);
             velocity.Y = 0;
         }
         public void MoveLeft()

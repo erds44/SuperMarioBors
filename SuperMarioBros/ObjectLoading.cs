@@ -14,13 +14,17 @@ namespace SuperMarioBros
     {
         private static Collection<IStatic> statics;
         private static Collection<IDynamic> dynamics;
+        private static Collection<IObject> nonCollidableObjects;
         public static void LevelLoading(ContentManager content, string path)
         {
+            nonCollidableObjects = new Collection<IObject>
+            {
+                new RedMushroom(new Vector2(240,290)),
+            };
             dynamics = new Collection<IDynamic>
             {
                 new Mario(new Vector2(0, 410)),
                 new Star(new Vector2(200,400)),
-                new RedMushroom(new Vector2(240,290)),
                 new GreenMushroom(new Vector2(200,400)),
                 new Flower(new Vector2(300,400)),
                // new Koopa(new Vector2(450, 410)),
@@ -59,6 +63,10 @@ namespace SuperMarioBros
         public static Collection<IDynamic> LoadDynamics()
         {
             return dynamics;
+        }
+        public static Collection<IObject> LoadNonCollidable()
+        {
+            return nonCollidableObjects;
         }
     }
 }

@@ -70,12 +70,6 @@ namespace SuperMarioBros.Marios
             MovementState.Up();
         }
 
-/*        public void Update()
-        {
-            //MovementState.Update();
-            //Sprite.Update();
-            //location += MarioPhysics.Displacement();
-        }*/
 
         public void Idle()
         {

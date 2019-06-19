@@ -85,7 +85,11 @@ namespace SuperMarioBros.Collisions
             { (typeof(FireBall), typeof(UsedBlockState)), FireBallDisappear},
             { (typeof(FireBall), typeof(Pipe)), FireBallDisappear},
 
-            //mushroom handler
+            { (typeof(RedMushroom), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(RedMushroom), typeof(BrickBlockState)), MoveDynamic},
+            { (typeof(RedMushroom), typeof(QuestionBlockState)), MoveDynamic},
+            { (typeof(RedMushroom), typeof(UsedBlockState)), MoveDynamic},
+            { (typeof(RedMushroom), typeof(Pipe)), MoveDynamic},
         };
         private static void MarioBrick(IDynamic obj1, IStatic obj2 ,Direction direction)
         {

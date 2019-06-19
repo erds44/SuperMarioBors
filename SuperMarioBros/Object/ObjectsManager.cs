@@ -9,6 +9,7 @@ namespace SuperMarioBros.Objects
     {
         private Collection<IStatic> staticObjects;
         private Collection<IDynamic> dynamicObjects;
+        private Collection<IObject> nonCollidableObjects;
         public static ObjectsManager Instance { get; } = new ObjectsManager();
         private ObjectsManager() { }
         private GameTime time;
@@ -16,6 +17,7 @@ namespace SuperMarioBros.Objects
         {
             staticObjects = ObjectLoading.LoadStatics();
             dynamicObjects = ObjectLoading.LoadDynamics();
+            nonCollidableObjects = ObjectLoading.LoadNonCollidable();
         }
         public void Update(GameTime gameTime)
         {
@@ -31,6 +33,13 @@ namespace SuperMarioBros.Objects
                 dynamicObjects[i].Update(gameTime);
                 InvalidCheck(dynamicObjects[i]);
                 if (dynamicObjects[i].IsInvalid) Remove(dynamicObjects[i]);
+            }
+            for (int i = (nonCollidableObjects.Count - 1); i >= 0; i--)
+            {
+                if (nonCollidableObjects[i] is IStatic)
+                    ((IStatic)nonCollidableObjects[i]).Update();
+                else
+                    ((IDynamic)nonCollidableObjects[i]).Update(gameTime);
             }
 
         }
@@ -48,6 +57,8 @@ namespace SuperMarioBros.Objects
             foreach (IStatic obj in staticObjects)
                 obj.Draw(spriteBatch);
             foreach (IDynamic obj in dynamicObjects)        
+                obj.Draw(spriteBatch);
+            foreach (IObject obj in nonCollidableObjects)
                 obj.Draw(spriteBatch);
         }
 

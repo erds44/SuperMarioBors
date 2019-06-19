@@ -72,9 +72,9 @@ namespace SuperMarioBros.Collisions
              {(typeof(Koopa), typeof(GreenMushroom)), MoveDynamic},
              {(typeof(Koopa), typeof(RedMushroom)), MoveDynamic},
 
-             {(typeof(RedMushroom), typeof(RedMushroom)), MoveDynamic},
-             {(typeof(GreenMushroom), typeof(RedMushroom)), MoveDynamic},
-             {(typeof(GreenMushroom), typeof(GreenMushroom)), MoveDynamic},
+             //{(typeof(RedMushroom), typeof(RedMushroom)), MoveDynamic},
+             //{(typeof(GreenMushroom), typeof(RedMushroom)), MoveDynamic},
+             //{(typeof(GreenMushroom), typeof(GreenMushroom)), MoveDynamic},
 
 
           
