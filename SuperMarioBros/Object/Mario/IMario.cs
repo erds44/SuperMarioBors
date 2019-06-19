@@ -23,5 +23,6 @@ namespace SuperMarioBros.Marios
         void Right();
         void Idle();
         new void Update(GameTime gameTime);
+        IMario ReturnItself();
     }
 }

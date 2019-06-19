@@ -84,14 +84,15 @@ namespace SuperMarioBros.Collisions
         };
         private static void StarMario(IDynamic obj1, IDynamic obj2, Direction direction)
         {
-            ObjectsManager.Instance.StarMario((IMario)obj1);
+            ObjectsManager.Instance.StarMario(((IMario)obj1).ReturnItself());
             ObjectsManager.Instance.Remove(obj2);
         }
 
         private static void RedMushroom(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             IMario mario = (IMario)obj1;
-            ObjectsManager.Instance.Decoration(mario ,new FlashingMario(mario));   
+            if (!(mario is StarMario))
+                ObjectsManager.Instance.Decoration(mario ,new FlashingMario(mario.ReturnItself()));   
             ObjectsManager.Instance.Remove(obj2);
             mario.RedMushroom();
         }
@@ -104,7 +105,8 @@ namespace SuperMarioBros.Collisions
         private static void FireFlower(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             IMario mario = (IMario)obj1;
-            ObjectsManager.Instance.Decoration(mario, new FlashingMario(mario));
+            if (!(mario is StarMario))
+                ObjectsManager.Instance.Decoration(mario, new FlashingMario(mario.ReturnItself()));
             ObjectsManager.Instance.Remove(obj2);
             mario.OnFireFlower();
         }

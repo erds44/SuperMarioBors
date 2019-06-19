@@ -105,13 +105,8 @@ namespace SuperMarioBros.Objects
         public void StarMario(IMario mario)
         {
             int index = dynamicObjects.IndexOf(mario);
-            if (mario is FlashingMario)
-            {
-                mario.Timer = 0;
-                mario.Update(time);
-            }
             ((IMario)dynamicObjects[index]).NoMovementTimer = 0;
-            dynamicObjects[index] = new StarMario((IMario)dynamicObjects[index]); 
+            dynamicObjects[index] = new StarMario(mario); 
             // the usage of indeof is necessary here
             // if mario is flashing and hits a star
             // mario will end flashing state then become star mario

@@ -143,5 +143,9 @@ namespace SuperMarioBros.Marios
             //Do nothing.
         }
 
+        public IMario ReturnItself()
+        {
+            return mario;
+        }
     }
 }
