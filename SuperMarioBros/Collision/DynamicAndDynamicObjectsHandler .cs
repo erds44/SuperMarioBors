@@ -44,8 +44,6 @@ namespace SuperMarioBros.Collisions
             {(typeof(Mario), typeof(Koopa)), MarioEnemy},
             {(typeof(Mario), typeof(StompedKoopa)), MarioStompedKoopa},
 
-
-
              {(typeof(StarMario), typeof(Goomba)), StarMarioEnemy},
              {(typeof(StarMario), typeof(Koopa)), StarMarioEnemy},
              {(typeof(StarMario), typeof(StompedKoopa)), StarMarioEnemy},
@@ -60,8 +58,8 @@ namespace SuperMarioBros.Collisions
              {(typeof(Goomba), typeof(Koopa)), MoveEnemy},
              {(typeof(Goomba), typeof(StompedKoopa)), GoombaStompedKoopa},
              {(typeof(Goomba), typeof(Star)), MoveDynamic},
-             {(typeof(Goomba), typeof(GreenMushroom)), MoveDynamic},
-             {(typeof(Goomba), typeof(RedMushroom)), MoveDynamic},
+             //{(typeof(Goomba), typeof(GreenMushroom)), MoveDynamic},
+             //{(typeof(Goomba), typeof(RedMushroom)), MoveDynamic},
             
 
              {(typeof(Koopa), typeof(Koopa)), MoveEnemy},
@@ -69,16 +67,14 @@ namespace SuperMarioBros.Collisions
              //might need changes
               {(typeof(Koopa), typeof(StompedKoopa)), KoopaStompedKoopa},
              {(typeof(Koopa), typeof(Star)), MoveDynamic},
-             {(typeof(Koopa), typeof(GreenMushroom)), MoveDynamic},
-             {(typeof(Koopa), typeof(RedMushroom)), MoveDynamic},
+             //{(typeof(Koopa), typeof(GreenMushroom)), MoveDynamic},
+             //{(typeof(Koopa), typeof(RedMushroom)), MoveDynamic},
 
              //{(typeof(RedMushroom), typeof(RedMushroom)), MoveDynamic},
              //{(typeof(GreenMushroom), typeof(RedMushroom)), MoveDynamic},
              //{(typeof(GreenMushroom), typeof(GreenMushroom)), MoveDynamic},
 
-
-          
-
+        
              { (typeof(FireBall), typeof(Goomba)), FireBallEnemy},
              { (typeof(FireBall), typeof(Koopa)), FireBallEnemy},
              { (typeof(FireBall), typeof(StompedKoopa)), FireBallEnemy},

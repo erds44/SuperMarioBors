@@ -74,6 +74,10 @@ namespace SuperMarioBros.Objects
                 dynamicObjects.Remove((IDynamic)gameObject);
             }
         }
+        public void RemoveFromNonCollidable(IObject gameObject)
+        {
+            nonCollidableObjects.Remove(gameObject);
+        }
         public void Add(IObject gameObject)
         {
             if (gameObject is IStatic)

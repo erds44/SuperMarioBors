@@ -90,6 +90,19 @@ namespace SuperMarioBros.Collisions
             { (typeof(RedMushroom), typeof(QuestionBlockState)), MoveDynamic},
             { (typeof(RedMushroom), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(RedMushroom), typeof(Pipe)), MoveDynamic},
+
+            { (typeof(GreenMushroom), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(GreenMushroom), typeof(BrickBlockState)), MoveDynamic},
+            { (typeof(GreenMushroom), typeof(QuestionBlockState)), MoveDynamic},
+            { (typeof(GreenMushroom), typeof(UsedBlockState)), MoveDynamic},
+            { (typeof(GreenMushroom), typeof(Pipe)), MoveDynamic},
+
+            { (typeof(Flower), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(Flower), typeof(BrickBlockState)), MoveDynamic},
+            { (typeof(Flower), typeof(QuestionBlockState)), MoveDynamic},
+            { (typeof(Flower), typeof(UsedBlockState)), MoveDynamic},
+            { (typeof(Flower), typeof(Pipe)), MoveDynamic},
+
         };
         private static void MarioBrick(IDynamic obj1, IStatic obj2 ,Direction direction)
         {

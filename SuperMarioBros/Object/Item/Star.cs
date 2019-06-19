@@ -4,6 +4,7 @@ using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
+using System;
 
 namespace SuperMarioBros.Items
 {
@@ -13,11 +14,17 @@ namespace SuperMarioBros.Items
         private StarPhysics physics;
         public Vector2 Position { get; set; }
         private readonly ISprite sprite;
+        private bool addFlag;
+        private float timer;
+        private Vector2 offset = new Vector2(5, 0);
         public Star(Vector2 location)
         {
-            Position = location;
+            Position = location + offset;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
-            this.physics = new StarPhysics(this, new Vector2(40,-120));
+            sprite.SetLayer(0);
+            physics = new StarPhysics(this, new Vector2(0, -40));
+            addFlag = false;
+            timer = 0;
         }
 
         public Rectangle HitBox()
@@ -33,8 +40,17 @@ namespace SuperMarioBros.Items
 
         public void Update(GameTime gameTime)
         {
-            Position += physics.Displacement(gameTime);
+            timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             sprite.Update();
+            Position += physics.Displacement(gameTime);
+            if (Math.Floor(timer) == 1 && !addFlag)
+            {
+                physics.SetSpeed(new Vector2(40,-120));
+                sprite.SetLayer(1.0f);
+                ObjectsManager.Instance.Add(this);
+                ObjectsManager.Instance.RemoveFromNonCollidable(this);
+                addFlag = true;
+            }
         }
 
         public void MoveUp()

@@ -20,13 +20,13 @@ namespace SuperMarioBros
             nonCollidableObjects = new Collection<IObject>
             {
                 new RedMushroom(new Vector2(240,290)),
+                new GreenMushroom(new Vector2(280,290)),
+                new Star(new Vector2(320,290)),
+                new Flower(new Vector2(200,290))
             };
             dynamics = new Collection<IDynamic>
             {
                 new Mario(new Vector2(0, 410)),
-                new Star(new Vector2(200,400)),
-                new GreenMushroom(new Vector2(200,400)),
-                new Flower(new Vector2(300,400)),
                // new Koopa(new Vector2(450, 410)),
                 new Goomba(new Vector2(550, 410)),
                 new Koopa(new Vector2(600, 410)),

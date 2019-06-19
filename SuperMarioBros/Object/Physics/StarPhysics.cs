@@ -11,12 +11,14 @@ namespace SuperMarioBros.Physicses
         private Vector2 prevDisplacement;
         private float dt = 0;
         private readonly IObject obj;
+        private float currentGravity;
         public StarPhysics(IObject obj, Vector2 velocity)
         {
             this.velocity = velocity;
             this.obj = obj;
             displacement = new Vector2(0, 0);
             prevDisplacement = displacement;
+            currentGravity = 0;
         }
         public void MoveUp()
         {
@@ -50,10 +52,15 @@ namespace SuperMarioBros.Physicses
         private void Update(GameTime gameTime)
         {
             dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            velocity.Y += gravity * dt;
+            velocity.Y += currentGravity * dt;
             displacement.X += (velocity.X * dt);
             displacement.Y += (velocity.Y * dt);          
         }
 
+        public void SetSpeed(Vector2 velocity)
+        {
+            this.velocity = velocity;
+            currentGravity = gravity;
+        }
     }
 }

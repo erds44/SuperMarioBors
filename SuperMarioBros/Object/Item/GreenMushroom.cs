@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.Items;
-using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
+using System;
 
 namespace SuperMarioBros.Items
 {
@@ -14,10 +14,18 @@ namespace SuperMarioBros.Items
 
         private readonly ISprite sprite;
         public Vector2 Position { get; set; }
+        private ItemPhysics physics;
+        private bool addFlag;
+        private Vector2 offset = new Vector2(5, 0);
+        private float timer;
         public GreenMushroom(Vector2 location)
-        {           
-            Position = location;
+        {
+            Position = location + offset;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
+            sprite.SetLayer(0);
+            physics = new ItemPhysics(this, new Vector2(0, -40));
+            addFlag = false;
+            timer = 0;
         }
 
         public void Draw(SpriteBatch SpriteBatch)
@@ -27,8 +35,20 @@ namespace SuperMarioBros.Items
 
         public void Update(GameTime gameTime)
         {
+            timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             sprite.Update();
+            Position += physics.Displacement(gameTime);
+            if (Math.Floor(timer) == 1 && !addFlag)
+            {
+                physics.SetSpeed(new Vector2(60, 0));
+                sprite.SetLayer(1.0f);
+                ObjectsManager.Instance.Add(this);
+                ObjectsManager.Instance.RemoveFromNonCollidable(this);
+                addFlag = true;
+            }
+
         }
+
 
         public Rectangle HitBox()
         {
@@ -38,27 +58,28 @@ namespace SuperMarioBros.Items
 
         public void MoveUp()
         {
-            throw new System.NotImplementedException();
+            physics.MoveUp();
         }
 
         public void MoveDown()
         {
-            throw new System.NotImplementedException();
+            physics.MoveDown();
         }
 
         public void MoveLeft()
         {
-            throw new System.NotImplementedException();
+            physics.MoveLeft();
         }
 
         public void MoveRight()
         {
-            throw new System.NotImplementedException();
+            physics.MoveRight();
         }
 
         public void Destroy()
         {
             //Do nothing.
         }
+
     }
 }
