@@ -282,6 +282,7 @@
     <Compile Include="Object\Block\HiddenBlock.cs" />
     <Compile Include="Object\Block\IBlock.cs" />
     <Compile Include="Object\Block\BlockState\IBlockState.cs" />
+    <Compile Include="Object\Block\ItemBrickBlock.cs" />
     <Compile Include="Object\Block\QuestionBlock.cs" />
     <Compile Include="Object\Block\RockBlock.cs" />
     <Compile Include="Object\Enemy\EnemyMovementState\LeftMoving.cs" />

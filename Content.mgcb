@@ -39,6 +39,11 @@
 /processorParam:TextureFormat=Color
 /build:Goomba.png
 
+#begin SpriteLoading/itemsForSize/SizeLoading.xml
+/importer:XmlImporter
+/processor:PassThroughProcessor
+/build:SpriteLoading/itemsForSize/SizeLoading.xml
+
 #begin StompedGoomba.png
 /importer:TextureImporter
 /processor:TextureProcessor

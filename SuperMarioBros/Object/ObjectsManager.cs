@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Marios;
+using System;
 using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Objects
@@ -95,6 +96,7 @@ namespace SuperMarioBros.Objects
         public void RemoveDecoration(IMario oldMario, IMario newMario)
         {
             int index = dynamicObjects.IndexOf(oldMario);
+            Console.WriteLine(dynamicObjects.Count.ToString(), index);
             dynamicObjects[index] = newMario;
         }
         public void StarMario(IMario mario)
