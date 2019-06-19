@@ -297,8 +297,6 @@
     <Compile Include="Object\IDynamic.cs" />
     <Compile Include="Object\IStatic.cs" />
     <Compile Include="Object\Item\IItem.cs" />
-    <Compile Include="Object\Item\ItemState\RespondingState.cs" />
-    <Compile Include="Object\Item\ItemState\MovingState.cs" />
     <Compile Include="Object\Mario\IMario.cs" />
     <Compile Include="Object\Mario\MarioMovementState\IMarioMovementState.cs" />
     <Compile Include="Object\IObject.cs" />

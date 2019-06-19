@@ -19,18 +19,15 @@ namespace SuperMarioBros
         {
             nonCollidableObjects = new Collection<IObject>
             {
-                new RedMushroom(new Vector2(240,290)),
-                new GreenMushroom(new Vector2(280,290)),
-                new Star(new Vector2(320,290)),
-                new Flower(new Vector2(200,290))
+
             };
             dynamics = new Collection<IDynamic>
             {
                 new Mario(new Vector2(0, 410)),
                // new Koopa(new Vector2(450, 410)),
                 new Goomba(new Vector2(550, 410)),
-                new Koopa(new Vector2(600, 410)),
-                new Goomba(new Vector2(500, 410)),
+               // new Koopa(new Vector2(600, 410)),
+                //new Goomba(new Vector2(500, 410)),
                 //new Koopa(new Vector2(600, 410)),
                 new Goomba(new Vector2(500, 60)),
                 new Koopa(new Vector2(600, 60))
@@ -41,12 +38,12 @@ namespace SuperMarioBros
                 new Pipe(new Vector2(700,410)),
                 new BrickBlock(new Vector2(0, 290)),
                 new BrickBlock(new Vector2(100, 290)),
-                new ItemBrickBlock(new Vector2(140,290), typeof(Star), 10),
+                new ItemBrickBlock(new Vector2(140,290), typeof(Coin), 10),
                 new QuestionBlock(new Vector2(200, 290), typeof(RedMushroom)),
-                new QuestionBlock(new Vector2(240, 290)),
-                new QuestionBlock(new Vector2(280, 290)),
+                new QuestionBlock(new Vector2(240, 290), typeof(GreenMushroom)),
+                new QuestionBlock(new Vector2(280, 290), typeof(Flower)),
                 new QuestionBlock(new Vector2(320, 290)),
-                new HiddenBlock(new Vector2(50, 150)),
+                new HiddenBlock(new Vector2(50, 150)),            
                 new QuestionBlock(new Vector2(520, 250)),
                 new QuestionBlock(new Vector2(560, 250)),
                 new BrickBlock(new Vector2(440, 60)),

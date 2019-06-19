@@ -20,6 +20,7 @@ namespace SuperMarioBros.Marios
         public double Timer { get; set; }
         public Vector2 Position { get; set; }
         public bool PowerFlag { get => mario.PowerFlag; set => mario.PowerFlag = value; }
+        public double NoMovementTimer { get; set; }
 
         public FlashingMario(IMario mario)
         {
@@ -27,12 +28,14 @@ namespace SuperMarioBros.Marios
             this.HealthState = mario.HealthState;
             MarioPhysics = mario.MarioPhysics;
             HealthState = mario.HealthState;
-            Timer = 5;
+            Timer = 3;
+            mario.NoMovementTimer = 1;
+            NoMovementTimer = 1.5;
         }
 
         public void Down()
         {
-            mario.Down();
+                mario.Down();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -48,7 +51,9 @@ namespace SuperMarioBros.Marios
 
         public void Left()
         {
-            mario.Left();
+
+           mario.Left();
+
         }
 
         public void RedMushroom()
@@ -68,22 +73,9 @@ namespace SuperMarioBros.Marios
 
         public void Up()
         {
-            mario.Up();
+             mario.Up();
         }
 
-        //public void Update()
-        //{
-        //    mario.Update();
-        //    Timer--;
-        //    if(Timer <= 0)
-        //    {
-        //        ObjectsManager.Instance.RemoveDecoration(this, mario);
-        //    }
-        //    else
-        //    {
-        //        Sprite.Update();
-        //    }
-        //}
 
         public void Idle()
         {
@@ -108,16 +100,22 @@ namespace SuperMarioBros.Marios
 
         public void Update(GameTime gameTime)
         {
-            mario.Update(gameTime);
-            Timer -= gameTime.ElapsedGameTime.TotalSeconds;
-            if (Timer <= 0)
+            if (NoMovementTimer <= 0)
             {
-                ObjectsManager.Instance.RemoveDecoration(this, mario);
+                mario.NoMovementTimer = 0;
+                mario.Update(gameTime);
+                Sprite.Update();
             }
             else
             {
-                Sprite.Update();
+                mario.MarioPhysics.setXVelocity(0);
             }
+            if (Timer <= 0)
+            {
+                ObjectsManager.Instance.Decoration(this, mario);
+            }
+            NoMovementTimer -= gameTime.ElapsedGameTime.TotalSeconds;
+            Timer -= gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         public void MoveUp()

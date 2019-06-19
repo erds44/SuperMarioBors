@@ -20,18 +20,21 @@ namespace SuperMarioBros.Marios
         public MarioPhysics MarioPhysics { get; }
         public Vector2 Position { get; set; }
         public double Timer { get; set; }
+        public double NoMovementTimer { get; set; }
         public Mario(Vector2 location)
         {
             HealthState = new SmallMario(this);
             MarioPhysics = new MarioPhysics(this,100);
             MovementState = new RightIdle(this);
             Position = location;
+            NoMovementTimer = 0;
         }
 
 
         public void Down()
         {
-            MovementState.Down();
+            if(NoMovementTimer <= 0)
+                MovementState.Down();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -47,7 +50,8 @@ namespace SuperMarioBros.Marios
 
         public void Left()
         {
-            MovementState.Left();
+            if (NoMovementTimer <= 0)
+                MovementState.Left();
         }
 
         public void RedMushroom()
@@ -57,7 +61,8 @@ namespace SuperMarioBros.Marios
 
         public void Right()
         {
-            MovementState.Right();
+            if (NoMovementTimer <= 0)
+                MovementState.Right();
         }
 
         public void TakeDamage()
@@ -67,13 +72,15 @@ namespace SuperMarioBros.Marios
 
         public void Up()
         {
-            MovementState.Up();
+            if (NoMovementTimer <= 0)
+                MovementState.Up();
         }
 
 
         public void Idle()
         {
-            MovementState.Idle();
+            if (NoMovementTimer <= 0)
+                MovementState.Idle();
         }
 
         public Rectangle HitBox()
@@ -95,8 +102,8 @@ namespace SuperMarioBros.Marios
 
         public void Update(GameTime gameTime)
         {
-            Sprite.Update();
             HealthState.Update(gameTime);
+            Sprite.Update();
             Position += MarioPhysics.Displacement(gameTime);
         }
 

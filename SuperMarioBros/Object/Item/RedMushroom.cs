@@ -17,16 +17,16 @@ namespace SuperMarioBros.Items
         private ItemPhysics physics;
         private bool addFlag;
         private Vector2 offset = new Vector2(5, 0);
-        private float timer;
+        private float speedChangeFlag = 0;
        // private Vector2 velocity;
         public RedMushroom(Vector2 location)
         {
             Position = location + offset;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
             sprite.SetLayer(0);
-            physics = new ItemPhysics(this, new Vector2(0, -40));
+            physics = new ItemPhysics(this, new Vector2(0, -180));
             addFlag = false;
-            timer = 0;
+            speedChangeFlag += location.Y - 50;
         }
 
         public void Draw(SpriteBatch SpriteBatch)
@@ -36,10 +36,9 @@ namespace SuperMarioBros.Items
 
         public void Update(GameTime gameTime)
         {
-            timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             sprite.Update();
             Position += physics.Displacement(gameTime);
-            if(Math.Floor(timer) == 1 && !addFlag)
+            if(Position.Y <= speedChangeFlag && !addFlag)
             {
                 physics.SetSpeed(new Vector2(40, 0));
                 sprite.SetLayer(1.0f);

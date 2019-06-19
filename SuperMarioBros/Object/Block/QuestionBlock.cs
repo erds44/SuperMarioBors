@@ -24,8 +24,8 @@ namespace SuperMarioBros.Blocks
             if(itemCount > 0)
             {
                 itemCount--;
-                IItem item = (IItem)Activator.CreateInstance(itemType, new Vector2(Position.X, Position.Y - 40));
-                ObjectsManager.Instance.Add(item);
+                IItem item = (IItem)Activator.CreateInstance(itemType, Position);
+                ObjectsManager.Instance.AddNonCollidable(item);
                 if (itemCount == 0) State.ToUsed();
             }
         }

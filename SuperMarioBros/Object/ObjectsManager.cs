@@ -79,6 +79,10 @@ namespace SuperMarioBros.Objects
         {
             nonCollidableObjects.Remove(gameObject);
         }
+        public void AddNonCollidable(IObject gameObject)
+        {
+            nonCollidableObjects.Add(gameObject);
+        }
         public void Add(IObject gameObject)
         {
             if (gameObject is IStatic)
@@ -93,10 +97,9 @@ namespace SuperMarioBros.Objects
         /*  The following methods might not be put in the ObjetcsManager class
          *  They will be refactored later
          */
-        public void RemoveDecoration(IMario oldMario, IMario newMario)
+        public void Decoration(IMario oldMario, IMario newMario)
         {
             int index = dynamicObjects.IndexOf(oldMario);
-            Console.WriteLine(dynamicObjects.Count.ToString(), index);
             dynamicObjects[index] = newMario;
         }
         public void StarMario(IMario mario)

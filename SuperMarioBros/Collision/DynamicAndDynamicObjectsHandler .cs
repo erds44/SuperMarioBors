@@ -4,6 +4,7 @@ using SuperMarioBros.Goombas;
 using SuperMarioBros.Items;
 using SuperMarioBros.Koopas;
 using SuperMarioBros.Marios;
+using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Enemy;
 using System;
@@ -49,9 +50,9 @@ namespace SuperMarioBros.Collisions
              {(typeof(StarMario), typeof(StompedKoopa)), StarMarioEnemy},
              
 
-             {(typeof(FlashingMario), typeof(Goomba)),MarioEnemy },
-             {(typeof(FlashingMario), typeof(Koopa)), MarioEnemy},
-             {(typeof(FlashingMario), typeof(StompedKoopa)), MarioStompedKoopa},
+             //{(typeof(FlashingMario), typeof(Goomba)),MarioEnemy },
+             //{(typeof(FlashingMario), typeof(Koopa)), MarioEnemy},
+             //{(typeof(FlashingMario), typeof(StompedKoopa)), MarioStompedKoopa},
 
 
              {(typeof(Goomba), typeof(Goomba)), MoveEnemy},
@@ -90,8 +91,9 @@ namespace SuperMarioBros.Collisions
         private static void RedMushroom(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             IMario mario = (IMario)obj1;
-            mario.RedMushroom();        
+            ObjectsManager.Instance.Decoration(mario ,new FlashingMario(mario));   
             ObjectsManager.Instance.Remove(obj2);
+            mario.RedMushroom();
         }
         private static void GreenMushroom(IDynamic obj1, IDynamic obj2, Direction direction)
         {
@@ -102,8 +104,9 @@ namespace SuperMarioBros.Collisions
         private static void FireFlower(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             IMario mario = (IMario)obj1;
-            mario.OnFireFlower();
+            ObjectsManager.Instance.Decoration(mario, new FlashingMario(mario));
             ObjectsManager.Instance.Remove(obj2);
+            mario.OnFireFlower();
         }
         private static void Coin(IDynamic obj1, IDynamic obj2, Direction direction)
         {
@@ -138,8 +141,14 @@ namespace SuperMarioBros.Collisions
                     ((IEnemy)obj2).TakeDamage();
                     break;
                 default:
-                    ((IMario)obj1).TakeDamage();
-                   break;
+                    Type healthState = ((IMario)obj1).HealthState.GetType();
+                    if((healthState != typeof(DeadMario)))
+                    {
+                        if (healthState != typeof(SmallMario))
+                            ObjectsManager.Instance.Decoration((IMario)obj1, new FlashingMario((IMario)obj1));
+                        ((IMario)obj1).TakeDamage();
+                    }
+                    break;
             }
         }
 

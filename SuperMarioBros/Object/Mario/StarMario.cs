@@ -22,6 +22,7 @@ namespace SuperMarioBros.Marios
         public double Timer { get; set; }
         public Vector2 Position { get; set; }
         public bool PowerFlag { get => mario.PowerFlag; set => mario.PowerFlag = value; }
+        public double NoMovementTimer { get; set; }
 
         public StarMario(IMario mario)
         {
@@ -101,7 +102,7 @@ namespace SuperMarioBros.Marios
             Timer -= gameTime.ElapsedGameTime.TotalSeconds;
             if (Timer <= 0)
             {
-                ObjectsManager.Instance.RemoveDecoration(this, mario);
+                ObjectsManager.Instance.Decoration(this, mario);
             }
             else
             {

@@ -11,6 +11,8 @@ namespace SuperMarioBros.Marios.MarioTypeStates
         {
             mario.Sprite = SpriteFactory.CreateSprite(nameof(DeadMario));
             mario.MovementState = new TerminateMovementState();
+            mario.MarioPhysics.setXVelocity(0);
+            mario.MarioPhysics.setYVelocity(-150);
         }
 
         public void Coin()

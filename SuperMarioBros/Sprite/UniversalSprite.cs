@@ -37,16 +37,13 @@ namespace SuperMarioBros.Sprites
             /* the delay here is to slow doown the animation
              * There might be a better solution to do this
              */
-            delay++;
-            if (delay % 10 == 0)
+            if (delay % 5 == 0)
             {
                 currentFrame++;
                 if (currentFrame == totalFrame)
                 {
                     currentFrame = 0;
                 }
-                delay = 0;
-                count++;
             }
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -56,14 +53,16 @@ namespace SuperMarioBros.Sprites
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y - height, width, height);
-
+            delay++;
+            if(delay % 5 == 0)
+                count++;
             /* This condition is used for alternating colors for star mario */
             if (count % SpriteColor.Count == 0 || count > SpriteColor.Count)
             {
                 count = 0;
             }
             Color spriteColor = SpriteColor[count];
-            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, spriteColor, 0,new Vector2(0,0),SpriteEffects.None, layerDepth);   
+            spriteBatch.Draw(texture,destinationRectangle, sourceRectangle, spriteColor, 0, Vector2.Zero, SpriteEffects.None, layerDepth);   
         }
         public void SetLayer(float layer)
         {

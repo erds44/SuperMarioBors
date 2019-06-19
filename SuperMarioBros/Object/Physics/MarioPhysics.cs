@@ -19,7 +19,6 @@ namespace SuperMarioBros.Physicses
         private Vector2 displacement;
         private Vector2 prevDisplacement;
         private float dt;
-        private float jumpTime;
         public bool Jump { get; private set; }
         private readonly IMario mario;
         public MarioPhysics(IMario mario, int forwardAcceleration)
@@ -130,6 +129,14 @@ namespace SuperMarioBros.Physicses
         public void SetSprintVelocityRate(float sprintVelocityRate)
         {
             this.sprintVelocityRate = sprintVelocityRate;
+        }
+        public void setXVelocity(float xVelocity)
+        {
+            XVelocity = xVelocity;
+        }
+        public void setYVelocity(float yVelocity)
+        {
+            YVelocity = yVelocity;
         }
 
     }
