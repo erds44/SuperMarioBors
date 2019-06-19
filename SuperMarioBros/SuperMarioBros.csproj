@@ -255,7 +255,7 @@
     <Compile Include="Command\GameCommand\QuitCommand.cs" />
     <Compile Include="Command\GameCommand\ResetCommand.cs" />
     <Compile Include="Command\MarioCommand\RightCommand.cs" />
-    <Compile Include="Command\MarioCommand\FireBallCommand.cs" />
+    <Compile Include="Command\MarioCommand\PowerCommand.cs" />
     <Compile Include="Command\MarioCommand\UpCommand.cs" />
     <Compile Include="Controller\ControllerMessager.cs" />
     <Compile Include="Controller\GamePadController.cs" />
@@ -270,6 +270,7 @@
     <Compile Include="Object\Background\BigHill.cs" />
     <Compile Include="Object\Block\AbstractBlock.cs" />
     <Compile Include="Object\Block\BlockState\BrickBlockState.cs" />
+    <Compile Include="Object\Block\BlockState\BumpBlockState.cs" />
     <Compile Include="Object\Block\BlockState\ConcreteBlockState.cs" />
     <Compile Include="Object\Block\BlockState\DisappearBlockState.cs" />
     <Compile Include="Object\Block\BlockState\HiddenBlockState.cs" />

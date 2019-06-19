@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Collisions;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
+using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
@@ -14,6 +15,8 @@ namespace SuperMarioBros.Marios
 {
     public class FireBall : IDynamic
     {
+        public bool IsInvalid { get; set; }
+
         private List<Type> direction = new List<Type>
         {
             typeof(LeftBreaking),
@@ -25,8 +28,10 @@ namespace SuperMarioBros.Marios
         public Vector2 Position { get; set; }
         private ISprite sprite;
         private StarPhysics physics;
-        public FireBall(IMario mario)
+        private FireMario fireMario;
+        public FireBall(FireMario fireMario, IMario mario)
         {
+            this.fireMario = fireMario;
             if (direction.Contains(mario.MovementState.GetType()))
             {
                 Position = mario.Position + new Vector2(-22, -1 * mario.HitBox().Height / 2);
@@ -75,6 +80,11 @@ namespace SuperMarioBros.Marios
         {
             Position += physics.Displacement(gameTime);
             sprite.Update();
+        }
+
+        public void Destroy()
+        {
+            fireMario.fireCount++;
         }
     }
 }

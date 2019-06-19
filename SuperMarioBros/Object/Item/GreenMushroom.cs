@@ -10,6 +10,8 @@ namespace SuperMarioBros.Items
 {
     public class GreenMushroom : IItem
     {
+        public bool IsInvalid { get; set; }
+
         private readonly ISprite sprite;
         public Vector2 Position { get; set; }
         public GreenMushroom(Vector2 location)
@@ -52,6 +54,11 @@ namespace SuperMarioBros.Items
         public void MoveRight()
         {
             throw new System.NotImplementedException();
+        }
+
+        public void Destroy()
+        {
+            //Do nothing.
         }
     }
 }

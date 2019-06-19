@@ -8,7 +8,7 @@ namespace SuperMarioBros.Controllers
     public class ControllerMessager : IUpdate
     {
         private int flags = 0b0000000;
-        public const int UPMOVE = 0b0000001, DOWNMOVE = 0b0000010, LEFTMOVE = 0b0000100, RIGHTMOVE = 0b0001000, RESETGAME = 0b0010000, QUITGAME = 0b0100000, FIREBALL = 0b1000000;
+        public const int UPMOVE = 0b0000001, DOWNMOVE = 0b0000010, LEFTMOVE = 0b0000100, RIGHTMOVE = 0b0001000, RESETGAME = 0b0010000, QUITGAME = 0b0100000, POWER = 0b1000000;
         private readonly MarioGame marioGame;
         private readonly IMario marioPlayer;
         private readonly List<IController> controllers;
@@ -16,12 +16,12 @@ namespace SuperMarioBros.Controllers
             { QUITGAME, typeof(QuitCommand) },
             { RESETGAME, typeof(ResetCommand) }
         };
-        private readonly Dictionary<int, Type> moveCommand = new Dictionary<int, Type> {
+        private readonly Dictionary<int, Type> actionCommand = new Dictionary<int, Type> {
             { LEFTMOVE, typeof(LeftCommand) },
             { RIGHTMOVE, typeof(RightCommand) },
             { UPMOVE, typeof(UpCommand) },
             { DOWNMOVE, typeof(DownCommand) },
-            { FIREBALL, typeof(FireBallCommand) },
+            { POWER, typeof(PowerCommand) },
         };
         public ControllerMessager(MarioGame game, IMario mario)
         {
@@ -43,11 +43,12 @@ namespace SuperMarioBros.Controllers
             {
                 new IdleCommand(marioPlayer).Execute();
             }
+            marioPlayer.PowerFlag = ((flags & POWER) != 0);
             foreach(KeyValuePair<int, Type> element in gameCommand)
             {
                 if((flags & element.Key) != 0) { ((ICommand)Activator.CreateInstance(element.Value, marioGame)).Execute(); }
             }
-            foreach(KeyValuePair<int, Type> element in moveCommand)
+            foreach(KeyValuePair<int, Type> element in actionCommand)
             {
                 if((flags & element.Key) != 0) { ((ICommand)Activator.CreateInstance(element.Value, marioPlayer)).Execute(); }
             }

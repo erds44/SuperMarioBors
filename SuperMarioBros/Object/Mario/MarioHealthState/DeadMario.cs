@@ -1,4 +1,5 @@
-﻿using SuperMarioBros.Interfaces.State;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.SpriteFactories;
 
@@ -36,6 +37,14 @@ namespace SuperMarioBros.Marios.MarioTypeStates
         {
             // Do Nothing
         }
+        public void Power()
+        {
+            // Do Nothing
+        }
 
+        public void Update(GameTime gameTime)
+        {
+            // Do nothing.
+        }
     }
 }

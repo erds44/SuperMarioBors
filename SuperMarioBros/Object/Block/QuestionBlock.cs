@@ -9,6 +9,7 @@ namespace SuperMarioBros.Blocks
         {
             Position = location;
             State = new QuestionBlockState(this);
+            base.Initialize();
         }
     }
 }

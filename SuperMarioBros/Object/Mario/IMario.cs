@@ -11,6 +11,7 @@ namespace SuperMarioBros.Marios
     public interface IMario : IDynamic, IMarioHealthState
     {
         double Timer { get; set; }
+        bool PowerFlag { get; set; }
         ISprite Sprite { get; set; }
         IMarioHealthState HealthState { get; set; }
         IMarioMovementState MovementState { get; set; }
@@ -20,6 +21,6 @@ namespace SuperMarioBros.Marios
         void Up();
         void Right();
         void Idle();
-        void FireBall();
+        new void Update(GameTime gameTime);
     }
 }

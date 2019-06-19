@@ -17,6 +17,5 @@ namespace SuperMarioBros.Goombas
         {
            //Do Nothing
         }
-
     }
 }
