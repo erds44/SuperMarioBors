@@ -7,5 +7,7 @@ namespace SuperMarioBros.Objects.Enemy
     {
         IEnemyMovementState State { get; set; }
         ISprite Sprite { get; set; }
+
+        void TakeDamage();
     }
 }

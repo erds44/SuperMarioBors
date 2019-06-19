@@ -13,5 +13,10 @@ namespace SuperMarioBros.Koopas
             State = new LeftMoving(this, physics);
             Position = location;
         }
+
+        public override void TakeDamage()
+        {
+            
+        }
     }
 }
