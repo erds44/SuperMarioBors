@@ -100,5 +100,10 @@ namespace SuperMarioBros.Marios
         {
             HealthState.Coin();
         }
+
+        public void Destroy()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

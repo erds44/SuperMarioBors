@@ -33,5 +33,10 @@ namespace SuperMarioBros.Goombas
             Point size = ObjectSizeManager.ObjectSize(GetType());
             return new Rectangle(location.X, location.Y - size.Y, size.X, size.Y);
         }
+
+        public void Destroy()
+        {
+            //Game.Score += 100;
+        }
     }
 }

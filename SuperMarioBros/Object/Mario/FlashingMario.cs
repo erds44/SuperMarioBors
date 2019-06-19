@@ -103,5 +103,10 @@ namespace SuperMarioBros.Marios
         {
             mario.Coin();
         }
+
+        public void Destroy()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

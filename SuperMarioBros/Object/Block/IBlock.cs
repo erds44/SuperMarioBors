@@ -10,6 +10,7 @@ namespace SuperMarioBros.Blocks
         IBlockState State { get; }
         Point Location { get; }
         void Used();
+        void Bump();
         void ChangeSprite(ISprite sprite);
         void ChangeState(IBlockState blockState);
     }

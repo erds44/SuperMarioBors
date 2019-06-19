@@ -1,10 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Interfaces;
 
 namespace SuperMarioBros.Objects
 {
-    public interface IObject : IDraw, IUpdate
+    public interface IObject : IDraw
     {
+        bool IsInvalid { get; set; }
         Rectangle HitBox();
+        Vector2 Position { get; set; }
+        void Destroy();
     }
 }

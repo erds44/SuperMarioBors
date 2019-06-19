@@ -10,6 +10,11 @@ namespace SuperMarioBros.Items
             this.location = location;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
         }
+
+        public void Destroy()
+        {
+            //Do nothing.
+        }
     }
 }
 

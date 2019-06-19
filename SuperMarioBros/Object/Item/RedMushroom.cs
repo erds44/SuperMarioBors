@@ -33,5 +33,10 @@ namespace SuperMarioBros.Items
             Point size = ObjectSizeManager.ObjectSize(GetType());
             return new Rectangle(location.X, location.Y - size.Y, size.X, size.Y);
         }
+
+        public void Destroy()
+        {
+            //Do nothing.
+        }
     }
 }

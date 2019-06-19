@@ -1,108 +1,104 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.Blocks;
 using SuperMarioBros.Marios;
-using SuperMarioBros.Marios.MarioTypeStates;
 using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Objects
 {
     public  class ObjectsManager
     {
-        private Collection<IObject> StaticObjects;
-        private Collection<IMario> Mario; // For now it is a list of maro, later it is a list of dynamic objects
+        private Collection<IStatic> staticObjects;
+        private Collection<IDynamic> dynamicObjects;
         public static ObjectsManager Instance { get; } = new ObjectsManager();
         private ObjectsManager() { }
+        private GameTime time;
         public void Initialize()
         {
-            StaticObjects = ObjectLoading.LoadObject();
-            Mario = ObjectLoading.LoadMario();
+            staticObjects = ObjectLoading.LoadStatics();
+            dynamicObjects = ObjectLoading.LoadDynamics();
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            foreach (IObject obj in StaticObjects)
+            time = gameTime;
+            for (int i = (staticObjects.Count-1); i >=0; i--)
             {
-                obj.Update();
+                staticObjects[i].Update();
+                InvalidCheck(staticObjects[i]);
+                if (staticObjects[i].IsInvalid) Remove(staticObjects[i]);
             }
-            for (int i = 0; i < Mario.Count; i++)
+            for (int i = (dynamicObjects.Count-1); i >=0 ; i--)
             {
-                // The update method might change element in the list, so no for each loop
-                Mario[i].Update(); 
+                dynamicObjects[i].Update(gameTime);
+                InvalidCheck(dynamicObjects[i]);
+                if (dynamicObjects[i].IsInvalid) Remove(dynamicObjects[i]);
             }
+
+        }
+        private void InvalidCheck(IObject obj)
+        {
+            bool result = false;
+            if (obj.Position.Y < 0) result = true;
+            if (obj.Position.X < -100) result = true;
+            if (obj.Position.X > 1000) result = true;
+            obj.IsInvalid = result;
+            
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            foreach (IObject obj in StaticObjects)
-            {
+            foreach (IStatic obj in staticObjects)
                 obj.Draw(spriteBatch);
-            }
-            foreach (IMario mario in Mario)
-            {
-                mario.Draw(spriteBatch);
-            }
+            foreach (IDynamic obj in dynamicObjects)        
+                obj.Draw(spriteBatch);
         }
-        public void DecorateMario(IMario oldMario, IMario newMario)
-        {
-            if(!(oldMario.HealthState is DeadMario))
-            {
-                Mario.Remove(oldMario);
-                Mario.Add(newMario);
-            }
-        }
+
         public void Remove(IObject gameObject)
         {
-            StaticObjects.Remove(gameObject);
+            gameObject.Destroy();
+            if(gameObject is IStatic)
+            {
+                staticObjects.Remove((IStatic)gameObject);
+            }
+            else
+            {
+                dynamicObjects.Remove((IDynamic)gameObject);
+            }
+        }
+        public void Add(IObject gameObject)
+        {
+            if (gameObject is IStatic)
+            {
+                staticObjects.Add((IStatic)gameObject);
+            }
+            else
+            {
+                dynamicObjects.Add((IDynamic)gameObject);
+            }
         }
         /*  The following methods might not be put in the ObjetcsManager class
          *  They will be refactored later
          */
-        public void ChangeObject(IObject oldObject, IObject newObject)
-        {
-            StaticObjects.Remove(oldObject);
-            StaticObjects.Add(newObject);
-        }
         public void RemoveDecoration(IMario oldMario, IMario newMario)
         {
-            Mario.Remove(oldMario);
-            Mario.Add(newMario);
+            int index = dynamicObjects.IndexOf(oldMario);
+            dynamicObjects[index] = newMario;
         }
         public void StarMario(IMario mario)
         {
-            int index = Mario.IndexOf(mario);
+            int index = dynamicObjects.IndexOf(mario);
             if (mario is FlashingMario)
             {
                 mario.Timer = 0;
-                mario.Update();
+                mario.Update(time);
             }
-            Mario[index] = new StarMario(Mario[index]); 
+            dynamicObjects[index] = new StarMario((IMario)dynamicObjects[index]); 
             // the usage of indeof is necessary here
             // if mario is flashing and hits a star
             // mario will end flashing state then become star mario
         }
-        public void HiddenUsed(IBlock block)
+
+        public IMario MarioObject()
         {
-            int height = Rectangle.Intersect(Mario[0].HitBox(), block.HitBox()).Height;
-            if (Mario[0].MarioPhysics.HitHidden(height))
-            {
-                block.Used();
-                Mario[0].MarioPhysics.Down();
-                Mario[0].Update();
-            }
-        }
-        public void BrickDisappear(IBlock block)
-        {
-            if(Mario[0].HealthState is SmallMario)
-            {
-                Mario[0].Obstacle();
-            }
-            else
-            {
-                StaticObjects.Remove(block);
-            }
-        }
-        public Collection<IMario> MarioObject()
-        {
-            return Mario;
+            return (IMario)dynamicObjects[0];
         }
     }
 }

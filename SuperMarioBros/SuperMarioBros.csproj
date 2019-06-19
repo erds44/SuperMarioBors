@@ -262,6 +262,7 @@
     <Compile Include="Object\Background\BigHill.cs" />
     <Compile Include="Object\Block\AbstractBlock.cs" />
     <Compile Include="Object\Block\BlockState\BrickBlockState.cs" />
+    <Compile Include="Object\Block\BlockState\BumpBlockState.cs" />
     <Compile Include="Object\Block\BlockState\ConcreteBlockState.cs" />
     <Compile Include="Object\Block\BlockState\DisappearBlockState.cs" />
     <Compile Include="Object\Block\BlockState\HiddenBlockState.cs" />
