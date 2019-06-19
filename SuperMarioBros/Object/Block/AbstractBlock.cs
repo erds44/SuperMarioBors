@@ -13,7 +13,7 @@ namespace SuperMarioBros.Blocks
         public bool IsInvalid { get; set; }
 
         public IBlockState State { get; protected set; }
-        public Point Location { get; protected set; }
+        public Vector2 Position { get; set; }
         public ISprite Sprite { get; protected set; }
 
         protected bool isBumping;
@@ -32,12 +32,7 @@ namespace SuperMarioBros.Blocks
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Sprite.Draw(spriteBatch, Position);
-        }
-
-        public void Move(Point motion)
-        {
-            this.Location += motion;
+            Sprite.Draw(spriteBatch, drawPosition);
         }
 
         public void Update()
@@ -78,7 +73,19 @@ namespace SuperMarioBros.Blocks
         public Rectangle HitBox()
         {
             Point size = ObjectSizeManager.ObjectSize(GetType());
-            return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
+            return new Rectangle((int)drawPosition.X, (int)drawPosition.Y - size.Y, size.X, size.Y);
+        }
+
+        public void Bump()
+        {
+            Console.WriteLine("Bumping");
+            State = new BumpBlockState(this, State);
+            isBumping = true;
+        }
+
+        public void Destroy()
+        {
+            //Do nothing
         }
     }
 }

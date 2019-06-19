@@ -60,9 +60,5 @@ namespace SuperMarioBros.Goombas
             //Game.Score += 100;
         }
 
-        public void Destroy()
-        {
-            //Game.Score += 100;
-        }
     }
 }

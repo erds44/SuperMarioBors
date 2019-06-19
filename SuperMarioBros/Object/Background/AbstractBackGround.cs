@@ -32,9 +32,5 @@ namespace SuperMarioBros.Backgrounds
         {
             //Do nothing.
         }
-        public void Destroy()
-        {
-            //Do nothing.
-        }
     }
 }

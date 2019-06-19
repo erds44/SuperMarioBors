@@ -142,12 +142,8 @@ namespace SuperMarioBros.Marios
 
         public void Destroy()
         {
-            throw new System.NotImplementedException();
+            //Do nothing.
         }
 
-        public void Destroy()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

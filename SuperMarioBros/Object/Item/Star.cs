@@ -62,10 +62,6 @@ namespace SuperMarioBros.Items
             //Do nothing.
         }
 
-        public void Destroy()
-        {
-            //Do nothing.
-        }
     }
 }
 
