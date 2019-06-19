@@ -15,7 +15,7 @@ namespace SuperMarioBros.Marios
         public IMarioHealthState HealthState { get; set; }
         public IMarioMovementState MovementState { get; set; }
         public MarioPhysics MarioPhysics { get; }
-        private  IMario mario;
+        private IMario mario;
         public ISprite Sprite { get; set; }
         public double Timer { get; set; }
         public Vector2 Position { get; set; }

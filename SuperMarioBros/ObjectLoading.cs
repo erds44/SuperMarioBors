@@ -36,13 +36,15 @@ namespace SuperMarioBros
             {
                 new Pipe(new Vector2(420,410)),
                 new Pipe(new Vector2(700,410)),
-                new BrickBlock(new Vector2(0, 290)),
-                new BrickBlock(new Vector2(100, 290)),
-                new ItemBrickBlock(new Vector2(140,290), typeof(Coin), 10),
+
+                new ItemBrickBlock(new Vector2(0, 290), typeof(Coin), 10),
+                new ItemBrickBlock(new Vector2(100, 290), typeof(Star), 1),
+
                 new QuestionBlock(new Vector2(200, 290), typeof(RedMushroom)),
                 new QuestionBlock(new Vector2(240, 290), typeof(GreenMushroom)),
                 new QuestionBlock(new Vector2(280, 290), typeof(Flower)),
                 new QuestionBlock(new Vector2(320, 290)),
+
                 new HiddenBlock(new Vector2(50, 150)),            
                 new QuestionBlock(new Vector2(520, 250)),
                 new QuestionBlock(new Vector2(560, 250)),

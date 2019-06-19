@@ -66,6 +66,15 @@ namespace SuperMarioBros.Physicses
             this.velocity = velocity;
             currentGravity = gravity;
         }
+        public void ChangeDirection()
+        {
+            velocity.X *= -1;
+        }
 
+        public void BumpUp()
+        {
+            displacement.Y -= 20;
+            velocity.Y -= 20;
+        }
     }
 }

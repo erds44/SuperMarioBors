@@ -36,7 +36,7 @@ namespace SuperMarioBros.Items
 
         public void Destroy()
         {
-            throw new System.NotImplementedException();
+            
         }
     }
 }

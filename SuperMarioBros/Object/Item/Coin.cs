@@ -74,5 +74,14 @@ namespace SuperMarioBros.Items
             //Do nothing.
         }
 
+        public void ChangeDirection()
+        {
+            //Do Nothing
+        }
+
+        public void BumpUp()
+        {
+            // Do Nothing
+        }
     }
 }

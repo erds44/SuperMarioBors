@@ -4,7 +4,6 @@ using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
-using System;
 
 namespace SuperMarioBros.Items
 {
@@ -15,16 +14,16 @@ namespace SuperMarioBros.Items
         public Vector2 Position { get; set; }
         private readonly ISprite sprite;
         private bool addFlag;
-        private float timer;
+        private float speedChangeFlag = 0;
         private Vector2 offset = new Vector2(5, 0);
         public Star(Vector2 location)
         {
             Position = location + offset;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
             sprite.SetLayer(0);
-            physics = new StarPhysics(this, new Vector2(0, -40));
+            physics = new StarPhysics(this, new Vector2(0, -180));
             addFlag = false;
-            timer = 0;
+            speedChangeFlag += location.Y - 50;
         }
 
         public Rectangle HitBox()
@@ -40,12 +39,11 @@ namespace SuperMarioBros.Items
 
         public void Update(GameTime gameTime)
         {
-            timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             sprite.Update();
             Position += physics.Displacement(gameTime);
-            if (Math.Floor(timer) == 1 && !addFlag)
+            if (Position.Y <= speedChangeFlag && !addFlag)
             {
-                physics.SetSpeed(new Vector2(40,-120));
+                physics.SetSpeed(new Vector2(40,-40));
                 sprite.SetLayer(1.0f);
                 ObjectsManager.Instance.Add(this);
                 ObjectsManager.Instance.RemoveFromNonCollidable(this);
@@ -78,6 +76,15 @@ namespace SuperMarioBros.Items
             //Do nothing.
         }
 
+        public void ChangeDirection()
+        {
+            physics.ChangeDirection();
+        }
+
+        public void BumpUp()
+        {
+            physics.BumpUp();
+        }
     }
 }
 

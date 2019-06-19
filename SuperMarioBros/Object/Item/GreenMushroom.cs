@@ -80,5 +80,14 @@ namespace SuperMarioBros.Items
             //Do nothing.
         }
 
+        public void ChangeDirection()
+        {
+            physics.ChangeDirection();
+        }
+
+        public void BumpUp()
+        {
+            physics.BumpUp();
+        }
     }
 }

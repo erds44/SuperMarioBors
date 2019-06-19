@@ -111,7 +111,7 @@ namespace SuperMarioBros.Collisions
 
             if(direction == Direction.bottom)
             {
-                if (mario.HealthState is SmallMario && obj1 is BrickBlock)
+                if (mario.HealthState is SmallMario && obj2 is BrickBlock)
                 {
                     ((IBlock)obj2).Bump();
                 }

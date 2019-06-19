@@ -35,12 +35,12 @@ namespace SuperMarioBros.Marios
             if (direction.Contains(mario.MovementState.GetType()))
             {
                 Position = mario.Position + new Vector2(-22, -1 * mario.HitBox().Height / 2);
-                physics = new StarPhysics(this, new Vector2(-50, 20));
+                physics = new StarPhysics(this, new Vector2(-100, 20));
             }
             else
             {
                 Position = mario.Position + new Vector2(40, -1 * mario.HitBox().Height / 2);
-                physics = new StarPhysics(this, new Vector2(50, 20));
+                physics = new StarPhysics(this, new Vector2(100, 20));
             }
             sprite = SpriteFactory.CreateSprite(GetType().Name);
         }

@@ -18,7 +18,7 @@ namespace SuperMarioBros.Collisions
                     {
                         return Direction.bottom;
                     }
-                    else
+                    else if(overlap.Center.Y < object2.HitBox().Center.Y)
                     {
                         return Direction.top;
                     }
@@ -30,7 +30,7 @@ namespace SuperMarioBros.Collisions
                     {
                         return Direction.right;
                     }
-                    else
+                    else if(overlap.Center.X < object2.HitBox().Center.X)
                     {
                         return Direction.left;
                     }

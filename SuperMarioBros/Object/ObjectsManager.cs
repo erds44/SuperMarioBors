@@ -110,6 +110,7 @@ namespace SuperMarioBros.Objects
                 mario.Timer = 0;
                 mario.Update(time);
             }
+            ((IMario)dynamicObjects[index]).NoMovementTimer = 0;
             dynamicObjects[index] = new StarMario((IMario)dynamicObjects[index]); 
             // the usage of indeof is necessary here
             // if mario is flashing and hits a star
