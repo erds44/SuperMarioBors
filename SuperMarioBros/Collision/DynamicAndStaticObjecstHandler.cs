@@ -127,6 +127,7 @@ namespace SuperMarioBros.Collisions
             MoveDynamic(obj1, obj2, direction);
             if (direction == Direction.bottom)
             {
+                if (obj2 is PowerUpBlock) { ((PowerUpBlock)obj2).IsFlower = !(((IMario)obj1).HealthState is SmallMario); }
                 ((IBlock)obj2).Used();
                 ((IBlock)obj2).Bump();
             }
