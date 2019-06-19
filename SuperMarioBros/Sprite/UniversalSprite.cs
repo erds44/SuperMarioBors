@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Sprites
@@ -14,6 +15,7 @@ namespace SuperMarioBros.Sprites
         private int delay;
         private Collection<Color> SpriteColor;
         private int count;
+        private float layerDepth;
         public UniversalSprite(Texture2D texture, int frame)
         {
             this.texture = texture;
@@ -24,6 +26,7 @@ namespace SuperMarioBros.Sprites
             delay = 0;
             SpriteColor = new Collection<Color> { Color.White };
             count = 0;
+            layerDepth = 0.5f;
         }
         public void SetColor(Collection<Color> colors)
         {
@@ -60,8 +63,11 @@ namespace SuperMarioBros.Sprites
                 count = 0;
             }
             Color spriteColor = SpriteColor[count];
-            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, spriteColor);
-        
+            spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, spriteColor, 0,new Vector2(0,0),SpriteEffects.None, layerDepth);   
+        }
+        public void SetLayer(float layer)
+        {
+            this.layerDepth = layer;
         }
     }
 }

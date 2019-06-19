@@ -20,6 +20,7 @@ namespace SuperMarioBros.Items
         {
             Position = location + offset;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
+            sprite.SetLayer(0);
             physics = new ItemPhysics(this, new Vector2(0, -40));
             changeSpeedFlag = location.Y - 40;
         }
@@ -36,7 +37,8 @@ namespace SuperMarioBros.Items
             if (Position.Y <= changeSpeedFlag)
             {
                 physics.SetSpeed(new Vector2(40, 0));
-                ObjectsManager.Instance.Add(this);
+                sprite.SetLayer(1.0f);
+                //ObjectsManager.Instance.Add(this);
             }
         }
 

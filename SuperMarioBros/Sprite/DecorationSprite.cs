@@ -26,5 +26,9 @@ namespace SuperMarioBros.Sprites
         {
            // Do Nothing
         }
+        public void SetLayer(float layer)
+        {
+            
+        }
     }
 }
