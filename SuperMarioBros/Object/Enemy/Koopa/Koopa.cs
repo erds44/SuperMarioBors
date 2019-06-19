@@ -1,7 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Goombas;
+using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Physicses;
+using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Koopas
 {
@@ -16,7 +19,14 @@ namespace SuperMarioBros.Koopas
 
         public override void TakeDamage()
         {
-            
+            ObjectsManager.Instance.Add(new StompedKoopa(Position));
+            ObjectsManager.Instance.Remove(this);
+        }
+        
+        public override void Flip()
+        {
+            ObjectsManager.Instance.AddNonCollidable(new FlippedKoopa(this));
+            ObjectsManager.Instance.Remove(this);
         }
     }
 }

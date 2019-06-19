@@ -293,6 +293,7 @@
     <Compile Include="Object\Enemy\Goomba\StompedGoomba.cs" />
     <Compile Include="Object\Enemy\IEnemyMovementState.cs" />
     <Compile Include="Object\Enemy\IEnemy.cs" />
+    <Compile Include="Object\Enemy\Koopa\FlippedKoopa.cs" />
     <Compile Include="Object\Enemy\Koopa\StompedKoopa.cs" />
     <Compile Include="Object\IDynamic.cs" />
     <Compile Include="Object\IStatic.cs" />

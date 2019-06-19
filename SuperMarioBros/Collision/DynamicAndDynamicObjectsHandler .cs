@@ -19,6 +19,7 @@ namespace SuperMarioBros.Collisions
         public static void HandleCollision(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             if (collisionDictionary.TryGetValue((obj1.GetType(), obj2.GetType()), out var handle))
+                if(!(obj1.GetType() == typeof(Mario)&&((IMario)obj1).HealthState.GetType() == typeof(DeadMario)))
                 handle(obj1, obj2, direction);
         }
         private static readonly Dictionary<(Type, Type), CollisionHandler> collisionDictionary = new Dictionary<(Type, Type), CollisionHandler>
@@ -55,15 +56,15 @@ namespace SuperMarioBros.Collisions
              //{(typeof(FlashingMario), typeof(StompedKoopa)), MarioStompedKoopa},
 
 
-             {(typeof(Goomba), typeof(Goomba)), MoveEnemy},
-             {(typeof(Goomba), typeof(Koopa)), MoveEnemy},
+             {(typeof(Goomba), typeof(Goomba)), GoombaKoopa},
+             {(typeof(Goomba), typeof(Koopa)), GoombaKoopa},
              {(typeof(Goomba), typeof(StompedKoopa)), GoombaStompedKoopa},
              {(typeof(Goomba), typeof(Star)), MoveDynamic},
              //{(typeof(Goomba), typeof(GreenMushroom)), MoveDynamic},
              //{(typeof(Goomba), typeof(RedMushroom)), MoveDynamic},
             
 
-             {(typeof(Koopa), typeof(Koopa)), MoveEnemy},
+             {(typeof(Koopa), typeof(Koopa)), GoombaKoopa},
              {(typeof(StompedKoopa), typeof(StompedKoopa)), MoveEnemy},
              //might need changes
               {(typeof(Koopa), typeof(StompedKoopa)), KoopaStompedKoopa},
@@ -119,8 +120,9 @@ namespace SuperMarioBros.Collisions
         private static void FireBallEnemy(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             ObjectsManager.Instance.Remove(obj1);
-            ((IEnemy)obj2).TakeDamage();
+            ((IEnemy)obj2).Flip();
         }
+        
         private static void StarMarioEnemy(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             ((IEnemy)obj2).TakeDamage();
@@ -153,14 +155,28 @@ namespace SuperMarioBros.Collisions
                     break;
             }
         }
-
+        private static void GoombaKoopa(IDynamic obj1, IDynamic obj2, Direction direction)
+        {
+            switch(direction)   
+            {
+                case Direction.top:
+                    ((IEnemy)obj2).TakeDamage();
+                    break;
+                case Direction.bottom:
+                    ((IEnemy)obj1).TakeDamage();
+                    break;
+                default:
+                    MoveEnemy(obj1, obj2, direction);
+                    break;
+            }
+        }
         private static void MarioStompedKoopa(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             IMario mario = (IMario)obj1;
             switch (direction)
             {
                 case Direction.top:
-                    //
+                    //mario.Bump();
                     break;
                 case Direction.right:
                     obj2.MoveLeft();

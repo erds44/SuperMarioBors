@@ -9,5 +9,7 @@ namespace SuperMarioBros.Objects.Enemy
         ISprite Sprite { get; set; }
 
         void TakeDamage();
+
+        void Flip();
     }
 }
