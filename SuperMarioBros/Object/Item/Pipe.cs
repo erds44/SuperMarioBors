@@ -33,5 +33,10 @@ namespace SuperMarioBros.Items
         {
             sprite.Update();
         }
+
+        public void Destroy()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

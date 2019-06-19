@@ -55,5 +55,10 @@ namespace SuperMarioBros.Items
         {
             throw new System.NotImplementedException();
         }
+
+        public void Destroy()
+        {
+            //Do nothing.
+        }
     }
 }

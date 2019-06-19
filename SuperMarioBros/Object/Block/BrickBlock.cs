@@ -10,6 +10,7 @@ namespace SuperMarioBros.Blocks
         {
             Position = location;
             this.State = new BrickBlockState(this);
+            base.Initialize();
         }
 
     }

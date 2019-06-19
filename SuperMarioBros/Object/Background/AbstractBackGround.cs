@@ -28,5 +28,9 @@ namespace SuperMarioBros.Backgrounds
         {
             return new Rectangle((int)Position.X,(int)Position.Y , 0, 0);
         }
+        public void Destroy()
+        {
+            //Do nothing.
+        }
     }
 }

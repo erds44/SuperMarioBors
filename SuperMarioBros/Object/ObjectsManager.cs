@@ -53,6 +53,7 @@ namespace SuperMarioBros.Objects
 
         public void Remove(IObject gameObject)
         {
+            gameObject.Destroy();
             if(gameObject is IStatic)
             {
                 staticObjects.Remove((IStatic)gameObject);

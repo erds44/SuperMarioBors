@@ -56,6 +56,11 @@ namespace SuperMarioBros.Items
         {
             physics.MoveRight();
         }
+
+        public void Destroy()
+        {
+            //Do nothing.
+        }
     }
 }
 

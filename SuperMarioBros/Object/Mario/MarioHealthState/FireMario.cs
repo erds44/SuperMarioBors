@@ -8,7 +8,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
     public class FireMario :  IMarioHealthState
     {
         private bool power;
-        private int fireCount = 2; //Can throw 2 fireballs.
+        public int fireCount = 2; //Can throw 2 fireballs.
         private readonly IMario mario;
         public FireMario(IMario mario)
         {
@@ -49,9 +49,10 @@ namespace SuperMarioBros.Marios.MarioTypeStates
 
         public void Update(GameTime gameTime)
         {
-            if (!(power && mario.PowerFlag) && mario.PowerFlag)
+            if (!(power && mario.PowerFlag) && mario.PowerFlag && fireCount>0 )
             {
-                ObjectsManager.Instance.Add(new FireBall(this.mario));
+                fireCount--;
+                ObjectsManager.Instance.Add(new FireBall(this, mario));
             }
             power = mario.PowerFlag;
         }

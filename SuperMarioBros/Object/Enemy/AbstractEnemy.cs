@@ -54,5 +54,10 @@ namespace SuperMarioBros.Goombas
             State.ChangeDirection();
             physics.MoveRight();
         }
+
+        public void Destroy()
+        {
+            //Game.Score += 100;
+        }
     }
 }

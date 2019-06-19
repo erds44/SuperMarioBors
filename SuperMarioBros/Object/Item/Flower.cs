@@ -37,5 +37,9 @@ namespace SuperMarioBros.Items
         {
             sprite.Update();
         }
+        public void Destroy()
+        {
+            //Do nothing.
+        }
     }
 }

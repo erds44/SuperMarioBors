@@ -125,5 +125,10 @@ namespace SuperMarioBros.Marios
         {
             MovementState.MoveRight();
         }
+
+        public void Destroy()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
