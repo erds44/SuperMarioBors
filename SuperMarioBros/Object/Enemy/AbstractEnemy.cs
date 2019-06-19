@@ -17,7 +17,7 @@ namespace SuperMarioBros.Goombas
         public Vector2 Position { get; set; }
         protected EnemyPhysics physics;
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             Sprite.Draw(spriteBatch, Position);
         }
@@ -51,7 +51,7 @@ namespace SuperMarioBros.Goombas
             //{
                 //Console.WriteLine(this.State.GetType());
                 //Console.WriteLine(typeof(LeftMoving));
-                State.ChangeDirection();
+             State.ChangeDirection();
             //}
             physics.MoveLeft();
         }
@@ -70,5 +70,7 @@ namespace SuperMarioBros.Goombas
         }
 
         public abstract void TakeDamage();
+
+        public abstract void Flip();
     }
 }

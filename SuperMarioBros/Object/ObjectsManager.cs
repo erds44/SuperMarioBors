@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.Goombas;
+using SuperMarioBros.Koopas;
 using SuperMarioBros.Marios;
 using System;
 using System.Collections.ObjectModel;
@@ -26,13 +28,13 @@ namespace SuperMarioBros.Objects
             for (int i = (staticObjects.Count-1); i >=0; i--)
             {
                 staticObjects[i].Update();
-                InvalidCheck(staticObjects[i]);
+                InvalidCheck(staticObjects[i],gameTime);
                 if (staticObjects[i].IsInvalid) Remove(staticObjects[i]);
             }
             for (int i = (dynamicObjects.Count-1); i >=0 ; i--)
             {
                 dynamicObjects[i].Update(gameTime);
-                InvalidCheck(dynamicObjects[i]);
+                InvalidCheck(dynamicObjects[i],gameTime);
                 if (dynamicObjects[i].IsInvalid) Remove(dynamicObjects[i]);
             }
             for (int i = (nonCollidableObjects.Count - 1); i >= 0; i--)
@@ -44,12 +46,22 @@ namespace SuperMarioBros.Objects
             }
 
         }
-        private void InvalidCheck(IObject obj)
+        private void InvalidCheck(IObject obj, GameTime gameTime)
         {
             bool result = false;
             if (obj.Position.Y < 0) result = true;
             if (obj.Position.X < -100) result = true;
             if (obj.Position.X > 1000) result = true;
+            if (obj.GetType() == typeof(StompedGoomba))
+            {
+                StompedGoomba goomba = (StompedGoomba)obj;
+                if (goomba.Delete(gameTime)) result = true;
+            }
+            if (obj.GetType() == typeof(StompedKoopa))
+            {
+                StompedKoopa koopa = (StompedKoopa)obj;
+                if (koopa.Delete(gameTime)) result = true;
+            }
             obj.IsInvalid = result;
             
         }

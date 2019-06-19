@@ -24,7 +24,7 @@ namespace SuperMarioBros
             dynamics = new Collection<IDynamic>
             {
                 new Mario(new Vector2(0, 410)),
-               // new Koopa(new Vector2(450, 410)),
+                new Koopa(new Vector2(500, 410)),
                 new Goomba(new Vector2(550, 410)),
                // new Koopa(new Vector2(600, 410)),
                 //new Goomba(new Vector2(500, 410)),
@@ -40,9 +40,9 @@ namespace SuperMarioBros
                 new ItemBrickBlock(new Vector2(0, 290), typeof(Coin), 10),
                 new ItemBrickBlock(new Vector2(100, 290), typeof(Star), 1),
 
-                new QuestionBlock(new Vector2(200, 290), typeof(RedMushroom)),
+                new PowerUpBlock(new Vector2(200, 290)),
                 new QuestionBlock(new Vector2(240, 290), typeof(GreenMushroom)),
-                new QuestionBlock(new Vector2(280, 290), typeof(Flower)),
+                new PowerUpBlock(new Vector2(280, 290)),
                 new QuestionBlock(new Vector2(320, 290)),
 
                 new HiddenBlock(new Vector2(50, 150)),            

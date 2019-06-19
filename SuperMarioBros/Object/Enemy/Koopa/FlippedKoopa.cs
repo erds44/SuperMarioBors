@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.Goombas;
 using SuperMarioBros.Goombas.GoombaStates;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.Sprites;
@@ -9,24 +10,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuperMarioBros.Goombas
+namespace SuperMarioBros.Koopas
 {
- 
-    public class FlippedGoomba : AbstractEnemy
+    public class FlippedKoopa : AbstractEnemy
+
     {
-        public FlippedGoomba(Goomba goomba)
+        public FlippedKoopa(Koopa koopa)
         {
-            Sprite = goomba.Sprite;
-            Position = goomba.Position;
+            Sprite = koopa.Sprite;
+            Position = koopa.Position;
             physics = new EnemyPhysics(this, new Vector2(0, 0));
+
             //physics.velocity.X = 0;
             //physics.velocity.Y = -150;
 
         }
+
         public override void Draw(SpriteBatch spriteBatch)
         {
-
-            ((UniversalSprite)Sprite).Draw(spriteBatch, Position, SpriteEffects.FlipVertically);
+            
+            ((UniversalSprite)Sprite).Draw(spriteBatch, Position,SpriteEffects.FlipVertically);
+        }
+        public override void Flip()
+        {
+            //Do Nothing
         }
 
         public override void TakeDamage()
@@ -34,10 +41,5 @@ namespace SuperMarioBros.Goombas
             //Do Nothing
         }
 
-        public override void Flip()
-        {
-            //DO Nothing
-        }
     }
-  
 }

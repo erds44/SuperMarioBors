@@ -9,17 +9,19 @@ namespace SuperMarioBros.Physicses
     {
         public float XVelocity { get; private set; }
         public float YVelocity { get; private set; }
-        private readonly float jumpVelocity = -230;
+        private readonly float jumpVelocity = -270; //230
         private readonly float forwardAcceleration;
         private readonly float backwardAcceleration;
-        private readonly float gravity;
-        private readonly float minClamping = -200;
-        private readonly float maxClamping = 200;
+        private readonly float gravity = 600;
+        private float currentGravity;
+        private readonly float minClamping = -250;
+        private readonly float maxClamping = 250;
         private float sprintVelocityRate;
         private Vector2 displacement;
         private Vector2 prevDisplacement;
         private float dt;
         public bool Jump { get; private set; }
+        public bool nextJump;
         private readonly IMario mario;
         public MarioPhysics(IMario mario, int forwardAcceleration)
         {
@@ -30,10 +32,11 @@ namespace SuperMarioBros.Physicses
             dt = 0;
             XVelocity = 0;
             YVelocity = 0;
-            gravity = 200;
+            currentGravity = gravity;
             Jump = false;
             this.mario = mario;
             sprintVelocityRate = 1;
+            nextJump = true;
         }
         public void Left()
         {
@@ -46,19 +49,26 @@ namespace SuperMarioBros.Physicses
            
         }
         public void Up()
-        {
-            
-            if (!Jump)
-            {
-                YVelocity += jumpVelocity;
-                Jump = true;
-            }
+        {          
+                if (!Jump)
+                {
+                    YVelocity += jumpVelocity;
+                    Jump = true;
+                    nextJump = false;
+                }
+                currentGravity -= 20;
+                if (currentGravity <= 100)
+                    currentGravity = 100;
+                    nextJump = false;
+        
+
         }
         public void MoveUp()
         {
             mario.Position -= new Vector2(0, prevDisplacement.Y);
             YVelocity = 0;
             Jump = false;
+            currentGravity = gravity;
         }
         public void MoveDown()
         {
@@ -103,9 +113,10 @@ namespace SuperMarioBros.Physicses
         private void Update(GameTime gameTime)
         {
             dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (YVelocity > 0)
-                Jump = true;
-            YVelocity += gravity * dt;
+            if (YVelocity >= 0)
+                YVelocity += (currentGravity + 200) * dt;
+            else
+                YVelocity += currentGravity * dt;
             displacement.X += (XVelocity * dt)*sprintVelocityRate;
             displacement.Y += (YVelocity * dt);          
         }

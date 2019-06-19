@@ -72,6 +72,16 @@ namespace SuperMarioBros.Collisions
             { (typeof(Goomba), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(Goomba), typeof(Pipe)), MoveDynamic},
 
+            { (typeof(StompedGoomba), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(StompedGoomba), typeof(BrickBlockState)), MoveDynamic},
+            { (typeof(StompedGoomba), typeof(QuestionBlockState)), MoveDynamic},
+            { (typeof(StompedGoomba), typeof(UsedBlockState)), MoveDynamic},
+
+            { (typeof(StompedKoopa), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(StompedKoopa), typeof(BrickBlockState)), MoveDynamic},
+            { (typeof(StompedKoopa), typeof(QuestionBlockState)), MoveDynamic},
+            { (typeof(StompedKoopa), typeof(UsedBlockState)), MoveDynamic},
+
             { (typeof(Koopa), typeof(RockBlockState)), MoveDynamic},
             { (typeof(Koopa), typeof(BrickBlockState)), MoveDynamic},
             { (typeof(Koopa), typeof(QuestionBlockState)), MoveDynamic},
@@ -127,6 +137,7 @@ namespace SuperMarioBros.Collisions
             MoveDynamic(obj1, obj2, direction);
             if (direction == Direction.bottom)
             {
+                if (obj2 is PowerUpBlock) { ((PowerUpBlock)obj2).IsFlower = !(((IMario)obj1).HealthState is SmallMario); }
                 ((IBlock)obj2).Used();
                 ((IBlock)obj2).Bump();
             }
@@ -154,7 +165,7 @@ namespace SuperMarioBros.Collisions
         }
         private static void FireBallDisappear(IDynamic obj1, IStatic obj2, Direction direction)
         {
-           // ObjectsManager.Instance.Remove(obj1);
+            obj1.IsInvalid = true;
         }
 
     }
