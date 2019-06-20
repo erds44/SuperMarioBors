@@ -44,7 +44,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Right()
         {
-            // mario.MovementState = new RightIdle(mario);
+             mario.MovementState = new RightIdle(mario);
         }
 
         public void Up()
