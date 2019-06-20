@@ -189,21 +189,30 @@ namespace SuperMarioBros.Collisions
         private static void MarioStompedKoopa(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             IMario mario = (IMario)obj1;
-            switch (direction)
+            StompedKoopa koopa = (StompedKoopa)obj2;
+            if (koopa.NotKicked)
             {
-                case Direction.top:
-                    //mario.Bump();
-                    break;
-                case Direction.right:
-                    obj2.MoveLeft();
-                    break;
-                case Direction.left:
-                    obj2.MoveRight();
-                    break;
-                case Direction.bottom:
-                   //
-                    break;
+                switch (direction)
+                {
+                    case Direction.top:
+                       // mario.MoveUp();
+                        break;
+                    case Direction.right:
+                        koopa.MoveLeft();
+                        break;
+                    case Direction.left:
+                        koopa.MoveRight();
+                        break;
+                    case Direction.bottom:
+                       // mario.MoveUp();
+                        break;
+                }
             }
+            else
+            {
+                mario.TakeDamage();
+            }
+            
         }
         //might be used later
         private static void FlashingMarioEnemy(IDynamic obj1, IDynamic obj2, Direction direction)

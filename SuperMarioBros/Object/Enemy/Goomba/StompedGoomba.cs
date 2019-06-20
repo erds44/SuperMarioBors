@@ -15,7 +15,7 @@ namespace SuperMarioBros.Goombas
             physics = new EnemyPhysics(this, new Vector2(0, 0));
             timeLength = 0;
         }
-
+        
         public bool Delete(GameTime gameTime)
         {
             timeLength += (float)gameTime.ElapsedGameTime.TotalSeconds;

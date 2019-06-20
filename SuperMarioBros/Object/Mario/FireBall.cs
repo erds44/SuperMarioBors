@@ -49,6 +49,7 @@ namespace SuperMarioBros.Marios
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Position);
+            Console.WriteLine(IsInvalid);
         }
 
         public Rectangle HitBox()

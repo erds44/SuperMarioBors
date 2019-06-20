@@ -81,6 +81,7 @@ namespace SuperMarioBros.Collisions
             { (typeof(StompedKoopa), typeof(BrickBlockState)), MoveDynamic},
             { (typeof(StompedKoopa), typeof(QuestionBlockState)), MoveDynamic},
             { (typeof(StompedKoopa), typeof(UsedBlockState)), MoveDynamic},
+            { (typeof(StompedKoopa), typeof(Pipe)), MoveDynamic},
 
             { (typeof(Koopa), typeof(RockBlockState)), MoveDynamic},
             { (typeof(Koopa), typeof(BrickBlockState)), MoveDynamic},
@@ -165,7 +166,10 @@ namespace SuperMarioBros.Collisions
         }
         private static void FireBallDisappear(IDynamic obj1, IStatic obj2, Direction direction)
         {
-            obj1.IsInvalid = true;
+
+            //obj1.IsInvalid = true; this doesn't work 
+            //some code keep setting IsInvalid to false
+            //ObjectsManager.Instance.Remove(obj1);
         }
 
     }

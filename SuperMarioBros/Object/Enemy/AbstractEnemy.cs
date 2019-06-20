@@ -39,12 +39,12 @@ namespace SuperMarioBros.Goombas
             physics.MoveUp();
         }
 
-        public void MoveDown()
+        public  void MoveDown()
         {
             physics.MoveDown();
         }
 
-        public void MoveLeft()
+        public virtual void MoveLeft()
         {
             
             //if(!(this.State.GetType() == typeof(LeftMoving)))
@@ -56,7 +56,7 @@ namespace SuperMarioBros.Goombas
             physics.MoveLeft();
         }
 
-        public void MoveRight()
+        public virtual void MoveRight()
         {
             
             

@@ -2,6 +2,7 @@
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Objects;
 using SuperMarioBros.SpriteFactories;
+using System;
 
 namespace SuperMarioBros.Marios.MarioTypeStates
 {
@@ -55,6 +56,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
                 ObjectsManager.Instance.Add(new FireBall(this, mario));
             }
             power = mario.PowerFlag;
+
         }
     }
 }
