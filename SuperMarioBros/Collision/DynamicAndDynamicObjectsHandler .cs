@@ -22,72 +22,52 @@ namespace SuperMarioBros.Collisions
         }
         private static readonly Dictionary<(Type, Type), CollisionHandler> collisionDictionary = new Dictionary<(Type, Type), CollisionHandler>
         {
+             /*item*/
              {(typeof(Mario), typeof(Star)), StarMario},
              {(typeof(Mario), typeof(RedMushroom)), RedMushroom},
              {(typeof(Mario), typeof(GreenMushroom)), GreenMushroom},
              {(typeof(Mario), typeof(Flower)), FireFlower},
              {(typeof(Mario), typeof(Coin)), Coin},
+             /*Enemy*/
+             {(typeof(Mario), typeof(Goomba)), MarioEnemy},
+             {(typeof(Mario), typeof(Koopa)), MarioEnemy},
+             {(typeof(Mario), typeof(StompedKoopa)), MarioVsStompedKoopa}, 
 
              {(typeof(StarMario), typeof(Star)), StarMario},
              {(typeof(StarMario), typeof(RedMushroom)), RedMushroom},
              {(typeof(StarMario), typeof(GreenMushroom)), GreenMushroom},
              {(typeof(StarMario), typeof(Flower)), FireFlower},
              {(typeof(StarMario), typeof(Coin)), Coin},
+             {(typeof(StarMario), typeof(Goomba)), StarMarioEnemy},
+             {(typeof(StarMario), typeof(Koopa)), StarMarioEnemy},
+             {(typeof(StarMario), typeof(StompedKoopa)), StarMarioEnemy},
 
+             /* Flashing Mario will pass enemy */
              {(typeof(FlashingMario), typeof(Star)), StarMario},
              {(typeof(FlashingMario), typeof(RedMushroom)), RedMushroom},
              {(typeof(FlashingMario), typeof(GreenMushroom)), GreenMushroom},
              {(typeof(FlashingMario), typeof(Flower)), FireFlower},
              {(typeof(FlashingMario), typeof(Coin)), Coin},
 
-            {(typeof(Mario), typeof(Goomba)), MarioEnemy},
-            {(typeof(Mario), typeof(Koopa)), MarioEnemy},
-            {(typeof(Mario), typeof(StompedKoopa)), MarioStompedKoopa},
+             /* Enemy will pass item */
+             {(typeof(Goomba), typeof(Goomba)), MoveEnemy},
+             {(typeof(Goomba), typeof(Koopa)), MoveEnemy},
+             {(typeof(Goomba), typeof(StompedKoopa)), StompedKoopaDealDamage},
+             {(typeof(Goomba), typeof(FireBall)), FireBallEnemy},
 
-             {(typeof(StarMario), typeof(Goomba)), StarMarioEnemy},
-             {(typeof(StarMario), typeof(Koopa)), StarMarioEnemy},
-             {(typeof(StarMario), typeof(StompedKoopa)), StarMarioEnemy},
+             {(typeof(Koopa), typeof(Koopa)), MoveEnemy},
+             {(typeof(Koopa), typeof(Goomba)), MoveEnemy},
+             //{(typeof(Koopa), typeof(StompedKoopa)), StompedKoopaDealDamage}, To be fixed
+             {(typeof(Koopa), typeof(FireBall)), FireBallEnemy},
              
+             {(typeof(StompedKoopa), typeof(Goomba)), StompedKoopaDealDamage},
+             //{(typeof(StompedKoopa), typeof(Koopa)), StompedKoopaDealDamage},
+             //{(typeof(StompedKoopa), typeof(StompedKoopa)), MoveDynamic}, Dont consider for now
+             {(typeof(StompedGoomba), typeof(FireBall)), FireBallEnemy},
 
-             //{(typeof(FlashingMario), typeof(Goomba)),MarioEnemy },
-             //{(typeof(FlashingMario), typeof(Koopa)), MarioEnemy},
-             //{(typeof(FlashingMario), typeof(StompedKoopa)), MarioStompedKoopa},
-
-
-             {(typeof(Goomba), typeof(Goomba)), GoombaKoopa},
-             {(typeof(Goomba), typeof(Koopa)), GoombaKoopa},
-             {(typeof(Goomba), typeof(StompedKoopa)), GoombaStompedKoopa},
-             {(typeof(StompedKoopa), typeof(Goomba)), GoombaStompedKoopa},
-             {(typeof(Goomba), typeof(Star)), MoveDynamic},
-             {(typeof(Star), typeof(Goomba)), MoveDynamic},
-             //{(typeof(Goomba), typeof(GreenMushroom)), MoveDynamic},
-             //{(typeof(Goomba), typeof(RedMushroom)), MoveDynamic},
-            
-
-             {(typeof(Koopa), typeof(Koopa)), GoombaKoopa},
-              {(typeof(Koopa), typeof(Goomba)), GoombaKoopa},
-             {(typeof(StompedKoopa), typeof(StompedKoopa)), MoveDynamic},
-             //might need changes
-              {(typeof(Koopa), typeof(StompedKoopa)), KoopaStompedKoopa},
-              {(typeof(StompedKoopa), typeof(Koopa)), KoopaStompedKoopa},
-
-             {(typeof(Koopa), typeof(Star)), MoveDynamic},
-              {(typeof(Star),typeof(Koopa)), MoveDynamic},
-             //{(typeof(Koopa), typeof(GreenMushroom)), MoveDynamic},
-             //{(typeof(Koopa), typeof(RedMushroom)), MoveDynamic},
-
-             //{(typeof(RedMushroom), typeof(RedMushroom)), MoveDynamic},
-             //{(typeof(GreenMushroom), typeof(RedMushroom)), MoveDynamic},
-             //{(typeof(GreenMushroom), typeof(GreenMushroom)), MoveDynamic},
-
-        
-             { (typeof(FireBall), typeof(Goomba)), FireBallEnemy},
-              { (typeof(Goomba), typeof(FireBall)), FireBallEnemy},
-             { (typeof(FireBall), typeof(Koopa)), FireBallEnemy},
-             { (typeof(FireBall), typeof(StompedKoopa)), FireBallEnemy},
-             { (typeof(Koopa), typeof(FireBall)), FireBallEnemy},
-             { (typeof(StompedGoomba), typeof(FireBall)), FireBallEnemy},
-
+             {(typeof(FireBall), typeof(Goomba)), FireBallEnemy},
+             {(typeof(FireBall), typeof(Koopa)), FireBallEnemy},
+             {(typeof(FireBall), typeof(StompedKoopa)), FireBallEnemy},
         };
         private static void StarMario(IDynamic obj1, IDynamic obj2, Direction direction)
         {
@@ -125,9 +105,7 @@ namespace SuperMarioBros.Collisions
         }
         private static void FireBallEnemy(IDynamic obj1, IDynamic obj2, Direction direction)
         {
-           // ObjectsManager.Instance.Remove(obj1);
-           // ((IEnemy)obj2).Flip();
-           if(obj1.GetType() == typeof(FireBall))
+           if(obj1 is FireBall)
             {
                 obj1.IsInvalid = true;
                 ((IEnemy)obj2).Flip();
@@ -141,15 +119,15 @@ namespace SuperMarioBros.Collisions
         
         private static void StarMarioEnemy(IDynamic obj1, IDynamic obj2, Direction direction)
         {
-            ((IEnemy)obj2).TakeDamage();
+            ((IEnemy)obj2).Flip();
         }
         private static void MoveEnemy(IDynamic obj1, IDynamic obj2, Direction direction)
         {
-            //what if the direction is top/bottom
             switch (direction)
             {
                 case Direction.left: obj1.MoveRight(); obj2.MoveLeft(); break;
                 case Direction.right: obj1.MoveLeft(); obj2.MoveRight(); break;
+                case Direction.top: ((IEnemy)obj1).BumpUp(); obj2.TakeDamage(); break;
             }
         }
 
@@ -158,6 +136,7 @@ namespace SuperMarioBros.Collisions
             switch (direction)
             {
                 case Direction.top:
+                    ((IMario)obj1).BumpUp();
                     ((IEnemy)obj2).TakeDamage();
                     break;
                 default:
@@ -171,105 +150,19 @@ namespace SuperMarioBros.Collisions
                     break;
             }
         }
-        private static void GoombaKoopa(IDynamic obj1, IDynamic obj2, Direction direction)
-        {
-            switch(direction)   
-            {
-                case Direction.top:
-                    ((IEnemy)obj2).TakeDamage();
-                    break;
-                case Direction.bottom:
-                    ((IEnemy)obj1).TakeDamage();
-                    break;
-                default:
-                    MoveDynamic(obj1, obj2, direction);
-                    break;
-            }
-        }
-        private static void MarioStompedKoopa(IDynamic obj1, IDynamic obj2, Direction direction)
-        {
-            IMario mario = (IMario)obj1;
-            switch (direction)
-            {
-                case Direction.top:
-                    //mario.Bump();
-                    break;
-                case Direction.right:
-                    obj2.MoveLeft();
-                    break;
-                case Direction.left:
-                    obj2.MoveRight();
-                    break;
-                case Direction.bottom:
-                   //
-                    break;
-            }
-        }
-        //might be used later
-        private static void FlashingMarioEnemy(IDynamic obj1, IDynamic obj2, Direction direction)
-        {
-
-        }
-
-
-        private static void GoombaStompedKoopa(IDynamic obj1, IDynamic obj2, Direction direction)
-        {
-
-            //code needed when stopmedkoopa is static
-            if(obj1.GetType() == typeof(StompedKoopa))
-            {
-                ((IEnemy)obj2).Flip();
-            }
-            else
-            {
-                ((IEnemy)obj1).Flip();
-            }
-            
-            
-        }
-
-        private static void KoopaStompedKoopa(IDynamic obj1, IDynamic obj2, Direction direction)
-        {
-
-            //code needed when stopmedkoopa is static
-            if (obj1.GetType() == typeof(StompedKoopa))
-            {
-                ((IEnemy)obj2).Flip();
-            }
-            else
-            {
-                ((IEnemy)obj1).Flip();
-            }
-
-        }
-
-        private static void MoveDynamic(IDynamic obj1, IDynamic obj2, Direction direction)
+        private static void MarioVsStompedKoopa(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             switch (direction)
             {
-                case Direction.top:
-                    obj1.MoveUp();
-                    obj2.MoveDown();
-                    break;
-                case Direction.bottom:
-                    obj1.MoveDown();
-                    obj2.MoveUp();
-                    break;
-                case Direction.left:
-                    obj1.MoveLeft();
-                    obj2.MoveRight();
-                    break;
-                case Direction.right:
-                    obj1.MoveRight();
-                    obj2.MoveLeft();
-                    break;
+                case Direction.top: obj1.MoveUp(); break;
+                case Direction.right: if (((StompedKoopa)obj2).DealDamge) obj1.TakeDamage(); else obj2.MoveRight(); break;
+                case Direction.left: if (((StompedKoopa)obj2).DealDamge) obj1.TakeDamage(); else obj2.MoveLeft(); break;
             }
         }
-
-
-
-
-
+        private static void StompedKoopaDealDamage(IDynamic obj1, IDynamic obj2, Direction direction)
+        {
+            if (obj1 is StompedKoopa) ((IEnemy)obj2).Flip(); else ((IEnemy)obj1).Flip();
+        }
 
     }
 }

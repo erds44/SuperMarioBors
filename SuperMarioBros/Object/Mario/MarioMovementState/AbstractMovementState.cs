@@ -1,7 +1,4 @@
-﻿using SuperMarioBros.Objects;
-using SuperMarioBros.Physicses;
-
-namespace SuperMarioBros.Marios.MarioMovementStates
+﻿namespace SuperMarioBros.Marios.MarioMovementStates
 {
     public abstract class AbstractMovementState
     {

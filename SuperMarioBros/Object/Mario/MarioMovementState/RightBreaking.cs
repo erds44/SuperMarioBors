@@ -62,5 +62,9 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             if (mario.MarioPhysics.YVelocity > 0)
                 mario.MovementState = new RightJumping(mario);
         }
+        public void BumpUp()
+        {
+            // Do Nothing
+        }
     }
 }

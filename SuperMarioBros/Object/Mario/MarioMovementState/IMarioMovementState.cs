@@ -12,5 +12,6 @@
         void MoveLeft();
         void MoveRight();
         void Update();
+        void BumpUp();
     }
 }

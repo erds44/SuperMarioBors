@@ -9,5 +9,6 @@ namespace SuperMarioBros.Objects
         void MoveDown();
         void MoveLeft();
         void MoveRight();
+        void TakeDamage();
     }
 }

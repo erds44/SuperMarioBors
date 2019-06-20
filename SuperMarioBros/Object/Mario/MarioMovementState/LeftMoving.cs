@@ -55,5 +55,9 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             if (mario.MarioPhysics.Jump)
                 mario.MovementState = new LeftJumping(mario);
         }
+        public void BumpUp()
+        {
+            // Do Nothing
+        }
     }
 }

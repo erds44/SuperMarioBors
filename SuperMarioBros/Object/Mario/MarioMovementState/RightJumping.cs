@@ -50,7 +50,12 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Update()
         {
-            // Do Nothing
+            
+        }
+
+        public void BumpUp()
+        {
+            mario.MarioPhysics.BumpUp();
         }
     }
 }

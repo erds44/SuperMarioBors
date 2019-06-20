@@ -17,13 +17,30 @@ namespace SuperMarioBros.Goombas
         public override void Flip()
         {
             ObjectsManager.Instance.AddNonCollidable(new FlippedGoomba(this));
-            ObjectsManager.Instance.Remove(this);
+            IsInvalid = true;
+        }
+
+        public override void MoveLeft()
+        {
+            State.ChangeDirection();
+            physics.MoveLeft();
+        }
+
+        public override void MoveRight()
+        {
+            State.ChangeDirection();
+            physics.MoveRight();
         }
 
         public override void TakeDamage()
         {
             ObjectsManager.Instance.Add(new StompedGoomba(Position));
-            ObjectsManager.Instance.Remove(this);
+            IsInvalid = true;
+        }
+        public override void Update(GameTime gameTime)
+        {
+            Sprite.Update();
+            Position += physics.Displacement(gameTime);
         }
 
     }

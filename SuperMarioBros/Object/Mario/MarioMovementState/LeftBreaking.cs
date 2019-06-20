@@ -1,5 +1,4 @@
-﻿using SuperMarioBros.Collisions;
-using SuperMarioBros.Marios.MarioTypeStates;
+﻿using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
 using System;
 
@@ -61,6 +60,11 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         {
             if (mario.MarioPhysics.Jump)
                 mario.MovementState = new LeftJumping(mario);
+        }
+
+        public void BumpUp()
+        {
+            // Do Nothing
         }
     }
 }

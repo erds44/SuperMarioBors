@@ -47,6 +47,10 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         {
             mario.MarioPhysics.MoveUp();
         }
+        public void BumpUp()
+        {
+            // Do Nothing
+        }
 
     }
 }

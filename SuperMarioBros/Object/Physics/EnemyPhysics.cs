@@ -5,10 +5,8 @@ namespace SuperMarioBros.Physicses
 {
     public class EnemyPhysics
     {
-        //public float XVelocity { get; private set; }
-       // public float YVelocity { get; private set; }
         public Vector2 velocity;
-        private readonly float gravity = 120;
+        private readonly float gravity = 600;
         private Vector2 displacement;
         private Vector2 prevDisplacement;
         private float dt = 0;
@@ -55,6 +53,14 @@ namespace SuperMarioBros.Physicses
             velocity.Y += gravity * dt;
             displacement.X += (velocity.X * dt);
             displacement.Y += (velocity.Y * dt);          
+        }
+        public void SetVelocity(Vector2 velocity)
+        {
+            this.velocity = velocity;
+        }
+        public void BumpUp()
+        {
+            velocity.Y = -100;
         }
 
     }

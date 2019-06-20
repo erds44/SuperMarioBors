@@ -7,12 +7,9 @@ using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Items
 {
-    public class Star : IItem
+    public class Star : AbstractItem, IItem
     {
-        public bool IsInvalid { get; set; }
         private StarPhysics physics;
-        public Vector2 Position { get; set; }
-        private readonly ISprite sprite;
         private bool addFlag;
         private float speedChangeFlag = 0;
         private Vector2 offset = new Vector2(5, 0);
@@ -24,17 +21,6 @@ namespace SuperMarioBros.Items
             physics = new StarPhysics(this, new Vector2(0, -180));
             addFlag = false;
             speedChangeFlag += location.Y - 50;
-        }
-
-        public Rectangle HitBox()
-        {
-            Point size = ObjectSizeManager.ObjectSize(GetType());
-            return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
-        }
-
-        public void Draw(SpriteBatch spriteBatch)
-        {
-            sprite.Draw(spriteBatch, Position);
         }
 
         public void Update(GameTime gameTime)

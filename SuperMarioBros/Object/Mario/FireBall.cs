@@ -86,5 +86,10 @@ namespace SuperMarioBros.Marios
         {
             fireMario.fireCount++;
         }
+
+        public void TakeDamage()
+        {
+            // Do Nothing
+        }
     }
 }
