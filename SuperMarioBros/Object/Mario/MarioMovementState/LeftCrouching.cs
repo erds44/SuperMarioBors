@@ -41,7 +41,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Update()
         {
-            // Do Noting
+            mario.MarioPhysics.SpeedDecay();
         }
         public void MoveUp()
         {
