@@ -121,14 +121,14 @@ namespace SuperMarioBros.Marios
             mario.MoveDown();
         }
 
-        public void MoveLeft()
+        public void ReverseDirection()
         {
             mario.MoveLeft();
         }
 
-        public void MoveRight()
+        public void MoveLeft()
         {
-            mario.MoveRight();
+            mario.MoveLeft();
         }
 
         public void Destroy()
@@ -139,6 +139,11 @@ namespace SuperMarioBros.Marios
         public IMario ReturnItself()
         {
             return mario;
+        }
+
+        public void Bump()
+        {
+            mario.Bump();
         }
     }
 }

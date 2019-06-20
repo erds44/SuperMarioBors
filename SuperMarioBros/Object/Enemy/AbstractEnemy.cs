@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Sprites;
-using SuperMarioBros.Objects.Enemy;
+using SuperMarioBros.Enemy;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using System;
@@ -12,17 +12,17 @@ namespace SuperMarioBros.Goombas
     {
         public bool IsInvalid { get; set; }
 
-        public IEnemyMovementState State { get; set; }
+        public IEnemyState State { get; set; }
         public ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
-        protected EnemyPhysics physics;
+        public EnemyPhysics physics;
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             Sprite.Draw(spriteBatch, Position);
         }
 
-        public void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
             Sprite.Update();
             Position += physics.Displacement(gameTime);
@@ -39,29 +39,21 @@ namespace SuperMarioBros.Goombas
             physics.MoveUp();
         }
 
-        public  void MoveDown()
+        public void MoveDown()
         {
             physics.MoveDown();
         }
 
-        public virtual void MoveLeft()
+        public virtual void ReverseDirection()
         {
             
             //if(!(this.State.GetType() == typeof(LeftMoving)))
             //{
                 //Console.WriteLine(this.State.GetType());
                 //Console.WriteLine(typeof(LeftMoving));
-             State.ChangeDirection();
-            //}
-            physics.MoveLeft();
-        }
-
-        public virtual void MoveRight()
-        {
-            
-            
             State.ChangeDirection();
-            physics.MoveRight();
+            //}
+            physics.ReverseVelocity();
         }
 
         public void Destroy()
@@ -72,5 +64,16 @@ namespace SuperMarioBros.Goombas
         public abstract void TakeDamage();
 
         public abstract void Flip();
+
+        public void MoveLeft()
+        {
+            State.ChangeDirection();
+            physics.ReverseVelocity();
+        }
+        public void MoveRight()
+        {
+            State.ChangeDirection();
+            physics.ReverseVelocity();
+        }
     }
 }

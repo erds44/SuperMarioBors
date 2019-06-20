@@ -7,7 +7,7 @@ namespace SuperMarioBros.Objects
         void Update(GameTime gameTime);
         void MoveUp();
         void MoveDown();
+        void ReverseDirection();
         void MoveLeft();
-        void MoveRight();
     }
 }

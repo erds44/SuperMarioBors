@@ -1,7 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Objects;
-using SuperMarioBros.Objects.Enemy;
+using SuperMarioBros.Enemy;
 using SuperMarioBros.Physicses;
+using SuperMarioBros.Objects.Enemy;
 
 namespace SuperMarioBros.Goombas
 {

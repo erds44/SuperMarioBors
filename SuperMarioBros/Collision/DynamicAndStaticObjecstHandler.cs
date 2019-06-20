@@ -77,11 +77,11 @@ namespace SuperMarioBros.Collisions
             { (typeof(StompedGoomba), typeof(QuestionBlockState)), MoveDynamic},
             { (typeof(StompedGoomba), typeof(UsedBlockState)), MoveDynamic},
 
-            { (typeof(StompedKoopa), typeof(RockBlockState)), MoveDynamic},
+/*            { (typeof(StompedKoopa), typeof(RockBlockState)), MoveDynamic},
             { (typeof(StompedKoopa), typeof(BrickBlockState)), MoveDynamic},
             { (typeof(StompedKoopa), typeof(QuestionBlockState)), MoveDynamic},
             { (typeof(StompedKoopa), typeof(UsedBlockState)), MoveDynamic},
-            { (typeof(StompedKoopa), typeof(Pipe)), MoveDynamic},
+            { (typeof(StompedKoopa), typeof(Pipe)), MoveDynamic},*/
 
             { (typeof(Koopa), typeof(RockBlockState)), MoveDynamic},
             { (typeof(Koopa), typeof(BrickBlockState)), MoveDynamic},
@@ -145,12 +145,13 @@ namespace SuperMarioBros.Collisions
         }
         private static void MoveDynamic(IDynamic obj1, IStatic obj2, Direction direction)
         {
+            
             switch (direction)
             {
                 case Direction.top : obj1.MoveUp(); break;
                 case Direction.bottom: obj1.MoveDown(); break;
-                case Direction.left: obj1.MoveLeft(); break;
-                case Direction.right: obj1.MoveRight(); break;
+                case Direction.left: obj1.ReverseDirection(); break;
+                case Direction.right: obj1.ReverseDirection(); break;
             }
         }
         private static void HiddenUsed(IDynamic obj1, IStatic obj2, Direction direction)

@@ -49,7 +49,6 @@ namespace SuperMarioBros.Marios
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Position);
-            Console.WriteLine(IsInvalid);
         }
 
         public Rectangle HitBox()
@@ -62,12 +61,12 @@ namespace SuperMarioBros.Marios
             physics.MoveDown();
         }
 
-        public void MoveLeft()
+        public void ReverseDirection()
         {
             physics.MoveLeft();
         }
 
-        public void MoveRight()
+        public void MoveLeft()
         {
             physics.MoveRight();
         }

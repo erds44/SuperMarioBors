@@ -118,12 +118,12 @@ namespace SuperMarioBros.Marios
             MovementState.MoveDown();
         }
 
-        public void MoveLeft()
+        public void ReverseDirection()
         {
             MovementState.MoveLeft();
         }
 
-        public void MoveRight()
+        public void MoveLeft()
         {
             MovementState.MoveRight();
         }
@@ -136,6 +136,11 @@ namespace SuperMarioBros.Marios
         public IMario ReturnItself()
         {
             return this;
+        }
+
+        public void Bump()
+        {
+            MarioPhysics.setYVelocity(-150);
         }
     }
 }

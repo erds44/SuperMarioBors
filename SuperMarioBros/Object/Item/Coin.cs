@@ -59,12 +59,12 @@ namespace SuperMarioBros.Items
             physics.MoveDown();
         }
 
-        public void MoveLeft()
+        public void ReverseDirection()
         {
             physics.MoveLeft();
         }
 
-        public void MoveRight()
+        public void MoveLeft()
         {
             physics.MoveRight();
         }

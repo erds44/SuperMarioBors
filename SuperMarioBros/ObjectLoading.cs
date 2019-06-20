@@ -25,7 +25,8 @@ namespace SuperMarioBros
             {
                 new Mario(new Vector2(0, 410)),
                 new Koopa(new Vector2(500, 410)),
-                new Goomba(new Vector2(550, 410)),
+                new Koopa(new Vector2(540, 410)),
+                new Goomba(new Vector2(580, 410)),
                // new Koopa(new Vector2(600, 410)),
                 //new Goomba(new Vector2(500, 410)),
                 //new Koopa(new Vector2(600, 410)),

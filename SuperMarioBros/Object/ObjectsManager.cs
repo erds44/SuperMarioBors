@@ -54,7 +54,7 @@ namespace SuperMarioBros.Objects
                 if (obj.Position.Y < 0) result = true;
                 if (obj.Position.X < -100) result = true;
                 if (obj.Position.X > 1000) result = true;
-                if (obj.GetType() == typeof(StompedGoomba))
+/*                if (obj.GetType() == typeof(StompedGoomba))
                 {
                     StompedGoomba goomba = (StompedGoomba)obj;
                     if (goomba.Delete(gameTime)) result = true;
@@ -63,8 +63,8 @@ namespace SuperMarioBros.Objects
                 {
                     StompedKoopa koopa = (StompedKoopa)obj;
                     if (koopa.Delete(gameTime)) result = true;
-                }
-                obj.IsInvalid = result;
+                }*/
+                obj.IsInvalid |= result;
             }
 
         }

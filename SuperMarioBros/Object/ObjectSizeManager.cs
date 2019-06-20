@@ -18,6 +18,7 @@ namespace SuperMarioBros.Objects
                 string objectType = spriteList.SpritesList[i].ObjectType;
                 Type t = Type.GetType(objectType);
                 Point objectSize = spriteList.SpritesList[i].Size;
+                if (t is null) continue;
                 if (!objectDictionary.ContainsKey(t))
                 {
                     objectDictionary.Add(t, objectSize);
