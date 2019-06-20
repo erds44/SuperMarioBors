@@ -33,8 +33,7 @@ namespace SuperMarioBros
         protected override void Initialize()
         {
             SpriteFactory.Initialize(Content);
-            InitializeObjects();
-            _camera = new Camera(ObjectsManager.Instance.MarioObject());
+            InitializeGameComponents();
             base.Initialize();
         }
         protected override void Update(GameTime gameTime)
@@ -77,12 +76,13 @@ namespace SuperMarioBros
             controller.AddController(JoyStickController);
         }
 
-        public void InitializeObjects()
-        {      
+        public void InitializeGameComponents()
+        {
             ObjectLoading.LevelLoading(Content, "PartialLevelOne");
             ObjectSizeManager.LoadItemSize(Content, "SizeLoading");
             ObjectSizeManager.LoadMarioSize(Content, "MarioSizeLoading");
             ObjectsManager.Instance.Initialize();
+            _camera = new Camera(ObjectsManager.Instance.MarioObject());
             collisionManager = new CollisionManager();
             KeyBinding();
         }
