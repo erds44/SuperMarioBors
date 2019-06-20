@@ -23,8 +23,8 @@ namespace SuperMarioBros.GameCoreComponents
         public void Follow()
         {
             Vector2 targetPosition = focus.Position;
-            var position = Matrix.CreateTranslation(-targetPosition.X - focus.HitBox().Width/2, -targetPosition.Y, 0);
-            var offset = Matrix.CreateTranslation(MarioGame.WindowWidth/2, MarioGame.WindowHeight-80,0);
+            var position = Matrix.CreateTranslation(-targetPosition.X - focus.HitBox().Width/2, 0, 0);
+            var offset = Matrix.CreateTranslation(MarioGame.WindowWidth/2, 0,0);
             Transform = position * offset;
         }
 
