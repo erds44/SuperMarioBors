@@ -78,7 +78,6 @@ namespace SuperMarioBros.Blocks
 
         public void Bump()
         {
-            Console.WriteLine("Bumping");
             State = new BumpBlockState(this, State);
             isBumping = true;
         }

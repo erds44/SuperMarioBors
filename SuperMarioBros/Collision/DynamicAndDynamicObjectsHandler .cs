@@ -92,7 +92,7 @@ namespace SuperMarioBros.Collisions
         private static void StarMario(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             ObjectsManager.Instance.StarMario(((IMario)obj1).ReturnItself());
-            ObjectsManager.Instance.Remove(obj2);
+            obj2.IsInvalid = true;
         }
 
         private static void RedMushroom(IDynamic obj1, IDynamic obj2, Direction direction)
