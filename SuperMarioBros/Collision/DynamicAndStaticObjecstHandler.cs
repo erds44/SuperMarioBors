@@ -6,6 +6,7 @@ using SuperMarioBros.Koopas;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Objects.Enemy;
 using System;
 using System.Collections.Generic;
 
@@ -97,6 +98,11 @@ namespace SuperMarioBros.Collisions
             { (typeof(RedMushroom), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(RedMushroom), typeof(Pipe)), MoveDynamic},
 
+            {(typeof(Goomba), typeof(BumpBlockState)), BlockBumpObject},
+            {(typeof(Koopa), typeof(BumpBlockState)), BlockBumpObject},
+            {(typeof(RedMushroom), typeof(BumpBlockState)), BlockBumpObject},
+            {(typeof(GreenMushroom), typeof(BumpBlockState)), BlockBumpObject},
+
             { (typeof(GreenMushroom), typeof(RockBlockState)), MoveDynamic},
             { (typeof(GreenMushroom), typeof(BrickBlockState)), MoveDynamic},
             { (typeof(GreenMushroom), typeof(QuestionBlockState)), MoveDynamic},
@@ -108,6 +114,8 @@ namespace SuperMarioBros.Collisions
             { (typeof(Flower), typeof(QuestionBlockState)), MoveDynamic},
             { (typeof(Flower), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(Flower), typeof(Pipe)), MoveDynamic},
+
+            
 
         };
         private static void MarioBrick(IDynamic obj1, IStatic obj2 ,Direction direction)
@@ -138,6 +146,13 @@ namespace SuperMarioBros.Collisions
                 ((IBlock)obj2).Bump();
             }
         }
+
+        private static void BlockBumpObject(IDynamic obj1, IStatic obj2, Direction direction)
+        {
+            Console.WriteLine(obj1.GetType());
+            if (obj1 is IEnemy) ((IEnemy)obj1).Flip(); else obj1.MoveLeft();
+        }
+
         private static void MoveDynamic(IDynamic obj1, IStatic obj2, Direction direction)
         {
             switch (direction)
