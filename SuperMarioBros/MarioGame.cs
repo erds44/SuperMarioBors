@@ -18,7 +18,7 @@ namespace SuperMarioBros
         private ControllerMessager controller;
         private SpriteBatch spriteBatch;
         private CollisionManager collisionManager;
-        private Camera _camera;
+        private Camera marioCamera;
         public MarioGame()
         {
             var graphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -33,6 +33,7 @@ namespace SuperMarioBros
         protected override void Initialize()
         {
             SpriteFactory.Initialize(Content);
+            marioCamera = Camera.Instance;
             InitializeGameComponents();
             base.Initialize();
         }
@@ -41,13 +42,13 @@ namespace SuperMarioBros
             controller.Update();
             ObjectsManager.Instance.Update(gameTime);
             collisionManager.HandleCollision();
-            _camera.Follow();
+            marioCamera.Follow();
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack,samplerState: SamplerState.PointClamp, transformMatrix:_camera.Transform);
+            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack,samplerState: SamplerState.PointClamp, transformMatrix:marioCamera.Transform);
             GraphicsDevice.Clear(Color.CornflowerBlue);
             ObjectsManager.Instance.Draw(spriteBatch);
             spriteBatch.End();
@@ -82,7 +83,8 @@ namespace SuperMarioBros
             ObjectSizeManager.LoadItemSize(Content, "SizeLoading");
             ObjectSizeManager.LoadMarioSize(Content, "MarioSizeLoading");
             ObjectsManager.Instance.Initialize();
-            _camera = new Camera(ObjectsManager.Instance.MarioObject());
+            marioCamera.Reset();
+            marioCamera.SetFocus(ObjectsManager.Instance.MarioObject());
             collisionManager = new CollisionManager();
             KeyBinding();
         }

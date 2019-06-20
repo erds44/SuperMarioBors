@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.GameCoreComponents;
 using SuperMarioBros.Goombas;
 using SuperMarioBros.Koopas;
 using SuperMarioBros.Marios;
@@ -48,21 +49,21 @@ namespace SuperMarioBros.Objects
         }
         private void InvalidCheck(IObject obj, GameTime gameTime)
         {
-                bool result = false;
-                if (obj.Position.Y < 0) result = true;
-                if (obj.Position.X < -100) result = true;
-                if (obj.Position.X > 1000) result = true;
-            /*                if (obj.GetType() == typeof(StompedGoomba))
-                            {
-                                StompedGoomba goomba = (StompedGoomba)obj;
-                                if (goomba.Delete(gameTime)) result = true;
-                            }
-                            if (obj.GetType() == typeof(StompedKoopa))
-                            {
-                                StompedKoopa koopa = (StompedKoopa)obj;
-                                if (koopa.Delete(gameTime)) result = true;
-                            }*/
-            obj.IsInvalid |= result;
+                if (obj.Position.Y < -50) obj.IsInvalid |= true;
+                if (obj.Position.Y > MarioGame.WindowHeight + 50) obj.IsInvalid |= true;
+                if (obj.Position.X < Camera.Instance.LeftBound - 100) obj.IsInvalid |= true;
+                if (obj.Position.X > Camera.Instance.RightBound + 100) obj.IsInvalid |= true;
+/*                if (obj.GetType() == typeof(StompedGoomba))
+                {
+                    StompedGoomba goomba = (StompedGoomba)obj;
+                    if (goomba.Delete(gameTime)) result = true;
+                }
+                if (obj.GetType() == typeof(StompedKoopa))
+                {
+                    StompedKoopa koopa = (StompedKoopa)obj;
+                    if (koopa.Delete(gameTime)) result = true;
+                }*/
+
         }
         public void Draw(SpriteBatch spriteBatch)
         {

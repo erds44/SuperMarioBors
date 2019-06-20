@@ -7,6 +7,7 @@ using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.Sprites;
+using System;
 
 namespace SuperMarioBros.Marios
 {
@@ -130,7 +131,7 @@ namespace SuperMarioBros.Marios
 
         public void Destroy()
         {
-            //Do nothing.
+            Console.WriteLine("Mario died");
         }
 
         public IMario ReturnItself()
