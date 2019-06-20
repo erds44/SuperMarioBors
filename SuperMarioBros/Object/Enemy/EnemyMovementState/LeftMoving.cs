@@ -6,7 +6,7 @@ namespace SuperMarioBros.Objects.Enemy
     public class LeftMoving : IEnemyMovementState
     {
         private readonly IEnemy enemy;
-        private EnemyPhysics physics;
+        private readonly EnemyPhysics physics;
         public LeftMoving(IEnemy enemy, EnemyPhysics physics)
         {
             this.enemy = enemy;

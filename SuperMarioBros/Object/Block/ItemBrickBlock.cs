@@ -1,14 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Blocks.BlockStates;
 using SuperMarioBros.Items;
-using SuperMarioBros.Objects;
+using SuperMarioBros.Managers;
 using System;
 
 namespace SuperMarioBros.Blocks
 {
     public class ItemBrickBlock : AbstractBlock
     {
-        private Type itemType;
+        private readonly Type itemType;
         private int itemCount;
         public ItemBrickBlock(Vector2 location, Type itemType = null, int itemCount = 1)
         {

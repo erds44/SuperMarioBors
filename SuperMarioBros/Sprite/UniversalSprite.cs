@@ -14,36 +14,35 @@ namespace SuperMarioBros.Sprites
         private readonly int totalFrame;
         private int delay;
         private Collection<Color> SpriteColor;
-        private int count;
+        private int colorIndex;
         private float layerDepth;
         public UniversalSprite(Texture2D texture, int frame)
         {
+            delay = 0;
+            colorIndex = 0;
+            currentFrame = 0;
+            layerDepth = 0.5f;
             this.texture = texture;
             totalFrame = frame;
             width = texture.Width / totalFrame;
             height = texture.Height;
-            currentFrame = 0;
-            delay = 0;
             SpriteColor = new Collection<Color> { Color.White };
-            count = 0;
-            layerDepth = 0.5f;
         }
         public void SetColor(Collection<Color> colors)
         {
             SpriteColor = colors;
         }
+        public void SetLayer(float layer)
+        {
+            layerDepth = layer;
+        }
         public void Update()
         {
-            /* the delay here is to slow doown the animation
-             * There might be a better solution to do this
-             */
-            if (delay % 5 == 0)
+            if (delay % 5 == 0) /* temporary solution, will add game timer later*/
             {
                 currentFrame++;
                 if (currentFrame == totalFrame)
-                {
                     currentFrame = 0;
-                }
             }
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location,SpriteEffects spriteEffects)
@@ -53,15 +52,18 @@ namespace SuperMarioBros.Sprites
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y - height, width, height);
+
             delay++;
             if (delay % 5 == 0)
-                count++;
-            /* This condition is used for alternating colors for star mario */
-            if (count % SpriteColor.Count == 0 || count > SpriteColor.Count)
+                colorIndex++;
+            /* This condition is used for alternating colors for star mario
+            *  aim to slow color changing rate 
+            */
+            if (colorIndex % SpriteColor.Count == 0 || colorIndex > SpriteColor.Count)
             {
-                count = 0;
+                colorIndex = 0;
             }
-            Color spriteColor = SpriteColor[count];
+            Color spriteColor = SpriteColor[colorIndex];
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, spriteColor, 0, Vector2.Zero, spriteEffects, layerDepth);
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location)
@@ -73,18 +75,14 @@ namespace SuperMarioBros.Sprites
             Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y - height, width, height);
             delay++;
             if(delay % 5 == 0)
-                count++;
-            /* This condition is used for alternating colors for star mario */
-            if (count % SpriteColor.Count == 0 || count > SpriteColor.Count)
+                colorIndex++;
+
+            if (colorIndex % SpriteColor.Count == 0 || colorIndex > SpriteColor.Count)
             {
-                count = 0;
+                colorIndex = 0;
             }
-            Color spriteColor = SpriteColor[count];
+            Color spriteColor = SpriteColor[colorIndex];
             spriteBatch.Draw(texture,destinationRectangle, sourceRectangle, spriteColor, 0, Vector2.Zero, SpriteEffects.None, layerDepth);   
-        }
-        public void SetLayer(float layer)
-        {
-            this.layerDepth = layer;
         }
     }
 }

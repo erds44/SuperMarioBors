@@ -15,7 +15,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
 
         public void Coin()
         {
-            // To do
+            // Do Nothing
         }
 
         public void OnFireFlower()

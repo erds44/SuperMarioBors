@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Interfaces.State;
+using SuperMarioBros.Managers;
 using SuperMarioBros.Objects;
 using SuperMarioBros.SpriteFactories;
 using System;
@@ -53,7 +54,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
             if (!(power && mario.PowerFlag) && mario.PowerFlag && fireCount>0 )
             {
                 fireCount--;
-                ObjectsManager.Instance.Add(new FireBall(this, mario));
+                ObjectsManager.Instance.AddDynamic(new FireBall(this, mario));
             }
             power = mario.PowerFlag;
 

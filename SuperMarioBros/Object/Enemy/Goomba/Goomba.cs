@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Objects;
+using SuperMarioBros.Managers;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Physicses;
 
@@ -34,7 +34,7 @@ namespace SuperMarioBros.Goombas
 
         public override void TakeDamage()
         {
-            ObjectsManager.Instance.Add(new StompedGoomba(Position));
+            ObjectsManager.Instance.AddDynamic(new StompedGoomba(Position));
             IsInvalid = true;
         }
         public override void Update(GameTime gameTime)

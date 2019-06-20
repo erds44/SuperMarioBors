@@ -11,7 +11,7 @@ namespace SuperMarioBros.LevelLoading
     
     public  class ObjectNode
     {
-        public String ObjectType { get; set; }
-        public Point Position { get; set; }
+        public string ObjectType { get; set; }
+        public Vector2 Position { get; set; }
     }
 }

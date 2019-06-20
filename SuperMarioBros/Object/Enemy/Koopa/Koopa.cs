@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Goombas;
+using SuperMarioBros.Managers;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Physicses;
@@ -17,7 +18,7 @@ namespace SuperMarioBros.Koopas
 
         public override void TakeDamage()
         {
-            ObjectsManager.Instance.Add(new StompedKoopa(Position));
+            ObjectsManager.Instance.AddDynamic(new StompedKoopa(Position));
             IsInvalid = true;
         }
         

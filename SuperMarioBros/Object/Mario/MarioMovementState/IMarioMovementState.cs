@@ -7,6 +7,7 @@
         void Up();
         void Right();
         void Idle();
+        /* below is collision responses */
         void MoveUp();
         void MoveDown();
         void MoveLeft();

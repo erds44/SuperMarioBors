@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.Managers;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
@@ -10,10 +11,10 @@ namespace SuperMarioBros.Items
 {
     public class RedMushroom : AbstractItem, IItem
     {
-        private ItemPhysics physics;
+        private readonly ItemPhysics physics;
         private bool addFlag;
         private Vector2 offset = new Vector2(5, 0);
-        private float speedChangeFlag = 0;
+        private readonly float speedChangeFlag = 0;
         public RedMushroom(Vector2 location)
         {
             Position = location + offset;
@@ -32,7 +33,7 @@ namespace SuperMarioBros.Items
             {
                 physics.SetSpeed(new Vector2(40, 0));
                 sprite.SetLayer(1.0f);
-                ObjectsManager.Instance.Add(this);
+                ObjectsManager.Instance.AddDynamic(this);
                 ObjectsManager.Instance.RemoveFromNonCollidable(this);
                 addFlag = true;
             }

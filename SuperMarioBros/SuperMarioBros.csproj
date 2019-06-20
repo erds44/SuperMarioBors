@@ -245,7 +245,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collision\CollisionDetection.cs" />
-    <Compile Include="Collision\CollisionManager.cs" />
+    <Compile Include="Manager\CollisionManager.cs" />
     <Compile Include="Collision\DynamicAndDynamicObjectsHandler .cs" />
     <Compile Include="Collision\DynamicAndStaticObjecstHandler.cs" />
     <Compile Include="Command\MarioCommand\DownCommand.cs" />
@@ -307,7 +307,7 @@
     <Compile Include="Object\Mario\MarioMovementState\RightBreaking.cs" />
     <Compile Include="Object\Mario\MarioMovementState\LeftBreaking.cs" />
     <Compile Include="Object\Mario\FireBall.cs" />
-    <Compile Include="Object\ObjectSizeManager.cs" />
+    <Compile Include="Manager\SizeManager.cs" />
     <Compile Include="Object\Background\SmallBush.cs" />
     <Compile Include="Object\Background\SmallCloud.cs" />
     <Compile Include="Object\Background\SmallHill.cs" />
@@ -344,7 +344,7 @@
     <Compile Include="Object\Mario\StarMario.cs" />
     <Compile Include="Object\Item\GreenMushroom.cs" />
     <Compile Include="Object\Item\RedMushroom.cs" />
-    <Compile Include="Object\ObjectsManager.cs" />
+    <Compile Include="Manager\ObjectsManager.cs" />
     <Compile Include="Object\Physics\MarioPhysics.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="SpriteFactory\SpriteFactory.cs" />

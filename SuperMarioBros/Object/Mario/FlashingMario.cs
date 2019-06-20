@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Collisions;
 using SuperMarioBros.Interfaces.State;
+using SuperMarioBros.Managers;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
@@ -15,7 +16,7 @@ namespace SuperMarioBros.Marios
         public IMarioHealthState HealthState { get; set; }
         public IMarioMovementState MovementState { get; set; }
         public MarioPhysics MarioPhysics { get; }
-        private IMario mario;
+        private readonly IMario mario;
         public ISprite Sprite { get; set; }
         public double Timer { get; set; }
         public Vector2 Position { get; set; }
@@ -108,7 +109,7 @@ namespace SuperMarioBros.Marios
             }
             else
             {
-                mario.MarioPhysics.setXVelocity(0);
+                mario.MarioPhysics.SetXVelocity(0);
             }
             if (Timer <= 0)
             {

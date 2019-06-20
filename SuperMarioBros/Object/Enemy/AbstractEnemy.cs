@@ -2,9 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Sprites;
 using SuperMarioBros.Objects.Enemy;
-using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
-using System;
+using SuperMarioBros.Managers;
 
 namespace SuperMarioBros.Goombas
 {
@@ -22,11 +21,10 @@ namespace SuperMarioBros.Goombas
             Sprite.Draw(spriteBatch, Position);
         }
 
-        public abstract void Update(GameTime gameTime);
 
         public Rectangle HitBox()
         {
-            Point size = ObjectSizeManager.ObjectSize(GetType());
+            Point size = SizeManager.ObjectSize(GetType());
             return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
         }
 
@@ -40,23 +38,24 @@ namespace SuperMarioBros.Goombas
             physics.MoveDown();
         }
 
-        public abstract void MoveLeft();
-
-        public abstract void MoveRight();
-
+        public void BumpUp()
+        {
+            physics.BumpUp();
+        }
         public void Destroy()
         {
             //Game.Score += 100;
         }
+        public abstract void MoveLeft();
+
+        public abstract void MoveRight();
+
+        public abstract void Update(GameTime gameTime);
 
         public abstract void TakeDamage();
 
         public abstract void Flip();
 
-        public void BumpUp()
-        {
-            physics.BumpUp();
-        }
 
     }
 }

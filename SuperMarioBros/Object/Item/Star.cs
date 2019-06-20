@@ -1,17 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.Managers;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
-using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Items
 {
     public class Star : AbstractItem, IItem
     {
-        private StarPhysics physics;
+        private readonly StarPhysics physics;
         private bool addFlag;
-        private float speedChangeFlag = 0;
+        private readonly float speedChangeFlag = 0;
         private Vector2 offset = new Vector2(5, 0);
         public Star(Vector2 location)
         {
@@ -31,7 +30,7 @@ namespace SuperMarioBros.Items
             {
                 physics.SetSpeed(new Vector2(40,-40));
                 sprite.SetLayer(1.0f);
-                ObjectsManager.Instance.Add(this);
+                ObjectsManager.Instance.AddDynamic(this);
                 ObjectsManager.Instance.RemoveFromNonCollidable(this);
                 addFlag = true;
             }

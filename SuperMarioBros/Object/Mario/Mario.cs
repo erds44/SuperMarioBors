@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Collisions;
 using SuperMarioBros.Interfaces.State;
+using SuperMarioBros.Managers;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Objects;
@@ -39,7 +40,6 @@ namespace SuperMarioBros.Marios
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            // Sprite.Draw(spriteBatch, location);
             Sprite.Draw(spriteBatch, Position);
         }
 
@@ -85,7 +85,7 @@ namespace SuperMarioBros.Marios
 
         public Rectangle HitBox()
         {
-            Point size = ObjectSizeManager.MarioSize(HealthState.GetType(), MovementState.GetType());
+            Point size = SizeManager.MarioSize(HealthState.GetType(), MovementState.GetType());
             return new Rectangle((int)Position.X, (int)Position.Y- size.Y, size.X, size.Y);
         }
 

@@ -1,7 +1,8 @@
-﻿using SuperMarioBros.Objects;
+﻿using SuperMarioBros.Collisions;
+using SuperMarioBros.Objects;
 using System.Collections.ObjectModel;
 
-namespace SuperMarioBros.Collisions
+namespace SuperMarioBros.Managers
 {
     public class CollisionManager 
     {
@@ -25,9 +26,9 @@ namespace SuperMarioBros.Collisions
                 }
                 for(int j = i+1; j < dynamicObjects.Count; j++)
                 {
-                        Direction direction = CollisionDetection.Detect(dynamicObjects[i], dynamicObjects[j]);
-                        if (direction != Direction.none)
-                            DynamicAndDynamicObjectsHandler.HandleCollision(dynamicObjects[i], dynamicObjects[j], direction);                
+                    Direction direction = CollisionDetection.Detect(dynamicObjects[i], dynamicObjects[j]);
+                    if (direction != Direction.none)
+                        DynamicAndDynamicObjectsHandler.HandleCollision(dynamicObjects[i], dynamicObjects[j], direction);                
                 }
             }
         }

@@ -1,16 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
-using SuperMarioBros.Sprites;
-using System;
 
 namespace SuperMarioBros.Items
 {
     public class Coin : AbstractItem, IItem
     {
-        private ItemPhysics physics;
+        private readonly ItemPhysics physics;
         private Vector2 offset = new Vector2(15, -50);
         private float timer;
         public Coin(Vector2 location)
@@ -28,11 +24,9 @@ namespace SuperMarioBros.Items
             Position += physics.Displacement(gameTime);
             if (timer >= 0.3 )
             {
-                ObjectsManager.Instance.RemoveFromNonCollidable(this);
+                IsInvalid = true;
             }
-
         }
-
         public void MoveUp()
         {
             physics.MoveUp();

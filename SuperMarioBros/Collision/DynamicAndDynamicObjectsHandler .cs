@@ -1,6 +1,7 @@
 ﻿using SuperMarioBros.Goombas;
 using SuperMarioBros.Items;
 using SuperMarioBros.Koopas;
+using SuperMarioBros.Managers;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Objects;
@@ -17,9 +18,11 @@ namespace SuperMarioBros.Collisions
         public static void HandleCollision(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             if (collisionDictionary.TryGetValue((obj1.GetType(), obj2.GetType()), out var handle))
-                if(!(obj1.GetType() == typeof(Mario)&&((IMario)obj1).HealthState.GetType() == typeof(DeadMario)))
+                //if(!(obj1.GetType() == typeof(Mario)&&((IMario)obj1).HealthState.GetType() == typeof(DeadMario)))
                 handle(obj1, obj2, direction);
         }
+        
+        /* Dictionary for all possible collision cases */
         private static readonly Dictionary<(Type, Type), CollisionHandler> collisionDictionary = new Dictionary<(Type, Type), CollisionHandler>
         {
              /*item*/
@@ -53,57 +56,55 @@ namespace SuperMarioBros.Collisions
              {(typeof(Goomba), typeof(Goomba)), MoveEnemy},
              {(typeof(Goomba), typeof(Koopa)), MoveEnemy},
              {(typeof(Goomba), typeof(StompedKoopa)), StompedKoopaDealDamage},
-             {(typeof(Goomba), typeof(FireBall)), FireBallEnemy},
+             {(typeof(Goomba), typeof(FireBall)), FireBallVSEnemy},
 
              {(typeof(Koopa), typeof(Koopa)), MoveEnemy},
              {(typeof(Koopa), typeof(Goomba)), MoveEnemy},
              //{(typeof(Koopa), typeof(StompedKoopa)), StompedKoopaDealDamage}, To be fixed
-             {(typeof(Koopa), typeof(FireBall)), FireBallEnemy},
+             {(typeof(Koopa), typeof(FireBall)), FireBallVSEnemy},
              
              {(typeof(StompedKoopa), typeof(Goomba)), StompedKoopaDealDamage},
              //{(typeof(StompedKoopa), typeof(Koopa)), StompedKoopaDealDamage},
              //{(typeof(StompedKoopa), typeof(StompedKoopa)), MoveDynamic}, Dont consider for now
-             {(typeof(StompedGoomba), typeof(FireBall)), FireBallEnemy},
+             {(typeof(StompedGoomba), typeof(FireBall)), FireBallVSEnemy},
 
-             {(typeof(FireBall), typeof(Goomba)), FireBallEnemy},
-             {(typeof(FireBall), typeof(Koopa)), FireBallEnemy},
-             {(typeof(FireBall), typeof(StompedKoopa)), FireBallEnemy},
+             {(typeof(FireBall), typeof(Goomba)), FireBallVSEnemy},
+             {(typeof(FireBall), typeof(Koopa)), FireBallVSEnemy},
+             {(typeof(FireBall), typeof(StompedKoopa)), FireBallVSEnemy},
         };
         private static void StarMario(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             ObjectsManager.Instance.StarMario(((IMario)obj1).ReturnItself());
-            obj2.IsInvalid = true;
+            obj2.IsInvalid = true;  //Delete flag
         }
 
         private static void RedMushroom(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             IMario mario = (IMario)obj1;
-            if (!(mario is StarMario))
-                ObjectsManager.Instance.Decoration(mario ,new FlashingMario(mario.ReturnItself()));   
-            ObjectsManager.Instance.Remove(obj2);
+            if (!(mario is StarMario)) /* avoid double decoration */
+                ObjectsManager.Instance.Decoration(mario ,new FlashingMario(mario.ReturnItself()));
+            obj2.IsInvalid = true;
             mario.RedMushroom();
         }
         private static void GreenMushroom(IDynamic obj1, IDynamic obj2, Direction direction)
         {
-            IMario mario = (IMario)obj1;
-            mario.GreenMushroom();
-            ObjectsManager.Instance.Remove(obj2);
+            ((IMario)obj1).GreenMushroom();
+            obj2.IsInvalid = true;
         }
         private static void FireFlower(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             IMario mario = (IMario)obj1;
             if (!(mario is StarMario))
                 ObjectsManager.Instance.Decoration(mario, new FlashingMario(mario.ReturnItself()));
-            ObjectsManager.Instance.Remove(obj2);
+            obj2.IsInvalid = true;
             mario.OnFireFlower();
         }
         private static void Coin(IDynamic obj1, IDynamic obj2, Direction direction)
         {
-            IMario mario = (IMario)obj1;
-            mario.Coin();
-            ObjectsManager.Instance.Remove(obj2);
+            ((IMario)obj1).Coin();
+            obj2.IsInvalid = true;
         }
-        private static void FireBallEnemy(IDynamic obj1, IDynamic obj2, Direction direction)
+        private static void FireBallVSEnemy(IDynamic obj1, IDynamic obj2, Direction direction)
         {
            if(obj1 is FireBall)
             {
@@ -154,7 +155,7 @@ namespace SuperMarioBros.Collisions
         {
             switch (direction)
             {
-                case Direction.top: obj1.MoveUp(); break;
+                case Direction.top:obj1.MoveUp();break;
                 case Direction.right: if (((StompedKoopa)obj2).DealDamge) obj1.TakeDamage(); else obj2.MoveRight(); break;
                 case Direction.left: if (((StompedKoopa)obj2).DealDamge) obj1.TakeDamage(); else obj2.MoveLeft(); break;
             }

@@ -1,11 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using SuperMarioBros.Objects;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Controllers;
 using SuperMarioBros.Marios;
-using SuperMarioBros.Collisions;
+using SuperMarioBros.Managers;
 
 namespace SuperMarioBros
 {
@@ -15,6 +14,9 @@ namespace SuperMarioBros
         private ControllerMessager controller;
         private SpriteBatch spriteBatch;
         private CollisionManager collisionManager;
+
+        //public object SizeManager { get; private set; }
+
         public MarioGame()
         {
             var graphicsDeviceManager = new GraphicsDeviceManager(this);
@@ -72,8 +74,8 @@ namespace SuperMarioBros
         public void InitializeObjects()
         {      
             ObjectLoading.LevelLoading(Content, @"PartialLevelOne");
-            ObjectSizeManager.LoadItemSize(Content, @"SizeLoading");
-            ObjectSizeManager.LoadMarioSize(Content, @"MarioSizeLoading");
+            SizeManager.LoadItemSize(Content, @"SizeLoading");
+            SizeManager.LoadMarioSize(Content, @"MarioSizeLoading");
             ObjectsManager.Instance.Initialize();
             collisionManager = new CollisionManager();
             KeyBinding();

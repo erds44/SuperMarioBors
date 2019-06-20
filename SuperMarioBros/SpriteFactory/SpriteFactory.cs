@@ -81,9 +81,7 @@ namespace SuperMarioBros.SpriteFactories
         public static ISprite CreateSprite(string type)
         { 
             if(!(spriteInfo.TryGetValue(type, out sprite)))
-            {
                 throw new System.ArgumentException("Cannot find: " + type + " in the dictionary");
-            }
             return sprite;
         }
     }

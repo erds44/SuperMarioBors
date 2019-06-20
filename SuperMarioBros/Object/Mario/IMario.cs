@@ -23,11 +23,11 @@ namespace SuperMarioBros.Marios
         void Right();
         void Idle();
         new void Update(GameTime gameTime);
-        IMario ReturnItself();
         void BumpUp();
         void RedMushroom();
         void OnFireFlower();
         void GreenMushroom();
         void Coin();
+        IMario ReturnItself();
     }
 }

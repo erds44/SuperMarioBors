@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.Objects;
+using SuperMarioBros.Managers;
 using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Items
@@ -18,7 +18,7 @@ namespace SuperMarioBros.Items
 
         public Rectangle HitBox()
         {
-            Point size = ObjectSizeManager.ObjectSize(GetType());
+            Point size = SizeManager.ObjectSize(GetType());
             return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
         }
         public void TakeDamage()

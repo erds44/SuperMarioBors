@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Collisions

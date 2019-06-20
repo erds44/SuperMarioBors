@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Interfaces.State;
+using SuperMarioBros.Managers;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.SpriteFactories;
 using System;
@@ -33,7 +34,9 @@ namespace SuperMarioBros.Marios.MarioTypeStates
 
         public void TakeDamage()
         {
-            mario.HealthState = new DeadMario(mario);
+            ObjectsManager.Instance.AddNonCollidable(mario);
+            ObjectsManager.Instance.RemoveFromDynamic(mario);
+            mario.HealthState = new DeadMario(mario);         
         }
 
         public void RedMushroom()

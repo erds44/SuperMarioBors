@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Goombas;
 using SuperMarioBros.Goombas.GoombaStates;
-using SuperMarioBros.Objects;
+using SuperMarioBros.Managers;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Physicses;
 
@@ -29,7 +29,7 @@ namespace SuperMarioBros.Koopas
             respawnTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (respawnTimer < 0 && State is IdleEnemyState)
             {
-                ObjectsManager.Instance.Add(new Koopa(Position));   /* return to Koopa after 5 seconds */
+                ObjectsManager.Instance.AddDynamic(new Koopa(Position));   /* return to Koopa after 5 seconds */
                 IsInvalid = true;
             }
             Position += physics.Displacement(gameTime);

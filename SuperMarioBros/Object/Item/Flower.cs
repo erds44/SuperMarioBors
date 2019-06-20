@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Managers;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
@@ -7,10 +8,10 @@ namespace SuperMarioBros.Items
 {
     public class Flower : AbstractItem , IItem
     {
-        private ItemPhysics physics;
+        private readonly ItemPhysics physics;
         private bool addFlag;
         private Vector2 offset = new Vector2(5, 0);
-        private float speedChangeFlag = 0;
+        private readonly float speedChangeFlag = 0;
         public Flower(Vector2 location)
         {
             Position = location + offset;
@@ -29,13 +30,12 @@ namespace SuperMarioBros.Items
             {
                 physics.SetSpeed(new Vector2(0, 0));
                 sprite.SetLayer(1.0f);
-                ObjectsManager.Instance.Add(this);
+                ObjectsManager.Instance.AddDynamic(this);
                 ObjectsManager.Instance.RemoveFromNonCollidable(this);
                 addFlag = true;
             }
 
         }
-
         public void MoveUp()
         {
             physics.MoveUp();
