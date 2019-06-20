@@ -21,6 +21,9 @@ namespace SuperMarioBros.Items
             Point size = ObjectSizeManager.ObjectSize(GetType());
             return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
         }
-
+        public void TakeDamage()
+        {
+            //Do Nothing
+        }
     }
 }

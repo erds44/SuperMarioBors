@@ -137,5 +137,9 @@ namespace SuperMarioBros.Marios
         {
             return this;
         }
+        public void BumpUp()
+        {
+            MovementState.BumpUp();
+        }
     }
 }

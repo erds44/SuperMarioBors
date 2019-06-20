@@ -25,13 +25,9 @@ namespace SuperMarioBros.Collisions
                 }
                 for(int j = i+1; j < dynamicObjects.Count; j++)
                 {
-                   
-                   
                         Direction direction = CollisionDetection.Detect(dynamicObjects[i], dynamicObjects[j]);
                         if (direction != Direction.none)
-                            DynamicAndDynamicObjectsHandler.HandleCollision(dynamicObjects[i], dynamicObjects[j], direction);
-                    
-                    
+                            DynamicAndDynamicObjectsHandler.HandleCollision(dynamicObjects[i], dynamicObjects[j], direction);                
                 }
             }
         }

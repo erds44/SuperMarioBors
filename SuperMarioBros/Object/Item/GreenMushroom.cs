@@ -1,19 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
-using SuperMarioBros.Sprites;
-using System;
 
 namespace SuperMarioBros.Items
 {
-    public class GreenMushroom : IItem
+    public class GreenMushroom : AbstractItem, IItem
     {
-        public bool IsInvalid { get; set; }
-
-        private readonly ISprite sprite;
-        public Vector2 Position { get; set; }
         private ItemPhysics physics;
         private bool addFlag;
         private Vector2 offset = new Vector2(5, 0);
@@ -28,11 +21,6 @@ namespace SuperMarioBros.Items
             speedChangeFlag += location.Y - 50;
         }
 
-        public void Draw(SpriteBatch SpriteBatch)
-        {
-            sprite.Draw(SpriteBatch, Position);
-        }
-
         public void Update(GameTime gameTime)
         {
             sprite.Update();
@@ -45,14 +33,6 @@ namespace SuperMarioBros.Items
                 ObjectsManager.Instance.RemoveFromNonCollidable(this);
                 addFlag = true;
             }
-
-        }
-
-
-        public Rectangle HitBox()
-        {
-            Point size = ObjectSizeManager.ObjectSize(GetType());
-            return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
         }
 
         public void MoveUp()

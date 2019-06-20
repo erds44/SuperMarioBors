@@ -147,5 +147,10 @@ namespace SuperMarioBros.Marios
         {
             return mario;
         }
+
+        public void BumpUp()
+        {
+           // Do Nothing
+        }
     }
 }

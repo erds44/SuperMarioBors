@@ -8,7 +8,7 @@ using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Marios
 {
-    public interface IMario : IDynamic, IMarioHealthState
+    public interface IMario : IDynamic
     {
         double Timer { get; set; }
         double NoMovementTimer { get; set; }
@@ -24,5 +24,10 @@ namespace SuperMarioBros.Marios
         void Idle();
         new void Update(GameTime gameTime);
         IMario ReturnItself();
+        void BumpUp();
+        void RedMushroom();
+        void OnFireFlower();
+        void GreenMushroom();
+        void Coin();
     }
 }

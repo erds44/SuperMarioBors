@@ -1,13 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.Collisions;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
-using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
-using System;
 
 namespace SuperMarioBros.Marios
 {
@@ -139,6 +136,11 @@ namespace SuperMarioBros.Marios
         public IMario ReturnItself()
         {
             return mario;
+        }
+
+        public void BumpUp()
+        {
+            // Do Nothing
         }
     }
 }

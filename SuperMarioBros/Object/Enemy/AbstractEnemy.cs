@@ -22,11 +22,7 @@ namespace SuperMarioBros.Goombas
             Sprite.Draw(spriteBatch, Position);
         }
 
-        public void Update(GameTime gameTime)
-        {
-            Sprite.Update();
-            Position += physics.Displacement(gameTime);
-        }
+        public abstract void Update(GameTime gameTime);
 
         public Rectangle HitBox()
         {
@@ -39,30 +35,14 @@ namespace SuperMarioBros.Goombas
             physics.MoveUp();
         }
 
-        public  void MoveDown()
+        public void MoveDown()
         {
             physics.MoveDown();
         }
 
-        public virtual void MoveLeft()
-        {
-            
-            //if(!(this.State.GetType() == typeof(LeftMoving)))
-            //{
-                //Console.WriteLine(this.State.GetType());
-                //Console.WriteLine(typeof(LeftMoving));
-             State.ChangeDirection();
-            //}
-            physics.MoveLeft();
-        }
+        public abstract void MoveLeft();
 
-        public virtual void MoveRight()
-        {
-            
-            
-            State.ChangeDirection();
-            physics.MoveRight();
-        }
+        public abstract void MoveRight();
 
         public void Destroy()
         {
@@ -72,5 +52,11 @@ namespace SuperMarioBros.Goombas
         public abstract void TakeDamage();
 
         public abstract void Flip();
+
+        public void BumpUp()
+        {
+            physics.BumpUp();
+        }
+
     }
 }

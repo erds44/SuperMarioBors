@@ -1,5 +1,4 @@
-﻿using SuperMarioBros.Objects;
-using SuperMarioBros.Sprites;
+﻿using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Objects.Enemy
 {
@@ -7,9 +6,7 @@ namespace SuperMarioBros.Objects.Enemy
     {
         IEnemyMovementState State { get; set; }
         ISprite Sprite { get; set; }
-
-        void TakeDamage();
-
         void Flip();
+        void BumpUp();
     }
 }

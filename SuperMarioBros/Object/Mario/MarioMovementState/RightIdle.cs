@@ -48,5 +48,9 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         {
             mario.MarioPhysics.setXVelocity(0);
         }
+        public void BumpUp()
+        {
+            // Do Nothing
+        }
     }
 }

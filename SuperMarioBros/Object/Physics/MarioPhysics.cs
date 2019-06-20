@@ -152,6 +152,9 @@ namespace SuperMarioBros.Physicses
         {
             YVelocity = yVelocity;
         }
-
+        public void BumpUp()
+        {
+            YVelocity = -100;
+        }
     }
 }

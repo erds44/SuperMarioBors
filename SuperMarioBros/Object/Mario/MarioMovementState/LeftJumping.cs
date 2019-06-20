@@ -47,10 +47,13 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             mario.MarioPhysics.SpeedDecay();
             mario.MarioPhysics.MoveUp();
         }
-
         public void Update()
         {
             // Do Nothing
+        }
+        public void BumpUp()
+        {
+            mario.MarioPhysics.BumpUp();
         }
     }
 }

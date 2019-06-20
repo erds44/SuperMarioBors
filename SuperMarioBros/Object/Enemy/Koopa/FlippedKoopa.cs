@@ -1,14 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Goombas;
-using SuperMarioBros.Goombas.GoombaStates;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.Sprites;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperMarioBros.Koopas
 {
@@ -20,18 +14,23 @@ namespace SuperMarioBros.Koopas
             Sprite = koopa.Sprite;
             Position = koopa.Position;
             physics = new EnemyPhysics(this, new Vector2(0, 0));
-
-            //physics.velocity.X = 0;
-            //physics.velocity.Y = -150;
-
         }
 
         public override void Draw(SpriteBatch spriteBatch)
-        {
-            
+        {           
             ((UniversalSprite)Sprite).Draw(spriteBatch, Position,SpriteEffects.FlipVertically);
         }
         public override void Flip()
+        {
+            //Do Nothing
+        }
+
+        public override void MoveLeft()
+        {
+            //Do Nothing
+        }
+
+        public override void MoveRight()
         {
             //Do Nothing
         }
@@ -41,5 +40,10 @@ namespace SuperMarioBros.Koopas
             //Do Nothing
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            Sprite.Update();
+            Position += physics.Displacement(gameTime);        
+        }
     }
 }
