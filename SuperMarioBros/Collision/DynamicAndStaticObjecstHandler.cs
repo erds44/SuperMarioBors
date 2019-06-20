@@ -98,10 +98,10 @@ namespace SuperMarioBros.Collisions
             { (typeof(RedMushroom), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(RedMushroom), typeof(Pipe)), MoveDynamic},
 
-            {(typeof(Goomba), typeof(BumpBlockState)), BlockBumpObject},
-            {(typeof(Koopa), typeof(BumpBlockState)), BlockBumpObject},
-            {(typeof(RedMushroom), typeof(BumpBlockState)), BlockBumpObject},
-            {(typeof(GreenMushroom), typeof(BumpBlockState)), BlockBumpObject},
+            {(typeof(Goomba), typeof(BumpBlockState)), EnemyVsBumpBlock},
+            {(typeof(Koopa), typeof(BumpBlockState)), EnemyVsBumpBlock},
+            {(typeof(RedMushroom), typeof(BumpBlockState)), ItemVsBumpBlock},
+            {(typeof(GreenMushroom), typeof(BumpBlockState)), ItemVsBumpBlock},
 
             { (typeof(GreenMushroom), typeof(RockBlockState)), MoveDynamic},
             { (typeof(GreenMushroom), typeof(BrickBlockState)), MoveDynamic},
@@ -147,12 +147,16 @@ namespace SuperMarioBros.Collisions
             }
         }
 
-        private static void BlockBumpObject(IDynamic obj1, IStatic obj2, Direction direction)
+        private static void EnemyVsBumpBlock(IDynamic obj1, IStatic obj2, Direction direction)
         {
-            Console.WriteLine(obj1.GetType());
-            if (obj1 is IEnemy) ((IEnemy)obj1).Flip(); else obj1.MoveLeft();
+             ((IEnemy)obj1).Flip();
         }
-
+        private static void ItemVsBumpBlock(IDynamic obj1, IStatic obj2, Direction direction)
+        {
+            ((IItem)obj1).BumpUp();
+            if (obj1.HitBox().Center.X <= obj2.HitBox().Center.X)
+                ((IItem)obj1).ChangeDirection();
+        }
         private static void MoveDynamic(IDynamic obj1, IStatic obj2, Direction direction)
         {
             switch (direction)
@@ -176,7 +180,6 @@ namespace SuperMarioBros.Collisions
         }
         private static void FireBallDisappear(IDynamic obj1, IStatic obj2, Direction direction)
         {
-
             obj1.IsInvalid = true; 
         }
 

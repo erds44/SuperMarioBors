@@ -73,7 +73,7 @@ namespace SuperMarioBros.Physicses
 
         public void BumpUp()
         {
-            displacement.Y -= 20;
+            displacement.Y -= 5;
             velocity.Y -= 20;
         }
     }

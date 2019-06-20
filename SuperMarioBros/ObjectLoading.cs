@@ -40,8 +40,8 @@ namespace SuperMarioBros
 
                 new PowerUpBlock(new Vector2(200, 290)),
                 new QuestionBlock(new Vector2(240, 290), typeof(GreenMushroom)),
-                new PowerUpBlock(new Vector2(280, 290)),
-                new QuestionBlock(new Vector2(320, 290)),
+                new BrickBlock(new Vector2(280, 290)),
+                new BrickBlock(new Vector2(320, 290)),
 
                 new HiddenBlock(new Vector2(50, 150)),            
                 new QuestionBlock(new Vector2(520, 250)),
