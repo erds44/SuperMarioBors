@@ -1,4 +1,5 @@
-﻿using SuperMarioBros.Goombas;
+﻿using SuperMarioBros.Blocks;
+using SuperMarioBros.Goombas;
 using SuperMarioBros.Items;
 using SuperMarioBros.Koopas;
 using SuperMarioBros.Managers;
@@ -34,7 +35,13 @@ namespace SuperMarioBros.Collisions
              /*Enemy*/
              {(typeof(Mario), typeof(Goomba)), MarioEnemy},
              {(typeof(Mario), typeof(Koopa)), MarioEnemy},
-             {(typeof(Mario), typeof(StompedKoopa)), MarioVsStompedKoopa}, 
+             {(typeof(Mario), typeof(StompedKoopa)), MarioVsStompedKoopa},
+             
+             /*Bumped Block*/
+             {(typeof(Goomba), typeof(IBlock)), BlockBumpObject},
+             {(typeof(Koopa), typeof(IBlock)), BlockBumpObject},
+             {(typeof(RedMushroom), typeof(IBlock)), BlockBumpObject},
+             {(typeof(GreenMushroom), typeof(IBlock)), BlockBumpObject},
 
              {(typeof(StarMario), typeof(Star)), StarMario},
              {(typeof(StarMario), typeof(RedMushroom)), RedMushroom},
@@ -76,6 +83,11 @@ namespace SuperMarioBros.Collisions
         {
             ObjectsManager.Instance.StarMario(((IMario)obj1).ReturnItself());
             obj2.IsInvalid = true;  //Delete flag
+        }
+
+        private static void BlockBumpObject(IDynamic obj1, IDynamic obj2, Direction direction)
+        {
+            if (obj1 is IEnemy) ((IEnemy)obj1).Flip(); else obj1.MoveLeft();
         }
 
         private static void RedMushroom(IDynamic obj1, IDynamic obj2, Direction direction)
@@ -155,7 +167,7 @@ namespace SuperMarioBros.Collisions
         {
             switch (direction)
             {
-                case Direction.top:obj1.MoveUp();break;
+                case Direction.top:obj1.MoveUp(); obj2.MoveRight();  break;
                 case Direction.right: if (((StompedKoopa)obj2).DealDamge) obj1.TakeDamage(); else obj2.MoveRight(); break;
                 case Direction.left: if (((StompedKoopa)obj2).DealDamge) obj1.TakeDamage(); else obj2.MoveLeft(); break;
             }
