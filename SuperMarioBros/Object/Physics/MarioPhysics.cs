@@ -9,10 +9,10 @@ namespace SuperMarioBros.Physicses
     {
         public float XVelocity { get; private set; }
         public float YVelocity { get; private set; }
-        private readonly float jumpVelocity = -260;
+        private readonly float jumpVelocity = -420;
         private readonly float acceleration;
         private readonly float deceleration;
-        private readonly float gravity = 600;
+        private readonly float gravity = 800;
         private float currentGravity;
         private readonly float minClamping = -250;
         private readonly float maxClamping = 250;
@@ -52,8 +52,8 @@ namespace SuperMarioBros.Physicses
                 Jump = true;
             }
             currentGravity -= 20;
-            if (currentGravity <= 100)
-                currentGravity = 100;
+            if (currentGravity <= 300)
+                currentGravity = 300;
         }
         /* Collision Responses */
         public void MoveUp()

@@ -17,7 +17,7 @@ namespace SuperMarioBros.LoadingTest
     public class XMLProcessor
     {
         private  List<ObjectNode> staticList = new List<ObjectNode> 
-            { 
+            {
 
                 //test
                 (new ObjectNode("SuperMarioBros.Blocks.RockBlock",new Vector2(100,288),1,1,39)),
@@ -46,7 +46,7 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Items.Pipe",new Vector2(1190,410),1,1,72)),
               (new ObjectNode("SuperMarioBros.Items.MiddlePipe",new Vector2(1629,410),1,1,72)),
               (new ObjectNode("SuperMarioBros.Items.HighPipe",new Vector2(1961,410),1,1,72)),
-              (new ObjectNode("SuperMarioBros.Items.HighPipe",new Vector2(2429,410),1,1,72)),
+              (new ObjectNode("SuperMarioBros.Items.HighPipe",new Vector2(2429,410),1,1,72)), 
               (new ObjectNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(2600,288),1,1,40)),
               //base2
               (new ObjectNode("SuperMarioBros.Blocks.RockBlock",new Vector2(3029,450),1,16,39)),
