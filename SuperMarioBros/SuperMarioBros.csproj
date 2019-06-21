@@ -244,6 +244,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camera\Camera.cs" />
     <Compile Include="Collision\CollisionDetection.cs" />
     <Compile Include="Manager\CollisionManager.cs" />
     <Compile Include="Collision\DynamicAndDynamicObjectsHandler .cs" />
@@ -292,10 +293,14 @@
     <Compile Include="Object\Enemy\AbstractEnemy.cs" />
     <Compile Include="Object\Enemy\Goomba\FlippedGoomba.cs" />
     <Compile Include="Object\Enemy\Goomba\StompedGoomba.cs" />
-    <Compile Include="Object\Enemy\IEnemyMovementState.cs" />
+    <Compile Include="Object\Enemy\IEnemyState.cs" />
     <Compile Include="Object\Enemy\IEnemy.cs" />
-    <Compile Include="Object\Enemy\Koopa\FlippedKoopa.cs" />
-    <Compile Include="Object\Enemy\Koopa\StompedKoopa.cs" />
+    <Compile Include="Object\Enemy\Koopa_new\FlippedKoopa.cs" />
+    <Compile Include="Object\Enemy\Koopa_new\Koopa.cs" />
+    <Compile Include="Object\Enemy\Koopa_new\RightMovingKoopa.cs" />
+    <Compile Include="Object\Enemy\Koopa_new\LeftMovingKoopa.cs" />
+    <Compile Include="Object\Enemy\Koopa_new\StompedKoopa.cs" />
+    <Compile Include="Object\Enemy\Koopa_new\StompedMovingKoopa.cs" />
     <Compile Include="Object\IDynamic.cs" />
     <Compile Include="Object\IStatic.cs" />
     <Compile Include="Object\Item\IItem.cs" />
@@ -320,7 +325,6 @@
     <Compile Include="Object\Mario\MarioHealthState\IMarioHealthState.cs" />
     <Compile Include="MarioGame.cs" />
     <Compile Include="Object\Enemy\Goomba\Goomba.cs" />
-    <Compile Include="Object\Enemy\Koopa\Koopa.cs" />
     <Compile Include="Object\Item\AbstractItem.cs" />
     <Compile Include="Object\Item\Coin.cs" />
     <Compile Include="Object\Item\Flower.cs" />
@@ -375,6 +379,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets" Condition="Exists('..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,9 +1,9 @@
-﻿using SuperMarioBros.Objects.Enemy;
+﻿using SuperMarioBros.Enemy;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Goombas.GoombaStates
 {
-    public class IdleEnemyState : IEnemyMovementState
+    public class IdleEnemyState : IEnemyState
     {
         public IdleEnemyState(IEnemy enemy)
         {
@@ -13,6 +13,16 @@ namespace SuperMarioBros.Goombas.GoombaStates
         public void ChangeDirection()
         {
             // Do Nothing
+        }
+
+        public void Stomped()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void TakeDamage()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

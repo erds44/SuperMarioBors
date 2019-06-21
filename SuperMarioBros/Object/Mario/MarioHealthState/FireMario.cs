@@ -41,7 +41,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
 
         public void TakeDamage()
         {
-            mario.HealthState = new BigMario(mario);
+            mario.HealthState = new SmallMario(mario);
         }
 
         public void Power()

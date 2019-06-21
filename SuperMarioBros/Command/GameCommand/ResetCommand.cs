@@ -9,7 +9,7 @@
         }
         public void Execute()
         {
-            game.InitializeObjects();
+            game.InitializeGameComponents();
         }
     }
 }

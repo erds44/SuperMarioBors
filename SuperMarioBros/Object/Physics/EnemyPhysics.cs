@@ -23,12 +23,7 @@ namespace SuperMarioBros.Physicses
             obj.Position -= new Vector2(0, prevDisplacement.Y);
             velocity.Y = 0;
         }
-        public void MoveLeft()
-        {
-            obj.Position -= new Vector2(3*prevDisplacement.X, 0);
-            velocity.X *= -1;
-        }
-        public void MoveRight()
+        public void ReverseVelocity()
         {
             obj.Position -= new Vector2(3*prevDisplacement.X, 0);
             velocity.X *= -1;
@@ -38,12 +33,24 @@ namespace SuperMarioBros.Physicses
             obj.Position -= new Vector2(0, prevDisplacement.Y);
             velocity.Y *= -1;
         }
-
+        public void StopMoving()
+        {
+            velocity.X = 0;
+            velocity.Y = 0;
+        }
+        public void SetVelocity(float xVel, float yVel)
+        {
+            velocity = new Vector2(xVel, yVel);
+        }
+        public void SetVelocity(Vector2 velocityVector)
+        {
+            velocity = velocityVector;
+        }
         public Vector2 Displacement(GameTime gameTime)
         {
             Update(gameTime);
             prevDisplacement = displacement;
-            displacement = new Vector2(0, 0);                  
+            displacement = new Vector2(0, 0);
             return prevDisplacement;   
         }
 
