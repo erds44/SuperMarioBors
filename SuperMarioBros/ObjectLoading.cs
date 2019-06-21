@@ -23,7 +23,7 @@ namespace SuperMarioBros
         public static void LevelLoading(ContentManager content, string path)
         {
             mario = new Mario(new Vector2(0, 410));
-            nonCollidableObjects = new List<IObject>
+/*            nonCollidableObjects = new List<IObject>
             {
 
             };
@@ -57,7 +57,7 @@ namespace SuperMarioBros
                 new QuestionBlock(new Vector2(560, 250)),
                 new BrickBlock(new Vector2(440, 60)),
                 new BrickBlock(new Vector2(720, 60))
-            };
+            };*/
 
             XMLProcessor xml = new XMLProcessor();
 
@@ -74,17 +74,14 @@ namespace SuperMarioBros
         }
         public static List<IStatic> LoadStatics()
         {
-            Console.WriteLine("Statics is loaded");
             return statics;
         }
         public static List<IDynamic> LoadDynamics()
         {
-            Console.WriteLine("Dynamics is loaded");
             return dynamics;
         }
         public static List<IObject> LoadNonCollidable()
         {
-            Console.WriteLine("NonCollidable is loaded");
             return nonCollidableObjects;
         }
     }
