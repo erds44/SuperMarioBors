@@ -2,6 +2,7 @@
 using SuperMarioBros.Blocks.BlockStates;
 using SuperMarioBros.Goombas;
 using SuperMarioBros.Goombas.GoombaStates;
+using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Items;
 using SuperMarioBros.Koopas;
 using SuperMarioBros.Managers;
@@ -24,7 +25,7 @@ namespace SuperMarioBros.Collisions
                 //if(!(obj1.GetType() == typeof(Mario)&&((IMario)obj1).HealthState.GetType() == typeof(DeadMario)))
                 handle(obj1, obj2, direction);
         }
-        
+
         /* Dictionary for all possible collision cases */
         private static readonly Dictionary<(Type, Type), CollisionHandler> collisionDictionary = new Dictionary<(Type, Type), CollisionHandler>
         {
@@ -65,7 +66,7 @@ namespace SuperMarioBros.Collisions
              {(typeof(Koopa), typeof(Goomba)), MoveEnemy},
              //{(typeof(Koopa), typeof(StompedKoopa)), StompedKoopaDealDamage}, To be fixed
              {(typeof(Koopa), typeof(FireBall)), FireBallVSEnemy},
-             
+
              {(typeof(StompedKoopa), typeof(Goomba)), StompedKoopaDealDamage},
              //{(typeof(StompedKoopa), typeof(Koopa)), StompedKoopaDealDamage},
              //{(typeof(StompedKoopa), typeof(StompedKoopa)), MoveDynamic}, Dont consider for now
@@ -85,7 +86,7 @@ namespace SuperMarioBros.Collisions
         {
             IMario mario = (IMario)obj1;
             if (!(mario is StarMario)) /* avoid double decoration */
-                ObjectsManager.Instance.Decoration(mario ,new FlashingMario(mario.ReturnItself()));
+                ObjectsManager.Instance.Decoration(mario, new FlashingMario(mario.ReturnItself()));
             obj2.IsInvalid = true;
             mario.RedMushroom();
         }
@@ -109,7 +110,7 @@ namespace SuperMarioBros.Collisions
         }
         private static void FireBallVSEnemy(IDynamic obj1, IDynamic obj2, Direction direction)
         {
-           if(obj1 is FireBall)
+            if (obj1 is FireBall)
             {
                 obj1.IsInvalid = true;
                 ((IEnemy)obj2).Flip();
@@ -120,7 +121,7 @@ namespace SuperMarioBros.Collisions
                 ((IEnemy)obj1).Flip();
             }
         }
-        
+
         private static void StarMarioEnemy(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             ((IEnemy)obj2).Flip();
@@ -145,7 +146,7 @@ namespace SuperMarioBros.Collisions
                     break;
                 default:
                     Type healthState = ((IMario)obj1).HealthState.GetType();
-                    if((healthState != typeof(DeadMario)))
+                    if ((healthState != typeof(DeadMario)))
                     {
                         if (healthState != typeof(SmallMario))
                             ObjectsManager.Instance.Decoration((IMario)obj1, new FlashingMario((IMario)obj1));
@@ -158,22 +159,49 @@ namespace SuperMarioBros.Collisions
         {
             switch (direction)
             {
-                case Direction.top:
 
-                if (((StompedKoopa)obj2).State is IdleEnemyState && ((IMario)obj1).MarioPhysics.YVelocity >= 100)
-                {
-                       if (obj1.HitBox().Center.X <= obj2.HitBox().Center.X)
-                           obj2.MoveRight();
-                       else
-                           obj2.MoveLeft();
-                }else 
-                {
-                   ((StompedKoopa)obj2).Idle();
-                    obj1.MoveUp();
-                }
-                break;
-                case Direction.right: if (((StompedKoopa)obj2).DealDamge) obj1.TakeDamage(); else obj2.MoveLeft(); break;
-                case Direction.left: if (((StompedKoopa)obj2).DealDamge) obj1.TakeDamage(); else obj2.MoveRight(); break;
+                case Direction.top:
+                    if (((StompedKoopa)obj2).State is IdleEnemyState && ((IMario)obj1).MarioPhysics.YVelocity >= 100)
+                    {
+                        if (obj1.HitBox().Center.X <= obj2.HitBox().Center.X)
+                            obj2.MoveRight();
+                        else
+                            obj2.MoveLeft();
+                    }
+                    else
+                    {
+                        ((StompedKoopa)obj2).Idle();
+                        obj1.MoveUp();
+                    }
+                    break;
+                case Direction.right:
+                    if (((StompedKoopa)obj2).DealDamge)
+                    {
+                        IMarioHealthState state = ((IMario)obj1).HealthState;
+                        if (!(state is DeadMario))
+                        {
+                            if (!(state is SmallMario))
+                                ObjectsManager.Instance.Decoration((IMario)obj1, new FlashingMario(((IMario)obj1)));
+                            ((IMario)obj1).TakeDamage();
+                        }
+                    }
+                    else
+                        obj2.MoveLeft();
+                    break;
+                case Direction.left:
+                    if (((StompedKoopa)obj2).DealDamge)
+                    {
+                        IMarioHealthState state = ((IMario)obj1).HealthState;
+                        if (!(state is DeadMario))
+                        {
+                            if (!(state is SmallMario))
+                                ObjectsManager.Instance.Decoration((IMario)obj1, new FlashingMario(((IMario)obj1)));
+                            ((IMario)obj1).TakeDamage();
+                        }
+                    }
+                    else
+                        obj2.MoveRight();
+                    break;
             }
         }
         private static void StompedKoopaDealDamage(IDynamic obj1, IDynamic obj2, Direction direction)

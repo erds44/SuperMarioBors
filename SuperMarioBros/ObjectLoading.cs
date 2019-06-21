@@ -34,7 +34,7 @@ namespace SuperMarioBros
                 new Goomba(new Vector2(2200,410)),
                 new Koopa(new Vector2(1800,40)),
                 new RedMushroom(new Vector2(60, 400)),
-                new Goomba(new Vector2(550, 410)),
+                new Koopa(new Vector2(550, 410)),
                 //new Goomba(new Vector2(500, 60)), 
                 //new Koopa(new Vector2(600, 60))
             };
