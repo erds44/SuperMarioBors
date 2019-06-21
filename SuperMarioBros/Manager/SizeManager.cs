@@ -25,8 +25,10 @@ namespace SuperMarioBros.Managers
                     objectDictionary.Add(t, objectSize);
 
             }
-            objectDictionary.Add(typeof(HighPipe), new Point(74, 170));
-            objectDictionary.Add(typeof(MiddlePipe), new Point(74, 122));
+            if(!objectDictionary.ContainsKey(typeof(HighPipe)))
+                objectDictionary.Add(typeof(HighPipe), new Point(74, 170));
+            if (!objectDictionary.ContainsKey(typeof(MiddlePipe)))
+                objectDictionary.Add(typeof(MiddlePipe), new Point(74, 122));
             // Used for debug
             //foreach (KeyValuePair<Type, Point> ele in objectDictionary)
             // {
