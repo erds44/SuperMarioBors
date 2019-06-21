@@ -24,7 +24,7 @@ namespace SuperMarioBros.Managers
 
         public void Update(GameTime gameTime)
         {
-            if (dynamicObjects[0] != Mario) dynamicObjects.Insert(0, Mario); //Not working. At least the game doesn't crash due to Mario's death.
+            //if (dynamicObjects[0] != Mario) dynamicObjects.Insert(0, Mario); //Not working. At least the game doesn't crash due to Mario's death.
             for (int i = (staticObjects.Count - 1); i >= 0 && i < staticObjects.Count; i--)
             {
                 IStatic obj = staticObjects[i];
