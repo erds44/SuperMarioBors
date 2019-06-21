@@ -19,15 +19,15 @@ namespace SuperMarioBros.Blocks
             State = new BrickBlockState(this);
             base.Initialize();
         }
-        public ItemBrickBlock(Vector2 location)
-        {
-            itemType = typeof(Coin);
-            this.itemType = itemType;
-            this.itemCount = 1;
-            Position = location;
-            State = new BrickBlockState(this);
-            base.Initialize();
-        }
+        //public ItemBrickBlock(Vector2 location)
+        //{
+        //    itemType = typeof(Coin);
+        //    this.itemType = itemType;
+        //    this.itemCount = 1;
+        //    Position = location;
+        //    State = new BrickBlockState(this);
+        //    base.Initialize();
+        //}
 
         public override void Used()
         {

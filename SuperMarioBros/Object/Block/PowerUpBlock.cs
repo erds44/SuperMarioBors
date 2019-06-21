@@ -20,14 +20,14 @@ namespace SuperMarioBros.Blocks
             base.Initialize();
         }
 
-        public PowerUpBlock(Vector2 location)
-        {
-            IsFlower = false;
-            this.itemCount = 1;
-            Position = location;
-            State = new QuestionBlockState(this);
-            base.Initialize();
-        }
+        //public PowerUpBlock(Vector2 location)
+        //{
+        //    IsFlower = false;
+        //    this.itemCount = 1;
+        //    Position = location;
+        //    State = new QuestionBlockState(this);
+        //    base.Initialize();
+        //}
         public override void Used()
         {
             if(itemCount > 0)

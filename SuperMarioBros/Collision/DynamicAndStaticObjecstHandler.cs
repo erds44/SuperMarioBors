@@ -117,6 +117,7 @@ namespace SuperMarioBros.Collisions
             { (typeof(FireBall), typeof(MiddlePipe)), FireBallDisappear},
 
             { (typeof(RedMushroom), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(RedMushroom), typeof(ConcreteBlockState)), MoveDynamic},
             { (typeof(RedMushroom), typeof(BrickBlockState)), MoveDynamic},
             { (typeof(RedMushroom), typeof(QuestionBlockState)), MoveDynamic},
             { (typeof(RedMushroom), typeof(UsedBlockState)), MoveDynamic},
@@ -130,6 +131,7 @@ namespace SuperMarioBros.Collisions
             {(typeof(GreenMushroom), typeof(BumpBlockState)), ItemVsBumpBlock},
 
             { (typeof(GreenMushroom), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(GreenMushroom), typeof(ConcreteBlockState)), MoveDynamic},
             { (typeof(GreenMushroom), typeof(BrickBlockState)), MoveDynamic},
             { (typeof(GreenMushroom), typeof(QuestionBlockState)), MoveDynamic},
             { (typeof(GreenMushroom), typeof(UsedBlockState)), MoveDynamic},
