@@ -44,7 +44,7 @@ namespace SuperMarioBros
         protected override void Update(GameTime gameTime)
         {
             controller.Update();
-            marioCamera.Follow();
+            marioCamera.Update();
             DynamicLoading.Instance.Load();
             ObjectsManager.Instance.Update(gameTime);
             collisionManager.HandleCollision();

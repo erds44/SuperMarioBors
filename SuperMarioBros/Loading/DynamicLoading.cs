@@ -27,6 +27,9 @@ namespace SuperMarioBros.Loading
         private DynamicLoading() { }
         public void Initialize()
         {
+            staticObjects.Clear();
+            dynamicObjects.Clear();
+            nonCollidableObjects.Clear();
             var staticList = ObjectLoading.LoadStatics();
             var dynamicList = ObjectLoading.LoadDynamics();
             var nonCollidableList = ObjectLoading.LoadNonCollidable();
