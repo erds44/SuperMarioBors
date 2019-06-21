@@ -24,6 +24,14 @@
       <Size>72 74</Size>
     </Item>
 <Item>
+      <ObjectType>SuperMarioBros.Items.MiddlePipe</ObjectType>
+      <Size>74 122</Size>
+    </Item>
+<Item>
+      <ObjectType>SuperMarioBros.Items.HighPipe</ObjectType>
+      <Size>72 170</Size>
+    </Item>
+<Item>
       <ObjectType>SuperMarioBros.Items.Coin</ObjectType>
       <Size>14 26</Size>
     </Item>
