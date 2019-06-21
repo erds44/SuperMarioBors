@@ -4,6 +4,7 @@ using SuperMarioBros.Sprites;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.Managers;
+using SuperMarioBros.Enemy;
 
 namespace SuperMarioBros.Goombas
 {
