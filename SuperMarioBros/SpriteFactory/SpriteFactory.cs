@@ -41,7 +41,7 @@ namespace SuperMarioBros.SpriteFactories
                 { "Flower", new UniversalSprite(content.Load<Texture2D>("Flower"), 5) },
                 { "GoombaLeftMoving", new UniversalSprite(content.Load<Texture2D>("Goomba"), 2) },
                 { "GoombaRightMoving", new UniversalSprite(content.Load<Texture2D>("Goomba"), 2) },
-                { "StompedGoomba", new UniversalSprite(content.Load<Texture2D>("GoombaStomped"), 1) },
+                { "StompedGoomba", new UniversalSprite(content.Load<Texture2D>("StompedGoomba"), 1) },
                 { "StompedKoopaRightMoving", new UniversalSprite(content.Load<Texture2D>("KoopaStomped"), 1) },
                 { "StompedKoopaLeftMoving", new UniversalSprite(content.Load<Texture2D>("KoopaStomped"), 1) },
                 { "GreenMushroom", new UniversalSprite(content.Load<Texture2D>("GreenMushroom"), 1) },
