@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.GameCoreComponents;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
 using System.Collections.ObjectModel;
@@ -45,14 +46,9 @@ namespace SuperMarioBros.Managers
         }
         private void BoundaryCheck(IObject obj)
         {
-            if (!obj.IsInvalid)
-            {
-                bool result = false;
-                if (obj.Position.Y < 0) result = true;
-                if (obj.Position.X < -100) result = true;
-                if (obj.Position.X > 1000) result = true;
-                obj.IsInvalid = result;
-            }
+                if (obj.Position.Y > MarioGame.WindowHeight + 100) obj.IsInvalid |= true;
+                if (obj.Position.X < Camera.Instance.LeftBound - 100) obj.IsInvalid |= true;
+                if (obj.Position.X > Camera.Instance.RightBound + 100) obj.IsInvalid |= true;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -74,6 +70,12 @@ namespace SuperMarioBros.Managers
         {
             gameObject.Destroy();
             dynamicObjects.Remove(gameObject);
+        }
+        public void MoveToNoncollidable(IObject gameObject)
+        {
+            if (gameObject is IDynamic) dynamicObjects.Remove((IDynamic)gameObject);
+            if (gameObject is IStatic) dynamicObjects.Remove((IDynamic)gameObject);
+            nonCollidableObjects.Add(gameObject);
         }
         public void RemoveFromNonCollidable(IObject gameObject)
         {

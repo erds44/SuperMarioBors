@@ -130,7 +130,7 @@ namespace SuperMarioBros.Marios
 
         public void Destroy()
         {
-            //Do nothing.
+            MarioGame.Instance.InitializeGameComponents();
         }
 
         public IMario ReturnItself()
