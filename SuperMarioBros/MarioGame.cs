@@ -6,9 +6,9 @@ using SuperMarioBros.Controllers;
 using SuperMarioBros.Marios;
 using SuperMarioBros.GameCoreComponents;
 using SuperMarioBros.Managers;
+using SuperMarioBros.LoadingTest;
 using SuperMarioBros.Loading;
 using System;
-using SuperMarioBros.LoadingTest;
 
 namespace SuperMarioBros
 {
