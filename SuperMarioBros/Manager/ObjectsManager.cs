@@ -24,21 +24,22 @@ namespace SuperMarioBros.Managers
 
         public void Update(GameTime gameTime)
         {
-            for (int i = (staticObjects.Count - 1); i >= 0; i--)
+            if (dynamicObjects[0] != Mario) dynamicObjects.Insert(0, Mario); //Not working. At least the game doesn't crash due to Mario's death.
+            for (int i = (staticObjects.Count - 1); i >= 0 && i < staticObjects.Count; i--)
             {
                 IStatic obj = staticObjects[i];
                 BoundaryCheck(obj);
                 obj.Update();
                 if (obj.IsInvalid) RemoveFromManager(obj);
             }
-            for (int i = (dynamicObjects.Count - 1); i >= 0; i--)
+            for (int i = (dynamicObjects.Count - 1); i >= 0 && i < dynamicObjects.Count; i--)
             {
                 IDynamic obj = dynamicObjects[i];
                 BoundaryCheck(obj);
                 obj.Update(gameTime);
                 if (obj.IsInvalid) RemoveFromManager(obj);
             }
-            for (int i = (nonCollidableObjects.Count - 1); i >= 0; i--)
+            for (int i = (nonCollidableObjects.Count - 1); i >= 0 && i < nonCollidableObjects.Count; i--)
             {
                 BoundaryCheck(nonCollidableObjects[i]);
                 IObject obj;
@@ -73,24 +74,24 @@ namespace SuperMarioBros.Managers
         }
         public void RemoveFromManager(IStatic gameObject)
         {
-            gameObject.Destroy();
             staticObjects.Remove(gameObject);
+            gameObject.Destroy();
         }
         public void RemoveFromManager(IDynamic gameObject)
         {
-            gameObject.Destroy();
             dynamicObjects.Remove(gameObject);
-        }
-        public void MoveToNonCollidable(IObject gameObject)
-        {
-            if (gameObject is IDynamic) dynamicObjects.Remove((IDynamic)gameObject);
-            if (gameObject is IStatic) dynamicObjects.Remove((IDynamic)gameObject);
-            nonCollidableObjects.Add(gameObject);
+            gameObject.Destroy();
         }
         public void RemoveFromNonCollidable(IObject gameObject)
         {
-            gameObject.Destroy();
             nonCollidableObjects.Remove(gameObject);
+            gameObject.Destroy();
+        }
+        public void MoveToNonCollidable(IObject gameObject)
+        {
+            nonCollidableObjects.Add(gameObject);
+            if (gameObject is IDynamic) dynamicObjects.Remove((IDynamic)gameObject);
+            if (gameObject is IStatic) staticObjects.Remove((IStatic)gameObject);
         }
         public void AddNonCollidable(IObject gameObject)
         {
@@ -117,7 +118,7 @@ namespace SuperMarioBros.Managers
         public void Decoration(IMario oldMario, IMario newMario)
         {
             int index = dynamicObjects.IndexOf(oldMario);
-            dynamicObjects[index] = newMario;
+            dynamicObjects[index]=newMario;
         }
         public void StarMario(IMario mario)
         {
