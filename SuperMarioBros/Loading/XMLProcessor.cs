@@ -43,8 +43,10 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(968,288),1,1,40,"null",1)),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(1008,288),1,1,40)),
               (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(928,119),1,1,40,"null",1)),
+               (new ObjectNode("SuperMarioBros.Backgrounds.BigCloud",new Vector2(100,170),1,12,700)),
+                (new ObjectNode("SuperMarioBros.Backgrounds.SmallCloud",new Vector2(300,70),1,12,700)),
+                 (new ObjectNode("SuperMarioBros.Backgrounds.MiddleCloud",new Vector2(400,120),1,12,700)),
 
-              
 
               (new ObjectNode("SuperMarioBros.Items.Pipe",new Vector2(1190,410),1,1,72)),
               (new ObjectNode("SuperMarioBros.Items.MiddlePipe",new Vector2(1629,410),1,1,72)),
@@ -107,7 +109,7 @@ namespace SuperMarioBros.LoadingTest
         {
             //base1
              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(928,410),1,1,30)),
-             (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(1700,410),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(1750,410),1,1,30)),
              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(2200,410),1,1,30)),
              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(2250,410),1,1,30)),
 
@@ -124,7 +126,7 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(4707,410),1,1,30)),
               (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(4757,410),1,1,30)),
               (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(5224,410),1,1,30)),
-              (new ObjectNode("SuperMarioBros.Koopas.Koopa",new Vector2(4042,410),1,1,30)),
+              (new ObjectNode("SuperMarioBros.Koopas.Koopa",new Vector2(4150,410),1,1,30)),
              
             //base4 
              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(7200,410),1,1,30)),
@@ -141,7 +143,7 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Backgrounds.BigHill",new Vector2(2044,410),1,1,0)),
               (new ObjectNode("SuperMarioBros.Backgrounds.BigBush",new Vector2(2530,410),1,1,0)),
               (new ObjectNode("SuperMarioBros.Backgrounds.SmallHill",new Vector2(2720,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.BigCloud",new Vector2(1170,70),1,1,0)),
+             
 
                (new ObjectNode("SuperMarioBros.Backgrounds.SmallBush",new Vector2(3039,410),1,1,0)),
 
