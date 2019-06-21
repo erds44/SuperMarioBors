@@ -6,6 +6,7 @@ using SuperMarioBros.Controllers;
 using SuperMarioBros.Marios;
 using SuperMarioBros.GameCoreComponents;
 using SuperMarioBros.Managers;
+using SuperMarioBros.LoadingTest;
 
 namespace SuperMarioBros
 {
@@ -82,6 +83,7 @@ namespace SuperMarioBros
             SizeManager.LoadItemSize(Content, "SizeLoading");
             SizeManager.LoadMarioSize(Content, "MarioSizeLoading");
             ObjectsManager.Instance.Initialize();
+
             marioCamera.Reset();
             marioCamera.SetFocus(ObjectsManager.Instance.MarioObject());
             collisionManager = new CollisionManager();

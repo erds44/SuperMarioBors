@@ -275,9 +275,7 @@
     <Compile Include="Controller\JoyStickController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Interfaces\IDraw.cs" />
-    <Compile Include="Loading\LevelLoading.cs" />
     <Compile Include="Loading\ObjectNode.cs" />
-    <Compile Include="Loading\SizeLoading.cs" />
     <Compile Include="Loading\XMLProcessor.cs" />
     <Compile Include="ObjectLoading.cs" />
     <Compile Include="Object\Background\AbstractBackGround.cs" />
