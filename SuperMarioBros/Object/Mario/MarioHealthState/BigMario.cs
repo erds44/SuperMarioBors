@@ -36,7 +36,6 @@ namespace SuperMarioBros.Marios.MarioTypeStates
 
         public void TakeDamage()
         {
-            Console.WriteLine("Big Mario took damage");
             mario.HealthState = new SmallMario(mario);
         }
 

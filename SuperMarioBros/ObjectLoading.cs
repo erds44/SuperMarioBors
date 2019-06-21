@@ -19,6 +19,7 @@ namespace SuperMarioBros
         private static List<IDynamic> dynamics;
         private static List<IObject> nonCollidableObjects;
         public static IMario mario;
+        public static int LevelLength { get; private set; }
         public static void LevelLoading(ContentManager content, string path)
         {
             mario = new Mario(new Vector2(0, 410));
@@ -59,6 +60,7 @@ namespace SuperMarioBros
             };
 
             XMLProcessor xml = new XMLProcessor();
+
             statics = xml.StaticList();
             //for (int i = 0; i < 80; i++)
             //{

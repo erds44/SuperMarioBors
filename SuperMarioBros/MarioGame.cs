@@ -17,6 +17,7 @@ namespace SuperMarioBros
     {
         public static int WindowWidth { get; private set; }
         public static int WindowHeight { get; private set; }
+        public static int LevelLength { get; private set; }
         private ControllerMessager controller;
         private SpriteBatch spriteBatch;
         private CollisionManager collisionManager;
@@ -87,6 +88,7 @@ namespace SuperMarioBros
             ObjectLoading.LevelLoading(Content, "PartialLevelOne");
             SizeManager.LoadItemSize(Content, "SizeLoading");
             SizeManager.LoadMarioSize(Content, "MarioSizeLoading");
+
             ObjectsManager.Instance.Initialize();
 
             marioCamera.Reset();
