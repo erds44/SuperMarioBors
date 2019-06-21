@@ -1,12 +1,8 @@
 ﻿using SuperMarioBros.GameCoreComponents;
 using SuperMarioBros.Managers;
-using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperMarioBros.Loading
 {

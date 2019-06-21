@@ -35,7 +35,7 @@ namespace SuperMarioBros
                 new Goomba(new Vector2(2200,410)),
                 new Koopa(new Vector2(1800,40)),
                 new RedMushroom(new Vector2(60, 400)),
-                new Goomba(new Vector2(550, 410)),
+                new Koopa(new Vector2(550, 410)),
                 //new Goomba(new Vector2(500, 60)), 
                 //new Koopa(new Vector2(600, 60))
             };
@@ -62,6 +62,8 @@ namespace SuperMarioBros
             XMLProcessor xml = new XMLProcessor();
 
             statics = xml.StaticList();
+            dynamics = xml.DynamicList();
+            nonCollidableObjects = xml.NonCollidableList();
             //for (int i = 0; i < 80; i++)
             //{
             //    statics.Add(new RockBlock(new Vector2(0 + 40 * i, 450)));

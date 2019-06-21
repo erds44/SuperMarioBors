@@ -151,6 +151,9 @@
     <None Include="Content\GoombaStomped.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\HighPipe.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\KoopaStomped.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -161,6 +164,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\MiddleHill.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\MiddlePipe.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\PartialLevelOne.xnb">
@@ -247,6 +253,7 @@
     <Compile Include="Camera\Camera.cs" />
     <Compile Include="Collision\CollisionDetection.cs" />
     <Compile Include="Loading\DynamicLoading.cs" />
+    <Compile Include="Loading\SpecialBlock.cs" />
     <Compile Include="Object\Enemy\AbstractEnemy.cs" />
     <Compile Include="Object\Enemy\EnemyMovementState\IdleEnemyState.cs" />
     <Compile Include="Object\Enemy\EnemyMovementState\LeftMoving.cs" />
@@ -307,7 +314,9 @@
     <Compile Include="Object\Item\Coin.cs" />
     <Compile Include="Object\Item\Flower.cs" />
     <Compile Include="Object\Item\GreenMushroom.cs" />
+    <Compile Include="Object\Item\HighPipe.cs" />
     <Compile Include="Object\Item\IItem.cs" />
+    <Compile Include="Object\Item\MiddlePipe.cs" />
     <Compile Include="Object\Item\Pipe.cs" />
     <Compile Include="Object\Item\RedMushroom.cs" />
     <Compile Include="Object\Item\Star.cs" />

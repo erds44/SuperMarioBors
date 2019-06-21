@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using SuperMarioBros.Items;
 using SuperMarioBros.Objects;
 using System;
 using System.Collections.Generic;
@@ -24,11 +25,15 @@ namespace SuperMarioBros.Managers
                     objectDictionary.Add(t, objectSize);
 
             }
-           // Used for debug
-           //foreach (KeyValuePair<Type, Point> ele in objectDictionary)
-           // {
-           //     Console.WriteLine(ele);
-           // }
+            if(!objectDictionary.ContainsKey(typeof(HighPipe)))
+                objectDictionary.Add(typeof(HighPipe), new Point(74, 170));
+            if (!objectDictionary.ContainsKey(typeof(MiddlePipe)))
+                objectDictionary.Add(typeof(MiddlePipe), new Point(74, 122));
+            // Used for debug
+            //foreach (KeyValuePair<Type, Point> ele in objectDictionary)
+            // {
+            //     Console.WriteLine(ele);
+            // }
         }
 
         public static void LoadMarioSize(ContentManager content, string path)

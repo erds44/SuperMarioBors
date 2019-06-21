@@ -9,6 +9,8 @@ namespace SuperMarioBros.Backgrounds
         {
             Position = location;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
+
+            sprite.SetLayer(0);
         }
     }
 }
