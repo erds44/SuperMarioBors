@@ -157,6 +157,12 @@
     <None Include="Content\KoopaStomped.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\LeftBottomDerbis.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\LeftTopDerbis.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\MarioSizeLoading.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -170,6 +176,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\PartialLevelOne.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RightBottomDerbis.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RightTopDerbis.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\SizeLoading.xnb">
@@ -311,6 +323,7 @@
     <Compile Include="Object\IDynamic.cs" />
     <Compile Include="Object\IStatic.cs" />
     <Compile Include="Object\Item\AbstractItem.cs" />
+    <Compile Include="Object\Item\BrickDerbis.cs" />
     <Compile Include="Object\Item\Coin.cs" />
     <Compile Include="Object\Item\Flower.cs" />
     <Compile Include="Object\Item\GreenMushroom.cs" />
