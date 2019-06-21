@@ -8,7 +8,8 @@ namespace SuperMarioBros.Managers
 {
     public class ObjectsManager
     {
-        private Collection<IStatic> staticObjects;
+        //change to private later
+        public Collection<IStatic> staticObjects;
         private Collection<IDynamic> dynamicObjects;
         private Collection<IObject> nonCollidableObjects;
         public static ObjectsManager Instance { get; } = new ObjectsManager();

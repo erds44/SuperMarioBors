@@ -7,6 +7,8 @@ using SuperMarioBros.Controllers;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Collisions;
 using SuperMarioBros.GameCoreComponents;
+using SuperMarioBros.LoadingTest;
+using SuperMarioBros.Managers;
 
 namespace SuperMarioBros
 {
@@ -35,6 +37,8 @@ namespace SuperMarioBros
             SpriteFactory.Initialize(Content);
             marioCamera = Camera.Instance;
             InitializeGameComponents();
+            //
+            XMLProcessor.LoadObjects();
             base.Initialize();
         }
         protected override void Update(GameTime gameTime)
