@@ -1,8 +1,10 @@
-﻿using SuperMarioBros.Blocks;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Blocks;
 using SuperMarioBros.Blocks.BlockStates;
 using SuperMarioBros.Goombas;
 using SuperMarioBros.Items;
 using SuperMarioBros.Koopas;
+using SuperMarioBros.Managers;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Objects;
@@ -163,7 +165,10 @@ namespace SuperMarioBros.Collisions
                 }
                 else {
                     ((IBlock)obj2).Used();
-                    ((IBlock)obj2).Bump();
+                    if(obj2 is ItemBrickBlock)
+                        ((IBlock)obj2).Bump();
+                    else
+                        CreateDerbis(obj2.Position);
                 }
                 
             }
@@ -213,6 +218,13 @@ namespace SuperMarioBros.Collisions
         private static void FireBallDisappear(IDynamic obj1, IStatic obj2, Direction direction)
         {
             obj1.IsInvalid = true; 
+        }
+        private static void CreateDerbis(Vector2 position)
+        {
+            ObjectsManager.Instance.AddNonCollidable(new BrickDerbis(position, BrickPosition.leftTop));
+            ObjectsManager.Instance.AddNonCollidable(new BrickDerbis(position, BrickPosition.leftBottom));
+            ObjectsManager.Instance.AddNonCollidable(new BrickDerbis(position, BrickPosition.rightTop));
+            ObjectsManager.Instance.AddNonCollidable(new BrickDerbis(position, BrickPosition.rightBottom));
         }
 
     }

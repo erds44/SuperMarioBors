@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using SuperMarioBros.Sprites;
+using SuperMarioBros.Items;
 
 namespace SuperMarioBros.SpriteFactories
 {
@@ -9,6 +10,7 @@ namespace SuperMarioBros.SpriteFactories
     {
         private static ContentManager content;
         private static Dictionary<string, ISprite> spriteInfo;
+        private static Dictionary<BrickPosition, ISprite> derbisSprite;
         private static ISprite sprite;
         public static void Initialize(ContentManager inputContent)
         {
@@ -77,13 +79,24 @@ namespace SuperMarioBros.SpriteFactories
                 { "SmallCloud", new UniversalSprite(content.Load<Texture2D>("SmallCloud"), 1) },
                 { "FireBall", new UniversalSprite(content.Load<Texture2D>("FireBall"), 1) }
             };
-            
+            derbisSprite = new Dictionary<BrickPosition, ISprite>
+            {
+                { BrickPosition.leftTop, new UniversalSprite(content.Load<Texture2D>("LeftTopDerbis"), 1) },
+                { BrickPosition.leftBottom, new UniversalSprite(content.Load<Texture2D>("LeftBottomDerbis"), 1) },
+                { BrickPosition.rightTop, new UniversalSprite(content.Load<Texture2D>("RightTopDerbis"), 1) },
+                { BrickPosition.rightBottom, new UniversalSprite(content.Load<Texture2D>("RightBottomDerbis"), 1) }
+            };         
         }
 
         public static ISprite CreateSprite(string type)
         { 
             if(!(spriteInfo.TryGetValue(type, out sprite)))
                 throw new System.ArgumentException("Cannot find: " + type + " in the dictionary");
+            return sprite;
+        }
+        public static ISprite CreateDerbisSprite(BrickPosition brickPosition)
+        {
+            derbisSprite.TryGetValue(brickPosition, out sprite);
             return sprite;
         }
     }
