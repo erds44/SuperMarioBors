@@ -9,7 +9,7 @@ namespace SuperMarioBros.Physicses
     {
         public float XVelocity { get; private set; }
         public float YVelocity { get; private set; }
-        private readonly float jumpVelocity = -270;
+        private readonly float jumpVelocity = -260;
         private readonly float acceleration;
         private readonly float deceleration;
         private readonly float gravity = 600;

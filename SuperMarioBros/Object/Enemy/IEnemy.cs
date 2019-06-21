@@ -1,10 +1,10 @@
 ﻿using SuperMarioBros.Sprites;
 
-namespace SuperMarioBros.Enemy
+namespace SuperMarioBros.Objects.Enemy
 {
     public interface IEnemy : IDynamic
     {
-        IEnemyState State { get; set; }
+        IEnemyMovementState State { get; set; }
         ISprite Sprite { get; set; }
         void Flip();
         void BumpUp();

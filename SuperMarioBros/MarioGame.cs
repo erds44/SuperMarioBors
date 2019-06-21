@@ -1,13 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using SuperMarioBros.Objects;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Controllers;
 using SuperMarioBros.Marios;
-using SuperMarioBros.Collisions;
 using SuperMarioBros.GameCoreComponents;
-using SuperMarioBros.LoadingTest;
 using SuperMarioBros.Managers;
 
 namespace SuperMarioBros
@@ -37,8 +34,6 @@ namespace SuperMarioBros
             SpriteFactory.Initialize(Content);
             marioCamera = Camera.Instance;
             InitializeGameComponents();
-            //
-            XMLProcessor.LoadObjects();
             base.Initialize();
         }
         protected override void Update(GameTime gameTime)
@@ -84,8 +79,8 @@ namespace SuperMarioBros
         public void InitializeGameComponents()
         {
             ObjectLoading.LevelLoading(Content, "PartialLevelOne");
-            ObjectSizeManager.LoadItemSize(Content, "SizeLoading");
-            ObjectSizeManager.LoadMarioSize(Content, "MarioSizeLoading");
+            SizeManager.LoadItemSize(Content, "SizeLoading");
+            SizeManager.LoadMarioSize(Content, "MarioSizeLoading");
             ObjectsManager.Instance.Initialize();
             marioCamera.Reset();
             marioCamera.SetFocus(ObjectsManager.Instance.MarioObject());

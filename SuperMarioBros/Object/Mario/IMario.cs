@@ -22,7 +22,6 @@ namespace SuperMarioBros.Marios
         void Up();
         void Right();
         void Idle();
-        void Bump();
         new void Update(GameTime gameTime);
         void BumpUp();
         void RedMushroom();
