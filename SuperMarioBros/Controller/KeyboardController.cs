@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
+using SuperMarioBros.Managers;
 
 namespace SuperMarioBros.Controllers
 {
@@ -16,9 +18,18 @@ namespace SuperMarioBros.Controllers
                 inputKeys.Add(element.Item1, element.Item2);
             }
         }
+        bool isLDown = false;
         public void Update()
         {
             Keys[] key = Keyboard.GetState().GetPressedKeys();
+            bool isPrevLDown = isLDown;
+            isLDown = Keyboard.GetState().IsKeyDown(Keys.L);
+            if (!(isLDown && isPrevLDown)&&isLDown) { //Debug use.
+                var mario = ObjectsManager.Instance.Mario;
+                Console.WriteLine(mario.Position);
+                Console.WriteLine(mario.GetType());
+                Console.WriteLine(mario.HealthState.GetType());
+            };
                 foreach(Keys keyPressed in key)
                 {
                     if (inputKeys.TryGetValue(keyPressed, out int command))

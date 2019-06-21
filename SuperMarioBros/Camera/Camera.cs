@@ -36,7 +36,7 @@ namespace SuperMarioBros.GameCoreComponents
             RightBound = LeftBound + MarioGame.WindowWidth;
             focus = obj;
         }
-        public void Follow()
+        public void Update()
         {
             if (focus is null) return;
             Vector2 targetPosition = focus.Position;

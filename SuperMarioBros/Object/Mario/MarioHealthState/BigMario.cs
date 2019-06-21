@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.SpriteFactories;
+using System;
 
 namespace SuperMarioBros.Marios.MarioTypeStates
 {
@@ -35,6 +36,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
 
         public void TakeDamage()
         {
+            Console.WriteLine("Big Mario took damage");
             mario.HealthState = new SmallMario(mario);
         }
 

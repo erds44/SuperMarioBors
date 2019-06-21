@@ -29,8 +29,12 @@ namespace SuperMarioBros
             dynamics = new List<IDynamic>
             {
                 //new Goomba(new Vector2(550, 410)),
-                new Koopa(new Vector2(200, 410)),
-
+                //new Koopa(new Vector2(200, 410)),
+                new Goomba(new Vector2(2000,40)),
+                new Goomba(new Vector2(2200,410)),
+                new Koopa(new Vector2(1800,40)),
+                new RedMushroom(new Vector2(60, 400)),
+                new Koopa(new Vector2(550, 410)),
                 //new Goomba(new Vector2(500, 60)), 
                 //new Koopa(new Vector2(600, 60))
             };

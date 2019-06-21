@@ -6,9 +6,9 @@ using SuperMarioBros.Controllers;
 using SuperMarioBros.Marios;
 using SuperMarioBros.GameCoreComponents;
 using SuperMarioBros.Managers;
+using SuperMarioBros.LoadingTest;
 using SuperMarioBros.Loading;
 using System;
-using SuperMarioBros.LoadingTest;
 
 namespace SuperMarioBros
 {
@@ -44,7 +44,7 @@ namespace SuperMarioBros
         protected override void Update(GameTime gameTime)
         {
             controller.Update();
-            marioCamera.Follow();
+            marioCamera.Update();
             DynamicLoading.Instance.Load();
             ObjectsManager.Instance.Update(gameTime);
             collisionManager.HandleCollision();
