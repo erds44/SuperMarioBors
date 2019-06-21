@@ -6,31 +6,34 @@ using SuperMarioBros.Items;
 using SuperMarioBros.Koopas;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace SuperMarioBros
 {
     public static class ObjectLoading
     {
-        private static Collection<IStatic> statics;
-        private static Collection<IDynamic> dynamics;
-        private static Collection<IObject> nonCollidableObjects;
+        private static List<IStatic> statics;
+        private static List<IDynamic> dynamics;
+        private static List<IObject> nonCollidableObjects;
+        public static IMario mario;
         public static void LevelLoading(ContentManager content, string path)
         {
-            nonCollidableObjects = new Collection<IObject>
+            mario = new Mario(new Vector2(0, 410));
+            nonCollidableObjects = new List<IObject>
             {
 
             };
-            dynamics = new Collection<IDynamic>
+            dynamics = new List<IDynamic>
             {
-                new Mario(new Vector2(0, 410)),
                 //new Goomba(new Vector2(550, 410)),
                 new Koopa(new Vector2(200, 410)),
 
                 //new Goomba(new Vector2(500, 60)), 
                 //new Koopa(new Vector2(600, 60))
             };
-            statics = new Collection<IStatic>
+            statics = new List<IStatic>
             {
                 new Pipe(new Vector2(420,410)),
                 new Pipe(new Vector2(700,410)),
@@ -49,21 +52,27 @@ namespace SuperMarioBros
                 new BrickBlock(new Vector2(440, 60)),
                 new BrickBlock(new Vector2(720, 60))
             };
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 80; i++)
+            {
                 statics.Add(new RockBlock(new Vector2(0 + 40 * i, 450)));
+                statics.Add(new RockBlock(new Vector2(0 + 40 * i, 490)));
+            }
             for (int i = 0; i < 6; i++)
                 statics.Add(new BrickBlock(new Vector2(480 + 40 * i, 100)));
         }
-        public static Collection<IStatic> LoadStatics()
+        public static List<IStatic> LoadStatics()
         {
+            Console.WriteLine("Statics is loaded");
             return statics;
         }
-        public static Collection<IDynamic> LoadDynamics()
+        public static List<IDynamic> LoadDynamics()
         {
+            Console.WriteLine("Dynamics is loaded");
             return dynamics;
         }
-        public static Collection<IObject> LoadNonCollidable()
+        public static List<IObject> LoadNonCollidable()
         {
+            Console.WriteLine("NonCollidable is loaded");
             return nonCollidableObjects;
         }
     }

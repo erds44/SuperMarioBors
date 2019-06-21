@@ -34,7 +34,7 @@ namespace SuperMarioBros.Goombas
 
         public override void TakeDamage()
         {
-            ObjectsManager.Instance.AddDynamic(new StompedGoomba(Position));
+            ObjectsManager.Instance.AddObject(new StompedGoomba(Position));
             IsInvalid = true;
         }
         public override void Update(GameTime gameTime)

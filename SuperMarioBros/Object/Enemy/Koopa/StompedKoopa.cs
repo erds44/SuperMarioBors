@@ -33,7 +33,7 @@ namespace SuperMarioBros.Koopas
             respawnTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (respawnTimer < 0 && State is IdleEnemyState)
             {
-                ObjectsManager.Instance.AddDynamic(new Koopa(Position));   /* return to Koopa after 5 seconds */
+                ObjectsManager.Instance.AddObject(new Koopa(Position));   /* return to Koopa after 5 seconds */
                 IsInvalid = true;
             }
             Position += physics.Displacement(gameTime);

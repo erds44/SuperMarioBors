@@ -18,7 +18,7 @@ namespace SuperMarioBros.Koopas
 
         public override void TakeDamage()
         {
-            ObjectsManager.Instance.AddDynamic(new StompedKoopa(Position));
+            ObjectsManager.Instance.AddObject(new StompedKoopa(Position));
             IsInvalid = true;
         }
         

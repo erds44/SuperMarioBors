@@ -11,7 +11,6 @@ namespace SuperMarioBros
         {
             using (var game = new MarioGame())
                 game.Run();
-
         }
     }
 }

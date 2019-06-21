@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using SuperMarioBros.Koopas;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Managers;
 
 namespace SuperMarioBros.LoadingTest
 {

@@ -1,17 +1,18 @@
 ﻿using SuperMarioBros.Collisions;
 using SuperMarioBros.Objects;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Managers
 {
     public class CollisionManager 
     {
-        private readonly Collection<IStatic> staticObjects;
-        private readonly Collection<IDynamic> dynamicObjects;
+        private readonly List<IStatic> staticObjects;
+        private readonly List<IDynamic> dynamicObjects;
         public CollisionManager()
         {
-            staticObjects = ObjectLoading.LoadStatics();
-            dynamicObjects = ObjectLoading.LoadDynamics();
+            staticObjects = ObjectsManager.Instance.staticObjects;
+            dynamicObjects = ObjectsManager.Instance.dynamicObjects;
         }
 
         public void HandleCollision()

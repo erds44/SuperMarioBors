@@ -1,8 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.GameCoreComponents;
+using SuperMarioBros.Loading;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Managers
@@ -10,46 +13,56 @@ namespace SuperMarioBros.Managers
     public class ObjectsManager
     {
         //change to private later
-        public Collection<IStatic> staticObjects;
-        private Collection<IDynamic> dynamicObjects;
-        private Collection<IObject> nonCollidableObjects;
+        public List<IStatic> staticObjects { get; private set; }
+        public List<IDynamic> dynamicObjects{get; private set;}
+        public List<IObject> nonCollidableObjects{get; private set;}
+        public IMario Mario { get; private set ; }
         public static ObjectsManager Instance { get; } = new ObjectsManager();
-        private ObjectsManager() { }
-        public void Initialize()
-        {
-            staticObjects = ObjectLoading.LoadStatics();
-            dynamicObjects = ObjectLoading.LoadDynamics();
-            nonCollidableObjects = ObjectLoading.LoadNonCollidable();
+        private ObjectsManager() {
+            staticObjects = new List<IStatic>();
+            dynamicObjects = new List<IDynamic>();
+            nonCollidableObjects = new List<IObject>();
         }
+
         public void Update(GameTime gameTime)
         {
             for (int i = (staticObjects.Count - 1); i >= 0; i--)
             {
-                staticObjects[i].Update();
-                BoundaryCheck(staticObjects[i]);
-                if (staticObjects[i].IsInvalid) RemoveFromStatic(staticObjects[i]);
+                IStatic obj = staticObjects[i];
+                BoundaryCheck(obj);
+                obj.Update();
+                if (obj.IsInvalid) RemoveFromManager(obj);
             }
             for (int i = (dynamicObjects.Count - 1); i >= 0; i--)
             {
-                dynamicObjects[i].Update(gameTime);
-                BoundaryCheck(dynamicObjects[i]);
-                if (dynamicObjects[i].IsInvalid) RemoveFromDynamic(dynamicObjects[i]);
+                IDynamic obj = dynamicObjects[i];
+                BoundaryCheck(obj);
+                obj.Update(gameTime);
+                if (obj.IsInvalid) RemoveFromManager(obj);
             }
             for (int i = (nonCollidableObjects.Count - 1); i >= 0; i--)
             {
-                System.Console.WriteLine(nonCollidableObjects[i]);
+                BoundaryCheck(nonCollidableObjects[i]);
+                IObject obj;
                 if (nonCollidableObjects[i] is IStatic)
-                    ((IStatic)nonCollidableObjects[i]).Update();
+                {
+                    obj = (IStatic)nonCollidableObjects[i];
+                    ((IStatic)obj).Update();
+                }
                 else
-                    ((IDynamic)nonCollidableObjects[i]).Update(gameTime);
+                {
+                    obj = (IDynamic)nonCollidableObjects[i];
+                    ((IDynamic)obj).Update(gameTime);
+                }
+                if (obj.IsInvalid) RemoveFromNonCollidable(obj);
             }
 
         }
         private void BoundaryCheck(IObject obj)
         {
                 if (obj.Position.Y > MarioGame.WindowHeight + 100) obj.IsInvalid |= true;
-                if (obj.Position.X < Camera.Instance.LeftBound - 100) obj.IsInvalid |= true;
-                if (obj.Position.X > Camera.Instance.RightBound + 100) obj.IsInvalid |= true;
+                if (obj.Position.X < Camera.Instance.LeftBound - 300) obj.IsInvalid |= true;
+                if (obj.Position.X > Camera.Instance.RightBound + 300) obj.IsInvalid |= true;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -60,19 +73,17 @@ namespace SuperMarioBros.Managers
             foreach (IObject obj in nonCollidableObjects)
                 obj.Draw(spriteBatch);
         }
-
-
-        public void RemoveFromStatic(IStatic gameObject)
+        public void RemoveFromManager(IStatic gameObject)
         {
             gameObject.Destroy();
             staticObjects.Remove(gameObject);
         }
-        public void RemoveFromDynamic(IDynamic gameObject)
+        public void RemoveFromManager(IDynamic gameObject)
         {
             gameObject.Destroy();
             dynamicObjects.Remove(gameObject);
         }
-        public void MoveToNoncollidable(IObject gameObject)
+        public void MoveToNonCollidable(IObject gameObject)
         {
             if (gameObject is IDynamic) dynamicObjects.Remove((IDynamic)gameObject);
             if (gameObject is IStatic) dynamicObjects.Remove((IDynamic)gameObject);
@@ -80,20 +91,31 @@ namespace SuperMarioBros.Managers
         }
         public void RemoveFromNonCollidable(IObject gameObject)
         {
+            gameObject.Destroy();
             nonCollidableObjects.Remove(gameObject);
         }
         public void AddNonCollidable(IObject gameObject)
         {
             nonCollidableObjects.Add(gameObject);
         }
-        public void AddStatic(IStatic gameObject)
+        public void AddObject(IStatic gameObject)
         {
             staticObjects.Add(gameObject);
         }
-        public void AddDynamic(IDynamic gameObject)
+        public void AddObject(IDynamic gameObject)
         {
             dynamicObjects.Add(gameObject);
         }
+
+        internal void Initialize()
+        {
+            staticObjects.Clear();
+            dynamicObjects.Clear();
+            nonCollidableObjects.Clear();
+            DynamicLoading.Instance.Initialize();
+        }
+
+
         public void Decoration(IMario oldMario, IMario newMario)
         {
             int index = dynamicObjects.IndexOf(oldMario);
@@ -107,7 +129,12 @@ namespace SuperMarioBros.Managers
         }
         public IMario MarioObject()
         {
-            return (IMario)dynamicObjects[0]; /* for controller bind mario as receiver */
+            return Mario; /* for controller bind mario as receiver */
+        }
+        public void SetMario(IMario mario)
+        {
+            Mario = mario;
+            dynamicObjects.Add(mario);
         }
     }
 }

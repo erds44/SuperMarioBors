@@ -16,7 +16,7 @@ namespace SuperMarioBros.GameCoreComponents
         public float RightBound { get; private set; }
         public IObject focus { get; private set; }
         public Matrix Transform { get; private set; }
-        public Camera()
+        private Camera()
         {
             LeftBound = 0;
             RightBound = LeftBound + MarioGame.WindowWidth;

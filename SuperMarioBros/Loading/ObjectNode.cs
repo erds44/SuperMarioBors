@@ -10,7 +10,7 @@ namespace SuperMarioBros.LoadingTest
 {
     public class ObjectNode
     {
-        public String objectType ;
+        public string objectType;
         public Vector2 position;
         public int shape;
         public int size;

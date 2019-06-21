@@ -6,6 +6,7 @@ using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.Sprites;
+using System;
 
 namespace SuperMarioBros.Marios
 {
@@ -131,7 +132,7 @@ namespace SuperMarioBros.Marios
 
         public void Destroy()
         {
-            //Do nothing.
+            Console.WriteLine("StarMario destroied.");
         }
 
         public IMario ReturnItself()

@@ -30,7 +30,7 @@ namespace SuperMarioBros.Items
             {
                 physics.SetSpeed(new Vector2(60, 0));
                 sprite.SetLayer(1.0f);
-                ObjectsManager.Instance.AddDynamic(this);
+                ObjectsManager.Instance.AddObject(this);
                 ObjectsManager.Instance.RemoveFromNonCollidable(this);
                 addFlag = true;
             }

@@ -54,7 +54,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
             if (!(power && mario.PowerFlag) && mario.PowerFlag && fireCount>0 )
             {
                 fireCount--;
-                ObjectsManager.Instance.AddDynamic(new FireBall(this, mario));
+                ObjectsManager.Instance.AddObject(new FireBall(this, mario));
             }
             power = mario.PowerFlag;
 
