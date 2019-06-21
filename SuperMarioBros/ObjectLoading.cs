@@ -61,6 +61,7 @@ namespace SuperMarioBros
             XMLProcessor xml = new XMLProcessor();
             statics = xml.StaticList();
             dynamics = xml.DynamicList();
+            nonCollidableObjects = xml.NonCollidableList();
             //for (int i = 0; i < 80; i++)
             //{
             //    statics.Add(new RockBlock(new Vector2(0 + 40 * i, 450)));
