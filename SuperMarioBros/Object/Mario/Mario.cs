@@ -25,7 +25,7 @@ namespace SuperMarioBros.Marios
         public Mario(Vector2 location)
         {
             HealthState = new SmallMario(this);
-            MarioPhysics = new MarioPhysics(this,100);
+            MarioPhysics = new MarioPhysics(this,150);
             MovementState = new RightIdle(this);
             Position = location;
             NoMovementTimer = 0;
