@@ -24,11 +24,11 @@ namespace SuperMarioBros
             dynamics = new Collection<IDynamic>
             {
                 new Mario(new Vector2(0, 410)),
-                new Goomba(new Vector2(550, 410)),
-                new Koopa(new Vector2(600, 410)),
+                //new Goomba(new Vector2(550, 410)),
+                new Koopa(new Vector2(200, 410)),
 
-                new Goomba(new Vector2(500, 60)), 
-                new Koopa(new Vector2(600, 60))
+                //new Goomba(new Vector2(500, 60)), 
+                //new Koopa(new Vector2(600, 60))
             };
             statics = new Collection<IStatic>
             {

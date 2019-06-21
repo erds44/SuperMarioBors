@@ -11,12 +11,16 @@ namespace SuperMarioBros.Koopas
     {
         private double respawnTimer = 5;
         public bool DealDamge { get; private set;} /* a flag to check if stompedkoopa would deal mario */
+        public int stompedCount { get; set; }
+        public int count { get; set; }
         public StompedKoopa(Vector2 location)
         {
             Position = location;
             State = new IdleEnemyState(this);
             physics = new EnemyPhysics(this, new Vector2(0, 0));
             DealDamge = false;
+            stompedCount = 0;
+            count = 0;
         }
 
         public override void TakeDamage()
@@ -44,8 +48,11 @@ namespace SuperMarioBros.Koopas
         {
             if (State is IdleEnemyState) /* Inital setup when Mario kick shell */             
             {
-                physics.SetVelocity(new Vector2(-160, 0));
-                State = new LeftMoving(this, physics);
+
+                    Position += new Vector2(-30, 0);
+                    physics.SetVelocity(new Vector2(-120, 0));
+                    State = new LeftMoving(this, physics);
+
             }
             else /* Collision response */
             {
@@ -59,8 +66,9 @@ namespace SuperMarioBros.Koopas
         {
             if (State is IdleEnemyState) /* Inital setup when Mario kick shell */
             {
-                physics.SetVelocity(new Vector2(120, 0));
-                State = new RightMoving(this, physics);
+                    Position += new Vector2(30, 0);
+                    physics.SetVelocity(new Vector2(120, 0));
+                    State = new RightMoving(this, physics);
             }
             else /* Collision response */
             {
@@ -72,6 +80,14 @@ namespace SuperMarioBros.Koopas
         private void SetDealDamage()
         {
             DealDamge = true;
+        }
+        public void Idle()
+        {
+            physics.SetVelocity(new Vector2(0, 0));
+            State = new IdleEnemyState(this);
+            respawnTimer = 5;
+            DealDamge = false;
+
         }
     }
 }

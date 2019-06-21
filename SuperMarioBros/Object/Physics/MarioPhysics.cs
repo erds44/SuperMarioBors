@@ -80,7 +80,7 @@ namespace SuperMarioBros.Physicses
         }
         public void BumpUp()
         {
-            YVelocity = -150;
+            YVelocity = -100;
         }
         /* help method in movementState */
         public void SpeedDecay()

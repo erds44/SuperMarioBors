@@ -1,6 +1,7 @@
 ﻿using SuperMarioBros.Blocks;
 using SuperMarioBros.Blocks.BlockStates;
 using SuperMarioBros.Goombas;
+using SuperMarioBros.Goombas.GoombaStates;
 using SuperMarioBros.Items;
 using SuperMarioBros.Koopas;
 using SuperMarioBros.Managers;
@@ -157,9 +158,22 @@ namespace SuperMarioBros.Collisions
         {
             switch (direction)
             {
-                case Direction.top: obj1.MoveUp(); obj2.MoveRight();  break;
-                case Direction.right: if (((StompedKoopa)obj2).DealDamge) obj1.TakeDamage(); else obj2.MoveRight(); break;
-                case Direction.left: if (((StompedKoopa)obj2).DealDamge) obj1.TakeDamage(); else obj2.MoveLeft(); break;
+                case Direction.top:
+
+                if (((StompedKoopa)obj2).State is IdleEnemyState && ((IMario)obj1).MarioPhysics.YVelocity >= 100)
+                {
+                       if (obj1.HitBox().Center.X <= obj2.HitBox().Center.X)
+                           obj2.MoveRight();
+                       else
+                           obj2.MoveLeft();
+                }else 
+                {
+                   ((StompedKoopa)obj2).Idle();
+                    obj1.MoveUp();
+                }
+                break;
+                case Direction.right: if (((StompedKoopa)obj2).DealDamge) obj1.TakeDamage(); else obj2.MoveLeft(); break;
+                case Direction.left: if (((StompedKoopa)obj2).DealDamge) obj1.TakeDamage(); else obj2.MoveRight(); break;
             }
         }
         private static void StompedKoopaDealDamage(IDynamic obj1, IDynamic obj2, Direction direction)
