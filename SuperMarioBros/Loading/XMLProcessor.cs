@@ -103,7 +103,7 @@ namespace SuperMarioBros.LoadingTest
         {
             //base1
              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(928,410),1,1,30)),
-             (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(1700,410),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(1750,410),1,1,30)),
              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(2200,410),1,1,30)),
              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(2250,410),1,1,30)),
 
