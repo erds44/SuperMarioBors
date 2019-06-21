@@ -4,9 +4,7 @@ using SuperMarioBros.GameCoreComponents;
 using SuperMarioBros.Loading;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
-using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Managers
 {

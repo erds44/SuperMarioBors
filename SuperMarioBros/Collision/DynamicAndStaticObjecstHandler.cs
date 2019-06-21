@@ -83,6 +83,14 @@ namespace SuperMarioBros.Collisions
             { (typeof(Goomba), typeof(HighPipe)), MoveDynamic},
             { (typeof(Goomba), typeof(MiddlePipe)), MoveDynamic},
 
+            { (typeof(StompedGoomba), typeof(RockBlockState)), MoveDynamic},
+            { (typeof(StompedGoomba), typeof(BrickBlockState)), MoveDynamic},
+            { (typeof(StompedGoomba), typeof(QuestionBlockState)), MoveDynamic},
+            { (typeof(StompedGoomba), typeof(UsedBlockState)), MoveDynamic},
+            { (typeof(StompedGoomba), typeof(Pipe)), MoveDynamic},
+            { (typeof(StompedGoomba), typeof(HighPipe)), MoveDynamic},
+            { (typeof(StompedGoomba), typeof(MiddlePipe)), MoveDynamic},
+
             { (typeof(StompedKoopa), typeof(RockBlockState)), MoveDynamic},
             { (typeof(StompedKoopa), typeof(BrickBlockState)), MoveDynamic},
             { (typeof(StompedKoopa), typeof(QuestionBlockState)), MoveDynamic},
