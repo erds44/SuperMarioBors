@@ -41,15 +41,7 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(1008,288),1,1,40)),
               (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(928,119),1,1,40)),
 
-              (new ObjectNode("SuperMarioBros.Backgrounds.BigHill",new Vector2(0,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.BigBush",new Vector2(481,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.SmallHill",new Vector2(681,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.SmallBush",new Vector2(995,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.BigBush",new Vector2(1765,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.BigHill",new Vector2(2044,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.BigBush",new Vector2(2530,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.SmallHill",new Vector2(2720,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.BigCloud",new Vector2(1170,70),1,1,0)),
+              
 
               (new ObjectNode("SuperMarioBros.Items.Pipe",new Vector2(1190,410),1,1,72)),
               (new ObjectNode("SuperMarioBros.Items.MiddlePipe",new Vector2(1629,410),1,1,72)),
@@ -64,7 +56,7 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Blocks.PowerUpBlock",new Vector2(3340,288),1,1,40)),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(3300,288),1,1,40)),
 
-              (new ObjectNode("SuperMarioBros.Backgrounds.SmallBush",new Vector2(3039,410),1,1,0)),
+             
               //base3
                (new ObjectNode("SuperMarioBros.Blocks.RockBlock",new Vector2(3795,450),1,69,39)),
               (new ObjectNode("SuperMarioBros.Blocks.RockBlock",new Vector2(3795,489),1,69,39)),
@@ -84,13 +76,7 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(5544,119),1,1,40)),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(5584,119),1,1,40)),
 
-              (new ObjectNode("SuperMarioBros.Backgrounds.BigBush",new Vector2(3804,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.BigHill",new Vector2(4083,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.BigBush",new Vector2(4570,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.SmallHill",new Vector2(4762,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.SmallBush",new Vector2(5070,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.BigBush",new Vector2(5860,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.BigHill",new Vector2(6118,410),1,1,0)),
+             
 
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(5504,288),1,2,40)),
               (new ObjectNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(5710,410),3,4,40)),
@@ -109,10 +95,7 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(7719,410),3,8,40)),
               (new ObjectNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(8039,410),4,8,40)),
 
-              (new ObjectNode("SuperMarioBros.Backgrounds.SmallBush",new Vector2(6722,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.SmallHill",new Vector2(6803,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.SmallBush",new Vector2(7122,410),1,1,0)),
-              (new ObjectNode("SuperMarioBros.Backgrounds.BigHill",new Vector2(8150,410),1,1,0)),
+             
             };
 
 
@@ -144,15 +127,44 @@ namespace SuperMarioBros.LoadingTest
              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(7250,410),1,1,30)),
         };
 
+        private List<ObjectNode> nonCollidableList = new List<ObjectNode>
+        {
+            (new ObjectNode("SuperMarioBros.Backgrounds.BigHill",new Vector2(0,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.BigBush",new Vector2(481,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.SmallHill",new Vector2(681,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.SmallBush",new Vector2(995,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.BigBush",new Vector2(1765,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.BigHill",new Vector2(2044,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.BigBush",new Vector2(2530,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.SmallHill",new Vector2(2720,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.BigCloud",new Vector2(1170,70),1,1,0)),
+
+               (new ObjectNode("SuperMarioBros.Backgrounds.SmallBush",new Vector2(3039,410),1,1,0)),
+
+                (new ObjectNode("SuperMarioBros.Backgrounds.BigBush",new Vector2(3804,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.BigHill",new Vector2(4083,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.BigBush",new Vector2(4570,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.SmallHill",new Vector2(4762,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.SmallBush",new Vector2(5070,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.BigBush",new Vector2(5860,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.BigHill",new Vector2(6118,410),1,1,0)),
+
+               (new ObjectNode("SuperMarioBros.Backgrounds.SmallBush",new Vector2(6722,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.SmallHill",new Vector2(6803,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.SmallBush",new Vector2(7122,410),1,1,0)),
+              (new ObjectNode("SuperMarioBros.Backgrounds.BigHill",new Vector2(8150,410),1,1,0)),
+        };
 
         private List<IStatic> staticObjects;
         private List<IDynamic> dynamicObjects; 
+        private List<IObject> nonCollidableObjects;
 
 
         public XMLProcessor()
         {
             staticObjects = new List<IStatic>();
             dynamicObjects = new List<IDynamic>();
+            nonCollidableObjects = new List<IObject>();
         }
 
         //return methods
@@ -172,8 +184,26 @@ namespace SuperMarioBros.LoadingTest
             return dynamicObjects;
         }
 
-        
+        public List<IObject> NonCollidableList()
+        {
+            XMLWriter(@"NonCollidableLevel.xml", nonCollidableList);
+            XMLReader(@"NonCollidableLevel.xml", nonCollidableList);
+            NonCollidableListProcessor(nonCollidableList);
+            return nonCollidableObjects;
+        }
 
+        private void NonCollidableListProcessor(List<ObjectNode> list)
+        {
+            foreach (ObjectNode node in list)
+            {
+                Type t = Type.GetType(node.objectType);
+                Vector2 position;
+                position.X = node.position.X;
+                position.Y = node.position.Y;
+                var obj = Activator.CreateInstance(t, position);
+                nonCollidableObjects.Add((IObject)obj);
+            }
+        }
         private void DynamicListProcessor(List<ObjectNode> list)
         {
             foreach (ObjectNode node in list)

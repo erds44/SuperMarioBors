@@ -247,6 +247,7 @@
     <Compile Include="Camera\Camera.cs" />
     <Compile Include="Collision\CollisionDetection.cs" />
     <Compile Include="Loading\DynamicLoading.cs" />
+    <Compile Include="Loading\SizeNode.cs" />
     <Compile Include="Object\Enemy\AbstractEnemy.cs" />
     <Compile Include="Object\Enemy\EnemyMovementState\IdleEnemyState.cs" />
     <Compile Include="Object\Enemy\EnemyMovementState\LeftMoving.cs" />

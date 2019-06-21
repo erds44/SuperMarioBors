@@ -43,6 +43,8 @@ namespace SuperMarioBros.Collisions
             { (typeof(Mario), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(Mario), typeof(HiddenBlockState)), HiddenUsed},
             { (typeof(Mario), typeof(Pipe)), MoveDynamic},
+            { (typeof(Mario), typeof(HighPipe)), MoveDynamic},
+            { (typeof(Mario), typeof(MiddlePipe)), MoveDynamic},
 
             { (typeof(StarMario), typeof(BrickBlockState)), MarioBrick},
             { (typeof(StarMario), typeof(ConcreteBlockState)), MoveDynamic},
@@ -50,6 +52,8 @@ namespace SuperMarioBros.Collisions
             { (typeof(StarMario), typeof(RockBlockState)), MoveDynamic},
             { (typeof(StarMario), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(StarMario), typeof(HiddenBlockState)), HiddenUsed},
+            { (typeof(StarMario), typeof(HighPipe)), MoveDynamic},
+            { (typeof(StarMario), typeof(MiddlePipe)), MoveDynamic},
             { (typeof(StarMario), typeof(Pipe)), MoveDynamic},
 
             { (typeof(FlashingMario), typeof(BrickBlockState)), MarioBrick},
@@ -59,6 +63,8 @@ namespace SuperMarioBros.Collisions
             { (typeof(FlashingMario), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(FlashingMario), typeof(HiddenBlockState)), HiddenUsed},
             { (typeof(FlashingMario), typeof(Pipe)), MoveDynamic},
+            { (typeof(FlashingMario), typeof(HighPipe)), MoveDynamic},
+            { (typeof(FlashingMario), typeof(MiddlePipe)), MoveDynamic},
 
             { (typeof(Star), typeof(BrickBlockState)), MoveDynamic},
             { (typeof(Star), typeof(ConcreteBlockState)), MoveDynamic},
@@ -66,24 +72,32 @@ namespace SuperMarioBros.Collisions
             { (typeof(Star), typeof(RockBlockState)), MoveDynamic},
             { (typeof(Star), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(Star), typeof(Pipe)), MoveDynamic},
+            { (typeof(Star), typeof(MiddlePipe)), MoveDynamic},
+            { (typeof(Star), typeof(HighPipe)), MoveDynamic},
 
             { (typeof(Goomba), typeof(RockBlockState)), MoveDynamic},
             { (typeof(Goomba), typeof(BrickBlockState)), MoveDynamic},
             { (typeof(Goomba), typeof(QuestionBlockState)), MoveDynamic},
             { (typeof(Goomba), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(Goomba), typeof(Pipe)), MoveDynamic},
+            { (typeof(Goomba), typeof(HighPipe)), MoveDynamic},
+            { (typeof(Goomba), typeof(MiddlePipe)), MoveDynamic},
 
             { (typeof(StompedKoopa), typeof(RockBlockState)), MoveDynamic},
             { (typeof(StompedKoopa), typeof(BrickBlockState)), MoveDynamic},
             { (typeof(StompedKoopa), typeof(QuestionBlockState)), MoveDynamic},
             { (typeof(StompedKoopa), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(StompedKoopa), typeof(Pipe)), MoveDynamic},
+            { (typeof(StompedKoopa), typeof(HighPipe)), MoveDynamic},
+            { (typeof(StompedKoopa), typeof(MiddlePipe)), MoveDynamic},
 
             { (typeof(Koopa), typeof(RockBlockState)), MoveDynamic},
             { (typeof(Koopa), typeof(BrickBlockState)), MoveDynamic},
             { (typeof(Koopa), typeof(QuestionBlockState)), MoveDynamic},
             { (typeof(Koopa), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(Koopa), typeof(Pipe)), MoveDynamic},
+            { (typeof(Koopa), typeof(MiddlePipe)), MoveDynamic},
+            { (typeof(Koopa), typeof(HighPipe)), MoveDynamic},
 
             { (typeof(FireBall), typeof(BrickBlockState)), FireBallDisappear},
             { (typeof(FireBall), typeof(ConcreteBlockState)), FireBallDisappear},
@@ -91,12 +105,16 @@ namespace SuperMarioBros.Collisions
             { (typeof(FireBall), typeof(RockBlockState)), MoveDynamic},
             { (typeof(FireBall), typeof(UsedBlockState)), FireBallDisappear},
             { (typeof(FireBall), typeof(Pipe)), FireBallDisappear},
+            { (typeof(FireBall), typeof(HighPipe)), FireBallDisappear},
+            { (typeof(FireBall), typeof(MiddlePipe)), FireBallDisappear},
 
             { (typeof(RedMushroom), typeof(RockBlockState)), MoveDynamic},
             { (typeof(RedMushroom), typeof(BrickBlockState)), MoveDynamic},
             { (typeof(RedMushroom), typeof(QuestionBlockState)), MoveDynamic},
             { (typeof(RedMushroom), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(RedMushroom), typeof(Pipe)), MoveDynamic},
+            { (typeof(RedMushroom), typeof(HighPipe)), MoveDynamic},
+            { (typeof(RedMushroom), typeof(MiddlePipe)), MoveDynamic},
 
             {(typeof(Goomba), typeof(BumpBlockState)), EnemyVsBumpBlock},
             {(typeof(Koopa), typeof(BumpBlockState)), EnemyVsBumpBlock},
@@ -108,14 +126,18 @@ namespace SuperMarioBros.Collisions
             { (typeof(GreenMushroom), typeof(QuestionBlockState)), MoveDynamic},
             { (typeof(GreenMushroom), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(GreenMushroom), typeof(Pipe)), MoveDynamic},
+            { (typeof(GreenMushroom), typeof(HighPipe)), MoveDynamic},
+            { (typeof(GreenMushroom), typeof(MiddlePipe)), MoveDynamic},
 
             { (typeof(Flower), typeof(RockBlockState)), MoveDynamic},
             { (typeof(Flower), typeof(BrickBlockState)), MoveDynamic},
             { (typeof(Flower), typeof(QuestionBlockState)), MoveDynamic},
             { (typeof(Flower), typeof(UsedBlockState)), MoveDynamic},
             { (typeof(Flower), typeof(Pipe)), MoveDynamic},
+             { (typeof(Flower), typeof(MiddlePipe)), MoveDynamic},
+              { (typeof(Flower), typeof(HighPipe)), MoveDynamic},
 
-            
+
 
         };
         private static void MarioBrick(IDynamic obj1, IStatic obj2 ,Direction direction)
