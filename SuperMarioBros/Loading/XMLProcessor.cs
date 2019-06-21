@@ -44,6 +44,7 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Items.Pipe",new Vector2(1629,410),1,1,72)),
               (new ObjectNode("SuperMarioBros.Items.Pipe",new Vector2(1961,410),1,1,72)),
               (new ObjectNode("SuperMarioBros.Items.Pipe",new Vector2(2429,410),1,1,72)),
+              (new ObjectNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(2600,288),1,1,40)),
               //base2
               (new ObjectNode("SuperMarioBros.Blocks.RockBlock",new Vector2(3029,450),1,16,39)),
               (new ObjectNode("SuperMarioBros.Blocks.RockBlock",new Vector2(3029,489),1,16,39)),
@@ -100,42 +101,68 @@ namespace SuperMarioBros.LoadingTest
 
         };
 
-        private Collection<IStatic> staticObjects;
-        private Collection<IStatic> backgroundObjects;
-        private Collection<IDynamic> dynamicObjects; 
+        private List<IStatic> staticObjects;
+        private List<IStatic> backgroundObjects;
+        private List<IDynamic> dynamicObjects; 
 
 
         public XMLProcessor()
         {
-            staticObjects = new Collection<IStatic>();
-            backgroundObjects = new Collection<IStatic>();
-            dynamicObjects = new Collection<IDynamic>();
+            staticObjects = new List<IStatic>();
+            backgroundObjects = new List<IStatic>();
+            dynamicObjects = new List<IDynamic>();
         }
 
         //return methods
-        public Collection<IStatic> StaticList()
+        public List<IStatic> StaticList()
         {
             XMLWriter(@"StaticLevel.xml", staticList);
             XMLReader(@"StaticLevel.xml", staticList);
-            ListProcessor(staticList);
+            StaticListProcessor(staticList);
             return staticObjects;
         }
-        public Collection<IStatic> BackgroundObjects()
+        public List<IStatic> BackgroundObjects()
         {
             XMLWriter(@"BackgroundLevel.xml", staticList);
             XMLReader(@"BackgroundLevel.xml", staticList);
-            ListProcessor(backgroundList);
+            BackgroundListProcessor(backgroundObjects);
             return backgroundObjects;
         }
-        public Collection<IDynamic> DynamicList()
+        public List<IDynamic> DynamicList()
         {
             XMLWriter(@"DynamicLevel.xml", staticList);
             XMLReader(@"DynamicLevel.xml", staticList);
-            ListProcessor(dynamicList);
+            DynamicListProcessor(dynamicObjects);
             return dynamicObjects;
         }
 
-        private static void ListProcessor(List<ObjectNode> list)
+        private void BackgroundListProcessor(List<IStatic> list)
+        {
+            foreach(ObjectNode node in list)
+            {
+                Type t = Type.GetType(node.objectType);
+                Vector2 position;
+                position.X = node.position.X;
+                position.Y = node.position.Y;
+                var obj = Activator.CreateInstance(t, position);
+                backgroundObjects.Add((IStatic)obj);
+            }
+        }
+
+        private void DynamicListProcessor(List<IDynamic> list)
+        {
+            foreach (ObjectNode node in list)
+            {
+                Type t = Type.GetType(node.objectType);
+                Vector2 position;
+                position.X = node.position.X;
+                position.Y = node.position.Y;
+                var obj = Activator.CreateInstance(t, position);
+                dynamicObjects.Add((IDynamic)obj);
+            }
+        }
+
+        private  void StaticListProcessor(List<ObjectNode> list)
         {
             foreach(ObjectNode node in list)
             {
@@ -158,7 +185,7 @@ namespace SuperMarioBros.LoadingTest
             }
         }
 
-        private static void HorizontalLine(ObjectNode node)
+        private  void HorizontalLine(ObjectNode node)
         {
             Type t = Type.GetType(node.objectType);
 
@@ -168,13 +195,13 @@ namespace SuperMarioBros.LoadingTest
             for(int i = 0; i < node.size; i++)
             {
                 var obj = Activator.CreateInstance(t, position);
-                ObjectLoading.statics.Add((IStatic)obj);
+                staticObjects.Add((IStatic)obj);
                 position.X += node.width;
             }
 
         }
 
-        private static void VerticalLine(ObjectNode node)
+        private  void VerticalLine(ObjectNode node)
         {
             Type t = Type.GetType(node.objectType);
             Vector2 position;
@@ -183,12 +210,12 @@ namespace SuperMarioBros.LoadingTest
             for (int i = 0; i < node.size; i++)
             {
                 var obj = Activator.CreateInstance(t, position);
-                ObjectLoading.statics.Add((IStatic)obj);
+                staticObjects.Add((IStatic)obj);
                 position.Y -= node.width;
             }
         }
 
-        private static void RightTriangle(ObjectNode node)
+        private  void RightTriangle(ObjectNode node)
         {
             Type t = Type.GetType(node.objectType);
             Vector2 position;
@@ -201,13 +228,13 @@ namespace SuperMarioBros.LoadingTest
                     position.X = node.position.X+i*node.width;
                     position.Y = node.position.Y-j*node.width;
                     var obj = Activator.CreateInstance(t, position);
-                    ObjectLoading.statics.Add((IStatic)obj);
+                    staticObjects.Add((IStatic)obj);
                     position.Y -= node.width;
                 }
             }
         }
 
-       private static void LeftTriangle(ObjectNode node)
+       private  void LeftTriangle(ObjectNode node)
         {
             Type t = Type.GetType(node.objectType);
             Vector2 position;
@@ -220,7 +247,7 @@ namespace SuperMarioBros.LoadingTest
                     position.X = node.position.X + i * node.width;
                     position.Y = node.position.Y - j * node.width;
                     var obj = Activator.CreateInstance(t, position);
-                    ObjectLoading.statics.Add((IStatic)obj);
+                  staticObjects.Add((IStatic)obj);
                     position.Y -= node.width;
                 }
             }
