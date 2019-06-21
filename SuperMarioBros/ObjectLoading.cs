@@ -4,6 +4,7 @@ using SuperMarioBros.Blocks;
 using SuperMarioBros.Goombas;
 using SuperMarioBros.Items;
 using SuperMarioBros.Koopas;
+using SuperMarioBros.LoadingTest;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
 using System;
@@ -52,13 +53,16 @@ namespace SuperMarioBros
                 new BrickBlock(new Vector2(440, 60)),
                 new BrickBlock(new Vector2(720, 60))
             };
-            for (int i = 0; i < 80; i++)
-            {
-                statics.Add(new RockBlock(new Vector2(0 + 40 * i, 450)));
-                statics.Add(new RockBlock(new Vector2(0 + 40 * i, 490)));
-            }
-            for (int i = 0; i < 6; i++)
-                statics.Add(new BrickBlock(new Vector2(480 + 40 * i, 100)));
+
+            XMLProcessor xml = new XMLProcessor();
+            statics = xml.StaticList();
+            //for (int i = 0; i < 80; i++)
+            //{
+            //    statics.Add(new RockBlock(new Vector2(0 + 40 * i, 450)));
+            //    statics.Add(new RockBlock(new Vector2(0 + 40 * i, 490)));
+            //}
+            //for (int i = 0; i < 6; i++)
+            //    statics.Add(new BrickBlock(new Vector2(480 + 40 * i, 100)));
         }
         public static List<IStatic> LoadStatics()
         {
