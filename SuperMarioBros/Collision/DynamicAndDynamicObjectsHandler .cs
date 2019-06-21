@@ -85,10 +85,10 @@ namespace SuperMarioBros.Collisions
         private static void RedMushroom(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             IMario mario = (IMario)obj1;
+            mario.RedMushroom();
             if (!(mario is StarMario)) /* avoid double decoration */
                 ObjectsManager.Instance.Decoration(mario, new FlashingMario(mario.ReturnItself()));
             obj2.IsInvalid = true;
-            mario.RedMushroom();
         }
         private static void GreenMushroom(IDynamic obj1, IDynamic obj2, Direction direction)
         {
@@ -98,10 +98,10 @@ namespace SuperMarioBros.Collisions
         private static void FireFlower(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             IMario mario = (IMario)obj1;
+            mario.OnFireFlower();
             if (!(mario is StarMario))
                 ObjectsManager.Instance.Decoration(mario, new FlashingMario(mario.ReturnItself()));
             obj2.IsInvalid = true;
-            mario.OnFireFlower();
         }
         private static void Coin(IDynamic obj1, IDynamic obj2, Direction direction)
         {
