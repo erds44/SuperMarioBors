@@ -19,8 +19,10 @@ namespace SuperMarioBros
         private SpriteBatch spriteBatch;
         private CollisionManager collisionManager;
         private Camera marioCamera;
+        public static MarioGame Instance { get; private set; }
         public MarioGame()
         {
+            Instance = this;
             var graphicsDeviceManager = new GraphicsDeviceManager(this);
             graphicsDeviceManager.DeviceCreated += (o, e) =>
             {

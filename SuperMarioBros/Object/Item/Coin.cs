@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Managers;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 
@@ -13,7 +14,8 @@ namespace SuperMarioBros.Items
         {
             Position = location + offset;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
-            physics = new ItemPhysics(this, new Vector2(0, -150));
+            physics = new ItemPhysics(this, new Vector2(0, -130));
+            physics.SetGravity();
             timer = 0;
         }
 
@@ -22,9 +24,9 @@ namespace SuperMarioBros.Items
             timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
             sprite.Update();
             Position += physics.Displacement(gameTime);
-            if (timer >= 0.3 )
+            if (timer >= 2 )
             {
-                IsInvalid = true;
+                ObjectsManager.Instance.RemoveFromNonCollidable(this);
             }
         }
         public void MoveUp()
