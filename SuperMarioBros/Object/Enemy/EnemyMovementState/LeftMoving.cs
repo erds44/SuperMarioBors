@@ -1,10 +1,9 @@
-﻿using SuperMarioBros.Enemy;
-using SuperMarioBros.Physicses;
+﻿using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Objects.Enemy
 {
-    public class LeftMoving : IEnemyState
+    public class LeftMoving : IEnemyMovementState
     {
         private readonly IEnemy enemy;
         private readonly EnemyPhysics physics;
@@ -20,14 +19,5 @@ namespace SuperMarioBros.Objects.Enemy
             enemy.State = new RightMoving(enemy, physics);
         }
 
-        public void Stomped()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void TakeDamage()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
