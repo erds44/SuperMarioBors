@@ -35,7 +35,7 @@ namespace SuperMarioBros
                 new Pipe(new Vector2(420,410)),
                 new Pipe(new Vector2(700,410)),
 
-                new ItemBrickBlock(new Vector2(0, 290), typeof(Coin), 10),
+                new QuestionBlock(new Vector2(0, 290)),
                 new ItemBrickBlock(new Vector2(100, 290), typeof(Star), 1),
 
                 new PowerUpBlock(new Vector2(200, 290)),
