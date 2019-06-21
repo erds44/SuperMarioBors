@@ -19,7 +19,6 @@ namespace SuperMarioBros.Blocks
             State = new QuestionBlockState(this);
             base.Initialize();
         }
-
         public QuestionBlock(Vector2 location)
         {
             itemType = typeof(Coin);

@@ -1,22 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Xml.Serialization;
-using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
-using SuperMarioBros.Koopas;
 using SuperMarioBros.Objects;
-using SuperMarioBros.Managers;
-using System.Collections.ObjectModel;
-using SuperMarioBros.Managers;
 
 namespace SuperMarioBros.LoadingTest
 {
     public class XMLProcessor
     {
-        private  List<ObjectNode> staticList = new List<ObjectNode> 
+        private List<ObjectNode> staticList = new List<ObjectNode>
             { 
 
                 //test
@@ -45,7 +38,7 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Items.Pipe",new Vector2(1629,410),1,1,72)),
               (new ObjectNode("SuperMarioBros.Items.Pipe",new Vector2(1961,410),1,1,72)),
               (new ObjectNode("SuperMarioBros.Items.Pipe",new Vector2(2429,410),1,1,72)),
-              (new ObjectNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(2600,288),1,1,40)),
+              (new ObjectNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(2800,288),1,1,40)),
               //base2
               (new ObjectNode("SuperMarioBros.Blocks.RockBlock",new Vector2(3029,450),1,16,39)),
               (new ObjectNode("SuperMarioBros.Blocks.RockBlock",new Vector2(3029,489),1,16,39)),
@@ -89,7 +82,7 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(7719,410),3,8,40)),
               (new ObjectNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(8039,410),4,8,40)),
 
-          
+
             };
 
         private List<ObjectNode> dynamicList = new List<ObjectNode>
@@ -104,7 +97,7 @@ namespace SuperMarioBros.LoadingTest
 
         private List<IStatic> staticObjects;
         private List<IStatic> backgroundObjects;
-        private List<IDynamic> dynamicObjects; 
+        private List<IDynamic> dynamicObjects;
 
 
         public XMLProcessor()
@@ -139,7 +132,7 @@ namespace SuperMarioBros.LoadingTest
 
         private void BackgroundListProcessor(List<IStatic> list)
         {
-            foreach(ObjectNode node in list)
+            foreach (ObjectNode node in list)
             {
                 Type t = Type.GetType(node.objectType);
                 Vector2 position;
@@ -163,11 +156,11 @@ namespace SuperMarioBros.LoadingTest
             }
         }
 
-        private  void StaticListProcessor(List<ObjectNode> list)
+        private void StaticListProcessor(List<ObjectNode> list)
         {
-            foreach(ObjectNode node in list)
+            foreach (ObjectNode node in list)
             {
-                switch(node.shape)
+                switch (node.shape)
                 {
                     case 1:
                         HorizontalLine(node);
@@ -186,14 +179,14 @@ namespace SuperMarioBros.LoadingTest
             }
         }
 
-        private  void HorizontalLine(ObjectNode node)
+        private void HorizontalLine(ObjectNode node)
         {
             Type t = Type.GetType(node.objectType);
 
             Vector2 position;
             position.X = node.position.X;
             position.Y = node.position.Y;
-            for(int i = 0; i < node.size; i++)
+            for (int i = 0; i < node.size; i++)
             {
                 var obj = Activator.CreateInstance(t, position);
                 staticObjects.Add((IStatic)obj);
@@ -202,7 +195,7 @@ namespace SuperMarioBros.LoadingTest
 
         }
 
-        private  void VerticalLine(ObjectNode node)
+        private void VerticalLine(ObjectNode node)
         {
             Type t = Type.GetType(node.objectType);
             Vector2 position;
@@ -216,7 +209,7 @@ namespace SuperMarioBros.LoadingTest
             }
         }
 
-        private  void RightTriangle(ObjectNode node)
+        private void RightTriangle(ObjectNode node)
         {
             Type t = Type.GetType(node.objectType);
             Vector2 position;
@@ -226,8 +219,8 @@ namespace SuperMarioBros.LoadingTest
             {
                 for (int j = 0; j < node.size - i; j++)
                 {
-                    position.X = node.position.X+i*node.width;
-                    position.Y = node.position.Y-j*node.width;
+                    position.X = node.position.X + i * node.width;
+                    position.Y = node.position.Y - j * node.width;
                     var obj = Activator.CreateInstance(t, position);
                     staticObjects.Add((IStatic)obj);
                     position.Y -= node.width;
@@ -235,7 +228,7 @@ namespace SuperMarioBros.LoadingTest
             }
         }
 
-       private  void LeftTriangle(ObjectNode node)
+        private void LeftTriangle(ObjectNode node)
         {
             Type t = Type.GetType(node.objectType);
             Vector2 position;
@@ -248,7 +241,7 @@ namespace SuperMarioBros.LoadingTest
                     position.X = node.position.X + i * node.width;
                     position.Y = node.position.Y - j * node.width;
                     var obj = Activator.CreateInstance(t, position);
-                  staticObjects.Add((IStatic)obj);
+                    staticObjects.Add((IStatic)obj);
                     position.Y -= node.width;
                 }
             }
@@ -270,10 +263,10 @@ namespace SuperMarioBros.LoadingTest
             using (var writer = new StreamWriter(new FileStream(path, FileMode.Create)))
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(List<ObjectNode>));
-                serializer.Serialize(writer,list);
+                serializer.Serialize(writer, list);
             }
         }
 
-        
+
     }
 }
