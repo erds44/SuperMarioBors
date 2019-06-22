@@ -14,6 +14,7 @@ Needs Fixing:
 - Mario sometimes does not reach his invulnerability state after being collided with because the timer has not been reset to accomodate. This results in a near instant death.
 - When Mario is in the invulnerability state and is still flashing, Mario is not able to go through all of his sprites for an animation, but rather gets stuck on two.
 
+##Readability Review
 Class Name: DynamicAndStaticObjectsHandler.cs  
 Author of the code: Yangjiayi Mu  
 Time for the review: 10 min  
