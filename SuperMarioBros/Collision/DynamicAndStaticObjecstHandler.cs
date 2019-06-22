@@ -84,6 +84,7 @@ namespace SuperMarioBros.Collisions
             { (typeof(Goomba), typeof(Pipe)), MoveDynamic},
             { (typeof(Goomba), typeof(HighPipe)), MoveDynamic},
             { (typeof(Goomba), typeof(MiddlePipe)), MoveDynamic},
+            { (typeof(Goomba), typeof(DisappearBlockState)), BrickVsEnemy},
 
             { (typeof(StompedGoomba), typeof(RockBlockState)), MoveDynamic},
             { (typeof(StompedGoomba), typeof(BrickBlockState)), MoveDynamic},
@@ -108,6 +109,7 @@ namespace SuperMarioBros.Collisions
             { (typeof(Koopa), typeof(Pipe)), MoveDynamic},
             { (typeof(Koopa), typeof(MiddlePipe)), MoveDynamic},
             { (typeof(Koopa), typeof(HighPipe)), MoveDynamic},
+            { (typeof(Koopa), typeof(DisappearBlockState)), BrickVsEnemy},
 
             { (typeof(FireBall), typeof(BrickBlockState)), FireBallDisappear},
             { (typeof(FireBall), typeof(ConcreteBlockState)), FireBallDisappear},
@@ -152,6 +154,16 @@ namespace SuperMarioBros.Collisions
 
 
         };
+
+        private static void BrickVsEnemy(IDynamic obj1, IStatic obj2, Direction direction)
+        {
+            if(direction == Direction.top)
+            {
+                ((IEnemy)obj1).Flip();
+                obj2.IsInvalid = true;
+            }
+        }
+
         private static void MarioBrick(IDynamic obj1, IStatic obj2 ,Direction direction)
         {
             IMario mario = (IMario)obj1;
