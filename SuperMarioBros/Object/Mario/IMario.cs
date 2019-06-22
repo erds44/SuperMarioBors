@@ -17,6 +17,7 @@ namespace SuperMarioBros.Marios
         IMarioHealthState HealthState { get; set; }
         IMarioMovementState MovementState { get; set; }
         MarioPhysics MarioPhysics { get; }
+        IMario Decoration { get; set; }
         void Left();
         void Down();
         void Up();

@@ -22,14 +22,16 @@ namespace SuperMarioBros.Marios
         public Vector2 Position { get => mario.Position;  set { } }
         public bool PowerFlag { get => mario.PowerFlag; set => mario.PowerFlag = value; }
         public double NoMovementTimer { get; set; }
+        public IMario Decoration { get => mario.Decoration; set => mario.Decoration = value; }
 
         public StarMario(IMario mario)
         {
-            this.mario = mario;
+            this.mario = mario.Decoration;
             this.HealthState = mario.HealthState;
             MarioPhysics = mario.MarioPhysics;
             HealthState = mario.HealthState;
             Timer = 5;
+            mario.Decoration = this;
         }
 
         public void Down()
@@ -99,14 +101,7 @@ namespace SuperMarioBros.Marios
         {
             mario.Update(gameTime);
             Timer -= gameTime.ElapsedGameTime.TotalSeconds;
-            if (Timer <= 0)
-            {
-                ObjectsManager.Instance.Decoration(this, mario);
-            }
-            else
-            {
-                Sprite.Update();
-            }
+            Sprite.Update();
         }
 
 

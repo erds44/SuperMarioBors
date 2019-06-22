@@ -19,21 +19,23 @@ namespace SuperMarioBros.Marios
         public IMarioMovementState MovementState { get => mario.MovementState ; set => mario.MovementState = value; }
         public MarioPhysics MarioPhysics { get; }
         private readonly IMario mario;
-        public ISprite Sprite { get => mario.Sprite; set => mario.Sprite = value; }
+        public ISprite Sprite { get; set; }
         public double Timer { get; set; }
         public Vector2 Position { get => mario.Position; set { } }
         public bool PowerFlag { get => mario.PowerFlag; set => mario.PowerFlag = value; }
         public double NoMovementTimer { get; set; }
+        public IMario Decoration { get => mario.Decoration; set => mario.Decoration = value; }
 
         public FlashingMario(IMario mario)
         {
-            this.mario = mario;
+            this.mario = mario.Decoration;
             //this.HealthState = mario.HealthState;
             //MarioPhysics = mario.MarioPhysics;
             //HealthState = mario.HealthState;
             Timer = 3;
             mario.NoMovementTimer = 1;
             NoMovementTimer = 1.5;
+            mario.Decoration = this;
         }
 
         public void Down()
@@ -113,10 +115,7 @@ namespace SuperMarioBros.Marios
             {
                 mario.MarioPhysics.SetXVelocity(0);
             }
-            if (Timer <= 0)
-            {
-                ObjectsManager.Instance.Decoration(this, mario);
-            }
+
             NoMovementTimer -= gameTime.ElapsedGameTime.TotalSeconds;
             Timer -= gameTime.ElapsedGameTime.TotalSeconds;
         }

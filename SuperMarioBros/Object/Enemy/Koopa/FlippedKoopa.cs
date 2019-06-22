@@ -9,7 +9,7 @@ namespace SuperMarioBros.Koopas
     public class FlippedKoopa : AbstractEnemy
 
     {
-        public FlippedKoopa(Koopa koopa)
+        public FlippedKoopa(AbstractEnemy koopa)
         {
             Sprite = koopa.Sprite;
             Position = koopa.Position;

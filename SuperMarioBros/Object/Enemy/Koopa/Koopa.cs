@@ -4,6 +4,7 @@ using SuperMarioBros.Managers;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Physicses;
+using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Koopas
 {
@@ -24,6 +25,7 @@ namespace SuperMarioBros.Koopas
         
         public override void Flip()
         {
+            this.Sprite = SpriteFactory.CreateSprite(typeof(StompedKoopa).Name);
             ObjectsManager.Instance.AddNonCollidable(new FlippedKoopa(this));
             IsInvalid = true;
         }

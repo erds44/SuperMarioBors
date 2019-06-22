@@ -210,7 +210,15 @@ namespace SuperMarioBros.Collisions
 
         private static void EnemyVsBumpBlock(IDynamic obj1, IStatic obj2, Direction direction)
         {
-             ((IEnemy)obj1).Flip();
+/*            if (obj1 is Koopa)
+            {
+                obj1.IsInvalid = true;
+                ObjectsManager.Instance.AddNonCollidable(new FlippedKoopa(new StompedKoopa(obj1.Position)));
+            }
+            else
+            {*/
+                ((IEnemy)obj1).Flip();
+            //}
         }
         private static void ItemVsBumpBlock(IDynamic obj1, IStatic obj2, Direction direction)
         {

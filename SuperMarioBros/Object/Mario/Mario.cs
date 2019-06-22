@@ -24,6 +24,7 @@ namespace SuperMarioBros.Marios
         private Vector2 position;
         public double Timer { get; set; }
         public double NoMovementTimer { get; set; }
+        public IMario Decoration { get; set; }
         public Mario(Vector2 location)
         {
             HealthState = new SmallMario(this);
@@ -31,6 +32,7 @@ namespace SuperMarioBros.Marios
             MovementState = new RightIdle(this);
             Position = location;
             NoMovementTimer = 0;
+            Decoration = this;
         }
 
 
@@ -111,6 +113,11 @@ namespace SuperMarioBros.Marios
             if (Position.X < Camera.Instance.LeftBound)
             {
                 position.X = Camera.Instance.LeftBound;
+            }
+            if (!(Decoration is Mario) && Decoration.Timer <= 0)
+            {
+                ObjectsManager.Instance.Decoration(Decoration, this);
+                Decoration = this;
             }
         }
 
