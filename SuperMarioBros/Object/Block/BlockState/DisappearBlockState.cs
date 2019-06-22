@@ -6,7 +6,7 @@ namespace SuperMarioBros.Blocks.BlockStates
     {
         public DisappearBlockState(IBlock block)
         {
-            block.ChangeSprite(SpriteFactory.CreateSprite(this.GetType().Name));
+            block.ChangeSprite(SpriteFactory.CreateSprite(this.GetType().Name));            
         }
 
         public void ToUsed()
