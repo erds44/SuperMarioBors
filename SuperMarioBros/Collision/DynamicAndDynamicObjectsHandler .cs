@@ -70,7 +70,7 @@ namespace SuperMarioBros.Collisions
              {(typeof(StompedKoopa), typeof(Goomba)), StompedKoopaDealDamage},
              //{(typeof(StompedKoopa), typeof(Koopa)), StompedKoopaDealDamage},
              //{(typeof(StompedKoopa), typeof(StompedKoopa)), MoveDynamic}, Dont consider for now
-             {(typeof(StompedGoomba), typeof(FireBall)), FireBallVSEnemy},
+             {(typeof(StompedKoopa), typeof(FireBall)), FireBallVSEnemy},
 
              {(typeof(FireBall), typeof(Goomba)), FireBallVSEnemy},
              {(typeof(FireBall), typeof(Koopa)), FireBallVSEnemy},
