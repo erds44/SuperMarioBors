@@ -117,8 +117,7 @@ namespace SuperMarioBros.Managers
 
         public void Decoration(IMario oldMario, IMario newMario)
         {
-            int index = dynamicObjects.IndexOf(oldMario);
-            dynamicObjects[index]=newMario;
+            dynamicObjects[dynamicObjects.IndexOf(oldMario)] =newMario;
         }
         public void StarMario(IMario mario)
         {
