@@ -13,6 +13,7 @@ namespace SuperMarioBros.Controllers
         public void Update()
         {
             Vector2 joyStickState = GamePad.GetState(PlayerIndex.One).ThumbSticks.Left;
+            var buttons = GamePad.GetState(PlayerIndex.One).Buttons;
             if (joyStickState.X > 0.1)
             {
                 messager.ChangeFlags(ControllerMessager.RIGHTMOVE);
@@ -25,9 +26,13 @@ namespace SuperMarioBros.Controllers
             {
                 messager.ChangeFlags(ControllerMessager.DOWNMOVE);
             }
-            if (joyStickState.Y < -0.1)
+            if (buttons.A.Equals(ButtonState.Pressed))
             {
                 messager.ChangeFlags(ControllerMessager.UPMOVE);
+            }
+            if (buttons.B.Equals(ButtonState.Pressed))
+            {
+                messager.ChangeFlags(ControllerMessager.POWER);
             }
         }
     }

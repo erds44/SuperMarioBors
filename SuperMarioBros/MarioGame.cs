@@ -69,6 +69,7 @@ namespace SuperMarioBros
                     (Keys.S, ControllerMessager.DOWNMOVE),
                     (Keys.D, ControllerMessager.RIGHTMOVE),
                     (Keys.W, ControllerMessager.UPMOVE),
+                    (Keys.Z, ControllerMessager.UPMOVE),
                     (Keys.R, ControllerMessager.RESETGAME),
                     (Keys.Left, ControllerMessager.LEFTMOVE),
                     (Keys.Down, ControllerMessager.DOWNMOVE),
