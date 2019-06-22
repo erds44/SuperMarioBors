@@ -21,34 +21,42 @@ namespace SuperMarioBros.LoadingTest
             { 
 
                 //test
-                (new ObjectNode("SuperMarioBros.Blocks.RockBlock",new Vector2(100,288),1,1,39)),
-                (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(180,288),1,1,40)),
-                (new ObjectNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(260,288),1,1,40)),
-                (new ObjectNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(300,288),1,1,40,"null",1)),
-                (new ObjectNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(300,119),1,1,40,"null",1)),
-                (new ObjectNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(340,288),1,1,40,"SuperMarioBros.Items.GreenMushroom",1)),
-                (new ObjectNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(380,288),1,1,40,"null",4)),
-                (new ObjectNode("SuperMarioBros.Blocks.PowerUpBlock",new Vector2(460,288),1,1,40,1)),
-                (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(500,288),1,1,40,"null",1)),
+                (new ObjectNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(0,288),1,1,40,"null",4)),
+                (new ObjectNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(100,288),1,1,40,"SuperMarioBros.Items.Star",1)),
+                (new ObjectNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(50,119),1,1,40,"null",1)),
+                (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(200,288),1,1,40,"null",1)),
+                (new ObjectNode("SuperMarioBros.Blocks.PowerUpBlock",new Vector2(240,288),1,1,40,1)),
+                (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(280,288),1,2,40,"null",1)),
+                (new ObjectNode("SuperMarioBros.Items.Pipe",new Vector2(400,410),1,2,340)),
+                (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(550,248),1,1,40,"null",1)),
+                (new ObjectNode("SuperMarioBros.Blocks.PowerUpBlock",new Vector2(510,248),1,1,40,1)),
+                (new ObjectNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(590,248),1,1,40,"SuperMarioBros.Items.GreenMushroom",1)),
+                (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(500,100),1,6,40)),
+                (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(460,60),1,2,280)),
+
+
+
+                
+                
 
 
                 //base1
               (new ObjectNode("SuperMarioBros.Blocks.RockBlock",new Vector2(0,450),1,74,39)),
               (new ObjectNode("SuperMarioBros.Blocks.RockBlock",new Vector2(0,489),1,74,39)),
 
-              (new ObjectNode("SuperMarioBros.Blocks.PowerUpBlock",new Vector2(888,288),1,1,40,1)),
-              (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(848,288),1,1,40)),
-              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(678,288),1,1,40,"null",1)),
-              (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(928,288),1,1,40)),
-              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(968,288),1,1,40,"null",1)),
-              (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(1008,288),1,1,40)),
-              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(928,119),1,1,40,"null",1)),
+              (new ObjectNode("SuperMarioBros.Blocks.PowerUpBlock",new Vector2(1038,288),1,1,40,1)),
+              (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(998,288),1,1,40)),
+              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(870,288),1,1,40,"null",1)),
+              (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(1078,288),1,1,40)),
+              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(1118,288),1,1,40,"null",1)),
+              (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(1158,288),1,1,40)),
+              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(1078,119),1,1,40,"null",1)),
                (new ObjectNode("SuperMarioBros.Backgrounds.BigCloud",new Vector2(100,170),1,12,700)),
                 (new ObjectNode("SuperMarioBros.Backgrounds.SmallCloud",new Vector2(300,70),1,12,700)),
                  (new ObjectNode("SuperMarioBros.Backgrounds.MiddleCloud",new Vector2(400,120),1,12,700)),
 
 
-              (new ObjectNode("SuperMarioBros.Items.Pipe",new Vector2(1190,410),1,1,72)),
+              (new ObjectNode("SuperMarioBros.Items.Pipe",new Vector2(1290,410),1,1,72)),
               (new ObjectNode("SuperMarioBros.Items.MiddlePipe",new Vector2(1629,410),1,1,72)),
               (new ObjectNode("SuperMarioBros.Items.HighPipe",new Vector2(1961,410),1,1,72)),
               (new ObjectNode("SuperMarioBros.Items.HighPipe",new Vector2(2429,410),1,1,72)),
@@ -109,6 +117,11 @@ namespace SuperMarioBros.LoadingTest
         {
             //test
             (new ObjectNode("SuperMarioBros.Items.RedMushroom", new Vector2(100, 410),1,1,30)),
+            (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(540,410),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Koopas.Koopa",new Vector2(580,410),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(540,60),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Koopas.Koopa",new Vector2(600,60),1,1,30)),
+
             //base1
              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(928,410),1,1,30)),
              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(1750,410),1,1,30)),
