@@ -43,6 +43,7 @@ namespace SuperMarioBros.Marios
                 physics = new StarPhysics(this, new Vector2(100, 20));
             }
             sprite = SpriteFactory.CreateSprite(GetType().Name);
+            physics.SetGravity(500);
         }
 
 

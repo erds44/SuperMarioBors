@@ -71,5 +71,9 @@ namespace SuperMarioBros.Physicses
             displacement.Y -= 20;
             velocity.Y -= 20;
         }
+        public void SetGravity(float gravity)
+        {
+            currentGravity = gravity;
+        }
     }
 }
