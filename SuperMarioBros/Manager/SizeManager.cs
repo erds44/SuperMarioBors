@@ -58,7 +58,8 @@ namespace SuperMarioBros.Managers
         }
         public static Point ObjectSize(Type type)
         {
-           if(objectDictionary.TryGetValue(type, out Point size))
+            
+            if (objectDictionary.TryGetValue(type, out Point size))
                 return size;
            else
                 throw new ArgumentException("ERROR: The size of " + type + " is not loaded");
