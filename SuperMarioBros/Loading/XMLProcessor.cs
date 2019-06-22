@@ -116,7 +116,6 @@ namespace SuperMarioBros.LoadingTest
         private List<ObjectNode> dynamicList = new List<ObjectNode>
         {
             //test
-            (new ObjectNode("SuperMarioBros.Items.RedMushroom", new Vector2(100, 410),1,1,30)),
             (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(540,410),1,1,30)),
              (new ObjectNode("SuperMarioBros.Koopas.Koopa",new Vector2(580,410),1,1,30)),
              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(540,60),1,1,30)),

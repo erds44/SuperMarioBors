@@ -50,7 +50,7 @@ namespace SuperMarioBros.Koopas
             {
 
                     Position += new Vector2(-30, 0);
-                    physics.SetVelocity(new Vector2(-120, 0));
+                    physics.SetVelocity(new Vector2(-220, 0));
                     State = new LeftMoving(this, physics);
 
             }
@@ -67,7 +67,7 @@ namespace SuperMarioBros.Koopas
             if (State is IdleEnemyState) /* Inital setup when Mario kick shell */
             {
                     Position += new Vector2(30, 0);
-                    physics.SetVelocity(new Vector2(120, 0));
+                    physics.SetVelocity(new Vector2(220, 0));
                     State = new RightMoving(this, physics);
             }
             else /* Collision response */
