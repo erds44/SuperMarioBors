@@ -122,9 +122,9 @@ namespace SuperMarioBros.Managers
         }
         public void StarMario(IMario mario)
         {
-            int index = dynamicObjects.IndexOf(mario);
-            ((IMario)dynamicObjects[index]).NoMovementTimer = 0;
-            dynamicObjects[index] = new StarMario(mario);
+            dynamicObjects[dynamicObjects.IndexOf(mario)] = new StarMario(mario.ReturnItself());
+            mario.ReturnItself().NoMovementTimer = 0;
+
         }
         public IMario MarioObject()
         {

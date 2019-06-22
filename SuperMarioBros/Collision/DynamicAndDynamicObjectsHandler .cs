@@ -86,9 +86,8 @@ namespace SuperMarioBros.Collisions
         private static void RedMushroom(IDynamic obj1, IDynamic obj2, Direction direction)
         {
             IMario mario = (IMario)obj1;
-            mario.RedMushroom();
-            if (!(mario is StarMario)) /* avoid double decoration */
-                ObjectsManager.Instance.Decoration(mario.Decoration, new FlashingMario(mario.ReturnItself()));
+            mario.RedMushroom(); 
+            ObjectsManager.Instance.Decoration(mario, new FlashingMario(mario.ReturnItself()));
             obj2.IsInvalid = true;
         }
         private static void GreenMushroom(IDynamic obj1, IDynamic obj2, Direction direction)
@@ -100,8 +99,7 @@ namespace SuperMarioBros.Collisions
         {
             IMario mario = (IMario)obj1;
             mario.OnFireFlower();
-            if (!(mario is StarMario))
-                ObjectsManager.Instance.Decoration(mario.Decoration, new FlashingMario(mario.ReturnItself()));
+            ObjectsManager.Instance.Decoration(mario, new FlashingMario(mario.ReturnItself()));
             obj2.IsInvalid = true;
         }
         private static void Coin(IDynamic obj1, IDynamic obj2, Direction direction)
@@ -149,9 +147,10 @@ namespace SuperMarioBros.Collisions
                     Type healthState = ((IMario)obj1).HealthState.GetType();
                     if ((healthState != typeof(DeadMario)))
                     {
+                        var mario = (IMario)obj1;
                         if (healthState != typeof(SmallMario))
-                            ObjectsManager.Instance.Decoration(((IMario)obj1).Decoration, new FlashingMario((IMario)obj1));
-                        ((IMario)obj1).TakeDamage();
+                            ObjectsManager.Instance.Decoration(mario, new FlashingMario(mario.ReturnItself()));
+                        mario.TakeDamage();
                     }
                     break;
             }
@@ -181,9 +180,10 @@ namespace SuperMarioBros.Collisions
                         IMarioHealthState state = ((IMario)obj1).HealthState;
                         if (!(state is DeadMario))
                         {
+                            var mario = (IMario)obj1;
                             if (!(state is SmallMario))
-                                ObjectsManager.Instance.Decoration(((IMario)obj1).Decoration, new FlashingMario(((IMario)obj1)));
-                            ((IMario)obj1).TakeDamage();
+                                ObjectsManager.Instance.Decoration(mario, new FlashingMario(mario.ReturnItself()));
+                            mario.TakeDamage();
                         }
                     }
                     else
@@ -195,9 +195,10 @@ namespace SuperMarioBros.Collisions
                         IMarioHealthState state = ((IMario)obj1).HealthState;
                         if (!(state is DeadMario))
                         {
+                            var mario = (IMario)obj1;
                             if (!(state is SmallMario))
-                                ObjectsManager.Instance.Decoration(((IMario)obj1).Decoration, new FlashingMario(((IMario)obj1)));
-                            ((IMario)obj1).TakeDamage();
+                                ObjectsManager.Instance.Decoration(mario, new FlashingMario(mario.ReturnItself()));
+                            mario.TakeDamage();
                         }
                     }
                     else
