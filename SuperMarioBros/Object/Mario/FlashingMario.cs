@@ -7,28 +7,30 @@ using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.Sprites;
+using System;
+using System.Diagnostics;
 
 namespace SuperMarioBros.Marios
 {
     public class FlashingMario : IMario
     {
-        public bool IsInvalid { get; set; }
-        public IMarioHealthState HealthState { get; set; }
-        public IMarioMovementState MovementState { get; set; }
+        public bool IsInvalid { get => mario.IsInvalid; set => mario.IsInvalid = value; }
+        public IMarioHealthState HealthState { get => mario.HealthState; set => mario.HealthState = value; }
+        public IMarioMovementState MovementState { get => mario.MovementState ; set => mario.MovementState = value; }
         public MarioPhysics MarioPhysics { get; }
         private readonly IMario mario;
-        public ISprite Sprite { get; set; }
+        public ISprite Sprite { get => mario.Sprite; set => mario.Sprite = value; }
         public double Timer { get; set; }
-        public Vector2 Position { get; set; }
+        public Vector2 Position { get => mario.Position; set { } }
         public bool PowerFlag { get => mario.PowerFlag; set => mario.PowerFlag = value; }
         public double NoMovementTimer { get; set; }
 
         public FlashingMario(IMario mario)
         {
             this.mario = mario;
-            this.HealthState = mario.HealthState;
-            MarioPhysics = mario.MarioPhysics;
-            HealthState = mario.HealthState;
+            //this.HealthState = mario.HealthState;
+            //MarioPhysics = mario.MarioPhysics;
+            //HealthState = mario.HealthState;
             Timer = 3;
             mario.NoMovementTimer = 1;
             NoMovementTimer = 1.5;

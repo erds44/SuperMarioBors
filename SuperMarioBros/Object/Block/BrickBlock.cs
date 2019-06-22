@@ -12,6 +12,12 @@ namespace SuperMarioBros.Blocks
             this.State = new BrickBlockState(this);
             base.Initialize();
         }
+        
+        public override void Used()
+        {
+            IsInvalid = true;
+            base.Used();
+        }
 
     }
 }

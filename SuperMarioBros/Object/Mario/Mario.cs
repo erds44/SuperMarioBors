@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Collisions;
+using SuperMarioBros.GameCoreComponents;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Managers;
 using SuperMarioBros.Marios.MarioMovementStates;
@@ -19,7 +20,8 @@ namespace SuperMarioBros.Marios
         public IMarioMovementState MovementState { get; set; }
         public ISprite Sprite { get; set; }
         public MarioPhysics MarioPhysics { get; }
-        public Vector2 Position { get; set; }
+        public Vector2 Position { get => position; set => position = value; }
+        private Vector2 position;
         public double Timer { get; set; }
         public double NoMovementTimer { get; set; }
         public Mario(Vector2 location)
@@ -106,6 +108,10 @@ namespace SuperMarioBros.Marios
             MovementState.Update();
             Sprite.Update();
             Position += MarioPhysics.Displacement(gameTime);
+            if (Position.X < Camera.Instance.LeftBound)
+            {
+                position.X = Camera.Instance.LeftBound;
+            }
         }
 
         public void MoveUp()

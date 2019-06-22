@@ -7,6 +7,7 @@ namespace SuperMarioBros.Blocks.BlockStates
         public DisappearBlockState(IBlock block)
         {
             block.ChangeSprite(SpriteFactory.CreateSprite(this.GetType().Name));
+            block.IsInvalid = true;
         }
 
         public void ToUsed()

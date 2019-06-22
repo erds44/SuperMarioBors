@@ -220,6 +220,9 @@
     <None Include="Content\SmallMarioRightMoving.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\StompedGoomba.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Content\UsedBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

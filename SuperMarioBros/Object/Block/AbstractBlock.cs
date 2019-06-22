@@ -40,7 +40,7 @@ namespace SuperMarioBros.Blocks
             {
                 if(bumpingCount == 20) {
                     isBumping = false;
-                    ((BumpBlockState)State).Restore();
+                    if (State is BumpBlockState) ((BumpBlockState)State).Restore();
                     drawPosition = Position;
                     bumpingCount = 0;
                 }

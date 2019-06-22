@@ -12,14 +12,14 @@ namespace SuperMarioBros.Marios
 {
     public class StarMario : IMario
     {
-        public bool IsInvalid { get; set; }
-        public IMarioHealthState HealthState { get; set; }
-        public IMarioMovementState MovementState { get; set; }
+        public bool IsInvalid { get => mario.IsInvalid; set => mario.IsInvalid = value; }
+        public IMarioHealthState HealthState { get => mario.HealthState; set => mario.HealthState = value; }
+        public IMarioMovementState MovementState { get => mario.MovementState; set => mario.MovementState = value; }
         public MarioPhysics MarioPhysics { get; }
         private readonly IMario mario;
         public ISprite Sprite { get; set; }
         public double Timer { get; set; }
-        public Vector2 Position { get; set; }
+        public Vector2 Position { get => mario.Position;  set { } }
         public bool PowerFlag { get => mario.PowerFlag; set => mario.PowerFlag = value; }
         public double NoMovementTimer { get; set; }
 

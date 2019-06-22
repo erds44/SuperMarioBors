@@ -155,11 +155,23 @@ namespace SuperMarioBros.Collisions
         private static void MarioBrick(IDynamic obj1, IStatic obj2 ,Direction direction)
         {
             IMario mario = (IMario)obj1;
+            IBlock block = (IBlock)obj2;
             MoveDynamic(obj1, obj2, direction);
 
             if(direction == Direction.bottom)
             {
-                if (mario.HealthState is SmallMario && obj2 is BrickBlock)
+                block.Bump();
+                if(block is ItemBrickBlock)
+                {
+                    block.Used();
+                }
+                else // BrickBlock
+                {
+                    if (mario.HealthState is SmallMario) return;
+                    block.Used();
+                    CreateDerbis(block.Position);
+                }
+/*                if (mario.HealthState is SmallMario && obj2 is BrickBlock)
                 {
                     ((IBlock)obj2).Bump();
                 }
@@ -169,7 +181,7 @@ namespace SuperMarioBros.Collisions
                         ((IBlock)obj2).Bump();
                     else
                         CreateDerbis(obj2.Position);
-                }
+                }*/
                 
             }
         }
