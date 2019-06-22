@@ -379,7 +379,6 @@
     <Compile Include="Sprite\FlashingSprite.cs" />
     <Compile Include="Sprite\UniversalSprite.cs" />
     <Compile Include="Object\Enemy\Koopa\StompedKoopa.cs" />
-    <Compile Include="Object\Enemy\Koopa\StompedMovingKoopa.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="levelLoading, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
