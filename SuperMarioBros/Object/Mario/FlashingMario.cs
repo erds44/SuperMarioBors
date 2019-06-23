@@ -17,7 +17,7 @@ namespace SuperMarioBros.Marios
         public bool IsInvalid { get => mario.IsInvalid; set => mario.IsInvalid = value; }
         public IMarioHealthState HealthState { get => mario.HealthState; set => mario.HealthState = value; }
         public IMarioMovementState MovementState { get => mario.MovementState ; set => mario.MovementState = value; }
-        public MarioPhysics MarioPhysics { get; }
+        public MarioPhysics MarioPhysics { get => mario.MarioPhysics; }
         private readonly IMario mario;
         public ISprite Sprite { get; set; }
         public double Timer { get; set; }
@@ -113,7 +113,10 @@ namespace SuperMarioBros.Marios
             {
                 mario.MarioPhysics.SetXVelocity(0);
             }
-
+            if (Timer <= 0)
+            {
+                ObjectsManager.Instance.Decoration(this, mario);
+            }
             NoMovementTimer -= gameTime.ElapsedGameTime.TotalSeconds;
             Timer -= gameTime.ElapsedGameTime.TotalSeconds;
         }

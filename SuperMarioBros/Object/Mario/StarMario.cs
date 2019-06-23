@@ -15,7 +15,7 @@ namespace SuperMarioBros.Marios
         public bool IsInvalid { get => mario.IsInvalid; set => mario.IsInvalid = value; }
         public IMarioHealthState HealthState { get => mario.HealthState; set => mario.HealthState = value; }
         public IMarioMovementState MovementState { get => mario.MovementState; set => mario.MovementState = value; }
-        public MarioPhysics MarioPhysics { get; }
+        public MarioPhysics MarioPhysics { get => mario.MarioPhysics; }
         private readonly IMario mario;
         public ISprite Sprite { get; set; }
         public double Timer { get; set; }
@@ -26,9 +26,6 @@ namespace SuperMarioBros.Marios
         public StarMario(IMario mario)
         {
             this.mario = mario.ReturnItself();
-            this.HealthState = mario.HealthState;
-            MarioPhysics = mario.MarioPhysics;
-            HealthState = mario.HealthState;
             Timer = 5;
         }
 
@@ -100,6 +97,10 @@ namespace SuperMarioBros.Marios
             mario.Update(gameTime);
             Timer -= gameTime.ElapsedGameTime.TotalSeconds;
             Sprite.Update();
+            if (Timer <= 0)
+            {
+                ObjectsManager.Instance.Decoration(this, mario);
+            }
         }
 
 
@@ -125,7 +126,7 @@ namespace SuperMarioBros.Marios
 
         public void Destroy()
         {
-            Console.WriteLine("StarMario destroied.");
+
         }
 
         public IMario ReturnItself()
