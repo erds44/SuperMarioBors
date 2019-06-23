@@ -27,7 +27,7 @@ namespace SuperMarioBros.Marios
         public StarMario(IMario mario)
         {
             this.mario = mario.ReturnItself();
-            Timer = 5;
+            timer = 5;
         }
 
         public void Down()
@@ -98,7 +98,7 @@ namespace SuperMarioBros.Marios
             mario.Update(gameTime);
             timer -= gameTime.ElapsedGameTime.TotalSeconds;
             Sprite.Update();
-            if (Timer <= 0)
+            if (timer <= 0)
             {
                 ObjectsManager.Instance.Decoration(this, mario);
             }

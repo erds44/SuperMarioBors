@@ -114,7 +114,7 @@ namespace SuperMarioBros.Marios
             {
                 mario.MarioPhysics.SetXVelocity(0);
             }
-            if (Timer <= 0)
+            if (timer <= 0)
             {
                 ObjectsManager.Instance.Decoration(this, mario);
             }
