@@ -11,19 +11,25 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace SuperMarioBros
+namespace SuperMarioBros.Loading
 {
-    public static class ObjectLoading
+    public class ObjectLoader
     {
-        private static List<IStatic> statics;
-        private static List<IDynamic> dynamics;
-        private static List<IObject> nonCollidableObjects;
-        public static IMario mario;
-        public static int LevelLength { get; private set; }
-        public static void LevelLoading(ContentManager content, string path)
+        public MarioGame Game { get; }
+        public List<IStatic> Statics { get; private set; }
+        public List<IDynamic> Dynamics { get; private set; }
+        public List<IObject> NonCollidables { get; private set; }
+        public IMario Mario { get; private set; }
+        public int LevelLength { get; private set; }
+        public ObjectLoader(MarioGame game)
         {
-            mario = new Mario(new Vector2(0, 410));
-/*            nonCollidableObjects = new List<IObject>
+            this.Game = game;
+        }
+        public void LevelLoading(ContentManager content, string path)
+        {
+            Mario = new Mario(new Vector2(0, 410), Game);
+/*          For test use.
+ *          nonCollidableObjects = new List<IObject>
             {
 
             };
@@ -61,9 +67,9 @@ namespace SuperMarioBros
 
             XMLProcessor xml = new XMLProcessor();
 
-            statics = xml.StaticList();
-            dynamics = xml.DynamicList();
-            nonCollidableObjects = xml.NonCollidableList();
+            Statics = xml.StaticList();
+            Dynamics = xml.DynamicList();
+            NonCollidables = xml.NonCollidableList();
             //for (int i = 0; i < 80; i++)
             //{
             //    statics.Add(new RockBlock(new Vector2(0 + 40 * i, 450)));
@@ -71,18 +77,6 @@ namespace SuperMarioBros
             //}
             //for (int i = 0; i < 6; i++)
             //    statics.Add(new BrickBlock(new Vector2(480 + 40 * i, 100)));
-        }
-        public static List<IStatic> LoadStatics()
-        {
-            return statics;
-        }
-        public static List<IDynamic> LoadDynamics()
-        {
-            return dynamics;
-        }
-        public static List<IObject> LoadNonCollidable()
-        {
-            return nonCollidableObjects;
         }
     }
 }

@@ -8,12 +8,11 @@ namespace SuperMarioBros.Blocks
 {
     public class ItemBrickBlock : AbstractBlock
     {
-        private readonly Type itemType;
+        public readonly Type ItemType;
         private int itemCount;
         public ItemBrickBlock(Vector2 location, Type itemType = null, int itemCount = 1)
         {
-            if (itemType is null) itemType = typeof(Coin);
-            this.itemType = itemType;
+            this.ItemType = itemType;
             this.itemCount = itemCount;
             Position = location;
             State = new BrickBlockState(this);
@@ -31,11 +30,9 @@ namespace SuperMarioBros.Blocks
 
         public override void Used()
         {
-            if(itemCount > 0)
+            if (itemCount > 0)
             {
                 itemCount--;
-                IItem item = (IItem)Activator.CreateInstance(itemType, Position);
-                ObjectsManager.Instance.AddNonCollidable(item);
                 if (itemCount == 0) State = new UsedBlockState(this);
             }
         }

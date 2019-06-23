@@ -39,7 +39,7 @@ namespace SuperMarioBros.Goombas
             Sprite.Update();
             deletetimer -= gameTime.ElapsedGameTime.TotalSeconds;
             if (deletetimer <= 0)
-                IsInvalid = true;
+                ObjState = ObjectState.Destroy;;
             Position += physics.Displacement(gameTime);
         }
     

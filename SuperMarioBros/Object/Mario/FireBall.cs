@@ -15,7 +15,7 @@ namespace SuperMarioBros.Marios
 {
     public class FireBall : IDynamic
     {
-        public bool IsInvalid { get; set; }
+        public ObjectState ObjState { get; set; }
 
         private List<Type> direction = new List<Type>
         {

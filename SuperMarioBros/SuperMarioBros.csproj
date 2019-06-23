@@ -266,7 +266,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera\Camera.cs" />
-    <Compile Include="Collision\CollisionDetection.cs" />
+    <Compile Include="Component\ComponentTable.cs" />
     <Compile Include="Loading\DynamicLoading.cs" />
     <Compile Include="Loading\SpecialBlock.cs" />
     <Compile Include="Object\Enemy\AbstractEnemy.cs" />
@@ -300,7 +300,7 @@
     <Compile Include="Interfaces\IDraw.cs" />
     <Compile Include="Loading\ObjectNode.cs" />
     <Compile Include="Loading\XMLProcessor.cs" />
-    <Compile Include="ObjectLoading.cs" />
+    <Compile Include="Loading\ObjectLoading.cs" />
     <Compile Include="Object\Background\AbstractBackGround.cs" />
     <Compile Include="Object\Background\BigBush.cs" />
     <Compile Include="Object\Background\BigCloud.cs" />
@@ -320,7 +320,6 @@
     <Compile Include="Object\Block\IBlock.cs" />
     <Compile Include="Object\Block\BlockState\IBlockState.cs" />
     <Compile Include="Object\Block\ItemBrickBlock.cs" />
-    <Compile Include="Object\Block\PowerUpBlock.cs" />
     <Compile Include="Object\Block\QuestionBlock.cs" />
     <Compile Include="Object\Block\RockBlock.cs" />
     <Compile Include="Object\IDynamic.cs" />

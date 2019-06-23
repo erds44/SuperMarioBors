@@ -25,7 +25,7 @@ namespace SuperMarioBros.Koopas
 
         public override void TakeDamage()
         {
-            IsInvalid = true;
+            ObjState = ObjectState.Destroy;;
         }
 
         public override void Update(GameTime gameTime)
@@ -34,14 +34,14 @@ namespace SuperMarioBros.Koopas
             if (respawnTimer < 0 && State is IdleEnemyState)
             {
                 ObjectsManager.Instance.AddObject(new Koopa(Position));   /* return to Koopa after 5 seconds */
-                IsInvalid = true;
+                ObjState = ObjectState.Destroy;;
             }
             Position += physics.Displacement(gameTime);
         }
 
         public override void Flip()
         {
-            IsInvalid = true;
+            ObjState = ObjectState.Destroy;;
         }
 
         public override void MoveLeft()

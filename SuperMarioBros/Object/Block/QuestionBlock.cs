@@ -8,12 +8,11 @@ namespace SuperMarioBros.Blocks
 {
     public class QuestionBlock : AbstractBlock
     {
-        private readonly Type itemType;
+        public readonly Type ItemType;
         private int itemCount;
         public QuestionBlock(Vector2 location, Type itemType = null, int itemCount = 1)
         {
-            if (itemType is null) itemType = typeof(Coin);
-            this.itemType = itemType;
+            this.ItemType = itemType;
             this.itemCount = itemCount;
             Position = location;
             State = new QuestionBlockState(this);
@@ -34,8 +33,6 @@ namespace SuperMarioBros.Blocks
             if(itemCount > 0)
             {
                 itemCount--;
-                IItem item = (IItem)Activator.CreateInstance(itemType, Position);
-                ObjectsManager.Instance.AddNonCollidable(item);
                 if (itemCount == 0) State.ToUsed();
             }
         }

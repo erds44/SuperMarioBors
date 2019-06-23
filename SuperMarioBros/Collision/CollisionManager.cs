@@ -4,9 +4,27 @@ using SuperMarioBros.Objects;
 namespace SuperMarioBros.Collisions
 {
     public enum Direction { left, right, top, bottom, none }
-    public static class CollisionDetection
+    public class CollisionManager
     {
-        public static Direction Detect(IObject object1, IObject object2)
+        private DynamicAndStaticObjectsHandler staticHandler;
+        private DynamicAndDynamicObjectsHandler dynamicHandler;
+        public CollisionManager()
+        {
+            staticHandler = new DynamicAndStaticObjectsHandler();
+            dynamicHandler = new DynamicAndDynamicObjectsHandler();
+        }
+
+        public void HandleCollision(IDynamic obj1, IDynamic obj2)
+        {
+            Direction direction = Detect(obj1, obj2);
+            dynamicHandler.HandleCollision(obj1, obj2, direction);
+        }
+        public void HandleCollision(IDynamic obj1, IStatic obj2)
+        {
+            Direction direction = Detect(obj1, obj2);
+            staticHandler.HandleCollision(obj1, obj2, direction);
+        }
+        private Direction Detect(IObject object1, IObject object2)
         {
             if (object1.HitBox().Intersects(object2.HitBox()))
             {

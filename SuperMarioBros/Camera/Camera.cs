@@ -6,17 +6,11 @@ namespace SuperMarioBros.GameCoreComponents
 {
     public class Camera
     {
-        public static Camera Instance { get {
-                if (instance is null) instance = new Camera();
-                return instance;
-            }
-        }
-        private static Camera instance;
         public float LeftBound { get; private set; }
         public float RightBound { get; private set; }
         public IObject focus { get; private set; }
         public Matrix Transform { get; private set; }
-        private Camera()
+        public Camera()
         {
             LeftBound = 0;
             RightBound = LeftBound + MarioGame.WindowWidth;

@@ -9,7 +9,7 @@ namespace SuperMarioBros.Blocks
 
     public abstract class AbstractBlock : IBlock
     {
-        public bool IsInvalid { get; set; }
+        public ObjectState ObjState { get; set; }
 
         public IBlockState State { get; protected set; }
         public Vector2 Position { get; set; }
@@ -20,6 +20,7 @@ namespace SuperMarioBros.Blocks
         protected Vector2 drawPosition;
         protected void Initialize()
         {
+            ObjState = ObjectState.Normal;
             drawPosition = Position;
             isBumping = false;
             bumpingCount = 0;

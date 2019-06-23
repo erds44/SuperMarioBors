@@ -14,16 +14,17 @@ namespace SuperMarioBros.Marios
 {
     public class FlashingMario : IMario
     {
-        public bool IsInvalid { get => mario.IsInvalid; set => mario.IsInvalid = value; }
+        public ObjectState ObjState { get => mario.ObjState; set => mario.ObjState = value; }
         public IMarioHealthState HealthState { get => mario.HealthState; set => mario.HealthState = value; }
         public IMarioMovementState MovementState { get => mario.MovementState ; set => mario.MovementState = value; }
         public MarioPhysics MarioPhysics { get => mario.MarioPhysics; }
         private readonly IMario mario;
         public ISprite Sprite { get; set; }
-        public double Timer { get; set; }
+        private double timer;
         public Vector2 Position { get => mario.Position; set { } }
         public bool PowerFlag { get => mario.PowerFlag; set => mario.PowerFlag = value; }
         public double NoMovementTimer { get; set; }
+        public MarioGame Game { get => mario.Game; set => mario.Game = value; }
 
         public FlashingMario(IMario mario)
         {
@@ -31,14 +32,14 @@ namespace SuperMarioBros.Marios
             //this.HealthState = mario.HealthState;
             //MarioPhysics = mario.MarioPhysics;
             //HealthState = mario.HealthState;
-            Timer = 3;
+            timer = 3;
             mario.NoMovementTimer = 1;
             NoMovementTimer = 1.5;
         }
 
         public void Down()
         {
-                mario.Down();
+            mario.Down();
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -118,7 +119,7 @@ namespace SuperMarioBros.Marios
                 ObjectsManager.Instance.Decoration(this, mario);
             }
             NoMovementTimer -= gameTime.ElapsedGameTime.TotalSeconds;
-            Timer -= gameTime.ElapsedGameTime.TotalSeconds;
+            timer -= gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         public void MoveUp()
@@ -143,7 +144,7 @@ namespace SuperMarioBros.Marios
 
         public void Destroy()
         {
-            //Do nothing.
+            mario.Destroy();
         }
 
         public IMario ReturnItself()

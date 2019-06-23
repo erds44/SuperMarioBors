@@ -9,6 +9,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
     {
         public DeadMario(IMario mario)
         {
+            mario.ObjState = ObjectState.NonCollidable;
             mario.Sprite = SpriteFactory.CreateSprite(nameof(DeadMario));
             mario.MovementState = new TerminateMovementState();
             mario.MarioPhysics.SetXVelocity(0);

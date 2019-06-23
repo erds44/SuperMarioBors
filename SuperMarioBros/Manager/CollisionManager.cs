@@ -1,35 +1,66 @@
-﻿using SuperMarioBros.Collisions;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Collisions;
 using SuperMarioBros.Objects;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Managers
 {
     public class CollisionManager 
     {
-        private readonly List<IStatic> staticObjects;
-        private readonly List<IDynamic> dynamicObjects;
-        public CollisionManager()
+        private MarioGame game;
+        private DynamicAndStaticObjectsHandler staticHandler;
+        private DynamicAndDynamicObjectsHandler dynamicHandler;
+        public CollisionManager(MarioGame game)
         {
-            staticObjects = ObjectsManager.Instance.staticObjects;
-            dynamicObjects = ObjectsManager.Instance.dynamicObjects;
+            this.game = game;
+            staticHandler = new DynamicAndStaticObjectsHandler(game);
+            dynamicHandler = new DynamicAndDynamicObjectsHandler(game);
         }
 
-        public void HandleCollision()
+        private void HandleCollision(IDynamic obj1, IDynamic obj2)
         {
+            Direction direction = Detect(obj1, obj2);
+            if (direction == Direction.none) return;
+            dynamicHandler.HandleCollision(obj1, obj2, direction);
+        }
+
+        private void HandleCollision(IDynamic obj1, IStatic obj2)
+        {
+            Direction direction = Detect(obj1, obj2);
+            if (direction == Direction.none) return;
+            staticHandler.HandleCollision(obj1, obj2, direction);
+        }
+
+        private Direction Detect(IObject object1, IObject object2)
+        {
+            if (!(object1.HitBox().Intersects(object2.HitBox()))) return Direction.none;
+            Rectangle overlap = Rectangle.Intersect(object1.HitBox(), object2.HitBox());
+            if (overlap.Height <= overlap.Width)
+            {
+                if (overlap.Center.Y >= object2.HitBox().Center.Y) return Direction.bottom;
+                if (overlap.Center.Y < object2.HitBox().Center.Y) return Direction.top;
+            }
+            else
+            {
+                if (overlap.Center.X >= object2.HitBox().Center.X) return Direction.right;
+                if (overlap.Center.X < object2.HitBox().Center.X) return Direction.left;
+            }
+            return Direction.none;
+        }
+
+        public void Update()
+        {
+            List<IDynamic> dynamicObjects = game.ObjectsManager.dynamicObjects;
+            List<IStatic> staticObjects = game.ObjectsManager.staticObjects;
             for (int i = 0; i < dynamicObjects.Count; i++)
             {
                 for (int j = 0; j < staticObjects.Count; j++)
                 {
-                    Direction direction = CollisionDetection.Detect(dynamicObjects[i], staticObjects[j]);
-                    if (direction != Direction.none)
-                        DynamicAndStaticObjectsHandler.HandleCollision(dynamicObjects[i],staticObjects[j], direction);
+                    HandleCollision(dynamicObjects[i],staticObjects[j]);
                 }
                 for(int j = i+1; j < dynamicObjects.Count; j++)
                 {
-                    Direction direction = CollisionDetection.Detect(dynamicObjects[i], dynamicObjects[j]);
-                    if (direction != Direction.none)
-                        DynamicAndDynamicObjectsHandler.HandleCollision(dynamicObjects[i], dynamicObjects[j], direction);                
+                    HandleCollision(dynamicObjects[i], dynamicObjects[j]);                
                 }
             }
         }

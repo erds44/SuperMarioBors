@@ -15,7 +15,7 @@ namespace SuperMarioBros.Blocks
         
         public override void Used()
         {
-            IsInvalid = true;
+            ObjState = ObjectState.Destroy;;
             base.Used();
         }
 

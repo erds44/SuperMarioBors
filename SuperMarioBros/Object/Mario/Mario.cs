@@ -1,12 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.Collisions;
 using SuperMarioBros.GameCoreComponents;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Managers;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
-using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.Sprites;
 
@@ -14,27 +12,25 @@ namespace SuperMarioBros.Marios
 {
     public class Mario : IMario
     {
-        public bool IsInvalid { get; set; }
+        public MarioGame Game { get; set; }
+        public ObjectState ObjState { get; set; }
         public bool PowerFlag { get; set; }
         public IMarioHealthState HealthState { get; set; }
         public IMarioMovementState MovementState { get; set; }
         public ISprite Sprite { get; set; }
         public MarioPhysics MarioPhysics { get; }
-        public Vector2 Position { get => position; set => position = value; }
-        private Vector2 position;
+        public Vector2 Position { get; set; }
         public double Timer { get; set; }
         public double NoMovementTimer { get; set; }
-        public IMario Decoration { get; set; }
-        public Mario(Vector2 location)
+        public Mario(Vector2 location, MarioGame game)
         {
+            Game = game;
             HealthState = new SmallMario(this);
             MarioPhysics = new MarioPhysics(this,150);
             MovementState = new RightIdle(this);
             Position = location;
             NoMovementTimer = 0;
-            Decoration = this;
         }
-
 
         public void Down()
         {
@@ -110,15 +106,6 @@ namespace SuperMarioBros.Marios
             MovementState.Update();
             Sprite.Update();
             Position += MarioPhysics.Displacement(gameTime);
-            if (Position.X < Camera.Instance.LeftBound)
-            {
-                position.X = Camera.Instance.LeftBound;
-            }
-            if (!(Decoration is Mario) && Decoration.Timer <= 0)
-            {
-                ObjectsManager.Instance.Decoration(Decoration, this);
-                Decoration = this;
-            }
         }
 
         public void MoveUp()
@@ -143,7 +130,7 @@ namespace SuperMarioBros.Marios
 
         public void Destroy()
         {
-            MarioGame.Instance.InitializeGameComponents();
+            Game.InitializeGame();
         }
 
         public IMario ReturnItself()

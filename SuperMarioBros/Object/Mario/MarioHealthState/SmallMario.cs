@@ -34,7 +34,6 @@ namespace SuperMarioBros.Marios.MarioTypeStates
 
         public void TakeDamage()
         {
-            ObjectsManager.Instance.MoveToNonCollidable(mario);
             mario.HealthState = new DeadMario(mario);         
         }
 

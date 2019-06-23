@@ -30,8 +30,7 @@ namespace SuperMarioBros.Items
             {
                 physics.SetSpeed(new Vector2(40,-40));
                 sprite.SetLayer(1.0f);
-                ObjectsManager.Instance.AddObject(this);
-                ObjectsManager.Instance.RemoveFromNonCollidable(this);
+                ObjState = ObjectState.Normal;
                 addFlag = true;
             }
         }
@@ -54,11 +53,6 @@ namespace SuperMarioBros.Items
         public void MoveRight()
         {
             physics.MoveRight();
-        }
-
-        public void Destroy()
-        {
-            //Do nothing.
         }
 
         public void ChangeDirection()

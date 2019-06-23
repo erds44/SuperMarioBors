@@ -26,7 +26,7 @@ namespace SuperMarioBros.Items
             Position += physics.Displacement(gameTime);
             if (timer >= 2 )
             {
-                ObjectsManager.Instance.RemoveFromNonCollidable(this);
+                ObjState = ObjectState.Destroy;
             }
         }
         public void MoveUp()
@@ -48,12 +48,6 @@ namespace SuperMarioBros.Items
         {
             physics.MoveRight();
         }
-
-        public void Destroy()
-        {
-            //Do nothing.
-        }
-
         public void ChangeDirection()
         {
             //Do Nothing
