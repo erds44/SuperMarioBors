@@ -69,7 +69,8 @@ namespace SuperMarioBros.Managers
             if (marioDictionary.TryGetValue((typ1, typ2), out Point size))
                 return size;
             else
-                throw new ArgumentException("ERROR: The size of mario in " + typ1 + " and " + typ2 + " state is not loaded.");
+                Console.WriteLine("ERROR: The size of mario in " + typ1 + " and " + typ2 + " state is not loaded.");
+            return new Point();
         }   
     }
 }

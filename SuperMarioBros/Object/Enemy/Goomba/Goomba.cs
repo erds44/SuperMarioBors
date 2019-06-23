@@ -16,8 +16,8 @@ namespace SuperMarioBros.Goombas
 
         public override void Flip()
         {
-            ObjectsManager.Instance.AddNonCollidable(new FlippedGoomba(this));
-            IsInvalid = true;
+            ObjectsManager.Instance.AddNonCollidableObject(new FlippedGoomba(this));
+            ObjState = ObjectState.Destroy;
         }
 
         public override void MoveLeft()
@@ -35,7 +35,7 @@ namespace SuperMarioBros.Goombas
         public override void TakeDamage()
         {
             ObjectsManager.Instance.AddObject(new StompedGoomba(Position));
-            IsInvalid = true;
+            ObjState = ObjectState.Destroy;;
         }
         public override void Update(GameTime gameTime)
         {

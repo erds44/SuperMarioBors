@@ -10,20 +10,23 @@ using SuperMarioBros.Marios;
 
 namespace SuperMarioBros
 {
+    public enum ObjectState { Normal = 0, NonCollidable, Destroy }
     // [ComVisible(false)]
     public class MarioGame : Game
     {
         public static int WindowWidth { get; private set; }
         public static int WindowHeight { get; private set; }
-        public static int LevelLength { get; private set; }
+        public int LevelLength { get; private set; }
+        public ObjectsManager ObjectsManager { get; private set; }
+        public Camera Camera { get => marioCamera; }
+        public CollisionManager CollisionManager { get; private set; }
+
         private ControllerMessager controller;
         private SpriteBatch spriteBatch;
         private CollisionManager collisionManager;
         private Camera marioCamera;
-        public static MarioGame Instance { get; private set; }
         public MarioGame()
         {
-            Instance = this;
             var graphicsDeviceManager = new GraphicsDeviceManager(this);
             graphicsDeviceManager.DeviceCreated += (o, e) =>
             {
@@ -35,18 +38,18 @@ namespace SuperMarioBros
         }
         protected override void Initialize()
         {
+            //Things in this method only initialize once.
             SpriteFactory.Initialize(Content);
-            marioCamera = Camera.Instance;
-            InitializeGameComponents();
+            marioCamera = new Camera();
+            InitializeGame();
             base.Initialize();
         }
         protected override void Update(GameTime gameTime)
         {
             controller.Update();
             marioCamera.Update();
-            DynamicLoading.Instance.Load();
-            ObjectsManager.Instance.Update(gameTime);
-            collisionManager.HandleCollision();
+            ObjectsManager.Update(gameTime);
+            collisionManager.Update();
             base.Update(gameTime);
         }
 
@@ -54,13 +57,13 @@ namespace SuperMarioBros
         {
             spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack,samplerState: SamplerState.PointClamp, transformMatrix:marioCamera.Transform);
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            ObjectsManager.Instance.Draw(spriteBatch);
+            ObjectsManager.Draw(spriteBatch);
             spriteBatch.End();
             base.Draw(gameTime);
         }
         public void KeyBinding()
         {
-            IMario mario = ObjectsManager.Instance.MarioObject();
+            IMario mario = ObjectsManager.MarioObject();
             controller = new ControllerMessager(this, mario);
             IController keyboardController = new KeyboardController
                 (controller,
@@ -82,17 +85,18 @@ namespace SuperMarioBros
             controller.AddController(JoyStickController);
         }
 
-        public void InitializeGameComponents()
+        public void InitializeGame()
         {
-            ObjectLoading.LevelLoading(Content, "PartialLevelOne");
+            ObjectsManager = new ObjectsManager(new ObjectLoader(this));
+            ObjectsManager.LevelLoading(Content, "PartialLevelOne");
             SizeManager.LoadItemSize(Content, "SizeLoading");
             SizeManager.LoadMarioSize(Content, "MarioSizeLoading");
 
-            ObjectsManager.Instance.Initialize();
+            ObjectsManager.Initialize();
 
             marioCamera.Reset();
-            marioCamera.SetFocus(ObjectsManager.Instance.MarioObject());
-            collisionManager = new CollisionManager();
+            marioCamera.SetFocus(ObjectsManager.MarioObject());
+            collisionManager = new CollisionManager(this);
             KeyBinding();
         }
 

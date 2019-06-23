@@ -24,12 +24,6 @@ namespace SuperMarioBros.Controllers
             Keys[] key = Keyboard.GetState().GetPressedKeys();
             bool isPrevLDown = isLDown;
             isLDown = Keyboard.GetState().IsKeyDown(Keys.L);
-            if (!(isLDown && isPrevLDown)&&isLDown) { //Debug use.
-                var mario = ObjectsManager.Instance.Mario;
-                Console.WriteLine(mario.Position);
-                Console.WriteLine(mario.GetType());
-                Console.WriteLine(mario.HealthState.GetType());
-            };
                 foreach(Keys keyPressed in key)
                 {
                     if (inputKeys.TryGetValue(keyPressed, out int command))

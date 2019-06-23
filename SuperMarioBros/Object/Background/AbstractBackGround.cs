@@ -9,7 +9,7 @@ namespace SuperMarioBros.Backgrounds
     {
         private protected ISprite sprite;
         public Vector2 Position { get; set; }
-        public bool IsInvalid { get; set; }
+        public ObjectState ObjState { get; set; }
 
         public void Draw(SpriteBatch spriteBatch)
         {

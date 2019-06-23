@@ -9,26 +9,23 @@ namespace SuperMarioBros.Blocks
 {
     public class HiddenBlock : AbstractBlock
     {
-        public Type ItemType { get; private set; }
-        public bool IsFlower { get; set; }
+        public readonly Type ItemType;
+        private int itemCount;
         public HiddenBlock(Vector2 location, Type itemType = null, int itemCount = 1)
         {
-            IsFlower = false;
+            this.itemCount = itemCount;
             this.ItemType = itemType;
             Position = location;
             State = new HiddenBlockState(this);
-            base.Initialize();
+            Initialize();
         }
         public override void Used()
         {
-            IItem item;
-            if (ItemType == null)
-                item = (IItem)Activator.CreateInstance((IsFlower ? typeof(Flower) : typeof(RedMushroom)), Position);
-            else
-                item = (IItem)Activator.CreateInstance(ItemType, Position);
-            ObjectsManager.Instance.AddNonCollidable(item);
-            State = new UsedBlockState(this);
-
+            if(itemCount > 0)
+            {
+                itemCount--;
+                if (itemCount == 0) State.ToUsed();
+            }
         }
     }
 }

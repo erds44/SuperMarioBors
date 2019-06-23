@@ -17,6 +17,7 @@ namespace SuperMarioBros.Items
         private readonly float speedChangeFlag = 0;
         public RedMushroom(Vector2 location)
         {
+            ObjState = ObjectState.NonCollidable;
             Position = location + offset;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
             sprite.SetLayer(0);
@@ -33,8 +34,7 @@ namespace SuperMarioBros.Items
             {
                 physics.SetSpeed(new Vector2(40, 0));
                 sprite.SetLayer(1.0f);
-                ObjectsManager.Instance.AddObject(this);
-                ObjectsManager.Instance.RemoveFromNonCollidable(this);
+                ObjState = ObjectState.Normal;
                 addFlag = true;
             }
         }
@@ -57,11 +57,6 @@ namespace SuperMarioBros.Items
         public void MoveRight()
         {
             physics.MoveRight();
-        }
-
-        public void Destroy()
-        {
-            //Do nothing.
         }
 
         public void ChangeDirection()

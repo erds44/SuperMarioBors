@@ -51,7 +51,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
 
         public void Update(GameTime gameTime)
         {
-            if (!(power && mario.PowerFlag) && mario.PowerFlag && fireCount>0 )
+            if (!power && mario.PowerFlag && fireCount>0 )
             {
                 fireCount--;
                 ObjectsManager.Instance.AddObject(new FireBall(this, mario));

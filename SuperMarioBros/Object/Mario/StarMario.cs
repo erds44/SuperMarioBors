@@ -12,7 +12,8 @@ namespace SuperMarioBros.Marios
 {
     public class StarMario : IMario
     {
-        public bool IsInvalid { get => mario.IsInvalid; set => mario.IsInvalid = value; }
+        public MarioGame Game { get => mario.Game; set => mario.Game = value; }
+        public ObjectState ObjState { get => mario.ObjState; set => mario.ObjState = value; }
         public IMarioHealthState HealthState { get => mario.HealthState; set => mario.HealthState = value; }
         public IMarioMovementState MovementState { get => mario.MovementState; set => mario.MovementState = value; }
         public MarioPhysics MarioPhysics { get; }
@@ -125,7 +126,7 @@ namespace SuperMarioBros.Marios
 
         public void Destroy()
         {
-            Console.WriteLine("StarMario destroied.");
+            mario.Destroy();
         }
 
         public IMario ReturnItself()

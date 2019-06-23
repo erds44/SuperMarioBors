@@ -20,14 +20,14 @@ namespace SuperMarioBros.Koopas
         public override void TakeDamage()
         {
             ObjectsManager.Instance.AddObject(new StompedKoopa(Position));
-            IsInvalid = true;
+            ObjState = ObjectState.Destroy;;
         }
         
         public override void Flip()
         {
             this.Sprite = SpriteFactory.CreateSprite(typeof(StompedKoopa).Name);
-            ObjectsManager.Instance.AddNonCollidable(new FlippedKoopa(this));
-            IsInvalid = true;
+            ObjectsManager.Instance.AddNonCollidableObject(new FlippedKoopa(this));
+            ObjState = ObjectState.Destroy;;
         }
 
         public override void MoveLeft()

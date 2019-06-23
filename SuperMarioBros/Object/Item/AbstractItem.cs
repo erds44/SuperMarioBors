@@ -1,15 +1,21 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Managers;
+using SuperMarioBros.Objects;
 using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Items
 {
-    public abstract class AbstractItem
+    public abstract class AbstractItem : IObject
     {
         private protected ISprite sprite;
         public Vector2 Position { get; set; }
-        public bool IsInvalid { get; set; }
+        public ObjectState ObjState { get; set; }
+
+        public virtual void Destroy()
+        {
+            // Do nothing.
+        }
 
         public void Draw(SpriteBatch spriteBatch)
         {

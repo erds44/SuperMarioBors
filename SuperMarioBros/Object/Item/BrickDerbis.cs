@@ -20,6 +20,7 @@ namespace SuperMarioBros.Items
         private float timer;
         public BrickDerbis(Vector2 location, BrickPosition brickPosition)
         {
+            ObjState = ObjectState.NonCollidable;
             derbisInfo.TryGetValue(brickPosition, out var tuple);
             Vector2 offSet = tuple.Item1;
             Vector2 velocity = tuple.Item2;
@@ -37,7 +38,7 @@ namespace SuperMarioBros.Items
             Position += physics.Displacement(gameTime);
             if (timer >= 0.5 )
             {
-                ObjectsManager.Instance.RemoveFromNonCollidable(this);
+                ObjState = ObjectState.Destroy;
             }
         }
         public void MoveUp()
@@ -58,11 +59,6 @@ namespace SuperMarioBros.Items
         public void MoveRight()
         {
             physics.MoveRight();
-        }
-
-        public void Destroy()
-        {
-            //Do nothing.
         }
 
         public void ChangeDirection()

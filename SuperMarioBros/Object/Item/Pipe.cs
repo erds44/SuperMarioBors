@@ -9,7 +9,7 @@ namespace SuperMarioBros.Items
 {
     public class Pipe : IStatic
     {
-        public bool IsInvalid { get; set; }
+        public ObjectState ObjState { get; set; }
 
         public Vector2 Position { get; set; }
         private readonly ISprite sprite;
