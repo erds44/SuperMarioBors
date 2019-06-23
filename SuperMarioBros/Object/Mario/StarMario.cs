@@ -19,7 +19,7 @@ namespace SuperMarioBros.Marios
         public MarioPhysics MarioPhysics { get => mario.MarioPhysics; }
         private readonly IMario mario;
         public ISprite Sprite { get; set; }
-        public double Timer { get; set; }
+        private double timer;
         public Vector2 Position { get => mario.Position;  set { } }
         public bool PowerFlag { get => mario.PowerFlag; set => mario.PowerFlag = value; }
         public double NoMovementTimer { get; set; }
@@ -27,7 +27,7 @@ namespace SuperMarioBros.Marios
         public StarMario(IMario mario)
         {
             this.mario = mario.ReturnItself();
-            Timer = 5;
+            timer = 5;
         }
 
         public void Down()
@@ -96,8 +96,12 @@ namespace SuperMarioBros.Marios
         public void Update(GameTime gameTime)
         {
             mario.Update(gameTime);
-            Timer -= gameTime.ElapsedGameTime.TotalSeconds;
+            timer -= gameTime.ElapsedGameTime.TotalSeconds;
             Sprite.Update();
+            if (timer <= 0)
+            {
+                ObjectsManager.Instance.Decoration(this, mario);
+            }
         }
 
 

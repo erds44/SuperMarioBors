@@ -174,9 +174,10 @@ namespace SuperMarioBros.Collisions
             if(direction == Direction.top)
             {
                 ((IEnemy)obj1).Flip();
-                obj2.ObjState = ObjectState.Destroy;;
+                obj2.ObjState = ObjectState.Destroy;
             }
         }
+
         private void EnemyVsBumpBlock(IDynamic obj1, IStatic obj2, Direction direction)
         {
             /*            if (obj1 is Koopa)
@@ -237,9 +238,9 @@ namespace SuperMarioBros.Collisions
         }
         private void MarioQuestion(IDynamic obj1, IStatic obj2, Direction direction)
         {
+            MoveDynamic(obj1, obj2, direction);
             if (direction == Direction.bottom)
             {
-                MoveDynamic(obj1, obj2, direction);
                 ((IBlock)obj2).Bump();
                 var block = (QuestionBlock)obj2;
                 if (block.ItemType == null)

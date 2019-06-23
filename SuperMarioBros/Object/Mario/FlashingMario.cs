@@ -20,7 +20,7 @@ namespace SuperMarioBros.Marios
         public MarioPhysics MarioPhysics { get => mario.MarioPhysics; }
         private readonly IMario mario;
         public ISprite Sprite { get; set; }
-        public double Timer { get; set; }
+        private double timer;
         public Vector2 Position { get => mario.Position; set { } }
         public bool PowerFlag { get => mario.PowerFlag; set => mario.PowerFlag = value; }
         public double NoMovementTimer { get; set; }
@@ -32,7 +32,7 @@ namespace SuperMarioBros.Marios
             //this.HealthState = mario.HealthState;
             //MarioPhysics = mario.MarioPhysics;
             //HealthState = mario.HealthState;
-            Timer = 3;
+            timer = 3;
             mario.NoMovementTimer = 1;
             NoMovementTimer = 1.5;
         }
@@ -114,9 +114,12 @@ namespace SuperMarioBros.Marios
             {
                 mario.MarioPhysics.SetXVelocity(0);
             }
-
+            if(timer <= 0)
+            {
+                ObjectsManager.Instance.Decoration(this, mario);
+            }
             NoMovementTimer -= gameTime.ElapsedGameTime.TotalSeconds;
-            Timer -= gameTime.ElapsedGameTime.TotalSeconds;
+            timer -= gameTime.ElapsedGameTime.TotalSeconds;
         }
 
         public void MoveUp()

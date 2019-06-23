@@ -65,7 +65,7 @@ namespace SuperMarioBros.Physicses
         }
         public void MoveDown()
         {
-            mario.Position -= new Vector2(0, prevDisplacement.Y - 10);
+            mario.Position -= new Vector2(0, prevDisplacement.Y);
             YVelocity = -YVelocity;
         }
         public void MoveLeft()
