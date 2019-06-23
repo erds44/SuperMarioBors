@@ -17,7 +17,7 @@ namespace SuperMarioBros.Marios
         public ObjectState ObjState { get => mario.ObjState; set => mario.ObjState = value; }
         public IMarioHealthState HealthState { get => mario.HealthState; set => mario.HealthState = value; }
         public IMarioMovementState MovementState { get => mario.MovementState ; set => mario.MovementState = value; }
-        public MarioPhysics MarioPhysics { get; }
+        public MarioPhysics MarioPhysics { get => mario.MarioPhysics; }
         private readonly IMario mario;
         public ISprite Sprite { get; set; }
         public double Timer { get; set; }
@@ -39,7 +39,7 @@ namespace SuperMarioBros.Marios
 
         public void Down()
         {
-                mario.Down();
+            mario.Down();
         }
 
         public void Draw(SpriteBatch spriteBatch)

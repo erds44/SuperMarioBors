@@ -20,7 +20,7 @@ namespace SuperMarioBros.Blocks.BlockStates
 
         public void ToUsed()
         {
-            //Do nothing.
+            state = new UsedBlockState(block);
         }
 
         public void Restore()

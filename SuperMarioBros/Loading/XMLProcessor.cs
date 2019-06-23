@@ -13,7 +13,7 @@ namespace SuperMarioBros.LoadingTest
             { 
 
                 //test
-                (new ObjectNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(0,288),1,1,40,"null",4)),
+                (new ObjectNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(0,288),1,1,40,"SuperMarioBros.Items.Coin",4)),
                 (new ObjectNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(100,288),1,1,40,"SuperMarioBros.Items.Star",1)),
                 (new ObjectNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(50,119),1,1,40,"null",1)),
                 (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(200,288),1,1,40,"SuperMarioBros.Items.Coin",1)),
@@ -107,7 +107,7 @@ namespace SuperMarioBros.LoadingTest
 
         private List<ObjectNode> dynamicList = new List<ObjectNode>
         {
-            (new ObjectNode("SuperMarioBros.Items.RedMushroom",new Vector2(80,410),1,1,30)),
+            //(new ObjectNode("SuperMarioBros.Items.RedMushroom",new Vector2(80,410),1,1,30)),
             //test
             (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(540,410),1,1,30)),
              (new ObjectNode("SuperMarioBros.Koopas.Koopa",new Vector2(580,410),1,1,30)),

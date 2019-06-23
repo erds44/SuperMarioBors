@@ -300,7 +300,7 @@
     <Compile Include="Interfaces\IDraw.cs" />
     <Compile Include="Loading\ObjectNode.cs" />
     <Compile Include="Loading\XMLProcessor.cs" />
-    <Compile Include="ObjectLoading.cs" />
+    <Compile Include="Loading\ObjectLoading.cs" />
     <Compile Include="Object\Background\AbstractBackGround.cs" />
     <Compile Include="Object\Background\BigBush.cs" />
     <Compile Include="Object\Background\BigCloud.cs" />

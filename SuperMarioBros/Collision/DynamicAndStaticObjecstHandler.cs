@@ -19,23 +19,6 @@ namespace SuperMarioBros.Collisions
         private MarioGame game;
         private ObjectsManager objManager { get => game.ObjectsManager; }
         private readonly Dictionary<(Type, Type), CollisionHandler> collisionDictionary;
-        public void HandleCollision(IDynamic obj1, IStatic obj2, Direction direction)
-        {
-            Type type;
-            if (obj2 is IBlock)
-            {
-                type = ((IBlock)obj2).State.GetType();
-
-            }
-            else
-            {
-                type = obj2.GetType();
-            }
-            if (collisionDictionary.TryGetValue((obj1.GetType(), type), out var handle))
-            {
-                handle(obj1, obj2, direction);
-            }
-        }
         public DynamicAndStaticObjectsHandler(MarioGame game)
         {
             this.game = game;
@@ -45,7 +28,7 @@ namespace SuperMarioBros.Collisions
                 { (typeof(Mario), typeof(QuestionBlockState)), MarioQuestion},
                 { (typeof(Mario), typeof(RockBlockState)), MoveDynamic},
                 { (typeof(Mario), typeof(UsedBlockState)), MoveDynamic},
-                { (typeof(Mario), typeof(HiddenBlockState)), HiddenUsed},
+                { (typeof(Mario), typeof(HiddenBlockState)), MarioHidden},
                 { (typeof(Mario), typeof(Pipe)), MoveDynamic},
                 { (typeof(Mario), typeof(HighPipe)), MoveDynamic},
                 { (typeof(Mario), typeof(MiddlePipe)), MoveDynamic},
@@ -55,7 +38,7 @@ namespace SuperMarioBros.Collisions
                 { (typeof(StarMario), typeof(QuestionBlockState)), MarioQuestion},
                 { (typeof(StarMario), typeof(RockBlockState)), MoveDynamic},
                 { (typeof(StarMario), typeof(UsedBlockState)), MoveDynamic},
-                { (typeof(StarMario), typeof(HiddenBlockState)), HiddenUsed},
+                { (typeof(StarMario), typeof(HiddenBlockState)), MarioHidden},
                 { (typeof(StarMario), typeof(HighPipe)), MoveDynamic},
                 { (typeof(StarMario), typeof(MiddlePipe)), MoveDynamic},
                 { (typeof(StarMario), typeof(Pipe)), MoveDynamic},
@@ -65,7 +48,7 @@ namespace SuperMarioBros.Collisions
                 { (typeof(FlashingMario), typeof(QuestionBlockState)), MarioQuestion},
                 { (typeof(FlashingMario), typeof(RockBlockState)), MoveDynamic},
                 { (typeof(FlashingMario), typeof(UsedBlockState)), MoveDynamic},
-                { (typeof(FlashingMario), typeof(HiddenBlockState)), HiddenUsed},
+                { (typeof(FlashingMario), typeof(HiddenBlockState)), MarioHidden},
                 { (typeof(FlashingMario), typeof(Pipe)), MoveDynamic},
                 { (typeof(FlashingMario), typeof(HighPipe)), MoveDynamic},
                 { (typeof(FlashingMario), typeof(MiddlePipe)), MoveDynamic},
@@ -154,9 +137,37 @@ namespace SuperMarioBros.Collisions
                 { (typeof(Flower), typeof(HighPipe)), MoveDynamic},
             };
         }
+
+        public void HandleCollision(IDynamic obj1, IStatic obj2, Direction direction)
+        {
+            Type type;
+            if (obj2 is IBlock)
+            {
+                type = ((IBlock)obj2).State.GetType();
+
+            }
+            else
+            {
+                type = obj2.GetType();
+            }
+            if (collisionDictionary.TryGetValue((obj1.GetType(), type), out var handle))
+            {
+                handle(obj1, obj2, direction);
+            }
+        }
+
         private delegate void CollisionHandler(IDynamic obj1, IStatic obj2, Direction direction);
 
-
+        private void MoveDynamic(IDynamic obj1, IStatic obj2, Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.top: obj1.MoveUp(); break;
+                case Direction.bottom: obj1.MoveDown(); break;
+                case Direction.left: obj1.MoveLeft(); break;
+                case Direction.right: obj1.MoveRight(); break;
+            }
+        }
 
         private void BrickVsEnemy(IDynamic obj1, IStatic obj2, Direction direction)
         {
@@ -166,6 +177,25 @@ namespace SuperMarioBros.Collisions
                 obj2.ObjState = ObjectState.Destroy;;
             }
         }
+        private void EnemyVsBumpBlock(IDynamic obj1, IStatic obj2, Direction direction)
+        {
+            /*            if (obj1 is Koopa)
+                        {
+                            obj1.ObjState = ObjectState.Destroy;;
+                            game.ObjectsManagerAddNonCollidable(new FlippedKoopa(new StompedKoopa(obj1.Position)));
+                        }
+                        else
+                        {*/
+            ((IEnemy)obj1).Flip();
+            //}
+        }
+        private void ItemVsBumpBlock(IDynamic obj1, IStatic obj2, Direction direction)
+        {
+            ((IItem)obj1).BumpUp();
+            if (obj1.HitBox().Center.X <= obj2.HitBox().Center.X)
+                ((IItem)obj1).ChangeDirection();
+        }
+
 
         private void MarioBrick(IDynamic obj1, IStatic obj2 ,Direction direction)
         {
@@ -178,7 +208,6 @@ namespace SuperMarioBros.Collisions
                 block.Bump();
                 if (block is ItemBrickBlock)
                 {
-                    MoveDynamic(obj1, obj2, direction);
                     ItemBrickBlock itemBrick = (ItemBrickBlock)obj2;
                     if (itemBrick.ItemType == null)
                         objManager.CreateNonCollidableObject(((IMario)obj1).HealthState is SmallMario ? typeof(RedMushroom) : typeof(Flower), block.Position);
@@ -208,67 +237,39 @@ namespace SuperMarioBros.Collisions
         }
         private void MarioQuestion(IDynamic obj1, IStatic obj2, Direction direction)
         {
-            MoveDynamic(obj1, obj2, direction);
-            ((IBlock)obj2).Bump();
             if (direction == Direction.bottom)
             {
+                MoveDynamic(obj1, obj2, direction);
+                ((IBlock)obj2).Bump();
                 var block = (QuestionBlock)obj2;
                 if (block.ItemType == null)
                     objManager.CreateNonCollidableObject(((IMario)obj1).HealthState is SmallMario ? typeof(RedMushroom) : typeof(Flower), block.Position);
                 else
                     objManager.CreateNonCollidableObject(block.ItemType, block.Position);
+                block.Used();
+            }
+        }
+        private void MarioHidden(IDynamic obj1, IStatic obj2, Direction direction)
+        {
+            if (direction == Direction.bottom && ((IMario)obj1).MarioPhysics.YVelocity < 0)
+            {
+                var block = (HiddenBlock)obj2;
+                if (block.ItemType == null)
+                    objManager.CreateNonCollidableObject(((IMario)obj1).HealthState is SmallMario ? typeof(RedMushroom) : typeof(Flower), block.Position);
+                else
+                    objManager.CreateNonCollidableObject(block.ItemType, block.Position);
+                block.Used();
                 MoveDynamic(obj1, obj2, direction);
-                
             }
         }
 
-        private void EnemyVsBumpBlock(IDynamic obj1, IStatic obj2, Direction direction)
-        {
-/*            if (obj1 is Koopa)
-            {
-                obj1.ObjState = ObjectState.Destroy;;
-                game.ObjectsManagerAddNonCollidable(new FlippedKoopa(new StompedKoopa(obj1.Position)));
-            }
-            else
-            {*/
-                ((IEnemy)obj1).Flip();
-            //}
-        }
-        private void ItemVsBumpBlock(IDynamic obj1, IStatic obj2, Direction direction)
-        {
-            ((IItem)obj1).BumpUp();
-            if (obj1.HitBox().Center.X <= obj2.HitBox().Center.X)
-                ((IItem)obj1).ChangeDirection();
-        }
-        private void MoveDynamic(IDynamic obj1, IStatic obj2, Direction direction)
-        {
-            switch (direction)
-            {
-                case Direction.top : obj1.MoveUp(); break;
-                case Direction.bottom: obj1.MoveDown(); break;
-                case Direction.left: obj1.MoveLeft(); break;
-                case Direction.right: obj1.MoveRight(); break;
-            }
-        }
-        private void HiddenUsed(IDynamic obj1, IStatic obj2, Direction direction)
-        {
-            if (direction == Direction.bottom)
-            {
-                if (((IMario)obj1).MarioPhysics.YVelocity < 0)
-                {
-                    var block = (HiddenBlock)obj2;
-                    if (block.ItemType == null)
-                        objManager.CreateNonCollidableObject(((IMario)obj1).HealthState is SmallMario ? typeof(RedMushroom) : typeof(Flower), block.Position);
-                    else
-                        objManager.CreateNonCollidableObject(block.ItemType, block.Position);
-                    MoveDynamic(obj1, obj2, direction);
-                }
-            }
-        }
         private void FireBallDisappear(IDynamic obj1, IStatic obj2, Direction direction)
         {
-            obj1.ObjState = ObjectState.Destroy; 
+            obj1.ObjState = ObjectState.Destroy;
         }
+
+
+
         private void CreateDerbis(Vector2 position)
         {
             game.ObjectsManager.AddObject(new BrickDerbis(position, BrickPosition.leftTop));
