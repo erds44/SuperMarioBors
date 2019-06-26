@@ -41,6 +41,12 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         {
             mario.MovementState = new LeftJumping(mario);
         }
+        public override void OnFireBall()
+        {
+            direction = fireBallDirection.right;
+            offset = rightNormalOffSet;
+            base.OnFireBall();
+        }
 
     }
 }

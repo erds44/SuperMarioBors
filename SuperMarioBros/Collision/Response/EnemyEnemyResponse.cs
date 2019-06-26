@@ -1,5 +1,4 @@
-﻿using SuperMarioBros.Managers;
-using SuperMarioBros.Objects;
+﻿using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Enemy;
 using System;
 using System.Collections.Generic;
@@ -64,12 +63,12 @@ namespace SuperMarioBros.Collisions
                 {
                     if (goomba.HitBox().Center.X <= koopa.HitBox().Center.X)
                     {
-                        koopa.MovementState = new KoopaRightMovingState((Koopa)koopa);
+                        koopa.MoveRight();
                         ((Koopa)koopa).DealDemage = true;
                     }
                     else
                     {
-                        koopa.MovementState = new KoopaLeftMovingState((Koopa)koopa);
+                        koopa.MoveLeft();
                         ((Koopa)koopa).DealDemage = true;
                     }
                 }

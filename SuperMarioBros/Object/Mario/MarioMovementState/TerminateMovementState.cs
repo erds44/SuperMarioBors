@@ -1,4 +1,6 @@
-﻿namespace SuperMarioBros.Marios.MarioMovementStates
+﻿using Microsoft.Xna.Framework;
+
+namespace SuperMarioBros.Marios.MarioMovementStates
 {
 
     public class TerminateMovementState : IMarioMovementState
@@ -35,10 +37,6 @@
            // Do Nothing
         }
 
-        public void Update()
-        {
-           // Do Nothing
-        }
         public void MoveUp()
         {
             // Do Nothing
@@ -64,6 +62,16 @@
         }
 
         public void OnGround()
+        {
+            // Do Nothing
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            // Do Nothing
+        }
+
+        public void OnFireBall()
         {
             // Do Nothing
         }

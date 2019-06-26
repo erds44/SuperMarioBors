@@ -383,6 +383,7 @@
     <Compile Include="Object\Mario\MarioTransitionState\IMarioTransitionState.cs" />
     <Compile Include="Object\Mario\MarioTransitionState\NormalState.cs" />
     <Compile Include="Object\Mario\MarioTransitionState\StarState.cs" />
+    <Compile Include="Object\ObjectFactory.cs" />
     <Compile Include="Object\Physics\Physics.cs" />
     <Compile Include="SpriteFactory\SpriteFactory.cs" />
     <Compile Include="Interfaces\IUpdate.cs" />

@@ -7,6 +7,7 @@ using SuperMarioBros.GameCoreComponents;
 using SuperMarioBros.Managers;
 using SuperMarioBros.Loading;
 using SuperMarioBros.Marios;
+using SuperMarioBros.Object;
 
 namespace SuperMarioBros
 {
@@ -88,6 +89,7 @@ namespace SuperMarioBros
         public void InitializeGame()
         {
             ObjectsManager = new ObjectsManager(new ObjectLoader(this));
+            ObjectFactory.Initialize(this);
             ObjectsManager.LevelLoading(Content, "PartialLevelOne");
             SizeManager.LoadItemSize(Content, "SizeLoading");
             SizeManager.LoadMarioSize(Content, "MarioSizeLoading");

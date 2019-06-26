@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Interfaces.State;
-using SuperMarioBros.Managers;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.SpriteFactories;
 using System;
@@ -23,12 +22,9 @@ namespace SuperMarioBros.Marios.MarioTypeStates
             if (mario.MovementState != null)
             {
                 if(dictionary.TryGetValue(mario.MovementState.GetType(), out Type type))
-                {
                     mario.Sprite = SpriteFactory.CreateSprite(GetType().Name + type.Name);
-                } else
-                {
+                else
                     mario.Sprite = SpriteFactory.CreateSprite(GetType().Name + mario.MovementState.GetType().Name);
-                }
             }
         }
 
