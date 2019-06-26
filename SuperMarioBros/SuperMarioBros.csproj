@@ -283,7 +283,6 @@
     <Compile Include="Collision\Response\MarioItemResponse.cs" />
     <Compile Include="Component\ComponentTable.cs" />
     <Compile Include="Loading\DynamicLoading.cs" />
-    <Compile Include="Loading\SpecialBlock.cs" />
     <Compile Include="Manager\CollisionManager.cs" />
     <Compile Include="Collision\Handler\DynamicAndDynamicObjectsHandler .cs" />
     <Compile Include="Collision\Handler\DynamicAndStaticObjecstHandler.cs" />
