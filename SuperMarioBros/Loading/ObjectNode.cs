@@ -23,7 +23,7 @@ namespace SuperMarioBros.LoadingTest
 
         }
 
-        public ObjectNode(string objectType, Vector2 position, int shape, int size, int width, string itemType, int itemCount)
+        public ObjectNode(string objectType, Vector2 position, int shape, int size, int width, string itemType, int itemCount=0)
         {
             this.objectType = objectType;
             this.position = position;
