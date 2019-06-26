@@ -96,7 +96,7 @@ namespace SuperMarioBros.Collisions
                 else
                 {
                     goomba.Flipped();
-                    koopa.ObjState = ObjectState.NonCollidable;
+                    goomba.ObjState = ObjectState.NonCollidable;
                 }
             }
         }

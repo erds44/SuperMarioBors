@@ -120,9 +120,9 @@ namespace SuperMarioBros.Collisions
                     if (koopa.MovementState is KoopaIdleState)
                     {
                         if (direction == Direction.left)
-                            koopa.MoveLeft();
-                        else
                             koopa.MoveRight();
+                        else
+                            koopa.MoveLeft();
                     }
                     else if (!koopa.DealDemage)
                     {
