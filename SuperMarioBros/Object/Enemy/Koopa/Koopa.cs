@@ -1,51 +1,32 @@
 ﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Goombas;
-using SuperMarioBros.Managers;
-using SuperMarioBros.Objects;
-using SuperMarioBros.Objects.Enemy;
-using SuperMarioBros.Physicses;
-using SuperMarioBros.SpriteFactories;
 
-namespace SuperMarioBros.Koopas
+namespace SuperMarioBros.Objects.Enemy
 {
     public class Koopa : AbstractEnemy
     {
+        public bool IsStomped { get; set; }
+        public bool DealDemage { get; set; }
         public Koopa(Vector2 location)
         {
-            physics = new EnemyPhysics(this, new Vector2(-30, 0));
-            State = new LeftMoving(this, physics);
             Position = location;
+            DealDemage = true;
+            base.Initialize();
+            HealthState = new KoopaNormalState(this);
+            if (initialVelocity.X <= 0) MovementState = new KoopaLeftMovingState(this);
+            else MovementState = new KoopaRightMovingState(this);
         }
-
-        public override void TakeDamage()
+        public override void Stomped()
         {
-            ObjectsManager.Instance.AddObject(new StompedKoopa(Position));
-            ObjState = ObjectState.Destroy;;
+            IsStomped = true;
+            DealDemage = false;
+            HealthState.Stomped();
+            MovementState.Stomped();
         }
-        
-        public override void Flip()
-        {
-            this.Sprite = SpriteFactory.CreateSprite(typeof(StompedKoopa).Name);
-            ObjectsManager.Instance.AddNonCollidableObject(new FlippedKoopa(this));
-            ObjState = ObjectState.Destroy;;
-        }
-
-        public override void MoveLeft()
-        {
-            State.ChangeDirection();
-            physics.MoveLeft();
-        }
-
-        public override void MoveRight()
-        {
-            State.ChangeDirection();
-            physics.MoveRight();
-        }
-
         public override void Update(GameTime gameTime)
         {
-            Sprite.Update();
-            Position += physics.Displacement(gameTime);       
+            MovementState.Update(gameTime);
+            base.Update(gameTime);
         }
     }
 }
+

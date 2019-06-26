@@ -1,9 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Managers;
-using SuperMarioBros.Objects;
 using SuperMarioBros.SpriteFactories;
-using System;
 
 namespace SuperMarioBros.Marios.MarioTypeStates
 {
@@ -16,27 +14,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
         {
             this.mario = mario;
             mario.Sprite = SpriteFactory.CreateSprite(GetType().Name + mario.MovementState.GetType().Name);
-            mario.MarioPhysics.SetSprintVelocityRate(1);
-        }
-
-        public void Coin()
-        {
-            // To Do
-        }
-
-        public void OnFireFlower()
-        {
-            // Do Nothing
-        }
-
-        public void GreenMushroom()
-        {
-            // Do Nothing
-        }
-
-        public void RedMushroom()
-        {
-            // Do Nothing
+            mario.Physics.SetSprintVelocityRate(1);
         }
 
         public void TakeDamage()
@@ -44,20 +22,24 @@ namespace SuperMarioBros.Marios.MarioTypeStates
             mario.HealthState = new SmallMario(mario);
         }
 
-        public void Power()
+        public void TakeRedMushroom()
         {
-            
+            // Do Nothing
         }
 
         public void Update(GameTime gameTime)
         {
-            if (!power && mario.PowerFlag && fireCount>0 )
+            if (!(power && mario.PowerFlag) && mario.PowerFlag && fireCount>0 )
             {
                 fireCount--;
                 ObjectsManager.Instance.AddObject(new FireBall(this, mario));
             }
             power = mario.PowerFlag;
+        }
 
+        public void OnFireFlower()
+        {
+           // Do Nothing
         }
     }
 }

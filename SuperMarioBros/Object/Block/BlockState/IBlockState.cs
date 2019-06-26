@@ -1,8 +1,12 @@
-﻿namespace SuperMarioBros.Blocks.BlockStates
+﻿using Microsoft.Xna.Framework;
+
+namespace SuperMarioBros.Blocks.BlockStates
 {
     public interface IBlockState
     {
-        void ToUsed();
-        
+        void Used();
+        void Bumped();
+        void Broken();
+        void Update(GameTime gameTime);
     }
 }

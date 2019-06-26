@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Physicses;
 
 namespace SuperMarioBros.Objects
 {
@@ -8,5 +9,6 @@ namespace SuperMarioBros.Objects
         Rectangle HitBox();
         Vector2 Position { get; set; }
         void Destroy();
+        Physics Physics { get; set; }
     }
 }

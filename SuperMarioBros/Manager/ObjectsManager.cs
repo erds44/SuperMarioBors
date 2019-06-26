@@ -51,7 +51,7 @@ namespace SuperMarioBros.Managers
             {
                 IStatic obj = staticObjects[i];
                 BoundaryCheck(obj);
-                obj.Update();
+                obj.Update(gameTime);
                 if (obj.ObjState == ObjectState.Destroy) DestroyFromManager(obj);
                 if (obj.ObjState == ObjectState.NonCollidable) MoveToNonCollidable(obj);
             }
@@ -70,7 +70,7 @@ namespace SuperMarioBros.Managers
                 if (nonCollidableObjects[i] is IStatic)
                 {
                     obj = (IStatic)nonCollidableObjects[i];
-                    ((IStatic)obj).Update();
+                    ((IStatic)obj).Update(gameTime);
                 }
                 else
                 {
@@ -152,19 +152,6 @@ namespace SuperMarioBros.Managers
             obj.ObjState = ObjectState.NonCollidable;
             nonCollidableObjects.Add(obj);
         }
-        public void Decoration(IMario oldMario, IMario newMario)
-        {
-            dynamicObjects[dynamicObjects.IndexOf(oldMario)] =newMario;
-        }
-        public void StarMario(IMario mario)
-        {
-            dynamicObjects[dynamicObjects.IndexOf(mario)] = new StarMario(mario.ReturnItself());
-            mario.ReturnItself().NoMovementTimer = 0;
-        }
-        public void FlashingMario(IMario mario)
-        {
-            dynamicObjects[dynamicObjects.IndexOf(mario)] = new FlashingMario(mario.ReturnItself());
-        }
         public IMario MarioObject()
         {
             return Mario; /* for controller bind mario as receiver */
@@ -174,7 +161,6 @@ namespace SuperMarioBros.Managers
             Mario = mario;
             dynamicObjects.Add(mario);
         }
-
         private void BoundaryCheck(IObject obj)
         {
             if (obj.Position.Y > MarioGame.WindowHeight + 100) obj.ObjState = ObjectState.Destroy;

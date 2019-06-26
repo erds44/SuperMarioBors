@@ -3,17 +3,13 @@
     public abstract class AbstractMovementState
     {
         protected private IMario mario;
-        public void MoveDown()
+        public virtual void OnGround()
         {
-            mario.MarioPhysics.MoveDown();
+            // Do Nothing
         }
-        public void MoveLeft()
+        public virtual void Update()
         {
-            mario.MarioPhysics.MoveLeft();
-        }
-        public void MoveRight()
-        {
-            mario.MarioPhysics.MoveRight();
+            //Do Nothing
         }
     }
 }

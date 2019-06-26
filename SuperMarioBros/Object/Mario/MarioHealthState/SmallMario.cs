@@ -32,38 +32,24 @@ namespace SuperMarioBros.Marios.MarioTypeStates
             }
         }
 
-        public void TakeDamage()
-        {
-            mario.HealthState = new DeadMario(mario);         
-        }
-
-        public void RedMushroom()
-        {
-            mario.HealthState = new BigMario(mario);
-        }
-
         public void OnFireFlower()
         {
             mario.HealthState = new FireMario(mario);
         }
 
-        public void GreenMushroom()
+        public void TakeRedMushroom()
         {
-            //Do Nothing.
+            mario.HealthState = new BigMario(mario);
         }
 
-        public void Coin()
+        public void TakeDamage()
         {
-            // To Do
+            mario.HealthState = new DeadMario(mario);         
         }
-        public void Power()
-        {
-            // Do nothing.
-        }
-
+       
         public void Update(GameTime gameTime)
         {
-            mario.MarioPhysics.SetSprintVelocityRate(1);
+            mario.Physics.SetSprintVelocityRate(1);
         }
     }
 }

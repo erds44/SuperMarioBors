@@ -1,5 +1,4 @@
-﻿using SuperMarioBros.Collisions;
-using SuperMarioBros.SpriteFactories;
+﻿using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
@@ -35,21 +34,13 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Up()
         {
-            // Physics
+
         }
 
 
-        public void Update()
+        public override void Update()
         {
-            mario.MarioPhysics.SpeedDecay();
-        }
-        public void MoveUp()
-        {
-            mario.MarioPhysics.MoveUp();
-        }
-        public void BumpUp()
-        {
-            // Do Nothing
+            mario.Physics.SpeedDecay();
         }
 
     }

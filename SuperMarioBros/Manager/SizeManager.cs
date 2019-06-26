@@ -1,7 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using SuperMarioBros.Blocks;
 using SuperMarioBros.Items;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Objects.Enemy;
 using System;
 using System.Collections.Generic;
 
@@ -25,10 +27,16 @@ namespace SuperMarioBros.Managers
                     objectDictionary.Add(t, objectSize);
 
             }
-            if(!objectDictionary.ContainsKey(typeof(HighPipe)))
+            if (!objectDictionary.ContainsKey(typeof(HighPipe)))
                 objectDictionary.Add(typeof(HighPipe), new Point(74, 170));
             if (!objectDictionary.ContainsKey(typeof(MiddlePipe)))
                 objectDictionary.Add(typeof(MiddlePipe), new Point(74, 122));
+            if (!objectDictionary.ContainsKey(typeof(UsedBlock)))
+                objectDictionary.Add(typeof(UsedBlock), new Point(40, 40));
+            if (!objectDictionary.ContainsKey(typeof(Goomba)))
+                objectDictionary.Add(typeof(Goomba), new Point(31, 30));
+            if (!objectDictionary.ContainsKey(typeof(Koopa)))
+                objectDictionary.Add(typeof(Koopa), new Point(31, 43));
             // Used for debug
             //foreach (KeyValuePair<Type, Point> ele in objectDictionary)
             // {

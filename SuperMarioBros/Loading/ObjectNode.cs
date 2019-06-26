@@ -1,10 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Koopas;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperMarioBros.LoadingTest
 {
@@ -15,10 +10,10 @@ namespace SuperMarioBros.LoadingTest
         public int shape;
         public int size;
         public int width;
-        public String itemType = "noType";
+        public string itemType = "noType";
         public int itemCount = 0;
 
-        public ObjectNode(String name, Vector2 vector,int shape, int size, int width)
+        public ObjectNode(string name, Vector2 vector,int shape, int size, int width)
         {
             objectType = name;
             position = vector;
@@ -28,7 +23,7 @@ namespace SuperMarioBros.LoadingTest
 
         }
 
-        public ObjectNode(String objectType, Vector2 position, int shape, int size, int width, String itemType, int itemCount)
+        public ObjectNode(string objectType, Vector2 position, int shape, int size, int width, string itemType, int itemCount)
         {
             this.objectType = objectType;
             this.position = position;
@@ -39,7 +34,7 @@ namespace SuperMarioBros.LoadingTest
             this.itemCount = itemCount;
         }
 
-        public ObjectNode(String objectType, Vector2 position, int shape, int size, int width, int itemCount)
+        public ObjectNode(string objectType, Vector2 position, int shape, int size, int width, int itemCount)
         {
             this.objectType = objectType;
             this.position = position;

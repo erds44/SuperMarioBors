@@ -115,7 +115,13 @@
     <None Include="Content\ConcreteBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\DeadMario.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\FireBall.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\FireExplosion.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\FireMarioLeftBreaking.xnb">
@@ -148,10 +154,31 @@
     <None Include="Content\FireMarioRightMoving.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\FlippedGoomba.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Flower.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Goomba.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\GoombaStomped.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\GreenMushroom.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\HiddenBlock.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\HighPipe.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\KoopaMovingLeft.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\KoopaMovingRight.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\KoopaStomped.xnb">
@@ -178,10 +205,22 @@
     <None Include="Content\PartialLevelOne.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\Pipe.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\QuestionBlock.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RedMushroom.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\RightBottomDerbis.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\RightTopDerbis.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\RockBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\SizeLoading.xnb">
@@ -220,69 +259,34 @@
     <None Include="Content\SmallMarioRightMoving.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\Star.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\StompedGoomba.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\UsedBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\Flower.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Goomba.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\GreenMushroom.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\HiddenBlock.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\KoopaMovingLeft.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\KoopaMovingRight.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Pipe.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\QuestionBlock.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\RedMushroom.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\RockBlock.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\DeadMario.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Content\Star.xnb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera\Camera.cs" />
+    <Compile Include="Collision\IResponse.cs" />
+    <Compile Include="Collision\Response\EnemyBlockReponse.cs" />
+    <Compile Include="Collision\Response\EnemyEnemyResponse.cs" />
+    <Compile Include="Collision\Response\GeneralResponse.cs" />
+    <Compile Include="Collision\Response\ItemBlockResponse .cs" />
+    <Compile Include="Collision\Response\ItemEnemyResponse.cs" />
+    <Compile Include="Collision\Response\MarioBlockResponse.cs" />
+    <Compile Include="Collision\Response\MarioEnemyResponse.cs" />
+    <Compile Include="Collision\Response\MarioItemResponse.cs" />
     <Compile Include="Component\ComponentTable.cs" />
     <Compile Include="Loading\DynamicLoading.cs" />
     <Compile Include="Loading\SpecialBlock.cs" />
-    <Compile Include="Object\Enemy\AbstractEnemy.cs" />
-    <Compile Include="Object\Enemy\EnemyMovementState\IdleEnemyState.cs" />
-    <Compile Include="Object\Enemy\EnemyMovementState\LeftMoving.cs" />
-    <Compile Include="Object\Enemy\EnemyMovementState\RightMoving.cs" />
-    <Compile Include="Object\Enemy\Goomba\FlippedGoomba.cs" />
-    <Compile Include="Object\Enemy\Goomba\Goomba.cs" />
-    <Compile Include="Object\Enemy\Goomba\StompedGoomba.cs" />
-    <Compile Include="Object\Enemy\IEnemy.cs" />
-    <Compile Include="Object\Enemy\IEnemyMovementState.cs" />
-    <Compile Include="Object\Enemy\Koopa\FlippedKoopa.cs" />
-    <Compile Include="Object\Enemy\Koopa\Koopa.cs" />
     <Compile Include="Manager\CollisionManager.cs" />
-    <Compile Include="Collision\DynamicAndDynamicObjectsHandler .cs" />
-    <Compile Include="Collision\DynamicAndStaticObjecstHandler.cs" />
+    <Compile Include="Collision\Handler\DynamicAndDynamicObjectsHandler .cs" />
+    <Compile Include="Collision\Handler\DynamicAndStaticObjecstHandler.cs" />
     <Compile Include="Command\MarioCommand\DownCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\MarioCommand\LeftCommand.cs" />
@@ -306,78 +310,86 @@
     <Compile Include="Object\Background\BigCloud.cs" />
     <Compile Include="Object\Background\BigHill.cs" />
     <Compile Include="Object\Block\AbstractBlock.cs" />
-    <Compile Include="Object\Block\BlockState\BrickBlockState.cs" />
-    <Compile Include="Object\Block\BlockState\BumpBlockState.cs" />
-    <Compile Include="Object\Block\BlockState\ConcreteBlockState.cs" />
-    <Compile Include="Object\Block\BlockState\DisappearBlockState.cs" />
-    <Compile Include="Object\Block\BlockState\HiddenBlockState.cs" />
-    <Compile Include="Object\Block\BlockState\QuestionBlockState.cs" />
-    <Compile Include="Object\Block\BlockState\RockBlockState.cs" />
-    <Compile Include="Object\Block\BlockState\UsedBlockState.cs" />
+    <Compile Include="Object\Block\BlockState\BumpedState.cs" />
+    <Compile Include="Object\Block\BlockState\IBlockState.cs" />
+    <Compile Include="Object\Block\BlockState\NormalState.cs" />
     <Compile Include="Object\Block\BrickBlock.cs" />
     <Compile Include="Object\Block\ConcreteBlock.cs" />
     <Compile Include="Object\Block\HiddenBlock.cs" />
+    <Compile Include="Object\Block\HighPipe.cs" />
     <Compile Include="Object\Block\IBlock.cs" />
-    <Compile Include="Object\Block\BlockState\IBlockState.cs" />
     <Compile Include="Object\Block\ItemBrickBlock.cs" />
+    <Compile Include="Object\Block\MiddlePipe.cs" />
+    <Compile Include="Object\Block\Pipe.cs" />
     <Compile Include="Object\Block\QuestionBlock.cs" />
     <Compile Include="Object\Block\RockBlock.cs" />
+    <Compile Include="Object\Block\UsedBlock.cs" />
+    <Compile Include="Object\Enemy\AbstractEnemy.cs" />
+    <Compile Include="Object\Enemy\Goomba\Goomba.cs" />
+    <Compile Include="Object\Enemy\Goomba\GoombaHealthState\GoombaNormalState.cs" />
+    <Compile Include="Object\Enemy\Goomba\GoombaHealthState\GoombaStompedState.cs" />
+    <Compile Include="Object\Enemy\Goomba\GoombaMovementState\GoombaIdleState.cs" />
+    <Compile Include="Object\Enemy\Goomba\GoombaMovementState\GoombaLeftMovingState.cs" />
+    <Compile Include="Object\Enemy\Goomba\GoombaMovementState\GoombaRightMovingState.cs" />
+    <Compile Include="Object\Enemy\IEnemy.cs" />
+    <Compile Include="Object\Enemy\IEnemyHealthState.cs" />
+    <Compile Include="Object\Enemy\IEnemyMovementState.cs" />
+    <Compile Include="Object\Enemy\Koopa\Koopa.cs" />
+    <Compile Include="Object\Enemy\Koopa\KoopaHealthState\KoopaNormalState.cs" />
+    <Compile Include="Object\Enemy\Koopa\KoopaHealthState\KoopaShelledState.cs" />
+    <Compile Include="Object\Enemy\Koopa\KoopaMovementState\KoopaIdleState.cs" />
+    <Compile Include="Object\Enemy\Koopa\KoopaMovementState\KoopaLeftMovingState.cs" />
+    <Compile Include="Object\Enemy\Koopa\KoopaMovementState\KoopaRightMovingState.cs" />
     <Compile Include="Object\IDynamic.cs" />
-    <Compile Include="Object\IStatic.cs" />
-    <Compile Include="Object\Item\AbstractItem.cs" />
-    <Compile Include="Object\Item\BrickDerbis.cs" />
-    <Compile Include="Object\Item\Coin.cs" />
-    <Compile Include="Object\Item\Flower.cs" />
-    <Compile Include="Object\Item\GreenMushroom.cs" />
-    <Compile Include="Object\Item\HighPipe.cs" />
-    <Compile Include="Object\Item\IItem.cs" />
-    <Compile Include="Object\Item\MiddlePipe.cs" />
-    <Compile Include="Object\Item\Pipe.cs" />
-    <Compile Include="Object\Item\RedMushroom.cs" />
-    <Compile Include="Object\Item\Star.cs" />
-    <Compile Include="Object\Mario\FireBall.cs" />
-    <Compile Include="Object\Mario\FlashingMario.cs" />
-    <Compile Include="Object\Mario\IMario.cs" />
-    <Compile Include="Object\Mario\Mario.cs" />
-    <Compile Include="Object\Mario\MarioMovementState\IMarioMovementState.cs" />
     <Compile Include="Object\IObject.cs" />
     <Compile Include="Object\Background\MiddleCloud.cs" />
-    <Compile Include="Object\Mario\MarioMovementState\RightBreaking.cs" />
-    <Compile Include="Object\Mario\MarioMovementState\LeftBreaking.cs" />
     <Compile Include="Manager\SizeManager.cs" />
     <Compile Include="Object\Background\SmallBush.cs" />
     <Compile Include="Object\Background\SmallCloud.cs" />
     <Compile Include="Object\Background\SmallHill.cs" />
-    <Compile Include="Object\Mario\StarMario.cs" />
-    <Compile Include="Object\Physics\EnemyPhysics.cs" />
-    <Compile Include="Object\Physics\ItemPhysics.cs" />
-    <Compile Include="Object\Physics\StarPhysics.cs" />
-    <Compile Include="SpriteFactory\SpriteFactory.cs" />
-    <Compile Include="Sprite\DecorationSprite.cs" />
-    <Compile Include="Sprite\ISprite.cs" />
-    <Compile Include="Interfaces\IUpdate.cs" />
+    <Compile Include="Object\IStatic.cs" />
+    <Compile Include="Object\Item\AbstractItem.cs" />
+    <Compile Include="Object\Item\BrickDerbis.cs" />
+    <Compile Include="Object\Item\Coin.cs" />
+    <Compile Include="Object\Item\FireBall.cs" />
+    <Compile Include="Object\Item\Flower.cs" />
+    <Compile Include="Object\Item\GreenMushroom.cs" />
+    <Compile Include="Object\Item\IItem.cs" />
+    <Compile Include="Object\Item\RedMushroom.cs" />
+    <Compile Include="Object\Item\Star.cs" />
+    <Compile Include="Object\Mario\IMario.cs" />
+    <Compile Include="Object\Mario\Mario.cs" />
+    <Compile Include="Object\Mario\MarioHealthState\BigMario.cs" />
+    <Compile Include="Object\Mario\MarioHealthState\DeadMario.cs" />
+    <Compile Include="Object\Mario\MarioHealthState\FireMario.cs" />
     <Compile Include="Object\Mario\MarioHealthState\IMarioHealthState.cs" />
-    <Compile Include="MarioGame.cs" />
+    <Compile Include="Object\Mario\MarioHealthState\SmallMario.cs" />
     <Compile Include="Object\Mario\MarioMovementState\AbstractMovementState.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\IMarioMovementState.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\LeftBreaking.cs" />
     <Compile Include="Object\Mario\MarioMovementState\LeftCrouching.cs" />
     <Compile Include="Object\Mario\MarioMovementState\LeftIdle.cs" />
     <Compile Include="Object\Mario\MarioMovementState\LeftJumping.cs" />
     <Compile Include="Object\Mario\MarioMovementState\LeftMoving.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\RightBreaking.cs" />
     <Compile Include="Object\Mario\MarioMovementState\RightCrouching.cs" />
     <Compile Include="Object\Mario\MarioMovementState\RightIdle.cs" />
     <Compile Include="Object\Mario\MarioMovementState\RightJumping.cs" />
     <Compile Include="Object\Mario\MarioMovementState\RightMoving.cs" />
     <Compile Include="Object\Mario\MarioMovementState\TerminateMovementState.cs" />
-    <Compile Include="Object\Mario\MarioHealthState\BigMario.cs" />
-    <Compile Include="Object\Mario\MarioHealthState\DeadMario.cs" />
-    <Compile Include="Object\Mario\MarioHealthState\FireMario.cs" />
-    <Compile Include="Object\Mario\MarioHealthState\SmallMario.cs" />
+    <Compile Include="Object\Mario\MarioTransitionState\DamageState.cs" />
+    <Compile Include="Object\Mario\MarioTransitionState\GrowState.cs" />
+    <Compile Include="Object\Mario\MarioTransitionState\IMarioTransitionState.cs" />
+    <Compile Include="Object\Mario\MarioTransitionState\NormalState.cs" />
+    <Compile Include="Object\Mario\MarioTransitionState\StarState.cs" />
+    <Compile Include="Object\Physics\Physics.cs" />
+    <Compile Include="SpriteFactory\SpriteFactory.cs" />
+    <Compile Include="Interfaces\IUpdate.cs" />
+    <Compile Include="MarioGame.cs" />
     <Compile Include="Manager\ObjectsManager.cs" />
-    <Compile Include="Object\Physics\MarioPhysics.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Sprite\FlashingSprite.cs" />
+    <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Sprite\UniversalSprite.cs" />
-    <Compile Include="Object\Enemy\Koopa\StompedKoopa.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="levelLoading, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

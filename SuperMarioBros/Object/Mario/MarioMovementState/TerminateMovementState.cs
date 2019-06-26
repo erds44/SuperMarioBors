@@ -1,6 +1,4 @@
-﻿using SuperMarioBros.Collisions;
-
-namespace SuperMarioBros.Marios.MarioMovementStates
+﻿namespace SuperMarioBros.Marios.MarioMovementStates
 {
 
     public class TerminateMovementState : IMarioMovementState
@@ -61,6 +59,11 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             // Do Nothing
         }
         public void BumpUp()
+        {
+            // Do Nothing
+        }
+
+        public void OnGround()
         {
             // Do Nothing
         }

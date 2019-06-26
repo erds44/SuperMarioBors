@@ -8,6 +8,6 @@ namespace SuperMarioBros.Sprites
     {
         void Draw(SpriteBatch spriteBatch, Vector2 location);
         void SetColor(Collection<Color> colors);
-        void SetLayer(float layer);      
+        void SetLayer(float layer);
     }
 }

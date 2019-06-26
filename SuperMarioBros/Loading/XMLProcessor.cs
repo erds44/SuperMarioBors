@@ -42,7 +42,7 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(1078,288),1,1,40)),
               (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(1118,288),1,1,40,"SuperMarioBros.Items.Coin",1)),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(1158,288),1,1,40)),
-              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(1078,119),1,1,40,"SuperMarioBros.Items.Coin",1)),
+             (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(1078,119),1,1,40,"SuperMarioBros.Items.Coin",1)),
                (new ObjectNode("SuperMarioBros.Backgrounds.BigCloud",new Vector2(100,170),1,12,700)),
                 (new ObjectNode("SuperMarioBros.Backgrounds.SmallCloud",new Vector2(300,70),1,12,700)),
                  (new ObjectNode("SuperMarioBros.Backgrounds.MiddleCloud",new Vector2(400,120),1,12,700)),
@@ -79,7 +79,7 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(5161,119),1,3,40)),
               (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(5504,119),1,1,40,"SuperMarioBros.Items.Coin",1)),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(5464,119),1,1,40)),
-              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(5544,119),1,1,40,"SuperMarioBros.Items.Coin",1)),
+             (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(5544,119),1,1,40,"SuperMarioBros.Items.Coin",1)),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(5584,119),1,1,40)),
 
              
@@ -107,7 +107,7 @@ namespace SuperMarioBros.LoadingTest
 
         private List<ObjectNode> dynamicList = new List<ObjectNode>
         {
-            //(new ObjectNode("SuperMarioBros.Items.RedMushroom",new Vector2(80,410),1,1,30)),
+            (new ObjectNode("SuperMarioBros.Items.RedMushroom",new Vector2(80,410),1,1,30)),
             //test
             (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(540,410),1,1,30)),
              (new ObjectNode("SuperMarioBros.Koopas.Koopa",new Vector2(580,410),1,1,30)),
@@ -321,7 +321,7 @@ namespace SuperMarioBros.LoadingTest
             }
         }
 
-        private static IStatic CreateInstance(Type t, Vector2 position, String itemType, int itemCount)
+        private static IStatic CreateInstance(Type t, Vector2 position, string itemType, int itemCount)
         {
             if(itemCount == 0)
             {
@@ -340,7 +340,7 @@ namespace SuperMarioBros.LoadingTest
         }
 
 
-        private static void XMLReader(String path, List<ObjectNode> list)
+        private static void XMLReader(string path, List<ObjectNode> list)
         {
             list = new List<ObjectNode>();
             using (var reader = new StreamReader(new FileStream(path, FileMode.Open)))
@@ -350,7 +350,7 @@ namespace SuperMarioBros.LoadingTest
             }
         }
 
-        private static void XMLWriter(String path, List<ObjectNode> list)
+        private static void XMLWriter(string path, List<ObjectNode> list)
         {
             using (var writer = new StreamWriter(new FileStream(path, FileMode.Create)))
             {

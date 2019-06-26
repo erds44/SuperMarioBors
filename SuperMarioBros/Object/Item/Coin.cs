@@ -7,55 +7,27 @@ namespace SuperMarioBros.Items
 {
     public class Coin : AbstractItem, IItem
     {
-        private readonly ItemPhysics physics;
-        private Vector2 offset = new Vector2(15, -50);
-        private float timer;
+        private Vector2 coinOffset = new Vector2(15, -50);
+        private float coinGravity = 100f;
+        private float existingTimer = 2f;
+        private Vector2 coinInitialVelocity = new Vector2(0, -100);
         public Coin(Vector2 location)
         {
-            Position = location + offset;
+            Position = location + coinOffset;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
-            physics = new ItemPhysics(this, new Vector2(0, -130));
-            physics.SetGravity();
-            timer = 0;
+            sprite.SetLayer(0);
+            Physics = new Physics(coinInitialVelocity, coinGravity, itemWeight);
+            Physics.ApplyGravity(); 
+            /* Since Initally item does not have gravity for responding state */
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
-            timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            existingTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             sprite.Update();
-            Position += physics.Displacement(gameTime);
-            if (timer >= 2 )
-            {
-                ObjState = ObjectState.Destroy;
-            }
-        }
-        public void MoveUp()
-        {
-            physics.MoveUp();
-        }
-
-        public void MoveDown()
-        {
-            physics.MoveDown();
-        }
-
-        public void MoveLeft()
-        {
-            physics.MoveLeft();
-        }
-
-        public void MoveRight()
-        {
-            physics.MoveRight();
-        }
-        public void ChangeDirection()
-        {
-            //Do Nothing
-        }
-
-        public void BumpUp()
-        {
-            // Do Nothing
+            Position += Physics.Displacement(gameTime);
+            if (existingTimer <= 0 )
+                ObjState = ObjectState.NonCollidable;
         }
     }
 }

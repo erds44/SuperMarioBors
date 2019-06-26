@@ -60,6 +60,7 @@ namespace SuperMarioBros.Managers
                 }
                 for(int j = i+1; j < dynamicObjects.Count; j++)
                 {
+                    if (i >= dynamicObjects.Count) break;
                     HandleCollision(dynamicObjects[i], dynamicObjects[j]);                
                 }
             }

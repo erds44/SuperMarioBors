@@ -1,5 +1,4 @@
-﻿using SuperMarioBros.Collisions;
-using SuperMarioBros.SpriteFactories;
+﻿using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
@@ -23,37 +22,26 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Left()
         {
-           mario.MarioPhysics.Left();
-            mario.MarioPhysics.SpeedDecay();
+           mario.Physics.Left();
+           mario.Physics.SpeedDecay();
         }
 
 
         public void Right()
         {
-            mario.MarioPhysics.Right();
+            mario.Physics.Right();
+            mario.Physics.SpeedDecay();
         }
 
         public void Up()
         {
-            mario.MarioPhysics.Up();
+            mario.Physics.Up();
         }
 
-        public void MoveUp()
+        public override void OnGround()
         {
-            if (mario.MarioPhysics.Jump)
-            {
-                mario.MovementState = new LeftIdle(mario);
-            }
-            mario.MarioPhysics.SpeedDecay();
-            mario.MarioPhysics.MoveUp();
-        }
-        public void Update()
-        {
-            // Do Nothing
-        }
-        public void BumpUp()
-        {
-            mario.MarioPhysics.BumpUp();
+            mario.MovementState = new LeftIdle(mario);
+            base.OnGround();
         }
     }
 }

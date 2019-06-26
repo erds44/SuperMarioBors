@@ -2,89 +2,65 @@
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Blocks.BlockStates;
 using SuperMarioBros.Managers;
+using SuperMarioBros.Physicses;
 using SuperMarioBros.Sprites;
+using System;
 
 namespace SuperMarioBros.Blocks
 {
 
     public abstract class AbstractBlock : IBlock
     {
-        public ObjectState ObjState { get; set; }
-
-        public IBlockState State { get; protected set; }
+        public IBlockState State { get; set; }
         public Vector2 Position { get; set; }
-        public ISprite Sprite { get; protected set; }
-
-        protected bool isBumping;
-        protected int bumpingCount;
-        protected Vector2 drawPosition;
-        protected void Initialize()
+        public ISprite Sprite { get; set; }
+        public Physics Physics { get; set; }
+        public Type ItemType { get; protected set; }
+        public bool HasItem { get; set; }
+        public ObjectState ObjState { get; set; }
+        public int bumpedCount;
+        protected bool blockHasItem = false;
+        public void Initialize()
         {
             ObjState = ObjectState.Normal;
-            drawPosition = Position;
-            isBumping = false;
-            bumpingCount = 0;
+            State = new NormalState(this);
+            Physics = new Physics(Vector2.Zero, 0f, 0f);
         }
-        public void ChangeState(IBlockState state)
+        public virtual void Destroy()
         {
-            this.State = state;
+            // Do Nothing
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Sprite.Draw(spriteBatch, drawPosition);
-        }
-
-        public void Update()
-        {
-            if (isBumping)
-            {
-                if(bumpingCount == 20) {
-                    isBumping = false;
-                    if (State is BumpBlockState) ((BumpBlockState)State).Restore();
-                    drawPosition = Position;
-                    bumpingCount = 0;
-                }
-                else
-                {
-                    bumpingCount++;
-                    if(bumpingCount < 10)
-                    {
-                        drawPosition.Y -= 3;
-                    }
-                    else
-                    {
-                        drawPosition.Y += 3;
-                    }
-                }
-            }
-            this.Sprite.Update();
-        }
-
-        public void ChangeSprite(ISprite sprite)
-        {
-            this.Sprite = sprite;
-        }
-        public virtual void Used()
-        {
-            this.State.ToUsed();
+            Sprite?.Draw(spriteBatch, Position);
         }
 
         public Rectangle HitBox()
         {
             Point size = SizeManager.ObjectSize(GetType());
-            return new Rectangle((int)drawPosition.X, (int)drawPosition.Y - size.Y, size.X, size.Y);
+            return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
         }
 
-        public void Bump()
+        public virtual void Used()
         {
-            State = new BumpBlockState(this, State);
-            isBumping = true;
+            State.Used();
+        }
+        public virtual void Bumped()
+        {
+            State.Bumped();
         }
 
-        public void Destroy()
+        public virtual void Update(GameTime gameTime)
         {
-            //Do nothing
+            State.Update(gameTime);
+            Sprite?.Update();
         }
+
+        public virtual void Borken()
+        {
+            // Do Nothing
+        }
+
     }
 }

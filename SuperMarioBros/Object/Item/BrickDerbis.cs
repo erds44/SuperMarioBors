@@ -16,59 +16,24 @@ namespace SuperMarioBros.Items
             { BrickPosition.rightTop, (new Vector2(20,-40), new Vector2(60,60)) },
             { BrickPosition.rightBottom, (new Vector2(20,0), new Vector2(60,60)) }
         };
-        private readonly ItemPhysics physics;
-        private float timer;
+        private float timer = 0.5f;
         public BrickDerbis(Vector2 location, BrickPosition brickPosition)
         {
-            ObjState = ObjectState.NonCollidable;
             derbisInfo.TryGetValue(brickPosition, out var tuple);
             Vector2 offSet = tuple.Item1;
             Vector2 velocity = tuple.Item2;
             Position = location + offSet;
             sprite = SpriteFactory.CreateDerbisSprite(brickPosition);
-            physics = new ItemPhysics(this, velocity);
-            physics.SetGravity();
-            timer = 0;
+            Physics = new Physics(velocity, itemGravity, itemWeight);
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
-            timer += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             sprite.Update();
-            Position += physics.Displacement(gameTime);
-            if (timer >= 0.5 )
-            {
+            Position += Physics.Displacement(gameTime);
+            if (timer <= 0)
                 ObjState = ObjectState.Destroy;
-            }
-        }
-        public void MoveUp()
-        {
-            physics.MoveUp();
-        }
-
-        public void MoveDown()
-        {
-            physics.MoveDown();
-        }
-
-        public void MoveLeft()
-        {
-            physics.MoveLeft();
-        }
-
-        public void MoveRight()
-        {
-            physics.MoveRight();
-        }
-
-        public void ChangeDirection()
-        {
-            //Do Nothing
-        }
-
-        public void BumpUp()
-        {
-            // Do Nothing
         }
     }
 }

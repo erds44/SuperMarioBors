@@ -2,6 +2,7 @@
 using SuperMarioBros.Collisions;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
+using SuperMarioBros.Object.Mario.TransitionState;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.Sprites;
@@ -10,24 +11,21 @@ namespace SuperMarioBros.Marios
 {
     public interface IMario : IDynamic
     {
-        MarioGame Game { get; set; }
         double NoMovementTimer { get; set; }
         bool PowerFlag { get; set; }
         ISprite Sprite { get; set; }
         IMarioHealthState HealthState { get; set; }
         IMarioMovementState MovementState { get; set; }
-        MarioPhysics MarioPhysics { get; }
+        IMarioTransitionState TransitionState { get; set; }
         void Left();
         void Down();
         void Up();
         void Right();
         void Idle();
         new void Update(GameTime gameTime);
-        void BumpUp();
-        void RedMushroom();
-        void OnFireFlower();
-        void GreenMushroom();
-        void Coin();
-        IMario ReturnItself();
+        void TakeFlower();
+        void TakeRedMushroom();
+        void TakeStar();
+        void TakeDamage();
     }
 }

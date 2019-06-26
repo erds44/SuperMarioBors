@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Blocks.BlockStates;
 
 namespace SuperMarioBros.Blocks
 {
@@ -8,7 +7,6 @@ namespace SuperMarioBros.Blocks
         public RockBlock(Vector2 location)
         {
             Position = location;
-            State = new RockBlockState(this);
             base.Initialize();
         }
     }

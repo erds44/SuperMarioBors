@@ -27,31 +27,17 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Up()
         {
-            // pHYSICS
+
         }
-     
-        //public void Update()
-        //{
-        //    // Do nothing.
-        //}
 
         public void Idle()
         {
             mario.MovementState = new RightIdle(mario);
         }
 
-        public void MoveUp()
+        public override void Update()
         {
-            mario.MarioPhysics.MoveUp();
-        }
-
-        public void Update()
-        {
-            mario.MarioPhysics.SpeedDecay();
-        }
-        public void BumpUp()
-        {
-            // Do Nothing
+            mario.Physics.SpeedDecay();
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Physicses;
+using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Backgrounds
@@ -10,15 +12,16 @@ namespace SuperMarioBros.Backgrounds
         private protected ISprite sprite;
         public Vector2 Position { get; set; }
         public ObjectState ObjState { get; set; }
-
+        public Physics Physics { get; set; }
+        protected void Initialize()
+        {
+            ObjState = ObjectState.NonCollidable;
+            sprite = SpriteFactory.CreateSprite(GetType().Name);
+            sprite.SetLayer(0);
+        }
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Position);
-        }
-
-        public void Update()
-        {
-            sprite.Update();
         }
 
         public Rectangle HitBox()
@@ -28,6 +31,11 @@ namespace SuperMarioBros.Backgrounds
         public void Destroy()
         {
             //Do nothing.
+        }
+
+        public virtual void Update(GameTime gameTime)
+        {
+            sprite.Update();
         }
     }
 }

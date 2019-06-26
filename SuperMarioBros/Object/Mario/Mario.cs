@@ -1,10 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.GameCoreComponents;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Managers;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
+using SuperMarioBros.Object.Mario.MarioTransitionState;
+using SuperMarioBros.Object.Mario.TransitionState;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.Sprites;
 
@@ -12,24 +13,28 @@ namespace SuperMarioBros.Marios
 {
     public class Mario : IMario
     {
-        public MarioGame Game { get; set; }
         public ObjectState ObjState { get; set; }
         public bool PowerFlag { get; set; }
         public IMarioHealthState HealthState { get; set; }
         public IMarioMovementState MovementState { get; set; }
         public ISprite Sprite { get; set; }
-        public MarioPhysics MarioPhysics { get; }
-        public Vector2 Position { get; set; }
-        public double Timer { get; set; }
+        public Physics Physics { get; set; }
+        public Vector2 Position { get => position; set => position = value; }
+        private Vector2 position;
         public double NoMovementTimer { get; set; }
+        public IMarioTransitionState TransitionState { get; set; }
+        private MarioGame game;
         public Mario(Vector2 location, MarioGame game)
         {
-            Game = game;
+            this.game = game;
             HealthState = new SmallMario(this);
-            MarioPhysics = new MarioPhysics(this,150);
+            Physics = new Physics(new Vector2(0,0), 800f, 200f, 150f);
+            Physics.ApplyGravity();
             MovementState = new RightIdle(this);
+            TransitionState = new NormalState(this);
             Position = location;
             NoMovementTimer = 0;
+            ObjState = ObjectState.Normal;
         }
 
         public void Down()
@@ -40,23 +45,13 @@ namespace SuperMarioBros.Marios
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Sprite.Draw(spriteBatch, Position);
-        }
-
-        public void OnFireFlower()
-        {
-            HealthState.OnFireFlower();
+            TransitionState.Draw(spriteBatch);
         }
 
         public void Left()
         {
             if (NoMovementTimer <= 0)
                 MovementState.Left();
-        }
-
-        public void RedMushroom()
-        {
-            HealthState.RedMushroom();
         }
 
         public void Right()
@@ -67,7 +62,7 @@ namespace SuperMarioBros.Marios
 
         public void TakeDamage()
         {
-            HealthState.TakeDamage();
+            TransitionState.TakeDamage();
         }
 
         public void Up()
@@ -89,57 +84,38 @@ namespace SuperMarioBros.Marios
             return new Rectangle((int)Position.X, (int)Position.Y- size.Y, size.X, size.Y);
         }
 
-        public void GreenMushroom()
-        {
-            // TODO
-        }
-
-
-        public void Coin()
-        {
-            HealthState.Coin();
-        }
-
         public void Update(GameTime gameTime)
         {
-            HealthState.Update(gameTime);
-            MovementState.Update();
-            Sprite.Update();
-            Position += MarioPhysics.Displacement(gameTime);
+            TransitionState.Update(gameTime);
+            NoMovementTimer -= gameTime.ElapsedGameTime.TotalSeconds;
+            if (NoMovementTimer <= 0)
+            {
+                HealthState.Update(gameTime);
+                MovementState.Update();
+                Sprite.Update();
+                Position += Physics.Displacement(gameTime);
+                //if (Position.X < Camera.Instance.LeftBound) 
+                //    position.X = Camera.Instance.LeftBound;
+            }
         }
-
-        public void MoveUp()
-        {
-            MovementState.MoveUp();
-        }
-
-        public void MoveDown()
-        {
-            MovementState.MoveDown();
-        }
-
-        public void MoveLeft()
-        {
-            MovementState.MoveLeft();
-        }
-
-        public void MoveRight()
-        {
-            MovementState.MoveRight();
-        }
-
         public void Destroy()
         {
-            Game.InitializeGame();
+            game.InitializeGame();
         }
 
-        public IMario ReturnItself()
+        public void TakeRedMushroom()
         {
-            return this;
+            TransitionState.TakeRedMushroom();
         }
-        public void BumpUp()
+
+        public void TakeStar()
         {
-            MovementState.BumpUp();
+            TransitionState.TakeStar();
+        }
+
+        public void TakeFlower()
+        {
+            TransitionState.OnFireFlower();
         }
     }
 }

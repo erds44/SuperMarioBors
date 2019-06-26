@@ -1,6 +1,6 @@
-﻿using SuperMarioBros.Collisions;
-using SuperMarioBros.Marios.MarioTypeStates;
+﻿using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
+using System;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
@@ -15,23 +15,19 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         public void Down()
         {
             if (!(mario.HealthState is SmallMario))
-            {
                 mario.MovementState = new LeftCrouching(mario);
-            }
         }
 
         public void Idle()
         {
-            mario.MarioPhysics.SpeedDecay();
-            if ((int)mario.MarioPhysics.XVelocity >= 0)
-            {
+            mario.Physics.SpeedDecay();
+            if (Math.Round(mario.Physics.Velocity.X) >= 0)
                 mario.MovementState = new LeftIdle(mario);
-            }
         }
 
         public void Left()
         {
-            mario.MarioPhysics.Left();
+            mario.Physics.Left();
         }
 
 
@@ -45,19 +41,5 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             mario.MovementState = new LeftJumping(mario);
         }
 
-        public void MoveUp()
-        {
-            mario.MarioPhysics.MoveUp();
-        }
-
-        public void Update()
-        {
-            if (mario.MarioPhysics.Jump)
-                mario.MovementState = new LeftJumping(mario);
-        }
-        public void BumpUp()
-        {
-            // Do Nothing
-        }
     }
 }

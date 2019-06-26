@@ -5,7 +5,5 @@ namespace SuperMarioBros.Items
 {
     public interface IItem : IDynamic
     {
-        void ChangeDirection();
-        void BumpUp();
     }
 }

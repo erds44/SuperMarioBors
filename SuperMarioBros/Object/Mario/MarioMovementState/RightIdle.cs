@@ -1,4 +1,5 @@
-﻿using SuperMarioBros.Marios.MarioTypeStates;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
@@ -7,16 +8,14 @@ namespace SuperMarioBros.Marios.MarioMovementStates
     {
         public RightIdle(IMario mario)
         {
-            this.mario = mario;
-            this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
+           this.mario = mario;
+           this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
         }
 
         public void Down()
         {
             if (!(mario.HealthState is SmallMario))
-            {
                 mario.MovementState = new RightCrouching(mario);
-            }
         }
 
         public void Right()
@@ -36,21 +35,12 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Idle()
         {
-            mario.MarioPhysics.SpeedDecay();
+            mario.Physics.SpeedDecay();
         }
 
-        public void MoveUp()
+        public override void Update()
         {
-            mario.MarioPhysics.MoveUp();
-        }
-
-        public void Update()
-        {
-            mario.MarioPhysics.SetXVelocity(0);
-        }
-        public void BumpUp()
-        {
-            // Do Nothing
+            mario.Physics.SpeedDecay();
         }
     }
 }

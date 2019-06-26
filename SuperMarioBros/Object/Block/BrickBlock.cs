@@ -1,23 +1,36 @@
 ﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Blocks.BlockStates;
-using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Blocks
 {
     public class BrickBlock : AbstractBlock 
     {
+        /* Star, Bump, or Borken */
         public BrickBlock(Vector2 location)
         {
+            ItemType = null;
+            HasItem = false;
             Position = location;
-            this.State = new BrickBlockState(this);
             base.Initialize();
         }
-        
-        public override void Used()
+
+        public override void Bumped()
         {
-            ObjState = ObjectState.Destroy;;
-            base.Used();
+            State.Bumped();
         }
 
+        public override void Update(GameTime gameTime)
+        {
+            State.Update(gameTime);
+        }
+
+        public override void Used()
+        {
+            State.Used();
+        }
+        public override void Borken()
+        {
+            State.Broken();
+            base.Borken();
+        }
     }
 }

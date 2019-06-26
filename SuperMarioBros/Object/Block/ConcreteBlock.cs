@@ -5,11 +5,16 @@ namespace SuperMarioBros.Blocks
 {
     public class ConcreteBlock : AbstractBlock
     {
-        public ConcreteBlock( Vector2 location)
+        public ConcreteBlock(Vector2 location)
         {
+            ItemType = null;
+            HasItem = false;
             Position = location;
-            this.State = new ConcreteBlockState(this);
             base.Initialize();
+        }
+        public override void Used()
+        {
+            // Do Nothing
         }
     }
 }
