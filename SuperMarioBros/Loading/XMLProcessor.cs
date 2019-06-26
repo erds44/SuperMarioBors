@@ -15,14 +15,14 @@ namespace SuperMarioBros.LoadingTest
                 //test
                 (new ObjectNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(0,288),1,1,40,"SuperMarioBros.Items.Coin",4)),
                 (new ObjectNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(100,288),1,1,40,"SuperMarioBros.Items.Star",1)),
-                (new ObjectNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(50,119),1,1,40,"null",1)),
-                (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(200,288),1,1,40,"SuperMarioBros.Items.Coin",1)),
-                (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(240,288),1,1,40,"null",1)),
-                (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(280,288),1,2,40,"SuperMarioBros.Items.Coin",1)),
+                (new ObjectNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(50,119),1,1,40,"null")),
+                (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(200,288),1,1,40,"SuperMarioBros.Items.Coin")),
+                (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(240,288),1,1,40,"null")),
+                (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(280,288),1,2,40,"SuperMarioBros.Items.Coin")),
                 (new ObjectNode("SuperMarioBros.Items.Pipe",new Vector2(400,410),1,2,340)),
-                (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(550,248),1,1,40,"SuperMarioBros.Items.Coin",1)),
-                (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(510,248),1,1,40,"null",1)),
-                (new ObjectNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(590,248),1,1,40,"SuperMarioBros.Items.GreenMushroom",1)),
+                (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(550,248),1,1,40,"SuperMarioBros.Items.Coin")),
+                (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(510,248),1,1,40,"null")),
+                (new ObjectNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(590,248),1,1,40,"SuperMarioBros.Items.GreenMushroom")),
                 (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(500,100),1,6,40)),
                 (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(460,60),1,2,280)),
 
@@ -36,13 +36,13 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Blocks.RockBlock",new Vector2(0,450),1,74,39)),
               (new ObjectNode("SuperMarioBros.Blocks.RockBlock",new Vector2(0,489),1,74,39)),
 
-              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(1038,288),1,1,40,"null",1)),
+              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(1038,288),1,1,40,"null")),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(998,288),1,1,40)),
-              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(870,288),1,1,40,"SuperMarioBros.Items.Coin",1)),
+              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(870,288),1,1,40,"SuperMarioBros.Items.Coin")),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(1078,288),1,1,40)),
-              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(1118,288),1,1,40,"SuperMarioBros.Items.Coin",1)),
+              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(1118,288),1,1,40,"SuperMarioBros.Items.Coin")),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(1158,288),1,1,40)),
-             (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(1078,119),1,1,40,"SuperMarioBros.Items.Coin",1)),
+             (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(1078,119),1,1,40,"SuperMarioBros.Items.Coin")),
                (new ObjectNode("SuperMarioBros.Backgrounds.BigCloud",new Vector2(100,170),1,12,700)),
                 (new ObjectNode("SuperMarioBros.Backgrounds.SmallCloud",new Vector2(300,70),1,12,700)),
                  (new ObjectNode("SuperMarioBros.Backgrounds.MiddleCloud",new Vector2(400,120),1,12,700)),
@@ -52,13 +52,13 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Items.MiddlePipe",new Vector2(1629,410),1,1,72)),
               (new ObjectNode("SuperMarioBros.Items.HighPipe",new Vector2(1961,410),1,1,72)),
               (new ObjectNode("SuperMarioBros.Items.HighPipe",new Vector2(2429,410),1,1,72)),
-              (new ObjectNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(2600,288),1,1,40,"SuperMarioBros.Items.GreenMushroom",1)),
+              (new ObjectNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(2600,288),1,1,40,"SuperMarioBros.Items.GreenMushroom")),
               //base2
               (new ObjectNode("SuperMarioBros.Blocks.RockBlock",new Vector2(3029,450),1,16,39)),
               (new ObjectNode("SuperMarioBros.Blocks.RockBlock",new Vector2(3029,489),1,16,39)),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(3420,119),1,8,40)),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(3380,288),1,1,40)),
-              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(3340,288),1,1,40,"null",1)),
+              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(3340,288),1,1,40,"null")),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(3300,288),1,1,40)),
 
              
@@ -69,17 +69,17 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(4263,288),1,1,40)),
               (new ObjectNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(4303,288),1,1,40,"SuperMarioBros.Items.Star",1)),
               (new ObjectNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(4004,288),1,1,40,"null",5)),
-              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(4004,119),1,1,40,"SuperMarioBros.Items.Coin",1)),
-              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(4775,288),1,1,40,"SuperMarioBros.Items.Coin",1)),
-              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(4649,119),1,1,40,"null",1)),
-              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(4649,288),1,1,40,"SuperMarioBros.Items.Coin",1)),
-              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(4522,288),1,1,40,"SuperMarioBros.Items.Coin",1)),
+              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(4004,119),1,1,40,"SuperMarioBros.Items.Coin")),
+              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(4775,288),1,1,40,"SuperMarioBros.Items.Coin")),
+              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(4649,119),1,1,40,"null")),
+              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(4649,288),1,1,40,"SuperMarioBros.Items.Coin")),
+              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(4522,288),1,1,40,"SuperMarioBros.Items.Coin")),
 
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(5032,288),1,1,40)),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(5161,119),1,3,40)),
-              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(5504,119),1,1,40,"SuperMarioBros.Items.Coin",1)),
+              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(5504,119),1,1,40,"SuperMarioBros.Items.Coin")),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(5464,119),1,1,40)),
-             (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(5544,119),1,1,40,"SuperMarioBros.Items.Coin",1)),
+             (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(5544,119),1,1,40,"SuperMarioBros.Items.Coin")),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(5584,119),1,1,40)),
 
              
@@ -95,7 +95,7 @@ namespace SuperMarioBros.LoadingTest
               (new ObjectNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(6607,410),2,4,40)),
               (new ObjectNode("SuperMarioBros.Items.Pipe",new Vector2(6958,410),1,1,72)),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(7164,288),1,2,40)),
-              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(7244,288),1,1,40,"SuperMarioBros.Items.Coin",1)),
+              (new ObjectNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(7244,288),1,1,40,"SuperMarioBros.Items.Coin")),
               (new ObjectNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(7284,288),1,1,40)),
               (new ObjectNode("SuperMarioBros.Items.Pipe",new Vector2(7647,410),1,1,72)),
               (new ObjectNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(7719,410),3,8,40)),
@@ -109,35 +109,35 @@ namespace SuperMarioBros.LoadingTest
         {
             (new ObjectNode("SuperMarioBros.Items.RedMushroom",new Vector2(80,410),1,1,30)),
             //test
-            (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(540,410),1,1,30)),
-             (new ObjectNode("SuperMarioBros.Koopas.Koopa",new Vector2(580,410),1,1,30)),
-             (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(540,60),1,1,30)),
-             (new ObjectNode("SuperMarioBros.Koopas.Koopa",new Vector2(600,60),1,1,30)),
+            (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(540,410),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Objects.Enemy.Koopa",new Vector2(580,410),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(540,60),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Objects.Enemy.Koopa",new Vector2(600,60),1,1,30)),
 
             //base1
-             (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(928,410),1,1,30)),
-             (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(1750,410),1,1,30)),
-             (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(2200,410),1,1,30)),
-             (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(2250,410),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(928,410),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(1750,410),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(2200,410),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(2250,410),1,1,30)),
 
             //base2
-             (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(3380,200),1,1,30)),
-              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(3420,200),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(3380,200),1,1,30)),
+              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(3420,200),1,1,30)),
 
               //base3
-              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(4004,410),1,1,30)),
-              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(4054,410),1,1,30)),
-              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(4328,410),1,1,30)),
-              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(4378,410),1,1,30)),
-              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(5174,410),1,1,30)),
-              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(4707,410),1,1,30)),
-              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(4757,410),1,1,30)),
-              (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(5224,410),1,1,30)),
-              (new ObjectNode("SuperMarioBros.Koopas.Koopa",new Vector2(4150,410),1,1,30)),
+              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(4004,410),1,1,30)),
+              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(4054,410),1,1,30)),
+              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(4328,410),1,1,30)),
+              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(4378,410),1,1,30)),
+              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(5174,410),1,1,30)),
+              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(4707,410),1,1,30)),
+              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(4757,410),1,1,30)),
+              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(5224,410),1,1,30)),
+              (new ObjectNode("SuperMarioBros.Objects.Enemy.Koopa",new Vector2(4150,410),1,1,30)),
              
             //base4 
-             (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(7200,410),1,1,30)),
-             (new ObjectNode("SuperMarioBros.Goombas.Goomba",new Vector2(7250,410),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(7200,410),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(7250,410),1,1,30)),
         };
 
         private List<ObjectNode> nonCollidableList = new List<ObjectNode>
@@ -325,14 +325,21 @@ namespace SuperMarioBros.LoadingTest
         {
             if(itemCount == 0)
             {
-                return (IStatic)(Activator.CreateInstance(t, position));
+                if (itemType.Equals("noType"))
+                {
+                    return (IStatic)(Activator.CreateInstance(t, position));
+                }
+                else
+                {
+                    return (IStatic)(Activator.CreateInstance(t, position, Type.GetType(itemType)));
+                }
+               
             }
             else if (itemType.Equals("noType"))
             {
                 return (IStatic)(Activator.CreateInstance(t, position,itemCount));
             }
-            else
-            {
+            else {
                 
                 return (IStatic)(Activator.CreateInstance(t, position, Type.GetType(itemType),itemCount));
             }
