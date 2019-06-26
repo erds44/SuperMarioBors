@@ -21,12 +21,12 @@ namespace SuperMarioBros.Items
         protected Vector2 collidableVelocity = new Vector2(40, 0);
         protected float itemGravity =  800f;
         protected float itemWeight = 20f;
-        protected Vector2 offset = new Vector2(5, 0);
+        //protected Vector2 offset = new Vector2(5, 0);
         protected float itemLayer = 1f;
 
         protected virtual void Initialize()
         {
-            Position += offset;
+            //Position += offset;
             ObjState = ObjectState.NonCollidable;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
             sprite.SetLayer(0);

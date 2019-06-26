@@ -7,13 +7,13 @@ namespace SuperMarioBros.Items
 {
     public class Coin : AbstractItem, IItem
     {
-        private Vector2 coinOffset = new Vector2(15, -50);
+        //private Vector2 coinOffset = new Vector2(15, -50);
         private float coinGravity = 100f;
         private float existingTimer = 2f;
         private Vector2 coinInitialVelocity = new Vector2(0, -100);
         public Coin(Vector2 location)
         {
-            Position = location + coinOffset;
+            Position = location;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
             sprite.SetLayer(0);
             Physics = new Physics(coinInitialVelocity, coinGravity, itemWeight);

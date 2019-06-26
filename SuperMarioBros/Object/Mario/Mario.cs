@@ -91,7 +91,7 @@ namespace SuperMarioBros.Marios
             if (NoMovementTimer <= 0)
             {
                 HealthState.Update(gameTime);
-                MovementState.Update();
+                MovementState.Update(gameTime);
                 Sprite.Update();
                 Position += Physics.Displacement(gameTime);
                 //if (Position.X < Camera.Instance.LeftBound) 

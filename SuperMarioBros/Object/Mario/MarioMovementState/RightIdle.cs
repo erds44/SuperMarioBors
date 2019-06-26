@@ -38,9 +38,16 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             mario.Physics.SpeedDecay();
         }
 
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
             mario.Physics.SpeedDecay();
+            base.Update(gameTime);
+        }
+        public override void OnFireBall()
+        {
+            direction = fireBallDirection.right;
+            offset = rightNormalOffSet;
+            base.OnFireBall();
         }
     }
 }

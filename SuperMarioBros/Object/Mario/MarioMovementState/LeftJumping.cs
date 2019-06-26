@@ -1,9 +1,11 @@
-﻿using SuperMarioBros.SpriteFactories;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
     public class LeftJumping : AbstractMovementState, IMarioMovementState
     {
+        private float maxLeftJumpingHorizontalVelocity = -100f;
         public LeftJumping(IMario mario)
         {
             this.mario = mario;
@@ -23,14 +25,14 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         public void Left()
         {
            mario.Physics.Left();
-           mario.Physics.SpeedDecay();
+            if (mario.Physics.Velocity.X <= maxLeftJumpingHorizontalVelocity)
+                mario.Physics.Velocity = new Vector2(maxLeftJumpingHorizontalVelocity, mario.Physics.Velocity.Y);
         }
 
 
         public void Right()
         {
-            mario.Physics.Right();
-            mario.Physics.SpeedDecay();
+           mario.Physics.Right();
         }
 
         public void Up()
@@ -43,5 +45,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             mario.MovementState = new LeftIdle(mario);
             base.OnGround();
         }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using SuperMarioBros.Collisions;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Collisions;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
@@ -35,9 +36,16 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             mario.MovementState = new RightIdle(mario);
         }
 
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
             mario.Physics.SpeedDecay();
+            base.Update(gameTime);
+        }
+        public override void OnFireBall()
+        {
+            direction = fireBallDirection.right;
+            offset = rightCrouchingOffset;
+            base.OnFireBall();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using SuperMarioBros.SpriteFactories;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
@@ -38,9 +39,11 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         }
 
 
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
             mario.Physics.SpeedDecay();
+            offset = leftCrouchingOffset;
+            base.Update(gameTime);
         }
 
     }

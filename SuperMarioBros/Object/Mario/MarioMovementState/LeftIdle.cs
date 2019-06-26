@@ -38,10 +38,10 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         {
             mario.MovementState = new LeftJumping(mario);
         }
-
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
             mario.Physics.SpeedDecay();
+            base.Update(gameTime);
         }
     }
 }

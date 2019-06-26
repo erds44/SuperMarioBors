@@ -1,9 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Blocks;
+﻿using SuperMarioBros.Blocks;
 using SuperMarioBros.Items;
-using SuperMarioBros.Managers;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Marios.MarioTypeStates;
+using SuperMarioBros.Object;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using System;
@@ -16,7 +15,6 @@ namespace SuperMarioBros.Collisions
         private IMario mario;
         private IBlock block;
         private Direction direction;
-        private static Vector2 location;
         private delegate void MarioBlockHandler (IMario mario, IBlock block);
 
         public MarioBlockResponse(IObject mario, IObject block, Direction direction)
@@ -24,7 +22,6 @@ namespace SuperMarioBros.Collisions
             this.mario = (IMario)mario;
             this.block = (IBlock)block;
             this.direction = direction;
-            location = block.Position;
         }
         public override void HandleCollision()
         {
@@ -72,7 +69,7 @@ namespace SuperMarioBros.Collisions
             else
             {
                 block.Borken();
-                GenerateDerbis();
+                ObjectFactory.CreateBlockDebris(block.Position);
             }
         }
 
@@ -81,18 +78,21 @@ namespace SuperMarioBros.Collisions
             if(block.ItemType != null)
             {
                 block.Bumped();
-                ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(block.ItemType, block.Position));
-            }else
+                // ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(block.ItemType, block.Position));
+                ObjectFactory.CreateNonCollidableObject(block.ItemType, block.Position);
+            } else
             {
                 block.Used();
                 if (mario.HealthState is SmallMario)
-                    ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(typeof(RedMushroom), block.Position));
+                    //ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(typeof(RedMushroom), block.Position));
+                    ObjectFactory.CreateNonCollidableObject(typeof(RedMushroom), block.Position);
                 else
-                    ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(typeof(Flower), block.Position));
-            }
-            if (block.ObjState == ObjectState.Destroy)           
-                ObjectsManager.Instance.AddObject((IStatic)Activator.CreateInstance(typeof(UsedBlock), block.Position));
-
+                    //ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(typeof(Flower), block.Position));
+                    ObjectFactory.CreateNonCollidableObject(typeof(Flower), block.Position);
+            }       
+            if (block.ObjState == ObjectState.Destroy)
+                //ObjectsManager.Instance.AddObject((IStatic)Activator.CreateInstance(typeof(UsedBlock), block.Position));
+                ObjectFactory.CreateCollidableObject(typeof(UsedBlock), block.Position);
         }
 
         private void MarioVsHiddenBlock(IMario mario, IBlock block, Direction direction)
@@ -103,24 +103,28 @@ namespace SuperMarioBros.Collisions
                 GroundOrTopBounce(mario);
                 block.Used();
                 if (block.ItemType != null)
-                    ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(block.ItemType, block.Position));
+                    //ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(block.ItemType, block.Position));
+                    ObjectFactory.CreateNonCollidableObject(block.ItemType, block.Position);
                 else
                 {
                     if (mario.HealthState is SmallMario )
-                        ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(typeof(RedMushroom), block.Position));
+                        //ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(typeof(RedMushroom), block.Position));
+                        ObjectFactory.CreateNonCollidableObject(typeof(RedMushroom), block.Position);
                     else
-                        ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(typeof(Flower), block.Position));
+                        //ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(typeof(Flower), block.Position));
+                        ObjectFactory.CreateNonCollidableObject(typeof(Flower), block.Position);
                 }
-                ObjectsManager.Instance.AddObject((IStatic)Activator.CreateInstance(typeof(UsedBlock), block.Position));
+                //ObjectsManager.Instance.AddObject((IStatic)Activator.CreateInstance(typeof(UsedBlock), block.Position));
+                ObjectFactory.CreateCollidableObject(typeof(UsedBlock), block.Position);
             }
         }
-        private static void GenerateDerbis()
-        {
-            ObjectsManager.Instance.AddNonCollidableObject(new BrickDerbis(location, BrickPosition.leftTop));
-            ObjectsManager.Instance.AddNonCollidableObject(new BrickDerbis(location, BrickPosition.leftBottom));
-            ObjectsManager.Instance.AddNonCollidableObject(new BrickDerbis(location, BrickPosition.rightTop));
-            ObjectsManager.Instance.AddNonCollidableObject(new BrickDerbis(location, BrickPosition.rightBottom));
-        }
+        //private static void GenerateDerbis()
+        //{
+        //    ObjectsManager.Instance.AddNonCollidableObject(new BrickDerbis(location, BrickPosition.leftTop));
+        //    ObjectsManager.Instance.AddNonCollidableObject(new BrickDerbis(location, BrickPosition.leftBottom));
+        //    ObjectsManager.Instance.AddNonCollidableObject(new BrickDerbis(location, BrickPosition.rightTop));
+        //    ObjectsManager.Instance.AddNonCollidableObject(new BrickDerbis(location, BrickPosition.rightBottom));
+        //}
 
 
 

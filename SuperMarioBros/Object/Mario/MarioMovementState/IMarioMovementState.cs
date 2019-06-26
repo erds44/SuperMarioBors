@@ -1,4 +1,6 @@
-﻿namespace SuperMarioBros.Marios.MarioMovementStates
+﻿using Microsoft.Xna.Framework;
+
+namespace SuperMarioBros.Marios.MarioMovementStates
 {
     public interface IMarioMovementState
     {
@@ -7,7 +9,8 @@
         void Up();
         void Right();
         void Idle();
-        void Update();
+        void Update(GameTime gameTime);
         void OnGround();
+        void OnFireBall();
     }
 }
