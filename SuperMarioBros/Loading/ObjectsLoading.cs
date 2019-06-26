@@ -122,13 +122,13 @@ namespace SuperMarioBros.LoadingTest
 
             //base2
              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(3380,200),1,1,30)),
-              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(3420,200),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(3420,200),1,1,30)),
 
               //base3
-              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(4004,410),1,1,30)),
-              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(4054,410),1,1,30)),
-              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(4328,410),1,1,30)),
-              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(4378,410),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(4004,410),1,1,30)),
+             (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(4054,410),1,1,30)),
+            (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(4328,410),1,1,30)),
+            (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(4378,410),1,1,30)),
               (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(5174,410),1,1,30)),
               (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(4707,410),1,1,30)),
               (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(4757,410),1,1,30)),

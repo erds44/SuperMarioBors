@@ -283,6 +283,9 @@
     <Compile Include="Collision\Response\MarioItemResponse.cs" />
     <Compile Include="Component\ComponentTable.cs" />
     <Compile Include="Loading\DynamicLoading.cs" />
+    <Compile Include="Loading\ObjectsLoading.cs" />
+    <Compile Include="Loading\SpritesLoading.cs" />
+    <Compile Include="Loading\SpritesNode.cs" />
     <Compile Include="Manager\CollisionManager.cs" />
     <Compile Include="Collision\Handler\DynamicAndDynamicObjectsHandler .cs" />
     <Compile Include="Collision\Handler\DynamicAndStaticObjecstHandler.cs" />
@@ -302,7 +305,6 @@
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="Interfaces\IDraw.cs" />
     <Compile Include="Loading\ObjectNode.cs" />
-    <Compile Include="Loading\XMLProcessor.cs" />
     <Compile Include="Loading\ObjectLoading.cs" />
     <Compile Include="Object\Background\AbstractBackGround.cs" />
     <Compile Include="Object\Background\BigBush.cs" />
