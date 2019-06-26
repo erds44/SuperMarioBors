@@ -37,8 +37,9 @@ namespace SuperMarioBros.Loading
                             //new Goomba(new Vector2(2000,40)),
                             //new Goomba(new Vector2(2200,410)),
                             //new Koopa(new Vector2(1800,40)),
-                            new RedMushroom(new Vector2(60, 400)),
-                            new Koopa(new Vector2(400, 410)),
+                           // new RedMushroom(new Vector2(60, 400)),
+                            new Koopa(new Vector2(200, 410)),
+                            new Goomba(new Vector2(400, 410)),
                             new Goomba(new Vector2(500, 60)),
                             //new Koopa(new Vector2(600, 60))
                         };
@@ -62,7 +63,6 @@ namespace SuperMarioBros.Loading
                         };
 
             //XMLProcessor xml = new XMLProcessor();
-
             //Statics = xml.StaticList();
             //Dynamics = xml.DynamicList();
             //NonCollidables = xml.NonCollidableList();

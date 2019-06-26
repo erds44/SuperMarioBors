@@ -5,11 +5,14 @@ namespace SuperMarioBros.Blocks
     public class BrickBlock : AbstractBlock 
     {
         /* Star, Bump, or Borken */
+        private double deleteTimer = 0.1;
+        private bool bumped;
         public BrickBlock(Vector2 location)
         {
             ItemType = null;
             HasItem = false;
             Position = location;
+            bumped = false;
             base.Initialize();
         }
 
@@ -20,6 +23,11 @@ namespace SuperMarioBros.Blocks
 
         public override void Update(GameTime gameTime)
         {
+            if (bumped)
+            {
+                deleteTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (deleteTimer <= 0) ObjState = ObjectState.Destroy;
+            }
             State.Update(gameTime);
         }
 
@@ -29,7 +37,9 @@ namespace SuperMarioBros.Blocks
         }
         public override void Borken()
         {
-            State.Broken();
+            State.Bumped(); /* treat as bump to kill enemy if on top of it */
+            Sprite = null;
+            bumped = true;
             base.Borken();
         }
     }
