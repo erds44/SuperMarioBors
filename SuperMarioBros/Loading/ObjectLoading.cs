@@ -62,17 +62,9 @@ namespace SuperMarioBros.Loading
             //            };
 
             XMLProcessor xml = new XMLProcessor();
-
             Statics = xml.StaticList();
             Dynamics = xml.DynamicList();
             NonCollidables = xml.NonCollidableList();
-            for (int i = 0; i < 80; i++)
-            {
-                Statics.Add(new RockBlock(new Vector2(0 + 40 * i, 450)));
-                Statics.Add(new RockBlock(new Vector2(0 + 40 * i, 490)));
-            }
-            for (int i = 0; i < 6; i++)
-                Statics.Add(new BrickBlock(new Vector2(480 + 40 * i, 100)));
         }
     }
 }

@@ -26,8 +26,8 @@ namespace SuperMarioBros.Items
             existingTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             sprite.Update();
             Position += Physics.Displacement(gameTime);
-            if (existingTimer <= 0 )
-                ObjState = ObjectState.NonCollidable;
+            if (existingTimer <= 0)
+                ObjState = ObjectState.Destroy;
         }
     }
 }
