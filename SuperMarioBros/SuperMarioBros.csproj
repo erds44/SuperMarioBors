@@ -282,6 +282,7 @@
     <Compile Include="Collision\Response\MarioEnemyResponse.cs" />
     <Compile Include="Collision\Response\MarioItemResponse.cs" />
     <Compile Include="Command\MarioCommand\KeyUpUpCommand.cs" />
+    <Compile Include="Command\MarioCommand\KeyUpPowerCommand.cs" />
     <Compile Include="Component\ComponentTable.cs" />
     <Compile Include="Loading\DynamicLoading.cs" />
     <Compile Include="Loading\ObjectsLoading.cs" />

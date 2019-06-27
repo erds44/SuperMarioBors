@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Interfaces.State;
-using SuperMarioBros.Managers;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioTypeStates
@@ -27,8 +26,11 @@ namespace SuperMarioBros.Marios.MarioTypeStates
 
         public void Update(GameTime gameTime)
         {
-            if (mario.PowerFlag)
+            if (mario.PowerFlag && mario.KeyUpPower)
+            {
                 mario.MovementState.OnFireBall();
+                mario.KeyUpPower = false;
+            }
         }
 
         public void OnFireFlower()

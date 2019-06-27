@@ -13,6 +13,7 @@ namespace SuperMarioBros.Marios
     {
         double NoMovementTimer { get; set; }
         bool PowerFlag { get; set; }
+        bool KeyUpPower { get; set; }
         ISprite Sprite { get; set; }
         IMarioHealthState HealthState { get; set; }
         IMarioMovementState MovementState { get; set; }

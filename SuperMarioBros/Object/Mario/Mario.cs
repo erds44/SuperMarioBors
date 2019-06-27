@@ -15,6 +15,7 @@ namespace SuperMarioBros.Marios
     {
         public ObjectState ObjState { get; set; }
         public bool PowerFlag { get; set; }
+        public bool KeyUpPower { get; set; }
         public IMarioHealthState HealthState { get; set; }
         public IMarioMovementState MovementState { get; set; }
         public ISprite Sprite { get; set; }
@@ -35,6 +36,7 @@ namespace SuperMarioBros.Marios
             Position = location;
             NoMovementTimer = 0;
             ObjState = ObjectState.Normal;
+            KeyUpPower = true;
         }
 
         public void Down()
