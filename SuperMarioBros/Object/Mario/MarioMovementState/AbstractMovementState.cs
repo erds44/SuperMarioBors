@@ -33,7 +33,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         {
             if (!coolDown)
             {
-                ObjectFactory.CreateFireBall(mario.Position + offset, direction);
+                ObjectFactory.Instance.CreateFireBall(mario.Position + offset, direction);
                 fireBallCount--;
                 if (fireBallCount <= 0)
                 {

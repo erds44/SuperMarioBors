@@ -19,16 +19,16 @@ namespace SuperMarioBros.Physicses
         public bool JumpKeyUp = false;
         private float gravityDecrement = 20f;
         private float minGravity = 280f;
-        private readonly float maxClamping = 250f;
-        private readonly float minClamping = -250f;
+        private readonly float maxClamping = 200f;
+        private readonly float minClamping = -200f;
         private readonly float jumpVelocity = -450f;
-        public Physics(Vector2 velocity, float gravity, float weight, float acceleration = 0) /* For Mario */
+        public Physics(Vector2 velocity, float gravity, float weight, float acceleration = 0) 
         {
             Velocity = velocity;
             Jump = false;
-            sprintVelocityRate = 1f;
-            currentGravity = 0f;
-            this.weight = weight;
+            sprintVelocityRate = 1f;     // used for x speed up, by calling set spirnt speed method
+            currentGravity = 0f;         // it does not actually boost speed but increse displacement, since if x is KeyUp, we
+            this.weight = weight;        // wish to see the speed goes back to original state
             this.acceleration = acceleration;
             deceleration = 2f * acceleration;
             this.gravity = gravity;
@@ -57,19 +57,9 @@ namespace SuperMarioBros.Physicses
         {
             currentGravity = gravity;
         }
-        public void SetGravity(float gravity)
-        {
-            currentGravity = gravity;
-        }
         public void SpeedDecay()
         {
             Velocity = new Vector2(Velocity.X * DECAYRATIO, Velocity.Y);
-            if (Math.Floor(Velocity.X) == 0)
-                Velocity = new Vector2(0, Velocity.Y);
-            if (Velocity.X < minClamping)
-                Velocity = new Vector2(minClamping, Velocity.Y);
-            else if (Velocity.X > maxClamping)
-                Velocity = new Vector2(maxClamping, Velocity.Y);
         }
         public void Break()
         {
@@ -86,10 +76,20 @@ namespace SuperMarioBros.Physicses
                 Velocity = new Vector2(Velocity.X, Velocity.Y + (currentGravity + weight) * dt); /* make jumping downward faster */
             else
                 Velocity = new Vector2(Velocity.X, Velocity.Y + currentGravity * dt);
+            Clamping();
             displacement = Vector2.Zero;
-            displacement.X += (Velocity.X * dt) * sprintVelocityRate;
+            displacement.X += (Velocity.X * dt * sprintVelocityRate);
             displacement.Y += (Velocity.Y * dt);
             return displacement;
+        }
+        private void Clamping()
+        {
+            if (Math.Floor(Velocity.X) == 0)
+                Velocity = new Vector2(0, Velocity.Y);
+            if (Velocity.X < minClamping)
+                Velocity = new Vector2(minClamping, Velocity.Y);
+            else if (Velocity.X > maxClamping)
+                Velocity = new Vector2(maxClamping, Velocity.Y);
         }
     }
 }

@@ -55,7 +55,7 @@ namespace SuperMarioBros.Blocks
         public virtual void Update(GameTime gameTime)
         {
             State.Update(gameTime);
-            Sprite?.Update();
+            Sprite?.Update(gameTime);
         }
 
         public virtual void Borken()

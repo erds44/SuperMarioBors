@@ -24,7 +24,7 @@ namespace SuperMarioBros.Loading
         }
         public void LevelLoading(ContentManager content, string path)
         {
-            Mario = new Mario(new Vector2(0, 410), Game);
+            Mario = new Mario(new Vector2(0, 410));
             // For test use.
             NonCollidables = new List<IObject>
             {

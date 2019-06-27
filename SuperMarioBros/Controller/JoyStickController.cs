@@ -10,7 +10,7 @@ namespace SuperMarioBros.Controllers
         {
             messager = controllerMessager;
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             Vector2 joyStickState = GamePad.GetState(PlayerIndex.One).ThumbSticks.Left;
             var buttons = GamePad.GetState(PlayerIndex.One).Buttons;

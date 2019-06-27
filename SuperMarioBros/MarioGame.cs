@@ -11,23 +11,23 @@ using SuperMarioBros.Object;
 
 namespace SuperMarioBros
 {
-    public enum ObjectState { Normal = 0, NonCollidable, Destroy }
-    // [ComVisible(false)]
-    public class MarioGame : Game
+    public enum ObjectState { Normal, NonCollidable, Destroy }
+    public sealed class MarioGame : Game
     {
-        public static int WindowWidth { get; private set; }
-        public static int WindowHeight { get; private set; }
+        public int WindowWidth { get; private set; }
+        public int WindowHeight { get; private set; }
         public int LevelLength { get; private set; }
         public ObjectsManager ObjectsManager { get; private set; }
         public Camera Camera { get => marioCamera; }
         public CollisionManager CollisionManager { get; private set; }
-
         private ControllerMessager controller;
         private SpriteBatch spriteBatch;
         private CollisionManager collisionManager;
         private Camera marioCamera;
+        public static MarioGame Instance { get; private set; }
         public MarioGame()
         {
+            Instance = this;
             var graphicsDeviceManager = new GraphicsDeviceManager(this);
             graphicsDeviceManager.DeviceCreated += (o, e) =>
             {
@@ -47,7 +47,7 @@ namespace SuperMarioBros
         }
         protected override void Update(GameTime gameTime)
         {
-            controller.Update();
+            controller.Update(gameTime);
             marioCamera.Update();
             ObjectsManager.Update(gameTime);
             collisionManager.Update();
@@ -89,7 +89,7 @@ namespace SuperMarioBros
         public void InitializeGame()
         {
             ObjectsManager = new ObjectsManager(new ObjectLoader(this));
-            ObjectFactory.Initialize(this);
+            ObjectFactory.Instance.Initialize();
             ObjectsManager.LevelLoading(Content, "PartialLevelOne");
             SizeManager.LoadItemSize(Content, "SizeLoading");
             SizeManager.LoadMarioSize(Content, "MarioSizeLoading");
@@ -98,7 +98,7 @@ namespace SuperMarioBros
 
             marioCamera.Reset();
             marioCamera.SetFocus(ObjectsManager.MarioObject());
-            collisionManager = new CollisionManager(this);
+            collisionManager = new CollisionManager();
             KeyBinding();
         }
 

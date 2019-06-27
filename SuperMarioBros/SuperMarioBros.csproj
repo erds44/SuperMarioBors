@@ -272,7 +272,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera\Camera.cs" />
-    <Compile Include="Collision\IResponse.cs" />
+    <Compile Include="Collision\IResponsible.cs" />
     <Compile Include="Collision\Response\EnemyBlockReponse.cs" />
     <Compile Include="Collision\Response\EnemyEnemyResponse.cs" />
     <Compile Include="Collision\Response\GeneralResponse.cs" />
@@ -283,7 +283,6 @@
     <Compile Include="Collision\Response\MarioItemResponse.cs" />
     <Compile Include="Command\MarioCommand\KeyUpUpCommand.cs" />
     <Compile Include="Command\MarioCommand\KeyUpPowerCommand.cs" />
-    <Compile Include="Component\ComponentTable.cs" />
     <Compile Include="Loading\DynamicLoading.cs" />
     <Compile Include="Loading\ObjectsLoading.cs" />
     <Compile Include="Loading\SpritesLoading.cs" />
@@ -305,7 +304,7 @@
     <Compile Include="Controller\IController.cs" />
     <Compile Include="Controller\JoyStickController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
-    <Compile Include="Interfaces\IDraw.cs" />
+    <Compile Include="General Interfaces\IDraw.cs" />
     <Compile Include="Loading\ObjectNode.cs" />
     <Compile Include="Loading\ObjectLoading.cs" />
     <Compile Include="Object\Background\AbstractBackGround.cs" />
@@ -388,7 +387,7 @@
     <Compile Include="Object\ObjectFactory.cs" />
     <Compile Include="Object\Physics\Physics.cs" />
     <Compile Include="SpriteFactory\SpriteFactory.cs" />
-    <Compile Include="Interfaces\IUpdate.cs" />
+    <Compile Include="General Interfaces\IUpdate.cs" />
     <Compile Include="MarioGame.cs" />
     <Compile Include="Manager\ObjectsManager.cs" />
     <Compile Include="Program.cs" />

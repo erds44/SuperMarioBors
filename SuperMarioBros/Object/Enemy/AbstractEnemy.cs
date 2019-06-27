@@ -45,7 +45,7 @@ namespace SuperMarioBros.Objects.Enemy
         public virtual void Update(GameTime gameTime)
         {
             Position += Physics.Displacement(gameTime);
-            Sprite.Update();
+            Sprite.Update(gameTime);
         }
         public virtual void ChangeDirection()
         {

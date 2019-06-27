@@ -2,8 +2,8 @@
 
 namespace SuperMarioBros
 {
-    public interface IUpdate
+    public interface IUpdatable
     {
-        void Update();
+        void Update(GameTime game);
     }
 }

@@ -7,14 +7,12 @@ namespace SuperMarioBros.Managers
 {
     public class CollisionManager 
     {
-        private MarioGame game;
         private DynamicAndStaticObjectsHandler staticHandler;
         private DynamicAndDynamicObjectsHandler dynamicHandler;
-        public CollisionManager(MarioGame game)
+        public CollisionManager()
         {
-            this.game = game;
-            staticHandler = new DynamicAndStaticObjectsHandler(game);
-            dynamicHandler = new DynamicAndDynamicObjectsHandler(game);
+            staticHandler = new DynamicAndStaticObjectsHandler();
+            dynamicHandler = new DynamicAndDynamicObjectsHandler();
         }
 
         private void HandleCollision(IDynamic obj1, IDynamic obj2)
@@ -50,8 +48,8 @@ namespace SuperMarioBros.Managers
 
         public void Update()
         {
-            List<IDynamic> dynamicObjects = game.ObjectsManager.dynamicObjects;
-            List<IStatic> staticObjects = game.ObjectsManager.staticObjects;
+            List<IDynamic> dynamicObjects = MarioGame.Instance.ObjectsManager.dynamicObjects;
+            List<IStatic> staticObjects = MarioGame.Instance.ObjectsManager.staticObjects;
             for (int i = 0; i < dynamicObjects.Count; i++)
             {
                 for (int j = 0; j < staticObjects.Count; j++)

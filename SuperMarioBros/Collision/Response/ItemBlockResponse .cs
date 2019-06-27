@@ -8,9 +8,9 @@ namespace SuperMarioBros.Collisions
 {
     public class ItemBlockResponse : GeneralResponse
     {
-        private IBlock block;
+        private readonly IBlock block;
         private IItem item;
-        private Direction direction;
+        private readonly Direction direction;
         private delegate void MarioItemHandler(IItem item, IBlock block);
 
         public ItemBlockResponse(IObject item, IObject block, Direction direction)

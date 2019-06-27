@@ -2,7 +2,7 @@
 
 namespace SuperMarioBros
 {
-    public interface IDraw
+    public interface IDrawable
     {
         void Draw(SpriteBatch spriteBatch);
     }

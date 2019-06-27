@@ -5,7 +5,6 @@ using System.Collections.Generic;
 
 namespace SuperMarioBros.Controllers
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses")]
     class GamePadController : IController
     {
 
@@ -19,7 +18,7 @@ namespace SuperMarioBros.Controllers
             }
         }
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             GamePadButtons button = GamePad.GetState(PlayerIndex.One).Buttons;
             if (inputKeys.TryGetValue(button, out ICommand command))

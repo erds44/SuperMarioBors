@@ -28,6 +28,10 @@ namespace SuperMarioBros.Sprites
             height = texture.Height;
             SpriteColor = new Collection<Color> { Color.White };
         }
+        /* Set color and Set layer can be passed into the Draw Method 
+            but that serves only for very few cases
+            so we just make some methods instead
+         */
         public void SetColor(Collection<Color> colors)
         {
             SpriteColor = colors;
@@ -36,9 +40,13 @@ namespace SuperMarioBros.Sprites
         {
             layerDepth = layer;
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
-            if (delay % 5 == 0) /* temporary solution, will add game timer later*/
+            /* temporary solution, will add time delay later
+                since it takes time to tweak around different delay time for diff objects
+                we will make that happen in Sprint 5
+             */
+            if (delay % 5 == 0)                              
             {
                 currentFrame++;
                 if (currentFrame == totalFrame)
@@ -51,7 +59,6 @@ namespace SuperMarioBros.Sprites
             int column = currentFrame % totalFrame;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            //Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y - height, width, height);
             Vector2 Position = new Vector2((int)location.X, (int)location.Y - height * scale);
             delay++;
             if (delay % 5 == 0)
@@ -60,9 +67,7 @@ namespace SuperMarioBros.Sprites
             *  aim to slow color changing rate 
             */
             if (colorIndex % SpriteColor.Count == 0 || colorIndex > SpriteColor.Count)
-            {
                 colorIndex = 0;
-            }
             Color spriteColor = SpriteColor[colorIndex];
             spriteBatch.Draw(texture, Position, sourceRectangle, spriteColor, 0f, Vector2.Zero, scale, spriteEffects, layerDepth);
         }

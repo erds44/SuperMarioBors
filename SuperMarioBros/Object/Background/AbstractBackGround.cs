@@ -35,7 +35,7 @@ namespace SuperMarioBros.Backgrounds
 
         public virtual void Update(GameTime gameTime)
         {
-            sprite.Update();
+            sprite.Update(gameTime);
         }
     }
 }

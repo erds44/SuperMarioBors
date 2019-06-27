@@ -1,11 +1,16 @@
-﻿using SuperMarioBros.Commands;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Commands;
 using SuperMarioBros.Marios;
 using System;
 using System.Collections.Generic;
 
 namespace SuperMarioBros.Controllers
 {
-    public class ControllerMessager : IUpdate
+    /* The purpose of this class is to solve the issue with W, and Up pressed at the same time in one Update 
+       Otherwise Mario is expected to be move at doule speed
+       The general idea is to use bit wise operation to make sure only one Up command gets called even pressed W or Up multiple times in one Update call 
+     */
+    public class ControllerMessager : IUpdatable
     {
         private int flags = 0b000000000;
         public const int UPMOVE = 0b000000001, DOWNMOVE = 0b000000010, LEFTMOVE = 0b000000100, RIGHTMOVE = 0b000001000, RESETGAME = 0b000010000, QUITGAME = 0b000100000, POWER = 0b001000000, KEYUPUPMOVE = 0b010000000, KEYUPPOWER = 0b100000000;
@@ -35,11 +40,11 @@ namespace SuperMarioBros.Controllers
         {
             controllers.Add(controller);
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             foreach(IController controller in controllers)
             {
-                controller.Update();
+                controller.Update(gameTime);
             }
             if(flags == 0)
             {

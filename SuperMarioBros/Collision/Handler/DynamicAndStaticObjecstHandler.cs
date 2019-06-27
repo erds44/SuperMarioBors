@@ -11,12 +11,9 @@ namespace SuperMarioBros.Collisions
 {
     public class DynamicAndStaticObjectsHandler
     {
-        private MarioGame game;
-        private ObjectsManager objManager { get => game.ObjectsManager; }
         private static Dictionary<(Type, Type), Type> collisionDictionary;
-        public DynamicAndStaticObjectsHandler(MarioGame game)
+        public DynamicAndStaticObjectsHandler()
         {
-            this.game = game;
             collisionDictionary = new Dictionary<(Type, Type), Type>
             {
                 { (typeof(IMario), typeof(IBlock)), typeof(MarioBlockResponse)},

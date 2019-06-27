@@ -3,7 +3,6 @@ using SuperMarioBros.Objects.Enemy;
 using System;
 using System.Collections.Generic;
 using SuperMarioBros.Object.Mario.MarioTransitionState;
-using SuperMarioBros.Managers;
 using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Collisions

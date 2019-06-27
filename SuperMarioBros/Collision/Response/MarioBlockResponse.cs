@@ -4,7 +4,6 @@ using SuperMarioBros.Marios;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Object;
 using SuperMarioBros.Objects;
-using SuperMarioBros.Physicses;
 using System;
 using System.Collections.Generic;
 
@@ -12,9 +11,9 @@ namespace SuperMarioBros.Collisions
 {
     public class MarioBlockResponse : GeneralResponse
     {
-        private IMario mario;
-        private IBlock block;
-        private Direction direction;
+        private readonly IMario mario;
+        private readonly IBlock block;
+        private readonly Direction direction;
         private delegate void MarioBlockHandler (IMario mario, IBlock block);
 
         public MarioBlockResponse(IObject mario, IObject block, Direction direction)
@@ -63,7 +62,6 @@ namespace SuperMarioBros.Collisions
                 ((IMario)obj).MovementState.OnGround();
                 mario.Physics.ApplyGravity();
             }
-                // marioPhysics.Jump = false;
                 base.OnGround(obj);
         }
         private static void MarioVsBrickBlock(IMario mario, IBlock block)
@@ -73,7 +71,7 @@ namespace SuperMarioBros.Collisions
             else
             {
                 block.Borken();
-                ObjectFactory.CreateBlockDebris(block.Position);
+                ObjectFactory.Instance.CreateBlockDebris(block.Position);
             }
         }
 
@@ -81,22 +79,18 @@ namespace SuperMarioBros.Collisions
         {
             if(block.ItemType != null)
             {
-                block.Bumped();
-                // ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(block.ItemType, block.Position));
-                ObjectFactory.CreateNonCollidableObject(block.ItemType, block.Position);
+                block.Bumped();           
+                ObjectFactory.Instance.CreateNonCollidableObject(block.ItemType, block.Position);
             } else
             {
                 block.Used();
-                if (mario.HealthState is SmallMario)
-                    //ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(typeof(RedMushroom), block.Position));
-                    ObjectFactory.CreateNonCollidableObject(typeof(RedMushroom), block.Position);
-                else
-                    //ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(typeof(Flower), block.Position));
-                    ObjectFactory.CreateNonCollidableObject(typeof(Flower), block.Position);
+                if (mario.HealthState is SmallMario)                   
+                    ObjectFactory.Instance.CreateNonCollidableObject(typeof(RedMushroom), block.Position);
+                else                   
+                    ObjectFactory.Instance.CreateNonCollidableObject(typeof(Flower), block.Position);
             }       
-            if (block.ObjState == ObjectState.Destroy)
-                //ObjectsManager.Instance.AddObject((IStatic)Activator.CreateInstance(typeof(UsedBlock), block.Position));
-                ObjectFactory.CreateCollidableObject(typeof(UsedBlock), block.Position);
+            if (block.ObjState == ObjectState.Destroy)               
+                ObjectFactory.Instance.CreateCollidableObject(typeof(UsedBlock), block.Position);
         }
 
         private void MarioVsHiddenBlock(IMario mario, IBlock block, Direction direction)
@@ -106,33 +100,17 @@ namespace SuperMarioBros.Collisions
                 GroundOrTopBounce(mario);
                 block.Used();
                 if (block.ItemType != null)
-                    //ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(block.ItemType, block.Position));
-                    ObjectFactory.CreateNonCollidableObject(block.ItemType, block.Position);
+                    ObjectFactory.Instance.CreateNonCollidableObject(block.ItemType, block.Position);
                 else
                 {
-                    if (mario.HealthState is SmallMario )
-                        //ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(typeof(RedMushroom), block.Position));
-                        ObjectFactory.CreateNonCollidableObject(typeof(RedMushroom), block.Position);
-                    else
-                        //ObjectsManager.Instance.AddNonCollidableObject((IDynamic)Activator.CreateInstance(typeof(Flower), block.Position));
-                        ObjectFactory.CreateNonCollidableObject(typeof(Flower), block.Position);
-                }
-                //ObjectsManager.Instance.AddObject((IStatic)Activator.CreateInstance(typeof(UsedBlock), block.Position));
-                ObjectFactory.CreateCollidableObject(typeof(UsedBlock), block.Position);
+                    if (mario.HealthState is SmallMario )                       
+                        ObjectFactory.Instance.CreateNonCollidableObject(typeof(RedMushroom), block.Position);
+                    else                       
+                        ObjectFactory.Instance.CreateNonCollidableObject(typeof(Flower), block.Position);
+                }               
+                ObjectFactory.Instance.CreateCollidableObject(typeof(UsedBlock), block.Position);
                 ResolveOverlap(mario, block, direction);
             }
-        }
-        //private static void GenerateDerbis()
-        //{
-        //    ObjectsManager.Instance.AddNonCollidableObject(new BrickDerbis(location, BrickPosition.leftTop));
-        //    ObjectsManager.Instance.AddNonCollidableObject(new BrickDerbis(location, BrickPosition.leftBottom));
-        //    ObjectsManager.Instance.AddNonCollidableObject(new BrickDerbis(location, BrickPosition.rightTop));
-        //    ObjectsManager.Instance.AddNonCollidableObject(new BrickDerbis(location, BrickPosition.rightBottom));
-        //}
-
-
-
-
-        
+        }       
     }
 }

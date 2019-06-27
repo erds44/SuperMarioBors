@@ -1,5 +1,4 @@
-﻿using SuperMarioBros.GameCoreComponents;
-using SuperMarioBros.Managers;
+﻿using SuperMarioBros.Managers;
 using SuperMarioBros.Objects;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +8,9 @@ namespace SuperMarioBros.Loading
     public class DynamicLoader
     {
         //This is just a buffer -- Load objects in a "effective" range. This could reduce memory use.
-        private List<(float, IStatic)> staticObjects = new List<(float, IStatic)>();
-        private List<(float, IDynamic)> dynamicObjects = new List<(float, IDynamic)>();
-        private List<(float, IObject)> nonCollidableObjects = new List<(float, IObject)>();
+        private readonly List<(float, IStatic)> staticObjects = new List<(float, IStatic)>();
+        private readonly List<(float, IDynamic)> dynamicObjects = new List<(float, IDynamic)>();
+        private readonly List<(float, IObject)> nonCollidableObjects = new List<(float, IObject)>();
         private ObjectsManager objectsManager;
         private ObjectLoader objectLoader;
         public DynamicLoader(ObjectsManager objectsManager, ObjectLoader objectLoader) {

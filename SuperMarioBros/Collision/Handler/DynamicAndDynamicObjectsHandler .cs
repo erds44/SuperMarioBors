@@ -11,14 +11,9 @@ namespace SuperMarioBros.Collisions
     public enum Direction { left, right, top, bottom, none }
     public class DynamicAndDynamicObjectsHandler
     {
-        private readonly MarioGame game;
-        private ObjectsManager objManager { get => game.ObjectsManager; }
-
         private static Dictionary<(Type, Type), Type> collisionDictionary;
-
-        public DynamicAndDynamicObjectsHandler(MarioGame game)
+        public DynamicAndDynamicObjectsHandler()
         {   /* Dictionary for all possible collision cases */
-            this.game = game;
             collisionDictionary = new Dictionary<(Type, Type), Type>
             {
                 { (typeof(IMario), typeof(IItem)), typeof(MarioItemResponse)},

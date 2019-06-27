@@ -24,10 +24,8 @@ namespace SuperMarioBros.Marios
         private Vector2 position;
         public double NoMovementTimer { get; set; }
         public IMarioTransitionState TransitionState { get; set; }
-        private MarioGame game;
-        public Mario(Vector2 location, MarioGame game)
+        public Mario(Vector2 location)
         {
-            this.game = game;
             HealthState = new SmallMario(this);
             Physics = new Physics(new Vector2(0,0), 800f, 200f, 150f);
             Physics.ApplyGravity();
@@ -94,15 +92,13 @@ namespace SuperMarioBros.Marios
             {
                 HealthState.Update(gameTime);
                 MovementState.Update(gameTime);
-                Sprite.Update();
+                Sprite.Update(gameTime);
                 Position += Physics.Displacement(gameTime);
-                //if (Position.X < Camera.Instance.LeftBound) 
-                //    position.X = Camera.Instance.LeftBound;
             }
         }
         public void Destroy()
         {
-            game.InitializeGame();
+            MarioGame.Instance.InitializeGame();
         }
 
         public void TakeRedMushroom()

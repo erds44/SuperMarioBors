@@ -7,9 +7,9 @@ namespace SuperMarioBros.Collisions
 {
     public class EnemyBlockResponse : GeneralResponse
     {
-        private IEnemy enemy;
-        private IBlock block;
-        private Direction direction;
+        private readonly IEnemy enemy;
+        private readonly IBlock block;
+        private readonly Direction direction;
         private delegate void MarioBlockHandler (IEnemy enemy, IBlock block);
 
         public EnemyBlockResponse(IObject enemy, IObject block, Direction direction)

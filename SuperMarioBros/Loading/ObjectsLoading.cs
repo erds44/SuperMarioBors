@@ -9,7 +9,7 @@ namespace SuperMarioBros.LoadingTest
 {
     public class XMLProcessor
     {
-        private  List<ObjectNode> staticList = new List<ObjectNode> 
+        private readonly List<ObjectNode> staticList = new List<ObjectNode> 
             { 
 
                 //test
@@ -140,7 +140,7 @@ namespace SuperMarioBros.LoadingTest
              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(7250,410),1,1,30)),
         };
 
-        private List<ObjectNode> nonCollidableList = new List<ObjectNode>
+        private readonly List<ObjectNode> nonCollidableList = new List<ObjectNode>
         {
             (new ObjectNode("SuperMarioBros.Backgrounds.BigHill",new Vector2(0,410),1,1,0)),
             (new ObjectNode("SuperMarioBros.Backgrounds.BigBush",new Vector2(481,410),1,1,0)),
@@ -172,9 +172,9 @@ namespace SuperMarioBros.LoadingTest
        
  
 
-        private List<IStatic> staticObjects;
-        private List<IDynamic> dynamicObjects; 
-        private List<IObject> nonCollidableObjects;
+        private readonly List<IStatic> staticObjects;
+        private readonly List<IDynamic> dynamicObjects; 
+        private readonly List<IObject> nonCollidableObjects;
 
 
         public XMLProcessor()

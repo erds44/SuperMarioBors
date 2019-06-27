@@ -12,18 +12,13 @@ namespace SuperMarioBros.Managers
 {
     public class ObjectsManager
     {
-        public MarioGame Game { get => ObjectLoader.Game;}
-        //change to private later
         public List<IStatic> staticObjects { get; private set; }
         public List<IDynamic> dynamicObjects{ get; private set; }
         private List<IObject> nonCollidableObjects;
         public IMario Mario { get; private set; }
-        public static ObjectsManager Instance { get => instance; }
-        private static ObjectsManager instance; //Shouldn't use singleton but currently this is the only solution.
         public ObjectLoader ObjectLoader { get; private set; }
         private readonly DynamicLoader dynamicLoader;
         public ObjectsManager(ObjectLoader objectLoader) {
-            instance = this;
             staticObjects = new List<IStatic>();
             dynamicObjects = new List<IDynamic>();
             nonCollidableObjects = new List<IObject>();
@@ -41,12 +36,11 @@ namespace SuperMarioBros.Managers
 
         public void Update(GameTime gameTime)
         {
-            dynamicLoader.Load(Game.Camera.RightBound + 100); // We set the load range to 100.
-            if (Mario.Position.X < Game.Camera.LeftBound)
+            dynamicLoader.Load(MarioGame.Instance.Camera.RightBound + 100); // We set the load range to 100.
+            if (Mario.Position.X < MarioGame.Instance.Camera.LeftBound)
             {
-                Mario.Position = new Vector2(Game.Camera.LeftBound, Mario.Position.Y);
+                Mario.Position = new Vector2(MarioGame.Instance.Camera.LeftBound, Mario.Position.Y);
             }
-            //if (dynamicObjects[0] != Mario) dynamicObjects.Insert(0, Mario); //Not working. At least the game doesn't crash due to Mario's death.
             for (int i = (staticObjects.Count - 1); i >= 0 && i < staticObjects.Count; i--)
             {
                 IStatic obj = staticObjects[i];
@@ -163,9 +157,9 @@ namespace SuperMarioBros.Managers
         }
         private void BoundaryCheck(IObject obj)
         {
-            if (obj.Position.Y > MarioGame.WindowHeight + 100) obj.ObjState = ObjectState.Destroy;
-            if (obj.Position.X < Game.Camera.LeftBound - 300) obj.ObjState = ObjectState.Destroy;
-            if (obj.Position.X > Game.Camera.RightBound + 300) obj.ObjState = ObjectState.Destroy;
+            if (obj.Position.Y > MarioGame.Instance.WindowHeight + 100) obj.ObjState = ObjectState.Destroy;
+            if (obj.Position.X < MarioGame.Instance.Camera.LeftBound - 300) obj.ObjState = ObjectState.Destroy;
+            if (obj.Position.X > MarioGame.Instance.Camera.RightBound + 300) obj.ObjState = ObjectState.Destroy;
         }
     }
 }

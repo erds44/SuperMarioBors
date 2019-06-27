@@ -24,7 +24,7 @@ namespace SuperMarioBros.Items
         public override void Update(GameTime gameTime)
         {
             existingTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            sprite.Update();
+            sprite.Update(gameTime);
             Position += Physics.Displacement(gameTime);
             if (existingTimer <= 0)
                 ObjState = ObjectState.Destroy;

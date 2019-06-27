@@ -49,7 +49,7 @@ namespace SuperMarioBros.Marios
         {
             if (Explosion)
             {
-                sprite.Update();
+                sprite.Update(gameTime);
                 explosionTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (explosionTimer <= 0)
                     ObjState = ObjectState.Destroy;

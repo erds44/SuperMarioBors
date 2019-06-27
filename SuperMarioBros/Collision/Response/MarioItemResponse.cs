@@ -8,8 +8,8 @@ namespace SuperMarioBros.Collisions
 {
     public class MarioItemResponse : GeneralResponse
     {
-        private IMario mario;
-        private IItem item;
+        private readonly IMario mario;
+        private readonly IItem item;
         private delegate void MarioItemHandler(IMario mario, IItem item);
 
         public MarioItemResponse(IObject mario, IObject item , Direction direction)
@@ -52,7 +52,7 @@ namespace SuperMarioBros.Collisions
         }
         private static void TakeCoin(IMario mario, IItem item)
         {
-            //Do Nothing for Mario Right now
+            //Do Nothing for Mario Right now, should be scroe board
             item.ObjState = ObjectState.Destroy;
         }
     }

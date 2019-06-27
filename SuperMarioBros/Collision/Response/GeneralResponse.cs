@@ -6,7 +6,7 @@ namespace SuperMarioBros.Collisions
     public abstract class GeneralResponse : ICollisionResponsible
     {
         /* Below are some help methods shared by every response class */
-        private static float bumpedVelocity = -180f;
+        private readonly static float bumpedVelocity = -180f;
         protected virtual void OnGround(IObject obj)
         {
             obj.Physics.Velocity = new Vector2(obj.Physics.Velocity.X, 0);

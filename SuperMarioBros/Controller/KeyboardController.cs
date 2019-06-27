@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using SuperMarioBros.Managers;
 
 namespace SuperMarioBros.Controllers
 {
@@ -17,7 +16,7 @@ namespace SuperMarioBros.Controllers
             { Keys.Down, ControllerMessager.UPMOVE },
             { Keys.S, ControllerMessager.UPMOVE }
         };
-        private List<Keys> checkKeyUplist = new List<Keys>();
+        private readonly List<Keys> checkKeyUplist = new List<Keys>();
         private readonly ControllerMessager messager;
         public KeyboardController(ControllerMessager controllerMessager, params (Keys key, int command)[] args)
         {
@@ -28,7 +27,7 @@ namespace SuperMarioBros.Controllers
                 keyDownDictionary.Add(element.Item1, element.Item2);
             }
         }
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             Keys[] key = Keyboard.GetState().GetPressedKeys();
             foreach (Keys keyPressed in checkKeyUplist)

@@ -3,7 +3,7 @@ using SuperMarioBros.Physicses;
 
 namespace SuperMarioBros.Objects
 {
-    public interface IObject : IDraw
+    public interface IObject : IDrawable, IUpdatable
     {
         ObjectState ObjState { get; set; }
         Rectangle HitBox();

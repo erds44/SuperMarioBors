@@ -27,7 +27,7 @@ namespace SuperMarioBros.Items
         {
             ObjState = ObjectState.NonCollidable;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
-            sprite.SetLayer(0);
+            sprite.SetLayer(0.4f);
             Physics = new Physics(initialVelocity, itemGravity, itemWeight);
             addFlag = false;
             speedChangeFlag += Position.Y - peak;
@@ -51,7 +51,7 @@ namespace SuperMarioBros.Items
 
         public virtual void Update(GameTime gameTime)
         {
-            sprite.Update();
+            sprite.Update(gameTime);
             Position += Physics.Displacement(gameTime);
             if (Position.Y <= speedChangeFlag && !addFlag)
             {

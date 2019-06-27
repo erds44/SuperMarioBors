@@ -1,6 +1,6 @@
 ﻿namespace SuperMarioBros.Controllers
 {
-    public interface IController : IUpdate
+    public interface IController : IUpdatable
     {
         
     }

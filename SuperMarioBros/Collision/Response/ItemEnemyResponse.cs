@@ -9,8 +9,8 @@ namespace SuperMarioBros.Collisions
 {
     public class ItemEnemyResponse : GeneralResponse
     {
-        private IObject obj1;
-        private IObject obj2;
+        private readonly IObject obj1;
+        private readonly IObject obj2;
         private delegate void ItemEnemyHandler(IItem item, IEnemy enemy);
 
         public ItemEnemyResponse(IObject obj1, IObject obj2, Direction direction)
