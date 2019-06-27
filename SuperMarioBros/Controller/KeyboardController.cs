@@ -12,6 +12,7 @@ namespace SuperMarioBros.Controllers
         {
             { Keys.Up, ControllerMessager.KEYUPUPMOVE },
             { Keys.W, ControllerMessager.KEYUPUPMOVE },
+            { Keys.Z, ControllerMessager.KEYUPUPMOVE },
             { Keys.X, ControllerMessager.KEYUPPOWER },
             { Keys.Down, ControllerMessager.UPMOVE },
             { Keys.S, ControllerMessager.UPMOVE }

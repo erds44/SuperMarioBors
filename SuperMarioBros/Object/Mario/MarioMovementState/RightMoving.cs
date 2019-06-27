@@ -1,4 +1,5 @@
-﻿using SuperMarioBros.Marios.MarioTypeStates;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
 using System;
 
@@ -6,6 +7,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 {
     public class RightMoving : AbstractMovementState, IMarioMovementState
     {
+        private float jumpingSpeed = 40f;
         public RightMoving(IMario mario)
         {
             this.mario = mario;
@@ -47,6 +49,17 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             direction = fireBallDirection.right;
             offset = rightNormalOffSet;
             base.OnFireBall();
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            if (mario.Physics.Velocity.Y >= jumpingSpeed)
+            {
+                mario.MovementState = new RightJumping(mario);
+                mario.Physics.Jump = true;
+                mario.Physics.JumpKeyUp = true;
+            }
+            base.Update(gameTime);
         }
     }
 }
