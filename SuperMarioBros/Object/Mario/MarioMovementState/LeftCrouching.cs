@@ -35,7 +35,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Up()
         {
-
+            mario.MovementState = new LeftIdle(mario);
         }
 
 

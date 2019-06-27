@@ -11,7 +11,10 @@ namespace SuperMarioBros.Controllers
         private readonly Dictionary<Keys, int> keyUpDictionary = new Dictionary<Keys, int>
         {
             { Keys.Up, ControllerMessager.KEYUPUPMOVE },
-            { Keys.X, ControllerMessager.KEYUPPOWER }
+            { Keys.W, ControllerMessager.KEYUPUPMOVE },
+            { Keys.X, ControllerMessager.KEYUPPOWER },
+            { Keys.Down, ControllerMessager.UPMOVE },
+            { Keys.S, ControllerMessager.UPMOVE }
         };
         private List<Keys> checkKeyUplist = new List<Keys>();
         private readonly ControllerMessager messager;
