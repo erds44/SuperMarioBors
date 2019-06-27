@@ -103,7 +103,6 @@ namespace SuperMarioBros.Collisions
         {
             if (mario.Physics.Velocity.Y < 0 )
             {
-                ResolveOverlap(mario, block, direction);
                 GroundOrTopBounce(mario);
                 block.Used();
                 if (block.ItemType != null)
@@ -120,6 +119,7 @@ namespace SuperMarioBros.Collisions
                 }
                 //ObjectsManager.Instance.AddObject((IStatic)Activator.CreateInstance(typeof(UsedBlock), block.Position));
                 ObjectFactory.CreateCollidableObject(typeof(UsedBlock), block.Position);
+                ResolveOverlap(mario, block, direction);
             }
         }
         //private static void GenerateDerbis()

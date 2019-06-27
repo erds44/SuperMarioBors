@@ -5,7 +5,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 {
     public class LeftJumping : AbstractMovementState, IMarioMovementState
     {
-        private float maxLeftJumpingHorizontalVelocity = -100f;
         public LeftJumping(IMario mario)
         {
             this.mario = mario;
@@ -24,9 +23,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Left()
         {
-           mario.Physics.Left();
-            if (mario.Physics.Velocity.X <= maxLeftJumpingHorizontalVelocity)
-                mario.Physics.Velocity = new Vector2(maxLeftJumpingHorizontalVelocity, mario.Physics.Velocity.Y);
+            mario.Physics.Left();
         }
 
 

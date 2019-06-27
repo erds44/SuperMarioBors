@@ -11,10 +11,10 @@ namespace SuperMarioBros.Marios
     {
         private Dictionary<fireBallDirection, Vector2> velocityDictionary = new Dictionary<fireBallDirection, Vector2>
         {
-            {fireBallDirection.left, new Vector2(-100, 50)},
-            {fireBallDirection.right, new Vector2(100, 50)}
+            {fireBallDirection.left, new Vector2(-300, 50)},
+            {fireBallDirection.right, new Vector2(300, 50)}
         };
-        private float gravity = 200f;
+        private float gravity = 600f;
         private float weight = 20f;
         public bool Explosion { get; private set; }
         private float explosionTimer = 0.2f;
