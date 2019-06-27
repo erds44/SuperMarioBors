@@ -6,7 +6,7 @@ namespace SuperMarioBros.Sprites
 {
     public interface ISprite : IUpdate
     {
-        void Draw(SpriteBatch spriteBatch, Vector2 location);
+        void Draw(SpriteBatch spriteBatch, Vector2 location, SpriteEffects spriteEffects = SpriteEffects.None);
         void SetColor(Collection<Color> colors);
         void SetLayer(float layer);
     }

@@ -45,7 +45,7 @@ namespace SuperMarioBros.Sprites
                     currentFrame = 0;
             }
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location,SpriteEffects spriteEffects)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, SpriteEffects spriteEffects = SpriteEffects.None)
         {
             int row = (int)((float)currentFrame / (float)totalFrame);
             int column = currentFrame % totalFrame;
@@ -65,24 +65,6 @@ namespace SuperMarioBros.Sprites
             }
             Color spriteColor = SpriteColor[colorIndex];
             spriteBatch.Draw(texture, destinationRectangle, sourceRectangle, spriteColor, 0, Vector2.Zero, spriteEffects, layerDepth);
-        }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location)
-        {
-            int row = (int)((float)currentFrame / (float)totalFrame);
-            int column = currentFrame % totalFrame;
-
-            Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
-            Rectangle destinationRectangle = new Rectangle((int)location.X, (int)location.Y - height, width, height);
-            delay++;
-            if(delay % 5 == 0)
-                colorIndex++;
-
-            if (colorIndex % SpriteColor.Count == 0 || colorIndex > SpriteColor.Count)
-            {
-                colorIndex = 0;
-            }
-            Color spriteColor = SpriteColor[colorIndex];
-            spriteBatch.Draw(texture,destinationRectangle, sourceRectangle, spriteColor, 0, Vector2.Zero, SpriteEffects.None, layerDepth);   
         }
     }
 }

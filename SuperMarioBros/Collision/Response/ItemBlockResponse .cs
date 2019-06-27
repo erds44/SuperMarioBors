@@ -23,12 +23,14 @@ namespace SuperMarioBros.Collisions
         {
             if (item is FireBall)
                 FireBallCollision();
+            else if (item is Star)
+                StarCollision();
             else if (!(block is HiddenBlock))
             {
                 switch (direction)
                 {
                     case Direction.top: ItemBumpedOrChangeDirection(); break;
-                    case Direction.bottom: GroundOrTopBounce (item); break;
+                    case Direction.bottom: OnGround(item); break;
                     default: LeftOrRightBounce(item); break;
                 }
                 ResolveOverlap(item, block, direction);
@@ -59,7 +61,19 @@ namespace SuperMarioBros.Collisions
                         break;
                 }
             }
-
+        }
+        private void StarCollision()
+        {
+            if (!(block is HiddenBlock))
+            {
+                switch (direction)
+                {
+                    case Direction.top: GroundOrTopBounce(item); break;
+                    case Direction.bottom: GroundOrTopBounce(item); break;
+                    default: LeftOrRightBounce(item); break;
+                }
+                ResolveOverlap(item, block, direction);
+            }
         }
     }
 }
