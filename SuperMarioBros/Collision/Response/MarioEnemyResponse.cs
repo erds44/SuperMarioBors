@@ -23,8 +23,11 @@ namespace SuperMarioBros.Collisions
         }
         public override void HandleCollision()
         {
-            if (handlerDictionary.TryGetValue((enemy.GetType(), direction), out var handle))
-                handle(mario, enemy, direction);
+            if(!(mario.TransitionState is DamageState))
+            {
+                if (handlerDictionary.TryGetValue((enemy.GetType(), direction), out var handle))
+                    handle(mario, enemy, direction);
+            }
         }
         private readonly Dictionary<(Type,Direction), MarioEnemyHandler> handlerDictionary = new Dictionary<(Type,Direction), MarioEnemyHandler>
         {

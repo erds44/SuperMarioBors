@@ -1,35 +1,35 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Marios;
+using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Object.Mario.TransitionState;
-using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Object.Mario.MarioTransitionState
 {
     public class GrowState : IMarioTransitionState
     {
         private IMario mario;
-        private readonly Collection<Color> growColor = new Collection<Color> { Color.White, Color.White * 0.5f }; // needed to be fixed
-        private readonly Collection<Color> normalColor = new Collection<Color> { Color.White};
-        private double transitionTimer = 5d;
-        private double nonMovementTimer = 2.5d;
+        private double transitionTimer = .5d;
+        private int index;
+        private float[] scales = {0.8f, 1f };
         public GrowState(IMario mario)
         {
             this.mario = mario;
-            mario.NoMovementTimer = nonMovementTimer;
+            mario.NoMovementTimer = transitionTimer;
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            mario.Sprite.SetColor(growColor);
-            mario.Sprite.Draw(spriteBatch, mario.Position);
-            mario.Sprite.SetColor(normalColor);
+            if(mario.HealthState is BigMario)
+                mario.Sprite.Draw(spriteBatch, mario.Position,SpriteEffects.None,scales[index % scales.Length]);
+            else
+                mario.Sprite.Draw(spriteBatch, mario.Position);
         }
 
         public void TakeRedMushroom() // Not likely to happen
         {
             mario.HealthState.TakeRedMushroom();
-            mario.NoMovementTimer = nonMovementTimer;
-            transitionTimer = 5d;
+            mario.NoMovementTimer = .5d;
+            transitionTimer = .5d;
         }
 
         public void TakeDamage()
@@ -44,6 +44,7 @@ namespace SuperMarioBros.Object.Mario.MarioTransitionState
 
         public void Update(GameTime gameTime)
         {
+            index++;
             transitionTimer -= gameTime.ElapsedGameTime.TotalSeconds;
             if (transitionTimer <= 0) mario.TransitionState = new NormalState(mario);
         }
@@ -51,8 +52,8 @@ namespace SuperMarioBros.Object.Mario.MarioTransitionState
         public void OnFireFlower()
         {
             mario.HealthState.OnFireFlower();
-            mario.NoMovementTimer = nonMovementTimer;
-            transitionTimer = 5d;
+            mario.NoMovementTimer = .5d;
+            transitionTimer = .5d;
         }
     }
 }

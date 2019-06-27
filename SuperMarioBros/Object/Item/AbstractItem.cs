@@ -43,6 +43,7 @@ namespace SuperMarioBros.Items
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Position);
+            //sprite.Draw(spriteBatch, Position,SpriteEffects.None, 0.8f);
         }
 
         public virtual Rectangle HitBox()

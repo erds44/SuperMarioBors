@@ -11,8 +11,8 @@ namespace SuperMarioBros.Object.Mario.MarioTransitionState
         private IMario mario;
         private readonly Collection<Color> growColor = new Collection<Color> { Color.White, Color.White * 0.5f }; // needed to be fixed
         private readonly Collection<Color> normalColor = new Collection<Color> { Color.White };
-        private double transitionTimer = 5d;
-        private double nonMovementTimer = 2.5d;
+        private double transitionTimer = 2d;
+        private double nonMovementTimer = .5d;
         public DamageState(IMario mario)
         {
             this.mario = mario;

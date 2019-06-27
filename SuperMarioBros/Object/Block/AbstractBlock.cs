@@ -34,6 +34,7 @@ namespace SuperMarioBros.Blocks
         public void Draw(SpriteBatch spriteBatch)
         {
             Sprite?.Draw(spriteBatch, Position);
+            //Sprite?.Draw(spriteBatch, Position,SpriteEffects.None, 0.8f);
         }
 
         public Rectangle HitBox()
