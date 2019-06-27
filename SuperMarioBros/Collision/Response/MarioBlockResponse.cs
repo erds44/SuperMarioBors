@@ -53,14 +53,18 @@ namespace SuperMarioBros.Collisions
         };
         protected override void OnGround(IObject obj)
         {
-            Physics marioPhysics = obj.Physics;
-            if(marioPhysics.Velocity.Y >= 0)
+            if (mario.Physics.Jump)
             {
+                if (mario.Physics.JumpKeyUp)
+                {
+                    mario.Physics.JumpKeyUp = false;
+                    mario.Physics.Jump = false;
+                }
                 ((IMario)obj).MovementState.OnGround();
-                marioPhysics.ApplyGravity();
-                marioPhysics.Jump = false;
+                mario.Physics.ApplyGravity();
             }
-            base.OnGround(obj);
+                // marioPhysics.Jump = false;
+                base.OnGround(obj);
         }
         private static void MarioVsBrickBlock(IMario mario, IBlock block)
         {

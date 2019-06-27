@@ -7,30 +7,48 @@ namespace SuperMarioBros.Controllers
 {
     class KeyboardController : IController
     {
-        private readonly Dictionary<Keys, int> inputKeys;
+        private readonly Dictionary<Keys, int> keyDownDictionary;
+        private readonly Dictionary<Keys, int> keyUpDictionary = new Dictionary<Keys, int>
+        {
+            { Keys.Up, ControllerMessager.KEYUPUPMOVE }
+        };
+        private List<Keys> checkKeyUplist = new List<Keys>();
         private readonly ControllerMessager messager;
-        public KeyboardController(ControllerMessager controllerMessager, params(Keys key, int command)[] args)
+        public KeyboardController(ControllerMessager controllerMessager, params (Keys key, int command)[] args)
         {
             messager = controllerMessager;
-            inputKeys = new Dictionary<Keys, int>();
+            keyDownDictionary = new Dictionary<Keys, int>();
             foreach ((Keys, int) element in args)
             {
-                inputKeys.Add(element.Item1, element.Item2);
+                keyDownDictionary.Add(element.Item1, element.Item2);
             }
         }
-        bool isLDown = false;
         public void Update()
         {
             Keys[] key = Keyboard.GetState().GetPressedKeys();
-            bool isPrevLDown = isLDown;
-            isLDown = Keyboard.GetState().IsKeyDown(Keys.L);
-                foreach(Keys keyPressed in key)
+            foreach (Keys keyPressed in checkKeyUplist)
+            {
+                if (Keyboard.GetState().IsKeyUp(keyPressed))
                 {
-                    if (inputKeys.TryGetValue(keyPressed, out int command))
+                    if (keyUpDictionary.TryGetValue(keyPressed, out int command))
+                        messager.ChangeFlags(command);
+                }
+            }
+            checkKeyUplist.Clear();
+            foreach (Keys keyPressed in key)
+            {
+                if (Keyboard.GetState().IsKeyDown(keyPressed))
+                {
+                    if (keyDownDictionary.TryGetValue(keyPressed, out int command))
                     {
                         messager.ChangeFlags(command);
+                        if (keyUpDictionary.ContainsKey(keyPressed))
+                        {
+                            checkKeyUplist.Add(keyPressed);
+                        }
                     }
                 }
+            }
         }
     }
 }

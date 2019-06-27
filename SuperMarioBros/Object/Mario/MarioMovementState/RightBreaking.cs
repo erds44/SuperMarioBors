@@ -41,7 +41,8 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Up()
         {
-            mario.MovementState = new RightJumping(mario);
+            if (!mario.Physics.Jump)
+                mario.MovementState = new RightJumping(mario);
         }
 
     }

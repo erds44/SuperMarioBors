@@ -20,17 +20,18 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Right()
         {
-            mario.MovementState = new RightMoving(mario);
+              mario.MovementState = new RightMoving(mario);
         }
 
         public void Left()
         {
-            mario.MovementState = new LeftIdle(mario);
+             mario.MovementState = new LeftIdle(mario);
         }
 
         public void Up()
         {
-            mario.MovementState = new RightJumping(mario);
+            if (!mario.Physics.Jump)
+                mario.MovementState = new RightJumping(mario);
         }
 
         public void Idle()

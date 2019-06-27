@@ -20,7 +20,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Right()
         {
-            mario.Physics.Right();
+                mario.Physics.Right();
         }
 
         public void Left()
@@ -30,7 +30,8 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Up()
         {
-            mario.MovementState = new RightJumping(mario);
+            if (!mario.Physics.Jump)
+                mario.MovementState = new RightJumping(mario);
         }
 
         public void Idle()
