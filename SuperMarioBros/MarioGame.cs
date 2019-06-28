@@ -7,7 +7,7 @@ using SuperMarioBros.GameCoreComponents;
 using SuperMarioBros.Managers;
 using SuperMarioBros.Loading;
 using SuperMarioBros.Marios;
-using SuperMarioBros.Object;
+using SuperMarioBros.Objects;
 
 namespace SuperMarioBros
 {

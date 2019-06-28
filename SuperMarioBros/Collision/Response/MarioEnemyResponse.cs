@@ -2,8 +2,8 @@
 using SuperMarioBros.Objects.Enemy;
 using System;
 using System.Collections.Generic;
-using SuperMarioBros.Object.Mario.MarioTransitionState;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Objects.Mario.MarioTransitionState;
 
 namespace SuperMarioBros.Collisions
 {

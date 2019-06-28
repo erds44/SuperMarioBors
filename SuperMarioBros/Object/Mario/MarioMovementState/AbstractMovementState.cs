@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Marios.MarioTypeStates;
-using SuperMarioBros.Object;
+using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {

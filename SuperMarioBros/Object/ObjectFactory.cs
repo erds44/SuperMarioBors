@@ -6,7 +6,7 @@ using SuperMarioBros.Objects;
 using System;
 using System.Collections.Generic;
 
-namespace SuperMarioBros.Object
+namespace SuperMarioBros.Objects
 {
     public sealed class ObjectFactory
     {

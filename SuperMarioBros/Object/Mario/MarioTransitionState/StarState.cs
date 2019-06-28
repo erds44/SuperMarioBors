@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Marios;
-using SuperMarioBros.Object.Mario.TransitionState;
+using SuperMarioBros.Objects.Mario.TransitionState;
 using System.Collections.ObjectModel;
 
-namespace SuperMarioBros.Object.Mario.MarioTransitionState
+namespace SuperMarioBros.Objects.Mario.MarioTransitionState
 {
     public class StarState : IMarioTransitionState
     {

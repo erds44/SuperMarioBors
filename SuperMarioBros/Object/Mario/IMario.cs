@@ -1,10 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Collisions;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
-using SuperMarioBros.Object.Mario.TransitionState;
 using SuperMarioBros.Objects;
-using SuperMarioBros.Physicses;
+using SuperMarioBros.Objects.Mario.TransitionState;
 using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Marios

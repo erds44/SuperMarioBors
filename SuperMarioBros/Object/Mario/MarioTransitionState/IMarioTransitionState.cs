@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace SuperMarioBros.Object.Mario.TransitionState
+namespace SuperMarioBros.Objects.Mario.TransitionState
 {
     public interface IMarioTransitionState 
     {

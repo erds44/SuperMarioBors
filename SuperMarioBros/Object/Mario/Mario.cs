@@ -4,8 +4,8 @@ using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Managers;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
-using SuperMarioBros.Object.Mario.MarioTransitionState;
-using SuperMarioBros.Object.Mario.TransitionState;
+using SuperMarioBros.Objects.Mario.MarioTransitionState;
+using SuperMarioBros.Objects.Mario.TransitionState;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.Sprites;
 

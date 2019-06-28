@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Marios.MarioTypeStates;
-using SuperMarioBros.Object.Mario.TransitionState;
+using SuperMarioBros.Objects.Mario.TransitionState;
 
-namespace SuperMarioBros.Object.Mario.MarioTransitionState
+namespace SuperMarioBros.Objects.Mario.MarioTransitionState
 {
     public class NormalState : IMarioTransitionState
     {
