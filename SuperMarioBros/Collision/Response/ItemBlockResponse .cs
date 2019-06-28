@@ -56,7 +56,7 @@ namespace SuperMarioBros.Collisions
                     case Direction.top: GroundOrTopBounce(item); ResolveOverlap(item, block, direction); break;
                     case Direction.bottom: GroundOrTopBounce(item); ResolveOverlap(item, block, direction); break;
                     default:
-                        ((FireBall)item).OnFireExplosion();
+                        ((FireBall)item).FireExplosion();
                         item.ObjState = ObjectState.NonCollidable;
                         break;
                 }

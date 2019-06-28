@@ -284,6 +284,7 @@
     <Compile Include="Collision\Response\MarioItemResponse.cs" />
     <Compile Include="Command\MarioCommand\KeyUpUpCommand.cs" />
     <Compile Include="Command\MarioCommand\KeyUpPowerCommand.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Loading\DynamicLoading.cs" />
     <Compile Include="Loading\ObjectsLoading.cs" />
     <Compile Include="Loading\SpritesLoading.cs" />

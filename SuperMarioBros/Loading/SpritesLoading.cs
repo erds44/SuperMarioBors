@@ -92,7 +92,7 @@ namespace SuperMarioBros.Loading
             XMLReader("Sprites.xml");
             foreach(SpritesNode node in this.spritesList)
             {
-                spritesInfo.Add(node.objectName, node);
+                spritesInfo.Add(node.ObjectName, node);
             }
             return spritesInfo;
         }

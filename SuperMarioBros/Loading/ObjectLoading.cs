@@ -12,6 +12,7 @@ namespace SuperMarioBros.Loading
 {
     public class ObjectLoader
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
         public MarioGame Game { get; }
         public List<IStatic> Statics { get; private set; }
         public List<IDynamic> Dynamics { get; private set; }

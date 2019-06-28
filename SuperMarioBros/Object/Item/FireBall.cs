@@ -38,9 +38,9 @@ namespace SuperMarioBros.Marios
         {
             // Do Nothing
         }
-        public void OnFireExplosion()
+        public void FireExplosion()
         {
-            sprite = SpriteFactory.CreateSprite(nameof(OnFireExplosion));
+            sprite = SpriteFactory.CreateSprite(nameof(FireExplosion));
             Position += explosionOffSet;
             Explosion = true;
         }

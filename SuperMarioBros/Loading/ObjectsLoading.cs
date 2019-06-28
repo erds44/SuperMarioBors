@@ -201,6 +201,7 @@ namespace SuperMarioBros.LoadingTest
             return dynamicObjects;
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1002:DoNotExposeGenericLists")]
         public List<IObject> NonCollidableList()
         {
             XMLWriter(@"NonCollidableLevel.xml", nonCollidableList);
@@ -213,10 +214,10 @@ namespace SuperMarioBros.LoadingTest
         {
             foreach (ObjectNode node in list)
             {
-                Type t = Type.GetType(node.objectType);
+                Type t = Type.GetType(node.ObjectType);
                 Vector2 position;
-                position.X = node.position.X;
-                position.Y = node.position.Y;
+                position.X = node.Position.X;
+                position.Y = node.Position.Y;
                 var obj = Activator.CreateInstance(t, position);
                 nonCollidableObjects.Add((IObject)obj);
             }
@@ -225,10 +226,10 @@ namespace SuperMarioBros.LoadingTest
         {
             foreach (ObjectNode node in list)
             {
-                Type t = Type.GetType(node.objectType);
+                Type t = Type.GetType(node.ObjectType);
                 Vector2 position;
-                position.X = node.position.X;
-                position.Y = node.position.Y;
+                position.X = node.Position.X;
+                position.Y = node.Position.Y;
                 var obj = Activator.CreateInstance(t, position);
                 dynamicObjects.Add((IDynamic)obj);
             }
@@ -238,7 +239,7 @@ namespace SuperMarioBros.LoadingTest
         {
             foreach(ObjectNode node in list)
             {
-                switch(node.shape)
+                switch(node.Shape)
                 {
                     case 1:
                         HorizontalLine(node);
@@ -259,64 +260,64 @@ namespace SuperMarioBros.LoadingTest
 
         private  void HorizontalLine(ObjectNode node)
         {
-            Type t = Type.GetType(node.objectType);
+            Type t = Type.GetType(node.ObjectType);
 
             Vector2 position;
-            position.X = node.position.X;
-            position.Y = node.position.Y;
-            for(int i = 0; i < node.size; i++)
+            position.X = node.Position.X;
+            position.Y = node.Position.Y;
+            for(int i = 0; i < node.Size; i++)
             {
-                staticObjects.Add(CreateInstance(t, position, node.itemType, node.itemCount));
-                position.X += node.width;
+                staticObjects.Add(CreateInstance(t, position, node.ItemType, node.ItemCount));
+                position.X += node.Width;
             }
 
         }
 
         private  void VerticalLine(ObjectNode node)
         {
-            Type t = Type.GetType(node.objectType);
+            Type t = Type.GetType(node.ObjectType);
             Vector2 position;
-            position.X = node.position.X;
-            position.Y = node.position.Y;
-            for (int i = 0; i < node.size; i++)
+            position.X = node.Position.X;
+            position.Y = node.Position.Y;
+            for (int i = 0; i < node.Size; i++)
             {
-                staticObjects.Add(CreateInstance(t, position, node.itemType, node.itemCount));
-                position.Y -= node.width;
+                staticObjects.Add(CreateInstance(t, position, node.ItemType, node.ItemCount));
+                position.Y -= node.Width;
             }
         }
 
         private  void RightTriangle(ObjectNode node)
         {
-            Type t = Type.GetType(node.objectType);
+            Type t = Type.GetType(node.ObjectType);
             Vector2 position;
-            position.X = node.position.X;
-            position.Y = node.position.Y;
-            for (int i = 0; i < node.size; i++)
+            position.X = node.Position.X;
+            position.Y = node.Position.Y;
+            for (int i = 0; i < node.Size; i++)
             {
-                for (int j = 0; j < node.size - i; j++)
+                for (int j = 0; j < node.Size - i; j++)
                 {
-                    position.X = node.position.X+i*node.width;
-                    position.Y = node.position.Y-j*node.width;
-                    staticObjects.Add(CreateInstance(t, position, node.itemType, node.itemCount));
-                    position.Y -= node.width;
+                    position.X = node.Position.X+i*node.Width;
+                    position.Y = node.Position.Y-j*node.Width;
+                    staticObjects.Add(CreateInstance(t, position, node.ItemType, node.ItemCount));
+                    position.Y -= node.Width;
                 }
             }
         }
 
        private  void LeftTriangle(ObjectNode node)
         {
-            Type t = Type.GetType(node.objectType);
+            Type t = Type.GetType(node.ObjectType);
             Vector2 position;
-            position.X = node.position.X;
-            position.Y = node.position.Y;
-            for (int i = 0; i < node.size; i++)
+            position.X = node.Position.X;
+            position.Y = node.Position.Y;
+            for (int i = 0; i < node.Size; i++)
             {
                 for (int j = 0; j <= i; j++)
                 {
-                    position.X = node.position.X + i * node.width;
-                    position.Y = node.position.Y - j * node.width;
-                     staticObjects.Add(CreateInstance(t, position,node.itemType,node.itemCount));
-                    position.Y -= node.width;
+                    position.X = node.Position.X + i * node.Width;
+                    position.Y = node.Position.Y - j * node.Width;
+                     staticObjects.Add(CreateInstance(t, position,node.ItemType,node.ItemCount));
+                    position.Y -= node.Width;
                 }
             }
         }

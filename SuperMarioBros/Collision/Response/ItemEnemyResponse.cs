@@ -38,7 +38,7 @@ namespace SuperMarioBros.Collisions
         {
             if (!((FireBall)fireBall).Explosion)
             {
-                ((FireBall)fireBall).OnFireExplosion();
+                ((FireBall)fireBall).FireExplosion();
                 enemy.Flipped();
                 enemy.ObjState = ObjectState.NonCollidable;
             }

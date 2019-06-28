@@ -7,7 +7,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 {
     public class LeftMoving : AbstractMovementState, IMarioMovementState
     {
-        private float jumpingSpeed = 40f;
+        private readonly float jumpingSpeed = 40f;
         public LeftMoving(IMario mario)
         {
             this.mario = mario;

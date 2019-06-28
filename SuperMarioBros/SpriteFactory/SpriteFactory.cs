@@ -33,7 +33,7 @@ namespace SuperMarioBros.SpriteFactories
         {
             if (!(spritesInfo.TryGetValue(type, out spriteNode)))
                 throw new System.ArgumentException("Cannot find: " + type + " in the dictionary");
-            sprite = new UniversalSprite(content.Load<Texture2D>(spriteNode.spriteName), spriteNode.totalFrame);
+            sprite = new UniversalSprite(content.Load<Texture2D>(spriteNode.SpriteName), spriteNode.TotalFrame);
             return sprite;
         }
         public static ISprite CreateDerbisSprite(BrickPosition brickPosition)

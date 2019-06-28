@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace SuperMarioBros.Controllers
 {
-    class GamePadController : IController
+    public class GamePadController : IController
     {
 
         private readonly Dictionary<GamePadButtons, ICommand> inputKeys;

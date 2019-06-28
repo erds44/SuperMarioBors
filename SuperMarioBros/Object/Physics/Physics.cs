@@ -16,7 +16,7 @@ namespace SuperMarioBros.Physicses
         private readonly float deceleration = 0f;
         public  Vector2 Velocity {get; set;}
         public bool Jump {get; set;}
-        public bool JumpKeyUp = false;
+        public bool JumpKeyUp { get; set; }
         private readonly float gravityDecrement = 20f;
         private readonly float minGravity = 280f;
         private readonly float maxClamping = 200f;
@@ -32,6 +32,7 @@ namespace SuperMarioBros.Physicses
             this.acceleration = acceleration;
             deceleration = 2f * acceleration;
             this.gravity = gravity;
+            JumpKeyUp = false;
         }
  
         public void Left()
