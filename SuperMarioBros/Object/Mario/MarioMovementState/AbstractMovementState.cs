@@ -7,12 +7,11 @@ namespace SuperMarioBros.Marios.MarioMovementStates
     public abstract class AbstractMovementState
     {
         protected private IMario mario;
-        protected private Vector2 leftNormalOffSet = new Vector2(-22, -32);
         protected private Vector2 leftCrouchingOffset = new Vector2(-22, -22);
         protected private Vector2 rightNormalOffSet = new Vector2(52, -32);
         protected private Vector2 rightCrouchingOffset = new Vector2(52, -22);
         protected private Vector2 offset = new Vector2(-22, -32);
-        protected private fireBallDirection direction = fireBallDirection.left;
+        protected private FireBallDirection direction = FireBallDirection.left;
         protected private int fireBallCount = 2;
         protected private float fireBallCoolDown = 2f;
         protected private bool coolDown = false;

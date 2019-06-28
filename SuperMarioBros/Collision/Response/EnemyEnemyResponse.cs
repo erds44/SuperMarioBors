@@ -40,7 +40,7 @@ namespace SuperMarioBros.Collisions
             { (typeof(Koopa),  typeof(Koopa), Direction.top),  EnemyVSKoopaTopCollision },
 
         };
-        private Direction ReverseDirection(Direction direction)
+        private static Direction ReverseDirection(Direction direction)
         {
             switch (direction)
             {

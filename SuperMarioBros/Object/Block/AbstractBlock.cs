@@ -18,8 +18,7 @@ namespace SuperMarioBros.Blocks
         public Type ItemType { get; protected set; }
         public bool HasItem { get; set; }
         public ObjectState ObjState { get; set; }
-        public int bumpedCount;
-        protected bool blockHasItem = false;
+        public int BumpedCount { get; set; }
         public void Initialize()
         {
             ObjState = ObjectState.Normal;

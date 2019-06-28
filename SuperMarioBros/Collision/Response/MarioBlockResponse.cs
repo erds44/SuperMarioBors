@@ -92,7 +92,7 @@ namespace SuperMarioBros.Collisions
                 ObjectFactory.Instance.CreateCollidableObject(typeof(UsedBlock), block.Position);
         }
 
-        private void MarioVsHiddenBlock(IMario mario, IBlock block, Direction direction)
+        private static void MarioVsHiddenBlock(IMario mario, IBlock block, Direction direction)
         {
             if (mario.Physics.Velocity.Y < 0 )
             {

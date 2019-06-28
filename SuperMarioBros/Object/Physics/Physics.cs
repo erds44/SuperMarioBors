@@ -6,19 +6,19 @@ namespace SuperMarioBros.Physicses
     public class Physics
     {
         private float dt = 0f;
-        private float gravity;
+        private readonly float gravity;
         private const float DECAYRATIO = 0.96f;
         private float currentGravity;
         private Vector2 displacement = Vector2.Zero;
         private float sprintVelocityRate;
-        private float weight;
-        private float acceleration = 0f;
-        private float deceleration = 0f;
+        private readonly float weight;
+        private readonly float acceleration = 0f;
+        private readonly float deceleration = 0f;
         public  Vector2 Velocity {get; set;}
         public bool Jump {get; set;}
         public bool JumpKeyUp = false;
-        private float gravityDecrement = 20f;
-        private float minGravity = 280f;
+        private readonly float gravityDecrement = 20f;
+        private readonly float minGravity = 280f;
         private readonly float maxClamping = 200f;
         private readonly float minClamping = -200f;
         private readonly float jumpVelocity = -450f;
@@ -65,9 +65,9 @@ namespace SuperMarioBros.Physicses
         {
             Velocity = new Vector2 (Velocity.X - Math.Sign(Velocity.X) * deceleration * dt, Velocity.Y);
         }
-        public void SetSprintVelocityRate(float sprintVelocityRate)
+        public void SetSprintVelocityRate(float inputSprintVelocityRate)
         {
-            this.sprintVelocityRate = sprintVelocityRate;
+            this.sprintVelocityRate = inputSprintVelocityRate;
         }
         public Vector2 Displacement(GameTime gameTime)
         {

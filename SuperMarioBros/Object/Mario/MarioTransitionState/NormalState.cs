@@ -8,7 +8,7 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
 {
     public class NormalState : IMarioTransitionState
     {
-        private IMario mario;
+        private readonly IMario mario;
         public NormalState(IMario mario)
         {
             this.mario = mario;

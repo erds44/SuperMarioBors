@@ -19,7 +19,7 @@ namespace SuperMarioBros.SpriteFactories
         {
             content = inputContent;
             SpritesLoading spritesLoading = new SpritesLoading();
-            spritesInfo = spritesLoading.spritesInfo();
+            spritesInfo = spritesLoading.SpritesInfo();
             derbisSprite = new Dictionary<BrickPosition, ISprite>
             {
                 { BrickPosition.leftTop, new UniversalSprite(content.Load<Texture2D>("LeftTopDerbis"), 1) },

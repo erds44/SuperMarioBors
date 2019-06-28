@@ -14,14 +14,14 @@ namespace SuperMarioBros.Items
         public Physics Physics { get; set; }
         public ObjectState ObjState { get; set; }
 
-        protected bool addFlag;
-        protected float speedChangeFlag;
-        protected float peak = 45f;
-        protected Vector2 initialVelocity = new Vector2(0, -180);
-        protected Vector2 collidableVelocity = new Vector2(40, 0);
-        protected float itemGravity =  800f;
-        protected float itemWeight = 20f;
-        protected float itemLayer = 1f;
+        private protected bool addFlag;
+        private protected float speedChangeFlag;
+        private protected float peak = 45f;
+        private protected Vector2 initialVelocity = new Vector2(0, -180);
+        private protected Vector2 collidableVelocity = new Vector2(40, 0);
+        private protected float itemGravity =  800f;
+        private protected float itemWeight = 20f;
+        private protected float itemLayer = 1f;
 
         protected virtual void Initialize()
         {

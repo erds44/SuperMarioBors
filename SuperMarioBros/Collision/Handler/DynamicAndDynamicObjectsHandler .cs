@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace SuperMarioBros.Collisions
 {
     public enum Direction { left, right, top, bottom, none }
-    public class DynamicAndDynamicObjectsHandler
+    public class DynamicAndDynamicObjectsHandler : IHandler
     {
         private static Dictionary<(Type, Type), Type> collisionDictionary;
         public DynamicAndDynamicObjectsHandler()
@@ -23,9 +23,9 @@ namespace SuperMarioBros.Collisions
                 { (typeof(IEnemy), typeof(IItem)), typeof(ItemEnemyResponse)},
             };
         }
-        public void HandleCollision(IDynamic obj1, IDynamic obj2, Direction direction)
+        public void HandleCollision(IObject obj1, IObject obj2, Direction direction)
         {
-            if (collisionDictionary.TryGetValue((obj1.GetType().GetInterfaces()[0], obj2.GetType().GetInterfaces()[0]), out Type type))
+            if (collisionDictionary.TryGetValue((((IDynamic)obj1).GetType().GetInterfaces()[0], ((IDynamic)obj2).GetType().GetInterfaces()[0]), out Type type))
                 ((ICollisionResponsible)Activator.CreateInstance(type, obj1, obj2, direction)).HandleCollision();
         }
     }

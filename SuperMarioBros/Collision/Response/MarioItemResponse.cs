@@ -10,17 +10,22 @@ namespace SuperMarioBros.Collisions
     {
         private readonly IMario mario;
         private readonly IItem item;
+        private readonly Direction direction;
         private delegate void MarioItemHandler(IMario mario, IItem item);
 
         public MarioItemResponse(IObject mario, IObject item , Direction direction)
         {
             this.mario = (IMario)mario;
             this.item = (IItem)item;
+            this.direction = direction;
         }
         public override void HandleCollision()
-        {            
-             handlerDictionary.TryGetValue(item.GetType(), out var handler);
-             handler?.Invoke(mario, item);              
+        {
+            if (direction != Direction.none)
+            {
+                handlerDictionary.TryGetValue(item.GetType(), out var handler);
+                handler?.Invoke(mario, item);
+            }
         }
         private readonly Dictionary<Type, MarioItemHandler> handlerDictionary = new Dictionary<Type, MarioItemHandler>
         {

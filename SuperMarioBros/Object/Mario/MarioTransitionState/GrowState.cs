@@ -8,10 +8,10 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
 {
     public class GrowState : IMarioTransitionState
     {
-        private IMario mario;
+        private readonly IMario mario;
         private double transitionTimer = .5d;
         private int index;
-        private float[] scales = {0.8f, 1f };
+        private readonly float[] scales = {0.8f, 1f };
         public GrowState(IMario mario)
         {
             this.mario = mario;

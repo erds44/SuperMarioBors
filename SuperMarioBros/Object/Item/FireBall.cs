@@ -6,24 +6,23 @@ using System.Collections.Generic;
 
 namespace SuperMarioBros.Marios
 {
-    public enum fireBallDirection {left, right}
+    public enum FireBallDirection {left, right}
     public class FireBall : AbstractItem
     {
-        private Dictionary<fireBallDirection, Vector2> velocityDictionary = new Dictionary<fireBallDirection, Vector2>
+        private readonly Dictionary<FireBallDirection, Vector2> velocityDictionary = new Dictionary<FireBallDirection, Vector2>
         {
-            {fireBallDirection.left, new Vector2(-300, 50)},
-            {fireBallDirection.right, new Vector2(300, 50)}
+            {FireBallDirection.left, new Vector2(-300, 50)},
+            {FireBallDirection.right, new Vector2(300, 50)}
         };
-        private float gravity = 600f;
-        private float weight = 20f;
+        private readonly float gravity = 600f;
+        private readonly float weight = 20f;
         public bool Explosion { get; private set; }
         private float explosionTimer = 0.2f;
         private Vector2 explosionOffSet = new Vector2(-16, 0);
-        public FireBall(Vector2 position, fireBallDirection direction)
+        public FireBall(Vector2 position, FireBallDirection direction)
         {
             Position = position;
-            Vector2 velocity = Vector2.Zero;
-            velocityDictionary.TryGetValue(direction, out velocity);
+            velocityDictionary.TryGetValue(direction, out Vector2 velocity);
             Physics = new Physics(velocity, gravity, weight);
             Physics.ApplyGravity();
             sprite = SpriteFactory.CreateSprite(GetType().Name);
@@ -39,9 +38,9 @@ namespace SuperMarioBros.Marios
         {
             // Do Nothing
         }
-        public void FireExplosion()
+        public void OnFireExplosion()
         {
-            sprite = SpriteFactory.CreateSprite(nameof(FireExplosion));
+            sprite = SpriteFactory.CreateSprite(nameof(OnFireExplosion));
             Position += explosionOffSet;
             Explosion = true;
         }

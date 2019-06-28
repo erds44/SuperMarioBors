@@ -11,15 +11,15 @@ namespace SuperMarioBros.Collisions
         {
             obj.Physics.Velocity = new Vector2(obj.Physics.Velocity.X, 0);
         }
-        protected void GroundOrTopBounce(IObject obj)
+        protected static void GroundOrTopBounce(IObject obj)
         {
             obj.Physics.Velocity = new Vector2(obj.Physics.Velocity.X, -obj.Physics.Velocity.Y);
         }
-        protected void LeftOrRightBounce(IObject obj)
+        protected static void LeftOrRightBounce(IObject obj)
         {
             obj.Physics.Velocity = new Vector2(-obj.Physics.Velocity.X, obj.Physics.Velocity.Y);
         }
-        protected void LeftOrRightBlock(IObject obj)
+        protected static void LeftOrRightBlock(IObject obj)
         {
             obj.Physics.Velocity = new Vector2(0, obj.Physics.Velocity.Y);
         }
@@ -38,7 +38,7 @@ namespace SuperMarioBros.Collisions
         {
             obj.Physics.Velocity = new Vector2(obj.Physics.Velocity.X, bumpedVelocity);
         }
-        protected void ChangeDirection(IObject obj)
+        protected static void ChangeDirection(IObject obj)
         {
             obj.Physics.Velocity = new Vector2(-obj.Physics.Velocity.X, obj.Physics.Velocity.Y);
         }

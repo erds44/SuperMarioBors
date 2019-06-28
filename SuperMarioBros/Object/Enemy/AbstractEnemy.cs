@@ -14,10 +14,10 @@ namespace SuperMarioBros.Objects.Enemy
         public Vector2 Position { get; set; }
         public Physics Physics { get; set; }
         public ObjectState ObjState { get; set; }
-        protected bool IsFlipped;
-        protected Vector2 initialVelocity = new Vector2(-30, 0);
-        protected float enemyGravity = 800f;
-        protected float enemyWeight = 200f;
+        private protected bool IsFlipped;
+        private protected Vector2 initialVelocity = new Vector2(-30, 0);
+        private protected float enemyGravity = 800f;
+        private protected float enemyWeight = 200f;
 
         protected void Initialize()
         {

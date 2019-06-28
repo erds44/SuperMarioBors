@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace SuperMarioBros.Loading
 {
     public class SpritesLoading
     {
-        private List<SpritesNode> spritesCollection = new List<SpritesNode>
+        private readonly List<SpritesNode> spritesCollection = new List<SpritesNode>
         {
              new SpritesNode("BigMarioLeftCrouching","BigMarioLeftCrouching",32,44),
              new SpritesNode("BigMarioLeftIdle","BigMarioLeftIdle",32,64),
@@ -89,7 +84,7 @@ namespace SuperMarioBros.Loading
             XMLWriter("Sprites.xml", spritesCollection);
         }
 
-        public Dictionary<string,SpritesNode> spritesInfo()
+        public Dictionary<string,SpritesNode> SpritesInfo()
         {
             Dictionary<string, SpritesNode> spritesInfo = new Dictionary<string, SpritesNode>();
              //XMLWriter("Sprites.xml", spritesCollection);

@@ -7,8 +7,8 @@ namespace SuperMarioBros.Managers
 {
     public class CollisionManager 
     {
-        private DynamicAndStaticObjectsHandler staticHandler;
-        private DynamicAndDynamicObjectsHandler dynamicHandler;
+        private readonly IHandler staticHandler;
+        private readonly IHandler dynamicHandler;
         public CollisionManager()
         {
             staticHandler = new DynamicAndStaticObjectsHandler();
@@ -29,7 +29,7 @@ namespace SuperMarioBros.Managers
             staticHandler.HandleCollision(obj1, obj2, direction);
         }
 
-        private Direction Detect(IObject object1, IObject object2)
+        private static Direction Detect(IObject object1, IObject object2)
         {
             if (!(object1.HitBox().Intersects(object2.HitBox()))) return Direction.none;
             Rectangle overlap = Rectangle.Intersect(object1.HitBox(), object2.HitBox());
@@ -48,8 +48,8 @@ namespace SuperMarioBros.Managers
 
         public void Update()
         {
-            List<IDynamic> dynamicObjects = MarioGame.Instance.ObjectsManager.dynamicObjects;
-            List<IStatic> staticObjects = MarioGame.Instance.ObjectsManager.staticObjects;
+            List<IDynamic> dynamicObjects = MarioGame.Instance.ObjectsManager.DynamicObjects;
+            List<IStatic> staticObjects = MarioGame.Instance.ObjectsManager.StaticObjects;
             for (int i = 0; i < dynamicObjects.Count; i++)
             {
                 for (int j = 0; j < staticObjects.Count; j++)

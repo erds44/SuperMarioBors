@@ -105,7 +105,7 @@ namespace SuperMarioBros.LoadingTest
             };
 
 
-        private List<ObjectNode> dynamicList = new List<ObjectNode>
+        private readonly List<ObjectNode> dynamicList = new List<ObjectNode>
         {
             (new ObjectNode("SuperMarioBros.Items.RedMushroom",new Vector2(80,410),1,1,30)),
             //test

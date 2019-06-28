@@ -8,9 +8,9 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
 {
     public class StarState : IMarioTransitionState
     {
-        private IMario mario;
-        private Collection<Color> starColor = new Collection<Color> { Color.Green, Color.Black, Color.White };
-        private Collection<Color> normalColor = new Collection<Color> { Color.White };
+        private readonly IMario mario;
+        private readonly Collection<Color> starColor = new Collection<Color> { Color.Green, Color.Black, Color.White };
+        private readonly Collection<Color> normalColor = new Collection<Color> { Color.White };
         private double transitionTimer = 5d;
         public StarState(IMario mario)
         {

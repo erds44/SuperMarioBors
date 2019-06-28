@@ -272,6 +272,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Camera\Camera.cs" />
+    <Compile Include="Collision\IHandler.cs" />
     <Compile Include="Collision\IResponsible.cs" />
     <Compile Include="Collision\Response\EnemyBlockReponse.cs" />
     <Compile Include="Collision\Response\EnemyEnemyResponse.cs" />

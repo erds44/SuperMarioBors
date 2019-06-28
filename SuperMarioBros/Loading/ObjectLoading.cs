@@ -17,7 +17,6 @@ namespace SuperMarioBros.Loading
         public List<IDynamic> Dynamics { get; private set; }
         public List<IObject> NonCollidables { get; private set; }
         public IMario Mario { get; private set; }
-        public int LevelLength { get; private set; }
         public ObjectLoader(MarioGame game)
         {
             this.Game = game;

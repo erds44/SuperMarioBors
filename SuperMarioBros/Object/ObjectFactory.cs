@@ -28,8 +28,7 @@ namespace SuperMarioBros.Objects
         /* Mainly used for itemBlock creates items*/
         public void CreateNonCollidableObject(Type type, Vector2 location)
         {
-            Vector2 offSet = Vector2.Zero;
-            if (dictionary.TryGetValue(type, out offSet))
+            if (dictionary.TryGetValue(type, out Vector2 offSet))
                 location += offSet;
             objectsManager.AddNonCollidableObject((IDynamic)Activator.CreateInstance(type, location));
         }
@@ -47,13 +46,13 @@ namespace SuperMarioBros.Objects
             objectsManager.AddNonCollidableObject(new BrickDerbis(location + rightBottomDebrisOffset, BrickPosition.rightBottom));
         }
         
-        public void CreateFireBall(Vector2 location, fireBallDirection direction)
+        public void CreateFireBall(Vector2 location, FireBallDirection direction)
         {
             objectsManager.AddObject((IDynamic)Activator.CreateInstance(typeof(FireBall), location, direction));
         }
 
         /* Red/Green msuhrrom, star, debris, flower, coin*/
-        private  static Dictionary<Type, Vector2> dictionary = new Dictionary<Type, Vector2>
+        private readonly static Dictionary<Type, Vector2> dictionary = new Dictionary<Type, Vector2>
         {
             { typeof(RedMushroom), itemOffset},
             { typeof(GreenMushroom), itemOffset},

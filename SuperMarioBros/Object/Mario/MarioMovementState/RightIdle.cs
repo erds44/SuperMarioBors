@@ -46,7 +46,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         }
         public override void OnFireBall()
         {
-            direction = fireBallDirection.right;
+            direction = FireBallDirection.right;
             offset = rightNormalOffSet;
             base.OnFireBall();
         }

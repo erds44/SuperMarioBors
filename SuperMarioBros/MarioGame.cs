@@ -16,7 +16,6 @@ namespace SuperMarioBros
     {
         public int WindowWidth { get; private set; }
         public int WindowHeight { get; private set; }
-        public int LevelLength { get; private set; }
         public ObjectsManager ObjectsManager { get; private set; }
         public Camera Camera { get => marioCamera; }
         public CollisionManager CollisionManager { get; private set; }

@@ -11,8 +11,8 @@ namespace SuperMarioBros.Loading
         private readonly List<(float, IStatic)> staticObjects = new List<(float, IStatic)>();
         private readonly List<(float, IDynamic)> dynamicObjects = new List<(float, IDynamic)>();
         private readonly List<(float, IObject)> nonCollidableObjects = new List<(float, IObject)>();
-        private ObjectsManager objectsManager;
-        private ObjectLoader objectLoader;
+        private readonly ObjectsManager objectsManager;
+        private readonly ObjectLoader objectLoader;
         public DynamicLoader(ObjectsManager objectsManager, ObjectLoader objectLoader) {
             this.objectsManager = objectsManager;
             this.objectLoader = objectLoader;
@@ -30,11 +30,11 @@ namespace SuperMarioBros.Loading
             dynamicList.ForEach(obj => dynamicObjects.Add((obj.Position.X, obj)));
             nonCollidableList.ForEach(obj => nonCollidableObjects.Add((obj.Position.X, obj)));
             //Because here it made a copy, no need to worry about 
-            staticObjects.Sort((o1, o2) => (floatComparison(o1.Item1, o2.Item1)));
-            dynamicObjects.Sort((o1, o2) => (floatComparison(o1.Item1, o2.Item1)));
-            nonCollidableObjects.Sort((o1, o2) => (floatComparison(o1.Item1, o2.Item1)));
+            staticObjects.Sort((o1, o2) => (FloatComparison(o1.Item1, o2.Item1)));
+            dynamicObjects.Sort((o1, o2) => (FloatComparison(o1.Item1, o2.Item1)));
+            nonCollidableObjects.Sort((o1, o2) => (FloatComparison(o1.Item1, o2.Item1)));
         }
-        private int floatComparison(float f1, float f2)
+        private static int FloatComparison(float f1, float f2)
         {
             //Used three times so not a good practice to use lambda.
             if (f1 > f2) return 1;
