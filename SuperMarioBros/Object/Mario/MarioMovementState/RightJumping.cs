@@ -47,5 +47,10 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             offset = rightNormalOffSet;
             base.OnFireBall();
         }
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+            mario.Physics.SetSprintVelocityRate(1f);
+        }
     }
 }

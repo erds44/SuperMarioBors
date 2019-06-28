@@ -42,6 +42,11 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             mario.MovementState = new LeftIdle(mario);
             base.OnGround();
         }
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+            mario.Physics.SetSprintVelocityRate(1f);
+        }
 
     }
 }

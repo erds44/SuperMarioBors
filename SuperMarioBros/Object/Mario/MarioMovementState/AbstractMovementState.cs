@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Object;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
@@ -21,12 +22,19 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         }
         public virtual void Update(GameTime gameTime)
         {
-            if (coolDown)
-                fireBallCoolDown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (fireBallCoolDown <= 0)
+            if(mario.HealthState is FireMario)
             {
-                fireBallCoolDown = 2f;
-                coolDown = false;
+                if (coolDown)
+                    fireBallCoolDown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (fireBallCoolDown <= 0)
+                {
+                    fireBallCoolDown = 2f;
+                    coolDown = false;
+                }
+            }
+            else // For small and big Mario change speed when pressing x
+            {
+                mario.Physics.SetSprintVelocityRate(mario.PowerFlag ? 1.2f : 1f);
             }
         }
         public virtual void OnFireBall()

@@ -20,7 +20,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
 
         public void Update(GameTime gameTime)
         {
-            mario.Physics.SetSprintVelocityRate(mario.PowerFlag? 1.2F : 1);
+            // Do Nothing
         }
 
         public void TakeRedMushroom()

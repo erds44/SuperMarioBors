@@ -64,7 +64,7 @@ namespace SuperMarioBros
         }
         public void KeyBinding()
         {
-            IMario mario = ObjectsManager.MarioObject();
+            IMario mario = ObjectsManager.Mario;
             controller = new ControllerMessager(this, mario);
             IController keyboardController = new KeyboardController
                 (controller,
@@ -97,7 +97,7 @@ namespace SuperMarioBros
             ObjectsManager.Initialize();
 
             marioCamera.Reset();
-            marioCamera.SetFocus(ObjectsManager.MarioObject());
+            marioCamera.SetFocus(ObjectsManager.Mario);
             collisionManager = new CollisionManager();
             KeyBinding();
         }

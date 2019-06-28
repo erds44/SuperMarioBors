@@ -45,7 +45,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
        
         public void Update(GameTime gameTime)
         {
-            mario.Physics.SetSprintVelocityRate(1.2f);
+            // Do Nothing
         }
     }
 }
