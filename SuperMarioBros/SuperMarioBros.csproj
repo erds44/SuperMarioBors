@@ -118,6 +118,9 @@
     <None Include="Content\DeadMario.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\EmptyBlock.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\FireBall.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -308,7 +311,6 @@
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="General Interfaces\IDraw.cs" />
     <Compile Include="Loading\ObjectNode.cs" />
-    <Compile Include="Loading\ObjectLoading.cs" />
     <Compile Include="Object\Background\AbstractBackGround.cs" />
     <Compile Include="Object\Background\BigBush.cs" />
     <Compile Include="Object\Background\BigCloud.cs" />
@@ -347,7 +349,6 @@
     <Compile Include="Object\IDynamic.cs" />
     <Compile Include="Object\IObject.cs" />
     <Compile Include="Object\Background\MiddleCloud.cs" />
-    <Compile Include="Manager\SizeManager.cs" />
     <Compile Include="Object\Background\SmallBush.cs" />
     <Compile Include="Object\Background\SmallCloud.cs" />
     <Compile Include="Object\Background\SmallHill.cs" />
@@ -422,7 +423,20 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Content\DynamicLevel.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\NonCollidableLevel.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Sprites.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\StaticLevel.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets" Condition="Exists('..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

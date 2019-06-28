@@ -15,8 +15,8 @@ namespace SuperMarioBros.Objects
         private ObjectFactory() { }
         public  static ObjectFactory Instance { get { return instance; } }
         private  ObjectsManager objectsManager;
-        private static Vector2 itemOffset = new Vector2(5, 0);  /* includes muhsrooms, star, flower */
-        private static Vector2 coinOffset = new Vector2(15, -50);
+        private static Vector2 itemOffset = new Vector2(1, 0);  /* includes muhsrooms, star, flower */
+        private static Vector2 coinOffset = new Vector2(12, -50);
         private  Vector2 leftTopDebrisOffset = new Vector2(0, -40);
         private  Vector2 rightTopDebrisOffset = new Vector2(20, -40);
         private  Vector2 rightBottomDebrisOffset = new Vector2(20, 0);

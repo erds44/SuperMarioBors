@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
 
-namespace SuperMarioBros.LoadingTest
+namespace SuperMarioBros.Loading
 {
     public class ObjectNode
     {

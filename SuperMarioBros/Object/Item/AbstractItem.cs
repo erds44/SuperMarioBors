@@ -38,14 +38,14 @@ namespace SuperMarioBros.Items
             // Do Nothing
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Position);
         }
 
         public virtual Rectangle HitBox()
         {
-            Point size = SizeManager.ObjectSize(GetType());
+            Point size = SpriteFactory.ObjectSize(GetType().Name);
             return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
         }
 

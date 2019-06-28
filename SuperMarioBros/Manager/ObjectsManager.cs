@@ -87,9 +87,9 @@ namespace SuperMarioBros.Managers
                 obj.Draw(spriteBatch);
         }
 
-        public void LevelLoading(ContentManager content, string path)
+        public void LevelLoading()
         {
-            ObjectLoader.LevelLoading(content, path);
+            ObjectLoader.LevelLoading();
         }
         private void DestroyFromManager(IDynamic gameObject)
         {

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SuperMarioBros.Items
 {
@@ -12,6 +13,10 @@ namespace SuperMarioBros.Items
             collidableVelocity = starInitialVelocity;
             itemGravity = starGravity;
             base.Initialize();
+        }
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            sprite.Draw(spriteBatch, Position, SpriteEffects.None, 0.8f);
         }
     }
 }

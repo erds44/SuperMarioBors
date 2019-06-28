@@ -5,6 +5,7 @@ using SuperMarioBros.Sprites;
 using SuperMarioBros.Items;
 using SuperMarioBros.Loading;
 using System;
+using Microsoft.Xna.Framework;
 
 namespace SuperMarioBros.SpriteFactories
 {
@@ -26,7 +27,7 @@ namespace SuperMarioBros.SpriteFactories
                 { BrickPosition.leftBottom, new UniversalSprite(content.Load<Texture2D>("LeftBottomDerbis"), 1) },
                 { BrickPosition.rightTop, new UniversalSprite(content.Load<Texture2D>("RightTopDerbis"), 1) },
                 { BrickPosition.rightBottom, new UniversalSprite(content.Load<Texture2D>("RightBottomDerbis"), 1) }
-            };         
+            };
         }
 
         public static ISprite CreateSprite(string type)
@@ -36,6 +37,16 @@ namespace SuperMarioBros.SpriteFactories
             sprite = new UniversalSprite(content.Load<Texture2D>(spriteNode.SpriteName), spriteNode.TotalFrame);
             return sprite;
         }
+
+        public static Point ObjectSize(string objectName)
+        {
+            if (spritesInfo.TryGetValue(objectName, out SpritesNode spriteNode))
+                return new Point(spriteNode.Width, spriteNode.Height);
+            else
+                Console.WriteLine("ERROR: The size of " + objectName + " is not loaded");
+            return new Point();
+        }
+
         public static ISprite CreateDerbisSprite(BrickPosition brickPosition)
         {
             derbisSprite.TryGetValue(brickPosition, out sprite);

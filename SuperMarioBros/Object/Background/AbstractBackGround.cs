@@ -21,7 +21,7 @@ namespace SuperMarioBros.Backgrounds
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position,SpriteEffects.None, 0.6f);
+            sprite.Draw(spriteBatch, Position,SpriteEffects.None, 1.5f);
         }
 
         public Rectangle HitBox()

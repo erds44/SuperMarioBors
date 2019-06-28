@@ -7,6 +7,7 @@ using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Objects.Mario.MarioTransitionState;
 using SuperMarioBros.Objects.Mario.TransitionState;
 using SuperMarioBros.Physicses;
+using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
 
 namespace SuperMarioBros.Marios
@@ -80,7 +81,7 @@ namespace SuperMarioBros.Marios
 
         public Rectangle HitBox()
         {
-            Point size = SizeManager.MarioSize(HealthState.GetType(), MovementState.GetType());
+            Point size = SpriteFactory.ObjectSize(HealthState.GetType().Name + MovementState.GetType().Name);
             return new Rectangle((int)Position.X, (int)Position.Y- size.Y, size.X, size.Y);
         }
 

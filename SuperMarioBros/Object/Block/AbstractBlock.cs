@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Blocks.BlockStates;
 using SuperMarioBros.Managers;
 using SuperMarioBros.Physicses;
+using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
 using System;
 
@@ -38,7 +39,7 @@ namespace SuperMarioBros.Blocks
 
         public Rectangle HitBox()
         {
-            Point size = SizeManager.ObjectSize(GetType());
+            Point size = SpriteFactory.ObjectSize(GetType().Name);
             return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
         }
 

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Sprites;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.Managers;
+using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Objects.Enemy
 {
@@ -33,9 +34,9 @@ namespace SuperMarioBros.Objects.Enemy
             else
                 Sprite.Draw(spriteBatch, Position);
         }
-        public Rectangle HitBox()
+        public virtual Rectangle HitBox()
         {
-            Point size = SizeManager.ObjectSize(GetType());
+            Point size = SpriteFactory.ObjectSize(MovementState.GetType().Name);
             return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
         }
         public void Destroy()

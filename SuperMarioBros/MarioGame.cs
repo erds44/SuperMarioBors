@@ -89,10 +89,7 @@ namespace SuperMarioBros
         {
             ObjectsManager = new ObjectsManager(new ObjectLoader(this));
             ObjectFactory.Instance.Initialize();
-            ObjectsManager.LevelLoading(Content, "PartialLevelOne");
-            SizeManager.LoadItemSize(Content, "SizeLoading");
-            SizeManager.LoadMarioSize(Content, "MarioSizeLoading");
-
+            ObjectsManager.LevelLoading();
             ObjectsManager.Initialize();
 
             marioCamera.Reset();
