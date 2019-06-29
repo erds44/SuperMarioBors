@@ -13,9 +13,7 @@ namespace SuperMarioBros.Loading
         public List<IDynamic> Dynamics { get; private set; }
         public List<IObject> NonCollidables { get; private set; }
         public IMario Mario { get; private set; }
-        public int LevelLength { get; private set; }
-
-        private List<ObjectNode> staticList = new List<ObjectNode>
+        private readonly List<ObjectNode> staticList = new List<ObjectNode>
             { 
 
                 //test
@@ -110,7 +108,7 @@ namespace SuperMarioBros.Loading
             };
 
 
-        private List<ObjectNode> dynamicList = new List<ObjectNode>
+        private readonly List<ObjectNode> dynamicList = new List<ObjectNode>
         {
             (new ObjectNode("SuperMarioBros.Items.RedMushroom",new Vector2(80,410),1,1,30)),
             //test
@@ -145,7 +143,7 @@ namespace SuperMarioBros.Loading
              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(7250,410),1,1,30)),
         };
 
-        private List<ObjectNode> nonCollidableList = new List<ObjectNode>
+        private readonly List<ObjectNode> nonCollidableList = new List<ObjectNode>
         {
             (new ObjectNode("SuperMarioBros.Backgrounds.BigHill",new Vector2(0,410),1,1,0)),
             (new ObjectNode("SuperMarioBros.Backgrounds.BigBush",new Vector2(481,410),1,1,0)),

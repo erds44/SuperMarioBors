@@ -8,11 +8,9 @@ using System.Collections.Generic;
 
 namespace SuperMarioBros.Objects
 {
-    public sealed class ObjectFactory
+    public class ObjectFactory
     {
         private static readonly ObjectFactory instance = new ObjectFactory();
-        static ObjectFactory() { }
-        private ObjectFactory() { }
         public  static ObjectFactory Instance { get { return instance; } }
         private  ObjectsManager objectsManager;
         private static Vector2 itemOffset = new Vector2(1, 0);  /* includes muhsrooms, star, flower */

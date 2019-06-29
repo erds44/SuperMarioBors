@@ -6,7 +6,7 @@ namespace SuperMarioBros.Loading
 {
     public class SpritesLoading
     {
-        private List<SpritesNode> spritesCollection = new List<SpritesNode>
+        private readonly List<SpritesNode> spritesCollection = new List<SpritesNode>
         {
              new SpritesNode("BigMarioLeftCrouching","BigMarioLeftCrouching",32,44),
              new SpritesNode("BigMarioLeftIdle","BigMarioLeftIdle",32,64),

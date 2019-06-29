@@ -38,8 +38,14 @@ namespace SuperMarioBros.Collisions
             { (typeof(Koopa),  typeof(Koopa), Direction.left), EnemyKoopaLeftOrRightCollision},
             { (typeof(Koopa),  typeof(Koopa), Direction.right), EnemyKoopaLeftOrRightCollision },
             { (typeof(Koopa),  typeof(Koopa), Direction.top),  EnemyVSKoopaTopCollision },
+            { (typeof(Koopa),  typeof(Koopa), Direction.bottom),  KoopaVSKoopaBottomCollision },
 
         };
+        private static void KoopaVSKoopaBottomCollision(IEnemy koopa1, IEnemy koopa2, Direction direction)
+        {
+            EnemyVSKoopaTopCollision(koopa2, koopa1, ReverseDirection(direction));
+        }
+
         private static Direction ReverseDirection(Direction direction)
         {
             switch (direction)
@@ -50,18 +56,18 @@ namespace SuperMarioBros.Collisions
             }
             return Direction.left;
         }
-        private static void EnemyVSKoopaTopCollision(IEnemy goomba, IEnemy koopa, Direction direction)
+        private static void EnemyVSKoopaTopCollision(IEnemy enemy, IEnemy koopa, Direction direction)
         {
             if (koopa.HealthState is KoopaNormalState)
             {
                 koopa.Stomped();
-                Bump(goomba);
+                Bump(enemy);
             }
             else if (!((Koopa)koopa).DealDemage)
             {
                 if (koopa.MovementState is KoopaIdleState)
                 {
-                    if (goomba.HitBox().Center.X <= koopa.HitBox().Center.X)
+                    if (enemy.HitBox().Center.X <= koopa.HitBox().Center.X)
                     {
                         koopa.MoveRight();
                         ((Koopa)koopa).DealDemage = true;
@@ -78,7 +84,7 @@ namespace SuperMarioBros.Collisions
                     koopa.ObjState = ObjectState.NonCollidable;
                 }
             }
-            ResolveOverlap(goomba, koopa, direction);
+            ResolveOverlap(enemy, koopa, direction);
         }
         private static void EnemyKoopaLeftOrRightCollision(IEnemy goomba, IEnemy enemy, Direction direction)
         {

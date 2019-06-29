@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.GameCoreComponents;
 using SuperMarioBros.Loading;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
