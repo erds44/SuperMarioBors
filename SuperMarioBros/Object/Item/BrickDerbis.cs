@@ -23,6 +23,7 @@ namespace SuperMarioBros.Items
             sprite = SpriteFactory.CreateDerbisSprite(brickPosition);
             Physics = new Physics(velocity, itemGravity, itemWeight);
             ObjState = ObjectState.NonCollidable;
+            sprite.SetLayer(1f);
         }
 
         public override void Update(GameTime gameTime)
