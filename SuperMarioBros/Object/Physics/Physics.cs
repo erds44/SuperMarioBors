@@ -14,7 +14,7 @@ namespace SuperMarioBros.Physicses
         private readonly float weight;
         private readonly float acceleration = 0f;
         private readonly float deceleration = 0f;
-        public  Vector2 Velocity {get; set;}
+        public Vector2 Velocity {get; set;}
         public bool Jump {get; set;}
         public bool JumpKeyUp { get; set; }
         private readonly float gravityDecrement = 20f;
