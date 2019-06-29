@@ -1,6 +1,6 @@
-Author of the review: Tre
-Date of the review: 21 June 2019
-Sprint Number: 4
+Author of the review: Tre  
+Date of the review: 21 June 2019  
+Sprint Number: 4  
 
 ##Quality Review
 Class Name: MarioPhysics.cs and other corresponding Mario classes
