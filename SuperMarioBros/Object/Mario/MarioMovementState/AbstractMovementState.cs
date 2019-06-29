@@ -33,7 +33,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             }
             else if(mario.HealthState is BigMario && mario.OnGround) // For big Mario change speed when pressing x and on ground.
             {
-                mario.Physics.SetSprintVelocityRate(mario.PowerFlag ? 1.5f : 1f);
+                mario.Physics.SetSprintVelocityRate(mario.PowerFlag ? 1.2f : 1f);
             }
         }
         public virtual void OnFireBall()
