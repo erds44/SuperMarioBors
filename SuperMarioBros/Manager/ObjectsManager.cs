@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.HeadsUps;
 using SuperMarioBros.Loading;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
@@ -16,13 +17,13 @@ namespace SuperMarioBros.Managers
         public IMario Mario { get; private set; }
         public ObjectLoader ObjectLoader { get; private set; }
         private readonly DynamicLoader dynamicLoader;
-        public ObjectsManager(ObjectLoader objectLoader) {
+        public ObjectsManager(ObjectLoader objectLoader, HeadsUp headsUp) {
             StaticObjects = new List<IStatic>();
             DynamicObjects = new List<IDynamic>();
             NonCollidableObjects = new List<IObject>();
             ObjectLoader = objectLoader;
             Mario = objectLoader.Mario;
-            dynamicLoader = new DynamicLoader(this, objectLoader);
+            dynamicLoader = new DynamicLoader(this, objectLoader, headsUp);
         }
         public void Initialize()
         {

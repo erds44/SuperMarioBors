@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.SpriteFactories;
+using System;
 
 namespace SuperMarioBros.Objects.Enemy
 {
@@ -22,6 +23,7 @@ namespace SuperMarioBros.Objects.Enemy
             DealDemage = false;
             HealthState.Stomped();
             MovementState.Stomped();
+            base.Stomped();
         }
         public override void Update(GameTime gameTime)
         {

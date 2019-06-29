@@ -2,13 +2,14 @@
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Sprites;
 using SuperMarioBros.Physicses;
-using SuperMarioBros.Managers;
 using SuperMarioBros.SpriteFactories;
+using System;
 
 namespace SuperMarioBros.Objects.Enemy
 {
     public abstract class AbstractEnemy : IEnemy
     {
+        public event Action<Vector2> StompedEvent;
         public IEnemyMovementState MovementState { get; set; }
         public IEnemyHealthState HealthState { get; set; }
         public ISprite Sprite { get; set; }
@@ -54,12 +55,13 @@ namespace SuperMarioBros.Objects.Enemy
         }
         public virtual void Stomped()
         {
-            //DO Nothing
+            StompedEvent?.Invoke(Position);
         }
 
         public virtual void Flipped()
         {
             IsFlipped = true;
+            StompedEvent?.Invoke(Position);
         }
 
         public void MoveLeft()

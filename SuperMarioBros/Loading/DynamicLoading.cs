@@ -1,5 +1,7 @@
-﻿using SuperMarioBros.Managers;
+﻿using SuperMarioBros.HeadsUps;
+using SuperMarioBros.Managers;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Objects.Enemy;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,9 +15,11 @@ namespace SuperMarioBros.Loading
         private readonly List<(float, IObject)> nonCollidableObjects = new List<(float, IObject)>();
         private readonly ObjectsManager objectsManager;
         private readonly ObjectLoader objectLoader;
-        public DynamicLoader(ObjectsManager objectsManager, ObjectLoader objectLoader) {
+        private readonly HeadsUp headsUp;
+        public DynamicLoader(ObjectsManager objectsManager, ObjectLoader objectLoader, HeadsUp headsUp) {
             this.objectsManager = objectsManager;
             this.objectLoader = objectLoader;
+            this.headsUp = headsUp;
         }
         public void Initialize()
         {
@@ -50,7 +54,10 @@ namespace SuperMarioBros.Loading
             }
             while (dynamicObjects.Count > 0 && dynamicObjects.First().Item1 < rightBound)
             {
-                objectsManager.AddObject(dynamicObjects.First().Item2);
+                IDynamic obj = dynamicObjects.First().Item2;
+                if (obj is IEnemy)
+                    ((IEnemy)obj).StompedEvent += headsUp.EnemyStomped;
+                objectsManager.AddObject(obj);
                 dynamicObjects.RemoveAt(0);
             }
             while (nonCollidableObjects.Count > 0 && nonCollidableObjects.First().Item1 < rightBound)

@@ -45,6 +45,7 @@ namespace SuperMarioBros
             headsUp = new HeadsUp(Content);
             marioCamera = new Camera();
             InitializeGame();
+            ObjectFactory.Instance.itemCollectedEvent += headsUp.CoinCollected;
             base.Initialize();
         }
         protected override void Update(GameTime gameTime)
@@ -92,16 +93,19 @@ namespace SuperMarioBros
 
         public void InitializeGame()
         {
-            ObjectsManager = new ObjectsManager(new ObjectLoader(this));
-            ObjectFactory.Instance.Initialize();
+            ObjectsManager = new ObjectsManager(new ObjectLoader(this), headsUp);
             ObjectsManager.LevelLoading();
             ObjectsManager.Initialize();
-
+            ObjectFactory.Instance.Initialize();
             marioCamera.Reset();
             marioCamera.SetFocus(ObjectsManager.Mario);
             collisionManager = new CollisionManager();
             KeyBinding();
-            ObjectsManager.Mario.deathEvent += headsUp.OnMarioDeath;
+
+            ObjectsManager.Mario.DeathEvent += headsUp.OnMarioDeath;
+            ObjectsManager.Mario.DeathEvent += headsUp.ResetTimer;
+            ObjectsManager.Mario.PowerUpEvent += headsUp.PowerUpCollected;
+            ObjectsManager.Mario.ExtraLifeEvent += headsUp.ExtraLife;
         }
 
     }

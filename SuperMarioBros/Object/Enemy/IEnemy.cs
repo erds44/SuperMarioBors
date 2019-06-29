@@ -1,9 +1,12 @@
-﻿using SuperMarioBros.Sprites;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Sprites;
+using System;
 
 namespace SuperMarioBros.Objects.Enemy
 {
     public interface IEnemy : IDynamic
     {
+        event Action<Vector2> StompedEvent;
         IEnemyHealthState HealthState { get; set; }
         IEnemyMovementState MovementState { get; set; }
         ISprite Sprite { get; set; }

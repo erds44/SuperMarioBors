@@ -1,14 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Managers;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
-using System;
 
 namespace SuperMarioBros.Items
 {
     public class Coin : AbstractItem, IItem
     {
-        public event Action coinCollectEvent;
         private readonly float coinGravity = 100f;
         private float existingTimer = 2f;
         private Vector2 coinInitialVelocity = new Vector2(0, -100);

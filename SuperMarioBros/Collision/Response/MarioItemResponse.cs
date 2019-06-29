@@ -52,7 +52,7 @@ namespace SuperMarioBros.Collisions
         }
         private static void TakeGreenMushroom(IMario mario, IItem item)
         {
-            //Do Nothing for Mario Right now
+            mario.TakeGreenMushroom();
             item.ObjState = ObjectState.Destroy;
         }
         private static void TakeCoin(IMario mario, IItem item)

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Interfaces.State;
-using SuperMarioBros.Managers;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Objects.Mario.MarioTransitionState;
@@ -15,7 +14,9 @@ namespace SuperMarioBros.Marios
 {
     public class Mario : IMario
     {
-        public event Action deathEvent;
+        public event Action DeathEvent;
+        public event Action<Vector2> PowerUpEvent;
+        public event Action<Vector2> ExtraLifeEvent;
         public ObjectState ObjState { get; set; }
         public bool PowerFlag { get; set; }
         public bool KeyUpPower { get; set; }
@@ -102,12 +103,13 @@ namespace SuperMarioBros.Marios
         }
         public void Destroy()
         {
-            deathEvent?.Invoke();
+            DeathEvent?.Invoke();
             MarioGame.Instance.InitializeGame();
         }
 
         public void TakeRedMushroom()
         {
+            PowerUpEvent?.Invoke(Position);
             TransitionState.TakeRedMushroom();
         }
 
@@ -118,7 +120,12 @@ namespace SuperMarioBros.Marios
 
         public void TakeFlower()
         {
+            PowerUpEvent?.Invoke(Position);
             TransitionState.OnFireFlower();
+        }
+        public void TakeGreenMushroom()
+        {
+            ExtraLifeEvent?.Invoke(Position);
         }
     }
 }

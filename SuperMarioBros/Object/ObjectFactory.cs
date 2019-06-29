@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Items;
 using SuperMarioBros.Managers;
 using SuperMarioBros.Marios;
-using SuperMarioBros.Objects;
 using System;
 using System.Collections.Generic;
 
@@ -10,6 +10,7 @@ namespace SuperMarioBros.Objects
 {
     public class ObjectFactory
     {
+        public event Action<Vector2> itemCollectedEvent;
         private static readonly ObjectFactory instance = new ObjectFactory();
         public  static ObjectFactory Instance { get { return instance; } }
         private  ObjectsManager objectsManager;
@@ -18,6 +19,16 @@ namespace SuperMarioBros.Objects
         private  Vector2 leftTopDebrisOffset = new Vector2(0, -40);
         private  Vector2 rightTopDebrisOffset = new Vector2(20, -40);
         private  Vector2 rightBottomDebrisOffset = new Vector2(20, 0);
+        public int count = 0;
+        /* Red/Green msuhrrom, star, debris, flower, coin*/
+        private readonly static Dictionary<Type, Vector2> dictionary = new Dictionary<Type, Vector2>
+        {
+            { typeof(RedMushroom), itemOffset},
+            { typeof(GreenMushroom), itemOffset},
+            { typeof(Flower), itemOffset},
+            { typeof(Star), itemOffset},
+            { typeof(Coin), coinOffset},
+        };
 
         public void Initialize()
         {
@@ -29,6 +40,8 @@ namespace SuperMarioBros.Objects
             if (dictionary.TryGetValue(type, out Vector2 offSet))
                 location += offSet;
             objectsManager.AddNonCollidableObject((IDynamic)Activator.CreateInstance(type, location));
+            if (type == typeof(Coin))
+                itemCollectedEvent?.Invoke(new Vector2(location.X, location.Y -60));
         }
 
         public void CreateCollidableObject(Type type, Vector2 location)
@@ -49,15 +62,10 @@ namespace SuperMarioBros.Objects
             objectsManager.AddObject((IDynamic)Activator.CreateInstance(typeof(FireBall), location, direction));
         }
 
-        /* Red/Green msuhrrom, star, debris, flower, coin*/
-        private readonly static Dictionary<Type, Vector2> dictionary = new Dictionary<Type, Vector2>
+        public void CreateScoreText(Vector2 location, SpriteFont inputSpriteFont, string str)
         {
-            { typeof(RedMushroom), itemOffset},
-            { typeof(GreenMushroom), itemOffset},
-            { typeof(Flower), itemOffset},
-            { typeof(Star), itemOffset},
-            { typeof(Coin), coinOffset},
-        };
+            objectsManager.AddNonCollidableObject(new ScoreText(location, inputSpriteFont, str));
+        }
 
     }
 

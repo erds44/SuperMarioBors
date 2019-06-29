@@ -10,7 +10,9 @@ namespace SuperMarioBros.Marios
 {
     public interface IMario : IDynamic
     {
-        event Action deathEvent;
+        event Action DeathEvent;
+        event Action<Vector2> PowerUpEvent;
+        event Action<Vector2> ExtraLifeEvent;
         double NoMovementTimer { get; set; }
         bool OnGround { get; set; }
         bool PowerFlag { get; set; }
@@ -27,6 +29,7 @@ namespace SuperMarioBros.Marios
         new void Update(GameTime gameTime);
         void TakeFlower();
         void TakeRedMushroom();
+        void TakeGreenMushroom();
         void TakeStar();
         void TakeDamage();
     }
