@@ -8,7 +8,7 @@ namespace SuperMarioBros.Items
     public enum BrickPosition { leftTop, leftBottom, rightTop, rightBottom }
     public class BrickDerbis : AbstractItem, IItem
     {
-        private Dictionary<BrickPosition, Vector2> derbisInfo = new Dictionary<BrickPosition, Vector2>
+        private readonly Dictionary<BrickPosition, Vector2> derbisInfo = new Dictionary<BrickPosition, Vector2>
         {
             { BrickPosition.leftTop, new Vector2(-60,60)},
             { BrickPosition.leftBottom, new Vector2(-60,60) },
