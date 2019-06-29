@@ -2,12 +2,13 @@
 using SuperMarioBros.Managers;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
+using System;
 
 namespace SuperMarioBros.Items
 {
     public class Coin : AbstractItem, IItem
     {
-        //private Vector2 coinOffset = new Vector2(15, -50);
+        public event Action coinCollectEvent;
         private readonly float coinGravity = 100f;
         private float existingTimer = 2f;
         private Vector2 coinInitialVelocity = new Vector2(0, -100);
@@ -27,7 +28,12 @@ namespace SuperMarioBros.Items
             sprite.Update(gameTime);
             Position += Physics.Displacement(gameTime);
             if (existingTimer <= 0)
+                Destroy();
                 ObjState = ObjectState.Destroy;
+        }
+        public override void Destroy()
+        {
+            coinCollectEvent?.Invoke(); // TO DO
         }
     }
 }

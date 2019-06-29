@@ -163,6 +163,9 @@
     <None Include="Content\Flower.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\Font.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\Goomba.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -288,6 +291,7 @@
     <Compile Include="Command\MarioCommand\KeyUpUpCommand.cs" />
     <Compile Include="Command\MarioCommand\KeyUpPowerCommand.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="HeadsUp\HeadsUp.cs" />
     <Compile Include="Loading\DynamicLoading.cs" />
     <Compile Include="Loading\ObjectsLoading.cs" />
     <Compile Include="Loading\SpritesLoading.cs" />

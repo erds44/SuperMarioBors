@@ -8,6 +8,7 @@ using SuperMarioBros.Managers;
 using SuperMarioBros.Loading;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
+using SuperMarioBros.HeadsUps;
 
 namespace SuperMarioBros
 {
@@ -23,6 +24,7 @@ namespace SuperMarioBros
         private SpriteBatch spriteBatch;
         private CollisionManager collisionManager;
         private Camera marioCamera;
+        private HeadsUp headsUp;
         public static MarioGame Instance { get; private set; }
         public MarioGame()
         {
@@ -40,6 +42,7 @@ namespace SuperMarioBros
         {
             //Things in this method only initialize once.
             SpriteFactory.Initialize(Content);
+            headsUp = new HeadsUp(Content);
             marioCamera = new Camera();
             InitializeGame();
             base.Initialize();
@@ -50,6 +53,7 @@ namespace SuperMarioBros
             marioCamera.Update();
             ObjectsManager.Update(gameTime);
             collisionManager.Update();
+            headsUp.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -58,6 +62,7 @@ namespace SuperMarioBros
             spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack,samplerState: SamplerState.PointClamp, transformMatrix:marioCamera.Transform);
             GraphicsDevice.Clear(Color.CornflowerBlue);
             ObjectsManager.Draw(spriteBatch);
+            headsUp.Draw(spriteBatch, Camera.LeftBound);
             spriteBatch.End();
             base.Draw(gameTime);
         }
@@ -96,6 +101,8 @@ namespace SuperMarioBros
             marioCamera.SetFocus(ObjectsManager.Mario);
             collisionManager = new CollisionManager();
             KeyBinding();
+
+            ((Mario)ObjectsManager.Mario).deathEvent += headsUp.OnMarioDeath;
         }
 
     }

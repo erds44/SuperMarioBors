@@ -9,11 +9,13 @@ using SuperMarioBros.Objects.Mario.TransitionState;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
+using System;
 
 namespace SuperMarioBros.Marios
 {
     public class Mario : IMario
     {
+        public event Action deathEvent;
         public ObjectState ObjState { get; set; }
         public bool PowerFlag { get; set; }
         public bool KeyUpPower { get; set; }
@@ -100,7 +102,13 @@ namespace SuperMarioBros.Marios
         }
         public void Destroy()
         {
+            OnMarioDeath();
             MarioGame.Instance.InitializeGame();
+        }
+
+        protected virtual void OnMarioDeath()
+        {
+            deathEvent?.Invoke();
         }
 
         public void TakeRedMushroom()

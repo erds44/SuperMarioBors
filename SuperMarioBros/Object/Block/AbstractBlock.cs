@@ -25,6 +25,7 @@ namespace SuperMarioBros.Blocks
             ObjState = ObjectState.Normal;
             State = new NormalState(this);
             Physics = new Physics(Vector2.Zero, 0f, 0f);
+            Sprite?.SetLayer(0.45f);
         }
         public virtual void Destroy()
         {
