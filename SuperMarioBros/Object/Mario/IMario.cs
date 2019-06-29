@@ -4,11 +4,13 @@ using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Mario.TransitionState;
 using SuperMarioBros.Sprites;
+using System;
 
 namespace SuperMarioBros.Marios
 {
     public interface IMario : IDynamic
     {
+        event Action deathEvent;
         double NoMovementTimer { get; set; }
         bool OnGround { get; set; }
         bool PowerFlag { get; set; }

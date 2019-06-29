@@ -101,8 +101,7 @@ namespace SuperMarioBros
             marioCamera.SetFocus(ObjectsManager.Mario);
             collisionManager = new CollisionManager();
             KeyBinding();
-
-            ((Mario)ObjectsManager.Mario).deathEvent += headsUp.OnMarioDeath;
+            ObjectsManager.Mario.deathEvent += headsUp.OnMarioDeath;
         }
 
     }

@@ -28,12 +28,7 @@ namespace SuperMarioBros.Items
             sprite.Update(gameTime);
             Position += Physics.Displacement(gameTime);
             if (existingTimer <= 0)
-                Destroy();
                 ObjState = ObjectState.Destroy;
-        }
-        public override void Destroy()
-        {
-            coinCollectEvent?.Invoke(); // TO DO
         }
     }
 }
