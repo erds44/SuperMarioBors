@@ -10,6 +10,7 @@ namespace SuperMarioBros.Marios
     public interface IMario : IDynamic
     {
         double NoMovementTimer { get; set; }
+        bool OnGround { get; set; }
         bool PowerFlag { get; set; }
         bool KeyUpPower { get; set; }
         ISprite Sprite { get; set; }

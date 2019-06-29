@@ -50,6 +50,7 @@ namespace SuperMarioBros.Controllers
             {
                 new IdleCommand(marioPlayer).Execute();
             }
+            marioPlayer.PowerFlag = (flags & POWER) != 0; //Bind power flag.
             foreach(KeyValuePair<int, Type> element in gameCommand)
             {
                 if((flags & element.Key) != 0) { ((ICommand)Activator.CreateInstance(element.Value, marioGame)).Execute(); }

@@ -9,6 +9,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         {
             this.mario = mario;
             this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
+            this.mario.OnGround = false;
         }
         public void Down()
         {
@@ -50,7 +51,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            mario.Physics.SetSprintVelocityRate(1f);
         }
     }
 }

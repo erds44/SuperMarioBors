@@ -17,7 +17,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         protected private bool coolDown = false;
         public virtual void OnGround()
         {
-            // Do Nothing
+            mario.OnGround = true;
         }
         public virtual void Update(GameTime gameTime)
         {
@@ -31,9 +31,9 @@ namespace SuperMarioBros.Marios.MarioMovementStates
                     coolDown = false;
                 }
             }
-            else // For small and big Mario change speed when pressing x
+            else if(mario.HealthState is BigMario && mario.OnGround) // For big Mario change speed when pressing x and on ground.
             {
-                mario.Physics.SetSprintVelocityRate(mario.PowerFlag ? 1.2f : 1f);
+                mario.Physics.SetSprintVelocityRate(mario.PowerFlag ? 1.5f : 1f);
             }
         }
         public virtual void OnFireBall()

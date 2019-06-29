@@ -23,6 +23,7 @@ namespace SuperMarioBros.Marios
         public Physics Physics { get; set; }
         public Vector2 Position { get => position; set => position = value; }
         private Vector2 position;
+        public bool OnGround { get; set; }
         public double NoMovementTimer { get; set; }
         public IMarioTransitionState TransitionState { get; set; }
         public Mario(Vector2 location)
