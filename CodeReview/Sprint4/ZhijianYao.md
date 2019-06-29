@@ -31,4 +31,5 @@ the corresponding objects nodes such that it saves a lot of time.
 In additon, try to think about how to implemente a builder class,  
 espcially for the floor portion of the Mario Game. When givng the  
 stating positon, height and width, the class might use some loops  
-to auto generate these obejects.
+to auto generate these obejects.  
+PS: the XMLProcessor class should be objectloading now  
