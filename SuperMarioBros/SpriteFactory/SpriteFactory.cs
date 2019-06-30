@@ -5,6 +5,7 @@ using SuperMarioBros.Sprites;
 using SuperMarioBros.Items;
 using SuperMarioBros.Loading;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace SuperMarioBros.SpriteFactories
 {
@@ -15,6 +16,12 @@ namespace SuperMarioBros.SpriteFactories
         private static Dictionary<string, SpritesNode> spritesInfo;
         private static ISprite sprite;
         private static SpritesNode spriteNode;
+
+        internal static void Initialize(object content)
+        {
+            throw new NotImplementedException();
+        }
+
         public static void Initialize(ContentManager inputContent)
         {
             content = inputContent;

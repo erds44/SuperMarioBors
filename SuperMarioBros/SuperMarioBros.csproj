@@ -109,6 +109,9 @@
     <None Include="Content\BrickDebris.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\Button.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\Coin.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -290,6 +293,10 @@
     <Compile Include="Collision\Response\MarioItemResponse.cs" />
     <Compile Include="Command\MarioCommand\KeyUpUpCommand.cs" />
     <Compile Include="Command\MarioCommand\KeyUpPowerCommand.cs" />
+    <Compile Include="Game\GameState\Buttons.cs" />
+    <Compile Include="Game\GameState\GameState.cs" />
+    <Compile Include="Game\GameState\IGameState.cs" />
+    <Compile Include="Game\GameState\MenuState.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="HeadsUp\HeadsUp.cs" />
     <Compile Include="Loading\DynamicLoading.cs" />
@@ -396,7 +403,7 @@
     <Compile Include="Object\Physics\Physics.cs" />
     <Compile Include="SpriteFactory\SpriteFactory.cs" />
     <Compile Include="General Interfaces\IUpdate.cs" />
-    <Compile Include="MarioGame.cs" />
+    <Compile Include="Game\MarioGame.cs" />
     <Compile Include="Manager\ObjectsManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Sprite\ISprite.cs" />

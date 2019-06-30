@@ -171,9 +171,8 @@ namespace SuperMarioBros.Loading
         };
 
 
-        public ObjectLoader(MarioGame game)
+        public ObjectLoader()
         {
-            this.Game = game;
             this.Statics = new List<IStatic>();
             this.Dynamics = new List<IDynamic>();
             this.NonCollidables = new List<IObject>();
