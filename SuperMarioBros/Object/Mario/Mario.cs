@@ -104,7 +104,7 @@ namespace SuperMarioBros.Marios
         public void Destroy()
         {
             DeathEvent?.Invoke();
-            MarioGame.Instance.State.InitializeGame();
+            MarioGame.Instance.InitializeGame();
         }
 
         public void TakeRedMushroom()

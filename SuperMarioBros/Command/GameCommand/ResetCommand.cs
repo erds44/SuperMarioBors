@@ -4,7 +4,7 @@
     {
         public void Execute()
         {
-            MarioGame.Instance.State.InitializeGame();
+            MarioGame.Instance.InitializeGame();
         }
     }
 }

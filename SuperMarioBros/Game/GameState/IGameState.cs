@@ -6,6 +6,5 @@ namespace SuperMarioBros.GameStates
     public interface IGameState :IUpdatable
     {
         void Draw(GameTime gameTime, SpriteBatch spriteBatch);
-        void InitializeGame();
     }
 }

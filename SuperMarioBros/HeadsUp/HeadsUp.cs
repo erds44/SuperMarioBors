@@ -19,14 +19,15 @@ namespace SuperMarioBros.HeadsUps
         private readonly float timeOffset = 532;
         private readonly float livesOffset = 666;
 
-        private float timer = 400;
+        private float timer = 10;
         private int score = 0;
         private int coin = 0;
-        private int lives = 3;
+        public int Lives { get; set; }
         public HeadsUp(ContentManager contentManager)
         {
             content = contentManager;
             spriteFont = content.Load<SpriteFont>("Font");
+            Lives = 3;
         }
         public void Update(GameTime gameTime)
         {
@@ -47,15 +48,15 @@ namespace SuperMarioBros.HeadsUps
             DrawHelper(spriteBatch, ((int)timer).ToString(), new Vector2(timeOffset + leftBound + 10, 30));
 
             DrawHelper(spriteBatch, "LIVES", new Vector2(livesOffset + leftBound, 5));
-            DrawHelper(spriteBatch, lives.ToString(), new Vector2(livesOffset + leftBound + 10, 30));
+            DrawHelper(spriteBatch, Lives.ToString(), new Vector2(livesOffset + leftBound + 10, 30));
         }
         public void OnMarioDeath()
         {
-            lives--;
-            if(lives == 0)
-            {
-                MarioGame.Instance.ChangeToMenuState();
-            }
+            Lives--;
+            if (Lives == 0)
+                MarioGame.Instance.ChangeToGameOvertState();
+            else
+                MarioGame.Instance.ChangeToPlayerStatusState();
         }
         public void CoinCollected(Vector2 Position)
         {
@@ -72,9 +73,16 @@ namespace SuperMarioBros.HeadsUps
         {
             timer = 400;
         }
+        public void ResetAll()
+        {
+            timer = 400;
+            coin = 0;
+            score = 0;
+            Lives = 3;
+        }
         public void ExtraLife(Vector2 Position)
         {
-            lives++;
+            Lives++;
             ObjectFactory.Instance.CreateScoreText(Position, spriteFont, "1LF");
         }
         public void PowerUpCollected(Vector2 Position)

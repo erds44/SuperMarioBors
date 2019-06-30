@@ -271,6 +271,9 @@
     <None Include="Content\Star.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\StartBackground.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\StompedGoomba.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -297,6 +300,9 @@
     <Compile Include="Command\MarioCommand\KeyUpUpCommand.cs" />
     <Compile Include="Command\MarioCommand\KeyUpPowerCommand.cs" />
     <Compile Include="Game\GameState\Buttons.cs" />
+    <Compile Include="Game\GameState\TimeOverState.cs" />
+    <Compile Include="Game\GameState\GameOverState.cs" />
+    <Compile Include="Game\GameState\PlayerStatusState.cs" />
     <Compile Include="Game\GameState\GameState.cs" />
     <Compile Include="Game\GameState\IGameState.cs" />
     <Compile Include="Game\GameState\MenuState.cs" />

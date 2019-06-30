@@ -15,22 +15,13 @@ namespace SuperMarioBros.GameStates
         {
             graphics = graphicsDevice;
             content = contentManager;
-            var itemTexture = contentManager.Load<Texture2D>("Button");
             var itemFont = contentManager.Load<SpriteFont>("Font");
-            marioTitle = contentManager.Load<Texture2D>("Title");
+            marioTitle = contentManager.Load<Texture2D>("StartBackground");
 
-            var startButton = new Buttons(itemTexture, itemFont)
-            {
-                Position = new Vector2(MarioGame.Instance.WindowWidth / 2 - 202, MarioGame.Instance.WindowHeight / 2 ),
-                Text = "New Game",
-            };
+            var startButton = new Buttons(itemFont, "New Game", new Vector2(MarioGame.Instance.WindowWidth / 2 - 60, MarioGame.Instance.WindowHeight / 2));
             startButton.Click += NewGameClick;
 
-            var quitButton = new Buttons(itemTexture, itemFont)
-            {
-                Position = new Vector2(MarioGame.Instance.WindowWidth / 2 - 202, MarioGame.Instance.WindowHeight / 2 + 100),
-                Text = "Quit",
-            };
+            var quitButton = new Buttons(itemFont, "Quit", new Vector2(MarioGame.Instance.WindowWidth / 2 - 60, MarioGame.Instance.WindowHeight / 2 + 60));
             quitButton.Click += QuitGameClick;
 
             buttons = new List<Buttons>
@@ -42,7 +33,7 @@ namespace SuperMarioBros.GameStates
 
         private void NewGameClick()
         {
-            MarioGame.Instance.ChangeState(new GameState(graphics, content));
+            MarioGame.Instance.ChangeState(new PlayerStatusState(graphics, content));
         }
         private void QuitGameClick()
         {
@@ -53,7 +44,7 @@ namespace SuperMarioBros.GameStates
         {
             spriteBatch.Begin();
             graphics.Clear(Color.CornflowerBlue);
-            spriteBatch.Draw(marioTitle, new Vector2(200, 10), Color.White);
+            spriteBatch.Draw(marioTitle, Vector2.Zero, Color.White);
             foreach (var ele in buttons)
                 ele.Draw(gameTime, spriteBatch);
             spriteBatch.End();
@@ -65,10 +56,6 @@ namespace SuperMarioBros.GameStates
                 ele.Update(gameTime);
         }
 
-        public void InitializeGame()
-        {
-           // Do Nothing
-        }
     }
 }
 

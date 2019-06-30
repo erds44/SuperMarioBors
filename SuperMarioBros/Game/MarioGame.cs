@@ -5,6 +5,11 @@ using SuperMarioBros.GameCoreComponents;
 using SuperMarioBros.Managers;
 using SuperMarioBros.HeadsUps;
 using SuperMarioBros.GameStates;
+using SuperMarioBros.Objects;
+using SuperMarioBros.Loading;
+using SuperMarioBros.Marios;
+using Microsoft.Xna.Framework.Input;
+using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros
 {
@@ -20,7 +25,7 @@ namespace SuperMarioBros
         private SpriteBatch spriteBatch;
         public CollisionManager collisionManager;
         public Camera marioCamera;
-        public HeadsUp headsUp;
+        public HeadsUp HeadsUps { get; set; }
         public static MarioGame Instance { get; private set; }
         public IGameState State { get; private set; }
         private GraphicsDeviceManager graphics;
@@ -38,9 +43,12 @@ namespace SuperMarioBros
         }
         protected override void Initialize()
         {
-            //Things in this method only initialize once.
             IsMouseVisible = true;
             State = new MenuState(graphics.GraphicsDevice, Content);
+            SpriteFactory.Initialize(Content);
+            marioCamera = new Camera();
+            HeadsUps = new HeadsUp(Content);
+            ObjectFactory.Instance.ItemCollectedEvent += HeadsUps.CoinCollected;
             base.Initialize();
         }
         protected override void Update(GameTime gameTime)
@@ -61,6 +69,57 @@ namespace SuperMarioBros
         public void ChangeToMenuState()
         {
             State = new MenuState(graphics.GraphicsDevice, Content);
+        }
+        public void ChangeToPlayerStatusState()
+        {
+            State = new PlayerStatusState(graphics.GraphicsDevice, Content);
+        }
+        public void ChangeToGameOvertState()
+        {
+            State = new GameOverState(graphics.GraphicsDevice, Content);
+        }
+        public void ChangeToTimeOverState() // Buggy
+        {
+            State = new TimeOverState(graphics.GraphicsDevice, Content);
+        }
+        public void InitializeGame()
+        {
+            ObjectsManager = new ObjectsManager(new ObjectLoader(), HeadsUps);
+            ObjectsManager.LevelLoading();
+            ObjectsManager.Initialize();
+            ObjectFactory.Instance.Initialize();
+            marioCamera.Reset();
+            marioCamera.SetFocus(ObjectsManager.Mario);
+            collisionManager = new CollisionManager();
+            KeyBinding();
+
+            ObjectsManager.Mario.DeathEvent += HeadsUps.OnMarioDeath;
+            ObjectsManager.Mario.DeathEvent += HeadsUps.ResetTimer;
+            ObjectsManager.Mario.PowerUpEvent += HeadsUps.PowerUpCollected;
+            ObjectsManager.Mario.ExtraLifeEvent += HeadsUps.ExtraLife;
+        }
+        public void KeyBinding()
+        {
+            IMario mario = ObjectsManager.Mario;
+            controller = new ControllerMessager(mario);
+            IController keyboardController = new KeyboardController
+                (controller,
+                    (Keys.Q, ControllerMessager.QUITGAME),
+                    (Keys.A, ControllerMessager.LEFTMOVE),
+                    (Keys.S, ControllerMessager.DOWNMOVE),
+                    (Keys.D, ControllerMessager.RIGHTMOVE),
+                    (Keys.W, ControllerMessager.UPMOVE),
+                    (Keys.Z, ControllerMessager.UPMOVE),
+                    (Keys.R, ControllerMessager.RESETGAME),
+                    (Keys.Left, ControllerMessager.LEFTMOVE),
+                    (Keys.Down, ControllerMessager.DOWNMOVE),
+                    (Keys.Right, ControllerMessager.RIGHTMOVE),
+                    (Keys.Up, ControllerMessager.UPMOVE),
+                    (Keys.X, ControllerMessager.POWER)
+                );
+            controller.AddController(keyboardController);
+            IController JoyStickController = new JoyStickController(controller);
+            controller.AddController(JoyStickController);
         }
     }
 }
