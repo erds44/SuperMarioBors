@@ -13,21 +13,16 @@ namespace SuperMarioBros.HeadsUps
     {
         private readonly ContentManager content;
         private readonly SpriteFont spriteFont;
-        private float scoreOffset = 83;
-        private float coinOffset = 246;
-        private float worldOffset = 400;
-        private float timeOffset = 532;
-        private float livesOffset = 666;
+        private readonly float scoreOffset = 83;
+        private readonly float coinOffset = 246;
+        private readonly float worldOffset = 400;
+        private readonly float timeOffset = 532;
+        private readonly float livesOffset = 666;
 
         private float timer = 400;
         private int score = 0;
         private int coin = 0;
         private int lives = 3;
-        private readonly Dictionary<Type, int> itemDictionary = new Dictionary<Type, int>
-        {
-            { typeof(Coin), 200},
-            { typeof(RedMushroom), 1000}
-        };
         public HeadsUp(ContentManager contentManager)
         {
             content = contentManager;

@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Content;
 using SuperMarioBros.Sprites;
 using SuperMarioBros.Items;
 using SuperMarioBros.Loading;
-using System;
 using Microsoft.Xna.Framework;
 
 namespace SuperMarioBros.SpriteFactories
@@ -42,8 +41,6 @@ namespace SuperMarioBros.SpriteFactories
         {
             if (spritesInfo.TryGetValue(objectName, out SpritesNode spriteNode))
                 return new Point(spriteNode.Width, spriteNode.Height);
-            else
-                Console.WriteLine("ERROR: The size of " + objectName + " is not loaded");
             return new Point();
         }
 

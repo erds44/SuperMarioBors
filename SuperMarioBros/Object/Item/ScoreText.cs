@@ -1,8 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Physicses;
-using SuperMarioBros.SpriteFactories;
-using System.Collections.Generic;
 
 namespace SuperMarioBros.Items
 {
@@ -10,8 +8,8 @@ namespace SuperMarioBros.Items
     {
         private float timer = 0.5f;
         private Vector2 velocity = new Vector2(0, -100);
-        private SpriteFont spriteFont;
-        private string str;
+        private readonly SpriteFont spriteFont;
+        private readonly string str;
         public ScoreText(Vector2 location, SpriteFont inputSpriteFont, string str)
         {
             Position = location;

@@ -45,7 +45,7 @@ namespace SuperMarioBros
             headsUp = new HeadsUp(Content);
             marioCamera = new Camera();
             InitializeGame();
-            ObjectFactory.Instance.itemCollectedEvent += headsUp.CoinCollected;
+            ObjectFactory.Instance.ItemCollectedEvent += headsUp.CoinCollected;
             base.Initialize();
         }
         protected override void Update(GameTime gameTime)

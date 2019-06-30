@@ -10,7 +10,7 @@ namespace SuperMarioBros.Objects
 {
     public class ObjectFactory
     {
-        public event Action<Vector2> itemCollectedEvent;
+        public event Action<Vector2> ItemCollectedEvent;
         private static readonly ObjectFactory instance = new ObjectFactory();
         public  static ObjectFactory Instance { get { return instance; } }
         private  ObjectsManager objectsManager;
@@ -41,7 +41,7 @@ namespace SuperMarioBros.Objects
                 location += offSet;
             objectsManager.AddNonCollidableObject((IDynamic)Activator.CreateInstance(type, location));
             if (type == typeof(Coin))
-                itemCollectedEvent?.Invoke(new Vector2(location.X, location.Y -60));
+                ItemCollectedEvent?.Invoke(new Vector2(location.X, location.Y -60));
         }
 
         public void CreateCollidableObject(Type type, Vector2 location)
