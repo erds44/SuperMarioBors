@@ -274,6 +274,9 @@
     <None Include="Content\StompedGoomba.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\Title.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\UsedBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

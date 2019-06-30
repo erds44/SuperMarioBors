@@ -52,6 +52,10 @@ namespace SuperMarioBros.HeadsUps
         public void OnMarioDeath()
         {
             lives--;
+            if(lives == 0)
+            {
+                MarioGame.Instance.ChangeToMenuState();
+            }
         }
         public void CoinCollected(Vector2 Position)
         {

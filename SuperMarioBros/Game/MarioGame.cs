@@ -39,6 +39,7 @@ namespace SuperMarioBros
         protected override void Initialize()
         {
             //Things in this method only initialize once.
+            IsMouseVisible = true;
             State = new MenuState(graphics.GraphicsDevice, Content);
             base.Initialize();
         }
@@ -57,6 +58,9 @@ namespace SuperMarioBros
         {
             State = state;
         }
-
+        public void ChangeToMenuState()
+        {
+            State = new MenuState(graphics.GraphicsDevice, Content);
+        }
     }
 }

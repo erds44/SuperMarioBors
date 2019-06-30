@@ -10,16 +10,18 @@ namespace SuperMarioBros.GameStates
         private List<Buttons> buttons;
         private GraphicsDevice graphics;
         private ContentManager content;
+        private Texture2D marioTitle;
         public MenuState(GraphicsDevice graphicsDevice, ContentManager contentManager)
         {
             graphics = graphicsDevice;
             content = contentManager;
             var itemTexture = contentManager.Load<Texture2D>("Button");
             var itemFont = contentManager.Load<SpriteFont>("Font");
+            marioTitle = contentManager.Load<Texture2D>("Title");
 
             var startButton = new Buttons(itemTexture, itemFont)
             {
-                Position = new Vector2(MarioGame.Instance.WindowWidth / 2 - 202, MarioGame.Instance.WindowHeight / 2 - 100),
+                Position = new Vector2(MarioGame.Instance.WindowWidth / 2 - 202, MarioGame.Instance.WindowHeight / 2 ),
                 Text = "New Game",
             };
             startButton.Click += NewGameClick;
@@ -51,6 +53,7 @@ namespace SuperMarioBros.GameStates
         {
             spriteBatch.Begin();
             graphics.Clear(Color.CornflowerBlue);
+            spriteBatch.Draw(marioTitle, new Vector2(200, 10), Color.White);
             foreach (var ele in buttons)
                 ele.Draw(gameTime, spriteBatch);
             spriteBatch.End();
