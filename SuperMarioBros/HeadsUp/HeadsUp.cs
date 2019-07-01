@@ -64,10 +64,11 @@ namespace SuperMarioBros.HeadsUps
             score += 200;
             ObjectFactory.Instance.CreateScoreText(Position, spriteFont, "200");
         }
-        public void EnemyStomped(Vector2 Position)
+        public void EnemyStomped(Vector2 position, int count)
         {
-            score += 100;
-            ObjectFactory.Instance.CreateScoreText(Position, spriteFont, "100");
+            int addScore = 100 * count;
+            score += addScore;
+            ObjectFactory.Instance.CreateScoreText(position, spriteFont, addScore.ToString());
         }
         public void ResetTimer()
         {

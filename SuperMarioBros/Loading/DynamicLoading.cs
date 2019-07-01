@@ -56,7 +56,7 @@ namespace SuperMarioBros.Loading
             {
                 IDynamic obj = dynamicObjects.First().Item2;
                 if (obj is IEnemy)
-                    ((IEnemy)obj).StompedEvent += headsUp.EnemyStomped;
+                    ((IEnemy)obj).StompedEvent += headsUp.EnemyStomped; //Initialize this event to the enemy.
                 objectsManager.AddObject(obj);
                 dynamicObjects.RemoveAt(0);
             }

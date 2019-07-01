@@ -10,6 +10,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         {
             this.mario = mario;
             mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
+            this.mario.OnGround = true;
         }
 
 

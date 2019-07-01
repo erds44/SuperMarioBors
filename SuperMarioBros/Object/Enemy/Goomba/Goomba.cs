@@ -12,11 +12,11 @@ namespace SuperMarioBros.Objects.Enemy
             if (initialVelocity.X <= 0) MovementState = new GoombaLeftMovingState(this);
             else MovementState = new GoombaRightMovingState(this);
         }
-        public override void Stomped()
+        public override void Stomped(int count)
         {
             HealthState.Stomped();
             MovementState.Stomped();
-            base.Stomped();
+            base.Stomped(count);
         }
         public override void Update(GameTime gameTime)
         {

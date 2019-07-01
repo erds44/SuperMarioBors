@@ -36,8 +36,8 @@ namespace SuperMarioBros.Collisions
             if(block.State is BumpedState)
             {
                 if(enemy is Koopa)
-                    enemy.Stomped();
-                enemy.Flipped();
+                    enemy.Stomped(1);
+                enemy.Flipped(1);
                 enemy.ObjState = ObjectState.NonCollidable;
             }
             else

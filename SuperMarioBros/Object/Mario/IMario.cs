@@ -13,6 +13,7 @@ namespace SuperMarioBros.Marios
         event Action DeathEvent;
         event Action<Vector2> PowerUpEvent;
         event Action<Vector2> ExtraLifeEvent;
+        int EnemyKillStreakCounter { get; set; }
         double NoMovementTimer { get; set; }
         bool OnGround { get; set; }
         bool PowerFlag { get; set; }

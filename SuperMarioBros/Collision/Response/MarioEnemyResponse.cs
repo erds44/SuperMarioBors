@@ -44,7 +44,7 @@ namespace SuperMarioBros.Collisions
         {
             if (mario.TransitionState is StarState)
             {
-                enemy.Flipped();
+                enemy.Flipped(mario.EnemyKillStreakCounter);
                 enemy.ObjState = ObjectState.NonCollidable;
             }
             if(mario.TransitionState is NormalState)
@@ -55,11 +55,12 @@ namespace SuperMarioBros.Collisions
             if (mario.TransitionState is NormalState)
             {
                 Bump(mario);
-                enemy.Stomped();
+                enemy.Stomped(mario.EnemyKillStreakCounter);
+                mario.EnemyKillStreakCounter++;
             }
             else if (mario.TransitionState is StarState)
             {
-                enemy.Flipped();
+                enemy.Flipped(mario.EnemyKillStreakCounter);
                 enemy.ObjState = ObjectState.NonCollidable;
             }
         }
@@ -67,17 +68,17 @@ namespace SuperMarioBros.Collisions
         {
             if (mario.TransitionState is StarState)
             {
-                enemy.Flipped();
+                enemy.Flipped(mario.EnemyKillStreakCounter);
                 enemy.ObjState = ObjectState.NonCollidable;
             }
-            mario.TakeDamage();
+            mario.TakeDamage(); //Star mario doesn't take damage(the method is empty), so far it's good.
         }
         private static void KoopaTopCollision(IMario mario, IEnemy enemy, Direction direction)
         {
             Koopa koopa = (Koopa)enemy;
             if (koopa.HealthState is KoopaNormalState)
             {
-                koopa.Stomped();
+                koopa.Stomped(mario.EnemyKillStreakCounter);
                 Bump(mario);
             }
             else if(!koopa.DealDemage)
@@ -97,7 +98,8 @@ namespace SuperMarioBros.Collisions
                 }
                 else
                 {
-                    koopa.Flipped();
+                    koopa.Flipped(mario.EnemyKillStreakCounter);
+                    mario.EnemyKillStreakCounter++;
                     koopa.ObjState = ObjectState.NonCollidable;
                 }
             }
@@ -108,7 +110,7 @@ namespace SuperMarioBros.Collisions
             Koopa koopa = (Koopa)enemy;
             if (mario.TransitionState is StarState)
             {
-                koopa.Flipped();
+                koopa.Flipped(mario.EnemyKillStreakCounter);
                 koopa.ObjState = ObjectState.NonCollidable;
             }
             if (mario.TransitionState is NormalState)

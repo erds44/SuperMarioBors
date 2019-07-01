@@ -14,6 +14,7 @@ namespace SuperMarioBros.Marios
 {
     public class Mario : IMario
     {
+        public int EnemyKillStreakCounter { get; set; }
         public event Action DeathEvent;
         public event Action<Vector2> PowerUpEvent;
         public event Action<Vector2> ExtraLifeEvent;
@@ -93,6 +94,7 @@ namespace SuperMarioBros.Marios
         {
             TransitionState.Update(gameTime);
             NoMovementTimer -= gameTime.ElapsedGameTime.TotalSeconds;
+            if (OnGround) EnemyKillStreakCounter = 1; //Reset it.
             if (NoMovementTimer <= 0)
             {
                 HealthState.Update(gameTime);

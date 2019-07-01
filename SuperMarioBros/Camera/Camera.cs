@@ -2,7 +2,7 @@
 using SuperMarioBros.Objects;
 using System;
 
-namespace SuperMarioBros.GameCoreComponents
+namespace SuperMarioBros.Cameras
 {
     public class Camera
     {

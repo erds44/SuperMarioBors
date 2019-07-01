@@ -60,7 +60,7 @@ namespace SuperMarioBros.Collisions
         {
             if (koopa.HealthState is KoopaNormalState)
             {
-                koopa.Stomped();
+                koopa.Stomped(1);
                 Bump(enemy);
             }
             else if (!((Koopa)koopa).DealDemage)
@@ -80,7 +80,7 @@ namespace SuperMarioBros.Collisions
                 }
                 else
                 {
-                    koopa.Flipped();
+                    koopa.Flipped(1);
                     koopa.ObjState = ObjectState.NonCollidable;
                 }
             }
@@ -100,14 +100,14 @@ namespace SuperMarioBros.Collisions
                     goomba.ChangeDirection();
                 else
                 {
-                    goomba.Flipped();
+                    goomba.Flipped(1);
                     goomba.ObjState = ObjectState.NonCollidable;
                 }
             }
         }
         private static void GeneralEnemyTopCollision(IEnemy enemy1, IEnemy enemy2, Direction direction)
         {
-            enemy2.Stomped();
+            enemy2.Stomped(1);
             Bump(enemy1);
         }
         private static void GeneralEnemyLeftOrRightCollision(IEnemy enemy1, IEnemy enemy2, Direction direction)

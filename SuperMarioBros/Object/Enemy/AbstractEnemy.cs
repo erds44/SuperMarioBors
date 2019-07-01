@@ -9,7 +9,7 @@ namespace SuperMarioBros.Objects.Enemy
 {
     public abstract class AbstractEnemy : IEnemy
     {
-        public event Action<Vector2> StompedEvent;
+        public event Action<Vector2, int> StompedEvent;
         public IEnemyMovementState MovementState { get; set; }
         public IEnemyHealthState HealthState { get; set; }
         public ISprite Sprite { get; set; }
@@ -53,15 +53,15 @@ namespace SuperMarioBros.Objects.Enemy
         {
             MovementState.ChangeDirection();
         }
-        public virtual void Stomped()
+        public virtual void Stomped(int count)
         {
-            StompedEvent?.Invoke(Position);
+            StompedEvent?.Invoke(Position, count);
         }
 
-        public virtual void Flipped()
+        public virtual void Flipped(int count)
         {
             IsFlipped = true;
-            StompedEvent?.Invoke(Position);
+            StompedEvent?.Invoke(Position, count);
         }
 
         public void MoveLeft()

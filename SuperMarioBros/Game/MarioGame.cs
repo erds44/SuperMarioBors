@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Controllers;
-using SuperMarioBros.GameCoreComponents;
+using SuperMarioBros.Cameras;
 using SuperMarioBros.Managers;
 using SuperMarioBros.HeadsUps;
 using SuperMarioBros.GameStates;
