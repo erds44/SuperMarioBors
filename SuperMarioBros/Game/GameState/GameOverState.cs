@@ -30,7 +30,7 @@ namespace SuperMarioBros.GameStates
             if (timer <= 0)
             {
                 MarioGame.Instance.HeadsUps.ResetAll();
-                MarioGame.Instance.ChangeState(new MenuState(graphicsDevice, content));
+                MarioGame.Instance.State = new MenuState(graphicsDevice, content);
             }
         }
     }

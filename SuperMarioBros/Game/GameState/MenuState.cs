@@ -33,7 +33,7 @@ namespace SuperMarioBros.GameStates
 
         private void NewGameClick()
         {
-            MarioGame.Instance.ChangeState(new PlayerStatusState(graphics, content));
+            MarioGame.Instance.State = new PlayerStatusState(graphics, content);
         }
         private void QuitGameClick()
         {

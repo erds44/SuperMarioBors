@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
+using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Mario.MarioTransitionState;
 using SuperMarioBros.Objects.Mario.TransitionState;
 using SuperMarioBros.Physicses;
@@ -128,6 +129,12 @@ namespace SuperMarioBros.Marios
         public void TakeGreenMushroom()
         {
             ExtraLifeEvent?.Invoke(Position);
+        }
+
+        public void TimeOver()
+        {
+            while (!(HealthState is DeadMario))
+                HealthState.TakeDamage();
         }
     }
 }

@@ -300,7 +300,6 @@
     <Compile Include="Command\MarioCommand\KeyUpUpCommand.cs" />
     <Compile Include="Command\MarioCommand\KeyUpPowerCommand.cs" />
     <Compile Include="Game\GameState\Buttons.cs" />
-    <Compile Include="Game\GameState\TimeOverState.cs" />
     <Compile Include="Game\GameState\GameOverState.cs" />
     <Compile Include="Game\GameState\PlayerStatusState.cs" />
     <Compile Include="Game\GameState\GameState.cs" />

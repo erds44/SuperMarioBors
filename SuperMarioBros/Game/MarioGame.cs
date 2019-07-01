@@ -27,7 +27,7 @@ namespace SuperMarioBros
         public Camera marioCamera;
         public HeadsUp HeadsUps { get; set; }
         public static MarioGame Instance { get; private set; }
-        public IGameState State { get; private set; }
+        public IGameState State { get; set; }
         private GraphicsDeviceManager graphics;
         public MarioGame()
         {
@@ -62,14 +62,6 @@ namespace SuperMarioBros
             State.Draw(gameTime, spriteBatch);
             base.Draw(gameTime);
         }
-        public void ChangeState(IGameState state)
-        {
-            State = state;
-        }
-        public void ChangeToMenuState()
-        {
-            State = new MenuState(graphics.GraphicsDevice, Content);
-        }
         public void ChangeToPlayerStatusState()
         {
             State = new PlayerStatusState(graphics.GraphicsDevice, Content);
@@ -77,10 +69,6 @@ namespace SuperMarioBros
         public void ChangeToGameOvertState()
         {
             State = new GameOverState(graphics.GraphicsDevice, Content);
-        }
-        public void ChangeToTimeOverState() // Buggy
-        {
-            State = new TimeOverState(graphics.GraphicsDevice, Content);
         }
         public void InitializeGame()
         {
@@ -97,6 +85,7 @@ namespace SuperMarioBros
             ObjectsManager.Mario.DeathEvent += HeadsUps.ResetTimer;
             ObjectsManager.Mario.PowerUpEvent += HeadsUps.PowerUpCollected;
             ObjectsManager.Mario.ExtraLifeEvent += HeadsUps.ExtraLife;
+            HeadsUps.timerOverEvent += ObjectsManager.Mario.TimeOver;
         }
         public void KeyBinding()
         {

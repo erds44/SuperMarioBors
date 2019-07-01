@@ -27,7 +27,7 @@ namespace SuperMarioBros.GameStates
             timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (timer <= 0)
             {
-                MarioGame.Instance.ChangeState(new GameState(graphicsDevice));
+                MarioGame.Instance.State = new GameState(graphicsDevice);
             }                
         }
     }

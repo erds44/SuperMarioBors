@@ -33,5 +33,6 @@ namespace SuperMarioBros.Marios
         void TakeGreenMushroom();
         void TakeStar();
         void TakeDamage();
+        void TimeOver();
     }
 }

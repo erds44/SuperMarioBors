@@ -6,11 +6,13 @@ using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace SuperMarioBros.HeadsUps
 {
     public class HeadsUp
     {
+        public event Action timerOverEvent;
         private readonly ContentManager content;
         private readonly SpriteFont spriteFont;
         private readonly float scoreOffset = 83;
@@ -32,6 +34,11 @@ namespace SuperMarioBros.HeadsUps
         public void Update(GameTime gameTime)
         {
             timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (timer <= 0)
+            {
+                timerOverEvent?.Invoke();
+                timer = 0;
+            }
         }
         public void Draw (SpriteBatch spriteBatch, float leftBound)
         {
