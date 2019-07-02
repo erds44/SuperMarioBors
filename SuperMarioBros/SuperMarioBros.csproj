@@ -88,6 +88,9 @@
     <None Include="Content\BigMarioLeftMoving.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\BigMarioLeftSliding.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\BigMarioRightBreaking.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -103,6 +106,9 @@
     <None Include="Content\BigMarioRightMoving.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\BigMarioRightSliding.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\BrickBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -110,6 +116,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\Button.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\Castle.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\Coin.xnb">
@@ -145,6 +154,9 @@
     <None Include="Content\FireMarioLeftMoving.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\FireMarioLeftSliding.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\FireMarioRightBreaking.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -158,6 +170,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\FireMarioRightMoving.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\FireMarioRightSliding.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\FlagPole.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\FlippedGoomba.xnb">
@@ -256,6 +274,9 @@
     <None Include="Content\SmallMarioLeftMoving.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\SmallMarioLeftSliding.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\SmallMarioRightBreaking.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -266,6 +287,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\SmallMarioRightMoving.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\SmallMarioRightSliding.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\Star.xnb">
@@ -281,6 +305,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Content\UsedBlock.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\WinFlag.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
@@ -301,6 +328,7 @@
     <Compile Include="Command\MarioCommand\KeyUpPowerCommand.cs" />
     <Compile Include="Game\GameState\Buttons.cs" />
     <Compile Include="Game\GameState\GameOverState.cs" />
+    <Compile Include="Game\GameState\FlagPoleState.cs" />
     <Compile Include="Game\GameState\PlayerStatusState.cs" />
     <Compile Include="Game\GameState\GameState.cs" />
     <Compile Include="Game\GameState\IGameState.cs" />
@@ -373,6 +401,9 @@
     <Compile Include="Object\Background\SmallHill.cs" />
     <Compile Include="Object\IStatic.cs" />
     <Compile Include="Object\Item\AbstractItem.cs" />
+    <Compile Include="Object\Item\WinFlag.cs" />
+    <Compile Include="Object\Item\Castle.cs" />
+    <Compile Include="Object\Item\FlagPole.cs" />
     <Compile Include="Object\Item\ScoreText.cs" />
     <Compile Include="Object\Item\BrickDerbis.cs" />
     <Compile Include="Object\Item\Coin.cs" />
@@ -395,6 +426,8 @@
     <Compile Include="Object\Mario\MarioMovementState\LeftCrouching.cs" />
     <Compile Include="Object\Mario\MarioMovementState\LeftIdle.cs" />
     <Compile Include="Object\Mario\MarioMovementState\LeftJumping.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\RightSliding.cs" />
+    <Compile Include="Object\Mario\MarioMovementState\LeftSliding.cs" />
     <Compile Include="Object\Mario\MarioMovementState\LeftMoving.cs" />
     <Compile Include="Object\Mario\MarioMovementState\RightBreaking.cs" />
     <Compile Include="Object\Mario\MarioMovementState\RightCrouching.cs" />

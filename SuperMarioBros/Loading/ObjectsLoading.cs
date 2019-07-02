@@ -104,6 +104,8 @@ namespace SuperMarioBros.Loading
               (new ObjectNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(7719,410),3,8,35)),
               (new ObjectNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(7999,410),4,8,35)),
 
+              (new ObjectNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(8489,410),1,1,0)),
+
 
             };
 
@@ -140,6 +142,9 @@ namespace SuperMarioBros.Loading
             //base4 
              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(7200,410),1,1,30)),
              (new ObjectNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(7250,410),1,1,30)),
+
+             (new ObjectNode("SuperMarioBros.Items.FlagPole",new Vector2(8500,375),1,1,0)),
+             (new ObjectNode("SuperMarioBros.Items.Castle",new Vector2(8620,410),1,1,0)),
         };
 
         private readonly List<ObjectNode> nonCollidableList = new List<ObjectNode>
@@ -180,7 +185,7 @@ namespace SuperMarioBros.Loading
 
         public void LevelLoading()
         {
-            Mario = new Mario(new Vector2(0, 410));
+            Mario = new Mario(new Vector2(7500, 300));
             LoadDynamics();
             LoadStatics();
             LoadNonCollidables();

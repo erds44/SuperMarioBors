@@ -1,4 +1,5 @@
-﻿using SuperMarioBros.Items;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
 using System;
@@ -11,6 +12,7 @@ namespace SuperMarioBros.Collisions
         private readonly IMario mario;
         private readonly IItem item;
         private readonly Direction direction;
+        private static readonly Vector2 marioFlagOffset = new Vector2(14, 0);
         private delegate void MarioItemHandler(IMario mario, IItem item);
 
         public MarioItemResponse(IObject mario, IObject item , Direction direction)
@@ -34,7 +36,23 @@ namespace SuperMarioBros.Collisions
             {typeof(Flower), TakeFlower},
             {typeof(GreenMushroom), TakeGreenMushroom},
             {typeof(Coin), TakeCoin},
+            {typeof(FlagPole), SlidingFlagPole},
+            {typeof(Castle), EnterCastle } 
         };
+
+        private static void EnterCastle(IMario mario, IItem item)
+        {
+            mario.ObjState = ObjectState.Destroy;
+        }
+
+        private static void SlidingFlagPole(IMario mario, IItem item)
+        {
+            mario.SlidingFlagPole();
+            mario.Position += marioFlagOffset;
+            item.ObjState = ObjectState.NonCollidable;
+            MarioGame.Instance.ChangeToFlagPoleState();
+        }
+
         private static void TakeStar(IMario mario, IItem item)
         {
             mario.TakeStar();

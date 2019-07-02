@@ -1,6 +1,9 @@
-﻿using SuperMarioBros.Blocks;
+﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Blocks;
+using SuperMarioBros.GameStates;
 using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
+using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Objects;
 using System;
@@ -13,7 +16,7 @@ namespace SuperMarioBros.Collisions
         private readonly IMario mario;
         private readonly IBlock block;
         private readonly Direction direction;
-        private delegate void MarioBlockHandler (IMario mario, IBlock block);
+        private delegate void MarioBlockHandler(IMario mario, IBlock block);
 
         public MarioBlockResponse(IObject mario, IObject block, Direction direction)
         {
@@ -23,22 +26,32 @@ namespace SuperMarioBros.Collisions
         }
         public override void HandleCollision()
         {
-            if (block is HiddenBlock)
-                MarioVsHiddenBlock(mario, block, direction);
+            if (MarioGame.Instance.State is FlagPoleState && direction == Direction.top)
+            {
+                if (block is ConcreteBlock)
+                    MarioVsConcreteBlockFlagPoleStage();
+                else
+                    MarioVsRockBlockFlagPoleStage();
+            }
             else
             {
-                ResolveOverlap(mario, block, direction);
-                switch (direction)
+                if (block is HiddenBlock)
+                    MarioVsHiddenBlock(mario, block, direction);
+                else
                 {
-                    case Direction.top:
-                        OnGround(mario);
-                        break;
-                    case Direction.bottom:
-                        GroundOrTopBounce(mario);
-                        handlerDictionary.TryGetValue(block.GetType(), out var handler);
-                        handler?.Invoke(mario, block);
-                        break;
-                    default: LeftOrRightBlock(mario); break;
+                    ResolveOverlap(mario, block, direction);
+                    switch (direction)
+                    {
+                        case Direction.top:
+                            OnGround(mario);
+                            break;
+                        case Direction.bottom:
+                            GroundOrTopBounce(mario);
+                            handlerDictionary.TryGetValue(block.GetType(), out var handler);
+                            handler?.Invoke(mario, block);
+                            break;
+                        default: LeftOrRightBlock(mario); break;
+                    }
                 }
             }
         }
@@ -61,7 +74,7 @@ namespace SuperMarioBros.Collisions
                 ((IMario)obj).MovementState.OnGround();
                 mario.Physics.ApplyGravity();
             }
-                base.OnGround(obj);
+            base.OnGround(obj);
         }
         private static void MarioVsBrickBlock(IMario mario, IBlock block)
         {
@@ -76,25 +89,26 @@ namespace SuperMarioBros.Collisions
 
         private static void MarioVsItemBrickOrQuestionBlock(IMario mario, IBlock block)
         {
-            if(block.ItemType != null)
+            if (block.ItemType != null)
             {
-                block.Bumped();           
+                block.Bumped();
                 ObjectFactory.Instance.CreateNonCollidableObject(block.ItemType, block.Position);
-            } else
+            }
+            else
             {
                 block.Used();
-                if (mario.HealthState is SmallMario)                   
+                if (mario.HealthState is SmallMario)
                     ObjectFactory.Instance.CreateNonCollidableObject(typeof(RedMushroom), block.Position);
-                else                   
+                else
                     ObjectFactory.Instance.CreateNonCollidableObject(typeof(Flower), block.Position);
-            }       
-            if (block.ObjState == ObjectState.Destroy)               
+            }
+            if (block.ObjState == ObjectState.Destroy)
                 ObjectFactory.Instance.CreateCollidableObject(typeof(UsedBlock), block.Position);
         }
 
         private static void MarioVsHiddenBlock(IMario mario, IBlock block, Direction direction)
         {
-            if (mario.Physics.Velocity.Y < 0 )
+            if (mario.Physics.Velocity.Y < 0)
             {
                 GroundOrTopBounce(mario);
                 block.Used();
@@ -102,14 +116,31 @@ namespace SuperMarioBros.Collisions
                     ObjectFactory.Instance.CreateNonCollidableObject(block.ItemType, block.Position);
                 else
                 {
-                    if (mario.HealthState is SmallMario )                       
+                    if (mario.HealthState is SmallMario)
                         ObjectFactory.Instance.CreateNonCollidableObject(typeof(RedMushroom), block.Position);
-                    else                       
+                    else
                         ObjectFactory.Instance.CreateNonCollidableObject(typeof(Flower), block.Position);
-                }               
+                }
                 ObjectFactory.Instance.CreateCollidableObject(typeof(UsedBlock), block.Position);
                 ResolveOverlap(mario, block, direction);
             }
-        }       
+        }
+        private void MarioVsConcreteBlockFlagPoleStage()
+        {
+            if(mario.MovementState is RightSliding)
+            {
+                mario.ChangeSlidingDirection();
+                mario.Physics.Velocity = new Vector2(100, -150);
+            }
+            else
+                OnGround(mario);
+            ResolveOverlap(mario, block, Direction.top);
+        }
+        private void MarioVsRockBlockFlagPoleStage()
+        {
+            mario.Right();
+            OnGround(mario);
+            ResolveOverlap(mario, block, Direction.top);
+        }
     }
 }

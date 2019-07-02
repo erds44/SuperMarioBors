@@ -52,5 +52,9 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         {
             base.Update(gameTime);
         }
+        public override void SlidingFlagPole()
+        {
+            mario.MovementState = new RightSliding(mario);
+        }
     }
 }

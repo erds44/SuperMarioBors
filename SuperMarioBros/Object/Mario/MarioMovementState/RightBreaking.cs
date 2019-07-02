@@ -44,6 +44,10 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             if (!mario.Physics.Jump)
                 mario.MovementState = new RightJumping(mario);
         }
+        public override void SlidingFlagPole()
+        {
+            mario.MovementState = new RightSliding(mario);
+        }
 
     }
 }

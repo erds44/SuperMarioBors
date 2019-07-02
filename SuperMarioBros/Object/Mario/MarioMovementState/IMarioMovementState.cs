@@ -12,5 +12,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         void Update(GameTime gameTime);
         void OnGround();
         void OnFireBall();
+        void SlidingFlagPole();
+        void ChangeSlidingDirection();
     }
 }

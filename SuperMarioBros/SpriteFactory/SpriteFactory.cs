@@ -17,11 +17,6 @@ namespace SuperMarioBros.SpriteFactories
         private static ISprite sprite;
         private static SpritesNode spriteNode;
 
-        internal static void Initialize(object content)
-        {
-            throw new NotImplementedException();
-        }
-
         public static void Initialize(ContentManager inputContent)
         {
             content = inputContent;

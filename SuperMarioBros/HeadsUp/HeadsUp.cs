@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.GameStates;
 using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
@@ -20,8 +21,9 @@ namespace SuperMarioBros.HeadsUps
         private readonly float worldOffset = 400;
         private readonly float timeOffset = 532;
         private readonly float livesOffset = 666;
+        private bool clearingScores = false;
 
-        private float timer = 10;
+        private float timer = 400;
         private int score = 0;
         private int coin = 0;
         public int Lives { get; set; }
@@ -34,13 +36,27 @@ namespace SuperMarioBros.HeadsUps
         public void Update(GameTime gameTime)
         {
             timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (timer <= 0)
+            if (clearingScores)
             {
-                timerOverEvent?.Invoke();
-                timer = 0;
+                if (timer > 0)
+                    DecreasingValues();
+                else
+                {
+                    ObjectFactory.Instance.CreateNonCollidableObject(typeof(WinFlag), new Vector2(8620, 410));  
+                    ((FlagPoleState)MarioGame.Instance.State).UpdateHeadsUp = false;
+                }
+                    
+            }
+            else
+            {
+                if (timer <= 0)
+                {
+                    timerOverEvent?.Invoke();
+                    timer = 0;
+                }
             }
         }
-        public void Draw (SpriteBatch spriteBatch, float leftBound)
+        public void Draw(SpriteBatch spriteBatch, float leftBound)
         {
             DrawHelper(spriteBatch, "SCORE", new Vector2(scoreOffset + leftBound, 5));
             DrawHelper(spriteBatch, score.ToString(), new Vector2(scoreOffset + leftBound + 10, 30));
@@ -98,9 +114,29 @@ namespace SuperMarioBros.HeadsUps
             score += 1000;
             ObjectFactory.Instance.CreateScoreText(Position, spriteFont, "1000");
         }
+
+        public void ClearingScores()
+        {
+            clearingScores = true;
+            ((FlagPoleState)MarioGame.Instance.State).UpdateHeadsUp = true;
+        }
+
         private void DrawHelper(SpriteBatch spriteBatch, string str, Vector2 position)
         {
             spriteBatch.DrawString(spriteFont, str, position, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+        }
+        private void DecreasingValues()
+        {
+            if(timer <= 3)
+            {
+                score += (int)(3 - timer) * 100;
+                timer = 0;
+            }
+            else
+            {
+                timer -= 3;
+                score += 300;
+            }
         }
     }
 }

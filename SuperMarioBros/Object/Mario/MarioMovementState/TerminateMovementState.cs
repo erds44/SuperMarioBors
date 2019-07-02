@@ -47,5 +47,20 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         {
             // Do Nothing
         }
+
+        public void SlidingFlagPole()
+        {
+           //Do Nothing
+        }
+
+        public void ChangeSlidingDirection()
+        {
+            //Do Nothing
+        }
+
+        public void MoveRight()
+        {
+            //Do Nothing
+        }
     }
 }

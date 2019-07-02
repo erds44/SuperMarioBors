@@ -1,9 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.GameStates;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
-using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Mario.MarioTransitionState;
 using SuperMarioBros.Objects.Mario.TransitionState;
 using SuperMarioBros.Physicses;
@@ -16,6 +16,7 @@ namespace SuperMarioBros.Marios
     public class Mario : IMario
     {
         public int EnemyKillStreakCounter { get; set; }
+        public event Action ClearingScoresEvent;
         public event Action DeathEvent;
         public event Action<Vector2> PowerUpEvent;
         public event Action<Vector2> ExtraLifeEvent;
@@ -106,8 +107,13 @@ namespace SuperMarioBros.Marios
         }
         public void Destroy()
         {
-            DeathEvent?.Invoke();
-            MarioGame.Instance.InitializeGame();
+            if (!(MarioGame.Instance.State is FlagPoleState))
+            {
+                DeathEvent?.Invoke();
+                MarioGame.Instance.InitializeGame();
+            }
+            else
+                ClearingScoresEvent?.Invoke();
         }
 
         public void TakeRedMushroom()
@@ -136,5 +142,16 @@ namespace SuperMarioBros.Marios
             while (!(HealthState is DeadMario))
                 HealthState.TakeDamage();
         }
+
+        public void SlidingFlagPole()
+        {
+            MovementState.SlidingFlagPole();
+        }
+
+        public void ChangeSlidingDirection()
+        {
+            MovementState.ChangeSlidingDirection();
+        }
+
     }
 }

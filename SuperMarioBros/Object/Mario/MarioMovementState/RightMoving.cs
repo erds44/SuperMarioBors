@@ -22,7 +22,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Right()
         {
-                mario.Physics.Right();
+             mario.Physics.Right();
         }
 
         public void Left()
@@ -60,6 +60,10 @@ namespace SuperMarioBros.Marios.MarioMovementStates
                 mario.Physics.JumpKeyUp = true;
             }
             base.Update(gameTime);
+        }
+        public override void SlidingFlagPole()
+        {
+            mario.MovementState = new RightSliding(mario);
         }
     }
 }

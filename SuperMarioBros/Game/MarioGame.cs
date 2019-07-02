@@ -10,6 +10,7 @@ using SuperMarioBros.Loading;
 using SuperMarioBros.Marios;
 using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.SpriteFactories;
+using System;
 
 namespace SuperMarioBros
 {
@@ -24,6 +25,7 @@ namespace SuperMarioBros
         public ControllerMessager controller;
         private SpriteBatch spriteBatch;
         public CollisionManager collisionManager;
+
         public Camera marioCamera;
         public HeadsUp HeadsUps { get; set; }
         public static MarioGame Instance { get; private set; }
@@ -41,6 +43,12 @@ namespace SuperMarioBros
             WindowWidth = graphics.PreferredBackBufferWidth;
             Content.RootDirectory = "Content";
         }
+
+        public void ChangeToFlagPoleState()
+        {
+            State = new FlagPoleState(graphics.GraphicsDevice, Content);
+        }
+
         protected override void Initialize()
         {
             IsMouseVisible = true;
@@ -70,6 +78,10 @@ namespace SuperMarioBros
         {
             State = new GameOverState(graphics.GraphicsDevice, Content);
         }
+        public void ChangeToMenuState()
+        {
+            State = new MenuState(graphics.GraphicsDevice, Content);
+        }
         public void InitializeGame()
         {
             ObjectsManager = new ObjectsManager(new ObjectLoader(), HeadsUps);
@@ -85,6 +97,7 @@ namespace SuperMarioBros
             ObjectsManager.Mario.DeathEvent += HeadsUps.ResetTimer;
             ObjectsManager.Mario.PowerUpEvent += HeadsUps.PowerUpCollected;
             ObjectsManager.Mario.ExtraLifeEvent += HeadsUps.ExtraLife;
+            ObjectsManager.Mario.ClearingScoresEvent += HeadsUps.ClearingScores;
             HeadsUps.timerOverEvent += ObjectsManager.Mario.TimeOver;
         }
         public void KeyBinding()

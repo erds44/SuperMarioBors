@@ -10,6 +10,7 @@ namespace SuperMarioBros.Marios
 {
     public interface IMario : IDynamic
     {
+        event Action ClearingScoresEvent;
         event Action DeathEvent;
         event Action<Vector2> PowerUpEvent;
         event Action<Vector2> ExtraLifeEvent;
@@ -34,5 +35,7 @@ namespace SuperMarioBros.Marios
         void TakeStar();
         void TakeDamage();
         void TimeOver();
+        void SlidingFlagPole();
+        void ChangeSlidingDirection();
     }
 }

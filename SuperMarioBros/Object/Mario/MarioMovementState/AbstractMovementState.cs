@@ -11,6 +11,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         protected private Vector2 rightNormalOffSet = new Vector2(52, -32);
         protected private Vector2 rightCrouchingOffset = new Vector2(52, -22);
         protected private Vector2 offset = new Vector2(-22, -32);
+        protected private Vector2 slidingVelocity = new Vector2(0, 50);
         protected private FireBallDirection direction = FireBallDirection.left;
         protected private int fireBallCount = 2;
         protected private float fireBallCoolDown = 2f;
@@ -48,6 +49,14 @@ namespace SuperMarioBros.Marios.MarioMovementStates
                     fireBallCount = 2;
                 }
             }
+        }
+        public virtual void SlidingFlagPole()
+        {
+            mario.MovementState = new LeftSliding(mario);
+        }
+        public virtual void ChangeSlidingDirection()
+        {
+            //Do Nothing
         }
     }
 }

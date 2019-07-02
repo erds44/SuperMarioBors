@@ -19,6 +19,7 @@ namespace SuperMarioBros.Objects
         private  Vector2 leftTopDebrisOffset = new Vector2(0, -40);
         private  Vector2 rightTopDebrisOffset = new Vector2(20, -40);
         private  Vector2 rightBottomDebrisOffset = new Vector2(20, 0);
+        private static Vector2 flagOffset = new Vector2(68, -130);
         public int count = 0;
         /* Red/Green msuhrrom, star, debris, flower, coin*/
         private readonly static Dictionary<Type, Vector2> dictionary = new Dictionary<Type, Vector2>
@@ -28,6 +29,7 @@ namespace SuperMarioBros.Objects
             { typeof(Flower), itemOffset},
             { typeof(Star), itemOffset},
             { typeof(Coin), coinOffset},
+            { typeof(WinFlag), flagOffset}
         };
 
         public void Initialize()

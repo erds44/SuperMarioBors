@@ -51,5 +51,9 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             offset = rightNormalOffSet;
             base.OnFireBall();
         }
+        public override void SlidingFlagPole()
+        {
+            mario.MovementState = new RightSliding(mario);
+        }
     }
 }
