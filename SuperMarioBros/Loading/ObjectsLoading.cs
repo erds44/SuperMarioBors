@@ -145,6 +145,7 @@ namespace SuperMarioBros.Loading
 
              (new ObjectNode("SuperMarioBros.Items.FlagPole",new Vector2(8500,375),1,1,0)),
              (new ObjectNode("SuperMarioBros.Items.Castle",new Vector2(8620,410),1,1,0)),
+             (new ObjectNode("SuperMarioBros.Items.Flag",new Vector2(8478,120),1,1,0)),
         };
 
         private readonly List<ObjectNode> nonCollidableList = new List<ObjectNode>

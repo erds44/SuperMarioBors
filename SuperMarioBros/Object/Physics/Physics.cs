@@ -8,7 +8,7 @@ namespace SuperMarioBros.Physicses
         private float dt = 0f;
         private readonly float gravity;
         private const float DECAYRATIO = 0.96f;
-        private float currentGravity;
+        public  float CurrentGravity{get;set;}
         private Vector2 displacement = Vector2.Zero;
         private float sprintVelocityRate;
         private readonly float weight;
@@ -27,7 +27,7 @@ namespace SuperMarioBros.Physicses
             Velocity = velocity;
             Jump = false;
             sprintVelocityRate = 1f;     // used for x speed up, by calling set spirnt speed method
-            currentGravity = 0f;         // it does not actually boost speed but increse displacement, since if x is KeyUp, we
+            CurrentGravity = 0f;         // it does not actually boost speed but increse displacement, since if x is KeyUp, we
             this.weight = weight;        // wish to see the speed goes back to original state
             this.acceleration = acceleration;
             deceleration = 2f * acceleration;
@@ -50,13 +50,13 @@ namespace SuperMarioBros.Physicses
                 Velocity = new Vector2(Velocity.X, jumpVelocity);
                 Jump = true;
             }
-            currentGravity -= gravityDecrement;
-            if (currentGravity <= minGravity)
-                currentGravity = minGravity;
+            CurrentGravity -= gravityDecrement;
+            if (CurrentGravity <= minGravity)
+                CurrentGravity = minGravity;
         }
         public void ApplyGravity()
         {
-            currentGravity = gravity;
+            CurrentGravity = gravity;
         }
         public void SpeedDecay()
         {
@@ -74,9 +74,9 @@ namespace SuperMarioBros.Physicses
         {
             dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (Velocity.Y > 0)
-                Velocity = new Vector2(Velocity.X, Velocity.Y + (currentGravity + weight) * dt); /* make jumping downward faster */
+                Velocity = new Vector2(Velocity.X, Velocity.Y + (CurrentGravity + weight) * dt); /* make jumping downward faster */
             else
-                Velocity = new Vector2(Velocity.X, Velocity.Y + currentGravity * dt);
+                Velocity = new Vector2(Velocity.X, Velocity.Y + CurrentGravity * dt);
             Clamping();
             displacement = Vector2.Zero;
             displacement.X += (Velocity.X * dt * sprintVelocityRate);

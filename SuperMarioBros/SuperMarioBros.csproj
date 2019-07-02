@@ -175,6 +175,9 @@
     <None Include="Content\FireMarioRightSliding.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\Flag.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\FlagPole.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -401,6 +404,7 @@
     <Compile Include="Object\Background\SmallHill.cs" />
     <Compile Include="Object\IStatic.cs" />
     <Compile Include="Object\Item\AbstractItem.cs" />
+    <Compile Include="Object\Item\Flag.cs" />
     <Compile Include="Object\Item\WinFlag.cs" />
     <Compile Include="Object\Item\Castle.cs" />
     <Compile Include="Object\Item\FlagPole.cs" />

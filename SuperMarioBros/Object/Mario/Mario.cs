@@ -20,6 +20,7 @@ namespace SuperMarioBros.Marios
         public event Action DeathEvent;
         public event Action<Vector2> PowerUpEvent;
         public event Action<Vector2> ExtraLifeEvent;
+        public event Action<Vector2> SlidingEvent;
         public ObjectState ObjState { get; set; }
         public bool PowerFlag { get; set; }
         public bool KeyUpPower { get; set; }
@@ -34,7 +35,8 @@ namespace SuperMarioBros.Marios
         public IMarioTransitionState TransitionState { get; set; }
         public Mario(Vector2 location)
         {
-            HealthState = new SmallMario(this);
+            //HealthState = new SmallMario(this);
+            HealthState = new BigMario(this);
             Physics = new Physics(new Vector2(0,0), 800f, 200f, 150f);
             Physics.ApplyGravity();
             MovementState = new RightIdle(this);
@@ -146,12 +148,18 @@ namespace SuperMarioBros.Marios
         public void SlidingFlagPole()
         {
             MovementState.SlidingFlagPole();
+            SlidingEvent?.Invoke(Position);
+            Console.WriteLine(Physics.CurrentGravity);
         }
 
-        public void ChangeSlidingDirection()
+        public void JumpingOffFlag()
         {
-            MovementState.ChangeSlidingDirection();
+            if (MovementState is RightSliding)
+                MovementState.ChangeSlidingDirection();
+            else
+                Position += new Vector2(20, 0);
+            Physics.Velocity = new Vector2(100, -180);
+            Physics.ApplyGravity();
         }
-
     }
 }

@@ -49,6 +49,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         }
         public override void SlidingFlagPole()
         {
+            mario.Physics.CurrentGravity = 100f;
             mario.MovementState = new RightSliding(mario);
         }
     }

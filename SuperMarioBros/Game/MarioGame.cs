@@ -94,6 +94,7 @@ namespace SuperMarioBros
             KeyBinding();
 
             ObjectsManager.Mario.DeathEvent += HeadsUps.OnMarioDeath;
+            ObjectsManager.Mario.SlidingEvent += HeadsUps.AddFlagScore;
             ObjectsManager.Mario.DeathEvent += HeadsUps.ResetTimer;
             ObjectsManager.Mario.PowerUpEvent += HeadsUps.PowerUpCollected;
             ObjectsManager.Mario.ExtraLifeEvent += HeadsUps.ExtraLife;

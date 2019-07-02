@@ -48,6 +48,8 @@ namespace SuperMarioBros.Collisions
         private static void SlidingFlagPole(IMario mario, IItem item)
         {
             mario.SlidingFlagPole();
+            if(mario.Position.Y <= 88)
+                mario.Position = new Vector2(mario.Position.X, 88);
             mario.Position += marioFlagOffset;
             item.ObjState = ObjectState.NonCollidable;
             MarioGame.Instance.ChangeToFlagPoleState();

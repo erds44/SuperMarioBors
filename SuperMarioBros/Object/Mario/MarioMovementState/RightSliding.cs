@@ -47,6 +47,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         }
         public override void ChangeSlidingDirection()
         {
+            mario.Physics.CurrentGravity = 100f;
             mario.MovementState = new LeftSliding(mario);
         }
     }

@@ -28,10 +28,10 @@ namespace SuperMarioBros.Collisions
         {
             if (MarioGame.Instance.State is FlagPoleState && direction == Direction.top)
             {
-                if (block is ConcreteBlock)
-                    MarioVsConcreteBlockFlagPoleStage();
-                else
-                    MarioVsRockBlockFlagPoleStage();
+                if (block is RockBlock)
+                    mario.Right();
+                OnGround(mario);
+                ResolveOverlap(mario, block, Direction.top);
             }
             else
             {
@@ -124,23 +124,6 @@ namespace SuperMarioBros.Collisions
                 ObjectFactory.Instance.CreateCollidableObject(typeof(UsedBlock), block.Position);
                 ResolveOverlap(mario, block, direction);
             }
-        }
-        private void MarioVsConcreteBlockFlagPoleStage()
-        {
-            if(mario.MovementState is RightSliding)
-            {
-                mario.ChangeSlidingDirection();
-                mario.Physics.Velocity = new Vector2(100, -150);
-            }
-            else
-                OnGround(mario);
-            ResolveOverlap(mario, block, Direction.top);
-        }
-        private void MarioVsRockBlockFlagPoleStage()
-        {
-            mario.Right();
-            OnGround(mario);
-            ResolveOverlap(mario, block, Direction.top);
         }
     }
 }

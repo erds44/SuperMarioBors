@@ -14,6 +14,7 @@ namespace SuperMarioBros.Marios
         event Action DeathEvent;
         event Action<Vector2> PowerUpEvent;
         event Action<Vector2> ExtraLifeEvent;
+        event Action<Vector2> SlidingEvent;
         int EnemyKillStreakCounter { get; set; }
         double NoMovementTimer { get; set; }
         bool OnGround { get; set; }
@@ -36,6 +37,6 @@ namespace SuperMarioBros.Marios
         void TakeDamage();
         void TimeOver();
         void SlidingFlagPole();
-        void ChangeSlidingDirection();
+        void JumpingOffFlag();
     }
 }

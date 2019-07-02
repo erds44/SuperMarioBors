@@ -74,7 +74,7 @@ namespace SuperMarioBros.Loading
              new SpritesNode("SmallCloud","SmallCloud"),
              new SpritesNode("FireBall","FireBall"),
              new SpritesNode("FireExplosion","FireExplosion",0,0,3),
-             new SpritesNode("FlagPole","FlagPole",16,304),
+             new SpritesNode("FlagPole","FlagPole",16,600), //304
              new SpritesNode("Castle","Castle",32,62),
 
             new SpritesNode("SmallMarioLeftSliding","SmallMarioLeftSliding",26,30),
@@ -85,6 +85,7 @@ namespace SuperMarioBros.Loading
             new SpritesNode("FireMarioRightSliding","FireMarioRightSliding",28,60),
 
             new SpritesNode("WinFlag","WinFlag",0,0),
+            new SpritesNode("Flag","Flag",32,32),
         };
 
         private List<SpritesNode> spritesList;

@@ -1,4 +1,5 @@
 ﻿using SuperMarioBros.HeadsUps;
+using SuperMarioBros.Items;
 using SuperMarioBros.Managers;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Enemy;
@@ -57,6 +58,12 @@ namespace SuperMarioBros.Loading
                 IDynamic obj = dynamicObjects.First().Item2;
                 if (obj is IEnemy)
                     ((IEnemy)obj).StompedEvent += headsUp.EnemyStomped; //Initialize this event to the enemy.
+                else if (obj is Flag)
+                {
+                    objectLoader.Mario.SlidingEvent += ((Flag)obj).Sliding;
+                    ((Flag)obj).MarioJumpingOffFlagEvent += objectLoader.Mario.JumpingOffFlag;
+                }
+                    
                 objectsManager.AddObject(obj);
                 dynamicObjects.RemoveAt(0);
             }

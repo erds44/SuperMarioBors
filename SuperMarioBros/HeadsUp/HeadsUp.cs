@@ -3,11 +3,8 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.GameStates;
 using SuperMarioBros.Items;
-using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
 using System;
-using System.Collections.Generic;
-using System.Threading;
 
 namespace SuperMarioBros.HeadsUps
 {
@@ -93,6 +90,14 @@ namespace SuperMarioBros.HeadsUps
             score += addScore;
             ObjectFactory.Instance.CreateScoreText(position, spriteFont, addScore.ToString());
         }
+
+        public void AddFlagScore(Vector2 position)
+        {
+            int flagScore = (int)(375 - position.Y) * (5000 / 304);
+            ObjectFactory.Instance.CreateScoreText(position, spriteFont, flagScore.ToString());
+            score += flagScore;
+        }
+
         public void ResetTimer()
         {
             timer = 400;
