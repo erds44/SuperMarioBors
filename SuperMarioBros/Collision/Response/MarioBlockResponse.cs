@@ -64,7 +64,7 @@ namespace SuperMarioBros.Collisions
             {
                 if (direction == pipe.TeleportDirection && Keyboard.GetState().IsKeyDown(Keys.Down))
                 {
-                    mario.TeleportDownWard(pipe.TransferedLocation, Direction.bottom);
+                    mario.Teleport(pipe.TransferedLocation, Direction.bottom);
                     pipe.Teleported = true;
                 }
                 else

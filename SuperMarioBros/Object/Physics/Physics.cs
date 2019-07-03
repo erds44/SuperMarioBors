@@ -12,6 +12,7 @@ namespace SuperMarioBros.Physicses
         private Vector2 displacement = Vector2.Zero;
         private float sprintVelocityRate;
         private readonly float weight;
+        private float currentWeight;
         private readonly float acceleration = 0f;
         private readonly float deceleration = 0f;
         public Vector2 Velocity {get; set;}
@@ -29,6 +30,7 @@ namespace SuperMarioBros.Physicses
             sprintVelocityRate = 1f;     // used for x speed up, by calling set spirnt speed method
             CurrentGravity = 0f;         // it does not actually boost speed but increse displacement, since if x is KeyUp, we
             this.weight = weight;        // wish to see the speed goes back to original state
+            currentWeight = weight;
             this.acceleration = acceleration;
             deceleration = 2f * acceleration;
             this.gravity = gravity;
@@ -57,6 +59,7 @@ namespace SuperMarioBros.Physicses
         public void ApplyGravity()
         {
             CurrentGravity = gravity;
+            currentWeight = weight;
         }
         public void SpeedDecay()
         {
@@ -74,7 +77,7 @@ namespace SuperMarioBros.Physicses
         {
             dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (Velocity.Y > 0)
-                Velocity = new Vector2(Velocity.X, Velocity.Y + (CurrentGravity + weight) * dt); /* make jumping downward faster */
+                Velocity = new Vector2(Velocity.X, Velocity.Y + (CurrentGravity + currentWeight) * dt); /* make jumping downward faster */
             else
                 Velocity = new Vector2(Velocity.X, Velocity.Y + CurrentGravity * dt);
             Clamping();
@@ -92,9 +95,10 @@ namespace SuperMarioBros.Physicses
             else if (Velocity.X > maxClamping)
                 Velocity = new Vector2(maxClamping, Velocity.Y);
         }
-        public void SetJumpKeyUP()
+        public void SetConstentVelocity(Vector2 velocity)
         {
-                JumpKeyUp = true;
+            CurrentGravity = -200f;
+            Velocity = velocity;
         }
     }
 }

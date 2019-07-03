@@ -42,6 +42,6 @@ namespace SuperMarioBros.Marios
         void TimeOver();
         void SlidingFlagPole();
         void JumpingOffFlag();
-        void TeleportDownWard(Vector2 teleportPosition, Direction direction);
+        void Teleport(Vector2 teleportPosition, Direction direction);
     }
 }
