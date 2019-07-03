@@ -127,6 +127,7 @@
     <None Include="Content\ConcreteBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\Content.mgcb" />
     <None Include="Content\DeadMario.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -316,6 +317,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AudioFactory\MusicFactory.cs" />
     <Compile Include="Camera\Camera.cs" />
     <Compile Include="Collision\IHandler.cs" />
     <Compile Include="Collision\IResponsible.cs" />
@@ -338,10 +340,13 @@
     <Compile Include="Game\GameState\MenuState.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="HeadsUp\HeadsUp.cs" />
-    <Compile Include="Loading\DynamicLoading.cs" />
-    <Compile Include="Loading\ObjectsLoading.cs" />
-    <Compile Include="Loading\SpritesLoading.cs" />
+    <Compile Include="Loading\AudioNode.cs" />
+    <Compile Include="Loading\DynamicLoader.cs" />
+    <Compile Include="Loading\ObjectsLoader.cs" />
+    <Compile Include="Loading\AudioLoader.cs" />
+    <Compile Include="Loading\SpritesLoader.cs" />
     <Compile Include="Loading\SpritesNode.cs" />
+    <Compile Include="Utility\XMLUtilities.cs" />
     <Compile Include="Manager\CollisionManager.cs" />
     <Compile Include="Collision\Handler\DynamicAndDynamicObjectsHandler .cs" />
     <Compile Include="Collision\Handler\DynamicAndStaticObjecstHandler.cs" />
@@ -360,7 +365,8 @@
     <Compile Include="Controller\JoyStickController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="General Interfaces\IDraw.cs" />
-    <Compile Include="Loading\ObjectNode.cs" />
+    <Compile Include="Loading\ObjectsNode.cs" />
+    <Compile Include="Manager\SoundManager.cs" />
     <Compile Include="Object\Background\AbstractBackGround.cs" />
     <Compile Include="Object\Background\BigBush.cs" />
     <Compile Include="Object\Background\BigCloud.cs" />
@@ -446,6 +452,7 @@
     <Compile Include="Object\Mario\MarioTransitionState\StarState.cs" />
     <Compile Include="Object\ObjectFactory.cs" />
     <Compile Include="Object\Physics\Physics.cs" />
+    <Compile Include="AudioFactory\SoundEffectFactory.cs" />
     <Compile Include="SpriteFactory\SpriteFactory.cs" />
     <Compile Include="General Interfaces\IUpdate.cs" />
     <Compile Include="Game\MarioGame.cs" />

@@ -20,7 +20,7 @@ namespace SuperMarioBros.SpriteFactories
         public static void Initialize(ContentManager inputContent)
         {
             content = inputContent;
-            SpritesLoading spritesLoading = new SpritesLoading();
+            SpritesLoader spritesLoading = new SpritesLoader();
             spritesInfo = spritesLoading.SpritesInfo();
             derbisSprite = new Dictionary<BrickPosition, ISprite>
             {

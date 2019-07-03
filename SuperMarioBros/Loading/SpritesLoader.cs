@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
+using static SuperMarioBros.Utilities.XMLUtility;
 
 namespace SuperMarioBros.Loading
 {
-    public class SpritesLoading
+    public class SpritesLoader
     {
         private readonly List<SpritesNode> spritesCollection = new List<SpritesNode>
         {
@@ -90,7 +91,7 @@ namespace SuperMarioBros.Loading
 
         private List<SpritesNode> spritesList;
 
-        public SpritesLoading()
+        public SpritesLoader()
         {
             spritesList = new List<SpritesNode>();
             XMLWriter("Sprites.xml", spritesCollection);
@@ -99,34 +100,12 @@ namespace SuperMarioBros.Loading
         public Dictionary<string, SpritesNode> SpritesInfo()
         {
             Dictionary<string, SpritesNode> spritesInfo = new Dictionary<string, SpritesNode>();
-            XMLReader("Sprites.xml");
+            spritesList = XMLReader<SpritesNode>("Sprites.xml");
             foreach (SpritesNode node in this.spritesList)
             {
                 spritesInfo.Add(node.ObjectName, node);
             }
             return spritesInfo;
         }
-
-
-        private void XMLReader(string path)
-        {
-            spritesList = new List<SpritesNode>();
-            using (var reader = new StreamReader(new FileStream(path, FileMode.Open)))
-            {
-                var serializer = new XmlSerializer(typeof(List<SpritesNode>));
-                spritesList = (List<SpritesNode>)serializer.Deserialize(reader);
-            }
-        }
-
-        private static void XMLWriter(string path, List<SpritesNode> list)
-        {
-            using (var writer = new StreamWriter(new FileStream(path, FileMode.Create)))
-            {
-                XmlSerializer serializer = new XmlSerializer(typeof(List<SpritesNode>));
-                serializer.Serialize(writer, list);
-            }
-        }
-
-
     }
 }
