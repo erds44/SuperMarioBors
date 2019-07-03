@@ -4,10 +4,10 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SuperMarioBros.GameStates
 {
-    public class PauseState : IGameState
+    public class TeleportingState : IGameState
     {
         private GraphicsDevice graphicsDevice;
-        public PauseState(GraphicsDevice graphicsDevice)
+        public TeleportingState(GraphicsDevice graphicsDevice)
         {
             this.graphicsDevice = graphicsDevice;
         }
@@ -22,12 +22,14 @@ namespace SuperMarioBros.GameStates
 
         public void Pause()
         {
-            MarioGame.Instance.State = new GameState(graphicsDevice);
+            //Do Nothing
         }
 
         public void Update(GameTime gameTime)
         {
-
+            MarioGame.Instance.marioCamera.Update();
+            MarioGame.Instance.ObjectsManager.Mario.Update(gameTime);
+            MarioGame.Instance.collisionManager.Update();
         }
     }
 }

@@ -62,9 +62,9 @@ namespace SuperMarioBros.Collisions
             TeleportPipe pipe = (TeleportPipe)block;
             if (!pipe.Teleported)
             {
-                if (direction == Direction.top && direction == pipe.TeleportDirection && Keyboard.GetState().IsKeyDown(Keys.Down))
+                if (direction == pipe.TeleportDirection && Keyboard.GetState().IsKeyDown(Keys.Down))
                 {
-                    mario.TeleportDownWard(pipe.TransferedLocation);
+                    mario.TeleportDownWard(pipe.TransferedLocation, Direction.bottom);
                     pipe.Teleported = true;
                 }
                 else

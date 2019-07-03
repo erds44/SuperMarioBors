@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Collisions;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Objects;
@@ -41,6 +42,6 @@ namespace SuperMarioBros.Marios
         void TimeOver();
         void SlidingFlagPole();
         void JumpingOffFlag();
-        void TeleportDownWard(Vector2 teleportPosition);
+        void TeleportDownWard(Vector2 teleportPosition, Direction direction);
     }
 }

@@ -27,7 +27,7 @@ namespace SuperMarioBros.Items
             else
             {
                 Thread.Sleep(1000);
-                MarioGame.Instance.Exit();
+                MarioGame.Instance.StartOver();
             }
         }
         public override Rectangle HitBox()
