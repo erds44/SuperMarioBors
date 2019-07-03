@@ -1,8 +1,8 @@
 
 #----------------------------- Global Properties ----------------------------#
 
-/outputDir:bin/$(Platform)
-/intermediateDir:obj/$(Platform)
+/outputDir:bin
+/intermediateDir:obj
 /platform:Windows
 /config:
 /profile:Reach
@@ -13,249 +13,111 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Musics/01-main-theme-overworld.mp3
-/importer:Mp3Importer
+#begin Musics/castle.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/01-main-theme-overworld.mp3
+/build:Musics/castle.wma
 
-#begin Musics/02-underworld.mp3
-/importer:Mp3Importer
+#begin Musics/castleComplete.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/02-underworld.mp3
+/build:Musics/castleComplete.wma
 
-#begin Musics/03-underwater.mp3
-/importer:Mp3Importer
+#begin Musics/ending.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/03-underwater.mp3
+/build:Musics/ending.wma
 
-#begin Musics/04-castle.mp3
-/importer:Mp3Importer
+#begin Musics/gameover.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/04-castle.mp3
+/build:Musics/gameover.wma
 
-#begin Musics/05-starman.mp3
-/importer:Mp3Importer
+#begin Musics/gameover2.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/05-starman.mp3
+/build:Musics/gameover2.wma
 
-#begin Musics/06-level-complete.mp3
-/importer:Mp3Importer
+#begin Musics/hurry.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/06-level-complete.mp3
+/build:Musics/hurry.wma
 
-#begin Musics/07-castle-complete.mp3
-/importer:Mp3Importer
+#begin Musics/hurryCastle.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/07-castle-complete.mp3
+/build:Musics/hurryCastle.wma
 
-#begin Musics/08-you-re-dead.mp3
-/importer:Mp3Importer
+#begin Musics/hurryOverworld.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/08-you-re-dead.mp3
+/build:Musics/hurryOverworld.wma
 
-#begin Musics/09-game-over.mp3
-/importer:Mp3Importer
+#begin Musics/hurryStarman.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/09-game-over.mp3
+/build:Musics/hurryStarman.wma
 
-#begin Musics/10-game-over-2.mp3
-/importer:Mp3Importer
+#begin Musics/hurryUnderground.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/10-game-over-2.mp3
+/build:Musics/hurryUnderground.wma
 
-#begin Musics/11-into-the-tunnel.mp3
-/importer:Mp3Importer
+#begin Musics/hurryUnderwater.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/11-into-the-tunnel.mp3
+/build:Musics/hurryUnderwater.wma
 
-#begin Musics/12-ending.mp3
-/importer:Mp3Importer
+#begin Musics/intothetunnel.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/12-ending.mp3
+/build:Musics/intothetunnel.wma
 
-#begin Musics/13-hurry.mp3
-/importer:Mp3Importer
+#begin Musics/levelComplete.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/13-hurry.mp3
+/build:Musics/levelComplete.wma
 
-#begin Musics/14-hurry-underground-.mp3
-/importer:Mp3Importer
+#begin Musics/overworld.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/14-hurry-underground-.mp3
+/build:Musics/overworld.wma
 
-#begin Musics/15-hurry-underwater-.mp3
-/importer:Mp3Importer
+#begin Musics/starman.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/15-hurry-underwater-.mp3
+/build:Musics/starman.wma
 
-#begin Musics/16-hurry-castle-.mp3
-/importer:Mp3Importer
+#begin Musics/underwater.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/16-hurry-castle-.mp3
+/build:Musics/underwater.wma
 
-#begin Musics/17-hurry-starman-.mp3
-/importer:Mp3Importer
+#begin Musics/underworld.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/17-hurry-starman-.mp3
+/build:Musics/underworld.wma
 
-#begin Musics/18-hurry-overworld-.mp3
-/importer:Mp3Importer
+#begin Musics/youredead.wma
+/importer:WmaImporter
 /processor:SongProcessor
 /processorParam:Quality=Best
-/build:Musics/18-hurry-overworld-.mp3
-
-#begin Sounds/1up.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/1up.wav
-
-#begin Sounds/bowserfall.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/bowserfall.wav
-
-#begin Sounds/bowserfire.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/bowserfire.wav
-
-#begin Sounds/breakblock.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/breakblock.wav
-
-#begin Sounds/bump.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/bump.wav
-
-#begin Sounds/coin.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/coin.wav
-
-#begin Sounds/fireball.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/fireball.wav
-
-#begin Sounds/fireworks.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/fireworks.wav
-
-#begin Sounds/flagpole.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/flagpole.wav
-
-#begin Sounds/gameover.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/gameover.wav
-
-#begin Sounds/jump.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/jump.wav
-
-#begin Sounds/jumpsuper.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/jumpsuper.wav
-
-#begin Sounds/kick.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/kick.wav
-
-#begin Sounds/mariodie.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/mariodie.wav
-
-#begin Sounds/pause.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/pause.wav
-
-#begin Sounds/pipe.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/pipe.wav
-
-#begin Sounds/powerup.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/powerup.wav
-
-#begin Sounds/powerupappears.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/powerupappears.wav
-
-#begin Sounds/stageclear.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/stageclear.wav
-
-#begin Sounds/stomp.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/stomp.wav
-
-#begin Sounds/vine.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/vine.wav
-
-#begin Sounds/warning.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/warning.wav
-
-#begin Sounds/worldclear.wav
-/importer:WavImporter
-/processor:SoundEffectProcessor
-/processorParam:Quality=Best
-/build:Sounds/worldclear.wav
+/build:Musics/youredead.wma
 
