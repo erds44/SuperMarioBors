@@ -34,6 +34,9 @@ namespace SuperMarioBros.Marios
         public bool OnGround { get; set; }
         public double NoMovementTimer { get; set; }
         public IMarioTransitionState TransitionState { get; set; }
+        private float expectedYPosition = 0f;
+        private bool isTeleporting = false;
+        private Vector2 teleportPosition;
         public Mario(Vector2 location)
         {
             HealthState = new SmallMario(this);
@@ -107,6 +110,12 @@ namespace SuperMarioBros.Marios
                 Sprite.Update(gameTime);
                 Position += Physics.Displacement(gameTime);
             }
+            if(isTeleporting && Position.Y >= expectedYPosition)
+            {
+                Position = teleportPosition;
+                isTeleporting = false;
+                Physics.ApplyGravity();
+            }
         }
         public void Destroy()
         {
@@ -161,6 +170,22 @@ namespace SuperMarioBros.Marios
                 Position += new Vector2(20, 0);
             Physics.Velocity = new Vector2(100, -180);
             Physics.ApplyGravity();
+        }
+
+        public void TeleportDownWard(Vector2 teleportPosition)
+        {
+            expectedYPosition = Position.Y + SpriteFactory.ObjectSize(HealthState.GetType().Name + MovementState.GetType().Name).Y;
+            isTeleporting = true;
+            this.teleportPosition = teleportPosition;
+            Physics.CurrentGravity = -200f;
+            Physics.Velocity = new Vector2(0, 25);
+
+        }
+
+        public void KeyDownUp()
+        {
+            if (!(HealthState is SmallMario))
+                MovementState.Up();
         }
     }
 }

@@ -87,6 +87,7 @@ namespace SuperMarioBros.Loading
 
             new SpritesNode("WinFlag","WinFlag",0,0),
             new SpritesNode("Flag","Flag",32,32),
+            new SpritesNode("TeleportPipe","Pipe",72,74),
         };
 
         private List<SpritesNode> spritesList;

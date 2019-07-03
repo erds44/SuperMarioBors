@@ -92,5 +92,9 @@ namespace SuperMarioBros.Physicses
             else if (Velocity.X > maxClamping)
                 Velocity = new Vector2(maxClamping, Velocity.Y);
         }
+        public void SetJumpKeyUP()
+        {
+                JumpKeyUp = true;
+        }
     }
 }

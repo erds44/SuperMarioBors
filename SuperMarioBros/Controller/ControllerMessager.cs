@@ -12,8 +12,8 @@ namespace SuperMarioBros.Controllers
      */
     public class ControllerMessager : IUpdatable
     {
-        private int flags = 0b000000000;
-        public const int UPMOVE = 0b000000001, DOWNMOVE = 0b000000010, LEFTMOVE = 0b000000100, RIGHTMOVE = 0b000001000, RESETGAME = 0b000010000, QUITGAME = 0b000100000, POWER = 0b001000000, KEYUPUPMOVE = 0b010000000, KEYUPPOWER = 0b100000000;
+        private int flags = 0b0000000000;
+        public const int UPMOVE = 0b0000000001, DOWNMOVE = 0b0000000010, LEFTMOVE = 0b0000000100, RIGHTMOVE = 0b0000001000, RESETGAME = 0b0000010000, QUITGAME = 0b0000100000, POWER = 0b0001000000, KEYUPUPMOVE = 0b0010000000, KEYUPPOWER = 0b0100000000, KEYDOWNUP = 0b1000000000;
         private readonly IMario marioPlayer;
         private readonly List<IController> controllers;
         private readonly Dictionary<int, Type> gameCommand = new Dictionary<int, Type>{
@@ -28,6 +28,8 @@ namespace SuperMarioBros.Controllers
             { POWER, typeof(PowerCommand) },
             { KEYUPUPMOVE, typeof(KeyUpUpCommand) },
             { KEYUPPOWER, typeof(KeyUpPowerCommand) },
+            { KEYDOWNUP, typeof(KeyDownUpCommand) },
+
         };
         public ControllerMessager(IMario mario)
         {
@@ -57,7 +59,7 @@ namespace SuperMarioBros.Controllers
             {
                 if((flags & element.Key) != 0) { ((ICommand)Activator.CreateInstance(element.Value, marioPlayer)).Execute(); }
             }
-            flags = 0b000000000; //Reset flags.
+            flags = 0b0000000000; //Reset flags.
         }
         public void ChangeFlags(int command)
         {

@@ -13,8 +13,8 @@ namespace SuperMarioBros.Controllers
             { Keys.W, ControllerMessager.KEYUPUPMOVE },
             { Keys.Z, ControllerMessager.KEYUPUPMOVE },
             { Keys.X, ControllerMessager.KEYUPPOWER },
-            { Keys.Down, ControllerMessager.UPMOVE },
-            { Keys.S, ControllerMessager.UPMOVE }
+            { Keys.Down, ControllerMessager.KEYDOWNUP },
+            { Keys.S, ControllerMessager.KEYDOWNUP }
         };
         private readonly List<Keys> checkKeyUplist = new List<Keys>();
         private readonly ControllerMessager messager;

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using SuperMarioBros.Collisions;
+using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
 
@@ -14,8 +16,8 @@ namespace SuperMarioBros.Loading
         public List<IObject> NonCollidables { get; private set; }
         public IMario Mario { get; private set; }
         private readonly List<ObjectsNode> staticList = new List<ObjectsNode>
-            { 
-
+            {
+                
                 //test
                 (new ObjectsNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(0,288),1,1,35,"SuperMarioBros.Items.Coin",4)),
                 (new ObjectsNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(100,288),1,1,35,"SuperMarioBros.Items.Star",1)),
@@ -23,7 +25,7 @@ namespace SuperMarioBros.Loading
                 (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(200,288),1,1,35,"SuperMarioBros.Items.Coin")),
                 (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(235,288),1,1,35,"null")),
                 (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(270,288),1,2,35,"SuperMarioBros.Items.Coin")),
-                (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(400,410),1,2,340)),
+               // (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(400,410),1,2,340)),
                 (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(545,248),1,1,35,"SuperMarioBros.Items.Coin")),
                 (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(510,248),1,1,35,"null")),
                 (new ObjectsNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(580,248),1,1,35,"SuperMarioBros.Items.GreenMushroom")),
@@ -228,6 +230,7 @@ namespace SuperMarioBros.Loading
 
                 }
             }
+            Statics.Add(new TeleportPipe(new Vector2(400, 410), new Vector2(9000, 110), Direction.top));
         }
 
         private void HorizontalLine(ObjectsNode node)
