@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.GameStates;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
@@ -35,8 +36,8 @@ namespace SuperMarioBros.Marios
         public IMarioTransitionState TransitionState { get; set; }
         public Mario(Vector2 location)
         {
-            //HealthState = new SmallMario(this);
-            HealthState = new BigMario(this);
+            HealthState = new SmallMario(this);
+            //HealthState = new BigMario(this);
             Physics = new Physics(new Vector2(0,0), 800f, 200f, 150f);
             Physics.ApplyGravity();
             MovementState = new RightIdle(this);

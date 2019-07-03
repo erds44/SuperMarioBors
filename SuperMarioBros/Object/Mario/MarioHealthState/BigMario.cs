@@ -10,8 +10,8 @@ namespace SuperMarioBros.Marios.MarioTypeStates
         public BigMario(IMario mario)
         {
             this.mario = mario;
-            //mario.Sprite = SpriteFactory.CreateSprite(GetType().Name + mario.MovementState.GetType().Name);
-            mario.Sprite = SpriteFactory.CreateSprite(GetType().Name + "RightIdle");
+            mario.Sprite = SpriteFactory.CreateSprite(GetType().Name + mario.MovementState.GetType().Name);
+            //mario.Sprite = SpriteFactory.CreateSprite(GetType().Name + "RightIdle");
         }
 
         public void TakeDamage()

@@ -19,6 +19,7 @@ namespace SuperMarioBros
     {
         public int WindowWidth { get; private set; }
         public int WindowHeight { get; private set; }
+        private bool pause = false;
 
         public ObjectsManager ObjectsManager { get; set; }
         public Camera Camera { get => marioCamera; }
@@ -61,8 +62,22 @@ namespace SuperMarioBros
         }
         protected override void Update(GameTime gameTime)
         {
+            CheckPause();
             State.Update(gameTime);
             base.Update(gameTime);
+        }
+
+        private void CheckPause()
+        {
+            if (!pause && Keyboard.GetState().IsKeyDown(Keys.P))
+            {
+                pause = true;
+                State.Pause();
+            }
+            else if (pause && Keyboard.GetState().IsKeyUp(Keys.P))
+            {
+                pause = false;
+            }
         }
 
         protected override void Draw(GameTime gameTime)
@@ -124,5 +139,6 @@ namespace SuperMarioBros
             IController JoyStickController = new JoyStickController(controller);
             controller.AddController(JoyStickController);
         }
+
     }
 }

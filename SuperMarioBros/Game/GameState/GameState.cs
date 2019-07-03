@@ -30,5 +30,9 @@ namespace SuperMarioBros.GameStates
             MarioGame.Instance.collisionManager.Update();
             MarioGame.Instance.HeadsUps.Update(gameTime);
         }
+        public void Pause()
+        {
+            MarioGame.Instance.State = new PauseState(graphicsDevice);
+        }
     }
 }

@@ -332,6 +332,7 @@
     <Compile Include="Game\GameState\Buttons.cs" />
     <Compile Include="Game\GameState\GameOverState.cs" />
     <Compile Include="Game\GameState\FlagPoleState.cs" />
+    <Compile Include="Game\GameState\PauseState.cs" />
     <Compile Include="Game\GameState\PlayerStatusState.cs" />
     <Compile Include="Game\GameState\GameState.cs" />
     <Compile Include="Game\GameState\IGameState.cs" />

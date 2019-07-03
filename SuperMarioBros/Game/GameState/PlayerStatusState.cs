@@ -22,6 +22,11 @@ namespace SuperMarioBros.GameStates
             spriteBatch.End();
         }
 
+        public void Pause()
+        {
+           // Do Nothing
+        }
+
         public void Update(GameTime gameTime)
         {
             timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
