@@ -1,9 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.Blocks;
 using SuperMarioBros.GameStates;
 using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
-using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Objects;
 using System;
@@ -37,6 +36,8 @@ namespace SuperMarioBros.Collisions
             {
                 if (block is HiddenBlock)
                     MarioVsHiddenBlock(mario, block, direction);
+                else if (block is TeleportPipe)
+                    MarioVsTeleportPipe(mario, block, direction);
                 else
                 {
                     ResolveOverlap(mario, block, direction);
@@ -55,6 +56,30 @@ namespace SuperMarioBros.Collisions
                 }
             }
         }
+
+        private void MarioVsTeleportPipe(IMario mario, IBlock block, Direction direction)
+        {
+            TeleportPipe pipe = (TeleportPipe)block;
+            if (!pipe.Teleported)
+            {
+                if (direction == pipe.TeleportDirection && Keyboard.GetState().IsKeyDown(Keys.Down))
+                {
+                    mario.TeleportDownWard(pipe.TransferedLocation, Direction.bottom);
+                    pipe.Teleported = true;
+                }
+                else
+                {
+                    ResolveOverlap(mario, block, direction);
+                    switch (direction)
+                    {
+                        case Direction.top: OnGround(mario); break;
+                        case Direction.bottom: GroundOrTopBounce(mario); break;
+                        default: LeftOrRightBlock(mario); break;
+                    }
+                }
+            }
+        }
+
         private readonly Dictionary<Type, MarioBlockHandler> handlerDictionary = new Dictionary<Type, MarioBlockHandler>
         {
             {typeof(BrickBlock), MarioVsBrickBlock},

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.Collisions;
 using SuperMarioBros.GameStates;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
@@ -10,6 +11,7 @@ using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
 using System;
+using System.Collections.Generic;
 
 namespace SuperMarioBros.Marios
 {
@@ -33,10 +35,20 @@ namespace SuperMarioBros.Marios
         public bool OnGround { get; set; }
         public double NoMovementTimer { get; set; }
         public IMarioTransitionState TransitionState { get; set; }
+        private bool isTeleporting = false;
+        private Vector2 teleportPosition;
+        private Vector2 expectedPosition;
+        private readonly Dictionary<Direction, (Vector2, Vector2)> teleportDictionary = new Dictionary<Direction, (Vector2, Vector2)>
+        {
+            { Direction.top, (new Vector2(0, -25), new Vector2(0, -50))},
+            { Direction.bottom, (new Vector2(0, 25), new Vector2(0, 50))},
+            { Direction.left, (new Vector2(-25, 0), new Vector2(-50, 0))},
+            { Direction.right, (new Vector2(25, 0), new Vector2(50, 0))},
+        };
         public Mario(Vector2 location)
         {
-            //HealthState = new SmallMario(this);
-            HealthState = new BigMario(this);
+            HealthState = new SmallMario(this);
+            //HealthState = new BigMario(this);
             Physics = new Physics(new Vector2(0,0), 800f, 200f, 150f);
             Physics.ApplyGravity();
             MovementState = new RightIdle(this);
@@ -106,6 +118,13 @@ namespace SuperMarioBros.Marios
                 Sprite.Update(gameTime);
                 Position += Physics.Displacement(gameTime);
             }
+            if(isTeleporting && (int)Position.Y == (int)expectedPosition.Y && (int)Position.X == (int)expectedPosition.X )
+            {
+                Position = teleportPosition;
+                isTeleporting = false;
+                Physics.ApplyGravity();
+                MarioGame.Instance.ChangeToGameState();
+            }
         }
         public void Destroy()
         {
@@ -149,7 +168,6 @@ namespace SuperMarioBros.Marios
         {
             MovementState.SlidingFlagPole();
             SlidingEvent?.Invoke(Position);
-            Console.WriteLine(Physics.CurrentGravity);
         }
 
         public void JumpingOffFlag()
@@ -160,6 +178,26 @@ namespace SuperMarioBros.Marios
                 Position += new Vector2(20, 0);
             Physics.Velocity = new Vector2(100, -180);
             Physics.ApplyGravity();
+        }
+
+        public void TeleportDownWard(Vector2 teleportPosition, Direction direction)
+        {
+            isTeleporting = true;
+            if(teleportDictionary.TryGetValue(direction, out var tuple))
+            {
+                expectedPosition += Position + tuple.Item2;
+                Physics.Velocity = tuple.Item1;
+                Physics.CurrentGravity = -200f; // to do 
+            }
+            this.teleportPosition = teleportPosition;
+            MarioGame.Instance.ChangeToTeleportingState();
+        }
+
+
+        public void KeyDownUp()
+        {
+            if (!(HealthState is SmallMario))
+                MovementState.Up();
         }
     }
 }

@@ -6,6 +6,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 {
     public class LeftIdle : AbstractMovementState, IMarioMovementState
     {
+        private bool isDown = false;
         public LeftIdle(IMario mario)
         {
             this.mario = mario;
@@ -16,7 +17,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Down()
         {
-            if(!(mario.HealthState is SmallMario ))
+            if (!(mario.HealthState is SmallMario))
                 mario.MovementState = new LeftCrouching(mario);
         }
 
@@ -37,7 +38,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Up()
         {
-            if (!mario.Physics.Jump)
+            if (!mario.Physics.Jump && !isDown)
                 mario.MovementState = new LeftJumping(mario);
         }
         public override void Update(GameTime gameTime)

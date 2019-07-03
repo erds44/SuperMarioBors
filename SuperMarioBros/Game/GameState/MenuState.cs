@@ -56,6 +56,10 @@ namespace SuperMarioBros.GameStates
                 ele.Update(gameTime);
         }
 
+        public void Pause()
+        {
+            // Do Nothing
+        }
     }
 }
 

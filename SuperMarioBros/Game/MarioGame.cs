@@ -21,6 +21,7 @@ namespace SuperMarioBros
     {
         public int WindowWidth { get; private set; }
         public int WindowHeight { get; private set; }
+        private bool pause = false;
 
         public ObjectsManager ObjectsManager { get; set; }
         public Camera Camera { get => marioCamera; }
@@ -29,6 +30,7 @@ namespace SuperMarioBros
         public CollisionManager collisionManager;
 
         public Camera marioCamera;
+
         public HeadsUp HeadsUps { get; set; }
         public static MarioGame Instance { get; private set; }
         public IGameState State { get; set; }
@@ -63,8 +65,22 @@ namespace SuperMarioBros
         }
         protected override void Update(GameTime gameTime)
         {
+            CheckPause();
             State.Update(gameTime);
             base.Update(gameTime);
+        }
+
+        private void CheckPause()
+        {
+            if (!pause && Keyboard.GetState().IsKeyDown(Keys.P))
+            {
+                pause = true;
+                State.Pause();
+            }
+            else if (pause && Keyboard.GetState().IsKeyUp(Keys.P))
+            {
+                pause = false;
+            }
         }
 
         protected override void Draw(GameTime gameTime)
@@ -80,10 +96,11 @@ namespace SuperMarioBros
         {
             State = new GameOverState(graphics.GraphicsDevice, Content);
         }
-        public void ChangeToMenuState()
+        public void ChangeToTeleportingState()
         {
-            State = new MenuState(graphics.GraphicsDevice, Content);
+            State = new TeleportingState(graphics.GraphicsDevice);
         }
+       
         public void InitializeGame()
         {
 
@@ -107,6 +124,12 @@ namespace SuperMarioBros
             ObjectsManager.Mario.ClearingScoresEvent += HeadsUps.ClearingScores;
             HeadsUps.timerOverEvent += ObjectsManager.Mario.TimeOver;
         }
+
+        public void ChangeToGameState()
+        {
+           State = new GameState(graphics.GraphicsDevice);
+        }
+
         public void KeyBinding()
         {
             IMario mario = ObjectsManager.Mario;
@@ -130,5 +153,12 @@ namespace SuperMarioBros
             IController JoyStickController = new JoyStickController(controller);
             controller.AddController(JoyStickController);
         }
+        public void StartOver()
+        {
+            Initialize();
+            InitializeGame();
+            State = new MenuState(graphics.GraphicsDevice, Content);
+        }
+
     }
 }

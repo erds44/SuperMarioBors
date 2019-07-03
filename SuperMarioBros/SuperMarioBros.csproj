@@ -452,11 +452,14 @@
     <Compile Include="Collision\Response\MarioBlockResponse.cs" />
     <Compile Include="Collision\Response\MarioEnemyResponse.cs" />
     <Compile Include="Collision\Response\MarioItemResponse.cs" />
+    <Compile Include="Command\MarioCommand\KeyDownUp.cs" />
     <Compile Include="Command\MarioCommand\KeyUpUpCommand.cs" />
     <Compile Include="Command\MarioCommand\KeyUpPowerCommand.cs" />
     <Compile Include="Game\GameState\Buttons.cs" />
     <Compile Include="Game\GameState\GameOverState.cs" />
     <Compile Include="Game\GameState\FlagPoleState.cs" />
+    <Compile Include="Game\GameState\TeleportingState.cs" />
+    <Compile Include="Game\GameState\PauseState.cs" />
     <Compile Include="Game\GameState\PlayerStatusState.cs" />
     <Compile Include="Game\GameState\GameState.cs" />
     <Compile Include="Game\GameState\IGameState.cs" />
@@ -469,6 +472,7 @@
     <Compile Include="Loading\AudioLoader.cs" />
     <Compile Include="Loading\SpritesLoader.cs" />
     <Compile Include="Loading\SpritesNode.cs" />
+    <Compile Include="Object\Block\TeleportPipe.cs" />
     <Compile Include="Utility\XMLUtilities.cs" />
     <Compile Include="Manager\CollisionManager.cs" />
     <Compile Include="Collision\Handler\DynamicAndDynamicObjectsHandler .cs" />

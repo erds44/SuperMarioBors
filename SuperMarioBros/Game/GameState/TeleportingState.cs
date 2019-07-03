@@ -1,17 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace SuperMarioBros.GameStates
 {
-    public class FlagPoleState : IGameState
+    public class TeleportingState : IGameState
     {
-        public bool UpdateHeadsUp { get; set; }
         private GraphicsDevice graphicsDevice;
-        public FlagPoleState(GraphicsDevice graphicsDevice, ContentManager content)
+        public TeleportingState(GraphicsDevice graphicsDevice)
         {
             this.graphicsDevice = graphicsDevice;
-            UpdateHeadsUp = false;
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
@@ -22,18 +20,16 @@ namespace SuperMarioBros.GameStates
             spriteBatch.End();
         }
 
-        public void Update(GameTime gameTime)
-        {
-            MarioGame.Instance.marioCamera.Update();
-            MarioGame.Instance.ObjectsManager.Update(gameTime);
-            MarioGame.Instance.collisionManager.Update();
-            if(UpdateHeadsUp)
-                MarioGame.Instance.HeadsUps.Update(gameTime);
-        }
-
         public void Pause()
         {
             //Do Nothing
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            MarioGame.Instance.marioCamera.Update();
+            MarioGame.Instance.ObjectsManager.Mario.Update(gameTime);
+            MarioGame.Instance.collisionManager.Update();
         }
     }
 }
