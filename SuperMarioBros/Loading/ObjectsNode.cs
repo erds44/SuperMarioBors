@@ -3,7 +3,7 @@ using System;
 
 namespace SuperMarioBros.Loading
 {
-    public class ObjectNode
+    public class ObjectsNode
     {
         public string ObjectType { get; set; }
         public Vector2 Position { get; set; }
@@ -14,7 +14,7 @@ namespace SuperMarioBros.Loading
         public int ItemCount { get; set; }
 
 
-        public ObjectNode(string objectType, Vector2 position, int shape, int size, int width, string itemType= "noType", int itemCount=0)
+        public ObjectsNode(string objectType, Vector2 position, int shape, int size, int width, string itemType= "noType", int itemCount=0)
         {
             this.ObjectType = objectType;
             this.Position = position;
@@ -26,7 +26,7 @@ namespace SuperMarioBros.Loading
         }
 
         //This constructor is required by the serialization
-        public ObjectNode()
+        public ObjectsNode()
         {
 
         }
