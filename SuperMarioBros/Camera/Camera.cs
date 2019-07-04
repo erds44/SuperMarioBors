@@ -6,8 +6,8 @@ namespace SuperMarioBros.Cameras
 {
     public class Camera
     {
-        public float LeftBound { get; private set; }
-        public float RightBound { get; private set; }
+        public float LeftBound { get; set; }
+        public float RightBound { get; set; }
         public IObject Focus { get; private set; }
         public Matrix Transform { get; private set; }
         public Camera()
@@ -43,7 +43,9 @@ namespace SuperMarioBros.Cameras
 
         public void Update(Vector2 focus) //Focus on given point. This does not have a "left-only" limit. 
         {
-            var position = Matrix.CreateTranslation(-(focus.X - MarioGame.Instance.WindowWidth / 2) - MarioGame.Instance.WindowWidth / 2, 0, 0);
+            LeftBound = Math.Max(LeftBound, focus.X  - MarioGame.Instance.WindowWidth / 2);
+            RightBound = LeftBound + MarioGame.Instance.WindowWidth;
+            var position = Matrix.CreateTranslation(-LeftBound - MarioGame.Instance.WindowWidth / 2, 0, 0);
             var offset = Matrix.CreateTranslation(MarioGame.Instance.WindowWidth / 2, 0, 0);
             Transform = position * offset;
         }

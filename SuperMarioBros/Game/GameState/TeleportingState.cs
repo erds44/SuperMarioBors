@@ -27,9 +27,10 @@ namespace SuperMarioBros.GameStates
 
         public void Update(GameTime gameTime)
         {
-            MarioGame.Instance.marioCamera.Update();
             MarioGame.Instance.ObjectsManager.Mario.Update(gameTime);
             MarioGame.Instance.collisionManager.Update();
+            if (MarioGame.Instance.FocusMario)
+                MarioGame.Instance.marioCamera.Update();
         }
     }
 }

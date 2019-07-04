@@ -42,6 +42,16 @@ namespace SuperMarioBros.Collisions
         {
             obj.Physics.Velocity = new Vector2(-obj.Physics.Velocity.X, obj.Physics.Velocity.Y);
         }
+        protected static Direction ReverseDirection(Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.bottom: return Direction.top;
+                case Direction.top: return Direction.bottom;
+                case Direction.left: return Direction.right;
+            }
+            return Direction.left;
+        }
         public abstract void HandleCollision();
     }
 }

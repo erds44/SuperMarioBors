@@ -438,7 +438,7 @@
     <Compile Include="Loading\SpritesNode.cs" />
     <Compile Include="Object\Block\BlueBrickBlock.cs" />
     <Compile Include="Object\Block\BlueRockBlock.cs" />
-    <Compile Include="Object\Block\HugePipeH.cs" />
+    <Compile Include="Object\Block\TeleportHugePipeH.cs" />
     <Compile Include="Object\Block\HugePipeV.cs" />
     <Compile Include="Object\Block\TeleportPipe.cs" />
     <Compile Include="Object\Item\BigCoin.cs" />

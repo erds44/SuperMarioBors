@@ -33,6 +33,7 @@ namespace SuperMarioBros
         public static MarioGame Instance { get; private set; }
         public IGameState State { get; set; }
         private GraphicsDeviceManager graphics;
+        public bool FocusMario { get; set; }
         public MarioGame()
         {
             Instance = this;
@@ -44,6 +45,7 @@ namespace SuperMarioBros
             WindowHeight = graphics.PreferredBackBufferHeight;
             WindowWidth = graphics.PreferredBackBufferWidth;
             Content.RootDirectory = "Content";
+            FocusMario = true;
         }
 
         public void ChangeToFlagPoleState()
