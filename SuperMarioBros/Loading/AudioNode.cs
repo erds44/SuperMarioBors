@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros.Loading
 {
-    public class AudioNode
+    public struct AudioNode
     {
         //Why do we use this???
         public string Name;
         public string AudioName;
-        public AudioNode(){}
         public AudioNode(string name, string audioName)
         {
             Name = name;

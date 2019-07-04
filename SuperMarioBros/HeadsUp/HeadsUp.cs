@@ -39,8 +39,9 @@ namespace SuperMarioBros.HeadsUps
                     DecreasingValues();
                 else
                 {
-                    ObjectFactory.Instance.CreateNonCollidableObject(typeof(WinFlag), new Vector2(8620, 410));  
-                    ((FlagPoleState)MarioGame.Instance.State).UpdateHeadsUp = false;
+                    ObjectFactory.Instance.CreateNonCollidableObject(typeof(WinFlag), new Vector2(8620, 410));
+                    if(MarioGame.Instance.State is FlagPoleState state)
+                        state.UpdateHeadsUp = false;
                 }
                     
             }

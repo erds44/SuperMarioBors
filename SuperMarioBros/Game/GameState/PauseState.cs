@@ -7,7 +7,6 @@ namespace SuperMarioBros.GameStates
     public class PauseState : IGameState
     {
         private GraphicsDevice graphicsDevice;
-        private bool pause = false;
         public PauseState(GraphicsDevice graphicsDevice)
         {
             this.graphicsDevice = graphicsDevice;
