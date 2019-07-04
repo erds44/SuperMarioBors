@@ -245,7 +245,7 @@ namespace SuperMarioBros.Loading
 
                 }
             }
-            Statics.Add(new TeleportPipe(new Vector2(400, 410), new Vector2(7500, 110), Direction.top));
+            Statics.Add(new TeleportPipe(new Vector2(400, 410), new Vector2(9750, 110), Direction.top));
         }
 
         private void HorizontalLine(ObjectsNode node)

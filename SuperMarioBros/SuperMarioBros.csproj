@@ -70,7 +70,9 @@
     <None Include="Content\BigCloud.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\BigCoin.xnb" />
+    <None Include="Content\BigCoin.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\BigHill.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -110,8 +112,12 @@
     <None Include="Content\BigMarioRightSliding.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\BlueBrickBlock.xnb" />
-    <None Include="Content\BlueRockBlock.xnb" />
+    <None Include="Content\BlueBrickBlock.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BlueRockBlock.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\BrickBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -209,7 +215,9 @@
     <None Include="Content\HighPipe.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\HugePipe.xnb" />
+    <None Include="Content\HugePipe.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\KoopaMovingLeft.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
