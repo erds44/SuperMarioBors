@@ -36,7 +36,7 @@ namespace SuperMarioBros.Collisions
             {
                 if (block is HiddenBlock)
                     MarioVsHiddenBlock(mario, block, direction);
-                else if (block is TeleportPipe)
+                else if (block is TeleportPipe || block is TeleportHugePipeH)
                     MarioVsTeleportPipe(mario, block, direction);
                 else
                 {
@@ -56,25 +56,57 @@ namespace SuperMarioBros.Collisions
                 }
             }
         }
-
+        private readonly Dictionary<Direction, Keys> keyDictionary = new Dictionary<Direction, Keys>
+        {
+            { Direction.top, Keys.Down},
+            { Direction.left, Keys.Right},
+            { Direction.bottom, Keys.Up},
+            { Direction.right, Keys.Left},
+        };
         private void MarioVsTeleportPipe(IMario mario, IBlock block, Direction direction)
         {
-            TeleportPipe pipe = (TeleportPipe)block;
-            if (!pipe.Teleported)
+            if (block is TeleportPipe pipe)
             {
-                if (direction == pipe.TeleportDirection && Keyboard.GetState().IsKeyDown(Keys.Down))
+
+
+                if (!pipe.Teleported)
                 {
-                    mario.Teleport(pipe.TransferedLocation, Direction.bottom);
-                    pipe.Teleported = true;
-                }
-                else
-                {
-                    ResolveOverlap(mario, block, direction);
-                    switch (direction)
+                    keyDictionary.TryGetValue(direction, out Keys key);
+                    if (direction == pipe.TeleportDirection && Keyboard.GetState().IsKeyDown(key))
                     {
-                        case Direction.top: OnGround(mario); break;
-                        case Direction.bottom: GroundOrTopBounce(mario); break;
-                        default: LeftOrRightBlock(mario); break;
+                        mario.Teleport(pipe.TransferedLocation, ReverseDirection(direction));
+                        pipe.Teleported = true;
+                    }
+                    else
+                    {
+                        ResolveOverlap(mario, block, direction);
+                        switch (direction)
+                        {
+                            case Direction.top: OnGround(mario); break;
+                            case Direction.bottom: GroundOrTopBounce(mario); break;
+                            default: LeftOrRightBlock(mario); break;
+                        }
+                    }
+                }
+            }else if(block is TeleportHugePipeH pipeH)
+            {
+                if (!pipeH.Teleported)
+                {
+                    keyDictionary.TryGetValue(direction, out Keys key);
+                    if (direction == pipeH.TeleportDirection && Keyboard.GetState().IsKeyDown(key))
+                    {
+                        mario.Teleport(pipeH.TransferedLocation, ReverseDirection(direction));
+                        pipeH.Teleported = true;
+                    }
+                    else
+                    {
+                        ResolveOverlap(mario, block, direction);
+                        switch (direction)
+                        {
+                            case Direction.top: OnGround(mario); break;
+                            case Direction.bottom: GroundOrTopBounce(mario); break;
+                            default: LeftOrRightBlock(mario); break;
+                        }
                     }
                 }
             }

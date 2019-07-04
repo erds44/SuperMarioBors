@@ -6,8 +6,8 @@ namespace SuperMarioBros.Cameras
 {
     public class Camera
     {
-        public float LeftBound { get; private set; }
-        public float RightBound { get; private set; }
+        public float LeftBound { get; set; }
+        public float RightBound { get; set; }
         public IObject Focus { get; private set; }
         public Matrix Transform { get; private set; }
         public Camera()

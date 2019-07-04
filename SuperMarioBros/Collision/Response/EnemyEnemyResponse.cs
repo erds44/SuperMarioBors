@@ -46,16 +46,6 @@ namespace SuperMarioBros.Collisions
             EnemyVSKoopaTopCollision(koopa2, koopa1, ReverseDirection(direction));
         }
 
-        private static Direction ReverseDirection(Direction direction)
-        {
-            switch (direction)
-            {
-                case Direction.bottom: return Direction.top;
-                case Direction.top: return Direction.bottom;
-                case Direction.left: return Direction.right;
-            }
-            return Direction.left;
-        }
         private static void EnemyVSKoopaTopCollision(IEnemy enemy, IEnemy koopa, Direction direction)
         {
             if (koopa.HealthState is KoopaNormalState)

@@ -123,6 +123,17 @@ namespace SuperMarioBros.Marios
                 Position = teleportPosition;
                 isTeleporting = false;
                 Physics.ApplyGravity();
+                if(teleportPosition.X >= 9000)
+                {
+                    MarioGame.Instance.Camera.Update(teleportPosition + new Vector2(150, 0));
+                    MarioGame.Instance.FocusMario = false;
+                }
+                else
+                {
+                    MarioGame.Instance.Camera.LeftBound = teleportPosition.X + 150f;
+                    MarioGame.Instance.Camera.RightBound = MarioGame.Instance.Camera.LeftBound + MarioGame.Instance.WindowWidth;
+                    MarioGame.Instance.FocusMario = true;
+                }
                 MarioGame.Instance.ChangeToGameState();
             }
         }
@@ -185,7 +196,7 @@ namespace SuperMarioBros.Marios
             isTeleporting = true;
             if(teleportDictionary.TryGetValue(direction, out var tuple))
             {
-                expectedPosition += Position + tuple.Item2;
+                expectedPosition = Position + tuple.Item2;
                 Physics.SetConstentVelocity(tuple.Item1);
             }
             this.teleportPosition = teleportPosition;

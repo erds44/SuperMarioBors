@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using SuperMarioBros.Blocks;
 using SuperMarioBros.Collisions;
 using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
@@ -25,7 +26,7 @@ namespace SuperMarioBros.Loading
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,375),1,7,35)),
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,340),1,7,35)),
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,100),1,7,35)),
-                (new ObjectsNode("SuperMarioBros.Blocks.HugePipeH",new Vector2(10160,410),1,1,54)),
+                //(new ObjectsNode("SuperMarioBros.Blocks.HugePipeH",new Vector2(10160,410),1,1,54)),
                 (new ObjectsNode("SuperMarioBros.Blocks.HugePipeV",new Vector2(10214,410),1,1,46)),
                 //test
                 
@@ -263,6 +264,7 @@ namespace SuperMarioBros.Loading
                 }
             }
             Statics.Add(new TeleportPipe(new Vector2(400, 410), new Vector2(9750, 110), Direction.top));
+            Statics.Add(new TeleportHugePipeH(new Vector2(10160, 410), new Vector2(4700, 310), Direction.left));
         }
 
         private void HorizontalLine(ObjectsNode node)
