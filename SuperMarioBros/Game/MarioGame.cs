@@ -10,9 +10,6 @@ using SuperMarioBros.Loading;
 using SuperMarioBros.Marios;
 using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.SpriteFactories;
-using SuperMarioBros.AudioFactories;
-using System;
-using Microsoft.Xna.Framework.Media;
 
 namespace SuperMarioBros
 {

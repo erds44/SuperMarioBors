@@ -5,8 +5,8 @@ namespace SuperMarioBros.Blocks
     public class BrickBlock : AbstractBlock 
     {
         /* Star, Bump, or Borken */
-        private double deleteTimer = 0.1;
-        private bool bumped;
+        private protected double deleteTimer = 0.1;
+        private protected bool bumped;
         public BrickBlock(Vector2 location)
         {
             ItemType = null;

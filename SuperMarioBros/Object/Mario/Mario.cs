@@ -40,10 +40,10 @@ namespace SuperMarioBros.Marios
         private Vector2 expectedPosition;
         private readonly Dictionary<Direction, (Vector2, Vector2)> teleportDictionary = new Dictionary<Direction, (Vector2, Vector2)>
         {
-            { Direction.top, (new Vector2(0, -25), new Vector2(0, -50))},
-            { Direction.bottom, (new Vector2(0, 25), new Vector2(0, 50))},
-            { Direction.left, (new Vector2(-25, 0), new Vector2(-50, 0))},
-            { Direction.right, (new Vector2(25, 0), new Vector2(50, 0))},
+            { Direction.top, (new Vector2(0, -50), new Vector2(0, -50))},
+            { Direction.bottom, (new Vector2(0, 50), new Vector2(0, 50))},
+            { Direction.left, (new Vector2(-50, 0), new Vector2(-50, 0))},
+            { Direction.right, (new Vector2(50, 0), new Vector2(50, 0))},
         };
         public Mario(Vector2 location)
         {
@@ -180,14 +180,13 @@ namespace SuperMarioBros.Marios
             Physics.ApplyGravity();
         }
 
-        public void TeleportDownWard(Vector2 teleportPosition, Direction direction)
+        public void Teleport(Vector2 teleportPosition, Direction direction)
         {
             isTeleporting = true;
             if(teleportDictionary.TryGetValue(direction, out var tuple))
             {
                 expectedPosition += Position + tuple.Item2;
-                Physics.Velocity = tuple.Item1;
-                Physics.CurrentGravity = -200f; // to do 
+                Physics.SetConstentVelocity(tuple.Item1);
             }
             this.teleportPosition = teleportPosition;
             MarioGame.Instance.ChangeToTeleportingState();
