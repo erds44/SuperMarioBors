@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros.Blocks
 { 
-    public class HugePipe: AbstractBlock
+    public class HugePipeH: AbstractBlock
     {
-        public HugePipe(Vector2 location)
+        public HugePipeH(Vector2 location)
         {
             Position = location;
             base.Initialize();

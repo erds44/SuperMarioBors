@@ -218,6 +218,12 @@
     <None Include="Content\HugePipe.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\HugePipeH.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\HugePipeV.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\KoopaMovingLeft.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -432,7 +438,8 @@
     <Compile Include="Loading\SpritesNode.cs" />
     <Compile Include="Object\Block\BlueBrickBlock.cs" />
     <Compile Include="Object\Block\BlueRockBlock.cs" />
-    <Compile Include="Object\Block\HugePipe.cs" />
+    <Compile Include="Object\Block\HugePipeH.cs" />
+    <Compile Include="Object\Block\HugePipeV.cs" />
     <Compile Include="Object\Block\TeleportPipe.cs" />
     <Compile Include="Object\Item\BigCoin.cs" />
     <Compile Include="Utility\XMLUtilities.cs" />
