@@ -21,7 +21,6 @@ namespace SuperMarioBros.GameStates
             MarioGame.Instance.HeadsUps.Draw(spriteBatch, MarioGame.Instance.Camera.LeftBound);
             spriteBatch.End();
         }
-
         public void Update(GameTime gameTime)
         {
             MarioGame.Instance.controller.Update(gameTime);

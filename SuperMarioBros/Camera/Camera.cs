@@ -41,10 +41,10 @@ namespace SuperMarioBros.Cameras
             Transform = position * offset;
         }
 
-        public void Update(Vector2 focus) //Focus on given point. This does not have a "left-only" limit. 
+        public void Update(Vector2 focus) //Focus on given point. This does not have a "left-only" limit. Given point will be the center of the camera.
         {
-            var position = Matrix.CreateTranslation(-(focus.X - MarioGame.Instance.WindowWidth / 2) - MarioGame.Instance.WindowWidth / 2, 0, 0);
-            var offset = Matrix.CreateTranslation(MarioGame.Instance.WindowWidth / 2, 0, 0);
+            var position = Matrix.CreateTranslation(-focus.X, -focus.Y, 0);
+            var offset = Matrix.CreateTranslation(MarioGame.Instance.WindowWidth / 2, MarioGame.Instance.WindowHeight / 2, 0);
             Transform = position * offset;
         }
 
