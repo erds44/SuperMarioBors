@@ -53,6 +53,15 @@ namespace SuperMarioBros
             State = new FlagPoleState(graphics.GraphicsDevice, Content);
         }
 
+        protected override void LoadContent()
+        {
+            ObjectFactory.Instance.Initialize();
+            Song song = Content.Load<Song>("Musics/overworld");
+
+            MediaPlayer.Play(song);
+
+            base.LoadContent();
+        }
         protected override void Initialize()
         {
             IsMouseVisible = true;
@@ -107,14 +116,13 @@ namespace SuperMarioBros
             ObjectsManager = new ObjectsManager(new ObjectLoader(), HeadsUps);
             ObjectsManager.LevelLoading();
             ObjectsManager.Initialize();
-            ObjectFactory.Instance.Initialize();
-            AudioFactory.Instance.Initialize(Content, "Content/sounds.xml", "Content/musics.xml");
+
+            //AudioFactory.Instance.Initialize(Content, "Content/sounds.xml", "Content/musics.xml");
             marioCamera.Reset();
-            marioCamera.SetFocus(ObjectsManager.Mario);
             collisionManager = new CollisionManager();
             KeyBinding();
 
-            MediaPlayer.Play(AudioFactory.Instance.CreateSong("overworld"));
+            //MediaPlayer.Play(AudioFactory.Instance.CreateSong("overworld"));
 
             ObjectsManager.Mario.DeathEvent += HeadsUps.OnMarioDeath;
             ObjectsManager.Mario.SlidingEvent += HeadsUps.AddFlagScore;
