@@ -17,8 +17,18 @@ namespace SuperMarioBros.Loading
         public IMario Mario { get; private set; }
         private readonly List<ObjectsNode> staticList = new List<ObjectsNode>
             {
-                
+                //underground
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(9700,445),1,16,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(9700,480),1,16,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9700,410),4,11,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,410),1,7,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,375),1,7,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,340),1,7,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,60),1,7,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.HugePipe",new Vector2(10160,410),1,1,100)),
                 //test
+                
+                
                 (new ObjectsNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(0,288),1,1,35,"SuperMarioBros.Items.Coin",4)),
                 (new ObjectsNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(100,288),1,1,35,"SuperMarioBros.Items.Star",1)),
                 (new ObjectsNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(50,119),1,1,35,"null")),
@@ -114,7 +124,12 @@ namespace SuperMarioBros.Loading
 
         private readonly List<ObjectsNode> dynamicList = new List<ObjectsNode>
         {
+            //Underground
+             (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9845,305),1,7,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9845,235),1,7,35)),
+               (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9880,165),1,5,35)),
             //test
+           
             (new ObjectsNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(540,410),1,1,30)),
              (new ObjectsNode("SuperMarioBros.Objects.Enemy.Koopa",new Vector2(580,410),1,1,30)),
              (new ObjectsNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(540,60),1,1,30)),

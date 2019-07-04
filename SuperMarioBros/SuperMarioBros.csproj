@@ -70,6 +70,7 @@
     <None Include="Content\BigCloud.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\BigCoin.xnb" />
     <None Include="Content\BigHill.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -109,6 +110,8 @@
     <None Include="Content\BigMarioRightSliding.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\BlueBrickBlock.xnb" />
+    <None Include="Content\BlueRockBlock.xnb" />
     <None Include="Content\BrickBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -206,6 +209,7 @@
     <None Include="Content\HighPipe.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\HugePipe.xnb" />
     <None Include="Content\KoopaMovingLeft.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -348,7 +352,11 @@
     <Compile Include="Loading\AudioLoader.cs" />
     <Compile Include="Loading\SpritesLoader.cs" />
     <Compile Include="Loading\SpritesNode.cs" />
+    <Compile Include="Object\Block\BlueBrickBlock.cs" />
+    <Compile Include="Object\Block\BlueRockBlock.cs" />
+    <Compile Include="Object\Block\HugePipe.cs" />
     <Compile Include="Object\Block\TeleportPipe.cs" />
+    <Compile Include="Object\Item\BigCoin.cs" />
     <Compile Include="Utility\XMLUtilities.cs" />
     <Compile Include="Manager\CollisionManager.cs" />
     <Compile Include="Collision\Handler\DynamicAndDynamicObjectsHandler .cs" />
