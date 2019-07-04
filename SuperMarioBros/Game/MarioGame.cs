@@ -52,7 +52,6 @@ namespace SuperMarioBros
 
         protected override void LoadContent()
         {
-            ObjectFactory.Instance.Initialize();
             //Song song = Content.Load<Song>("Musics/overworld");
 
             //MediaPlayer.Play(song);
@@ -109,13 +108,12 @@ namespace SuperMarioBros
        
         public void InitializeGame()
         {
-
             ObjectsManager = new ObjectsManager(new ObjectLoader(), HeadsUps);
             ObjectsManager.LevelLoading();
             ObjectsManager.Initialize();
-
+            ObjectFactory.Instance.Initialize();
             //AudioFactory.Instance.Initialize(Content, "Content/sounds.xml", "Content/musics.xml");
-            marioCamera.Reset();
+            marioCamera.Reset(ObjectsManager.Mario);
             collisionManager = new CollisionManager();
             KeyBinding();
 
