@@ -36,16 +36,16 @@ namespace SuperMarioBros.Cameras
             Vector2 targetPosition = Focus.Position;
             LeftBound = Math.Max(LeftBound, targetPosition.X + Focus.HitBox().Width / 2 - MarioGame.Instance.WindowWidth / 2);
             RightBound = LeftBound + MarioGame.Instance.WindowWidth;
-            var position = Matrix.CreateTranslation(-LeftBound-MarioGame.Instance.WindowWidth / 2, 0, 0);
-            var offset = Matrix.CreateTranslation(MarioGame.Instance.WindowWidth / 2, 0,0);
+            var position = Matrix.CreateTranslation(-LeftBound - MarioGame.Instance.WindowWidth / 2, 0, 0);
+            var offset = Matrix.CreateTranslation(MarioGame.Instance.WindowWidth / 2, 0, 0);
             Transform = position * offset;
         }
 
         public void Update(Vector2 focus) //Focus on given point. This does not have a "left-only" limit. 
         {
-            LeftBound = Math.Max(LeftBound, focus.X  - MarioGame.Instance.WindowWidth / 2);
+            LeftBound = Math.Max(LeftBound, focus.X - MarioGame.Instance.WindowWidth / 2);
             RightBound = LeftBound + MarioGame.Instance.WindowWidth;
-            var position = Matrix.CreateTranslation(-LeftBound - MarioGame.Instance.WindowWidth / 2, 0, 0);
+            var position = Matrix.CreateTranslation(-LeftBound - MarioGame.Instance.WindowWidth / 2, -focus.Y, 0);
             var offset = Matrix.CreateTranslation(MarioGame.Instance.WindowWidth / 2, 0, 0);
             Transform = position * offset;
         }

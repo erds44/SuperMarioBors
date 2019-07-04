@@ -18,16 +18,31 @@ namespace SuperMarioBros.Loading
         public IMario Mario { get; private set; }
         private readonly List<ObjectsNode> staticList = new List<ObjectsNode>
             {
-                //underground
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(9700,445),1,16,35)),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(9700,480),1,16,35)),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9700,410),4,10,35)),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,410),1,7,35)),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,375),1,7,35)),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,340),1,7,35)),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,100),1,7,35)),
-                //(new ObjectsNode("SuperMarioBros.Blocks.HugePipeH",new Vector2(10160,410),1,1,54)),
-                (new ObjectsNode("SuperMarioBros.Blocks.HugePipeV",new Vector2(10214,410),1,1,46)),
+
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(1000,-135),1,16,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(1000,-100),1,16,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(1000,-170),4,10,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(1140,-170),1,7,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(1140,-205),1,7,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(1140,-240),1,7,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(1140,-480),1,7,35)),
+                //(new ObjectsNode("SuperMarioBros.Blocks.HugePipeH",new Vector2(1460,-170),1,1,54)),
+                (new ObjectsNode("SuperMarioBros.Blocks.HugePipeV",new Vector2(1514,-170),1,1,46)),
+            
+            
+                 
+            
+            
+                ////underground
+                //(new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(9700,445),1,16,35)),
+                //(new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(9700,480),1,16,35)),
+                //(new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9700,410),4,10,35)),
+                //(new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,410),1,7,35)),
+                //(new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,375),1,7,35)),
+                //(new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,340),1,7,35)),
+                //(new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,100),1,7,35)),
+                ////(new ObjectsNode("SuperMarioBros.Blocks.HugePipeH",new Vector2(10160,410),1,1,54)),
+                //(new ObjectsNode("SuperMarioBros.Blocks.HugePipeV",new Vector2(10214,410),1,1,46)),
                 //test
                 
                 
@@ -263,8 +278,8 @@ namespace SuperMarioBros.Loading
 
                 }
             }
-            Statics.Add(new TeleportPipe(new Vector2(400, 410), new Vector2(9750, 110), Direction.top));
-            Statics.Add(new TeleportHugePipeH(new Vector2(10160, 410), new Vector2(4700, 310), Direction.left));
+            Statics.Add(new TeleportPipe(new Vector2(400, 410), new Vector2(1050, -480), Direction.top));
+            Statics.Add(new TeleportHugePipeH(new Vector2(1460, -170), new Vector2(7200, 310), Direction.left));
         }
 
         private void HorizontalLine(ObjectsNode node)

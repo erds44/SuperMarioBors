@@ -123,9 +123,9 @@ namespace SuperMarioBros.Marios
                 Position = teleportPosition;
                 isTeleporting = false;
                 Physics.ApplyGravity();
-                if(teleportPosition.X >= 9000)
+                if(teleportPosition.X <= 2000)
                 {
-                    MarioGame.Instance.Camera.Update(teleportPosition + new Vector2(150, 0));
+                    MarioGame.Instance.Camera.Update(teleportPosition + new Vector2(350, -103));
                     MarioGame.Instance.FocusMario = false;
                 }
                 else
