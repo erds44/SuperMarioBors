@@ -56,9 +56,7 @@ namespace SuperMarioBros
         protected override void LoadContent()
         {
             //Song song = Content.Load<Song>("Musics/overworld");
-
             //MediaPlayer.Play(song);
-
             base.LoadContent();
         }
         protected override void Initialize()
