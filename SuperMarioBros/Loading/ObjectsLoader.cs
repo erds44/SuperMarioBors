@@ -20,12 +20,13 @@ namespace SuperMarioBros.Loading
                 //underground
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(9700,445),1,16,35)),
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(9700,480),1,16,35)),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9700,410),4,11,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9700,410),4,10,35)),
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,410),1,7,35)),
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,375),1,7,35)),
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,340),1,7,35)),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,60),1,7,35)),
-                (new ObjectsNode("SuperMarioBros.Blocks.HugePipe",new Vector2(10160,410),1,1,100)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,100),1,7,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.HugePipeH",new Vector2(10160,410),1,1,54)),
+                (new ObjectsNode("SuperMarioBros.Blocks.HugePipeV",new Vector2(10214,410),1,1,46)),
                 //test
                 
                 
@@ -125,9 +126,25 @@ namespace SuperMarioBros.Loading
         private readonly List<ObjectsNode> dynamicList = new List<ObjectsNode>
         {
             //Underground
-             (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9845,305),1,7,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9845,235),1,7,35)),
-               (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9880,165),1,5,35)),
+             (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9845,305),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9880,305),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9915,305),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9950,305),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9985,305),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(10020,305),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(10055,305),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9845,240),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9880,240),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9915,240),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9950,240),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9985,240),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(10020,240),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(10055,240),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9880,180),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9915,180),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9950,180),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9985,180),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(10020,180),1,1,35)),
             //test
            
             (new ObjectsNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(540,410),1,1,30)),

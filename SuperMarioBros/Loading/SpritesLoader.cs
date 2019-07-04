@@ -25,7 +25,7 @@ namespace SuperMarioBros.Loading
              //special item
              new SpritesNode("BrickDebris","BrickDebris"),
              new SpritesNode("Coin","Coin",14,26,5),
-             new SpritesNode("BigCoin","BigCoin",30,42,3),
+             new SpritesNode("BigCoin","BigCoin",25,30,3),
              new SpritesNode("ConcreteBlock","ConcreteBlock",35,35),
              new SpritesNode("UsedBlock","UsedBlock",35,35),
              new SpritesNode("FireMarioLeftCrouching","FireMarioLeftCrouching",32,44),
@@ -53,7 +53,8 @@ namespace SuperMarioBros.Loading
              new SpritesNode("Pipe","Pipe",72,74),
              new SpritesNode("MiddlePipe","MiddlePipe",74,122),
              new SpritesNode("HighPipe","HighPipe",72,170),
-             new SpritesNode("HugePipe","HugePipe",100,350),
+             new SpritesNode("HugePipeV","HugePipeV",46,350),
+             new SpritesNode("HugePipeH","HugePipeH",54,87),
              new SpritesNode("QuestionBlock","QuestionBlock",35,35,5),
              new SpritesNode("RedMushroom","RedMushroom",28,28),
              new SpritesNode("RockBlock","RockBlock",35,35),
