@@ -14,23 +14,21 @@ namespace SuperMarioBros.Loading
     {
         private readonly List<AudioNode> sounds;
         private readonly List<AudioNode> musics;
-        public Dictionary<string, Song> MusicInfo { get; }
-        public Dictionary<string, SoundEffect> SoundInfo { get; }
-        public AudioLoader(ContentManager inputContent, string soundPath, string musicPath)
+        public Dictionary<string, string> MusicInfo { get; }
+        public Dictionary<string, string> SoundInfo { get; }
+        public AudioLoader(string soundPath, string musicPath)
         {
             sounds = XMLReader<AudioNode>(soundPath);
-            SoundInfo = new Dictionary<string, SoundEffect>();
+            SoundInfo = new Dictionary<string, string>();
             foreach (AudioNode soundnode in sounds)
             {
-                SoundEffect sound = inputContent.Load<SoundEffect>(soundnode.AudioName);
-                SoundInfo.Add(soundnode.Name, sound);
+                SoundInfo.Add(soundnode.Name, soundnode.AudioName);
             }
             musics = XMLReader<AudioNode>(musicPath);
-            MusicInfo = new Dictionary<string, Song>();
+            MusicInfo = new Dictionary<string, string>();
             foreach (AudioNode musicnode in musics)
             {
-                Song song = inputContent.Load<Song>(musicnode.AudioName);
-                MusicInfo.Add(musicnode.Name, song);
+                MusicInfo.Add(musicnode.Name, musicnode.AudioName);
             }
         }
     }

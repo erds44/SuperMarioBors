@@ -10,6 +10,7 @@ using SuperMarioBros.Loading;
 using SuperMarioBros.Marios;
 using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.SpriteFactories;
+using Microsoft.Xna.Framework.Media;
 
 namespace SuperMarioBros
 {
@@ -53,9 +54,7 @@ namespace SuperMarioBros
         protected override void LoadContent()
         {
             //Song song = Content.Load<Song>("Musics/overworld");
-
             //MediaPlayer.Play(song);
-
             base.LoadContent();
         }
         protected override void Initialize()

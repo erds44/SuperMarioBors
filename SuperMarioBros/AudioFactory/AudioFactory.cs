@@ -13,27 +13,35 @@ namespace SuperMarioBros.AudioFactories
     public class AudioFactory
     {
         private ContentManager content;
-        private Dictionary<string, Song> songDictionary;
-        private Dictionary<string, SoundEffect> soundDictionary;
-        public static AudioFactory Instance { get; } = new AudioFactory();
+        private Dictionary<string, string> songDictionary;
+        private Dictionary<string, string> soundDictionary;
+        public static AudioFactory Instance
+        {
+            get
+            {
+                if (instance is null) instance = new AudioFactory();
+                return instance;
+            }
+        }
+        private static AudioFactory instance;
         private AudioFactory(){}
         public void Initialize(ContentManager inputContent, string soundPath, string musicPath)
         {
             content = inputContent;
-            var audioLoader = new AudioLoader(content, soundPath, musicPath);
+            var audioLoader = new AudioLoader(soundPath, musicPath);
             songDictionary = audioLoader.MusicInfo;
             soundDictionary = audioLoader.SoundInfo;
         }
 
         public Song CreateSong(string name)
         {
-            if (songDictionary.TryGetValue(name, out Song song)) return song;
+            if (songDictionary.TryGetValue(name, out string song)) return content.Load<Song>(song);
             Console.WriteLine("Cannot find song" + name);
             return null;
         }
         public SoundEffect CreateSound(string name)
         {
-            if (soundDictionary.TryGetValue(name, out SoundEffect sound)) return sound;
+            if (soundDictionary.TryGetValue(name, out string sound)) return content.Load<SoundEffect>(sound);
             Console.WriteLine("Cannot find sound" + name);
             return null;
         }
