@@ -19,6 +19,7 @@ namespace SuperMarioBros.Marios
         event Action<Vector2> PowerUpEvent;
         event Action<Vector2> ExtraLifeEvent;
         event Action<Vector2> SlidingEvent;
+        event Action SetPipeTeleporitngEvent;
         int EnemyKillStreakCounter { get; set; }
         double NoMovementTimer { get; set; }
         bool OnGround { get; set; }

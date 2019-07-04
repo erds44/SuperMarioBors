@@ -19,6 +19,7 @@ namespace SuperMarioBros.Marios
     {
         public int EnemyKillStreakCounter { get; set; }
         public event Action ClearingScoresEvent;
+        public event Action SetPipeTeleporitngEvent;
         public event Action DeathEvent;
         public event Action<Vector2> PowerUpEvent;
         public event Action<Vector2> ExtraLifeEvent;
@@ -40,7 +41,7 @@ namespace SuperMarioBros.Marios
         private Vector2 expectedPosition;
         private readonly Dictionary<Direction, (Vector2, Vector2)> teleportDictionary = new Dictionary<Direction, (Vector2, Vector2)>
         {
-            { Direction.top, (new Vector2(0, -50), new Vector2(0, -50))},
+            { Direction.top, (new Vector2(0, -10), new Vector2(0, -50))},
             { Direction.bottom, (new Vector2(0, 50), new Vector2(0, 50))},
             { Direction.left, (new Vector2(-50, 0), new Vector2(-50, 0))},
             { Direction.right, (new Vector2(50, 0), new Vector2(50, 0))},
@@ -118,22 +119,24 @@ namespace SuperMarioBros.Marios
                 Sprite.Update(gameTime);
                 Position += Physics.Displacement(gameTime);
             }
-            if(isTeleporting && (int)Position.Y == (int)expectedPosition.Y && (int)Position.X == (int)expectedPosition.X )
+            if (isTeleporting && (int)Position.Y == (int)expectedPosition.Y && (int)Position.X == (int)expectedPosition.X )
             {
                 Position = teleportPosition;
                 isTeleporting = false;
                 Physics.ApplyGravity();
-                if(teleportPosition.X <= 2000)
+                Physics.Velocity = Vector2.Zero;
+                if(teleportPosition.X <= 4000)
                 {
                     MarioGame.Instance.Camera.Update(teleportPosition + new Vector2(350, -103));
                     MarioGame.Instance.FocusMario = false;
                 }
                 else
                 {
-                    MarioGame.Instance.Camera.LeftBound = teleportPosition.X + 150f;
+                    MarioGame.Instance.Camera.LeftBound = teleportPosition.X - 100f;
                     MarioGame.Instance.Camera.RightBound = MarioGame.Instance.Camera.LeftBound + MarioGame.Instance.WindowWidth;
                     MarioGame.Instance.FocusMario = true;
                 }
+                SetPipeTeleporitngEvent?.Invoke();
                 MarioGame.Instance.ChangeToGameState();
             }
         }

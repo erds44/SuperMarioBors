@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.Blocks;
 using SuperMarioBros.GameStates;
 using SuperMarioBros.Items;
@@ -38,6 +39,8 @@ namespace SuperMarioBros.Collisions
                     MarioVsHiddenBlock(mario, block, direction);
                 else if (block is TeleportPipe || block is TeleportHugePipeH)
                     MarioVsTeleportPipe(mario, block, direction);
+                else if (block is Pipe)
+                    MarioVSPipe(mario, block, direction);
                 else
                 {
                     ResolveOverlap(mario, block, direction);
@@ -56,6 +59,29 @@ namespace SuperMarioBros.Collisions
                 }
             }
         }
+
+        private void MarioVSPipe(IMario mario, IBlock block, Direction direction)
+        {
+            Rectangle overlap = Rectangle.Intersect(mario.HitBox(), block.HitBox());
+            if (overlap == mario.HitBox() && !((Pipe)block).IsTeleporting)
+            {
+                mario.Teleport(new Vector2(6970, 332), Direction.top);
+                ((Pipe)block).IsTeleporting = true;
+                mario.SetPipeTeleporitngEvent += ((Pipe)block).SetTeleporting;
+            }
+            if (!((Pipe)block).IsTeleporting)
+            {
+                ResolveOverlap(mario, block, direction);
+                switch (direction)
+                {
+                    case Direction.top: OnGround(mario); break;
+                    case Direction.bottom: GroundOrTopBounce(mario); break;
+                    default: LeftOrRightBlock(mario); break;
+                }
+            }
+
+        }
+
         private readonly Dictionary<Direction, Keys> keyDictionary = new Dictionary<Direction, Keys>
         {
             { Direction.top, Keys.Down},
@@ -67,8 +93,6 @@ namespace SuperMarioBros.Collisions
         {
             if (block is TeleportPipe pipe)
             {
-
-
                 if (!pipe.Teleported)
                 {
                     keyDictionary.TryGetValue(direction, out Keys key);
@@ -88,7 +112,8 @@ namespace SuperMarioBros.Collisions
                         }
                     }
                 }
-            }else if(block is TeleportHugePipeH pipeH)
+            }
+            else if (block is TeleportHugePipeH pipeH)
             {
                 if (!pipeH.Teleported)
                 {
