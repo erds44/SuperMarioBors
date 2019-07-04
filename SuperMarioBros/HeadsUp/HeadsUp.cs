@@ -54,22 +54,22 @@ namespace SuperMarioBros.HeadsUps
                 }
             }
         }
-        public void Draw(SpriteBatch spriteBatch, float leftBound)
+        public void Draw(SpriteBatch spriteBatch, float leftBound, float upperBound)
         {
-            DrawHelper(spriteBatch, "SCORE", new Vector2(scoreOffset + leftBound, 5));
-            DrawHelper(spriteBatch, score.ToString(), new Vector2(scoreOffset + leftBound + 10, 30));
+            DrawHelper(spriteBatch, "SCORE", new Vector2(scoreOffset + leftBound, 5 + upperBound));
+            DrawHelper(spriteBatch, score.ToString(), new Vector2(scoreOffset + leftBound + 10, 30 + upperBound));
 
-            DrawHelper(spriteBatch, "COINS", new Vector2(coinOffset + leftBound, 5));
-            DrawHelper(spriteBatch, coin.ToString(), new Vector2(coinOffset + leftBound + 10, 30));
+            DrawHelper(spriteBatch, "COINS", new Vector2(coinOffset + leftBound, 5 + upperBound));
+            DrawHelper(spriteBatch, coin.ToString(), new Vector2(coinOffset + leftBound + 10, 30 + upperBound));
 
-            DrawHelper(spriteBatch, "WORLD", new Vector2(worldOffset + leftBound, 5));
-            DrawHelper(spriteBatch, "1-1", new Vector2(worldOffset + leftBound + 10, 30));
+            DrawHelper(spriteBatch, "WORLD", new Vector2(worldOffset + leftBound, 5 + upperBound));
+            DrawHelper(spriteBatch, "1-1", new Vector2(worldOffset + leftBound + 10, 30 + upperBound));
 
-            DrawHelper(spriteBatch, "TIME", new Vector2(timeOffset + leftBound, 5));
-            DrawHelper(spriteBatch, ((int)timer).ToString(), new Vector2(timeOffset + leftBound + 10, 30));
+            DrawHelper(spriteBatch, "TIME", new Vector2(timeOffset + leftBound, 5 + upperBound));
+            DrawHelper(spriteBatch, ((int)timer).ToString(), new Vector2(timeOffset + leftBound + 10, 30 + upperBound));
 
-            DrawHelper(spriteBatch, "LIVES", new Vector2(livesOffset + leftBound, 5));
-            DrawHelper(spriteBatch, Lives.ToString(), new Vector2(livesOffset + leftBound + 10, 30));
+            DrawHelper(spriteBatch, "LIVES", new Vector2(livesOffset + leftBound, 5 + upperBound));
+            DrawHelper(spriteBatch, Lives.ToString(), new Vector2(livesOffset + leftBound + 10, 30 + upperBound));
         }
         public void OnMarioDeath()
         {

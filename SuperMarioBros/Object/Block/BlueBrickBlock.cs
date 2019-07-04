@@ -1,37 +1,45 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperMarioBros.Blocks
 {
-    public class BlueBrickBlock: BrickBlock
+    public class BlueBrickBlock:AbstractBlock
     {
-        public BlueBrickBlock(Vector2 location) : base(location)
+        private protected double deleteTimer = 0.1;
+        private protected bool bumped;
+        public BlueBrickBlock(Vector2 location)
         {
-
+            ItemType = null;
+            HasItem = false;
+            Position = location;
+            bumped = false;
+            base.Initialize();
         }
 
         public override void Bumped()
         {
-            base.Bumped();
+            State.Bumped();
         }
 
         public override void Update(GameTime gameTime)
         {
-            base.Update(gameTime);
+            if (bumped)
+            {
+                deleteTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (deleteTimer <= 0) ObjState = ObjectState.Destroy;
+            }
+            State.Update(gameTime);
         }
 
         public override void Used()
         {
-            base.Used();
+            State.Used();
         }
         public override void Borken()
         {
+            State.Bumped(); /* treat as bump to kill enemy if on top of it */
+            Sprite = null;
+            bumped = true;
             base.Borken();
         }
-
     }
 }

@@ -18,7 +18,7 @@ namespace SuperMarioBros.GameStates
             spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: MarioGame.Instance.marioCamera.Transform);
             graphicsDevice.Clear(Color.CornflowerBlue);
             MarioGame.Instance.ObjectsManager.Draw(spriteBatch);
-            MarioGame.Instance.HeadsUps.Draw(spriteBatch, MarioGame.Instance.Camera.LeftBound);
+            MarioGame.Instance.HeadsUps.Draw(spriteBatch, MarioGame.Instance.Camera.LeftBound, MarioGame.Instance.Camera.UpperBound);
             spriteBatch.End();
         }
 

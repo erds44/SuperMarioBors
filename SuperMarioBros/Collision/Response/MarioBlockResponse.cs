@@ -140,6 +140,7 @@ namespace SuperMarioBros.Collisions
         private readonly Dictionary<Type, MarioBlockHandler> handlerDictionary = new Dictionary<Type, MarioBlockHandler>
         {
             {typeof(BrickBlock), MarioVsBrickBlock},
+            {typeof(BlueBrickBlock), MarioVsBrickBlock},
             {typeof(ItemBrickBlock), MarioVsItemBrickOrQuestionBlock},
             {typeof(QuestionBlock), MarioVsItemBrickOrQuestionBlock},
              /* Other blocks not listed here are teated as rockblock */

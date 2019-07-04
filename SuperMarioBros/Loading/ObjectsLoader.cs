@@ -236,7 +236,7 @@ namespace SuperMarioBros.Loading
 
         public void LevelLoading()
         {
-            Mario = new Mario(new Vector2(10, 410));
+            Mario = new Mario(new Vector2(2429, 100));
             LoadDynamics();
             LoadStatics();
             LoadNonCollidables();
