@@ -13,9 +13,9 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         protected private Vector2 offset = new Vector2(-22, -32);
         protected private Vector2 slidingVelocity = new Vector2(0, 150);
         protected private FireBallDirection direction = FireBallDirection.left;
-        protected private int fireBallCount = 2;
-        protected private float fireBallCoolDown = 2f;
-        protected private bool coolDown = false;
+        protected static private int fireBallCount = 2;
+        protected static private float fireBallCoolDown = 2f;
+        protected static private bool coolDown = false;
         public virtual void OnGround()
         {
             mario.OnGround = true;
