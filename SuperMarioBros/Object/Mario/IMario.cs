@@ -21,7 +21,7 @@ namespace SuperMarioBros.Marios
         event Action<Vector2> ExtraLifeEvent;
         event Action<Vector2> SlidingEvent;
         event Action<Vector2> SetCameraFocus;
-        event Action SetPipeTeleporitngEvent;
+        event Action SetPipeTeleportngEvent;
         event Action ChangeToGameStateEvent;
         event Action ChangeToTeleportStateEvent;
         event Action ChangeToFlagPoleStateEvent;

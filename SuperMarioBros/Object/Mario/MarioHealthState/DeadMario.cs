@@ -1,4 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
+using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.SpriteFactories;
@@ -14,6 +16,8 @@ namespace SuperMarioBros.Marios.MarioTypeStates
             mario.Sprite = SpriteFactory.CreateSprite(nameof(DeadMario));
             mario.MovementState = new TerminateMovementState();
             mario.Physics.Velocity = DeadVelocity;
+            MediaPlayer.Stop();
+            AudioFactory.Instance.CreateSound("mariodie").Play();
         }
 
         public void TakeDamage()

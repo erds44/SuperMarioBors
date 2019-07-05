@@ -17,13 +17,11 @@ namespace SuperMarioBros.Managers
         public IMario Mario { get; private set; }
         public ObjectLoader ObjectLoader { get; private set; }
         private readonly DynamicLoader dynamicLoader;
-        private readonly float windowHeight;
         private readonly MarioGame game;
-        public ObjectsManager(ObjectLoader objectLoader, MarioGame game, float windowHeight) {
+        public ObjectsManager(ObjectLoader objectLoader, MarioGame game) {
             StaticObjects = new List<IStatic>();
             DynamicObjects = new List<IDynamic>();
             NonCollidableObjects = new List<IObject>();
-            this.windowHeight = windowHeight;
             ObjectLoader = objectLoader;
             Mario = objectLoader.Mario;
             dynamicLoader = new DynamicLoader(game, objectLoader, this);
@@ -160,7 +158,7 @@ namespace SuperMarioBros.Managers
         }
         private void BoundaryCheck(IObject obj)
         {
-            if (obj.Position.Y > windowHeight + 100) obj.ObjState = ObjectState.Destroy;
+            if (obj.Position.Y > game.WindowHeight + 100) obj.ObjState = ObjectState.Destroy;
             if (obj.Position.X < game.Camera.LeftBound - 300) obj.ObjState = ObjectState.Destroy;
             if (obj.Position.X > game.Camera.RightBound + 300) obj.ObjState = ObjectState.Destroy;
         }
