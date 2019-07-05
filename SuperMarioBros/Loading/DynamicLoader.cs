@@ -62,6 +62,9 @@ namespace SuperMarioBros.Loading
                 {
                     objectLoader.Mario.SlidingEvent += ((Flag)obj).Sliding;
                     ((Flag)obj).MarioJumpingOffFlagEvent += objectLoader.Mario.JumpingOffFlag;
+                }else if(obj is BigCoin coin)
+                {
+                    coin.CoinCollectedEvent += MarioGame.Instance.HeadsUps.CoinCollected;
                 }
                     
                 objectsManager.AddObject(obj);

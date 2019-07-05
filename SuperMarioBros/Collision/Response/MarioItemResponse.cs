@@ -78,13 +78,12 @@ namespace SuperMarioBros.Collisions
         }
         private static void TakeCoin(IMario mario, IItem item)
         {
-            //Do Nothing for Mario Right now, should be scroe board
             item.ObjState = ObjectState.Destroy;
         }
 
         private static void TakeBigCoin(IMario mario, IItem item)
         {
-            //Do Nothing for Mario Right now, should be scroe board
+            item.Destroy();
             item.ObjState = ObjectState.Destroy;
         }
     }

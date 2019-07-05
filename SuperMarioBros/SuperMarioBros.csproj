@@ -200,6 +200,9 @@
     <None Include="Content\Font.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\Font\MarioFont.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\Goomba.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

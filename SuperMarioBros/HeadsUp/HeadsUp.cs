@@ -27,7 +27,7 @@ namespace SuperMarioBros.HeadsUps
         public HeadsUp(ContentManager contentManager)
         {
             content = contentManager;
-            spriteFont = content.Load<SpriteFont>("Font");
+            spriteFont = content.Load<SpriteFont>("Font/MarioFont");
             Lives = 3;
         }
         public void Update(GameTime gameTime)

@@ -142,25 +142,25 @@ namespace SuperMarioBros.Loading
         private readonly List<ObjectsNode> dynamicList = new List<ObjectsNode>
         {
             //Underground
-             (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9845,305),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9880,305),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9915,305),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9950,305),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9985,305),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(10020,305),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(10055,305),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9845,240),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9880,240),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9915,240),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9950,240),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9985,240),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(10020,240),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(10055,240),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9880,180),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9915,180),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9950,180),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9985,180),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(10020,180),1,1,35)),
+             (new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(3300,-400),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9880,305),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9915,305),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9950,305),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9985,305),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(10020,305),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(10055,305),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9845,240),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9880,240),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9915,240),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9950,240),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9985,240),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(10020,240),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(10055,240),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9880,180),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9915,180),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9950,180),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(9985,180),1,1,35)),
+              //(new ObjectsNode("SuperMarioBros.Items.BigCoin",new Vector2(10020,180),1,1,35)),
             //test
            
             (new ObjectsNode("SuperMarioBros.Objects.Enemy.Goomba",new Vector2(540,410),1,1,30)),
@@ -236,7 +236,7 @@ namespace SuperMarioBros.Loading
 
         public void LevelLoading()
         {
-            Mario = new Mario(new Vector2(2429, 100));
+            Mario = new Mario(new Vector2(0, 410));
             LoadDynamics();
             LoadStatics();
             LoadNonCollidables();

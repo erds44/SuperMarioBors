@@ -1,19 +1,15 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Physicses;
-using SuperMarioBros.SpriteFactories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperMarioBros.Items
 {
-    
-        public class BigCoin : AbstractItem, IItem
+
+    public class BigCoin : AbstractItem, IItem
         {
             private new Vector2 initialVelocity = new Vector2(0, 0);
             private new float itemGravity = 0f;
+            public event Action<Vector2> CoinCollectedEvent;
             public BigCoin(Vector2 location)
             {
                     Position = location;
@@ -21,6 +17,10 @@ namespace SuperMarioBros.Items
                     Physics = new Physics(initialVelocity, itemGravity, itemWeight);
                      ObjState = ObjectState.Normal;
             }
+        public override void Destroy()
+        {
+            CoinCollectedEvent?.Invoke(Position);
         }
+    }
     
 }
