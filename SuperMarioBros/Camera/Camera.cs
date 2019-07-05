@@ -7,6 +7,7 @@ namespace SuperMarioBros.Cameras
     public class Camera
     {
         public float LeftBound { get; set; }
+        private float prevLeftBound;
         public float RightBound { get; set; }
         public float UpperBound { get; set; }
         public IObject Focus { get; private set; }
@@ -26,12 +27,14 @@ namespace SuperMarioBros.Cameras
         public void Reset()
         {
             LeftBound = 0;
+            prevLeftBound = 0;
             RightBound = LeftBound + windowWidth;
             UpperBound = 0;
         }
         public void Reset(IObject obj)
         {
             LeftBound = 0;
+            prevLeftBound = 0;
             RightBound = LeftBound + windowWidth;
             UpperBound = 0;
             Focus = obj;
@@ -40,7 +43,8 @@ namespace SuperMarioBros.Cameras
         {
             if (Focus is null) return;
             Vector2 targetPosition = Focus.Position;
-            LeftBound = Math.Max(LeftBound, targetPosition.X + Focus.HitBox().Width / 2 - windowWidth / 2);
+            LeftBound = Math.Max(prevLeftBound, targetPosition.X + Focus.HitBox().Width / 2 - windowWidth / 2);
+            prevLeftBound = LeftBound;
             RightBound = LeftBound + windowWidth;
             var position = Matrix.CreateTranslation(-LeftBound-windowWidth / 2, 0, 0);
             var offset = Matrix.CreateTranslation(windowWidth / 2, 0,0);

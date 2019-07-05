@@ -103,8 +103,8 @@ namespace SuperMarioBros
             ObjectsManager = new ObjectsManager(new ObjectLoader(), this, windowHeight);
            // ObjectsManager.LevelLoading();
             ObjectsManager.Initialize();
-            marioCamera = new Camera(windowWidth);
-            marioCamera.SetFocus(ObjectsManager.Mario);
+            marioCamera.Reset(ObjectsManager.Mario);
+            //marioCamera.SetFocus(ObjectsManager.Mario);
             ObjectFactory.Instance.Initialize(this);
             //AudioFactory.Instance.Initialize(Content, "Content/sounds.xml", "Content/musics.xml");
             collisionManager = new CollisionManager(this);
