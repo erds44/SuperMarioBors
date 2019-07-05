@@ -15,6 +15,7 @@ namespace SuperMarioBros.Controllers
         private int flags = 0b0000000000;
         public const int UPMOVE = 0b0000000001, DOWNMOVE = 0b0000000010, LEFTMOVE = 0b0000000100, RIGHTMOVE = 0b0000001000, RESETGAME = 0b0000010000, QUITGAME = 0b0000100000, POWER = 0b0001000000, KEYUPUPMOVE = 0b0010000000, KEYUPPOWER = 0b0100000000, KEYDOWNUP = 0b1000000000;
         private readonly IMario marioPlayer;
+        private readonly MarioGame game;
         private readonly List<IController> controllers;
         private readonly Dictionary<int, Type> gameCommand = new Dictionary<int, Type>{
             { QUITGAME, typeof(QuitCommand) },
@@ -31,9 +32,10 @@ namespace SuperMarioBros.Controllers
             { KEYDOWNUP, typeof(KeyDownUpCommand) },
 
         };
-        public ControllerMessager(IMario mario)
+        public ControllerMessager(IMario mario, MarioGame game)
         {
             marioPlayer = mario;
+            this.game = game;
             controllers = new List<IController>();
         }
         public void AddController(IController controller)
@@ -53,7 +55,7 @@ namespace SuperMarioBros.Controllers
             marioPlayer.PowerFlag = (flags & POWER) != 0; //Bind power flag.
             foreach(KeyValuePair<int, Type> element in gameCommand)
             {
-                if((flags & element.Key) != 0) { ((ICommand)Activator.CreateInstance(element.Value)).Execute(); }
+                if((flags & element.Key) != 0) { ((ICommand)Activator.CreateInstance(element.Value, game)).Execute(); }
             }
             foreach(KeyValuePair<int, Type> element in actionCommand)
             {

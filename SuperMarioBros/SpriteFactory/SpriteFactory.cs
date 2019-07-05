@@ -5,7 +5,6 @@ using SuperMarioBros.Sprites;
 using SuperMarioBros.Items;
 using SuperMarioBros.Loading;
 using Microsoft.Xna.Framework;
-using System;
 
 namespace SuperMarioBros.SpriteFactories
 {

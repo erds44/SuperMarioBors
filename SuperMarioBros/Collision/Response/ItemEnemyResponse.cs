@@ -13,7 +13,10 @@ namespace SuperMarioBros.Collisions
         private readonly IObject obj2;
         private readonly Direction direction;
         private delegate void ItemEnemyHandler(IItem item, IEnemy enemy);
-
+        private readonly Dictionary<Type, ItemEnemyHandler> handlerDictionary = new Dictionary<Type, ItemEnemyHandler>
+        {
+            { typeof(FireBall) , FireBallVSEnemy}
+        };
         public ItemEnemyResponse(IObject obj1, IObject obj2, Direction direction)
         {
             this.obj1 = obj1;
@@ -30,10 +33,6 @@ namespace SuperMarioBros.Collisions
                     handle2((IItem)obj2, (IEnemy)obj1);
             }
         }
-        private readonly Dictionary<Type, ItemEnemyHandler> handlerDictionary = new Dictionary<Type, ItemEnemyHandler>
-        {
-            { typeof(FireBall) , FireBallVSEnemy}     
-        };
         private static void FireBallVSEnemy(IItem fireBall, IEnemy enemy)
         {
             if (!((FireBall)fireBall).Explosion)

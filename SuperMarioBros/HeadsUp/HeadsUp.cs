@@ -11,7 +11,6 @@ namespace SuperMarioBros.HeadsUps
     public class HeadsUp
     {
         public event Action timerOverEvent;
-        private readonly ContentManager content;
         private readonly SpriteFont spriteFont;
         private readonly float scoreOffset = 83;
         private readonly float coinOffset = 246;
@@ -19,15 +18,15 @@ namespace SuperMarioBros.HeadsUps
         private readonly float timeOffset = 532;
         private readonly float livesOffset = 666;
         private bool clearingScores = false;
-
+        private readonly MarioGame game;
         private float timer = 400;
         private int score = 0;
         private int coin = 0;
         public int Lives { get; set; }
-        public HeadsUp(ContentManager contentManager)
+        public HeadsUp(MarioGame game)
         {
-            content = contentManager;
-            spriteFont = content.Load<SpriteFont>("Font/MarioFont");
+            this.game = game;
+            spriteFont = game.Content.Load<SpriteFont>("Font/MarioFont");
             Lives = 3;
         }
         public void Update(GameTime gameTime)
@@ -40,10 +39,9 @@ namespace SuperMarioBros.HeadsUps
                 else
                 {
                     ObjectFactory.Instance.CreateNonCollidableObject(typeof(WinFlag), new Vector2(8620, 410));
-                    if(MarioGame.Instance.State is FlagPoleState state)
+                    if(game.State is FlagPoleState state)
                         state.UpdateHeadsUp = false;
-                }
-                    
+                }                   
             }
             else
             {
@@ -75,9 +73,9 @@ namespace SuperMarioBros.HeadsUps
         {
             Lives--;
             if (Lives == 0)
-                MarioGame.Instance.ChangeToGameOvertState();
+                game.ChangeToGameOvertState();
             else
-                MarioGame.Instance.ChangeToPlayerStatusState();
+                game.ChangeToPlayerStatusState();
         }
         public void CoinCollected(Vector2 Position)
         {
@@ -124,7 +122,7 @@ namespace SuperMarioBros.HeadsUps
         public void ClearingScores()
         {
             clearingScores = true;
-            ((FlagPoleState)MarioGame.Instance.State).UpdateHeadsUp = true;
+            ((FlagPoleState)game.State).UpdateHeadsUp = true;
         }
 
         private void DrawHelper(SpriteBatch spriteBatch, string str, Vector2 position)

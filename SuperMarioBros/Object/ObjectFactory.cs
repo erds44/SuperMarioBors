@@ -21,6 +21,7 @@ namespace SuperMarioBros.Objects
         private  Vector2 rightBottomDebrisOffset = new Vector2(20, 0);
         private static Vector2 flagOffset = new Vector2(68, -130);
         public int count = 0;
+        private  MarioGame game;
         /* Red/Green msuhrrom, star, debris, flower, coin*/
         private readonly static Dictionary<Type, Vector2> dictionary = new Dictionary<Type, Vector2>
         {
@@ -32,18 +33,22 @@ namespace SuperMarioBros.Objects
             { typeof(WinFlag), flagOffset}
         };
 
-        public void Initialize()
+        public void Initialize(MarioGame game)
         {
-            objectsManager = MarioGame.Instance.ObjectsManager;
+            this.game = game;
+            objectsManager = game.ObjectsManager;
         }
         /* Mainly used for itemBlock creates items*/
         public void CreateNonCollidableObject(Type type, Vector2 location)
         {
             if (dictionary.TryGetValue(type, out Vector2 offSet))
                 location += offSet;
-            objectsManager.AddNonCollidableObject((IDynamic)Activator.CreateInstance(type, location));
+            IDynamic obj = (IDynamic)Activator.CreateInstance(type, location);
+            objectsManager.AddNonCollidableObject(obj);
             if (type == typeof(Coin))
                 ItemCollectedEvent?.Invoke(new Vector2(location.X, location.Y -60));
+            if (obj is WinFlag winFlag)
+                winFlag.startOverEvent += game.StartOver;        
         }
 
         public void CreateCollidableObject(Type type, Vector2 location)

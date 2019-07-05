@@ -21,14 +21,6 @@ namespace SuperMarioBros.Collisions
             this.item = (IItem)item;
             this.direction = direction;
         }
-        public override void HandleCollision()
-        {
-            if (direction != Direction.none)
-            {
-                handlerDictionary.TryGetValue(item.GetType(), out var handler);
-                handler?.Invoke(mario, item);
-            }
-        }
         private readonly Dictionary<Type, MarioItemHandler> handlerDictionary = new Dictionary<Type, MarioItemHandler>
         {
             {typeof(Star), TakeStar},
@@ -38,8 +30,16 @@ namespace SuperMarioBros.Collisions
             {typeof(GreenMushroom), TakeGreenMushroom},
             {typeof(Coin), TakeCoin},
             {typeof(FlagPole), SlidingFlagPole},
-            {typeof(Castle), EnterCastle } 
+            {typeof(Castle), EnterCastle }
         };
+        public override void HandleCollision()
+        {
+            if (direction != Direction.none)
+            {
+                handlerDictionary.TryGetValue(item.GetType(), out var handler);
+                handler?.Invoke(mario, item);
+            }
+        }
 
         private static void EnterCastle(IMario mario, IItem item)
         {
@@ -53,7 +53,6 @@ namespace SuperMarioBros.Collisions
                 mario.Position = new Vector2(mario.Position.X, 88);
             mario.Position += marioFlagOffset;
             item.ObjState = ObjectState.NonCollidable;
-            MarioGame.Instance.ChangeToFlagPoleState();
         }
 
         private static void TakeStar(IMario mario, IItem item)

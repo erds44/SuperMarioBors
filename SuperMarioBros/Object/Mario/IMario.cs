@@ -16,10 +16,16 @@ namespace SuperMarioBros.Marios
         void KeyDownUp();
 
         event Action DeathEvent;
+        event Action<bool> FocusMarioEvent;
         event Action<Vector2> PowerUpEvent;
         event Action<Vector2> ExtraLifeEvent;
         event Action<Vector2> SlidingEvent;
+        event Action<Vector2> SetCameraFocus;
         event Action SetPipeTeleporitngEvent;
+        event Action ChangeToGameStateEvent;
+        event Action ChangeToTeleportStateEvent;
+        event Action ChangeToFlagPoleStateEvent;
+        event Func<bool> IsFlagPoleStateEvent;
         int EnemyKillStreakCounter { get; set; }
         double NoMovementTimer { get; set; }
         bool OnGround { get; set; }

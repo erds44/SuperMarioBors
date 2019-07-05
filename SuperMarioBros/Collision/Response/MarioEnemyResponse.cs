@@ -13,7 +13,18 @@ namespace SuperMarioBros.Collisions
         private readonly IEnemy enemy;
         private readonly Direction direction;
         private delegate void MarioEnemyHandler(IMario mario, IEnemy enemy, Direction direction);
+        private readonly Dictionary<(Type, Direction), MarioEnemyHandler> handlerDictionary = new Dictionary<(Type, Direction), MarioEnemyHandler>
+        {
+            { (typeof(Koopa), Direction.top), KoopaTopCollision },
+            { (typeof(Koopa), Direction.left), KoopaLeftOrRightCollision },
+            { (typeof(Koopa), Direction.right), KoopaLeftOrRightCollision },
+            { (typeof(Koopa), Direction.bottom), EnemyBottomCollision },
+            { (typeof(Goomba), Direction.top),  GoombaTopCollision},
+            { (typeof(Goomba), Direction.left),  GoombaLeftOrRightCollision},
+            { (typeof(Goomba), Direction.right),  GoombaLeftOrRightCollision},
+            { (typeof(Goomba), Direction.bottom), EnemyBottomCollision },
 
+        };
         public MarioEnemyResponse(IObject mario, IObject enemy, Direction direction)
         {
             this.mario = (IMario)mario;
@@ -28,18 +39,6 @@ namespace SuperMarioBros.Collisions
                     handle(mario, enemy, direction);
             }
         }
-        private readonly Dictionary<(Type,Direction), MarioEnemyHandler> handlerDictionary = new Dictionary<(Type,Direction), MarioEnemyHandler>
-        {
-            { (typeof(Koopa), Direction.top), KoopaTopCollision },
-            { (typeof(Koopa), Direction.left), KoopaLeftOrRightCollision },
-            { (typeof(Koopa), Direction.right), KoopaLeftOrRightCollision },
-            { (typeof(Koopa), Direction.bottom), EnemyBottomCollision },
-            { (typeof(Goomba), Direction.top),  GoombaTopCollision},
-            { (typeof(Goomba), Direction.left),  GoombaLeftOrRightCollision},
-            { (typeof(Goomba), Direction.right),  GoombaLeftOrRightCollision},
-            { (typeof(Goomba), Direction.bottom), EnemyBottomCollision },
-
-        };
         private static void GoombaLeftOrRightCollision(IMario mario, IEnemy enemy, Direction direction)
         {
             if (mario.TransitionState is StarState)

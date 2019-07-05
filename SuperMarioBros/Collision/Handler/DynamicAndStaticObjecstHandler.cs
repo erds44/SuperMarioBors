@@ -11,10 +11,7 @@ namespace SuperMarioBros.Collisions
 {
     public class DynamicAndStaticObjectsHandler : IHandler
     {
-        private static Dictionary<(Type, Type), Type> collisionDictionary;
-        public DynamicAndStaticObjectsHandler()
-        {
-            collisionDictionary = new Dictionary<(Type, Type), Type>
+        private static Dictionary<(Type, Type), Type> collisionDictionary = new Dictionary<(Type, Type), Type>
             {
                 { (typeof(IMario), typeof(IBlock)), typeof(MarioBlockResponse)},
                 { (typeof(IMario), typeof(IPipe)), typeof(MarioPipeResponse)},
@@ -23,11 +20,20 @@ namespace SuperMarioBros.Collisions
                 { (typeof(IEnemy), typeof(IBlock)), typeof(EnemyBlockResponse)},
                 { (typeof(IEnemy), typeof(IPipe)), typeof(EnemyPipeResponse)},
             };
+        private readonly MarioGame game;
+        public DynamicAndStaticObjectsHandler(MarioGame game)
+        {
+            this.game = game;
         }
         public void HandleCollision(IObject obj1, IObject obj2, Direction direction)
         {
-            if (collisionDictionary.TryGetValue((((IDynamic)obj1).GetType().GetInterfaces()[0],((IStatic)obj2).GetType().GetInterfaces()[0]), out Type type))
-                ((ICollisionResponsible)Activator.CreateInstance(type, obj1, obj2, direction)).HandleCollision();
+            if (collisionDictionary.TryGetValue((((IDynamic)obj1).GetType().GetInterfaces()[0], ((IStatic)obj2).GetType().GetInterfaces()[0]), out Type type))
+            {
+                if (type == typeof(MarioBlockResponse))
+                    ((ICollisionResponsible)Activator.CreateInstance(type, obj1, obj2, direction, game)).HandleCollision();
+                else
+                    ((ICollisionResponsible)Activator.CreateInstance(type, obj1, obj2, direction)).HandleCollision();
+            }
         }
 
     }

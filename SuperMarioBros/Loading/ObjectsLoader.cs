@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using SuperMarioBros.Blocks;
 using SuperMarioBros.Collisions;
-using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Object.Pipes;
 using SuperMarioBros.Objects;
@@ -121,8 +119,6 @@ namespace SuperMarioBros.Loading
               (new ObjectsNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(7999,410),4,8,35)),
 
               (new ObjectsNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(8489,410),1,1,0)),
-
-
             };
 
 
@@ -219,6 +215,7 @@ namespace SuperMarioBros.Loading
             this.Statics = new List<IStatic>();
             this.Dynamics = new List<IDynamic>();
             this.NonCollidables = new List<IObject>();
+            LevelLoading();
         }
 
         public void LevelLoading()
@@ -265,8 +262,7 @@ namespace SuperMarioBros.Loading
 
                 }
             }
-            /* Teleport Pipe */
-            Statics.Add(new TeleportPipe(new Vector2(400, 410), new Vector2(3050, -480), "TeleportVerticalLargePipe", Direction.top));
+            /* Teleport Pipe */          
             Statics.Add(new TeleportPipe(new Vector2(2429, 410), new Vector2(3050, -480), "TeleportVerticalLargePipe",Direction.top)); 
             Statics.Add(new TeleportPipe(new Vector2(3705, -170), new Vector2(6990, 410),"TeleportHorizontalSmallPipe", Direction.left));
             /* Regular Pipe */

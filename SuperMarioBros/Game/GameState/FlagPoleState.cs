@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace SuperMarioBros.GameStates
@@ -7,28 +6,30 @@ namespace SuperMarioBros.GameStates
     public class FlagPoleState : IGameState
     {
         public bool UpdateHeadsUp { get; set; }
+        private readonly MarioGame game;
         private GraphicsDevice graphicsDevice;
-        public FlagPoleState(GraphicsDevice graphicsDevice, ContentManager content)
+        public FlagPoleState(MarioGame game)
         {
-            this.graphicsDevice = graphicsDevice;
+            graphicsDevice = game.GraphicsDevice;
             UpdateHeadsUp = false;
+            this.game = game;
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: MarioGame.Instance.marioCamera.Transform);
+            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: game.marioCamera.Transform);
             graphicsDevice.Clear(Color.CornflowerBlue);
-            MarioGame.Instance.ObjectsManager.Draw(spriteBatch);
-            MarioGame.Instance.HeadsUps.Draw(spriteBatch, MarioGame.Instance.Camera.LeftBound, MarioGame.Instance.Camera.UpperBound);
+            game.ObjectsManager.Draw(spriteBatch);
+            game.HeadsUps.Draw(spriteBatch, game.Camera.LeftBound, game.Camera.UpperBound);
             spriteBatch.End();
         }
 
         public void Update(GameTime gameTime)
         {
-            MarioGame.Instance.marioCamera.Update();
-            MarioGame.Instance.ObjectsManager.Update(gameTime);
-            MarioGame.Instance.collisionManager.Update();
+            game.marioCamera.Update();
+            game.ObjectsManager.Update(gameTime);
+            game.collisionManager.Update();
             if(UpdateHeadsUp)
-                MarioGame.Instance.HeadsUps.Update(gameTime);
+                game.HeadsUps.Update(gameTime);
         }
 
         public void Pause()

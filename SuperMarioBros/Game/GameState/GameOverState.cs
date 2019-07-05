@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace SuperMarioBros.GameStates
@@ -9,12 +8,12 @@ namespace SuperMarioBros.GameStates
         private GraphicsDevice graphicsDevice;
         private SpriteFont spriteFont;
         private float timer = 2f;
-        private ContentManager content;
-        public GameOverState(GraphicsDevice graphicsDevice, ContentManager content)
+        private readonly MarioGame game;
+        public GameOverState(MarioGame game)
         {
-            this.graphicsDevice = graphicsDevice;
-            spriteFont = content.Load<SpriteFont>("Font/MarioFont");
-            this.content = content;
+            this.game = game;
+            this.graphicsDevice = game.GraphicsDevice;
+            spriteFont = game.Content.Load<SpriteFont>("Font/MarioFont");
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
@@ -34,8 +33,8 @@ namespace SuperMarioBros.GameStates
             timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (timer <= 0)
             {
-                MarioGame.Instance.HeadsUps.ResetAll();
-                MarioGame.Instance.State = new MenuState(graphicsDevice, content);
+                game.HeadsUps.ResetAll();
+                game.State = new MenuState(game);
             }
         }
     }

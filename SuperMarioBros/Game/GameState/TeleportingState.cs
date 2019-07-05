@@ -6,16 +6,18 @@ namespace SuperMarioBros.GameStates
     public class TeleportingState : IGameState
     {
         private GraphicsDevice graphicsDevice;
-        public TeleportingState(GraphicsDevice graphicsDevice)
+        private readonly MarioGame game;
+        public TeleportingState(MarioGame game)
         {
-            this.graphicsDevice = graphicsDevice;
+            this.game = game;
+            graphicsDevice = game.GraphicsDevice;           
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: MarioGame.Instance.marioCamera.Transform);
+            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: game.marioCamera.Transform);
             graphicsDevice.Clear(Color.CornflowerBlue);
-            MarioGame.Instance.ObjectsManager.Draw(spriteBatch);
-            MarioGame.Instance.HeadsUps.Draw(spriteBatch, MarioGame.Instance.Camera.LeftBound, MarioGame.Instance.Camera.UpperBound);
+            game.ObjectsManager.Draw(spriteBatch);
+            game.HeadsUps.Draw(spriteBatch, game.Camera.LeftBound, game.Camera.UpperBound);
             spriteBatch.End();
         }
 
@@ -26,10 +28,10 @@ namespace SuperMarioBros.GameStates
 
         public void Update(GameTime gameTime)
         {
-            MarioGame.Instance.ObjectsManager.Mario.Update(gameTime);
-            MarioGame.Instance.collisionManager.Update();
-            if (MarioGame.Instance.FocusMario)
-                MarioGame.Instance.marioCamera.Update();
+            game.ObjectsManager.Mario.Update(gameTime);
+            game.collisionManager.Update();
+            if (game.FocusMario)
+                game.marioCamera.Update();
         }
     }
 }

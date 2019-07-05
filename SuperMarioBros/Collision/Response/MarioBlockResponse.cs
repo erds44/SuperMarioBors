@@ -15,6 +15,7 @@ namespace SuperMarioBros.Collisions
         private readonly IBlock block;
         private readonly Direction direction;
         private delegate void MarioBlockHandler(IMario mario, IBlock block);
+        private readonly MarioGame game;
         private readonly Dictionary<Type, MarioBlockHandler> handlerDictionary = new Dictionary<Type, MarioBlockHandler>
         {
             {typeof(BrickBlock), MarioVsBrickBlock},
@@ -24,15 +25,16 @@ namespace SuperMarioBros.Collisions
              /* Other blocks not listed here are teated as rockblock */
         };
 
-        public MarioBlockResponse(IObject mario, IObject block, Direction direction)
+        public MarioBlockResponse(IObject mario, IObject block, Direction direction, MarioGame game)
         {
+            this.game = game;
             this.mario = (IMario)mario;
             this.block = (IBlock)block;
             this.direction = direction;
         }
         public override void HandleCollision()
         {
-            if (MarioGame.Instance.State is FlagPoleState && direction == Direction.top)
+            if (game.State is FlagPoleState && direction == Direction.top)
             {
                 if (block is RockBlock)
                     mario.Right();
