@@ -10,14 +10,16 @@ using SuperMarioBros.Loading;
 using SuperMarioBros.Marios;
 using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.SpriteFactories;
+using SuperMarioBros.AudioFactories;
+using Microsoft.Xna.Framework.Media;
 
 namespace SuperMarioBros
 {
     public enum ObjectState { Normal, NonCollidable, Destroy }
     public class MarioGame : Game
     {
-        private readonly int windowWidth;
-        private readonly int windowHeight;
+        public readonly int WindowWidth;
+        public readonly int WindowHeight;
         private bool pause = false;
         public ObjectsManager ObjectsManager { get; set; }
         public Camera Camera { get => marioCamera; }
@@ -35,8 +37,8 @@ namespace SuperMarioBros
             {
                 spriteBatch = new SpriteBatch((o as GraphicsDeviceManager).GraphicsDevice);
             };
-            windowHeight = graphics.PreferredBackBufferHeight;
-            windowWidth = graphics.PreferredBackBufferWidth;
+            WindowHeight = graphics.PreferredBackBufferHeight;
+            WindowWidth = graphics.PreferredBackBufferWidth;
             Content.RootDirectory = "Content";
             FocusMario = true;
         }
@@ -55,9 +57,10 @@ namespace SuperMarioBros
             IsMouseVisible = true;
             State = new MenuState(this);
             SpriteFactory.Initialize(Content);
-            marioCamera = new Camera(windowWidth);
+            marioCamera = new Camera(WindowWidth);
             HeadsUps = new HeadsUp(this);
             ObjectFactory.Instance.ItemCollectedEvent += HeadsUps.CoinCollected;
+            AudioFactory.Instance.Initialize(Content, "Content/sounds.xml", "Content/musics.xml");
             base.Initialize();
         }
         protected override void Update(GameTime gameTime)
@@ -100,18 +103,16 @@ namespace SuperMarioBros
        
         public void InitializeGame()
         {
-            ObjectsManager = new ObjectsManager(new ObjectLoader(), this, windowHeight);
+            ObjectsManager = new ObjectsManager(new ObjectLoader(), this);
            // ObjectsManager.LevelLoading();
             ObjectsManager.Initialize();
             marioCamera.Reset(ObjectsManager.Mario);
             //marioCamera.SetFocus(ObjectsManager.Mario);
             ObjectFactory.Instance.Initialize(this);
-            //AudioFactory.Instance.Initialize(Content, "Content/sounds.xml", "Content/musics.xml");
             collisionManager = new CollisionManager(this);
             KeyBinding();
             
-
-            //MediaPlayer.Play(AudioFactory.Instance.CreateSong("overworld"));
+            MediaPlayer.Play(AudioFactory.Instance.CreateSong("overworld"));
 
             ObjectsManager.Mario.DeathEvent += HeadsUps.OnMarioDeath;
             ObjectsManager.Mario.DeathEvent += InitializeGame;

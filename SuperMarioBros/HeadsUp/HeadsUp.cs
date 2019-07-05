@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
+using SuperMarioBros.AudioFactories;
 using SuperMarioBros.GameStates;
 using SuperMarioBros.Items;
 using SuperMarioBros.Objects;
@@ -81,12 +83,14 @@ namespace SuperMarioBros.HeadsUps
         {
             coin++;
             score += 200;
+            AudioFactory.Instance.CreateSound("coin").Play();
             ObjectFactory.Instance.CreateScoreText(Position, spriteFont, "200");
         }
         public void EnemyStomped(Vector2 position, int count)
         {
             int addScore = 100 * count;
             score += addScore;
+            AudioFactory.Instance.CreateSound("stomp").Play();
             ObjectFactory.Instance.CreateScoreText(position, spriteFont, addScore.ToString());
         }
 
@@ -111,11 +115,13 @@ namespace SuperMarioBros.HeadsUps
         public void ExtraLife(Vector2 Position)
         {
             Lives++;
+            AudioFactory.Instance.CreateSound("1up").Play();
             ObjectFactory.Instance.CreateScoreText(Position, spriteFont, "1LF");
         }
         public void PowerUpCollected(Vector2 Position)
         {
             score += 1000;
+            AudioFactory.Instance.CreateSound("powerup").Play();
             ObjectFactory.Instance.CreateScoreText(Position, spriteFont, "1000");
         }
 

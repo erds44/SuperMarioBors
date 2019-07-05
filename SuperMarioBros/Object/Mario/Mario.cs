@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Collisions;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
@@ -20,7 +21,7 @@ namespace SuperMarioBros.Marios
         public event Func<bool> IsFlagPoleStateEvent;
         public event Action ClearingScoresEvent;
         public event Action ChangeToFlagPoleStateEvent;
-        public event Action SetPipeTeleporitngEvent;
+        public event Action SetPipeTeleportngEvent;
         public event Action DeathEvent;
         public event Action ChangeToGameStateEvent;
         public event Action ChangeToTeleportStateEvent;
@@ -137,7 +138,7 @@ namespace SuperMarioBros.Marios
                 }
                 else                   
                     FocusMarioEvent?.Invoke(true);
-                SetPipeTeleporitngEvent?.Invoke();
+                SetPipeTeleportngEvent?.Invoke();
                 ChangeToGameStateEvent?.Invoke();
             }
         }
@@ -197,7 +198,8 @@ namespace SuperMarioBros.Marios
         public void Teleport(Vector2 teleportPosition, Direction direction)
         {
             isTeleporting = true;
-            if(teleportDictionary.TryGetValue(direction, out var tuple))
+            AudioFactory.Instance.CreateSound("pipe").Play();
+            if (teleportDictionary.TryGetValue(direction, out var tuple))
             {
                 expectedPosition = Position + tuple.Item2;
                 Physics.SetConstentVelocity(tuple.Item1);

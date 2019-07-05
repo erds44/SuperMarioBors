@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Items;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
@@ -27,6 +28,7 @@ namespace SuperMarioBros.Marios
             Physics.ApplyGravity();
             sprite = SpriteFactory.CreateSprite(GetType().Name);
             Explosion = false;
+            AudioFactory.Instance.CreateSound("fireball").Play();
         }
 
         public override Rectangle HitBox()

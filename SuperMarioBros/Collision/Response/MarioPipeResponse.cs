@@ -45,7 +45,7 @@ namespace SuperMarioBros.Collisions
             {
                 mario.Teleport(new Vector2(6990, 332), Direction.top);
                 ((Pipe)pipe).IsTeleporting = true;
-                mario.SetPipeTeleporitngEvent += ((Pipe)pipe).SetTeleporting;
+                mario.SetPipeTeleportngEvent += ((Pipe)pipe).SetTeleporting;
             }
             if (!((Pipe)pipe).IsTeleporting)
             {

@@ -1,4 +1,5 @@
-﻿using SuperMarioBros.Blocks;
+﻿using SuperMarioBros.AudioFactories;
+using SuperMarioBros.Blocks;
 using SuperMarioBros.GameStates;
 using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
@@ -80,10 +81,14 @@ namespace SuperMarioBros.Collisions
         private static void MarioVsBrickBlock(IMario mario, IBlock block)
         {
             if (mario.HealthState is SmallMario)
+            {
                 block.Bumped();
+                AudioFactory.Instance.CreateSound("bump").Play();
+            }
             else
             {
-                block.Borken();
+                block.Broken();
+                AudioFactory.Instance.CreateSound("breakblock").Play();
                 ObjectFactory.Instance.CreateBlockDebris(block.Position);
             }
         }
@@ -93,11 +98,13 @@ namespace SuperMarioBros.Collisions
             if (block.ItemType != null)
             {
                 block.Bumped();
+                AudioFactory.Instance.CreateSound("bump").Play();
                 ObjectFactory.Instance.CreateNonCollidableObject(block.ItemType, block.Position);
             }
             else
             {
                 block.Used();
+                AudioFactory.Instance.CreateSound("powerupappears").Play();
                 if (mario.HealthState is SmallMario)
                     ObjectFactory.Instance.CreateNonCollidableObject(typeof(RedMushroom), block.Position);
                 else
@@ -113,10 +120,12 @@ namespace SuperMarioBros.Collisions
             {
                 GroundOrTopBounce(mario);
                 block.Used();
+                AudioFactory.Instance.CreateSound("bump").Play();
                 if (block.ItemType != null)
                     ObjectFactory.Instance.CreateNonCollidableObject(block.ItemType, block.Position);
                 else
                 {
+                    AudioFactory.Instance.CreateSound("powerupappears").Play();
                     if (mario.HealthState is SmallMario)
                         ObjectFactory.Instance.CreateNonCollidableObject(typeof(RedMushroom), block.Position);
                     else

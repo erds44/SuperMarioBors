@@ -12,7 +12,7 @@ namespace SuperMarioBros.Objects
     {
         public event Action<Vector2> ItemCollectedEvent;
         private static readonly ObjectFactory instance = new ObjectFactory();
-        public  static ObjectFactory Instance { get { return instance; } }
+        public static ObjectFactory Instance { get {return instance;} }
         private  ObjectsManager objectsManager;
         private static Vector2 itemOffset = new Vector2(1, 0);  /* includes muhsrooms, star, flower */
         private static Vector2 coinOffset = new Vector2(12, -50);

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Blocks.BlockStates;
 using SuperMarioBros.Managers;
 using SuperMarioBros.Physicses;
@@ -59,7 +60,7 @@ namespace SuperMarioBros.Blocks
             Sprite?.Update(gameTime);
         }
 
-        public virtual void Borken()
+        public virtual void Broken()
         {
             // Do Nothing
         }
