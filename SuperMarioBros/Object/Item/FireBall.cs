@@ -41,6 +41,7 @@ namespace SuperMarioBros.Marios
         public void FireExplosion()
         {
             sprite = SpriteFactory.CreateSprite(nameof(FireExplosion));
+            sprite.SetLayer(1f);
             Position += explosionOffSet;
             Explosion = true;
         }

@@ -41,8 +41,8 @@ namespace SuperMarioBros.Marios
         private Vector2 expectedPosition;
         private readonly Dictionary<Direction, (Vector2, Vector2)> teleportDictionary = new Dictionary<Direction, (Vector2, Vector2)>
         {
-            { Direction.top, (new Vector2(0, -10), new Vector2(0, -50))},
-            { Direction.bottom, (new Vector2(0, 20), new Vector2(0, 50))},
+            { Direction.top, (new Vector2(0, -20), new Vector2(0, -74))},
+            { Direction.bottom, (new Vector2(0, 20), new Vector2(0, 35))},
             { Direction.left, (new Vector2(-20, 0), new Vector2(-35, 0))},
             { Direction.right, (new Vector2(20, 0), new Vector2(35, 0))},
         };

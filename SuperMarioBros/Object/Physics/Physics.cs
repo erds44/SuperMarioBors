@@ -97,8 +97,9 @@ namespace SuperMarioBros.Physicses
         }
         public void SetConstentVelocity(Vector2 velocity)
         {
-            if(Math.Abs(velocity.X) == 0)
-                CurrentGravity = -200f;
+            currentWeight = 0f;
+            CurrentGravity = 0f;
+            sprintVelocityRate = 1f;
             Velocity = velocity;
         }
     }

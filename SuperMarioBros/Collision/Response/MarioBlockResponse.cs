@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using SuperMarioBros.Blocks;
+﻿using SuperMarioBros.Blocks;
 using SuperMarioBros.GameStates;
 using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
@@ -17,6 +15,14 @@ namespace SuperMarioBros.Collisions
         private readonly IBlock block;
         private readonly Direction direction;
         private delegate void MarioBlockHandler(IMario mario, IBlock block);
+        private readonly Dictionary<Type, MarioBlockHandler> handlerDictionary = new Dictionary<Type, MarioBlockHandler>
+        {
+            {typeof(BrickBlock), MarioVsBrickBlock},
+            {typeof(BlueBrickBlock), MarioVsBrickBlock},
+            {typeof(ItemBrickBlock), MarioVsItemBrickOrQuestionBlock},
+            {typeof(QuestionBlock), MarioVsItemBrickOrQuestionBlock},
+             /* Other blocks not listed here are teated as rockblock */
+        };
 
         public MarioBlockResponse(IObject mario, IObject block, Direction direction)
         {
@@ -37,10 +43,6 @@ namespace SuperMarioBros.Collisions
             {
                 if (block is HiddenBlock)
                     MarioVsHiddenBlock(mario, block, direction);
-                else if (block is TeleportPipe || block is TeleportHugePipeH)
-                    MarioVsTeleportPipe(mario, block, direction);
-                else if (block is Pipe)
-                    MarioVSPipe(mario, block, direction);
                 else
                 {
                     ResolveOverlap(mario, block, direction);
@@ -59,92 +61,6 @@ namespace SuperMarioBros.Collisions
                 }
             }
         }
-
-        private void MarioVSPipe(IMario mario, IBlock block, Direction direction)
-        {
-            Rectangle overlap = Rectangle.Intersect(mario.HitBox(), block.HitBox());
-            if (overlap == mario.HitBox() && !((Pipe)block).IsTeleporting)
-            {
-                mario.Teleport(new Vector2(6990, 332), Direction.top);
-                ((Pipe)block).IsTeleporting = true;
-                mario.SetPipeTeleporitngEvent += ((Pipe)block).SetTeleporting;
-            }
-            if (!((Pipe)block).IsTeleporting)
-            {
-                ResolveOverlap(mario, block, direction);
-                switch (direction)
-                {
-                    case Direction.top: OnGround(mario); break;
-                    case Direction.bottom: GroundOrTopBounce(mario); break;
-                    default: LeftOrRightBlock(mario); break;
-                }
-            }
-
-        }
-
-        private readonly Dictionary<Direction, Keys> keyDictionary = new Dictionary<Direction, Keys>
-        {
-            { Direction.top, Keys.Down},
-            { Direction.left, Keys.Right},
-            { Direction.bottom, Keys.Up},
-            { Direction.right, Keys.Left},
-        };
-        private void MarioVsTeleportPipe(IMario mario, IBlock block, Direction direction)
-        {
-            if (block is TeleportPipe pipe)
-            {
-                if (!pipe.Teleported)
-                {
-                    keyDictionary.TryGetValue(direction, out Keys key);
-                    if (direction == pipe.TeleportDirection && Keyboard.GetState().IsKeyDown(key))
-                    {
-                        mario.Teleport(pipe.TransferedLocation, ReverseDirection(direction));
-                        pipe.Teleported = true;
-                    }
-                    else
-                    {
-                        ResolveOverlap(mario, block, direction);
-                        switch (direction)
-                        {
-                            case Direction.top: OnGround(mario); break;
-                            case Direction.bottom: GroundOrTopBounce(mario); break;
-                            default: LeftOrRightBlock(mario); break;
-                        }
-                    }
-                }
-            }
-            else if (block is TeleportHugePipeH pipeH)
-            {
-                if (!pipeH.Teleported)
-                {
-                    keyDictionary.TryGetValue(direction, out Keys key);
-                    if (direction == pipeH.TeleportDirection && Keyboard.GetState().IsKeyDown(key))
-                    {
-                        mario.Teleport(pipeH.TransferedLocation, ReverseDirection(direction));
-                        pipeH.Teleported = true;
-                    }
-                    else
-                    {
-                        ResolveOverlap(mario, block, direction);
-                        switch (direction)
-                        {
-                            case Direction.top: OnGround(mario); break;
-                            case Direction.bottom: GroundOrTopBounce(mario); break;
-                            default: LeftOrRightBlock(mario); break;
-                        }
-                    }
-                }
-            }
-        }
-
-        private readonly Dictionary<Type, MarioBlockHandler> handlerDictionary = new Dictionary<Type, MarioBlockHandler>
-        {
-            {typeof(BrickBlock), MarioVsBrickBlock},
-            {typeof(BlueBrickBlock), MarioVsBrickBlock},
-            {typeof(ItemBrickBlock), MarioVsItemBrickOrQuestionBlock},
-            {typeof(QuestionBlock), MarioVsItemBrickOrQuestionBlock},
-             /* Other blocks not listed here are teated as rockblock */
-        };
         protected override void OnGround(IObject obj)
         {
             if (mario.Physics.Jump)

@@ -4,12 +4,12 @@ using SuperMarioBros.Collisions;
 
 namespace SuperMarioBros.Items
 {
-    public class TeleportPipe : AbstractBlock
+    public class TeleportPipes : AbstractBlock
     {
         public Vector2 TransferedLocation { get; private set; }
         public Direction TeleportDirection { get; private set; }
         public bool Teleported { get; set; }
-        public TeleportPipe(Vector2 location, Vector2 transferedLocation, Direction direction)
+        public TeleportPipes(Vector2 location, Vector2 transferedLocation, Direction direction)
         {
             Position = location;
             TransferedLocation = transferedLocation;

@@ -3,10 +3,10 @@ using SuperMarioBros.Blocks;
 
 namespace SuperMarioBros.Items
 {
-    public class Pipe : AbstractBlock
+    public class Pipes : AbstractBlock
     {
         public bool IsTeleporting { get; set; }
-        public Pipe(Vector2 location)
+        public Pipes(Vector2 location)
         {
             Position = location;
             IsTeleporting = false;

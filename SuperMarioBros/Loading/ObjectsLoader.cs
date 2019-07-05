@@ -5,6 +5,7 @@ using SuperMarioBros.Blocks;
 using SuperMarioBros.Collisions;
 using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
+using SuperMarioBros.Object.Pipes;
 using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Loading
@@ -27,32 +28,18 @@ namespace SuperMarioBros.Loading
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-240),1,7,35)),
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-480),1,7,35)),
                 //(new ObjectsNode("SuperMarioBros.Blocks.HugePipeH",new Vector2(1460,-170),1,1,54)),
-                (new ObjectsNode("SuperMarioBros.Blocks.HugePipeV",new Vector2(3514,-170),1,1,46)),
+                //(new ObjectsNode("SuperMarioBros.Blocks.HugePipeV",new Vector2(3514,-170),1,1,46)),
             
-            
-                 
-            
-            
-                ////underground
-                //(new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(9700,445),1,16,35)),
-                //(new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(9700,480),1,16,35)),
-                //(new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9700,410),4,10,35)),
-                //(new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,410),1,7,35)),
-                //(new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,375),1,7,35)),
-                //(new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,340),1,7,35)),
-                //(new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(9840,100),1,7,35)),
-                ////(new ObjectsNode("SuperMarioBros.Blocks.HugePipeH",new Vector2(10160,410),1,1,54)),
-                //(new ObjectsNode("SuperMarioBros.Blocks.HugePipeV",new Vector2(10214,410),1,1,46)),
+                         
                 //test
-                
-                
+                             
                 (new ObjectsNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(0,288),1,1,35,"SuperMarioBros.Items.Coin",4)),
                 (new ObjectsNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(100,288),1,1,35,"SuperMarioBros.Items.Star",1)),
                 (new ObjectsNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(50,119),1,1,35,"null")),
                 (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(200,288),1,1,35,"SuperMarioBros.Items.Coin")),
                 (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(235,288),1,1,35,"null")),
                 (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(270,288),1,2,35,"SuperMarioBros.Items.Coin")),
-               (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(400,410),1,2,340)),
+              // (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(400,410),1,2,340)),
                 (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(545,248),1,1,35,"SuperMarioBros.Items.Coin")),
                 (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(510,248),1,1,35,"null")),
                 (new ObjectsNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(580,248),1,1,35,"SuperMarioBros.Items.GreenMushroom")),
@@ -76,9 +63,9 @@ namespace SuperMarioBros.Loading
               (new ObjectsNode("SuperMarioBros.Backgrounds.MiddleCloud",new Vector2(400,120),1,12,700)),
 
 
-              (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(1290,410),1,1,72)),
-              (new ObjectsNode("SuperMarioBros.Items.MiddlePipe",new Vector2(1629,410),1,1,72)),
-              (new ObjectsNode("SuperMarioBros.Items.HighPipe",new Vector2(1961,410),1,1,72)),
+             // (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(1290,410),1,1,72)),
+           //   (new ObjectsNode("SuperMarioBros.Items.MiddlePipe",new Vector2(1629,410),1,1,72)),
+            //  (new ObjectsNode("SuperMarioBros.Items.HighPipe",new Vector2(1961,410),1,1,72)),
              // (new ObjectsNode("SuperMarioBros.Items.HighPipe",new Vector2(2429,410),1,1,72)),
               (new ObjectsNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(2640,288),1,1,35,"SuperMarioBros.Items.GreenMushroom")),
               //base2
@@ -125,11 +112,11 @@ namespace SuperMarioBros.Loading
               (new ObjectsNode("SuperMarioBros.Blocks.RockBlock",new Vector2(6607,480),1,85,35)),
 
               (new ObjectsNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(6607,410),2,4,35)),
-              (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(6958,410),1,1,72)),
+            //  (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(6958,410),1,1,72)),
               (new ObjectsNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(7164,288),1,2,35)),
               (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(7234,288),1,1,35,"SuperMarioBros.Items.Coin")),
               (new ObjectsNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(7269,288),1,1,35)),
-              (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(7647,410),1,1,72)),
+             // (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(7647,410),1,1,72)),
               (new ObjectsNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(7719,410),3,8,35)),
               (new ObjectsNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(7999,410),4,8,35)),
 
@@ -278,8 +265,17 @@ namespace SuperMarioBros.Loading
 
                 }
             }
-            Statics.Add(new TeleportPipe(new Vector2(2429, 410), new Vector2(3050, -480), Direction.top));
-            Statics.Add(new TeleportHugePipeH(new Vector2(3460, -170), new Vector2(6990, 388), Direction.left));
+            /* Teleport Pipe */
+            Statics.Add(new TeleportPipe(new Vector2(2429, 410), new Vector2(3050, -480), "TeleportVerticalLargePipe",Direction.top)); 
+            Statics.Add(new TeleportPipe(new Vector2(3460, -170), new Vector2(6990, 410),"TeleportHorizontalSmallPipe", Direction.left));
+            /* Regular Pipe */
+            Statics.Add(new Pipe(new Vector2(3514, -170),"HighPipe")); 
+            Statics.Add(new Pipe(new Vector2(6958, 410), "SmallPipe"));
+            Statics.Add(new Pipe(new Vector2(400, 410), "SmallPipe"));
+            Statics.Add(new Pipe(new Vector2(1290, 410), "SmallPipe"));
+            Statics.Add(new Pipe(new Vector2(1629, 410), "MiddlePipe"));
+            Statics.Add(new Pipe(new Vector2(1961, 410), "LargePipe"));
+
         }
 
         private void HorizontalLine(ObjectsNode node)

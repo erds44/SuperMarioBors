@@ -50,11 +50,11 @@ namespace SuperMarioBros.Loading
              new SpritesNode( "KoopaShelledStateKoopaIdleState","KoopaStomped",32,28),
              new SpritesNode("KoopaShelledStateKoopaLeftMovingState","KoopaStomped",32,28),
              new SpritesNode("KoopaShelledStateKoopaRightMovingState","KoopaStomped",32,28),
-             new SpritesNode("Pipe","Pipe",72,74),
-             new SpritesNode("MiddlePipe","MiddlePipe",74,122),
-             new SpritesNode("HighPipe","HighPipe",72,170),
-             new SpritesNode("HugePipeV","HugePipeV",46,350),
-             new SpritesNode("HugePipeH","HugePipeH",54,87),
+             //new SpritesNode("Pipe","Pipe",72,74),
+             //new SpritesNode("MiddlePipe","MiddlePipe",74,122),
+             //new SpritesNode("HighPipe","HighPipe",72,170),
+             //new SpritesNode("HugePipeV","HugePipeV",46,350),
+             //new SpritesNode("HugePipeH","HugePipeH",54,87),
              new SpritesNode("QuestionBlock","QuestionBlock",35,35,5),
              new SpritesNode("RedMushroom","RedMushroom",28,28),
              new SpritesNode("RockBlock","RockBlock",35,35),
@@ -95,6 +95,15 @@ namespace SuperMarioBros.Loading
             new SpritesNode("Flag","Flag",32,32),
             new SpritesNode("TeleportPipe","HighPipe",72,170),
             new SpritesNode("TeleportHugePipeH","HugePipeH",54,87),
+             
+            /* new Pipe name and sprite */
+             new SpritesNode("SmallPipe","Pipe",72,74),
+             new SpritesNode("TeleporVerticalSmallPipe","Pipe",72,74),
+             new SpritesNode("MiddlePipe","MiddlePipe",74,122),
+             new SpritesNode("LargePipe","HighPipe",72,170),
+             new SpritesNode("TeleportVerticalLargePipe","HighPipe",72,170),
+             new SpritesNode("HighPipe","HugePipeV",46,350),
+             new SpritesNode("TeleportHorizontalSmallPipe","HugePipeH",54,87),
         };
 
         private List<SpritesNode> spritesList;

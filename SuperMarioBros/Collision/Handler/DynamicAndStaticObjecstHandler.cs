@@ -1,6 +1,7 @@
 ﻿using SuperMarioBros.Blocks;
 using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
+using SuperMarioBros.Object.Pipes;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Enemy;
 using System;
@@ -16,8 +17,11 @@ namespace SuperMarioBros.Collisions
             collisionDictionary = new Dictionary<(Type, Type), Type>
             {
                 { (typeof(IMario), typeof(IBlock)), typeof(MarioBlockResponse)},
+                { (typeof(IMario), typeof(IPipe)), typeof(MarioPipeResponse)},
                 { (typeof(IItem), typeof(IBlock)), typeof(ItemBlockResponse)},
-                { (typeof(IEnemy), typeof(IBlock)), typeof(EnemyBlockResponse)}
+                { (typeof(IItem), typeof(IPipe)), typeof(ItemPipeResponse)},
+                { (typeof(IEnemy), typeof(IBlock)), typeof(EnemyBlockResponse)},
+                { (typeof(IEnemy), typeof(IPipe)), typeof(EnemyPipeResponse)},
             };
         }
         public void HandleCollision(IObject obj1, IObject obj2, Direction direction)
