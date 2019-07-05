@@ -20,13 +20,13 @@ namespace SuperMarioBros.Loading
         private readonly List<ObjectsNode> staticList = new List<ObjectsNode>
             {
 
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(3000,-135),1,16,35)),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(3000,-100),1,16,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(3000,-135),1,23,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(3000,-100),1,23,35)),
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3000,-170),4,10,35)),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-170),1,7,35)),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-205),1,7,35)),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-240),1,7,35)),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-480),1,7,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-170),1,14,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-205),1,14,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-240),1,14,35)),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-480),1,14,35)),
                 //(new ObjectsNode("SuperMarioBros.Blocks.HugePipeH",new Vector2(1460,-170),1,1,54)),
                 //(new ObjectsNode("SuperMarioBros.Blocks.HugePipeV",new Vector2(3514,-170),1,1,46)),
             
@@ -266,10 +266,11 @@ namespace SuperMarioBros.Loading
                 }
             }
             /* Teleport Pipe */
+            Statics.Add(new TeleportPipe(new Vector2(400, 410), new Vector2(3050, -480), "TeleportVerticalLargePipe", Direction.top));
             Statics.Add(new TeleportPipe(new Vector2(2429, 410), new Vector2(3050, -480), "TeleportVerticalLargePipe",Direction.top)); 
-            Statics.Add(new TeleportPipe(new Vector2(3460, -170), new Vector2(6990, 410),"TeleportHorizontalSmallPipe", Direction.left));
+            Statics.Add(new TeleportPipe(new Vector2(3705, -170), new Vector2(6990, 410),"TeleportHorizontalSmallPipe", Direction.left));
             /* Regular Pipe */
-            Statics.Add(new Pipe(new Vector2(3514, -170),"HighPipe")); 
+            Statics.Add(new Pipe(new Vector2(3759, -170),"HighPipe")); 
             Statics.Add(new Pipe(new Vector2(6958, 410), "SmallPipe"));
             Statics.Add(new Pipe(new Vector2(400, 410), "SmallPipe"));
             Statics.Add(new Pipe(new Vector2(1290, 410), "SmallPipe"));
