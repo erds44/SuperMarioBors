@@ -83,7 +83,6 @@ namespace SuperMarioBros.Collisions
 
         private static void TakeBigCoin(IMario mario, IItem item)
         {
-            item.Destroy();
             item.ObjState = ObjectState.Destroy;
         }
     }

@@ -11,6 +11,7 @@ using SuperMarioBros.Marios;
 using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.SpriteFactories;
 using Microsoft.Xna.Framework.Media;
+using SuperMarioBros.AudioFactories;
 
 namespace SuperMarioBros
 {
@@ -55,8 +56,6 @@ namespace SuperMarioBros
 
         protected override void LoadContent()
         {
-            //Song song = Content.Load<Song>("Musics/overworld");
-            //MediaPlayer.Play(song);
             base.LoadContent();
         }
         protected override void Initialize()
@@ -112,13 +111,15 @@ namespace SuperMarioBros
             ObjectsManager = new ObjectsManager(new ObjectLoader(), HeadsUps);
             ObjectsManager.LevelLoading();
             ObjectsManager.Initialize();
+            marioCamera = new Camera();
+            marioCamera.SetFocus(ObjectsManager.Mario);
             ObjectFactory.Instance.Initialize();
-            //AudioFactory.Instance.Initialize(Content, "Content/sounds.xml", "Content/musics.xml");
-            marioCamera.Reset(ObjectsManager.Mario);
+            AudioFactory.Instance.Initialize(Content, "Content/sounds.xml", "Content/musics.xml");
             collisionManager = new CollisionManager();
             KeyBinding();
+            
 
-            //MediaPlayer.Play(AudioFactory.Instance.CreateSong("overworld"));
+            MediaPlayer.Play(AudioFactory.Instance.CreateSong("overworld"));
 
             ObjectsManager.Mario.DeathEvent += HeadsUps.OnMarioDeath;
             ObjectsManager.Mario.SlidingEvent += HeadsUps.AddFlagScore;

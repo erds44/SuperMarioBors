@@ -20,6 +20,7 @@ namespace SuperMarioBros.Items
         public override void Destroy()
         {
             CoinCollectedEvent?.Invoke(Position);
+            Console.WriteLine("collect");
         }
     }
     

@@ -25,11 +25,13 @@ namespace SuperMarioBros.Cameras
         {
             LeftBound = 0;
             RightBound = LeftBound + MarioGame.Instance.WindowWidth;
+            UpperBound = 0;
         }
         public void Reset(IObject obj)
         {
             LeftBound = 0;
             RightBound = LeftBound + MarioGame.Instance.WindowWidth;
+            UpperBound = 0;
             Focus = obj;
         }
         public void Update()
@@ -47,7 +49,7 @@ namespace SuperMarioBros.Cameras
 
         public void Update(Vector2 focus) //Focus on given point. This does not have a "left-only" limit. Given point will be the center of the camera.
         {
-            LeftBound = Math.Max(LeftBound, focus.X - MarioGame.Instance.WindowWidth / 2);
+            LeftBound = focus.X - MarioGame.Instance.WindowWidth / 2;
             RightBound = LeftBound + MarioGame.Instance.WindowWidth;
             var position = Matrix.CreateTranslation(-LeftBound - MarioGame.Instance.WindowWidth / 2, -focus.Y, 0);
             var offset = Matrix.CreateTranslation(MarioGame.Instance.WindowWidth / 2, 0, 0);

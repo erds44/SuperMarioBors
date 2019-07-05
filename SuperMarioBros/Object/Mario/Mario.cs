@@ -119,6 +119,7 @@ namespace SuperMarioBros.Marios
                 Sprite.Update(gameTime);
                 Position += Physics.Displacement(gameTime);
             }
+            if (!isTeleporting && Position.Y > 0) MarioGame.Instance.FocusMario = true;
             if (isTeleporting && (int)Position.Y == (int)expectedPosition.Y && (int)Position.X == (int)expectedPosition.X )
             {
                 Position = teleportPosition;
