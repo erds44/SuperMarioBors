@@ -15,13 +15,13 @@ namespace SuperMarioBros.GameStates
         {
             graphics = graphicsDevice;
             content = contentManager;
-            var itemFont = contentManager.Load<SpriteFont>("Font");
+            var itemFont = contentManager.Load<SpriteFont>("Font/MarioFontSize25");
             marioTitle = contentManager.Load<Texture2D>("StartBackground");
 
-            var startButton = new Buttons(itemFont, "New Game", new Vector2(MarioGame.Instance.WindowWidth / 2 - 60, MarioGame.Instance.WindowHeight / 2));
+            var startButton = new Buttons(itemFont, "New Game", new Vector2(300, MarioGame.Instance.WindowHeight / 2));
             startButton.Click += NewGameClick;
 
-            var quitButton = new Buttons(itemFont, "Quit", new Vector2(MarioGame.Instance.WindowWidth / 2 - 60, MarioGame.Instance.WindowHeight / 2 + 60));
+            var quitButton = new Buttons(itemFont, "Quit", new Vector2(300, MarioGame.Instance.WindowHeight / 2 + 60));
             quitButton.Click += QuitGameClick;
 
             buttons = new List<Buttons>

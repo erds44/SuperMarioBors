@@ -65,7 +65,7 @@ namespace SuperMarioBros.Collisions
             Rectangle overlap = Rectangle.Intersect(mario.HitBox(), block.HitBox());
             if (overlap == mario.HitBox() && !((Pipe)block).IsTeleporting)
             {
-                mario.Teleport(new Vector2(6970, 332), Direction.top);
+                mario.Teleport(new Vector2(6990, 332), Direction.top);
                 ((Pipe)block).IsTeleporting = true;
                 mario.SetPipeTeleporitngEvent += ((Pipe)block).SetTeleporting;
             }

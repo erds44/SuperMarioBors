@@ -127,8 +127,8 @@ namespace SuperMarioBros.Loading
               (new ObjectsNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(6607,410),2,4,35)),
               (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(6958,410),1,1,72)),
               (new ObjectsNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(7164,288),1,2,35)),
-              (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(7229,288),1,1,35,"SuperMarioBros.Items.Coin")),
-              (new ObjectsNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(7264,288),1,1,35)),
+              (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(7234,288),1,1,35,"SuperMarioBros.Items.Coin")),
+              (new ObjectsNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(7269,288),1,1,35)),
               (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(7647,410),1,1,72)),
               (new ObjectsNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(7719,410),3,8,35)),
               (new ObjectsNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(7999,410),4,8,35)),
@@ -279,7 +279,7 @@ namespace SuperMarioBros.Loading
                 }
             }
             Statics.Add(new TeleportPipe(new Vector2(2429, 410), new Vector2(3050, -480), Direction.top));
-            Statics.Add(new TeleportHugePipeH(new Vector2(3460, -170), new Vector2(6970, 388), Direction.left));
+            Statics.Add(new TeleportHugePipeH(new Vector2(3460, -170), new Vector2(6990, 388), Direction.left));
         }
 
         private void HorizontalLine(ObjectsNode node)

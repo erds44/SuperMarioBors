@@ -69,7 +69,7 @@ namespace SuperMarioBros.HeadsUps
             DrawHelper(spriteBatch, ((int)timer).ToString(), new Vector2(timeOffset + leftBound + 10, 30 + upperBound));
 
             DrawHelper(spriteBatch, "LIVES", new Vector2(livesOffset + leftBound, 5 + upperBound));
-            DrawHelper(spriteBatch, Lives.ToString(), new Vector2(livesOffset + leftBound + 10, 30 + upperBound));
+            DrawHelper(spriteBatch, Lives.ToString(), new Vector2(livesOffset + leftBound + 32, 30 + upperBound));
         }
         public void OnMarioDeath()
         {

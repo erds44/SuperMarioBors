@@ -13,14 +13,14 @@ namespace SuperMarioBros.GameStates
         public GameOverState(GraphicsDevice graphicsDevice, ContentManager content)
         {
             this.graphicsDevice = graphicsDevice;
-            spriteFont = content.Load<SpriteFont>("Font");
+            spriteFont = content.Load<SpriteFont>("Font/MarioFont");
             this.content = content;
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
-            graphicsDevice.Clear(Color.CornflowerBlue);
-            spriteBatch.DrawString(spriteFont, "GameOver", new Vector2(350, 240), Color.Black);
+            graphicsDevice.Clear(Color.Black);
+            spriteBatch.DrawString(spriteFont, "GameOver", new Vector2(350, 240), Color.White);
             spriteBatch.End();
         }
 
