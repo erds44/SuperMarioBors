@@ -41,15 +41,12 @@ namespace SuperMarioBros.Controllers
             checkKeyUplist.Clear();
             foreach (Keys keyPressed in key)
             {
-                if (Keyboard.GetState().IsKeyDown(keyPressed))
+                if (keyDownDictionary.TryGetValue(keyPressed, out int command))
                 {
-                    if (keyDownDictionary.TryGetValue(keyPressed, out int command))
+                    messager.ChangeFlags(command);
+                    if (keyUpDictionary.ContainsKey(keyPressed))
                     {
-                        messager.ChangeFlags(command);
-                        if (keyUpDictionary.ContainsKey(keyPressed))
-                        {
-                            checkKeyUplist.Add(keyPressed);
-                        }
+                        checkKeyUplist.Add(keyPressed);
                     }
                 }
             }
