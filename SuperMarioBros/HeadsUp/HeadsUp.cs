@@ -21,7 +21,7 @@ namespace SuperMarioBros.HeadsUps
         private readonly float livesOffset = 666;
         private bool clearingScores = false;
         private readonly MarioGame game;
-        private float timer = 400;
+        public float Timer { get; private set; } = 400;
         private int score = 0;
         private int coin = 0;
         public int Lives { get; set; }
@@ -33,10 +33,10 @@ namespace SuperMarioBros.HeadsUps
         }
         public void Update(GameTime gameTime)
         {
-            timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            Timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (clearingScores)
             {
-                if (timer > 0)
+                if (Timer > 0)
                     DecreasingValues();
                 else
                 {
@@ -47,10 +47,10 @@ namespace SuperMarioBros.HeadsUps
             }
             else
             {
-                if (timer <= 0)
+                if (Timer <= 0)
                 {
                     timerOverEvent?.Invoke();
-                    timer = 0;
+                    Timer = 0;
                 }
             }
         }
@@ -66,7 +66,7 @@ namespace SuperMarioBros.HeadsUps
             DrawHelper(spriteBatch, "1-1", new Vector2(worldOffset + leftBound + 10, 30 + upperBound));
 
             DrawHelper(spriteBatch, "TIME", new Vector2(timeOffset + leftBound, 5 + upperBound));
-            DrawHelper(spriteBatch, ((int)timer).ToString(), new Vector2(timeOffset + leftBound + 10, 30 + upperBound));
+            DrawHelper(spriteBatch, ((int)Timer).ToString(), new Vector2(timeOffset + leftBound + 10, 30 + upperBound));
 
             DrawHelper(spriteBatch, "LIVES", new Vector2(livesOffset + leftBound, 5 + upperBound));
             DrawHelper(spriteBatch, Lives.ToString(), new Vector2(livesOffset + leftBound + 32, 30 + upperBound));
@@ -103,11 +103,11 @@ namespace SuperMarioBros.HeadsUps
 
         public void ResetTimer()
         {
-            timer = 400;
+            Timer = 400;
         }
         public void ResetAll()
         {
-            timer = 400;
+            Timer = 400;
             coin = 0;
             score = 0;
             Lives = 3;
@@ -138,14 +138,14 @@ namespace SuperMarioBros.HeadsUps
         }
         private void DecreasingValues()
         {
-            if(timer <= 3)
+            if(Timer <= 3)
             {
-                score += (int)(3 - timer) * 100;
-                timer = 0;
+                score += (int)(3 - Timer) * 100;
+                Timer = 0;
             }
             else
             {
-                timer -= 3;
+                Timer -= 3;
                 score += 300;
             }
         }

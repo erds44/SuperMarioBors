@@ -9,6 +9,7 @@ namespace SuperMarioBros.GameStates
     {
         private GraphicsDevice graphicsDevice => game.GraphicsDevice;
         private readonly MarioGame game;
+        private int songUpdateDelay = 300;
         public GameState(MarioGame game)
         {
             this.game = game;
@@ -29,6 +30,12 @@ namespace SuperMarioBros.GameStates
         }
         public void Update(GameTime gameTime)
         {
+            if(--songUpdateDelay <= 0 && game.HeadsUps.Timer <= 100)
+            {
+                songUpdateDelay = 300;
+                Song hurrySong = AudioFactory.Instance.CreateHurrySong(MediaPlayer.Queue.ActiveSong, out bool shouldNotChange);
+                if (!shouldNotChange) { MediaPlayer.Play(hurrySong); }
+            }
             game.controller.Update(gameTime);
             game.ObjectsManager.Update(gameTime);
             game.CollisionManager.Update();
