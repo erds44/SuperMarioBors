@@ -10,35 +10,14 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             this.mario = mario;
             mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
         }
-
-        public void Down()
-        {
-
-        }
-
-        public void Idle()
+        public override void Idle()
         {
             mario.MovementState = new LeftIdle(mario);
         }
-
-        public void Left()
-        {
-
-        }
-
-
-        public void Right()
-        {
-
-        }
-
-
-        public void Up()
+        public override void Up()
         {
             mario.MovementState = new LeftIdle(mario);
         }
-
-
         public override void Update(GameTime gameTime)
         {
             mario.Physics.SpeedDecay();

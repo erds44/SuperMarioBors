@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.Collisions;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
@@ -12,26 +11,12 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
         }
 
-        public void Down()
-        {
-           
-        }
-
-        public void Right()
-        {
-
-        }
-        public void Left()
-        {
-            
-        }
-
-        public void Up()
+        public override void Up()
         {
             mario.MovementState = new RightIdle(mario);
         }
 
-        public void Idle()
+        public override void Idle()
         {
             mario.MovementState = new RightIdle(mario);
         }

@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.AudioFactories;
+﻿using SuperMarioBros.AudioFactories;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
@@ -13,28 +12,18 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             this.mario.OnGround = false;
         }
 
-        public void Down()
-        {
-
-        }
-
-        public void Idle()
-        {
-            
-        }
-
-        public void Left()
+        public override void Left()
         {
             mario.Physics.Left();
         }
 
 
-        public void Right()
+        public override void Right()
         {
            mario.Physics.Right();
         }
 
-        public void Up()
+        public override void Up()
         {
             mario.Physics.Up();
         }
@@ -43,10 +32,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         {
             mario.MovementState = new LeftIdle(mario);
             base.OnGround();
-        }
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
         }
 
     }

@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.AudioFactories;
+﻿using SuperMarioBros.AudioFactories;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
@@ -12,32 +11,22 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
             this.mario.OnGround = false;
         }
-        public void Down()
+
+        public override void Right()
         {
-           
+            mario.Physics.Right();           
         }
 
-        public void Right()
-        {
-            mario.Physics.Right();
-            
-        }
-
-        public void Left()
+        public override void Left()
         {
            mario.Physics.Left();
         }
 
-        public void Up()
+        public override void Up()
         {
             mario.Physics.Up();
         }
 
-
-        public void Idle()
-        {
-            
-        }
         public override void OnGround()
         {
             mario.MovementState = new RightIdle(mario);
@@ -48,10 +37,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             direction = FireBallDirection.right;
             offset = rightNormalOffSet;
             base.OnFireBall();
-        }
-        public override void Update(GameTime gameTime)
-        {
-            base.Update(gameTime);
         }
         public override void SlidingFlagPole()
         {
