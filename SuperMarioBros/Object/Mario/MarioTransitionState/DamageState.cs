@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects.Mario.TransitionState;
 using System.Collections.ObjectModel;
@@ -17,6 +18,7 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
         {
             this.mario = mario;
             mario.NoMovementTimer = nonMovementTimer;
+            AudioFactory.Instance.CreateSound("pipe").Play(); //Surprisingly, taking damage and going into pipe has the same sound.
         }
         public void Draw(SpriteBatch spriteBatch)
         {

@@ -127,6 +127,7 @@ namespace SuperMarioBros.HeadsUps
 
         public void ClearingScores()
         {
+            MediaPlayer.Play(AudioFactory.Instance.CreateSong("levelcomplete"));
             clearingScores = true;
             ((FlagPoleState)game.State).UpdateHeadsUp = true;
         }

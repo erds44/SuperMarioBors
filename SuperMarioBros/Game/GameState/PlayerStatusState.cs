@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
@@ -12,7 +13,7 @@ namespace SuperMarioBros.GameStates
         private GraphicsDevice graphicsDevice;
         private SpriteFont spriteFont;
         private ISprite smallMarioSprite;
-        private float timer = 2f;
+        private float timer = 3f;
         private readonly MarioGame game;
         public PlayerStatusState(MarioGame game)
         {

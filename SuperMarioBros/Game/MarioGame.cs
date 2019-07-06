@@ -22,11 +22,11 @@ namespace SuperMarioBros
         public readonly int WindowHeight;
         private bool pause = false;
         public ObjectsManager ObjectsManager { get; set; }
-        public Camera Camera { get => marioCamera; }
+        public Camera Camera { get; private set; }
         public ControllerMessager controller;
         private SpriteBatch spriteBatch;
-        public CollisionManager collisionManager;
-        public Camera marioCamera;
+        public CollisionManager CollisionManager;
+        public IMario Player => ObjectsManager.Mario;
         public HeadsUp HeadsUps { get; set; }
         public IGameState State { get; set; }
         public bool FocusMario { get; set; }
@@ -57,7 +57,7 @@ namespace SuperMarioBros
             IsMouseVisible = true;
             State = new MenuState(this);
             SpriteFactory.Initialize(Content);
-            marioCamera = new Camera(WindowWidth);
+            Camera = new Camera(WindowWidth);
             HeadsUps = new HeadsUp(this);
             ObjectFactory.Instance.ItemCollectedEvent += HeadsUps.CoinCollected;
             AudioFactory.Instance.Initialize(Content, "Content/sounds.xml", "Content/musics.xml");
@@ -106,13 +106,11 @@ namespace SuperMarioBros
             ObjectsManager = new ObjectsManager(new ObjectLoader(), this);
            // ObjectsManager.LevelLoading();
             ObjectsManager.Initialize();
-            marioCamera.Reset(ObjectsManager.Mario);
+            Camera.Reset(ObjectsManager.Mario);
             //marioCamera.SetFocus(ObjectsManager.Mario);
             ObjectFactory.Instance.Initialize(this);
-            collisionManager = new CollisionManager(this);
+            CollisionManager = new CollisionManager(this);
             KeyBinding();
-            
-            MediaPlayer.Play(AudioFactory.Instance.CreateSong("overworld"));
 
             ObjectsManager.Mario.DeathEvent += HeadsUps.OnMarioDeath;
             ObjectsManager.Mario.DeathEvent += InitializeGame;

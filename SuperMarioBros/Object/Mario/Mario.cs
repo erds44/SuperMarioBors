@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Collisions;
 using SuperMarioBros.Interfaces.State;
@@ -144,9 +145,13 @@ namespace SuperMarioBros.Marios
         }
         public void Destroy()
         {
+            
             bool flagPoleState = IsFlagPoleStateEvent?.Invoke() ?? false;
             if (!flagPoleState)
+            {
+                if (!(HealthState is DeadMario)) HealthState = new DeadMario(this);
                 DeathEvent?.Invoke();
+            }
             else
                 ClearingScoresEvent?.Invoke();
         }
@@ -198,7 +203,6 @@ namespace SuperMarioBros.Marios
         public void Teleport(Vector2 teleportPosition, Direction direction)
         {
             isTeleporting = true;
-            AudioFactory.Instance.CreateSound("pipe").Play();
             if (teleportDictionary.TryGetValue(direction, out var tuple))
             {
                 expectedPosition = Position + tuple.Item2;

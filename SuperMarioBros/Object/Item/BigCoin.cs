@@ -9,7 +9,7 @@ namespace SuperMarioBros.Items
     {
         private new Vector2 initialVelocity = new Vector2(0, 0);
         private new float itemGravity = 0f;
-        public event Action<Vector2> CoinCollectedEvent;
+        public Action<Vector2> CoinCollectedEvent;
         public BigCoin(Vector2 location)
         {
             Position = location;
@@ -19,7 +19,7 @@ namespace SuperMarioBros.Items
         }
         public override void Destroy()
         {
-            CoinCollectedEvent?.Invoke(Position);
+            //Do nothing.
         }
     }
 
