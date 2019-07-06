@@ -14,29 +14,29 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
         }
 
-        public void Down()
+        public override void Down()
         {
             if (!(mario.HealthState is SmallMario))
                 mario.MovementState = new RightCrouching(mario);
         }
 
-        public void Right()
+        public override void Right()
         {
              mario.Physics.Right();
         }
 
-        public void Left()
+        public override void Left()
         {
             mario.MovementState = new RightBreaking(mario);
         }
 
-        public void Up()
+        public override void Up()
         {
             if (!mario.Physics.Jump)
                 mario.MovementState = new RightJumping(mario);
         }
 
-        public void Idle()
+        public override void Idle()
         {
             mario.Physics.SpeedDecay();
             if (Math.Round(mario.Physics.Velocity.X) <= 0)

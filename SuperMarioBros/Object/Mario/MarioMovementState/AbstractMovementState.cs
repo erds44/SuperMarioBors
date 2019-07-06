@@ -4,7 +4,7 @@ using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
-    public abstract class AbstractMovementState
+    public abstract class AbstractMovementState : IMarioMovementState
     {
         protected private IMario mario;
         protected private Vector2 leftCrouchingOffset = new Vector2(-22, -22);
@@ -55,9 +55,16 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             mario.Physics.CurrentGravity = 100f;
             mario.MovementState = new LeftSliding(mario);
         }
-        public virtual void ChangeSlidingDirection()
-        {
-            //Do Nothing
-        }
+        public virtual void ChangeSlidingDirection() { }
+
+        public virtual void Left() { }
+
+        public virtual void Down() { }
+
+        public virtual void Up() { }
+
+        public virtual void Right() { }
+
+        public virtual void Idle() { }
     }
 }

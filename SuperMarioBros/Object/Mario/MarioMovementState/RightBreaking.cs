@@ -12,20 +12,20 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
         }
 
-        public void Down()
+        public override void Down()
         {
             if (!(mario.HealthState is SmallMario))
                 mario.MovementState = new RightCrouching(mario);
         }
 
-        public void Idle()
+        public override void Idle()
         {
             mario.Physics.SpeedDecay();
             if (Math.Round(mario.Physics.Velocity.X) <= 0)
                 mario.MovementState = new RightIdle(mario);
         }
 
-        public void Left()
+        public override void Left()
         {
             if (Math.Round(mario.Physics.Velocity.X) <= 0)
                 mario.MovementState = new LeftIdle(mario);
@@ -34,12 +34,12 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         }
 
 
-        public void Right()
+        public override void Right()
         {
              mario.MovementState = new RightIdle(mario);
         }
 
-        public void Up()
+        public override void Up()
         {
             if (!mario.Physics.Jump)
                 mario.MovementState = new RightJumping(mario);
@@ -49,6 +49,5 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             mario.Physics.CurrentGravity = 100f;
             mario.MovementState = new RightSliding(mario);
         }
-
     }
 }

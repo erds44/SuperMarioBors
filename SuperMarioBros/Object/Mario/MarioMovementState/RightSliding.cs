@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.SpriteFactories;
+﻿using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
@@ -12,39 +11,11 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             mario.Physics.Velocity = slidingVelocity;
         }
 
-        public void Down()
-        {
-            //Do Nothing
-        }
-
-        public void Idle()
-        {
-            //Do Nothing
-        }
-
-        public void Left()
-        {
-            //Do Nothing
-        }
-
-
-        public void Right()
+        public override void Right()
         {
             mario.MovementState = new RightMoving(mario);     
         }
 
-        public void Up()
-        {
-            //Do Nothing
-        }
-        public override void Update(GameTime gameTime)
-        {
-            //Do Nothing
-        }
-        public override void SlidingFlagPole()
-        {
-            // Do Nothing
-        }
         public override void ChangeSlidingDirection()
         {
             mario.Physics.CurrentGravity = 100f;
