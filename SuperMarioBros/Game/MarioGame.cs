@@ -60,7 +60,7 @@ namespace SuperMarioBros
             Camera = new Camera(WindowWidth);
             HeadsUps = new HeadsUp(this);
             ObjectFactory.Instance.ItemCollectedEvent += HeadsUps.CoinCollected;
-            AudioFactory.Instance.Initialize(Content, "Content/sounds.xml", "Content/musics.xml");
+            AudioFactory.Instance.Initialize(Content, "Content/sounds.xml", "Content/musics.xml", "Content/hurry.xml");
             base.Initialize();
         }
         protected override void Update(GameTime gameTime)
