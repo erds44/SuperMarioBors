@@ -536,9 +536,14 @@
     <Compile Include="Collision\Response\MarioBlockResponse.cs" />
     <Compile Include="Collision\Response\MarioEnemyResponse.cs" />
     <Compile Include="Collision\Response\MarioItemResponse.cs" />
+    <Compile Include="Command\KeyUpCommand\EmptyCommand.cs" />
+    <Compile Include="Command\MarioCommand\DownCommand.cs" />
     <Compile Include="Command\MarioCommand\KeyDownUp.cs" />
-    <Compile Include="Command\MarioCommand\KeyUpUpCommand.cs" />
     <Compile Include="Command\MarioCommand\KeyUpPowerCommand.cs" />
+    <Compile Include="Command\GameCommand\QuitCommand.cs" />
+    <Compile Include="Command\GameCommand\ResetCommand.cs" />
+    <Compile Include="Command\MarioCommand\KeyUpUpCommand.cs" />
+    <Compile Include="Command\MarioCommand\LeftCommand.cs" />
     <Compile Include="Game\GameState\Buttons.cs" />
     <Compile Include="Game\GameState\GameOverState.cs" />
     <Compile Include="Game\GameState\FlagPoleState.cs" />
@@ -567,12 +572,8 @@
     <Compile Include="Manager\CollisionManager.cs" />
     <Compile Include="Collision\Handler\DynamicAndDynamicObjectsHandler .cs" />
     <Compile Include="Collision\Handler\DynamicAndStaticObjecstHandler.cs" />
-    <Compile Include="Command\MarioCommand\DownCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
-    <Compile Include="Command\MarioCommand\LeftCommand.cs" />
     <Compile Include="Command\MarioCommand\IdleCommand.cs" />
-    <Compile Include="Command\GameCommand\QuitCommand.cs" />
-    <Compile Include="Command\GameCommand\ResetCommand.cs" />
     <Compile Include="Command\MarioCommand\RightCommand.cs" />
     <Compile Include="Command\MarioCommand\PowerCommand.cs" />
     <Compile Include="Command\MarioCommand\UpCommand.cs" />
@@ -746,6 +747,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets" Condition="Exists('..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

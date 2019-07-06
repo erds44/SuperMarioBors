@@ -9,6 +9,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
     public class RightMoving : AbstractMovementState, IMarioMovementState
     {
         private readonly float jumpingSpeed = 40f;
+        private bool movingRight = true;
         public RightMoving(IMario mario)
         {
             this.mario = mario;
@@ -23,7 +24,8 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public override void Right()
         {
-             mario.Physics.Right();
+            movingRight = true;
+            mario.Physics.Right();
         }
 
         public override void Left()
@@ -40,11 +42,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public override void Idle()
         {
-            mario.Physics.SpeedDecay();
-            if (Math.Round(mario.Physics.Velocity.X) <= 0)
-            {
-                mario.MovementState = new RightIdle(mario);
-            }
+            movingRight = false;
         }
         public override void OnFireBall()
         {
@@ -55,6 +53,12 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public override void Update(GameTime gameTime)
         {
+            if (!movingRight)
+            {
+                mario.Physics.SpeedDecay();
+                if (Math.Round(mario.Physics.Velocity.X) <= 0)
+                    mario.MovementState = new RightIdle(mario);
+            }
             if (mario.Physics.Velocity.Y >= jumpingSpeed)
             {
                 mario.MovementState = new RightJumping(mario);

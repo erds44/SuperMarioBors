@@ -2,6 +2,7 @@
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using System;
+using System.Threading;
 
 namespace SuperMarioBros.Items
 {
@@ -25,7 +26,10 @@ namespace SuperMarioBros.Items
             if (Position.Y >= speedChange)
                 Position += Physics.Displacement(gameTime);
             else
+            {
+                Thread.Sleep(2000);
                 startOverEvent?.Invoke();
+            }
         }
         public override Rectangle HitBox()
         {

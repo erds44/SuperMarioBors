@@ -1,53 +1,43 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using SuperMarioBros.Commands;
+using System.Collections.Generic;
 
 namespace SuperMarioBros.Controllers
 {
     class KeyboardController : IController
     {
-        private readonly Dictionary<Keys, int> keyDownDictionary;
-        private readonly Dictionary<Keys, int> keyUpDictionary = new Dictionary<Keys, int>
-        {
-            { Keys.Up, ControllerMessager.KEYUPUPMOVE },
-            { Keys.W, ControllerMessager.KEYUPUPMOVE },
-            { Keys.Z, ControllerMessager.KEYUPUPMOVE },
-            { Keys.X, ControllerMessager.KEYUPPOWER },
-            { Keys.Down, ControllerMessager.KEYDOWNUP },
-            { Keys.S, ControllerMessager.KEYDOWNUP }
-        };
+        private readonly Dictionary<Keys, ICommand> keyDownDictionary = new Dictionary<Keys, ICommand>();
+        private readonly Dictionary<Keys, ICommand> keyUpDictionary = new Dictionary<Keys, ICommand>();
         private readonly List<Keys> checkKeyUplist = new List<Keys>();
-        private readonly ControllerMessager messager;
-        public KeyboardController(ControllerMessager controllerMessager, params (Keys key, int command)[] args)
+        private readonly List<Keys> nonHoldableKeys = new List<Keys>();
+        public KeyboardController(params (Keys key, ICommand KeyDownCommand, ICommand KeyUpCommand , bool CanBeHeld)[] args)
         {
-            messager = controllerMessager;
-            keyDownDictionary = new Dictionary<Keys, int>();
-            foreach ((Keys, int) element in args)
+            foreach (var (key, downCommand, upCommand, canBeHeld) in args)
             {
-                keyDownDictionary.Add(element.Item1, element.Item2);
+                keyDownDictionary.Add(key, downCommand);
+                keyUpDictionary.Add(key, upCommand);
+                if (!canBeHeld)
+                    nonHoldableKeys.Add(key);
             }
         }
         public void Update(GameTime gameTime)
         {
-            Keys[] key = Keyboard.GetState().GetPressedKeys();
-            foreach (Keys keyPressed in checkKeyUplist)
+            Keys[] currentlyPressedKeys = Keyboard.GetState().GetPressedKeys();
+            foreach (Keys keyUp in checkKeyUplist)
             {
-                if (Keyboard.GetState().IsKeyUp(keyPressed))
-                {
-                    if (keyUpDictionary.TryGetValue(keyPressed, out int command))
-                        messager.ChangeFlags(command);
-                }
+                if (Keyboard.GetState().IsKeyUp(keyUp) && keyUpDictionary.TryGetValue(keyUp, out ICommand keyUpCommand))
+                    keyUpCommand.Execute();
             }
             checkKeyUplist.Clear();
-            foreach (Keys keyPressed in key)
+            foreach (Keys keyDown in currentlyPressedKeys)
             {
-                if (keyDownDictionary.TryGetValue(keyPressed, out int command))
+                if (keyDownDictionary.TryGetValue(keyDown, out ICommand keyDownCommand))
                 {
-                    messager.ChangeFlags(command);
-                    if (keyUpDictionary.ContainsKey(keyPressed))
-                    {
-                        checkKeyUplist.Add(keyPressed);
-                    }
+                    if (!nonHoldableKeys.Contains(keyDown) || !checkKeyUplist.Contains(keyDown))
+                        keyDownCommand.Execute();
+                    if(!checkKeyUplist.Contains(keyDown))
+                        checkKeyUplist.Add(keyDown);
                 }
             }
         }

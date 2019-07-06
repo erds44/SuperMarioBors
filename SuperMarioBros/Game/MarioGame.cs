@@ -11,7 +11,9 @@ using SuperMarioBros.Marios;
 using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.AudioFactories;
-using Microsoft.Xna.Framework.Media;
+using SuperMarioBros.Commands;
+using System.Collections.Generic;
+using Buttons = Microsoft.Xna.Framework.Input.Buttons;
 
 namespace SuperMarioBros
 {
@@ -23,7 +25,7 @@ namespace SuperMarioBros
         private bool pause = false;
         public ObjectsManager ObjectsManager { get; set; }
         public Camera Camera { get; private set; }
-        public ControllerMessager controller;
+        public List<IController> controller { get; private set; }
         private SpriteBatch spriteBatch;
         public CollisionManager CollisionManager;
         public IMario Player => ObjectsManager.Mario;
@@ -78,9 +80,7 @@ namespace SuperMarioBros
                 State.Pause();
             }
             else if (pause && Keyboard.GetState().IsKeyUp(Keys.P))
-            {
                 pause = false;
-            }
         }
 
         protected override void Draw(GameTime gameTime)
@@ -136,25 +136,25 @@ namespace SuperMarioBros
         public void KeyBinding()
         {
             IMario mario = ObjectsManager.Mario;
-            controller = new ControllerMessager(mario, this);
-            IController keyboardController = new KeyboardController
-                (controller,
-                    (Keys.Q, ControllerMessager.QUITGAME),
-                    (Keys.A, ControllerMessager.LEFTMOVE),
-                    (Keys.S, ControllerMessager.DOWNMOVE),
-                    (Keys.D, ControllerMessager.RIGHTMOVE),
-                    (Keys.W, ControllerMessager.UPMOVE),
-                    (Keys.Z, ControllerMessager.UPMOVE),
-                    (Keys.R, ControllerMessager.RESETGAME),
-                    (Keys.Left, ControllerMessager.LEFTMOVE),
-                    (Keys.Down, ControllerMessager.DOWNMOVE),
-                    (Keys.Right, ControllerMessager.RIGHTMOVE),
-                    (Keys.Up, ControllerMessager.UPMOVE),
-                    (Keys.X, ControllerMessager.POWER)
-                );
-            controller.AddController(keyboardController);
-            IController JoyStickController = new JoyStickController(controller);
-            controller.AddController(JoyStickController);
+            controller = new List<IController> {
+                    new KeyboardController(
+                    (Keys.Q, new QuitCommand(this), new EmptyCommand(), false),
+                    (Keys.R, new ResetCommand(this), new EmptyCommand(), false),
+                    (Keys.Left, new LeftCommand(mario), new IdleCommand(mario), true),
+                    (Keys.Down, new DownCommand(mario), new KeyDownUpCommand(mario), true),
+                    (Keys.Right, new RightCommand(mario), new IdleCommand(mario), true),
+                    (Keys.Up, new UpCommand(mario), new KeyUpUpCommand(mario), true),
+                    (Keys.X, new PowerCommand(mario), new KeyUpPowerCommand(mario), true)
+                    ),
+                    //new JoyStickController(mario,
+                    //(Buttons.A, new UpCommand(mario), new KeyUpUpCommand(mario), true),
+                    //(Buttons.B, new PowerCommand(mario), new KeyUpPowerCommand(mario), false)
+                    //)
+             };
+
+            //controller.AddController(keyboardController);
+            //IController JoyStickController = new JoyStickController(controller);
+            //controller.AddController(JoyStickController);
         }
         public void StartOver()
         {
