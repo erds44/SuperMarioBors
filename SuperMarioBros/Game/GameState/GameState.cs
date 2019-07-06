@@ -1,22 +1,27 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
+using SuperMarioBros.AudioFactories;
 
 namespace SuperMarioBros.GameStates
 {
     public class GameState : IGameState
     {
-        private GraphicsDevice graphicsDevice;
+        private GraphicsDevice graphicsDevice => game.GraphicsDevice;
         private readonly MarioGame game;
         public GameState(MarioGame game)
         {
             this.game = game;
-            graphicsDevice = game.GraphicsDevice;
             if (game.ObjectsManager is null)
                 game.InitializeGame();
+
+            if (MediaPlayer.State == MediaState.Paused) MediaPlayer.Resume();
+            else if (game.Player.Position.Y > 0) { MediaPlayer.Play(AudioFactory.Instance.CreateSong("overworld")); }
+            else MediaPlayer.Play(AudioFactory.Instance.CreateSong("underworld"));
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: game.marioCamera.Transform);
+            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: game.Camera.Transform);
             graphicsDevice.Clear(Color.CornflowerBlue);
             game.ObjectsManager.Draw(spriteBatch);
             game.HeadsUps.Draw(spriteBatch, game.Camera.LeftBound, game.Camera.UpperBound);
@@ -26,10 +31,10 @@ namespace SuperMarioBros.GameStates
         {
             game.controller.Update(gameTime);
             game.ObjectsManager.Update(gameTime);
-            game.collisionManager.Update();
+            game.CollisionManager.Update();
             game.HeadsUps.Update(gameTime);
             if(game.FocusMario)
-                game.marioCamera.Update();
+                game.Camera.Update();
         }
         public void Pause()
         {

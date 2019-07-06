@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
+using SuperMarioBros.AudioFactories;
 
 namespace SuperMarioBros.GameStates
 {
@@ -14,6 +16,8 @@ namespace SuperMarioBros.GameStates
             this.game = game;
             this.graphicsDevice = game.GraphicsDevice;
             spriteFont = game.Content.Load<SpriteFont>("Font/MarioFont");
+            MediaPlayer.Stop();
+            MediaPlayer.Play(AudioFactory.Instance.CreateSong("gameover"));
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {

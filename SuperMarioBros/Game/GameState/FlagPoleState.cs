@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
+using SuperMarioBros.AudioFactories;
 
 namespace SuperMarioBros.GameStates
 {
@@ -13,10 +15,12 @@ namespace SuperMarioBros.GameStates
             graphicsDevice = game.GraphicsDevice;
             UpdateHeadsUp = false;
             this.game = game;
+            MediaPlayer.Stop();
+            AudioFactory.Instance.CreateSound("flagpole").Play();
         }
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: game.marioCamera.Transform);
+            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: game.Camera.Transform);
             graphicsDevice.Clear(Color.CornflowerBlue);
             game.ObjectsManager.Draw(spriteBatch);
             game.HeadsUps.Draw(spriteBatch, game.Camera.LeftBound, game.Camera.UpperBound);
@@ -25,9 +29,9 @@ namespace SuperMarioBros.GameStates
 
         public void Update(GameTime gameTime)
         {
-            game.marioCamera.Update();
+            game.Camera.Update();
             game.ObjectsManager.Update(gameTime);
-            game.collisionManager.Update();
+            game.CollisionManager.Update();
             if(UpdateHeadsUp)
                 game.HeadsUps.Update(gameTime);
         }

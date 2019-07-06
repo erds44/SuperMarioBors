@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
 
@@ -31,8 +32,9 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public void Up()
         {
-            if (!mario.Physics.Jump)
-                mario.MovementState = new RightJumping(mario);
+            if (mario.Physics.Jump) return;
+            AudioFactory.Instance.CreateSound("jump").Play();
+            mario.MovementState = new RightJumping(mario);
         }
 
         public void Idle()
