@@ -85,7 +85,7 @@ namespace SuperMarioBros
 
         protected override void Draw(GameTime gameTime)
         {
-            State.Draw(gameTime, spriteBatch);
+            State.Draw(spriteBatch);
             base.Draw(gameTime);
         }
         public void ChangeToPlayerStatusState()
