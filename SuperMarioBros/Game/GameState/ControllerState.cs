@@ -16,11 +16,11 @@ namespace SuperMarioBros.GameStates
             graphics = game.GraphicsDevice;
             var itemFont = game.Content.Load<SpriteFont>("Font/MarioFontSize25");
 
-            var keyboardButton = new Buttons(itemFont, "Keyboard", new Vector2(300, 240));
+            var keyboardButton = new Buttons(itemFont, "Keyboard", new Vector2(300, 140));
             keyboardButton.Click += game.SetKeyboardController;
             keyboardButton.Click += game.ChangeToPlayerStatusState;
 
-           var GamePadButton = new Buttons(itemFont, "GamePad", new Vector2(300, 300));
+           var GamePadButton = new Buttons(itemFont, "GamePad", new Vector2(300, 250));
             GamePadButton.Click += game.ChangeToPlayerStatusState;
 
             buttons = new List<Buttons>
@@ -30,12 +30,12 @@ namespace SuperMarioBros.GameStates
             };
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
             graphics.Clear(Color.Black);
             foreach (var ele in buttons)
-                ele.Draw(gameTime, spriteBatch);
+                ele.Draw(spriteBatch);
             spriteBatch.End();
         }
 
