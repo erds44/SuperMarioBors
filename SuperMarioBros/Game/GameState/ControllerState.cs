@@ -5,46 +5,35 @@ using System.Collections.Generic;
 
 namespace SuperMarioBros.GameStates
 {
-    public class MenuState : IGameState
+    public class ControllerState : IGameState
     {
         private List<Buttons> buttons;
         private GraphicsDevice graphics;
-        private Texture2D marioTitle;
         private readonly MarioGame game;
-        public MenuState(MarioGame game)
+        public ControllerState(MarioGame game)
         {
             this.game = game;
             graphics = game.GraphicsDevice;
             var itemFont = game.Content.Load<SpriteFont>("Font/MarioFontSize25");
-            marioTitle = game.Content.Load<Texture2D>("StartBackground");
 
-            var startButton = new Buttons(itemFont, "New Game", new Vector2(300, 240));
-            startButton.Click += NewGameClick;
+            var keyboardButton = new Buttons(itemFont, "Keyboard", new Vector2(300, 240));
+            keyboardButton.Click += game.SetKeyboardController;
+            keyboardButton.Click += game.ChangeToPlayerStatusState;
 
-            var quitButton = new Buttons(itemFont, "Quit", new Vector2(300, 300));
-            quitButton.Click += QuitGameClick;
+           var GamePadButton = new Buttons(itemFont, "GamePad", new Vector2(300, 300));
+            GamePadButton.Click += game.ChangeToPlayerStatusState;
 
             buttons = new List<Buttons>
             {
-                startButton,
-                quitButton
+                keyboardButton,
+                GamePadButton
             };
-        }
-
-        private void NewGameClick()
-        {
-            game.State = new ControllerState(game);
-        }
-        private void QuitGameClick()
-        {
-            game.Exit();
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
-            graphics.Clear(Color.CornflowerBlue);
-            spriteBatch.Draw(marioTitle, Vector2.Zero, Color.White);
+            graphics.Clear(Color.Black);
             foreach (var ele in buttons)
                 ele.Draw(gameTime, spriteBatch);
             spriteBatch.End();

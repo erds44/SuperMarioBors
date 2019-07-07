@@ -36,7 +36,7 @@ namespace SuperMarioBros.GameStates
                 Song hurrySong = AudioFactory.Instance.CreateHurrySong(MediaPlayer.Queue.ActiveSong, out bool shouldNotChange);
                 if (!shouldNotChange) { MediaPlayer.Play(hurrySong); }
             }
-            game.controller.ForEach(controller => controller.Update(gameTime));
+            game.controller.Update(gameTime);
             game.ObjectsManager.Update(gameTime);
             game.CollisionManager.Update();
             game.HeadsUps.Update(gameTime);

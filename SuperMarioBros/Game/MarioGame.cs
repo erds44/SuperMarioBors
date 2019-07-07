@@ -14,6 +14,7 @@ using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Commands;
 using System.Collections.Generic;
 using Buttons = Microsoft.Xna.Framework.Input.Buttons;
+using System;
 
 namespace SuperMarioBros
 {
@@ -21,17 +22,20 @@ namespace SuperMarioBros
     public class MarioGame : Game
     {
         public readonly int WindowWidth;
+
         public readonly int WindowHeight;
         private bool pause = false;
         public ObjectsManager ObjectsManager { get; set; }
         public Camera Camera { get; private set; }
-        public List<IController> controller { get; private set; }
+        public IController controller { get; private set; }
         private SpriteBatch spriteBatch;
         public CollisionManager CollisionManager;
         public IMario Player => ObjectsManager.Mario;
         public HeadsUp HeadsUps { get; set; }
         public IGameState State { get; set; }
         public bool FocusMario { get; set; }
+        private IMario mario;
+        public bool IskeyboardController { get; set; }
         public MarioGame()
         {
             GraphicsDeviceManager graphics = new GraphicsDeviceManager(this);
@@ -43,6 +47,7 @@ namespace SuperMarioBros
             WindowWidth = graphics.PreferredBackBufferWidth;
             Content.RootDirectory = "Content";
             FocusMario = true;
+            IskeyboardController = false;
         }
 
         public void ChangeToFlagPoleState()
@@ -110,7 +115,11 @@ namespace SuperMarioBros
             //marioCamera.SetFocus(ObjectsManager.Mario);
             ObjectFactory.Instance.Initialize(this);
             CollisionManager = new CollisionManager(this);
-            KeyBinding();
+            mario = ObjectsManager.Mario;
+            if (IskeyboardController)
+                InitializeKeyBoard();
+            else
+                InitializeGamePad();
 
             ObjectsManager.Mario.DeathEvent += HeadsUps.OnMarioDeath;
             ObjectsManager.Mario.DeathEvent += InitializeGame;
@@ -133,29 +142,30 @@ namespace SuperMarioBros
            State = new GameState(this);
         }
 
-        public void KeyBinding()
-        {
-            IMario mario = ObjectsManager.Mario;
-            controller = new List<IController> {
-                    new KeyboardController(
-                    (Keys.Q, new QuitCommand(this), new EmptyCommand(), false),
-                    (Keys.R, new ResetCommand(this), new EmptyCommand(), false),
-                    (Keys.Left, new LeftCommand(mario), new IdleCommand(mario), true),
-                    (Keys.Down, new DownCommand(mario), new KeyDownUpCommand(mario), true),
-                    (Keys.Right, new RightCommand(mario), new IdleCommand(mario), true),
-                    (Keys.Up, new UpCommand(mario), new KeyUpUpCommand(mario), true),
-                    (Keys.X, new PowerCommand(mario), new KeyUpPowerCommand(mario), true)
-                    ),
-                    //new JoyStickController(mario,
-                    //(Buttons.A, new UpCommand(mario), new KeyUpUpCommand(mario), true),
-                    //(Buttons.B, new PowerCommand(mario), new KeyUpPowerCommand(mario), false)
-                    //)
-             };
+        //public void KeyBinding()
+        //{
+        //    IMario mario = ObjectsManager.Mario;
+        //    controller = new List<IController> {
+        //            //new KeyboardController(
+        //            //(Keys.Q, new QuitCommand(this), new EmptyCommand(), false),
+        //            //(Keys.R, new ResetCommand(this), new EmptyCommand(), false),
+        //            //(Keys.Left, new LeftCommand(mario), new IdleCommand(mario), true),
+        //            //(Keys.Down, new DownCommand(mario), new KeyDownUpCommand(mario), true),
+        //            //(Keys.Right, new RightCommand(mario), new IdleCommand(mario), true),
+        //            //(Keys.Up, new UpCommand(mario), new KeyUpUpCommand(mario), true),
+        //            //(Keys.X, new PowerCommand(mario), new KeyUpPowerCommand(mario), true)
+        //            //),
+        //            new JoyStickController(mario,
+        //            (Buttons.A, new UpCommand(mario), new KeyUpUpCommand(mario), true),
+        //            (Buttons.RightTrigger, new PowerCommand(mario), new KeyUpPowerCommand(mario), false),
+        //            (Buttons.Y, new QuitCommand(this), new EmptyCommand(), false)
+        //            )
+        //     };
 
-            //controller.AddController(keyboardController);
-            //IController JoyStickController = new JoyStickController(controller);
-            //controller.AddController(JoyStickController);
-        }
+        //    //controller.AddController(keyboardController);
+        //    //IController JoyStickController = new JoyStickController(controller);
+        //    //controller.AddController(JoyStickController);
+        //}
         public void StartOver()
         {
             Initialize();
@@ -173,6 +183,31 @@ namespace SuperMarioBros
         public bool IsFlagPoleState()
         {
             return State is FlagPoleState;
+        }
+        private void InitializeKeyBoard()
+        {
+            controller = new KeyboardController(
+                    (Keys.Q, new QuitCommand(this), new EmptyCommand(), false),
+                    (Keys.R, new ResetCommand(this), new EmptyCommand(), false),
+                    (Keys.Left, new LeftCommand(mario), new IdleCommand(mario), true),
+                    (Keys.Down, new DownCommand(mario), new KeyDownUpCommand(mario), true),
+                    (Keys.Right, new RightCommand(mario), new IdleCommand(mario), true),
+                    (Keys.Up, new UpCommand(mario), new KeyUpUpCommand(mario), true),
+                    (Keys.X, new PowerCommand(mario), new KeyUpPowerCommand(mario), true)
+                    );
+        }
+
+        private void InitializeGamePad()
+        {
+            controller = new JoyStickController(mario,
+                    (Buttons.A, new UpCommand(mario), new KeyUpUpCommand(mario), true),
+                    (Buttons.RightTrigger, new PowerCommand(mario), new KeyUpPowerCommand(mario), false),
+                    (Buttons.Y, new QuitCommand(this), new EmptyCommand(), false)
+                );
+        }
+        public void SetKeyboardController()
+        {
+            IskeyboardController = true;
         }
     }
 }
