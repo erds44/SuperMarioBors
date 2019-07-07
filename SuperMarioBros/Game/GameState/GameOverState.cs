@@ -19,7 +19,7 @@ namespace SuperMarioBros.GameStates
             MediaPlayer.Stop();
             MediaPlayer.Play(AudioFactory.Instance.CreateSong("gameover"));
         }
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
             graphicsDevice.Clear(Color.Black);

@@ -16,7 +16,7 @@ namespace SuperMarioBros.GameStates
             MediaPlayer.Stop();
             AudioFactory.Instance.CreateSound("pipe").Play();
         }
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: game.Camera.Transform);
             graphicsDevice.Clear(Color.CornflowerBlue);

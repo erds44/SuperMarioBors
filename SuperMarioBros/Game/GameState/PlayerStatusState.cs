@@ -22,7 +22,7 @@ namespace SuperMarioBros.GameStates
             spriteFont = game.Content.Load<SpriteFont>("Font/MarioFont");
             smallMarioSprite = SpriteFactory.CreateSprite(nameof(SmallMario) + nameof(RightIdle));
         }
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
             graphicsDevice.Clear(Color.Black);

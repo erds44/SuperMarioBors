@@ -40,13 +40,13 @@ namespace SuperMarioBros.GameStates
             game.Exit();
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
             graphics.Clear(Color.CornflowerBlue);
             spriteBatch.Draw(marioTitle, Vector2.Zero, Color.White);
             foreach (var ele in buttons)
-                ele.Draw(gameTime, spriteBatch);
+                ele.Draw(spriteBatch);
             spriteBatch.End();
         }
 

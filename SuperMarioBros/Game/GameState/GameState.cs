@@ -20,7 +20,7 @@ namespace SuperMarioBros.GameStates
             else if (game.Player.Position.Y > 0) { MediaPlayer.Play(AudioFactory.Instance.CreateSong("overworld")); }
             else MediaPlayer.Play(AudioFactory.Instance.CreateSong("underworld"));
         }
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: game.Camera.Transform);
             graphicsDevice.Clear(Color.CornflowerBlue);

@@ -21,6 +21,7 @@ namespace SuperMarioBros.Controllers
                     nonHoldableKeys.Add(key);
             }
         }
+
         public void Update(GameTime gameTime)
         {
             Keys[] currentlyPressedKeys = Keyboard.GetState().GetPressedKeys();
