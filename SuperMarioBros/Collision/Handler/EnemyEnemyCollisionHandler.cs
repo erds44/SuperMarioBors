@@ -6,7 +6,8 @@ namespace SuperMarioBros.Collisions
     {
         public static void MoverStompsTarget(IEnemy mover, IEnemy koopa, Direction direction)
         {
-            koopa.Stomped(1);
+            koopa.Stomped(mover.EnemyKillStreakCounter);
+            koopa.EnemyKillStreakCounter++;
             Bump(mover);
             ResolveOverlap(mover, koopa, direction);
         }
@@ -30,7 +31,8 @@ namespace SuperMarioBros.Collisions
             Koopa koopa = (Koopa)target;
             if (!koopa.DealDemage)
             {
-                koopa.Flipped(1);
+                koopa.Flipped(mover.EnemyKillStreakCounter);
+                koopa.EnemyKillStreakCounter++;
                 koopa.ObjState = ObjectState.NonCollidable;
             }
             ResolveOverlap(mover, koopa, direction);
@@ -50,13 +52,16 @@ namespace SuperMarioBros.Collisions
 
         public static void MoverFlipped(IEnemy mover, IEnemy target, Direction direction)
         {
-            mover.Flipped(1);
+            Koopa koopa = (Koopa)target;
+            mover.Flipped(koopa.EnemyKillStreakCounter);
+            koopa.EnemyKillStreakCounter++;
             mover.ObjState = ObjectState.NonCollidable;
         }
 
         public static void TargetStompsMover(IEnemy mover, IEnemy target, Direction direction)
         {
-            mover.Stomped(1);
+            mover.Stomped(target.EnemyKillStreakCounter);
+            target.EnemyKillStreakCounter++;
             Bump(target);
             ResolveOverlap(mover, target, direction);
         }

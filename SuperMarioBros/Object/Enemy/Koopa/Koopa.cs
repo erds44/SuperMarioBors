@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.SpriteFactories;
-using System;
 
 namespace SuperMarioBros.Objects.Enemy
 {

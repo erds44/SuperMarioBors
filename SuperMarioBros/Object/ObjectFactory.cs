@@ -56,12 +56,12 @@ namespace SuperMarioBros.Objects
             objectsManager.AddObject((IStatic)Activator.CreateInstance(type, location));
         }
 
-        public  void CreateBlockDebris(Vector2 location)
+        public  void CreateBlockDebris(Vector2 location, Type type)
         {
-            objectsManager.AddNonCollidableObject(new BrickDerbis(location + leftTopDebrisOffset, BrickPosition.leftTop));
-            objectsManager.AddNonCollidableObject(new BrickDerbis(location, BrickPosition.leftBottom));
-            objectsManager.AddNonCollidableObject(new BrickDerbis(location + rightTopDebrisOffset, BrickPosition.rightTop));
-            objectsManager.AddNonCollidableObject(new BrickDerbis(location + rightBottomDebrisOffset, BrickPosition.rightBottom));
+            objectsManager.AddNonCollidableObject(new BrickDerbis(location + leftTopDebrisOffset, BrickPosition.leftTop, type));
+            objectsManager.AddNonCollidableObject(new BrickDerbis(location, BrickPosition.leftBottom, type));
+            objectsManager.AddNonCollidableObject(new BrickDerbis(location + rightTopDebrisOffset, BrickPosition.rightTop, type));
+            objectsManager.AddNonCollidableObject(new BrickDerbis(location + rightBottomDebrisOffset, BrickPosition.rightBottom, type));
         }
         
         public void CreateFireBall(Vector2 location, FireBallDirection direction)

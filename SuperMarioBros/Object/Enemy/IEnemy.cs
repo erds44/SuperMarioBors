@@ -6,10 +6,12 @@ namespace SuperMarioBros.Objects.Enemy
 {
     public interface IEnemy : IDynamic
     {
-        event Action<Vector2, int> StompedEvent;
+        event Action<Vector2, int,int> StompedEvent;
         IEnemyHealthState HealthState { get; set; }
         IEnemyMovementState MovementState { get; set; }
+        int EnemyKillStreakCounter { get; set; }
         ISprite Sprite { get; set; }
+        int Score { get; set; }
         void Flipped(int count);
         void Stomped(int count);
         void ChangeDirection(); 

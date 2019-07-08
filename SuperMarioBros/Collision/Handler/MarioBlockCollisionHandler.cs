@@ -86,7 +86,7 @@ namespace SuperMarioBros.Collisions
         {
             block.Broken();
             AudioFactory.Instance.CreateSound("breakblock").Play();
-            ObjectFactory.Instance.CreateBlockDebris(block.Position);
+            ObjectFactory.Instance.CreateBlockDebris(block.Position, block.GetType());
             MoverVerticallyBounce(mario, block, direction);
         }
 
