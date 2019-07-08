@@ -6,54 +6,56 @@ namespace SuperMarioBros.Cameras
 {
     public class Camera
     {
-        public float LeftBound { get; set; }
-        public float RightBound { get; set; }
-        public float UpperBound { get; set; }
-        public IObject Focus { get; private set; }
+        public float LeftBound { get; private set; }
+        private float prevLeftBound;
+        public float RightBound => LeftBound + windowWidth;
+        public float UpperBound { get; private set; }
+        private IObject focus;
         public Matrix Transform { get; private set; }
-        public Camera()
+        private readonly float windowWidth;
+        public Camera(float windowWidth)
         {
+            this.windowWidth = windowWidth;
             LeftBound = 0;
-            RightBound = LeftBound + MarioGame.Instance.WindowWidth;
             UpperBound = 0;
         }
         public void SetFocus(IObject obj)
         {
-            Focus = obj;
+            focus = obj;
         }
         public void Reset()
         {
             LeftBound = 0;
-            RightBound = LeftBound + MarioGame.Instance.WindowWidth;
+            prevLeftBound = 0;
+            UpperBound = 0;
         }
         public void Reset(IObject obj)
         {
             LeftBound = 0;
-            RightBound = LeftBound + MarioGame.Instance.WindowWidth;
-            Focus = obj;
+            prevLeftBound = 0;
+            UpperBound = 0;
+            focus = obj;
         }
         public void Update()
         {
-            if (Focus is null) return;
-            Vector2 targetPosition = Focus.Position;
-            LeftBound = Math.Max(LeftBound, targetPosition.X + Focus.HitBox().Width / 2 - MarioGame.Instance.WindowWidth / 2);
-            RightBound = LeftBound + MarioGame.Instance.WindowWidth;
-            var position = Matrix.CreateTranslation(-LeftBound-MarioGame.Instance.WindowWidth / 2, 0, 0);
-            var offset = Matrix.CreateTranslation(MarioGame.Instance.WindowWidth / 2, 0,0);
+            if (focus is null) return;
+            Vector2 targetPosition = focus.Position;
+            LeftBound = Math.Max(prevLeftBound, targetPosition.X + focus.HitBox().Width / 2 - windowWidth / 2);
+            prevLeftBound = LeftBound;
+            var position = Matrix.CreateTranslation(-LeftBound-windowWidth / 2, 0, 0);
+            var offset = Matrix.CreateTranslation(windowWidth / 2, 0,0);
             Transform = position * offset;
             if (UpperBound != 0)
                 UpperBound = 0;
         }
 
-        public void Update(Vector2 focus) //Focus on given point. This does not have a "left-only" limit. Given point will be the center of the camera.
+        public void Update(Vector2 focus) //focus on given point. This does not have a "left-only" limit. Given point will be the center of the camera.
         {
-            LeftBound = Math.Max(LeftBound, focus.X - MarioGame.Instance.WindowWidth / 2);
-            RightBound = LeftBound + MarioGame.Instance.WindowWidth;
-            var position = Matrix.CreateTranslation(-LeftBound - MarioGame.Instance.WindowWidth / 2, -focus.Y, 0);
-            var offset = Matrix.CreateTranslation(MarioGame.Instance.WindowWidth / 2, 0, 0);
+            LeftBound = focus.X - windowWidth / 2;
+            var position = Matrix.CreateTranslation(-LeftBound - windowWidth / 2, -focus.Y, 0);
+            var offset = Matrix.CreateTranslation(windowWidth / 2, 0, 0);
             Transform = position * offset;
             UpperBound = focus.Y ;
         }
-
     }
 }

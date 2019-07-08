@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 
@@ -15,7 +16,7 @@ namespace SuperMarioBros.Items
             sprite = SpriteFactory.CreateSprite(GetType().Name);
             sprite.SetLayer(0);
             Physics = new Physics(coinInitialVelocity, coinGravity, itemWeight);
-            Physics.ApplyGravity(); 
+            Physics.ApplyGravity();
             /* Since Initally item does not have gravity for responding state */
         }
 

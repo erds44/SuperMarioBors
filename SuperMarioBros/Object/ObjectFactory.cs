@@ -12,7 +12,7 @@ namespace SuperMarioBros.Objects
     {
         public event Action<Vector2> ItemCollectedEvent;
         private static readonly ObjectFactory instance = new ObjectFactory();
-        public  static ObjectFactory Instance { get { return instance; } }
+        public static ObjectFactory Instance { get {return instance;} }
         private  ObjectsManager objectsManager;
         private static Vector2 itemOffset = new Vector2(1, 0);  /* includes muhsrooms, star, flower */
         private static Vector2 coinOffset = new Vector2(12, -50);
@@ -21,6 +21,7 @@ namespace SuperMarioBros.Objects
         private  Vector2 rightBottomDebrisOffset = new Vector2(20, 0);
         private static Vector2 flagOffset = new Vector2(68, -130);
         public int count = 0;
+        private  MarioGame game;
         /* Red/Green msuhrrom, star, debris, flower, coin*/
         private readonly static Dictionary<Type, Vector2> dictionary = new Dictionary<Type, Vector2>
         {
@@ -32,18 +33,22 @@ namespace SuperMarioBros.Objects
             { typeof(WinFlag), flagOffset}
         };
 
-        public void Initialize()
+        public void Initialize(MarioGame game)
         {
-            objectsManager = MarioGame.Instance.ObjectsManager;
+            this.game = game;
+            objectsManager = game.ObjectsManager;
         }
         /* Mainly used for itemBlock creates items*/
         public void CreateNonCollidableObject(Type type, Vector2 location)
         {
             if (dictionary.TryGetValue(type, out Vector2 offSet))
                 location += offSet;
-            objectsManager.AddNonCollidableObject((IDynamic)Activator.CreateInstance(type, location));
+            IDynamic obj = (IDynamic)Activator.CreateInstance(type, location);
+            objectsManager.AddNonCollidableObject(obj);
             if (type == typeof(Coin))
                 ItemCollectedEvent?.Invoke(new Vector2(location.X, location.Y -60));
+            if (obj is WinFlag winFlag)
+                winFlag.startOverEvent += game.StartOver;        
         }
 
         public void CreateCollidableObject(Type type, Vector2 location)
@@ -51,12 +56,12 @@ namespace SuperMarioBros.Objects
             objectsManager.AddObject((IStatic)Activator.CreateInstance(type, location));
         }
 
-        public  void CreateBlockDebris(Vector2 location)
+        public  void CreateBlockDebris(Vector2 location, Type type)
         {
-            objectsManager.AddNonCollidableObject(new BrickDerbis(location + leftTopDebrisOffset, BrickPosition.leftTop));
-            objectsManager.AddNonCollidableObject(new BrickDerbis(location, BrickPosition.leftBottom));
-            objectsManager.AddNonCollidableObject(new BrickDerbis(location + rightTopDebrisOffset, BrickPosition.rightTop));
-            objectsManager.AddNonCollidableObject(new BrickDerbis(location + rightBottomDebrisOffset, BrickPosition.rightBottom));
+            objectsManager.AddNonCollidableObject(new BrickDerbis(location + leftTopDebrisOffset, BrickPosition.leftTop, type));
+            objectsManager.AddNonCollidableObject(new BrickDerbis(location, BrickPosition.leftBottom, type));
+            objectsManager.AddNonCollidableObject(new BrickDerbis(location + rightTopDebrisOffset, BrickPosition.rightTop, type));
+            objectsManager.AddNonCollidableObject(new BrickDerbis(location + rightBottomDebrisOffset, BrickPosition.rightBottom, type));
         }
         
         public void CreateFireBall(Vector2 location, FireBallDirection direction)

@@ -115,6 +115,18 @@
     <None Include="Content\BlueBrickBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\BlueLeftBottomDebris.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BlueLeftTopDebris.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BlueRightBottomDebris.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BlueRightTopDebris.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\BlueRockBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -374,6 +386,9 @@
     <None Include="Content\SmallMarioRightSliding.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="Content\hurry.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Musics\castle.wma">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -520,25 +535,37 @@
   <ItemGroup>
     <Compile Include="AudioFactory\AudioFactory.cs" />
     <Compile Include="Camera\Camera.cs" />
-    <Compile Include="Collision\IHandler.cs" />
-    <Compile Include="Collision\IResponsible.cs" />
-    <Compile Include="Collision\Response\EnemyPipeReponse.cs" />
-    <Compile Include="Collision\Response\EnemyBlockReponse.cs" />
-    <Compile Include="Collision\Response\EnemyEnemyResponse.cs" />
-    <Compile Include="Collision\Response\GeneralResponse.cs" />
-    <Compile Include="Collision\Response\ItemPipeResponse.cs" />
-    <Compile Include="Collision\Response\ItemBlockResponse.cs" />
-    <Compile Include="Collision\Response\ItemEnemyResponse.cs" />
-    <Compile Include="Collision\Response\MarioPipeResponse.cs" />
-    <Compile Include="Collision\Response\MarioBlockResponse.cs" />
-    <Compile Include="Collision\Response\MarioEnemyResponse.cs" />
-    <Compile Include="Collision\Response\MarioItemResponse.cs" />
-    <Compile Include="Command\MarioCommand\KeyDownUp.cs" />
-    <Compile Include="Command\MarioCommand\KeyUpUpCommand.cs" />
+    <Compile Include="Collision\Handler\GeneralHandler.cs" />
+    <Compile Include="Collision\Handler\EnemyBlcokCollisionHandler.cs" />
+    <Compile Include="Collision\Handler\EnemyEnemyCollisionHandler.cs" />
+    <Compile Include="Collision\Handler\ItemBlockCollisionHandler.cs" />
+    <Compile Include="Collision\Handler\ItemPipeCollisionHandler.cs" />
+    <Compile Include="Collision\Handler\MarioPipeCollisionHandler.cs" />
+    <Compile Include="Collision\Handler\MarioItemCollisionHandler.cs" />
+    <Compile Include="Collision\Handler\MarioEnemyCollisionHandler.cs" />
+    <Compile Include="Collision\Handler\MarioBlockCollisionHandler.cs" />
+    <Compile Include="Collision\ICollisionResponder.cs" />
+    <Compile Include="Collision\Responder\EnemyBlockReponder.cs" />
+    <Compile Include="Collision\Responder\EnemyEnemyResponder.cs" />
+    <Compile Include="Collision\Responder\EnemyPipeReponder.cs" />
+    <Compile Include="Collision\Responder\ItemBlockResponder.cs" />
+    <Compile Include="Collision\Responder\ItemEnemyResponder.cs" />
+    <Compile Include="Collision\Responder\ItemPipeResponder.cs" />
+    <Compile Include="Collision\Responder\MarioBlockResponder.cs" />
+    <Compile Include="Collision\Responder\MarioEnemyResponder.cs" />
+    <Compile Include="Collision\Responder\MarioItemResponder.cs" />
+    <Compile Include="Collision\Responder\MarioPipeResponder.cs" />
+    <Compile Include="Command\KeyUpCommand\EmptyCommand.cs" />
+    <Compile Include="Command\MarioCommand\DownCommand.cs" />
     <Compile Include="Command\MarioCommand\KeyUpPowerCommand.cs" />
+    <Compile Include="Command\GameCommand\QuitCommand.cs" />
+    <Compile Include="Command\GameCommand\ResetCommand.cs" />
+    <Compile Include="Command\MarioCommand\KeyUpUpCommand.cs" />
+    <Compile Include="Command\MarioCommand\LeftCommand.cs" />
     <Compile Include="Game\GameState\Buttons.cs" />
     <Compile Include="Game\GameState\GameOverState.cs" />
     <Compile Include="Game\GameState\FlagPoleState.cs" />
+    <Compile Include="Game\GameState\ControllerState.cs" />
     <Compile Include="Game\GameState\TeleportingState.cs" />
     <Compile Include="Game\GameState\PauseState.cs" />
     <Compile Include="Game\GameState\PlayerStatusState.cs" />
@@ -562,14 +589,10 @@
     <Compile Include="Object\Pipe\Pipe.cs" />
     <Compile Include="Utility\XMLUtilities.cs" />
     <Compile Include="Manager\CollisionManager.cs" />
-    <Compile Include="Collision\Handler\DynamicAndDynamicObjectsHandler .cs" />
-    <Compile Include="Collision\Handler\DynamicAndStaticObjecstHandler.cs" />
-    <Compile Include="Command\MarioCommand\DownCommand.cs" />
+    <Compile Include="Collision\Responder\DynamicAndDynamicObjectsResponder.cs" />
+    <Compile Include="Collision\Responder\DynamicAndStaticObjectsResponder.cs" />
     <Compile Include="Command\ICommand.cs" />
-    <Compile Include="Command\MarioCommand\LeftCommand.cs" />
     <Compile Include="Command\MarioCommand\IdleCommand.cs" />
-    <Compile Include="Command\GameCommand\QuitCommand.cs" />
-    <Compile Include="Command\GameCommand\ResetCommand.cs" />
     <Compile Include="Command\MarioCommand\RightCommand.cs" />
     <Compile Include="Command\MarioCommand\PowerCommand.cs" />
     <Compile Include="Command\MarioCommand\UpCommand.cs" />
@@ -676,7 +699,34 @@
       <HintPath>..\levelLoading\levelLoading.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\lib\net45\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\lib\net45\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.4.0.1\lib\net45\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Direct2D1.4.0.1\lib\net45\SharpDX.Direct2D1.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D11, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Direct3D11.4.0.1\lib\net45\SharpDX.Direct3D11.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D9, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Direct3D9.4.0.1\lib\net45\SharpDX.Direct3D9.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DXGI, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.DXGI.4.0.1\lib\net45\SharpDX.DXGI.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Mathematics, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Mathematics.4.0.1\lib\net45\SharpDX.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.MediaFoundation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.MediaFoundation.4.0.1\lib\net45\SharpDX.MediaFoundation.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.XAudio2, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.XAudio2.4.0.1\lib\net45\SharpDX.XAudio2.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.XInput, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.XInput.4.0.1\lib\net45\SharpDX.XInput.dll</HintPath>
     </Reference>
     <Reference Include="SpriteLoading">
       <HintPath>..\SpriteLoading\itemsForSize\SpriteLoading.dll</HintPath>
@@ -716,12 +766,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets" Condition="Exists('..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets')" />
+  <Import Project="..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets" Condition="Exists('..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoGame.Framework.DesktopGL.3.7.1.189\build\MonoGame.Framework.DesktopGL.targets'))" />
+    <Error Condition="!Exists('..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets'))" />
   </Target>
 </Project>

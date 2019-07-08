@@ -104,6 +104,8 @@ namespace SuperMarioBros.Loading
              new SpritesNode("TeleportVerticalLargePipe","HighPipe",72,170),
              new SpritesNode("HighPipe","HugePipeV",46,350),
              new SpritesNode("TeleportHorizontalSmallPipe","HugePipeH",54,87),
+             new SpritesNode("SmallMarioLeftCrouching","SmallMarioLeftIdle",34,32),
+             new SpritesNode("SmallMarioRightCrouching","SmallMarioRightIdle",34,32),
         };
 
         private List<SpritesNode> spritesList;

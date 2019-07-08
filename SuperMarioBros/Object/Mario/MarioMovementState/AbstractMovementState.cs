@@ -4,7 +4,7 @@ using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
-    public abstract class AbstractMovementState
+    public abstract class AbstractMovementState : IMarioMovementState
     {
         protected private IMario mario;
         protected private Vector2 leftCrouchingOffset = new Vector2(-22, -22);
@@ -13,9 +13,9 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         protected private Vector2 offset = new Vector2(-22, -32);
         protected private Vector2 slidingVelocity = new Vector2(0, 150);
         protected private FireBallDirection direction = FireBallDirection.left;
-        protected private int fireBallCount = 2;
-        protected private float fireBallCoolDown = 2f;
-        protected private bool coolDown = false;
+        protected static private int fireBallCount = 2;
+        protected static private float fireBallCoolDown = 2f;
+        protected static private bool coolDown = false;
         public virtual void OnGround()
         {
             mario.OnGround = true;
@@ -55,9 +55,16 @@ namespace SuperMarioBros.Marios.MarioMovementStates
             mario.Physics.CurrentGravity = 100f;
             mario.MovementState = new LeftSliding(mario);
         }
-        public virtual void ChangeSlidingDirection()
-        {
-            //Do Nothing
-        }
+        public virtual void ChangeSlidingDirection() { }
+
+        public virtual void Left() { }
+
+        public virtual void Down() { }
+
+        public virtual void Up() { }
+
+        public virtual void Right() { }
+
+        public virtual void Idle() { }
     }
 }

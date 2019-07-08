@@ -2,9 +2,14 @@
 {
     class QuitCommand : ICommand
     {
+        private readonly MarioGame game;
+        public QuitCommand(MarioGame game)
+        {
+            this.game = game;
+        }
         public void Execute()
         {
-            MarioGame.Instance.Exit();
+            game.Exit();
         }
     }
 }

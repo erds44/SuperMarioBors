@@ -1,4 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
+using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.SpriteFactories;
@@ -10,10 +12,11 @@ namespace SuperMarioBros.Marios.MarioTypeStates
         private Vector2 DeadVelocity = new Vector2(0, -150);
         public DeadMario(IMario mario)
         {
-            mario.ObjState = ObjectState.NonCollidable;
+            if(mario.ObjState == ObjectState.Normal) mario.ObjState = ObjectState.NonCollidable;
             mario.Sprite = SpriteFactory.CreateSprite(nameof(DeadMario));
             mario.MovementState = new TerminateMovementState();
             mario.Physics.Velocity = DeadVelocity;
+            MediaPlayer.Play(AudioFactory.Instance.CreateSong("youredead"));
         }
 
         public void TakeDamage()

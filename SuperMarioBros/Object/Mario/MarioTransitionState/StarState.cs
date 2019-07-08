@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
+using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects.Mario.TransitionState;
 using System.Collections.ObjectModel;
@@ -12,10 +14,13 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
         private readonly Collection<Color> starColor = new Collection<Color> { Color.Green, Color.Black, Color.White };
         private readonly Collection<Color> normalColor = new Collection<Color> { Color.White };
         private double transitionTimer = 5d;
+        private readonly Song lastSong;
         public StarState(IMario mario)
         {
             this.mario = mario;
             mario.NoMovementTimer = 0;
+            lastSong = MediaPlayer.Queue.ActiveSong;
+            MediaPlayer.Play(AudioFactory.Instance.CreateSong("starman"));
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -47,7 +52,11 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
         public void Update(GameTime gameTime)
         {
             transitionTimer -= gameTime.ElapsedGameTime.TotalSeconds;
-            if (transitionTimer <= 0) mario.TransitionState = new NormalState(mario);
+            if (transitionTimer <= 0)
+            {
+                mario.TransitionState = new NormalState(mario);
+                MediaPlayer.Play(lastSong);
+            }
         }
     }
 }

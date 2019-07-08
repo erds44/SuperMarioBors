@@ -1,33 +1,38 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using SuperMarioBros.AudioFactories;
 
 namespace SuperMarioBros.GameStates
 {
     public class PauseState : IGameState
     {
         private GraphicsDevice graphicsDevice;
-        public PauseState(GraphicsDevice graphicsDevice)
+        private readonly MarioGame game;
+        public PauseState(MarioGame game)
         {
-            this.graphicsDevice = graphicsDevice;
+            this.game = game;
+            graphicsDevice = game.GraphicsDevice;
+            MediaPlayer.Pause();
+            AudioFactory.Instance.CreateSound("pause").Play();
         }
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: MarioGame.Instance.marioCamera.Transform);
+            spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: game.Camera.Transform);
             graphicsDevice.Clear(Color.CornflowerBlue);
-            MarioGame.Instance.ObjectsManager.Draw(spriteBatch);
-            MarioGame.Instance.HeadsUps.Draw(spriteBatch, MarioGame.Instance.Camera.LeftBound, MarioGame.Instance.Camera.UpperBound);
+            game.ObjectsManager.Draw(spriteBatch);
+            game.HeadsUps.Draw(spriteBatch, game.Camera.LeftBound, game.Camera.UpperBound);
             spriteBatch.End();
         }
 
         public void Pause()
         {
-            MarioGame.Instance.State = new GameState(graphicsDevice);
+            game.State = new GameState(game);
         }
 
         public void Update(GameTime gameTime)
         {
-
+            // Do Nothing
         }
     }
 }

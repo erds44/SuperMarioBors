@@ -9,19 +9,19 @@ namespace SuperMarioBros.GameStates
     {
         private List<Buttons> buttons;
         private GraphicsDevice graphics;
-        private ContentManager content;
         private Texture2D marioTitle;
-        public MenuState(GraphicsDevice graphicsDevice, ContentManager contentManager)
+        private readonly MarioGame game;
+        public MenuState(MarioGame game)
         {
-            graphics = graphicsDevice;
-            content = contentManager;
-            var itemFont = contentManager.Load<SpriteFont>("Font/MarioFontSize25");
-            marioTitle = contentManager.Load<Texture2D>("StartBackground");
+            this.game = game;
+            graphics = game.GraphicsDevice;
+            var itemFont = game.Content.Load<SpriteFont>("Font/MarioFontSize25");
+            marioTitle = game.Content.Load<Texture2D>("StartBackground");
 
-            var startButton = new Buttons(itemFont, "New Game", new Vector2(300, MarioGame.Instance.WindowHeight / 2));
+            var startButton = new Buttons(itemFont, "New Game", new Vector2(300, 240));
             startButton.Click += NewGameClick;
 
-            var quitButton = new Buttons(itemFont, "Quit", new Vector2(300, MarioGame.Instance.WindowHeight / 2 + 60));
+            var quitButton = new Buttons(itemFont, "Quit", new Vector2(300, 300));
             quitButton.Click += QuitGameClick;
 
             buttons = new List<Buttons>
@@ -33,20 +33,20 @@ namespace SuperMarioBros.GameStates
 
         private void NewGameClick()
         {
-            MarioGame.Instance.State = new PlayerStatusState(graphics, content);
+            game.State = new ControllerState(game);
         }
         private void QuitGameClick()
         {
-            MarioGame.Instance.Exit();
+            game.Exit();
         }
 
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
             graphics.Clear(Color.CornflowerBlue);
             spriteBatch.Draw(marioTitle, Vector2.Zero, Color.White);
             foreach (var ele in buttons)
-                ele.Draw(gameTime, spriteBatch);
+                ele.Draw(spriteBatch);
             spriteBatch.End();
         }
 

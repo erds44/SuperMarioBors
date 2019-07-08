@@ -13,7 +13,7 @@ namespace SuperMarioBros.Blocks
         bool HasItem { get; set; }
         void Used();
         void Bumped();
-        void Borken();
+        void Broken();
        
     }
 }

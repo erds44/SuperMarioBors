@@ -27,7 +27,7 @@ namespace SuperMarioBros.GameStates
             this.position = position;
             rectangle = new Rectangle((int)this.position.X, (int)this.position.Y, (int)spriteFont.MeasureString(text).X, (int)spriteFont.MeasureString(text).Y);
         }
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             var color = Color.White;
             if (isHovering)

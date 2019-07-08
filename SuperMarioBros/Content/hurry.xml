@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfAudioNode xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AudioNode>
+    <Name>overworld</Name>
+    <AudioName>Musics/hurryoverworld</AudioName>
+  </AudioNode>
+  <AudioNode>
+    <Name>underworld</Name>
+    <AudioName>Musics/hurryunderground</AudioName>
+  </AudioNode>
+  <AudioNode>
+    <Name>starman</Name>
+    <AudioName>Musics/hurrystarman</AudioName>
+  </AudioNode>
+  <AudioNode>
+    <Name>underwater</Name>
+    <AudioName>Musics/hurryunderwater</AudioName>
+  </AudioNode>
+</ArrayOfAudioNode>

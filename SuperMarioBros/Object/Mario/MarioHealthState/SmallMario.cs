@@ -26,8 +26,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
                 else
                     mario.Sprite = SpriteFactory.CreateSprite(GetType().Name + mario.MovementState.GetType().Name);
                 mario.Physics.SetSprintVelocityRate(1); //Reset sprint velocity rate.
-            }
-            
+            }        
         }
 
         public void OnFireFlower()

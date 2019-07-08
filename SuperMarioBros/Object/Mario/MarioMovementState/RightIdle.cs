@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
 
@@ -13,29 +14,29 @@ namespace SuperMarioBros.Marios.MarioMovementStates
            this.mario.OnGround = true;
         }
 
-        public void Down()
+        public override void Down()
         {
-            if (!(mario.HealthState is SmallMario))
-                mario.MovementState = new RightCrouching(mario);
+            mario.MovementState = new RightCrouching(mario);
         }
 
-        public void Right()
+        public override void Right()
         {
               mario.MovementState = new RightMoving(mario);
         }
 
-        public void Left()
+        public override void Left()
         {
              mario.MovementState = new LeftIdle(mario);
         }
 
-        public void Up()
+        public override void Up()
         {
-            if (!mario.Physics.Jump)
-                mario.MovementState = new RightJumping(mario);
+            if (mario.Physics.Jump) return;
+            AudioFactory.Instance.CreateSound("jump").Play();
+            mario.MovementState = new RightJumping(mario);
         }
 
-        public void Idle()
+        public override void Idle()
         {
             mario.Physics.SpeedDecay();
         }

@@ -34,12 +34,12 @@ namespace SuperMarioBros.Blocks
         {
             State.Used();
         }
-        public override void Borken()
+        public override void Broken()
         {
             State.Bumped(); /* treat as bump to kill enemy if on top of it */
             Sprite = null;
             bumped = true;
-            base.Borken();
+            base.Broken();
         }
     }
 }

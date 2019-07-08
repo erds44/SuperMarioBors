@@ -17,10 +17,12 @@ namespace SuperMarioBros.Loading
         private readonly ObjectsManager objectsManager;
         private readonly ObjectLoader objectLoader;
         private readonly HeadsUp headsUp;
-        public DynamicLoader(ObjectsManager objectsManager, ObjectLoader objectLoader, HeadsUp headsUp) {
+        private readonly MarioGame game;
+        public DynamicLoader(MarioGame game , ObjectLoader objectLoader, ObjectsManager objectsManager) {
             this.objectsManager = objectsManager;
             this.objectLoader = objectLoader;
-            this.headsUp = headsUp;
+            headsUp = game.HeadsUps;
+            this.game = game;
         }
         public void Initialize()
         {
@@ -56,17 +58,17 @@ namespace SuperMarioBros.Loading
             while (dynamicObjects.Count > 0 && dynamicObjects.First().Item1 < rightBound)
             {
                 IDynamic obj = dynamicObjects.First().Item2;
-                if (obj is IEnemy)
-                    ((IEnemy)obj).StompedEvent += headsUp.EnemyStomped; //Initialize this event to the enemy.
-                else if (obj is Flag)
+                if (obj is IEnemy enemy)
+                    enemy.StompedEvent += headsUp.EnemyStomped; //Initialize this event to the enemy.
+                else if (obj is Flag flag)
                 {
-                    objectLoader.Mario.SlidingEvent += ((Flag)obj).Sliding;
-                    ((Flag)obj).MarioJumpingOffFlagEvent += objectLoader.Mario.JumpingOffFlag;
-                }else if(obj is BigCoin coin)
-                {
-                    coin.CoinCollectedEvent += MarioGame.Instance.HeadsUps.CoinCollected;
+                    objectLoader.Mario.SlidingEvent += flag.Sliding;
+                    flag.MarioJumpingOffFlagEvent += objectLoader.Mario.JumpingOffFlag;
                 }
-                    
+                else if (obj is BigCoin coin)
+                {
+                    coin.CoinCollectedEvent += headsUp.CoinCollected;
+                }
                 objectsManager.AddObject(obj);
                 dynamicObjects.RemoveAt(0);
             }

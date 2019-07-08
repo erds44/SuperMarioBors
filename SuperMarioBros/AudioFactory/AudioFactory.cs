@@ -15,6 +15,7 @@ namespace SuperMarioBros.AudioFactories
         private ContentManager content;
         private Dictionary<string, string> songDictionary;
         private Dictionary<string, string> soundDictionary;
+        private Dictionary<string, string> hurryDictionary;
         public static AudioFactory Instance
         {
             get
@@ -24,20 +25,31 @@ namespace SuperMarioBros.AudioFactories
             }
         }
         private static AudioFactory instance;
-        private AudioFactory(){}
-        public void Initialize(ContentManager inputContent, string soundPath, string musicPath)
+        private AudioFactory() { }            
+        public void Initialize(ContentManager inputContent, string soundPath, string musicPath, string hurryPath)
         {
             content = inputContent;
-            var audioLoader = new AudioLoader(soundPath, musicPath);
+            var audioLoader = new AudioLoader(soundPath, musicPath, hurryPath);
             songDictionary = audioLoader.MusicInfo;
             soundDictionary = audioLoader.SoundInfo;
+            hurryDictionary = audioLoader.HurryInfo;
         }
+
 
         public Song CreateSong(string name)
         {
             if (songDictionary.TryGetValue(name, out string song)) return content.Load<Song>(song);
             Console.WriteLine("Cannot find song" + name);
             return null;
+        }
+        public Song CreateHurrySong(Song song, out bool isHurry)
+        {
+            string songName = song.Name;
+            isHurry = true;
+            bool foundHurry = hurryDictionary.TryGetValue(songName, out string hurry);
+            if (!foundHurry) return song;
+            isHurry = false;
+            return content.Load<Song>(hurry);
         }
         public SoundEffect CreateSound(string name)
         {

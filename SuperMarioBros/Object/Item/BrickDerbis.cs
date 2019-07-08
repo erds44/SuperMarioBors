@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Blocks;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
+using System;
 using System.Collections.Generic;
 
 namespace SuperMarioBros.Items
@@ -16,11 +18,14 @@ namespace SuperMarioBros.Items
             { BrickPosition.rightBottom,  new Vector2(60,60) }
         };
         private float timer = 0.5f;
-        public BrickDerbis(Vector2 location, BrickPosition brickPosition)
+        public BrickDerbis(Vector2 location, BrickPosition brickPosition, Type type)
         {
             derbisInfo.TryGetValue(brickPosition, out Vector2 velocity);
             Position = location;
-            sprite = SpriteFactory.CreateDerbisSprite(brickPosition);
+            if(type == typeof(BrickBlock))
+                sprite = SpriteFactory.CreateDerbisSprite(brickPosition);
+            else
+                sprite = SpriteFactory.CreateBlueDerbisSprite(brickPosition);
             Physics = new Physics(velocity, itemGravity, itemWeight);
             ObjState = ObjectState.NonCollidable;
             sprite.SetLayer(1f);

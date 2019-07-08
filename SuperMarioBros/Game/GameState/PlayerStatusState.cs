@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
@@ -13,21 +13,23 @@ namespace SuperMarioBros.GameStates
         private GraphicsDevice graphicsDevice;
         private SpriteFont spriteFont;
         private ISprite smallMarioSprite;
-        private float timer = 2f;
-        public PlayerStatusState(GraphicsDevice graphicsDevice, ContentManager content)
+        private float timer = 3f;
+        private readonly MarioGame game;
+        public PlayerStatusState(MarioGame game)
         {
-            this.graphicsDevice = graphicsDevice;
-           spriteFont = content.Load<SpriteFont>("Font/MarioFont");
+            this.game = game;
+            graphicsDevice = game.GraphicsDevice;
+            spriteFont = game.Content.Load<SpriteFont>("Font/MarioFont");
             smallMarioSprite = SpriteFactory.CreateSprite(nameof(SmallMario) + nameof(RightIdle));
         }
-        public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
             graphicsDevice.Clear(Color.Black);
-            MarioGame.Instance.HeadsUps.Draw(spriteBatch, MarioGame.Instance.Camera.LeftBound, MarioGame.Instance.Camera.UpperBound);
+            game.HeadsUps.Draw(spriteBatch, game.Camera.LeftBound, game.Camera.UpperBound);
             spriteBatch.DrawString(spriteFont, "WORLD 1-1 " , new Vector2(350, 140), Color.White);
             smallMarioSprite.Draw(spriteBatch, new Vector2(332, 262));
-            spriteBatch.DrawString(spriteFont, "  X   " + MarioGame.Instance.HeadsUps.Lives, new Vector2(382, 240), Color.White);
+            spriteBatch.DrawString(spriteFont, "  X   " + game.HeadsUps.Lives, new Vector2(382, 240), Color.White);
             spriteBatch.End();
         }
 
@@ -41,7 +43,7 @@ namespace SuperMarioBros.GameStates
             timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (timer <= 0)
             {
-                MarioGame.Instance.State = new GameState(graphicsDevice);
+                game.State = new GameState(game);
             }                
         }
     }

@@ -17,13 +17,15 @@ namespace SuperMarioBros.Managers
         public IMario Mario { get; private set; }
         public ObjectLoader ObjectLoader { get; private set; }
         private readonly DynamicLoader dynamicLoader;
-        public ObjectsManager(ObjectLoader objectLoader, HeadsUp headsUp) {
+        private readonly MarioGame game;
+        public ObjectsManager(ObjectLoader objectLoader, MarioGame game) {
             StaticObjects = new List<IStatic>();
             DynamicObjects = new List<IDynamic>();
             NonCollidableObjects = new List<IObject>();
             ObjectLoader = objectLoader;
             Mario = objectLoader.Mario;
-            dynamicLoader = new DynamicLoader(this, objectLoader, headsUp);
+            dynamicLoader = new DynamicLoader(game, objectLoader, this);
+            this.game = game;
         }
         public void Initialize()
         {
@@ -35,10 +37,10 @@ namespace SuperMarioBros.Managers
 
         public void Update(GameTime gameTime)
         {
-            dynamicLoader.Load(MarioGame.Instance.Camera.RightBound + 100); // We set the load range to 100.
-            if (Mario.Position.X < MarioGame.Instance.Camera.LeftBound)
+            dynamicLoader.Load(game.Camera.RightBound + 100); // We set the load range to 100.
+            if (Mario.Position.X < game.Camera.LeftBound)
             {
-                Mario.Position = new Vector2(MarioGame.Instance.Camera.LeftBound, Mario.Position.Y);
+                Mario.Position = new Vector2(game.Camera.LeftBound, Mario.Position.Y);
             }
             for (int i = (StaticObjects.Count - 1); i >= 0 && i < StaticObjects.Count; i--)
             {
@@ -86,10 +88,10 @@ namespace SuperMarioBros.Managers
                 obj.Draw(spriteBatch);
         }
 
-        public void LevelLoading()
-        {
-            ObjectLoader.LevelLoading();
-        }
+        //public void LevelLoading()
+        //{
+        //    ObjectLoader.LevelLoading();
+        //}
         private void DestroyFromManager(IDynamic gameObject)
         {
             DynamicObjects.Remove(gameObject);
@@ -154,11 +156,11 @@ namespace SuperMarioBros.Managers
             Mario = mario;
             DynamicObjects.Add(mario);
         }
-        private static void BoundaryCheck(IObject obj)
+        private void BoundaryCheck(IObject obj)
         {
-            if (obj.Position.Y > MarioGame.Instance.WindowHeight + 100) obj.ObjState = ObjectState.Destroy;
-            if (obj.Position.X < MarioGame.Instance.Camera.LeftBound - 300) obj.ObjState = ObjectState.Destroy;
-            if (obj.Position.X > MarioGame.Instance.Camera.RightBound + 300) obj.ObjState = ObjectState.Destroy;
+            if (obj.Position.Y > game.WindowHeight + 100) obj.ObjState = ObjectState.Destroy;
+            if (obj.Position.X < game.Camera.LeftBound - 300) obj.ObjState = ObjectState.Destroy;
+            if (obj.Position.X > game.Camera.RightBound + 300) obj.ObjState = ObjectState.Destroy;
         }
     }
 }
