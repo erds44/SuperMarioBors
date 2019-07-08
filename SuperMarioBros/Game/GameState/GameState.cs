@@ -9,7 +9,7 @@ namespace SuperMarioBros.GameStates
     {
         private GraphicsDevice graphicsDevice => game.GraphicsDevice;
         private readonly MarioGame game;
-        private int songUpdateDelay = 60;
+        
         public GameState(MarioGame game)
         {
             this.game = game;
@@ -28,11 +28,13 @@ namespace SuperMarioBros.GameStates
             game.HeadsUps.Draw(spriteBatch, game.Camera.LeftBound, game.Camera.UpperBound);
             spriteBatch.End();
         }
+
+        private int songUpdateDelay = 0;
         public void Update(GameTime gameTime)
         {
-            if( ++songUpdateDelay>60 &&  game.HeadsUps.Timer <= 100)
+            if( ++songUpdateDelay>180 &&  game.HeadsUps.Timer <= 100)
             {
-                songUpdateDelay -= 60;
+                songUpdateDelay -= 180;
                 Song hurrySong = AudioFactory.Instance.CreateHurrySong(MediaPlayer.Queue.ActiveSong, out bool shouldNotChange);
                 if (!shouldNotChange) { MediaPlayer.Play(hurrySong); }
             }
