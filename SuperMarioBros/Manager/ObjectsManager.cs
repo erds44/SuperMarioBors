@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.Cameras;
 using SuperMarioBros.HeadsUps;
 using SuperMarioBros.Loading;
 using SuperMarioBros.Marios;
@@ -19,15 +18,13 @@ namespace SuperMarioBros.Managers
         public ObjectLoader ObjectLoader { get; private set; }
         private readonly DynamicLoader dynamicLoader;
         private readonly MarioGame game;
-        private readonly Camera gameCamera;
-        public ObjectsManager(ObjectLoader objectLoader, MarioGame game, Camera camera) {
+        public ObjectsManager(ObjectLoader objectLoader, MarioGame game) {
             StaticObjects = new List<IStatic>();
             DynamicObjects = new List<IDynamic>();
             NonCollidableObjects = new List<IObject>();
             ObjectLoader = objectLoader;
             Mario = objectLoader.Mario;
             dynamicLoader = new DynamicLoader(game, objectLoader, this);
-            gameCamera = camera;
             this.game = game;
         }
         public void Initialize()
@@ -40,10 +37,10 @@ namespace SuperMarioBros.Managers
 
         public void Update(GameTime gameTime)
         {
-            dynamicLoader.Load(gameCamera.RightBound + 100); // We set the load range to 100.
-            if (Mario.Position.X < gameCamera.LeftBound)
+            dynamicLoader.Load(game.Camera.RightBound + 100); // We set the load range to 100.
+            if (Mario.Position.X < game.Camera.LeftBound)
             {
-                Mario.Position = new Vector2(gameCamera.LeftBound, Mario.Position.Y);
+                Mario.Position = new Vector2(game.Camera.LeftBound, Mario.Position.Y);
             }
             for (int i = (StaticObjects.Count - 1); i >= 0 && i < StaticObjects.Count; i--)
             {
@@ -162,8 +159,8 @@ namespace SuperMarioBros.Managers
         private void BoundaryCheck(IObject obj)
         {
             if (obj.Position.Y > game.WindowHeight + 100) obj.ObjState = ObjectState.Destroy;
-            if (obj.Position.X < gameCamera.LeftBound - 300) obj.ObjState = ObjectState.Destroy;
-            if (obj.Position.X > gameCamera.RightBound + 300) obj.ObjState = ObjectState.Destroy;
+            if (obj.Position.X < game.Camera.LeftBound - 300) obj.ObjState = ObjectState.Destroy;
+            if (obj.Position.X > game.Camera.RightBound + 300) obj.ObjState = ObjectState.Destroy;
         }
     }
 }

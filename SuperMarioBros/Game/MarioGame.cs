@@ -24,7 +24,7 @@ namespace SuperMarioBros
         public readonly int WindowHeight;
         private bool pause = false;
         public ObjectsManager ObjectsManager { get; set; }
-        private Camera camera;
+        public Camera Camera { get; private set; }
         public IController controller { get; private set; }
         private SpriteBatch spriteBatch;
         public CollisionManager CollisionManager;
@@ -62,7 +62,7 @@ namespace SuperMarioBros
             IsMouseVisible = true;
             State = new MenuState(this);
             SpriteFactory.Initialize(Content);
-            camera = new Camera(WindowWidth);
+            Camera = new Camera(WindowWidth);
             HeadsUps = new HeadsUp(this);
             ObjectFactory.Instance.ItemCollectedEvent += HeadsUps.CoinCollected;
             AudioFactory.Instance.Initialize(Content, "Content/sounds.xml", "Content/musics.xml", "Content/hurry.xml");
@@ -106,10 +106,10 @@ namespace SuperMarioBros
        
         public void InitializeGame()
         {
-            ObjectsManager = new ObjectsManager(new ObjectLoader(), this, camera);
+            ObjectsManager = new ObjectsManager(new ObjectLoader(), this);
            // ObjectsManager.LevelLoading();
             ObjectsManager.Initialize();
-            camera.Reset(ObjectsManager.Mario);
+            Camera.Reset(ObjectsManager.Mario);
             //marioCamera.SetFocus(ObjectsManager.Mario);
             ObjectFactory.Instance.Initialize(this);
             CollisionManager = new CollisionManager(this);
@@ -151,7 +151,7 @@ namespace SuperMarioBros
         }
         public void SetCameraFocus(Vector2 position)
         {
-            camera.Update(position);
+            Camera.Update(position);
         }
         public bool IsFlagPoleState()
         {
