@@ -52,11 +52,6 @@ namespace SuperMarioBros
         {
             State = new FlagPoleState(this);
         }
-
-        protected override void LoadContent()
-        {
-            base.LoadContent();
-        }
         protected override void Initialize()
         {
             IsMouseVisible = true;
