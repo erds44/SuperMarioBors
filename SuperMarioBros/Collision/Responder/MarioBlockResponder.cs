@@ -128,9 +128,9 @@ namespace SuperMarioBros.Collisions
             { (typeof(BigMario), typeof(RockBlock)), MoverVerticallyBounce},
             { (typeof(FireMario), typeof(RockBlock)), MoverVerticallyBounce},
 
-            { (typeof(SmallMario), typeof(UsedBlock)), MoverVerticallyBounce},
-            { (typeof(BigMario), typeof(UsedBlock)), MoverVerticallyBounce},
-            { (typeof(FireMario), typeof(UsedBlock)), MoverVerticallyBounce},
+            { (typeof(SmallMario), typeof(UsedBlock)), MarioVsUsedBlock},
+            { (typeof(BigMario), typeof(UsedBlock)), MarioVsUsedBlock},
+            { (typeof(FireMario), typeof(UsedBlock)), MarioVsUsedBlock},
 
             { (typeof(SmallMario), typeof(ItemBrickBlock)), SmallMarioVsQuestionOrItemBrickBlock},
             { (typeof(BigMario), typeof(ItemBrickBlock)), BigOrFireMarioVsQuestionOrItemBrickBlock},

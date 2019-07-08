@@ -125,6 +125,11 @@ namespace SuperMarioBros.Collisions
                 GenerateUsedBlock(block.Position);
             MoverVerticallyBounce(mario, block, direction);
         }
+        public static void MarioVsUsedBlock(IMario mario, IBlock block, Direction direction)
+        {
+            AudioFactory.Instance.CreateSound("bump").Play();
+            MoverVerticallyBounce(mario, block, direction);
+        }
 
         private static void GenerateItemInBlock(Type type, Vector2 position)
         {
