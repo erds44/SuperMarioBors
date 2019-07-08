@@ -29,7 +29,6 @@ namespace SuperMarioBros.Controllers
             { POWER, typeof(PowerCommand) },
             { KEYUPUPMOVE, typeof(KeyUpUpCommand) },
             { KEYUPPOWER, typeof(KeyUpPowerCommand) },
-            { KEYDOWNUP, typeof(KeyDownUpCommand) },
 
         };
         public ControllerMessager(IMario mario, MarioGame game)

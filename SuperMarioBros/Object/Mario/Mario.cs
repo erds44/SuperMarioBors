@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Media;
-using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Collisions;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
@@ -48,7 +46,7 @@ namespace SuperMarioBros.Marios
         private Vector2 expectedPosition;
         private readonly Dictionary<Direction, (Vector2, Vector2)> teleportDictionary = new Dictionary<Direction, (Vector2, Vector2)>
         {
-            { Direction.top, (new Vector2(0, -20), new Vector2(0, -74))},
+            { Direction.top, (new Vector2(0, -20), new Vector2(0, -64))},
             { Direction.bottom, (new Vector2(0, 20), new Vector2(0, 35))},
             { Direction.left, (new Vector2(-20, 0), new Vector2(-35, 0))},
             { Direction.right, (new Vector2(20, 0), new Vector2(35, 0))},
@@ -144,8 +142,7 @@ namespace SuperMarioBros.Marios
             }
         }
         public void Destroy()
-        {
-            
+        {        
             bool flagPoleState = IsFlagPoleStateEvent?.Invoke() ?? false;
             if (!flagPoleState)
             {
@@ -210,11 +207,6 @@ namespace SuperMarioBros.Marios
             }
             this.teleportPosition = teleportPosition;
             ChangeToTeleportStateEvent?.Invoke();
-        }
-        public void KeyDownUp()
-        {
-            if (!(HealthState is SmallMario))
-                MovementState.Up();
         }
     }
 }

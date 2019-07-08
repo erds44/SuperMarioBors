@@ -12,9 +12,7 @@ using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Commands;
-using System.Collections.Generic;
 using Buttons = Microsoft.Xna.Framework.Input.Buttons;
-using System;
 
 namespace SuperMarioBros
 {
@@ -141,31 +139,6 @@ namespace SuperMarioBros
         {
            State = new GameState(this);
         }
-
-        //public void KeyBinding()
-        //{
-        //    IMario mario = ObjectsManager.Mario;
-        //    controller = new List<IController> {
-        //            //new KeyboardController(
-        //            //(Keys.Q, new QuitCommand(this), new EmptyCommand(), false),
-        //            //(Keys.R, new ResetCommand(this), new EmptyCommand(), false),
-        //            //(Keys.Left, new LeftCommand(mario), new IdleCommand(mario), true),
-        //            //(Keys.Down, new DownCommand(mario), new KeyDownUpCommand(mario), true),
-        //            //(Keys.Right, new RightCommand(mario), new IdleCommand(mario), true),
-        //            //(Keys.Up, new UpCommand(mario), new KeyUpUpCommand(mario), true),
-        //            //(Keys.X, new PowerCommand(mario), new KeyUpPowerCommand(mario), true)
-        //            //),
-        //            new JoyStickController(mario,
-        //            (Buttons.A, new UpCommand(mario), new KeyUpUpCommand(mario), true),
-        //            (Buttons.RightTrigger, new PowerCommand(mario), new KeyUpPowerCommand(mario), false),
-        //            (Buttons.Y, new QuitCommand(this), new EmptyCommand(), false)
-        //            )
-        //     };
-
-        //    //controller.AddController(keyboardController);
-        //    //IController JoyStickController = new JoyStickController(controller);
-        //    //controller.AddController(JoyStickController);
-        //}
         public void StartOver()
         {
             Initialize();
@@ -190,7 +163,7 @@ namespace SuperMarioBros
                     (Keys.Q, new QuitCommand(this), new EmptyCommand(), false),
                     (Keys.R, new ResetCommand(this), new EmptyCommand(), false),
                     (Keys.Left, new LeftCommand(mario), new IdleCommand(mario), true),
-                    (Keys.Down, new DownCommand(mario), new KeyDownUpCommand(mario), true),
+                    (Keys.Down, new DownCommand(mario), new UpCommand(mario), true),
                     (Keys.Right, new RightCommand(mario), new IdleCommand(mario), true),
                     (Keys.Up, new UpCommand(mario), new KeyUpUpCommand(mario), true),
                     (Keys.X, new PowerCommand(mario), new KeyUpPowerCommand(mario), true)

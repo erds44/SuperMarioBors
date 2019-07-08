@@ -8,13 +8,13 @@ namespace SuperMarioBros.Managers
 {
     public class CollisionManager 
     {
-        private readonly IHandler staticHandler;
-        private readonly IHandler dynamicHandler;
+        private readonly ICollisionResponder staticHandler;
+        private readonly ICollisionResponder dynamicHandler;
         private readonly MarioGame game;
         public CollisionManager(MarioGame game)
         {
             staticHandler = new DynamicAndStaticObjectsHandler(game);
-            dynamicHandler = new DynamicAndDynamicObjectsHandler();
+            dynamicHandler = new DynamicAndDynamicObjectsResponder();
             this.game = game;
         }
 

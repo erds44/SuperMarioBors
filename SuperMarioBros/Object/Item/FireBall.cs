@@ -45,6 +45,7 @@ namespace SuperMarioBros.Marios
             sprite = SpriteFactory.CreateSprite(nameof(FireExplosion));
             sprite.SetLayer(1f);
             Position += explosionOffSet;
+            ObjState = ObjectState.NonCollidable;
             Explosion = true;
         }
         public override void Update(GameTime gameTime)

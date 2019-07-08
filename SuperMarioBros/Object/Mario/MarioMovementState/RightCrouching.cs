@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
@@ -8,7 +9,10 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         public RightCrouching(IMario mario)
         {
             this.mario = mario;
-            this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
+            if(mario.HealthState is SmallMario)
+                this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + nameof(RightIdle));
+            else
+                this.mario.Sprite = SpriteFactory.CreateSprite(mario.HealthState.GetType().Name + GetType().Name);
         }
 
         public override void Up()

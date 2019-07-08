@@ -16,8 +16,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public override void Down()
         {
-            if (!(mario.HealthState is SmallMario))
-                mario.MovementState = new RightCrouching(mario);
+            mario.MovementState = new RightCrouching(mario);
         }
 
         public override void Right()

@@ -12,9 +12,6 @@ namespace SuperMarioBros.Marios
     public interface IMario : IDynamic
     {
         event Action ClearingScoresEvent;
-
-        void KeyDownUp();
-
         event Action DeathEvent;
         event Action<bool> FocusMarioEvent;
         event Action<Vector2> PowerUpEvent;

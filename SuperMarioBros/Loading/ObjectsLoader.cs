@@ -220,7 +220,7 @@ namespace SuperMarioBros.Loading
 
         public void LevelLoading()
         {
-            Mario = new Mario(new Vector2(0, 410));
+            Mario = new Mario(new Vector2(2500, 410));
             LoadDynamics();
             LoadStatics();
             LoadNonCollidables();
@@ -264,7 +264,7 @@ namespace SuperMarioBros.Loading
             }
             /* Teleport Pipe */          
             Statics.Add(new TeleportPipe(new Vector2(2429, 410), new Vector2(3050, -480), "TeleportVerticalLargePipe",Direction.top)); 
-            Statics.Add(new TeleportPipe(new Vector2(3705, -170), new Vector2(6990, 410),"TeleportHorizontalSmallPipe", Direction.left));
+            Statics.Add(new TeleportPipe(new Vector2(3705, -170), new Vector2(6980, 400),"TeleportHorizontalSmallPipe", Direction.left));
             /* Regular Pipe */
             Statics.Add(new Pipe(new Vector2(3759, -170),"HighPipe")); 
             Statics.Add(new Pipe(new Vector2(6958, 410), "SmallPipe"));

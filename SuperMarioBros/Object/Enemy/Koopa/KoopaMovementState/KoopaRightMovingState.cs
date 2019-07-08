@@ -6,7 +6,7 @@ namespace SuperMarioBros.Objects.Enemy
     public class KoopaRightMovingState : IEnemyMovementState
     {
         private readonly Koopa koopa;
-        private readonly Vector2 NormalStateVelocity = new Vector2(60, 0);
+        private readonly Vector2 NormalStateVelocity = new Vector2(80, 0);
         private readonly Vector2 ShelledStateVelocity = new Vector2(160, 0);
         public KoopaRightMovingState(Koopa koopa)
         {

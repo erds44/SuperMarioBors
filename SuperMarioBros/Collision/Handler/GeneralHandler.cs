@@ -3,25 +3,29 @@ using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Collisions
 {
-    public abstract class GeneralResponse : ICollisionResponsible
+    public abstract class GeneralHandler 
     {
         /* Below are some help methods shared by every response class */
         private readonly static float bumpedVelocity = -180f;
-        protected virtual void OnGround(IObject obj)
+        protected static void MoverOnGround(IObject mover, IObject target, Direction direction)
         {
-            obj.Physics.Velocity = new Vector2(obj.Physics.Velocity.X, 0);
+            mover.Physics.Velocity = new Vector2(mover.Physics.Velocity.X, 0);
+            ResolveOverlap(mover, target, direction);
         }
-        protected static void GroundOrTopBounce(IObject obj)
+        protected static void MoverVerticallyBounce(IObject mover, IObject target, Direction direction)
         {
-            obj.Physics.Velocity = new Vector2(obj.Physics.Velocity.X, -obj.Physics.Velocity.Y);
+            mover.Physics.Velocity = new Vector2(mover.Physics.Velocity.X, -mover.Physics.Velocity.Y);
+            ResolveOverlap(mover, target, direction);
         }
-        protected static void LeftOrRightBounce(IObject obj)
+        protected static void MoverHorizontallyBounce(IObject mover, IObject target, Direction direction)
         {
-            obj.Physics.Velocity = new Vector2(-obj.Physics.Velocity.X, obj.Physics.Velocity.Y);
+            mover.Physics.Velocity = new Vector2(-mover.Physics.Velocity.X, mover.Physics.Velocity.Y);
+            ResolveOverlap(mover, target, direction);
         }
-        protected static void LeftOrRightBlock(IObject obj)
+        protected static void MoverHorizontallyBlock(IObject mover, IObject target, Direction direction)
         {
-            obj.Physics.Velocity = new Vector2(0, obj.Physics.Velocity.Y);
+            mover.Physics.Velocity = new Vector2(0, mover.Physics.Velocity.Y);
+            ResolveOverlap(mover, target, direction);
         }
         protected static void ResolveOverlap(IObject obj1, IObject obj2, Direction direction)
         {
@@ -52,6 +56,5 @@ namespace SuperMarioBros.Collisions
             }
             return Direction.left;
         }
-        public abstract void HandleCollision();
     }
 }
