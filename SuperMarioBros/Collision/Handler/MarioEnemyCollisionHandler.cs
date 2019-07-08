@@ -31,12 +31,13 @@ namespace SuperMarioBros.Collisions
                     koopa.MovementState.MoveLeft();
                 koopa.DealDemage = true;
             }
+            Bump(mario);
             ResolveOverlap(mario, koopa, Direction.top);
         }
         public static void NormalMarioVsShelledMovingKoopaTopSideCollision(IMario mario, IEnemy enemy)
         {
             Koopa koopa = (Koopa)enemy;
-            if (!koopa.DealDemage)
+            if (koopa.DealDemage)
             {
                 koopa.Flipped(mario.EnemyKillStreakCounter);
                 mario.EnemyKillStreakCounter++;
@@ -49,9 +50,15 @@ namespace SuperMarioBros.Collisions
         {
             Koopa koopa = (Koopa)enemy;
             if(mario.HitBox().Center.X <= koopa.HitBox().Center.X)
+            {
                 koopa.MovementState.MoveRight();
+                ResolveOverlap(mario, koopa, Direction.left);
+            }
             else
+            {
                 koopa.MovementState.MoveLeft();
+                ResolveOverlap(mario, koopa, Direction.right);
+            }
         }
 
         public static void NormalMarioVsShelledMovingKoopaLeftOrRightCollision(IMario mario, IEnemy enemy)

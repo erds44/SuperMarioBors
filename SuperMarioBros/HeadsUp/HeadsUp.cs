@@ -86,9 +86,9 @@ namespace SuperMarioBros.HeadsUps
             AudioFactory.Instance.CreateSound("coin").Play();
             ObjectFactory.Instance.CreateScoreText(Position, spriteFont, "200");
         }
-        public void EnemyStomped(Vector2 position, int count)
+        public void EnemyStomped(Vector2 position,int score, int count)
         {
-            int addScore = 100 * count;
+            int addScore = score * count;
             score += addScore;
             AudioFactory.Instance.CreateSound("stomp").Play();
             ObjectFactory.Instance.CreateScoreText(position, spriteFont, addScore.ToString());

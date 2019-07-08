@@ -8,6 +8,7 @@ namespace SuperMarioBros.Objects.Enemy
         public KoopaNormalState(Koopa koopa)
         {
             this.koopa = koopa;
+            koopa.Score = 100;
         }
 
         public void Stomped()

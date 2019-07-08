@@ -9,7 +9,8 @@ namespace SuperMarioBros.Objects.Enemy
 {
     public abstract class AbstractEnemy : IEnemy
     {
-        public event Action<Vector2, int> StompedEvent;
+        public int EnemyKillStreakCounter { get; set; }
+        public event Action<Vector2,int, int> StompedEvent;
         public IEnemyMovementState MovementState { get; set; }
         public IEnemyHealthState HealthState { get; set; }
         public ISprite Sprite { get; set; }
@@ -20,13 +21,15 @@ namespace SuperMarioBros.Objects.Enemy
         private protected Vector2 initialVelocity = new Vector2(-30, 0);
         private protected float enemyGravity = 800f;
         private protected float enemyWeight = 200f;
-
+        public int Score { get; set; }
         protected void Initialize()
         {
             ObjState = ObjectState.Normal;
             Physics = new Physics(Vector2.Zero, enemyGravity, enemyWeight);
             Physics.ApplyGravity();
             IsFlipped = false;
+            Score = 100;
+            EnemyKillStreakCounter = 1;
         }
         public virtual void Draw(SpriteBatch spriteBatch)
         {
@@ -55,13 +58,13 @@ namespace SuperMarioBros.Objects.Enemy
         }
         public virtual void Stomped(int count)
         {
-            StompedEvent?.Invoke(Position, count);
+            StompedEvent?.Invoke(Position,  Score, count);
         }
 
         public virtual void Flipped(int count)
         {
             IsFlipped = true;
-            StompedEvent?.Invoke(Position, count);
+            StompedEvent?.Invoke(Position, Score, count);
         }
 
         public void MoveLeft()

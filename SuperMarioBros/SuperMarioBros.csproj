@@ -115,6 +115,18 @@
     <None Include="Content\BlueBrickBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Content\BlueLeftBottomDebris.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BlueLeftTopDebris.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BlueRightBottomDebris.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Content\BlueRightTopDebris.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Content\BlueRockBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

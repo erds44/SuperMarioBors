@@ -12,6 +12,7 @@ namespace SuperMarioBros.SpriteFactories
     {
         private static ContentManager content;
         private static Dictionary<BrickPosition, ISprite> derbisSprite;
+        private static Dictionary<BrickPosition, ISprite> blueDerbisSprite;
         private static Dictionary<string, SpritesNode> spritesInfo;
         private static ISprite sprite;
         private static SpritesNode spriteNode;
@@ -27,6 +28,13 @@ namespace SuperMarioBros.SpriteFactories
                 { BrickPosition.leftBottom, new UniversalSprite(content.Load<Texture2D>("LeftBottomDerbis"), 1) },
                 { BrickPosition.rightTop, new UniversalSprite(content.Load<Texture2D>("RightTopDerbis"), 1) },
                 { BrickPosition.rightBottom, new UniversalSprite(content.Load<Texture2D>("RightBottomDerbis"), 1) }
+            };
+            blueDerbisSprite = new Dictionary<BrickPosition, ISprite>
+            {
+                { BrickPosition.leftTop, new UniversalSprite(content.Load<Texture2D>("BlueLeftTopDebris"), 1) },
+                { BrickPosition.leftBottom, new UniversalSprite(content.Load<Texture2D>("BlueLeftBottomDebris"), 1) },
+                { BrickPosition.rightTop, new UniversalSprite(content.Load<Texture2D>("BlueRightTopDebris"), 1) },
+                { BrickPosition.rightBottom, new UniversalSprite(content.Load<Texture2D>("BlueRightBottomDebris"), 1) }
             };
         }
 
@@ -48,6 +56,12 @@ namespace SuperMarioBros.SpriteFactories
         public static ISprite CreateDerbisSprite(BrickPosition brickPosition)
         {
             derbisSprite.TryGetValue(brickPosition, out sprite);
+            return sprite;
+        }
+
+        public static ISprite CreateBlueDerbisSprite(BrickPosition brickPosition)
+        {
+            blueDerbisSprite.TryGetValue(brickPosition, out sprite);
             return sprite;
         }
     }
