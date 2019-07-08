@@ -13,11 +13,13 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
         private readonly IMario mario;
         private readonly Collection<Color> starColor = new Collection<Color> { Color.Green, Color.Black, Color.White };
         private readonly Collection<Color> normalColor = new Collection<Color> { Color.White };
-        private double transitionTimer = 15000d;
+        private double transitionTimer = 5d;
+        private readonly Song lastSong;
         public StarState(IMario mario)
         {
             this.mario = mario;
             mario.NoMovementTimer = 0;
+            lastSong = MediaPlayer.Queue.ActiveSong;
             MediaPlayer.Play(AudioFactory.Instance.CreateSong("starman"));
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -44,7 +46,7 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
 
         public void TakeStar()
         {
-            transitionTimer = 15d;
+            transitionTimer = 5d;
         }
 
         public void Update(GameTime gameTime)
@@ -53,7 +55,7 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
             if (transitionTimer <= 0)
             {
                 mario.TransitionState = new NormalState(mario);
-                MediaPlayer.Play(AudioFactory.Instance.CreateSong("overworld"));
+                MediaPlayer.Play(lastSong);
             }
         }
     }
