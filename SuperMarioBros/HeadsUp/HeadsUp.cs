@@ -21,7 +21,7 @@ namespace SuperMarioBros.HeadsUps
         private readonly float livesOffset = 666;
         private bool clearingScores = false;
         private readonly MarioGame game;
-        public float Timer { get; private set; } = 100;
+        public float Timer { get; private set; } = 40;
         private int score = 0;
         private int coin = 0;
         public int Lives { get; set; }

@@ -13,6 +13,7 @@ namespace SuperMarioBros.Blocks
             HasItem = false;
             Position = location;
             bumped = false;
+            CanBeBumped = true;
             base.Initialize();
         }
 

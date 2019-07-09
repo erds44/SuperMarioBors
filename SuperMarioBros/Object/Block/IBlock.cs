@@ -11,6 +11,7 @@ namespace SuperMarioBros.Blocks
         ISprite Sprite { get; set; }
         Type ItemType { get; }
         bool HasItem { get; set; }
+        bool CanBeBumped { get; }
         void Used();
         void Bumped();
         void Broken();

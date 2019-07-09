@@ -23,7 +23,6 @@ namespace SuperMarioBros.Collisions
                 MoverVerticallyBounce(mario,block,direction);
                 block.Used();
                 AudioFactory.Instance.CreateSound("bump").Play();
-
                 if (block.ItemType != null)
                     GenerateItemInBlock(block.ItemType, block.Position);
                 else
@@ -80,17 +79,23 @@ namespace SuperMarioBros.Collisions
 
         public static void SmallMarioVsBrickBlock(IMario mario, IBlock block, Direction direction)
         {
-            block.Bumped();
-            AudioFactory.Instance.CreateSound("bump").Play();
-            MoverVerticallyBounce(mario, block, direction);
+            if (block.CanBeBumped)
+            {
+                block.Bumped();
+                AudioFactory.Instance.CreateSound("bump").Play();
+                MoverVerticallyBounce(mario, block, direction);
+            }
         }
 
         public static void BigOrFireMarioVsBrickBlock(IMario mario, IBlock block, Direction direction)
         {
-            block.Broken();
-            AudioFactory.Instance.CreateSound("breakblock").Play();
-            ObjectFactory.Instance.CreateBlockDebris(block.Position, block.GetType());
-            MoverVerticallyBounce(mario, block, direction);
+            if (block.CanBeBumped)
+            {
+                block.Broken();
+                AudioFactory.Instance.CreateSound("breakblock").Play();
+                ObjectFactory.Instance.CreateBlockDebris(block.Position, block.GetType());
+                MoverVerticallyBounce(mario, block, direction);
+            }
         }
 
         public static void SmallMarioVsQuestionOrItemBrickBlock(IMario mario, IBlock block, Direction direction)

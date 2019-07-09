@@ -88,6 +88,12 @@ namespace SuperMarioBros.Marios
         public void TakeDamage()
         {
             TransitionState.TakeDamage();
+            if (HealthState is DeadMario)
+            {
+                SetCameraFocus?.Invoke(Position);
+                FocusMarioEvent?.Invoke(false);
+            }
+               
         }
 
         public void MoveUp()

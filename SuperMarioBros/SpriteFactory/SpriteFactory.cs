@@ -42,7 +42,7 @@ namespace SuperMarioBros.SpriteFactories
         {
             if (!(spritesInfo.TryGetValue(type, out spriteNode)))
                 throw new System.ArgumentException("Cannot find: " + type + " in the dictionary");
-            sprite = new UniversalSprite(content.Load<Texture2D>(spriteNode.SpriteName), spriteNode.TotalFrame,spriteNode.Delay);
+            sprite = new UniversalSprite(content.Load<Texture2D>(spriteNode.SpriteName), spriteNode.TotalFrame,(int)spriteNode.Delay);
             return sprite;
         }
 

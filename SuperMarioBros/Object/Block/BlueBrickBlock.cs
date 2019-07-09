@@ -7,27 +7,26 @@ namespace SuperMarioBros.Blocks
     {
         private protected double deleteTimer = 0.1;
         private protected bool bumped;
-        private protected bool canBeBumped;
         public BlueBrickBlock(Vector2 location,Type type)
         {
             ItemType = null;
             HasItem = false;
             Position = location;
             bumped = false;
-            if(type.Equals(Type.GetType("RockBlock")))
+            if(type == typeof(RockBlock))
             {
-                this.canBeBumped = false;
+                CanBeBumped = false;
             }
             else
             {
-                this.canBeBumped = true;
+                CanBeBumped = true;
             }
             base.Initialize();
         }
 
         public override void Bumped()
         {
-            if(canBeBumped)
+            if(CanBeBumped)
                 State.Bumped();
         }
 
