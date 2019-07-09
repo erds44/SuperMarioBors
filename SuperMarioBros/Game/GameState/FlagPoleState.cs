@@ -9,7 +9,7 @@ namespace SuperMarioBros.GameStates
     {
         public bool UpdateHeadsUp { get; set; }
         private readonly MarioGame game;
-        private GraphicsDevice graphicsDevice;
+        private readonly GraphicsDevice graphicsDevice;
         public FlagPoleState(MarioGame game)
         {
             graphicsDevice = game.GraphicsDevice;

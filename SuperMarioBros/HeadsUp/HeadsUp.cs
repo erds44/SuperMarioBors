@@ -12,7 +12,7 @@ namespace SuperMarioBros.HeadsUps
 {
     public class HeadsUp
     {
-        public event Action timerOverEvent;
+        public event Action TimeOverEvent;
         private readonly SpriteFont spriteFont;
         private readonly float scoreOffset = 83;
         private readonly float coinOffset = 246;
@@ -49,7 +49,7 @@ namespace SuperMarioBros.HeadsUps
             {
                 if (Timer <= 0)
                 {
-                    timerOverEvent?.Invoke();
+                    TimeOverEvent?.Invoke();
                     Timer = 0;
                 }
             }

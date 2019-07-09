@@ -10,9 +10,9 @@ namespace SuperMarioBros.GameStates
 {
     public class PlayerStatusState : IGameState
     {
-        private GraphicsDevice graphicsDevice;
-        private SpriteFont spriteFont;
-        private ISprite smallMarioSprite;
+        private readonly GraphicsDevice graphicsDevice;
+        private readonly SpriteFont spriteFont;
+        private readonly ISprite smallMarioSprite;
         private float timer = 3f;
         private readonly MarioGame game;
         public PlayerStatusState(MarioGame game)

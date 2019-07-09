@@ -8,7 +8,7 @@ namespace SuperMarioBros.Controllers
 {
     public class JoyStickController : IController
     {
-        IMario mario;
+        private readonly IMario mario;
         private readonly Dictionary<Buttons, ICommand> buttonDownDictionary = new Dictionary<Buttons, ICommand>();
         private readonly Dictionary<Buttons, ICommand> buttonUpDictionary = new Dictionary<Buttons, ICommand>();
         private readonly List<Buttons> checkButtonUplist = new List<Buttons>();
@@ -34,7 +34,7 @@ namespace SuperMarioBros.Controllers
             {
                 GamePadState state = GamePad.GetState(PlayerIndex.One);
                 Vector2 joyStickState = state.ThumbSticks.Left;
-                joyStickHandler(joyStickState);
+                JoyStickHandler(joyStickState);
                 foreach (Buttons buttonUp in checkButtonUplist)
                 {
                     if (state.IsButtonUp(buttonUp) && buttonUpDictionary.TryGetValue(buttonUp, out ICommand buttonUpCommand))
@@ -53,7 +53,7 @@ namespace SuperMarioBros.Controllers
                 }
             }         
         }
-        private void joyStickHandler(Vector2 joyStickState)
+        private void JoyStickHandler(Vector2 joyStickState)
         {
                 if (joyStickState.Y < -0.1)
                 {

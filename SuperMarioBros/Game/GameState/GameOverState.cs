@@ -8,7 +8,7 @@ namespace SuperMarioBros.GameStates
     public class GameOverState : IGameState
     {
         private GraphicsDevice graphicsDevice;
-        private SpriteFont spriteFont;
+        private readonly SpriteFont spriteFont;
         private float timer = 2f;
         private readonly MarioGame game;
         public GameOverState(MarioGame game)

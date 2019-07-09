@@ -7,7 +7,7 @@ namespace SuperMarioBros.GameStates
 {
     public class GameState : IGameState
     {
-        private GraphicsDevice graphicsDevice => game.GraphicsDevice;
+        private GraphicsDevice GraphicsDevice => game.GraphicsDevice;
         private readonly MarioGame game;
         
         public GameState(MarioGame game)
@@ -23,7 +23,7 @@ namespace SuperMarioBros.GameStates
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: game.Camera.Transform);
-            graphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
             game.ObjectsManager.Draw(spriteBatch);
             game.HeadsUps.Draw(spriteBatch, game.Camera.LeftBound, game.Camera.UpperBound);
             spriteBatch.End();
@@ -39,7 +39,7 @@ namespace SuperMarioBros.GameStates
                 Song hurrySong = AudioFactory.Instance.CreateHurrySong(MediaPlayer.Queue.ActiveSong, out bool shouldNotChange);
                 if (!shouldNotChange) { MediaPlayer.Play(hurrySong); }         
             }
-            game.controller.Update(gameTime);
+            game.Controller.Update(gameTime);
             game.ObjectsManager.Update(gameTime);
             game.CollisionManager.Update();
             game.HeadsUps.Update(gameTime);

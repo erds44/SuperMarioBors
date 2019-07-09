@@ -7,7 +7,7 @@ namespace SuperMarioBros.GameStates
 {
     public class PauseState : IGameState
     {
-        private GraphicsDevice graphicsDevice;
+        private readonly GraphicsDevice graphicsDevice;
         private readonly MarioGame game;
         public PauseState(MarioGame game)
         {
