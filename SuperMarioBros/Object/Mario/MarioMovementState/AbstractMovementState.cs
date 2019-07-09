@@ -20,35 +20,11 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         {
             mario.OnGround = true;
         }
-        public virtual void Update(GameTime gameTime)
-        {
-            if(mario.HealthState is FireMario)
-            {
-                if (coolDown)
-                    fireBallCoolDown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if (fireBallCoolDown <= 0)
-                {
-                    fireBallCoolDown = 2f;
-                    coolDown = false;
-                }
-            }
-            else if(mario.HealthState is BigMario && mario.OnGround) // For big Mario change speed when pressing x and on ground.
-            {
-                mario.Physics.SetSprintVelocityRate(mario.PowerFlag ? 1.2f : 1f);
-            }
-        }
+        public virtual void Update(GameTime gameTime) { }
+
         public virtual void OnFireBall()
         {
-            if (!coolDown)
-            {
-                ObjectFactory.Instance.CreateFireBall(mario.Position + offset, direction);
-                fireBallCount--;
-                if (fireBallCount <= 0)
-                {
-                    coolDown = true;
-                    fireBallCount = 2;
-                }
-            }
+            ObjectFactory.Instance.CreateFireBall(mario.Position + offset, direction);
         }
         public virtual void SlidingFlagPole()
         {

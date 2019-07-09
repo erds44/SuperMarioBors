@@ -51,7 +51,7 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
 
         public void OnFireFlower()
         {
-            mario.HealthState.OnFireFlower();
+            mario.HealthState.TakeFireFlower();
             mario.NoMovementTimer = .5d;
             transitionTimer = .5d;
         }

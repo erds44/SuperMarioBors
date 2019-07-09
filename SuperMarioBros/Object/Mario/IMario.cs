@@ -26,16 +26,14 @@ namespace SuperMarioBros.Marios
         int EnemyKillStreakCounter { get; set; }
         double NoMovementTimer { get; set; }
         bool OnGround { get; set; }
-        bool PowerFlag { get; set; }
-        bool KeyUpPower { get; set; }
         ISprite Sprite { get; set; }
         IMarioHealthState HealthState { get; set; }
         IMarioMovementState MovementState { get; set; }
         IMarioTransitionState TransitionState { get; set; }
-        void Left();
-        void Down();
-        void Up();
-        void Right();
+        void MoveLeft();
+        void MoveDown();
+        void MoveUp();
+        void MoveRight();
         void Idle();
         new void Update(GameTime gameTime);
         void TakeFlower();
@@ -47,5 +45,7 @@ namespace SuperMarioBros.Marios
         void SlidingFlagPole();
         void JumpingOffFlag();
         void Teleport(Vector2 teleportPosition, Direction direction);
+        void PowerPressed();
+        void PowerReleased();
     }
 }

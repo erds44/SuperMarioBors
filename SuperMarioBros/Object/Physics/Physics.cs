@@ -80,7 +80,8 @@ namespace SuperMarioBros.Physicses
                 Velocity = new Vector2(Velocity.X, Velocity.Y + (CurrentGravity + currentWeight) * dt); /* make jumping downward faster */
             else
                 Velocity = new Vector2(Velocity.X, Velocity.Y + CurrentGravity * dt);
-            Clamping();
+            if(acceleration != 0f)
+                Clamping();
             displacement = Vector2.Zero;
             displacement.X += (Velocity.X * dt * sprintVelocityRate);
             displacement.Y += (Velocity.Y * dt);

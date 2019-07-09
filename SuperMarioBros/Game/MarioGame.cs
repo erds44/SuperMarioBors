@@ -158,18 +158,18 @@ namespace SuperMarioBros
                     (Keys.Q, new QuitCommand(this), new EmptyCommand(), false),
                     (Keys.R, new ResetCommand(this), new EmptyCommand(), false),
                     (Keys.Left, new LeftCommand(mario), new IdleCommand(mario), true),
-                    (Keys.Down, new DownCommand(mario), new UpCommand(mario), true),
+                    (Keys.Down, new DownCommand(mario), new UpPressedCommand(mario), true),
                     (Keys.Right, new RightCommand(mario), new IdleCommand(mario), true),
-                    (Keys.Up, new UpCommand(mario), new KeyUpUpCommand(mario), true),
-                    (Keys.X, new PowerCommand(mario), new KeyUpPowerCommand(mario), true)
+                    (Keys.Up, new UpPressedCommand(mario), new UpReleasedCommand(mario), true),
+                    (Keys.X, new PowerPressedCommand(mario), new PowerReleasedCommand(mario), false)
                     );
         }
 
         private void InitializeGamePad()
         {
             Controller = new JoyStickController(mario,
-                    (Buttons.A, new UpCommand(mario), new KeyUpUpCommand(mario), true),
-                    (Buttons.RightTrigger, new PowerCommand(mario), new KeyUpPowerCommand(mario), false),
+                    (Buttons.A, new UpPressedCommand(mario), new UpReleasedCommand(mario), true),
+                    (Buttons.RightTrigger, new PowerPressedCommand(mario), new PowerReleasedCommand(mario), false),
                     (Buttons.Y, new QuitCommand(this), new EmptyCommand(), false)
                 );
         }

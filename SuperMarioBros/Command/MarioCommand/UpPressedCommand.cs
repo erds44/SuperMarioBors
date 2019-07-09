@@ -3,16 +3,16 @@ using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Commands
 {
-    class UpCommand : ICommand
+    class UpPressedCommand : ICommand
     {
         private readonly IMario mario;
-        public UpCommand(IDynamic mario)
+        public UpPressedCommand(IDynamic mario)
         {
             this.mario = (IMario)mario;
         }
         public void Execute()
         {
-            mario.Up();
+            mario.MoveUp();
         }
     }
 }

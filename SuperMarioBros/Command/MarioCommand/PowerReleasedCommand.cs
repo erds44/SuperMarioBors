@@ -3,16 +3,16 @@ using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Commands
 {
-    class KeyUpPowerCommand : ICommand
+    class PowerReleasedCommand : ICommand
     {
         private readonly IMario mario;
-        public KeyUpPowerCommand(IDynamic mario)
+        public PowerReleasedCommand(IDynamic mario)
         {
             this.mario = (IMario)mario;
         }
         public void Execute()
         {
-            mario.KeyUpPower = true;
+            mario.PowerReleased();
         }
     }
 }

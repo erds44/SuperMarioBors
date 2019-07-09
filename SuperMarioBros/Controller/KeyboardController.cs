@@ -26,21 +26,22 @@ namespace SuperMarioBros.Controllers
         public void Update(GameTime gameTime)
         {
             Keys[] currentlyPressedKeys = Keyboard.GetState().GetPressedKeys();
-            foreach (Keys keyUp in checkKeyUplist)
+            foreach (Keys keyUp in keyUpDictionary.Keys)
             {
-                if (Keyboard.GetState().IsKeyUp(keyUp) && keyUpDictionary.TryGetValue(keyUp, out ICommand keyUpCommand))
-                    keyUpCommand.Execute();
+                if (checkKeyUplist.Contains(keyUp) && Keyboard.GetState().IsKeyUp(keyUp))
+                {
+                    keyUpDictionary[keyUp].Execute();
+                    checkKeyUplist.Remove(keyUp);
+                }
+
             }
-            checkKeyUplist.Clear();
             foreach (Keys keyDown in currentlyPressedKeys)
             {
-                if (keyDownDictionary.TryGetValue(keyDown, out ICommand keyDownCommand))
-                {
-                    if (!nonHoldableKeys.Contains(keyDown) || !checkKeyUplist.Contains(keyDown))
-                        keyDownCommand.Execute();
-                    if(!checkKeyUplist.Contains(keyDown))
-                        checkKeyUplist.Add(keyDown);
-                }
+                if (!nonHoldableKeys.Contains(keyDown) || !checkKeyUplist.Contains(keyDown))
+                    if (keyDownDictionary.ContainsKey(keyDown))
+                        keyDownDictionary[keyDown].Execute();                   
+                if (!checkKeyUplist.Contains(keyDown))
+                    checkKeyUplist.Add(keyDown);
             }
         }
     }

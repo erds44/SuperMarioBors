@@ -29,7 +29,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
             }        
         }
 
-        public void OnFireFlower()
+        public void TakeFireFlower()
         {
             mario.HealthState = new FireMario(mario);
         }
@@ -47,6 +47,17 @@ namespace SuperMarioBros.Marios.MarioTypeStates
         public void Update(GameTime gameTime)
         {
             // Do Nothing
+        }
+        public void PowerPressed()
+        {
+            if(mario.OnGround)
+                mario.Physics.SetSprintVelocityRate(1.2f);
+        }
+
+        public void PowerReleased()
+        {
+            if (mario.OnGround)
+                mario.Physics.SetSprintVelocityRate(1f);
         }
     }
 }

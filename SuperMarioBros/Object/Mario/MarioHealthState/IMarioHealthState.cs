@@ -6,7 +6,9 @@ namespace SuperMarioBros.Interfaces.State
     {
         void TakeDamage();
         void TakeRedMushroom();
-        void OnFireFlower();
+        void TakeFireFlower();
         void Update(GameTime gameTime);
+        void PowerPressed();
+        void PowerReleased();
     }
 }

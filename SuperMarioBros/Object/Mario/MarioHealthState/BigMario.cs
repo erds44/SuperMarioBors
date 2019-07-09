@@ -11,7 +11,6 @@ namespace SuperMarioBros.Marios.MarioTypeStates
         {
             this.mario = mario;
             mario.Sprite = SpriteFactory.CreateSprite(GetType().Name + mario.MovementState.GetType().Name);
-            //mario.Sprite = SpriteFactory.CreateSprite(GetType().Name + "RightIdle");
         }
 
         public void TakeDamage()
@@ -19,19 +18,25 @@ namespace SuperMarioBros.Marios.MarioTypeStates
             mario.HealthState = new SmallMario(mario);
         }
 
-        public void Update(GameTime gameTime)
-        {
-            // Do Nothing
-        }
+        public void Update(GameTime gameTime) { }
 
-        public void TakeRedMushroom()
-        {
-            // Do Nothing
-        }
+        public void TakeRedMushroom() { }
 
-        public void OnFireFlower()
+        public void TakeFireFlower()
         {
             mario.HealthState = new FireMario(mario);
+        }
+
+        public void PowerPressed()
+        {
+            if (mario.OnGround)
+                mario.Physics.SetSprintVelocityRate(1.2f);
+        }
+
+        public void PowerReleased()
+        {
+            if (mario.OnGround)
+                mario.Physics.SetSprintVelocityRate(1f);
         }
     }
 }
