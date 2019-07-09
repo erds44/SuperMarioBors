@@ -45,6 +45,8 @@ namespace SuperMarioBros.Sprites
             dt += (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (dt>delayTime)                              
             {
+                colorIndex++;
+                
                 currentFrame++;
                 if (currentFrame == totalFrame)
                     currentFrame = 0;
@@ -58,10 +60,6 @@ namespace SuperMarioBros.Sprites
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Vector2 Position = new Vector2((int)location.X, (int)location.Y - height * scale);
-            if (dt > delayTime)
-            {
-                colorIndex++;
-            }
             /* This condition is used for alternating colors for star mario
             *  aim to slow color changing rate 
             */

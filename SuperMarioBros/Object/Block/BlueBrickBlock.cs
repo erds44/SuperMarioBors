@@ -14,7 +14,7 @@ namespace SuperMarioBros.Blocks
             HasItem = false;
             Position = location;
             bumped = false;
-            if(type.Equals(Type.GetType("RockBlock")))
+            if(type == typeof(RockBlock) )
             {
                 this.canBeBumped = false;
             }
