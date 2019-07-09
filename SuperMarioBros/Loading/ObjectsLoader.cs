@@ -30,8 +30,6 @@ namespace SuperMarioBros.Loading
             
                          
                 //test
-               (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(35,288),4,1,35,"SuperMarioBros.Blocks.BrickBlock")),
-               (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(70,288),4,1,35,"SuperMarioBros.Blocks.RockBlock")),
                 (new ObjectsNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(0,288),1,1,35,"SuperMarioBros.Items.Coin",4)),
                 (new ObjectsNode("SuperMarioBros.Blocks.ItemBrickBlock",new Vector2(105,288),1,1,35,"SuperMarioBros.Items.Star",1)),
                 (new ObjectsNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(50,119),1,1,35,"null")),

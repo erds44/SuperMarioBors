@@ -4,6 +4,7 @@ using SuperMarioBros.Collisions;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Marios.MarioTypeStates;
+using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Mario.MarioTransitionState;
 using SuperMarioBros.Objects.Mario.TransitionState;
 using SuperMarioBros.Physicses;
@@ -24,7 +25,7 @@ namespace SuperMarioBros.Marios
         public event Action DeathEvent;
         public event Action ChangeToGameStateEvent;
         public event Action ChangeToTeleportStateEvent;
-        public event Action<bool> FocusMarioEvent;
+        public event Action<IObject> FocusMarioEvent;
         public event Action<Vector2> PowerUpEvent;
         public event Action<Vector2> ExtraLifeEvent;
         public event Action<Vector2> SlidingEvent;
@@ -87,13 +88,7 @@ namespace SuperMarioBros.Marios
 
         public void TakeDamage()
         {
-            TransitionState.TakeDamage();
-            if (HealthState is DeadMario)
-            {
-                SetCameraFocus?.Invoke(Position);
-                FocusMarioEvent?.Invoke(false);
-            }
-               
+            TransitionState.TakeDamage();                     
         }
 
         public void MoveUp()
@@ -127,7 +122,7 @@ namespace SuperMarioBros.Marios
                 Sprite.Update(gameTime);
                 Position += Physics.Displacement(gameTime);
             }
-            if (!isTeleporting && Position.Y > 0) FocusMarioEvent?.Invoke(true);
+            if (!isTeleporting && Position.Y > 0) FocusMarioEvent?.Invoke(this);
             if (isTeleporting && (int)Position.Y == (int)expectedPosition.Y && (int)Position.X == (int)expectedPosition.X )
             {
                 Position = teleportPosition;
@@ -137,10 +132,10 @@ namespace SuperMarioBros.Marios
                 if(teleportPosition.Y < 0)
                 {
                     SetCameraFocus?.Invoke(teleportPosition + new Vector2(350, -103));
-                    FocusMarioEvent?.Invoke(false);
+                    FocusMarioEvent?.Invoke(null);
                 }
                 else                   
-                    FocusMarioEvent?.Invoke(true);
+                    FocusMarioEvent?.Invoke(this);
                 SetPipeTeleportngEvent?.Invoke();
                 ChangeToGameStateEvent?.Invoke();
             }

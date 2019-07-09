@@ -121,7 +121,7 @@ namespace SuperMarioBros
             ObjectsManager.Mario.PowerUpEvent += HeadsUps.PowerUpCollected;
             ObjectsManager.Mario.ExtraLifeEvent += HeadsUps.ExtraLife;
             ObjectsManager.Mario.ClearingScoresEvent += HeadsUps.ClearingScores;
-            ObjectsManager.Mario.FocusMarioEvent += SetFocusMario;
+            ObjectsManager.Mario.FocusMarioEvent += SetMarioFocus;
             ObjectsManager.Mario.ChangeToGameStateEvent += ChangeToGameState;
             ObjectsManager.Mario.ChangeToTeleportStateEvent += ChangeToTeleportingState;
             ObjectsManager.Mario.IsFlagPoleStateEvent += IsFlagPoleState;
@@ -140,9 +140,9 @@ namespace SuperMarioBros
             InitializeGame();
             State = new MenuState(this);
         }
-        public void SetFocusMario(bool focus)
+        public void SetMarioFocus(IObject obj)
         {
-            FocusMario = focus;
+            Camera.SetFocus(obj);
         }
         public void SetCameraFocus(Vector2 position)
         {

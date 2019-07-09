@@ -9,6 +9,7 @@ namespace SuperMarioBros.GameStates
     {
         private GraphicsDevice GraphicsDevice => game.GraphicsDevice;
         private readonly MarioGame game;
+        private Color backGroundColor = Color.CornflowerBlue;
         
         public GameState(MarioGame game)
         {
@@ -18,12 +19,12 @@ namespace SuperMarioBros.GameStates
 
             if (MediaPlayer.State == MediaState.Paused) MediaPlayer.Resume();
             else if (game.Player.Position.Y > 0) { MediaPlayer.Play(AudioFactory.Instance.CreateSong("overworld")); }
-            else MediaPlayer.Play(AudioFactory.Instance.CreateSong("underworld"));
+            else { MediaPlayer.Play(AudioFactory.Instance.CreateSong("underworld")); backGroundColor = Color.Black; }
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: game.Camera.Transform);
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(backGroundColor);
             game.ObjectsManager.Draw(spriteBatch);
             game.HeadsUps.Draw(spriteBatch, game.Camera.LeftBound, game.Camera.UpperBound);
             spriteBatch.End();
@@ -43,7 +44,7 @@ namespace SuperMarioBros.GameStates
             game.ObjectsManager.Update(gameTime);
             game.CollisionManager.Update();
             game.HeadsUps.Update(gameTime);
-            if(game.FocusMario)
+           // if(game.FocusMario)
                 game.Camera.Update();
         }
         public void Pause()

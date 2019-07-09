@@ -13,7 +13,7 @@ namespace SuperMarioBros.Marios
     {
         event Action ClearingScoresEvent;
         event Action DeathEvent;
-        event Action<bool> FocusMarioEvent;
+        event Action<IObject> FocusMarioEvent;
         event Action<Vector2> PowerUpEvent;
         event Action<Vector2> ExtraLifeEvent;
         event Action<Vector2> SlidingEvent;
