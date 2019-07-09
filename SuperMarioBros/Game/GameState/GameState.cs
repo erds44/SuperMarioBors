@@ -7,7 +7,7 @@ namespace SuperMarioBros.GameStates
 {
     public class GameState : IGameState
     {
-        private GraphicsDevice graphicsDevice => game.GraphicsDevice;
+        private GraphicsDevice GraphicsDevice => game.GraphicsDevice;
         private readonly MarioGame game;
         
         public GameState(MarioGame game)
@@ -23,7 +23,7 @@ namespace SuperMarioBros.GameStates
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: game.Camera.Transform);
-            graphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
             game.ObjectsManager.Draw(spriteBatch);
             game.HeadsUps.Draw(spriteBatch, game.Camera.LeftBound, game.Camera.UpperBound);
             spriteBatch.End();
@@ -32,13 +32,14 @@ namespace SuperMarioBros.GameStates
         private int songUpdateDelay = 0;
         public void Update(GameTime gameTime)
         {
-            if( ++songUpdateDelay>180 &&  game.HeadsUps.Timer <= 100)
+            MediaPlayer.Resume();
+            if( ++songUpdateDelay> 10 &&  game.HeadsUps.Timer <= 100)
             {
-                songUpdateDelay -= 180;
+                songUpdateDelay = 0;
                 Song hurrySong = AudioFactory.Instance.CreateHurrySong(MediaPlayer.Queue.ActiveSong, out bool shouldNotChange);
-                if (!shouldNotChange) { MediaPlayer.Play(hurrySong); }
+                if (!shouldNotChange) { MediaPlayer.Play(hurrySong); }         
             }
-            game.controller.Update(gameTime);
+            game.Controller.Update(gameTime);
             game.ObjectsManager.Update(gameTime);
             game.CollisionManager.Update();
             game.HeadsUps.Update(gameTime);

@@ -7,9 +7,9 @@ namespace SuperMarioBros.GameStates
 {
     public class MenuState : IGameState
     {
-        private List<Buttons> buttons;
-        private GraphicsDevice graphics;
-        private Texture2D marioTitle;
+        private readonly List<Buttons> buttons;
+        private readonly GraphicsDevice graphics;
+        private readonly Texture2D marioTitle;
         private readonly MarioGame game;
         public MenuState(MarioGame game)
         {

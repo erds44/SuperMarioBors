@@ -1,10 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using SuperMarioBros.AudioFactories;
-using SuperMarioBros.Blocks;
 using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
-using SuperMarioBros.Objects;
-using System;
 
 namespace SuperMarioBros.Collisions
 {

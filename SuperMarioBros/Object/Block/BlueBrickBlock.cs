@@ -6,18 +6,21 @@ namespace SuperMarioBros.Blocks
     {
         private protected double deleteTimer = 0.1;
         private protected bool bumped;
+        private protected bool canBeBumped;
         public BlueBrickBlock(Vector2 location)
         {
             ItemType = null;
             HasItem = false;
             Position = location;
             bumped = false;
+            //this.canBeBumped = canBeBumped;
             base.Initialize();
         }
 
         public override void Bumped()
         {
-            State.Bumped();
+            if(canBeBumped)
+                State.Bumped();
         }
 
         public override void Update(GameTime gameTime)

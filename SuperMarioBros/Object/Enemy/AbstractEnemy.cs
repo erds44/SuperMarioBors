@@ -69,11 +69,13 @@ namespace SuperMarioBros.Objects.Enemy
 
         public void MoveLeft()
         {
+            StompedEvent?.Invoke(Position, Score, 1);
             MovementState.MoveLeft();
         }
 
         public void MoveRight()
         {
+            StompedEvent?.Invoke(Position, Score, 1);
             MovementState.MoveRight();
         }
     }

@@ -11,6 +11,7 @@ namespace SuperMarioBros.Controllers
         private readonly Dictionary<Keys, ICommand> keyUpDictionary = new Dictionary<Keys, ICommand>();
         private readonly List<Keys> checkKeyUplist = new List<Keys>();
         private readonly List<Keys> nonHoldableKeys = new List<Keys>();
+        public bool IsPause { get; set; }
         public KeyboardController(params (Keys key, ICommand KeyDownCommand, ICommand KeyUpCommand , bool CanBeHeld)[] args)
         {
             foreach (var (key, downCommand, upCommand, canBeHeld) in args)

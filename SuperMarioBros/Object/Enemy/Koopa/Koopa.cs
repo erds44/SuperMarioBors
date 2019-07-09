@@ -26,6 +26,7 @@ namespace SuperMarioBros.Objects.Enemy
         }
         public override void Update(GameTime gameTime)
         {
+            HealthState.Update(gameTime);
             MovementState.Update(gameTime);
             base.Update(gameTime);
         }

@@ -25,7 +25,7 @@ namespace SuperMarioBros
         private bool pause = false;
         public ObjectsManager ObjectsManager { get; set; }
         public Camera Camera { get; private set; }
-        public IController controller { get; private set; }
+        public IController Controller { get; private set; }
         private SpriteBatch spriteBatch;
         public CollisionManager CollisionManager;
         public IMario Player => ObjectsManager.Mario;
@@ -127,7 +127,7 @@ namespace SuperMarioBros
             ObjectsManager.Mario.IsFlagPoleStateEvent += IsFlagPoleState;
             ObjectsManager.Mario.SetCameraFocus += SetCameraFocus;
             ObjectsManager.Mario.ChangeToFlagPoleStateEvent += ChangeToFlagPoleState;
-            HeadsUps.timerOverEvent += ObjectsManager.Mario.TimeOver;
+            HeadsUps.TimeOverEvent += ObjectsManager.Mario.TimeOver;
         }
 
         public void ChangeToGameState()
@@ -154,7 +154,7 @@ namespace SuperMarioBros
         }
         private void InitializeKeyBoard()
         {
-            controller = new KeyboardController(
+            Controller = new KeyboardController(
                     (Keys.Q, new QuitCommand(this), new EmptyCommand(), false),
                     (Keys.R, new ResetCommand(this), new EmptyCommand(), false),
                     (Keys.Left, new LeftCommand(mario), new IdleCommand(mario), true),
@@ -167,7 +167,7 @@ namespace SuperMarioBros
 
         private void InitializeGamePad()
         {
-            controller = new JoyStickController(mario,
+            Controller = new JoyStickController(mario,
                     (Buttons.A, new UpCommand(mario), new KeyUpUpCommand(mario), true),
                     (Buttons.RightTrigger, new PowerCommand(mario), new KeyUpPowerCommand(mario), false),
                     (Buttons.Y, new QuitCommand(this), new EmptyCommand(), false)

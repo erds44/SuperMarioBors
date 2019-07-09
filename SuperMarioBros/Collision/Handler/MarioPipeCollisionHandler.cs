@@ -1,22 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Object.Pipes;
-using System.Collections.Generic;
 
 namespace SuperMarioBros.Collisions
 {
     public class MarioPipeCollisionHandler : GeneralHandler
     {
-        private static readonly Dictionary<Direction, Keys> keyDictionary = new Dictionary<Direction, Keys>
-        {
-            { Direction.top, Keys.Down},
-            { Direction.left, Keys.Right},
-            { Direction.bottom, Keys.Up},
-            { Direction.right, Keys.Left},
-        };
-
         public static void MarioVsRegularPipeTopCollision(IMario mario, IPipe target, Direction direction)
         {
             MarioInPipe(mario, target, direction);
@@ -70,7 +60,7 @@ namespace SuperMarioBros.Collisions
             Rectangle overlap = Rectangle.Intersect(mario.HitBox(), pipe.HitBox());
             if (overlap == mario.HitBox())
             {
-                mario.Teleport(new Vector2(6980, 332), Direction.top);
+                mario.Teleport(Vector2.Zero, Direction.top);
                 pipe.Teleported = true;
                 mario.SetPipeTeleportngEvent += ((Pipe)pipe).SetTeleporting;
             }

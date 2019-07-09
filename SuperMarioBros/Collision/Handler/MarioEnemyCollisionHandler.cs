@@ -26,9 +26,9 @@ namespace SuperMarioBros.Collisions
             if (!koopa.DealDemage)
             {
                 if (mario.HitBox().Center.X <= koopa.HitBox().Center.X)
-                    koopa.MovementState.MoveRight();
+                    koopa.MoveRight();
                 else
-                    koopa.MovementState.MoveLeft();
+                    koopa.MoveLeft();
                 koopa.DealDemage = true;
             }
             Bump(mario);
@@ -51,12 +51,12 @@ namespace SuperMarioBros.Collisions
             Koopa koopa = (Koopa)enemy;
             if(mario.HitBox().Center.X <= koopa.HitBox().Center.X)
             {
-                koopa.MovementState.MoveRight();
+                koopa.MoveRight();
                 ResolveOverlap(mario, koopa, Direction.left);
             }
             else
             {
-                koopa.MovementState.MoveLeft();
+                koopa.MoveLeft();
                 ResolveOverlap(mario, koopa, Direction.right);
             }
         }

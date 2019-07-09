@@ -98,7 +98,7 @@ namespace SuperMarioBros.Collisions
             { (typeof(BigMario), typeof(ItemBrickBlock)), MoverHorizontallyBlock},
             { (typeof(FireMario), typeof(ItemBrickBlock)), MoverHorizontallyBlock},
         };
-        private static Dictionary<(Type, Type), MarioBlockHandler> marioBlockbottomSideResonder = new Dictionary<(Type, Type), MarioBlockHandler>
+        private readonly static Dictionary<(Type, Type), MarioBlockHandler> marioBlockbottomSideResonder = new Dictionary<(Type, Type), MarioBlockHandler>
         {
             { (typeof(SmallMario), typeof(HiddenBlock)), SmallMarioVsHidden},
             { (typeof(BigMario), typeof(HiddenBlock)), BigOrFireMarioVsHidden},

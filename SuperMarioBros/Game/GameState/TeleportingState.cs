@@ -7,7 +7,7 @@ namespace SuperMarioBros.GameStates
 {
     public class TeleportingState : IGameState
     {
-        private GraphicsDevice graphicsDevice;
+        private readonly GraphicsDevice graphicsDevice;
         private readonly MarioGame game;
         public TeleportingState(MarioGame game)
         {
