@@ -42,6 +42,7 @@ namespace SuperMarioBros.Marios
         }
         public void FireExplosion()
         {
+            AudioFactory.Instance.CreateSound("kick").Play();
             sprite = SpriteFactory.CreateSprite(nameof(FireExplosion));
             sprite.SetLayer(1f);
             Position += explosionOffSet;
