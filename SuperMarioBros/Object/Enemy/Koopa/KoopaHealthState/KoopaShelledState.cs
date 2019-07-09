@@ -9,7 +9,6 @@ namespace SuperMarioBros.Objects.Enemy
         public KoopaShelledState(Koopa koopa)
         {
             this.koopa = koopa;
-            koopa.Score = 500;
         }
 
         public void Stomped()
@@ -19,12 +18,8 @@ namespace SuperMarioBros.Objects.Enemy
 
         public void Update(GameTime gameTime)
         {
+            if (koopa.Score != 500) koopa.Score = 500;
             respondingTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (respondingTimer <= 0)
-            {
-                koopa.HealthState = new KoopaNormalState(koopa);
-                koopa.IsStomped = true;
-            }
         }
     }
 }

@@ -16,7 +16,6 @@ namespace SuperMarioBros.Collisions
             { Direction.bottom, Keys.Up},
             { Direction.right, Keys.Left},
         };
-
         public static void MarioVsRegularPipeTopCollision(IMario mario, IPipe target, Direction direction)
         {
             MarioInPipe(mario, target, direction);
@@ -70,7 +69,7 @@ namespace SuperMarioBros.Collisions
             Rectangle overlap = Rectangle.Intersect(mario.HitBox(), pipe.HitBox());
             if (overlap == mario.HitBox())
             {
-                mario.Teleport(new Vector2(6980, 332), Direction.top);
+                mario.Teleport(Vector2.Zero, Direction.top);
                 pipe.Teleported = true;
                 mario.SetPipeTeleportngEvent += ((Pipe)pipe).SetTeleporting;
             }

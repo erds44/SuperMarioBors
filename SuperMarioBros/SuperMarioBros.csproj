@@ -596,8 +596,6 @@
     <Compile Include="Command\MarioCommand\RightCommand.cs" />
     <Compile Include="Command\MarioCommand\PowerCommand.cs" />
     <Compile Include="Command\MarioCommand\UpCommand.cs" />
-    <Compile Include="Controller\ControllerMessager.cs" />
-    <Compile Include="Controller\GamePadController.cs" />
     <Compile Include="Controller\IController.cs" />
     <Compile Include="Controller\JoyStickController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />

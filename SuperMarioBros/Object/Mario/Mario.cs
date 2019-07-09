@@ -41,7 +41,7 @@ namespace SuperMarioBros.Marios
         public bool OnGround { get; set; }
         public double NoMovementTimer { get; set; }
         public IMarioTransitionState TransitionState { get; set; }
-        private bool isTeleporting = false;
+        private bool isTeleporting;
         private Vector2 teleportPosition;
         private Vector2 expectedPosition;
         private readonly Dictionary<Direction, (Vector2, Vector2)> teleportDictionary = new Dictionary<Direction, (Vector2, Vector2)>
@@ -62,6 +62,7 @@ namespace SuperMarioBros.Marios
             NoMovementTimer = 0;
             ObjState = ObjectState.Normal;
             KeyUpPower = true;
+            isTeleporting = false;
         }
 
         public void Down()
@@ -138,7 +139,6 @@ namespace SuperMarioBros.Marios
                 else                   
                     FocusMarioEvent?.Invoke(true);
                 SetPipeTeleportngEvent?.Invoke();
-                //Let Mario wait here.
                 ChangeToGameStateEvent?.Invoke();
             }
         }
@@ -206,7 +206,10 @@ namespace SuperMarioBros.Marios
                 expectedPosition = Position + tuple.Item2;
                 Physics.SetConstentVelocity(tuple.Item1);
             }
-            this.teleportPosition = teleportPosition;
+            if ((int)teleportPosition.X == 0)
+                this.teleportPosition = expectedPosition;
+            else
+                this.teleportPosition = teleportPosition;
             ChangeToTeleportStateEvent?.Invoke();
         }
     }

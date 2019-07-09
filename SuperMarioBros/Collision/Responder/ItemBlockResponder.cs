@@ -13,11 +13,14 @@ namespace SuperMarioBros.Collisions
         private delegate void ItemBlockHandler(IItem item, IBlock block, Direction direction);
         public void HandleCollision(IObject mover, IObject target, Direction direction)
         {
-            IItem item = (IItem)mover;
-            IBlock block = (IBlock)target;
-            var key = (item.GetType(), block.State.GetType(), direction);
-            if (handlerDictionary.ContainsKey(key))
-                handlerDictionary[key](item, block, direction);
+            if (!(target is HiddenBlock))
+            {
+                IItem item = (IItem)mover;
+                IBlock block = (IBlock)target;
+                var key = (item.GetType(), block.State.GetType(), direction);
+                if (handlerDictionary.ContainsKey(key))
+                    handlerDictionary[key](item, block, direction);
+            }
         }
         private readonly Dictionary<(Type, Type, Direction), ItemBlockHandler> handlerDictionary = new Dictionary<(Type, Type, Direction), ItemBlockHandler>
         {

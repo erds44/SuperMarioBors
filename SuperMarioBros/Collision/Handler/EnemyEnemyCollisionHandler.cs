@@ -40,9 +40,9 @@ namespace SuperMarioBros.Collisions
 
         public static void EnemyChangeDirection(IEnemy mover, IEnemy target, Direction direction)
         {
+            ResolveOverlap(mover, target, direction);
             mover.ChangeDirection();
             target.ChangeDirection();
-            ResolveOverlap(mover, target, direction);
         }
         public static void MoverChangeDirection(IEnemy mover, IEnemy target, Direction direction)
         {

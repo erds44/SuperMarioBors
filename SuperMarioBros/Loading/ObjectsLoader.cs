@@ -20,7 +20,7 @@ namespace SuperMarioBros.Loading
 
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(3000,-135),1,23,35)),
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(3000,-100),1,23,35)),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3000,-170),4,10,35)),
+                //make these unbumped (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3000,-170),4,10,35)),
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-170),1,14,35)),
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-205),1,14,35)),
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-240),1,14,35)),

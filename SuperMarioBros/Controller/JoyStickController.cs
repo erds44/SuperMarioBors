@@ -13,6 +13,9 @@ namespace SuperMarioBros.Controllers
         private readonly Dictionary<Buttons, ICommand> buttonUpDictionary = new Dictionary<Buttons, ICommand>();
         private readonly List<Buttons> checkButtonUplist = new List<Buttons>();
         private readonly List<Buttons> nonHoldableButtons = new List<Buttons>();
+
+        public bool IsPause { get; set; }
+
         public JoyStickController(IMario mario, params (Buttons key, ICommand buttonDownCommand, ICommand buttonUpCommand, bool CanBeHeld)[] args)
         {
             this.mario = mario;

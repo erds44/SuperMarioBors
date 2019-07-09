@@ -21,7 +21,7 @@ namespace SuperMarioBros.HeadsUps
         private readonly float livesOffset = 666;
         private bool clearingScores = false;
         private readonly MarioGame game;
-        public float Timer { get; private set; } = 120;
+        public float Timer { get; private set; } = 100;
         private int score = 0;
         private int coin = 0;
         public int Lives { get; set; }
@@ -89,7 +89,7 @@ namespace SuperMarioBros.HeadsUps
         public void EnemyStomped(Vector2 position,int score, int count)
         {
             int addScore = score * count;
-            score += addScore;
+            this.score += addScore;
             AudioFactory.Instance.CreateSound("stomp").Play();
             ObjectFactory.Instance.CreateScoreText(position, spriteFont, addScore.ToString());
         }
@@ -103,7 +103,7 @@ namespace SuperMarioBros.HeadsUps
 
         public void ResetTimer()
         {
-            Timer = 400;
+            Timer = 100;
         }
         public void ResetAll()
         {
@@ -127,7 +127,6 @@ namespace SuperMarioBros.HeadsUps
 
         public void ClearingScores()
         {
-            MediaPlayer.Play(AudioFactory.Instance.CreateSong("levelcomplete"));
             clearingScores = true;
             ((FlagPoleState)game.State).UpdateHeadsUp = true;
         }

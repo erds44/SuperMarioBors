@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Media;
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Blocks;
 using SuperMarioBros.Items;
@@ -68,6 +69,8 @@ namespace SuperMarioBros.Collisions
             if (mario.MovementState is LeftSliding)
             {
                 flagePoleStage = true;
+                MediaPlayer.Stop();
+                MediaPlayer.Play(AudioFactory.Instance.CreateSong("levelcomplete"));
                 mario.ClearingScoresEvent += ResetFlagPoleStage;
             }
             if (flagePoleStage)

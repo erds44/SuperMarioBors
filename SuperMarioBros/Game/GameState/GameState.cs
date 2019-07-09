@@ -32,11 +32,12 @@ namespace SuperMarioBros.GameStates
         private int songUpdateDelay = 0;
         public void Update(GameTime gameTime)
         {
-            if( ++songUpdateDelay>180 &&  game.HeadsUps.Timer <= 100)
+            MediaPlayer.Resume();
+            if( ++songUpdateDelay> 10 &&  game.HeadsUps.Timer <= 100)
             {
-                songUpdateDelay -= 180;
+                songUpdateDelay = 0;
                 Song hurrySong = AudioFactory.Instance.CreateHurrySong(MediaPlayer.Queue.ActiveSong, out bool shouldNotChange);
-                if (!shouldNotChange) { MediaPlayer.Play(hurrySong); }
+                if (!shouldNotChange) { MediaPlayer.Play(hurrySong); }         
             }
             game.controller.Update(gameTime);
             game.ObjectsManager.Update(gameTime);

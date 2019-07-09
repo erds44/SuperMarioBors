@@ -16,6 +16,7 @@ namespace SuperMarioBros.Objects.Enemy
                 koopa.Physics.Velocity = NormalStateVelocity;
             else
                 koopa.Physics.Velocity = ShelledStateVelocity;
+            koopa.Score = 100;
         }
 
         public void ChangeDirection()
