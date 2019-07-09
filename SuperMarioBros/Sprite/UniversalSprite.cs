@@ -11,13 +11,14 @@ namespace SuperMarioBros.Sprites
         private readonly int width;
         private readonly int height;
         private readonly int totalFrame;
-        private int delay;
+        private float dt = 0f;
+        private float delayTime;
         private Collection<Color> SpriteColor;
         private int colorIndex;
         private float layerDepth;
-        public UniversalSprite(Texture2D texture, int frame)
+        public UniversalSprite(Texture2D texture, int frame,int spriteDelay)
         {
-            delay = 0;
+            delayTime = spriteDelay/(float)60;
             colorIndex = 0;
             currentFrame = 0;
             layerDepth = 0.5f;
@@ -41,15 +42,13 @@ namespace SuperMarioBros.Sprites
         }
         public void Update(GameTime gameTime)
         {
-            /* temporary solution, will add time delay later
-                since it takes time to tweak around different delay time for diff objects
-                we will make that happen in Sprint 5
-             */
-            if (delay % 5 == 0)                              
+            dt += (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (dt>delayTime)                              
             {
                 currentFrame++;
                 if (currentFrame == totalFrame)
                     currentFrame = 0;
+                dt = 0;
             }
         }
         public void Draw(SpriteBatch spriteBatch, Vector2 location,SpriteEffects spriteEffects = SpriteEffects.None, float scale = 1f)
@@ -59,9 +58,10 @@ namespace SuperMarioBros.Sprites
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);
             Vector2 Position = new Vector2((int)location.X, (int)location.Y - height * scale);
-            delay++;
-            if (delay % 5 == 0)
+            if (dt > delayTime)
+            {
                 colorIndex++;
+            }
             /* This condition is used for alternating colors for star mario
             *  aim to slow color changing rate 
             */

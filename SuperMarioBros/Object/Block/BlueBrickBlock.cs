@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace SuperMarioBros.Blocks
 {
@@ -7,13 +8,20 @@ namespace SuperMarioBros.Blocks
         private protected double deleteTimer = 0.1;
         private protected bool bumped;
         private protected bool canBeBumped;
-        public BlueBrickBlock(Vector2 location)
+        public BlueBrickBlock(Vector2 location,Type type)
         {
             ItemType = null;
             HasItem = false;
             Position = location;
             bumped = false;
-            //this.canBeBumped = canBeBumped;
+            if(type.Equals(Type.GetType("RockBlock")))
+            {
+                this.canBeBumped = false;
+            }
+            else
+            {
+                this.canBeBumped = true;
+            }
             base.Initialize();
         }
 

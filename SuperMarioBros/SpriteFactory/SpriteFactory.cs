@@ -24,17 +24,17 @@ namespace SuperMarioBros.SpriteFactories
             spritesInfo = spritesLoading.SpritesInfo();
             derbisSprite = new Dictionary<BrickPosition, ISprite>
             {
-                { BrickPosition.leftTop, new UniversalSprite(content.Load<Texture2D>("LeftTopDerbis"), 1) },
-                { BrickPosition.leftBottom, new UniversalSprite(content.Load<Texture2D>("LeftBottomDerbis"), 1) },
-                { BrickPosition.rightTop, new UniversalSprite(content.Load<Texture2D>("RightTopDerbis"), 1) },
-                { BrickPosition.rightBottom, new UniversalSprite(content.Load<Texture2D>("RightBottomDerbis"), 1) }
+                { BrickPosition.leftTop, new UniversalSprite(content.Load<Texture2D>("LeftTopDerbis"), 1,1) },
+                { BrickPosition.leftBottom, new UniversalSprite(content.Load<Texture2D>("LeftBottomDerbis"), 1,1) },
+                { BrickPosition.rightTop, new UniversalSprite(content.Load<Texture2D>("RightTopDerbis"), 1,1) },
+                { BrickPosition.rightBottom, new UniversalSprite(content.Load<Texture2D>("RightBottomDerbis"), 1,1) }
             };
             blueDerbisSprite = new Dictionary<BrickPosition, ISprite>
             {
-                { BrickPosition.leftTop, new UniversalSprite(content.Load<Texture2D>("BlueLeftTopDebris"), 1) },
-                { BrickPosition.leftBottom, new UniversalSprite(content.Load<Texture2D>("BlueLeftBottomDebris"), 1) },
-                { BrickPosition.rightTop, new UniversalSprite(content.Load<Texture2D>("BlueRightTopDebris"), 1) },
-                { BrickPosition.rightBottom, new UniversalSprite(content.Load<Texture2D>("BlueRightBottomDebris"), 1) }
+                { BrickPosition.leftTop, new UniversalSprite(content.Load<Texture2D>("BlueLeftTopDebris"), 1,1) },
+                { BrickPosition.leftBottom, new UniversalSprite(content.Load<Texture2D>("BlueLeftBottomDebris"), 1,1) },
+                { BrickPosition.rightTop, new UniversalSprite(content.Load<Texture2D>("BlueRightTopDebris"), 1,1) },
+                { BrickPosition.rightBottom, new UniversalSprite(content.Load<Texture2D>("BlueRightBottomDebris"), 1,1) }
             };
         }
 
@@ -42,7 +42,7 @@ namespace SuperMarioBros.SpriteFactories
         {
             if (!(spritesInfo.TryGetValue(type, out spriteNode)))
                 throw new System.ArgumentException("Cannot find: " + type + " in the dictionary");
-            sprite = new UniversalSprite(content.Load<Texture2D>(spriteNode.SpriteName), spriteNode.TotalFrame);
+            sprite = new UniversalSprite(content.Load<Texture2D>(spriteNode.SpriteName), spriteNode.TotalFrame,spriteNode.Delay);
             return sprite;
         }
 
