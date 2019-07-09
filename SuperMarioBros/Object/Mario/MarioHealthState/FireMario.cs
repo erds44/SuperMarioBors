@@ -7,6 +7,9 @@ namespace SuperMarioBros.Marios.MarioTypeStates
     public class FireMario :  IMarioHealthState
     {
         private readonly IMario mario;
+        private static int fireBallCount = 2;
+        private static float fireBallCoolDown = 2f;
+        private static bool isCoolDown = false;
         public FireMario(IMario mario)
         {
             this.mario = mario;
@@ -26,16 +29,37 @@ namespace SuperMarioBros.Marios.MarioTypeStates
 
         public void Update(GameTime gameTime)
         {
-            if (mario.PowerFlag && mario.KeyUpPower)
+            if (isCoolDown)
+                fireBallCoolDown -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if(fireBallCoolDown <= 0)
             {
-                mario.MovementState.OnFireBall();
-                mario.KeyUpPower = false;
+                fireBallCoolDown = 2f;
+                isCoolDown = false;
             }
         }
 
-        public void OnFireFlower()
+        public void TakeFireFlower()
         {
            // Do Nothing
+        }
+
+        public void PowerPressed()
+        {
+            if (!isCoolDown)
+            {
+                mario.MovementState.OnFireBall();
+                fireBallCount--;
+                if (fireBallCount <= 0)
+                {
+                    isCoolDown = true;
+                    fireBallCount = 2;
+                }
+            }
+        }
+
+        public void PowerReleased()
+        {
+
         }
     }
 }

@@ -19,24 +19,16 @@ namespace SuperMarioBros.Marios.MarioTypeStates
             MediaPlayer.Play(AudioFactory.Instance.CreateSong("youredead"));
         }
 
-        public void TakeDamage()
-        {
-            // Do Nothing
-        }
+        public void TakeDamage() { }
 
-        public void Update(GameTime gameTime)
-        {
-            // Do nothing
-        }
+        public void Update(GameTime gameTime) { }
 
-        public void TakeRedMushroom()
-        {
-            // Do Nothing
-        }
+        public void TakeRedMushroom() { }
 
-        public void OnFireFlower()
-        {
-            // Do Nothing
-        }
+        public void TakeFireFlower() { }
+
+        public void PowerPressed() { }
+
+        public void PowerReleased() { }
     }
 }

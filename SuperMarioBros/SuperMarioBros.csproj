@@ -557,10 +557,10 @@
     <Compile Include="Collision\Responder\MarioPipeResponder.cs" />
     <Compile Include="Command\KeyUpCommand\EmptyCommand.cs" />
     <Compile Include="Command\MarioCommand\DownCommand.cs" />
-    <Compile Include="Command\MarioCommand\KeyUpPowerCommand.cs" />
+    <Compile Include="Command\MarioCommand\PowerReleasedCommand.cs" />
     <Compile Include="Command\GameCommand\QuitCommand.cs" />
     <Compile Include="Command\GameCommand\ResetCommand.cs" />
-    <Compile Include="Command\MarioCommand\KeyUpUpCommand.cs" />
+    <Compile Include="Command\MarioCommand\UpReleasedCommand.cs" />
     <Compile Include="Command\MarioCommand\LeftCommand.cs" />
     <Compile Include="Game\GameState\Buttons.cs" />
     <Compile Include="Game\GameState\GameOverState.cs" />
@@ -594,8 +594,8 @@
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\MarioCommand\IdleCommand.cs" />
     <Compile Include="Command\MarioCommand\RightCommand.cs" />
-    <Compile Include="Command\MarioCommand\PowerCommand.cs" />
-    <Compile Include="Command\MarioCommand\UpCommand.cs" />
+    <Compile Include="Command\MarioCommand\PowerPressedCommand.cs" />
+    <Compile Include="Command\MarioCommand\UpPressedCommand.cs" />
     <Compile Include="Controller\IController.cs" />
     <Compile Include="Controller\JoyStickController.cs" />
     <Compile Include="Controller\KeyboardController.cs" />

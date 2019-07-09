@@ -12,8 +12,8 @@ namespace SuperMarioBros.Marios
     {
         private readonly Dictionary<FireBallDirection, Vector2> velocityDictionary = new Dictionary<FireBallDirection, Vector2>
         {
-            {FireBallDirection.left, new Vector2(-300, 50)},
-            {FireBallDirection.right, new Vector2(300, 50)}
+            {FireBallDirection.left, new Vector2(-400, 50)},
+            {FireBallDirection.right, new Vector2(400, 50)}
         };
         private readonly float gravity = 600f;
         private readonly float weight = 20f;
@@ -51,15 +51,14 @@ namespace SuperMarioBros.Marios
         }
         public override void Update(GameTime gameTime)
         {
+            sprite.Update(gameTime);
             if (Explosion)
-            {
-                sprite.Update(gameTime);
+            {           
                 explosionTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
                 if (explosionTimer <= 0)
                     ObjState = ObjectState.Destroy;
-            }
-            else
-                base.Update(gameTime);
+            }else
+                Position += Physics.Displacement(gameTime);
         }
     }
 }

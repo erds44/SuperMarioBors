@@ -30,8 +30,6 @@ namespace SuperMarioBros.Marios
         public event Action<Vector2> SlidingEvent;
         public event Action<Vector2> SetCameraFocus;
         public ObjectState ObjState { get; set; }
-        public bool PowerFlag { get; set; }
-        public bool KeyUpPower { get; set; }
         public IMarioHealthState HealthState { get; set; }
         public IMarioMovementState MovementState { get; set; }
         public ISprite Sprite { get; set; }
@@ -61,11 +59,10 @@ namespace SuperMarioBros.Marios
             Position = location;
             NoMovementTimer = 0;
             ObjState = ObjectState.Normal;
-            KeyUpPower = true;
             isTeleporting = false;
         }
 
-        public void Down()
+        public void MoveDown()
         {
             if(NoMovementTimer <= 0)
                 MovementState.Down();
@@ -76,13 +73,13 @@ namespace SuperMarioBros.Marios
             TransitionState.Draw(spriteBatch);
         }
 
-        public void Left()
+        public void MoveLeft()
         {
             if (NoMovementTimer <= 0)
                 MovementState.Left();
         }
 
-        public void Right()
+        public void MoveRight()
         {
             if (NoMovementTimer <= 0)
                 MovementState.Right();
@@ -93,7 +90,7 @@ namespace SuperMarioBros.Marios
             TransitionState.TakeDamage();
         }
 
-        public void Up()
+        public void MoveUp()
         {
             if (NoMovementTimer <= 0)
                 MovementState.Up();
@@ -211,6 +208,16 @@ namespace SuperMarioBros.Marios
             else
                 this.teleportPosition = teleportPosition;
             ChangeToTeleportStateEvent?.Invoke();
+        }
+
+        public void PowerPressed()
+        {
+            HealthState.PowerPressed();
+        }
+
+        public void PowerReleased()
+        {
+            HealthState.PowerReleased();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace SuperMarioBros.Commands
         }
         public void Execute()
         {
-            mario.Down();
+            mario.MoveDown();
         }
     }
 }

@@ -74,7 +74,7 @@ namespace SuperMarioBros.Collisions
                 mario.ClearingScoresEvent += ResetFlagPoleStage;
             }
             if (flagePoleStage)
-                mario.Right();
+                mario.MoveRight();
             MarioOnGround(mario, block, direction);
         }
 

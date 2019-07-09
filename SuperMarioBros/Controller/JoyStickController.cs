@@ -57,15 +57,15 @@ namespace SuperMarioBros.Controllers
         {
                 if (joyStickState.Y < -0.1)
                 {
-                    mario.Down();
+                    mario.MoveDown();
                 }
                 else if (joyStickState.X < -0.1)
                 {
-                    mario.Left();
+                    mario.MoveLeft();
                 }
                 else if (joyStickState.X > 0.1)
                 {
-                    mario.Right();
+                    mario.MoveRight();
                 }
                 else
                 {
