@@ -278,7 +278,7 @@ namespace SuperMarioBros.Loading
             }
             /* Teleport Pipe */          
             Statics.Add(new TeleportPipe(new Vector2(2429, 410), new Vector2(3050, -480), "TeleportVerticalLargePipe",Direction.top));
-            //Statics.Add(new TeleportPipe(new Vector2(429, 410), new Vector2(3050, -480), "TeleportVerticalLargePipe", Direction.top));
+          //  Statics.Add(new TeleportPipe(new Vector2(429, 410), new Vector2(3050, -480), "TeleportVerticalLargePipe", Direction.top));
             Statics.Add(new TeleportPipe(new Vector2(3705, -170), new Vector2(6980, 400),"TeleportHorizontalSmallPipe", Direction.left));
             /* Regular Pipe */
             Statics.Add(new Pipe(new Vector2(3759, -170),"HighPipe")); 
