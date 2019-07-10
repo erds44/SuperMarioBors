@@ -37,7 +37,7 @@ namespace SuperMarioBros.HeadsUps
             if (clearingScores)
             {
                 if (Timer > 0)
-                    DecreasingValues();
+                    CountTimeBonusScore();
                 else
                 {
                     ObjectFactory.Instance.CreateNonCollidableObject(typeof(WinFlag), new Vector2(8620, 410));
@@ -103,14 +103,14 @@ namespace SuperMarioBros.HeadsUps
 
         public void ResetTimer()
         {
-            Timer = 100;
+            Timer = 100; //During debug time, we wants to test the hurry up effect.
         }
         public void ResetAll()
         {
-            Timer = 400;
-            coin = 0;
-            score = 0;
-            Lives = 3;
+            Timer = 400; // Reset timer to 400 seconds.
+            coin = 0; //Reset coin count.
+            score = 0; //Reset score count.
+            Lives = 3; // Has 3 lives.
         }
         public void ExtraLife(Vector2 Position)
         {
@@ -120,7 +120,7 @@ namespace SuperMarioBros.HeadsUps
         }
         public void PowerUpCollected(Vector2 Position)
         {
-            score += 1000;
+            score += 1000; //PowerUp Bonus.
             AudioFactory.Instance.CreateSound("powerup").Play();
             ObjectFactory.Instance.CreateScoreText(Position, spriteFont, "1000");
         }
@@ -135,17 +135,18 @@ namespace SuperMarioBros.HeadsUps
         {
             spriteBatch.DrawString(spriteFont, str, position, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
         }
-        private void DecreasingValues()
+
+        private void CountTimeBonusScore()
         {
             if(Timer <= 3)
             {
-                score += (int)(3 - Timer) * 100;
+                score += (int)Timer * 100; //100 score for each sec remain.
                 Timer = 0;
             }
             else
             {
-                Timer -= 3;
-                score += 300;
+                Timer -= 3; //Use 3 as count unit.
+                score += 300; //100 score for each sec remain.
             }
         }
     }
