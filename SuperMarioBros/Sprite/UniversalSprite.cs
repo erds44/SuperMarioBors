@@ -48,7 +48,6 @@ namespace SuperMarioBros.Sprites
             //if (dt>delayTime)  
             if(delay %5 ==0)
             {
-                
                 currentFrame++;
                 if (currentFrame == totalFrame)
                     currentFrame = 0;
@@ -65,11 +64,19 @@ namespace SuperMarioBros.Sprites
             /* This condition is used for alternating colors for star mario
             *  aim to slow color changing rate 
             */
-            delay++;
-            if(delay%5==0)
-                colorIndex++;
-            if (colorIndex % SpriteColor.Count == 0 || colorIndex > SpriteColor.Count)
-                colorIndex = 0;
+             delay++;
+            if (SpriteColor.Count > 1)
+            {
+               
+                if (delay % 5 == 0)
+                {
+                    colorIndex++;
+                }
+                    
+                if (colorIndex % SpriteColor.Count == 0 || colorIndex > SpriteColor.Count)
+                    colorIndex = 1;
+            }
+            
             Color spriteColor = SpriteColor[colorIndex];
             spriteBatch.Draw(texture, Position, sourceRectangle, spriteColor, 0f, Vector2.Zero, scale, spriteEffects, layerDepth);
         }
