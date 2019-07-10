@@ -12,6 +12,7 @@ namespace SuperMarioBros.GameStates
         private Color backGroundColor = Color.CornflowerBlue;
         public TeleportingState(MarioGame game)
         {
+            game.DisableController();
             this.game = game;
             graphicsDevice = game.GraphicsDevice;
             MediaPlayer.Stop();
