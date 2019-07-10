@@ -12,7 +12,7 @@ namespace SuperMarioBros.Marios
     public interface IMario : IDynamic
     {
         event Action ClearingScoresEvent;
-        event Action DeathEvent;
+        event Action DestoryEvent;
         event Action<IObject> FocusMarioEvent;
         event Action<Vector2> PowerUpEvent;
         event Action<Vector2> ExtraLifeEvent;
@@ -22,6 +22,7 @@ namespace SuperMarioBros.Marios
         event Action ChangeToGameStateEvent;
         event Action ChangeToTeleportStateEvent;
         event Action ChangeToFlagPoleStateEvent;
+        event Action DeadStateEvent;
         event Func<bool> IsFlagPoleStateEvent;
         int EnemyKillStreakCounter { get; set; }
         double NoMovementTimer { get; set; }

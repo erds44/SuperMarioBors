@@ -97,6 +97,11 @@ namespace SuperMarioBros.Collisions
                 MoverVerticallyBounce(mario, block, direction);
             }
         }
+        public static void MarioVsBrickBlockTopCollision(IMario mario, IBlock block, Direction direction)
+        {
+            if (block.CanBeBumped)
+                MarioOnGround(mario, block, direction);
+        }
 
         public static void SmallMarioVsQuestionOrItemBrickBlock(IMario mario, IBlock block, Direction direction)
         {

@@ -18,6 +18,7 @@ namespace SuperMarioBros.GameStates
         public PlayerStatusState(MarioGame game)
         {
             this.game = game;
+            game.IsMouseVisible = false;
             graphicsDevice = game.GraphicsDevice;
             spriteFont = game.Content.Load<SpriteFont>("Font/MarioFont");
             smallMarioSprite = SpriteFactory.CreateSprite(nameof(SmallMario) + nameof(RightIdle));

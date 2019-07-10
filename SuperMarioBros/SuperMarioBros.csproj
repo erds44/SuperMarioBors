@@ -535,6 +535,7 @@
   <ItemGroup>
     <Compile Include="AudioFactory\AudioFactory.cs" />
     <Compile Include="Camera\Camera.cs" />
+    <Compile Include="Collision\Handler\EnemyPipeCollisionHandler.cs" />
     <Compile Include="Collision\Handler\GeneralHandler.cs" />
     <Compile Include="Collision\Handler\EnemyBlcokCollisionHandler.cs" />
     <Compile Include="Collision\Handler\EnemyEnemyCollisionHandler.cs" />

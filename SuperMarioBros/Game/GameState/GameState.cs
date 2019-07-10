@@ -13,6 +13,7 @@ namespace SuperMarioBros.GameStates
         
         public GameState(MarioGame game)
         {
+            game.IsMouseVisible = false;
             this.game = game;
             if (game.ObjectsManager is null)
                 game.InitializeGame();
@@ -44,8 +45,7 @@ namespace SuperMarioBros.GameStates
             game.ObjectsManager.Update(gameTime);
             game.CollisionManager.Update();
             game.HeadsUps.Update(gameTime);
-           // if(game.FocusMario)
-                game.Camera.Update();
+            game.Camera.Update();
         }
         public void Pause()
         {

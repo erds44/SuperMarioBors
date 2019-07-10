@@ -31,9 +31,9 @@ namespace SuperMarioBros.Collisions
 
         private static Dictionary<(Type, Type), MarioBlockHandler> marioBlockTopSideResponder = new Dictionary<(Type, Type), MarioBlockHandler>
         {
-            { (typeof(SmallMario), typeof(BlueBrickBlock)), MarioOnGround},
-            { (typeof(BigMario), typeof(BlueBrickBlock)), MarioOnGround},
-            { (typeof(FireMario), typeof(BlueBrickBlock)), MarioOnGround},
+            { (typeof(SmallMario), typeof(BlueBrickBlock)), MarioVsBrickBlockTopCollision},
+            { (typeof(BigMario), typeof(BlueBrickBlock)), MarioVsBrickBlockTopCollision},
+            { (typeof(FireMario), typeof(BlueBrickBlock)), MarioVsBrickBlockTopCollision},
 
             { (typeof(SmallMario), typeof(BlueRockBlock)), MarioOnGround},
             { (typeof(BigMario), typeof(BlueRockBlock)), MarioOnGround},

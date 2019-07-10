@@ -22,7 +22,8 @@ namespace SuperMarioBros.Marios
         public event Action ClearingScoresEvent;
         public event Action ChangeToFlagPoleStateEvent;
         public event Action SetPipeTeleportngEvent;
-        public event Action DeathEvent;
+        public event Action DestoryEvent;
+        public event Action DeadStateEvent;
         public event Action ChangeToGameStateEvent;
         public event Action ChangeToTeleportStateEvent;
         public event Action<IObject> FocusMarioEvent;
@@ -88,7 +89,7 @@ namespace SuperMarioBros.Marios
 
         public void TakeDamage()
         {
-            TransitionState.TakeDamage();                     
+            TransitionState.TakeDamage();
         }
 
         public void MoveUp()
@@ -146,7 +147,7 @@ namespace SuperMarioBros.Marios
             if (!flagPoleState)
             {
                 if (!(HealthState is DeadMario)) HealthState = new DeadMario(this);
-                DeathEvent?.Invoke();
+                DestoryEvent?.Invoke();
             }
             else
                 ClearingScoresEvent?.Invoke();
@@ -177,6 +178,7 @@ namespace SuperMarioBros.Marios
         {
             while (!(HealthState is DeadMario))
                 HealthState.TakeDamage();
+            DeadStateEvent?.Invoke();
         }
 
         public void SlidingFlagPole()

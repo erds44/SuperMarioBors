@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace SuperMarioBros.Collisions
 {
-    public class EnemyPipeResponder : GeneralHandler, ICollisionResponder
+    public class EnemyPipeResponder : EnemyPipeCollisionHandler, ICollisionResponder
     {
         private delegate void EnemyPipeHandler(IEnemy enemy, IPipe pipe, Direction direction);
         public void HandleCollision(IObject mover, IObject target, Direction direction)
@@ -18,8 +18,8 @@ namespace SuperMarioBros.Collisions
         private readonly Dictionary<Direction, EnemyPipeHandler> handlerDictionary = new Dictionary<Direction, EnemyPipeHandler>
         {
             { Direction.top, MoverOnGround},
-            { Direction.left, MoverHorizontallyBounce},
-            { Direction.right, MoverHorizontallyBounce},
+            { Direction.left, EnemyHorizontalBounce},
+            { Direction.right, EnemyHorizontalBounce},
             { Direction.bottom, MoverVerticallyBounce},
         };
     }
