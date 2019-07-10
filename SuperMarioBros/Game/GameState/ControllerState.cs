@@ -22,7 +22,7 @@ namespace SuperMarioBros.GameStates
 
            var GamePadButton = new Buttons(itemFont, "GamePad", new Vector2(300, 250));
             GamePadButton.Click += game.ChangeToPlayerStatusState;
-
+            game.IsMouseVisible = true;
             buttons = new List<Buttons>
             {
                 keyboardButton,

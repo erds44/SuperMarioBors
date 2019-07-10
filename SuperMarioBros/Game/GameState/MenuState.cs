@@ -23,7 +23,7 @@ namespace SuperMarioBros.GameStates
 
             var quitButton = new Buttons(itemFont, "Quit", new Vector2(300, 300));
             quitButton.Click += QuitGameClick;
-
+            game.IsMouseVisible = true;
             buttons = new List<Buttons>
             {
                 startButton,
