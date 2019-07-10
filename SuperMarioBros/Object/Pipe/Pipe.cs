@@ -1,13 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.SpriteFactories;
 
-namespace SuperMarioBros.Object.Pipes
+namespace SuperMarioBros.Pipes
 {
     public class Pipe : AbstractPipe
     {
         /* includes SmallPipe, MiddlePipe, LargePipe, HighPipe
          * TeleportVertialSmallPipe, TeleportHorizontalSmallPipe, TeleportVertialLargePipe
          */
-        public Pipe(Vector2 location, string pipeType)
+        public Pipe(Vector2 location,string pipeType)
         {
             Position = location;
             this.pipeType = pipeType;

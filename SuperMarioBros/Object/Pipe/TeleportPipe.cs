@@ -1,7 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Collisions;
+using SuperMarioBros.SpriteFactories;
 
-namespace SuperMarioBros.Object.Pipes
+namespace SuperMarioBros.Pipes
 {
     public class TeleportPipe : AbstractPipe
     {

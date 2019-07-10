@@ -2,7 +2,7 @@
 using SuperMarioBros.Collisions;
 using SuperMarioBros.Objects;
 
-namespace SuperMarioBros.Object.Pipes
+namespace SuperMarioBros.Pipes
 {
     public interface IPipe : IStatic
     {

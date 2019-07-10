@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Marios.MarioMovementStates;
-using SuperMarioBros.Object.Pipes;
+using SuperMarioBros.Pipes;
 
 namespace SuperMarioBros.Collisions
 {

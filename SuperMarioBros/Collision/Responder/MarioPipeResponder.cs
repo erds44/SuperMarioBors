@@ -1,5 +1,5 @@
 ﻿using SuperMarioBros.Marios;
-using SuperMarioBros.Object.Pipes;
+using SuperMarioBros.Pipes;
 using SuperMarioBros.Objects;
 using System;
 using System.Collections.Generic;

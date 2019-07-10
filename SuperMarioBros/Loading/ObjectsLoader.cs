@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using SuperMarioBros.Collisions;
 using SuperMarioBros.Marios;
-using SuperMarioBros.Object.Pipes;
+using SuperMarioBros.Pipes;
 using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Loading
@@ -15,6 +15,7 @@ namespace SuperMarioBros.Loading
         public List<IDynamic> Dynamics { get; private set; }
         public List<IObject> NonCollidables { get; private set; }
         public IMario Mario { get; private set; }
+        
         private readonly List<ObjectsNode> staticList = new List<ObjectsNode>
             {
 
@@ -25,8 +26,8 @@ namespace SuperMarioBros.Loading
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-205),1,14,35,"SuperMarioBros.Blocks.BrickBlock")),
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-240),1,14,35,"SuperMarioBros.Blocks.BrickBlock")),
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-480),1,14,35,"SuperMarioBros.Blocks.BrickBlock")),
-                //(new ObjectsNode("SuperMarioBros.Blocks.HugePipeH",new Vector2(1460,-170),1,1,54)),
-                //(new ObjectsNode("SuperMarioBros.Blocks.HugePipeV",new Vector2(3514,-170),1,1,46)),
+                (new ObjectsNode("SuperMarioBros.Pipes.Pipe",new Vector2(3759, -170),1,1,0,Direction.bottom,"HighPipe",new Vector2(0,0))),
+                (new ObjectsNode("SuperMarioBros.Pipes.TeleportPipe",new Vector2(3705, -170),1,1,0,Direction.left,"TeleportHorizontalSmallPipe",new Vector2(6980, 400))),
             
                          
                 //test
@@ -36,12 +37,15 @@ namespace SuperMarioBros.Loading
                 (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(200,288),1,1,35,"SuperMarioBros.Items.Coin")),
                 (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(235,288),1,1,35,"null")),
                 (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(270,288),1,2,35,"SuperMarioBros.Items.Coin")),
-              // (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(400,410),1,2,340)),
                 (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(545,248),1,1,35,"SuperMarioBros.Items.Coin")),
                 (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(510,248),1,1,35,"null")),
                 (new ObjectsNode("SuperMarioBros.Blocks.HiddenBlock",new Vector2(580,248),1,1,35,"SuperMarioBros.Items.GreenMushroom")),
                 (new ObjectsNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(495,135),1,6,35)),
                 (new ObjectsNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(460,100),1,2,245)),
+                (new ObjectsNode("SuperMarioBros.Pipes.Pipe",new Vector2(400, 410),1,1,0,Direction.bottom,"SmallPipe",new Vector2(0,0))),
+                (new ObjectsNode("SuperMarioBros.Pipes.Pipe",new Vector2(1629, 410),1,1,0,Direction.bottom,"MiddlePipe",new Vector2(0,0))),
+                (new ObjectsNode("SuperMarioBros.Pipes.Pipe",new Vector2(1961, 410),1,1,0,Direction.bottom,"LargePipe",new Vector2(0,0))),
+                 (new ObjectsNode("SuperMarioBros.Pipes.TeleportPipe",new Vector2(2429, 410),1,1,0,Direction.top,"TeleportVerticalLargePipe",new Vector2(3050, -480))),
 
                 //base1
               (new ObjectsNode("SuperMarioBros.Blocks.RockBlock",new Vector2(0,445),1,84,35)),
@@ -116,7 +120,7 @@ namespace SuperMarioBros.Loading
              // (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(7647,410),1,1,72)),
               (new ObjectsNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(7719,410),3,8,35)),
               (new ObjectsNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(7999,410),4,8,35)),
-
+              (new ObjectsNode("SuperMarioBros.Pipes.Pipe",new Vector2(6958, 410),1,1,0,Direction.bottom,"SmallPipe",new Vector2(0,0))),
               (new ObjectsNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(8489,410),1,1,0)),
             };
 
@@ -275,17 +279,7 @@ namespace SuperMarioBros.Loading
 
                 }
             }
-            /* Teleport Pipe */          
-            Statics.Add(new TeleportPipe(new Vector2(2429, 410), new Vector2(3050, -480), "TeleportVerticalLargePipe",Direction.top));
-          //Statics.Add(new TeleportPipe(new Vector2(429, 410), new Vector2(3050, -480), "TeleportVerticalLargePipe", Direction.top));
-            Statics.Add(new TeleportPipe(new Vector2(3705, -170), new Vector2(6980, 400),"TeleportHorizontalSmallPipe", Direction.left));
-            /* Regular Pipe */
-            Statics.Add(new Pipe(new Vector2(3759, -170),"HighPipe")); 
-            Statics.Add(new Pipe(new Vector2(6958, 410), "SmallPipe"));
-            Statics.Add(new Pipe(new Vector2(400, 410), "SmallPipe"));
-            Statics.Add(new Pipe(new Vector2(1290, 410), "SmallPipe"));
-            Statics.Add(new Pipe(new Vector2(1629, 410), "MiddlePipe"));
-            Statics.Add(new Pipe(new Vector2(1961, 410), "LargePipe"));
+  
 
         }
 
@@ -297,7 +291,7 @@ namespace SuperMarioBros.Loading
             position.Y = node.Position.Y;
             for (int i = 0; i < node.Size; i++)
             {
-                Statics.Add(CreateInstance(t, position, node.ItemType, node.ItemCount));
+                Statics.Add(CreateInstance(t, position, node));
                 position.X += node.Width;
             }
 
@@ -311,7 +305,7 @@ namespace SuperMarioBros.Loading
             position.Y = node.Position.Y;
             for (int i = 0; i < node.Size; i++)
             {
-                Statics.Add(CreateInstance(t, position, node.ItemType, node.ItemCount));
+                Statics.Add(CreateInstance(t, position, node));
                 position.Y -= node.Width;
             }
         }
@@ -328,7 +322,7 @@ namespace SuperMarioBros.Loading
                 {
                     position.X = node.Position.X + i * node.Width;
                     position.Y = node.Position.Y - j * node.Width;
-                    Statics.Add(CreateInstance(t, position, node.ItemType, node.ItemCount));
+                    Statics.Add(CreateInstance(t, position, node));
                     position.Y -= node.Width;
                 }
             }
@@ -346,34 +340,41 @@ namespace SuperMarioBros.Loading
                 {
                     position.X = node.Position.X + i * node.Width;
                     position.Y = node.Position.Y - j * node.Width;
-                    Statics.Add(CreateInstance(t, position, node.ItemType, node.ItemCount));
+                    Statics.Add(CreateInstance(t, position, node));
                     position.Y -= node.Width;
                 }
             }
         }
 
-        private static IStatic CreateInstance(Type t, Vector2 position, string itemType, int itemCount)
+        private static IStatic CreateInstance(Type t, Vector2 position, ObjectsNode node)
         {
-            if (itemCount == 0)
+            if(node.Direction != Direction.none)
             {
-                if (itemType.Equals("noType"))
+               if(node.Direction == Direction.bottom)
+                    return (IStatic)(Activator.CreateInstance(t, position,node.PipeType));
+               else
+                    return (IStatic)(Activator.CreateInstance(t, position,node.TransferedLocation,node.PipeType,node.Direction));
+            }
+            if (node.ItemCount == 0)
+            {
+                if (node.ItemType.Equals("noType"))
                 {
                     return (IStatic)(Activator.CreateInstance(t, position));
                 }
                 else
                 {
-                    return (IStatic)(Activator.CreateInstance(t, position, Type.GetType(itemType)));
+                    return (IStatic)(Activator.CreateInstance(t, position, Type.GetType(node.ItemType)));
                 }
 
             }
-            else if (itemType.Equals("noType"))
+            else if (node.ItemType.Equals("noType"))
             {
-                return (IStatic)(Activator.CreateInstance(t, position, itemCount));
+                return (IStatic)(Activator.CreateInstance(t, position, node.ItemCount));
             }
             else
             {
 
-                return (IStatic)(Activator.CreateInstance(t, position, Type.GetType(itemType), itemCount));
+                return (IStatic)(Activator.CreateInstance(t, position, Type.GetType(node.ItemType), node.ItemCount));
             }
 
         }

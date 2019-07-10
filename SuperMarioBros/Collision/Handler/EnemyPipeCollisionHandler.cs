@@ -1,5 +1,5 @@
 ﻿using SuperMarioBros.Blocks;
-using SuperMarioBros.Object.Pipes;
+using SuperMarioBros.Pipes;
 using SuperMarioBros.Objects.Enemy;
 
 namespace SuperMarioBros.Collisions

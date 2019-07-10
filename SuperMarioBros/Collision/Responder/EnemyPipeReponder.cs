@@ -1,4 +1,4 @@
-﻿using SuperMarioBros.Object.Pipes;
+﻿using SuperMarioBros.Pipes;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Enemy;
 using System.Collections.Generic;

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Collisions;
-using SuperMarioBros.Object.Pipes;
+using SuperMarioBros.Pipes;
 using SuperMarioBros.Objects;
 using System.Collections.Generic;
 

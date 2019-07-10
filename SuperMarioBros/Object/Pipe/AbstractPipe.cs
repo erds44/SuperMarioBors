@@ -5,7 +5,7 @@ using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
 
-namespace SuperMarioBros.Object.Pipes
+namespace SuperMarioBros.Pipes
 {
     public abstract class AbstractPipe : IPipe
     {

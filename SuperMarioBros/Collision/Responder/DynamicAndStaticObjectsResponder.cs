@@ -1,7 +1,7 @@
 ﻿using SuperMarioBros.Blocks;
 using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
-using SuperMarioBros.Object.Pipes;
+using SuperMarioBros.Pipes;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Enemy;
 using System;
