@@ -10,10 +10,11 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
     public class DamageState : IMarioTransitionState
     {
         private readonly IMario mario;
-        private readonly Collection<Color> growColor = new Collection<Color> { Color.White, Color.White * 0.5f }; // needed to be fixed
-        private readonly Collection<Color> normalColor = new Collection<Color> { Color.White };
-        private double transitionTimer = 2d;
+        private readonly Collection<Color> growColor = new Collection<Color> { Color.White, Color.White * 0.5f };       
+        private float transitionTimer = 2f;
         private readonly double nonMovementTimer = .5d;
+        private int colorIndex = 0;
+        private float delay = 0.1f;
         public DamageState(IMario mario)
         {
             this.mario = mario;
@@ -22,9 +23,7 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
         }
         public void Draw(SpriteBatch spriteBatch)
         {
-            mario.Sprite.SetColor(growColor);
-            mario.Sprite.Draw(spriteBatch, mario.Position);
-            mario.Sprite.SetColor(normalColor);
+            mario.Sprite.Draw(spriteBatch, mario.Position,growColor[colorIndex]);
         }
 
         public void TakeRedMushroom() // Not very likely
@@ -45,8 +44,15 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
 
         public void Update(GameTime gameTime)
         {
-            transitionTimer -= gameTime.ElapsedGameTime.TotalSeconds;
+            transitionTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            delay -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (transitionTimer <= 0) mario.TransitionState = new NormalState(mario);
+            if (delay <= 0)
+            {
+                delay = 0.1f;
+                colorIndex++;
+                colorIndex = colorIndex % growColor.Count;
+            }
         }
 
         public void OnFireFlower() // not likely to happen
