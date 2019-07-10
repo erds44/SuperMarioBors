@@ -200,6 +200,7 @@ namespace SuperMarioBros.Marios
 
         public void Teleport(Vector2 teleportPosition, Direction direction)
         {
+            ChangeToTeleportStateEvent?.Invoke();
             isTeleporting = true;
             if (teleportDictionary.TryGetValue(direction, out var tuple))
             {
@@ -210,7 +211,7 @@ namespace SuperMarioBros.Marios
                 this.teleportPosition = expectedPosition;
             else
                 this.teleportPosition = teleportPosition;
-            ChangeToTeleportStateEvent?.Invoke();
+            
         }
 
         public void PowerPressed()

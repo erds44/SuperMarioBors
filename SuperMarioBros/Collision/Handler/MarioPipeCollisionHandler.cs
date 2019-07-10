@@ -33,26 +33,32 @@ namespace SuperMarioBros.Collisions
 
         public static void MarioVsTeleportPipeLeftCollision(IMario mario, IPipe pipe, Direction direction)
         {
-            bool isMoving = mario.MovementState is RightMoving;
-            if (direction == pipe.TeleportDirection && isMoving && MarioInHorizontalSidePipeRange(mario,pipe))
+            if (!(pipe.Teleported))
             {
-                pipe.Teleported = true;
-                mario.Teleport(pipe.TransferedLocation, ReverseDirection(direction));
+                bool isMoving = mario.MovementState is RightMoving;
+                if (direction == pipe.TeleportDirection && isMoving && MarioInHorizontalSidePipeRange(mario, pipe))
+                {
+                    pipe.Teleported = true;
+                    mario.Teleport(pipe.TransferedLocation, ReverseDirection(direction));
+                }
+                else
+                    MoverHorizontallyBlock(mario, pipe, direction);
             }
-            else
-                MoverHorizontallyBlock(mario, pipe, direction);
         }
 
         public static void MarioVsTeleportPipeRightCollision(IMario mario, IPipe pipe, Direction direction)
         {
-            bool isMoving = mario.MovementState is LeftMoving;
-            if (direction == pipe.TeleportDirection && isMoving && MarioInHorizontalSidePipeRange(mario, pipe))
+            if (!(pipe.Teleported))
             {
-                pipe.Teleported = true;
-                mario.Teleport(pipe.TransferedLocation, ReverseDirection(direction));
+                bool isMoving = mario.MovementState is LeftMoving;
+                if (direction == pipe.TeleportDirection && isMoving && MarioInHorizontalSidePipeRange(mario, pipe))
+                {
+                    pipe.Teleported = true;
+                    mario.Teleport(pipe.TransferedLocation, ReverseDirection(direction));
+                }
+                else
+                    MoverHorizontallyBlock(mario, pipe, direction);
             }
-            else
-                MoverHorizontallyBlock(mario, pipe, direction);
         }
 
         public static void MarioInPipe(IMario mario, IPipe pipe, Direction direction)

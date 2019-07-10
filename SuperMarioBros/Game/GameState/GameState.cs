@@ -17,7 +17,7 @@ namespace SuperMarioBros.GameStates
             this.game = game;
             if (game.ObjectsManager is null)
                 game.InitializeGame();
-
+            game.EnableController();
             if (MediaPlayer.State == MediaState.Paused) MediaPlayer.Resume();
             else if (game.Player.Position.Y > 0) { MediaPlayer.Play(AudioFactory.Instance.CreateSong("overworld")); }
             else { MediaPlayer.Play(AudioFactory.Instance.CreateSong("underworld")); backGroundColor = Color.Black; }

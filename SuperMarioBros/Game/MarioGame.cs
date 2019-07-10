@@ -176,5 +176,13 @@ namespace SuperMarioBros
         {
             IskeyboardController = true;
         }
+        public void DisableController()
+        {
+            Controller.IsPause = true;
+        }
+        public void EnableController()
+        {
+            Controller.IsPause = false;
+        }
     }
 }

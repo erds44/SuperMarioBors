@@ -11,7 +11,7 @@ namespace SuperMarioBros.Controllers
         private readonly Dictionary<Keys, ICommand> keyUpDictionary = new Dictionary<Keys, ICommand>();
         private readonly List<Keys> checkKeyUplist = new List<Keys>();
         private readonly List<Keys> nonHoldableKeys = new List<Keys>();
-        public bool IsPause { get; set; }
+        public bool IsPause { get; set; } = false;
         public KeyboardController(params (Keys key, ICommand KeyDownCommand, ICommand KeyUpCommand , bool CanBeHeld)[] args)
         {
             foreach (var (key, downCommand, upCommand, canBeHeld) in args)
@@ -25,23 +25,26 @@ namespace SuperMarioBros.Controllers
 
         public void Update(GameTime gameTime)
         {
-            Keys[] currentlyPressedKeys = Keyboard.GetState().GetPressedKeys();
-            foreach (Keys keyUp in keyUpDictionary.Keys)
+            if (!IsPause)
             {
-                if (checkKeyUplist.Contains(keyUp) && Keyboard.GetState().IsKeyUp(keyUp))
+                Keys[] currentlyPressedKeys = Keyboard.GetState().GetPressedKeys();
+                foreach (Keys keyUp in keyUpDictionary.Keys)
                 {
-                    keyUpDictionary[keyUp].Execute();
-                    checkKeyUplist.Remove(keyUp);
-                }
+                    if (checkKeyUplist.Contains(keyUp) && Keyboard.GetState().IsKeyUp(keyUp))
+                    {
+                        keyUpDictionary[keyUp].Execute();
+                        checkKeyUplist.Remove(keyUp);
+                    }
 
-            }
-            foreach (Keys keyDown in currentlyPressedKeys)
-            {
-                if (!nonHoldableKeys.Contains(keyDown) || !checkKeyUplist.Contains(keyDown))
-                    if (keyDownDictionary.ContainsKey(keyDown))
-                        keyDownDictionary[keyDown].Execute();                   
-                if (!checkKeyUplist.Contains(keyDown))
-                    checkKeyUplist.Add(keyDown);
+                }
+                foreach (Keys keyDown in currentlyPressedKeys)
+                {
+                    if (!nonHoldableKeys.Contains(keyDown) || !checkKeyUplist.Contains(keyDown))
+                        if (keyDownDictionary.ContainsKey(keyDown))
+                            keyDownDictionary[keyDown].Execute();
+                    if (!checkKeyUplist.Contains(keyDown))
+                        checkKeyUplist.Add(keyDown);
+                }
             }
         }
     }
