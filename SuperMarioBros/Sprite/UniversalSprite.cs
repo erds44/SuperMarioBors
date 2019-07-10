@@ -16,9 +16,11 @@ namespace SuperMarioBros.Sprites
         private Collection<Color> SpriteColor;
         private int colorIndex;
         private float layerDepth;
+        private int delay;
         public UniversalSprite(Texture2D texture, int frame,int spriteDelay)
         {
-            delayTime = spriteDelay/(float)60;
+            delay = 0;
+            delayTime = spriteDelay/60f;
             colorIndex = 0;
             currentFrame = 0;
             layerDepth = 0.5f;
@@ -43,9 +45,9 @@ namespace SuperMarioBros.Sprites
         public void Update(GameTime gameTime)
         {
             dt += (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (dt>delayTime)                              
+            //if (dt>delayTime)  
+            if(delay %5 ==0)
             {
-                colorIndex++;
                 
                 currentFrame++;
                 if (currentFrame == totalFrame)
@@ -63,6 +65,9 @@ namespace SuperMarioBros.Sprites
             /* This condition is used for alternating colors for star mario
             *  aim to slow color changing rate 
             */
+            delay++;
+            if(delay%5==0)
+                colorIndex++;
             if (colorIndex % SpriteColor.Count == 0 || colorIndex > SpriteColor.Count)
                 colorIndex = 0;
             Color spriteColor = SpriteColor[colorIndex];
