@@ -43,6 +43,7 @@ namespace SuperMarioBros.Loading
                 (new ObjectsNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(495,135),1,6,35)),
                 (new ObjectsNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(460,100),1,2,245)),
                 (new ObjectsNode("SuperMarioBros.Pipes.Pipe",new Vector2(400, 410),1,1,0,Direction.bottom,"SmallPipe",new Vector2(0,0))),
+                 (new ObjectsNode("SuperMarioBros.Pipes.Pipe",new Vector2(1290, 410),1,1,0,Direction.bottom,"SmallPipe",new Vector2(0,0))),
                 (new ObjectsNode("SuperMarioBros.Pipes.Pipe",new Vector2(1629, 410),1,1,0,Direction.bottom,"MiddlePipe",new Vector2(0,0))),
                 (new ObjectsNode("SuperMarioBros.Pipes.Pipe",new Vector2(1961, 410),1,1,0,Direction.bottom,"LargePipe",new Vector2(0,0))),
                  (new ObjectsNode("SuperMarioBros.Pipes.TeleportPipe",new Vector2(2429, 410),1,1,0,Direction.top,"TeleportVerticalLargePipe",new Vector2(3050, -480))),
