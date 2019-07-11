@@ -21,7 +21,7 @@ namespace SuperMarioBros.HeadsUps
         private readonly float livesOffset = 666;
         private bool clearingScores = false;
         private readonly MarioGame game;
-        public float Timer { get; private set; } = 4000;
+        public float Timer { get; private set; } = 400;
         private int score = 0;
         private int coin = 0;
         public int Lives { get; set; }
@@ -33,7 +33,7 @@ namespace SuperMarioBros.HeadsUps
         }
         public void Update(GameTime gameTime)
         {
-            Timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            Timer -= 2 * (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (clearingScores)
             {
                 if (Timer > 0)
@@ -103,7 +103,7 @@ namespace SuperMarioBros.HeadsUps
 
         public void ResetTimer()
         {
-            Timer = 100; //During debug time, we wants to test the hurry up effect.
+            Timer = 400;
         }
         public void ResetAll()
         {
