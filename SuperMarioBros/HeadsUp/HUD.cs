@@ -10,7 +10,7 @@ using System;
 
 namespace SuperMarioBros.HeadsUps
 {
-    public class HeadsUp
+    public class HUD
     {
         public event Action TimeOverEvent;
         private readonly SpriteFont spriteFont;
@@ -25,7 +25,7 @@ namespace SuperMarioBros.HeadsUps
         private int score = 0;
         private int coin = 0;
         public int Lives { get; set; }
-        public HeadsUp(MarioGame game)
+        public HUD(MarioGame game)
         {
             this.game = game;
             spriteFont = game.Content.Load<SpriteFont>("Font/MarioFont");

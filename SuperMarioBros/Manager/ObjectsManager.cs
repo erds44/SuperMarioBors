@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SuperMarioBros.HeadsUps;
 using SuperMarioBros.Loading;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
@@ -88,10 +87,6 @@ namespace SuperMarioBros.Managers
                 obj.Draw(spriteBatch);
         }
 
-        //public void LevelLoading()
-        //{
-        //    ObjectLoader.LevelLoading();
-        //}
         private void DestroyFromManager(IDynamic gameObject)
         {
             DynamicObjects.Remove(gameObject);
@@ -146,10 +141,6 @@ namespace SuperMarioBros.Managers
             IObject obj = (IObject)Activator.CreateInstance(type, position);
             obj.ObjState = ObjectState.NonCollidable;
             NonCollidableObjects.Add(obj);
-        }
-        public IMario MarioObject()
-        {
-            return Mario; /* for controller bind mario as receiver */
         }
         public void SetMario(IMario mario)
         {

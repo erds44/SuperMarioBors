@@ -575,13 +575,14 @@
     <Compile Include="Game\GameState\IGameState.cs" />
     <Compile Include="Game\GameState\MenuState.cs" />
     <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="HeadsUp\HeadsUp.cs" />
+    <Compile Include="HeadsUp\HUD.cs" />
     <Compile Include="Loading\AudioNode.cs" />
     <Compile Include="Loading\DynamicLoader.cs" />
     <Compile Include="Loading\ObjectsLoader.cs" />
     <Compile Include="Loading\AudioLoader.cs" />
     <Compile Include="Loading\SpritesLoader.cs" />
     <Compile Include="Loading\SpritesNode.cs" />
+    <Compile Include="Manager\StatsManager.cs" />
     <Compile Include="Object\Block\BlueBrickBlock.cs" />
     <Compile Include="Object\Block\BlueRockBlock.cs" />
     <Compile Include="Object\Item\BigCoin.cs" />
@@ -766,7 +767,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Stats\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets" Condition="Exists('..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -4,9 +4,6 @@ using Microsoft.Xna.Framework.Media;
 using SuperMarioBros.Loading;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SuperMarioBros.AudioFactories
 {
@@ -26,7 +23,7 @@ namespace SuperMarioBros.AudioFactories
         }
         private static AudioFactory instance;
         private AudioFactory() { }            
-        public void Initialize(ContentManager inputContent, string soundPath, string musicPath, string hurryPath)
+        public void Load(ContentManager inputContent, string soundPath, string musicPath, string hurryPath)
         {
             content = inputContent;
             var audioLoader = new AudioLoader(soundPath, musicPath, hurryPath);

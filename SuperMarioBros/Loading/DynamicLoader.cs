@@ -16,7 +16,7 @@ namespace SuperMarioBros.Loading
         private readonly List<(float, IObject)> nonCollidableObjects = new List<(float, IObject)>();
         private readonly ObjectsManager objectsManager;
         private readonly ObjectLoader objectLoader;
-        private readonly HeadsUp headsUp;
+        private readonly HUD headsUp;
         private readonly MarioGame game;
         public DynamicLoader(MarioGame game , ObjectLoader objectLoader, ObjectsManager objectsManager) {
             this.objectsManager = objectsManager;

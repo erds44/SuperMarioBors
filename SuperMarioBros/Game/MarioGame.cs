@@ -13,7 +13,6 @@ using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Commands;
 using Buttons = Microsoft.Xna.Framework.Input.Buttons;
-using System;
 
 namespace SuperMarioBros
 {
@@ -29,7 +28,7 @@ namespace SuperMarioBros
         private SpriteBatch spriteBatch;
         public CollisionManager CollisionManager;
         public IMario Player => ObjectsManager.Mario;
-        public HeadsUp HeadsUps { get; set; }
+        public HUD HeadsUps { get; set; }
         public IGameState State { get; set; }
         public bool IskeyboardController { get; private set; } = true;
         public MarioGame()
@@ -44,13 +43,21 @@ namespace SuperMarioBros
             Content.RootDirectory = "Content";
         }
 
+        protected override void LoadContent()
+        {
+            //SpriteFactory.Load(Content);
+            AudioFactory.Instance.Load(Content, "Content/sounds.xml", "Content/musics.xml", "Content/hurry.xml");
+            base.LoadContent();
+        }
+
+
+
         protected override void Initialize()
         {
             IsMouseVisible = true;
-            SpriteFactory.Initialize(Content);
+            SpriteFactory.Load(Content); // make this mehtod into loadContent
             Camera = new Camera(WindowWidth);
-            HeadsUps = new HeadsUp(this);
-            AudioFactory.Instance.Initialize(Content, "Content/sounds.xml", "Content/musics.xml", "Content/hurry.xml");
+            HeadsUps = new HUD(this);
             ObjectsManager = new ObjectsManager(new ObjectLoader(), this);
             ObjectsManager.Initialize();
             ObjectFactory.Instance.Initialize(this);
