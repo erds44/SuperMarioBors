@@ -13,7 +13,7 @@ namespace SuperMarioBros.Stats
         private int songUpdateDelay = 0;
         public TimeStats()
         {
-            initalTime = 100;
+            initalTime = 400;
             currentTime = initalTime;
         }
         public void Reset()
