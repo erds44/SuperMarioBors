@@ -13,6 +13,7 @@ using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Commands;
 using Buttons = Microsoft.Xna.Framework.Input.Buttons;
+using SuperMarioBros.Stats;
 
 namespace SuperMarioBros
 {
@@ -21,6 +22,8 @@ namespace SuperMarioBros
     {
         public readonly int WindowWidth;
         public readonly int WindowHeight;
+        public float CameraLeftBound { get => Camera.LeftBound; }
+        public float CameraUpperBound { get => Camera.UpperBound; }
         public ObjectsManager ObjectsManager { get; set; }
         public Camera Camera { get; private set; }
 
@@ -28,9 +31,9 @@ namespace SuperMarioBros
         private SpriteBatch spriteBatch;
         public CollisionManager CollisionManager;
         public IMario Player => ObjectsManager.Mario;
-        public HUD HeadsUps { get; set; }
         public IGameState State { get; set; }
         public bool IskeyboardController { get; private set; } = true;
+        public HUD Hud { get; private set; }
         public MarioGame()
         {
             GraphicsDeviceManager graphics = new GraphicsDeviceManager(this);
@@ -51,19 +54,19 @@ namespace SuperMarioBros
         }
 
 
-
         protected override void Initialize()
         {
             IsMouseVisible = true;
             SpriteFactory.Load(Content); // make this mehtod into loadContent
             Camera = new Camera(WindowWidth);
-            HeadsUps = new HUD(this);
+            StatsManager.Instance.Initialize();
+            Hud = new HUD(this);
             ObjectsManager = new ObjectsManager(new ObjectLoader(), this);
             ObjectsManager.Initialize();
             ObjectFactory.Instance.Initialize(this);
-            ObjectFactory.Instance.ItemCollectedEvent += HeadsUps.CoinCollected;
             CollisionManager = new CollisionManager(this);
             State = new MenuState(this);
+            Camera.SetFocus(Player);
             EventBinding();
             base.Initialize();
         }
@@ -82,10 +85,6 @@ namespace SuperMarioBros
         {
             State = new PlayerStatusState(this);
         }
-        public void ChangeToGameOvertState()
-        {
-            State = new GameOverState(this);
-        }
         public void ChangeToTeleportingState()
         {
             State = new TeleportingState(this);
@@ -96,7 +95,7 @@ namespace SuperMarioBros
         }
         public void ChangeToGameState()
         {
-            State = new GameState(this);
+            State = new PlayingState(this);
         }
 
         public void ResetGame()
@@ -108,26 +107,18 @@ namespace SuperMarioBros
             CollisionManager = new CollisionManager(this);
             if (Controller is KeyboardController) InitializeKeyBoard();
             else InitializeGamePad();
+            StatsManager.Instance.ResetTimer();
             EventBinding();
         }
 
         public void EventBinding()
         {
-            ObjectsManager.Mario.DestoryEvent += HeadsUps.OnMarioDeath;
-            ObjectsManager.Mario.DestoryEvent += ResetGame;
-            ObjectsManager.Mario.SlidingEvent += HeadsUps.AddFlagScore;
-            ObjectsManager.Mario.DestoryEvent += HeadsUps.ResetTimer;
-            ObjectsManager.Mario.PowerUpEvent += HeadsUps.PowerUpCollected;
-            ObjectsManager.Mario.ExtraLifeEvent += HeadsUps.ExtraLife;
-            ObjectsManager.Mario.ClearingScoresEvent += HeadsUps.ClearingScores;
             ObjectsManager.Mario.FocusMarioEvent += SetMarioFocus;
             ObjectsManager.Mario.ChangeToGameStateEvent += ChangeToGameState;
             ObjectsManager.Mario.ChangeToTeleportStateEvent += ChangeToTeleportingState;
             ObjectsManager.Mario.IsFlagPoleStateEvent += IsFlagPoleState;
             ObjectsManager.Mario.SetCameraFocus += SetCameraFocus;
             ObjectsManager.Mario.ChangeToFlagPoleStateEvent += ChangeToFlagPoleState;
-            Player.DeadStateEvent += Camera.FixCamera;
-            HeadsUps.TimeOverEvent += ObjectsManager.Mario.TimeOver;
         }
 
         public void StartOver()
@@ -175,7 +166,7 @@ namespace SuperMarioBros
         }
         public void EnableController()
         {
-            Controller.EnableController();
+            Controller?.EnableController();
         }
         public void Pause()
         {

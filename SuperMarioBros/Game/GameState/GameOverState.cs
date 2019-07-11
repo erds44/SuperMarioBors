@@ -5,7 +5,7 @@ using SuperMarioBros.AudioFactories;
 
 namespace SuperMarioBros.GameStates
 {
-    public class GameOverState : IGameState
+    public class GameOverState : GameState
     {
         private GraphicsDevice graphicsDevice;
         private readonly SpriteFont spriteFont;
@@ -19,7 +19,7 @@ namespace SuperMarioBros.GameStates
             MediaPlayer.Stop();
             MediaPlayer.Play(AudioFactory.Instance.CreateSong("gameover"));
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
             graphicsDevice.Clear(Color.Black);
@@ -27,17 +27,12 @@ namespace SuperMarioBros.GameStates
             spriteBatch.End();
         }
 
-        public void Pause()
-        {
-            //Do Nothing
-        }
-
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
             if (timer <= 0)
             {
-                game.HeadsUps.ResetAll();
+                //game.HeadsUps.ResetAll();
                 game.State = new MenuState(game);
             }
         }

@@ -57,9 +57,5 @@ namespace SuperMarioBros.Cameras
             Transform = position * offset;
             UpperBound = focus.Y ;
         }
-        public void FixCamera()
-        {
-            focus = null;
-        }
     }
 }

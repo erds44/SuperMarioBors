@@ -4,6 +4,7 @@ using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.SpriteFactories;
+using SuperMarioBros.Stats;
 
 namespace SuperMarioBros.Marios.MarioTypeStates
 {
@@ -17,6 +18,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
             mario.MovementState = new TerminateMovementState();
             mario.Physics.Velocity = DeadVelocity;
             MediaPlayer.Play(AudioFactory.Instance.CreateSong("youredead"));
+            StatsManager.Instance.LoseLife();
         }
 
         public void TakeDamage() { }

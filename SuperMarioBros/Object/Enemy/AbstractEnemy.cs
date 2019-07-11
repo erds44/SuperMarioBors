@@ -29,7 +29,7 @@ namespace SuperMarioBros.Objects.Enemy
             Physics.ApplyGravity();
             IsFlipped = false;
             Score = 100;
-            EnemyKillStreakCounter = 1;
+            EnemyKillStreakCounter = 0;
         }
         public virtual void Draw(SpriteBatch spriteBatch)
         {
@@ -56,26 +56,22 @@ namespace SuperMarioBros.Objects.Enemy
         {
             MovementState.ChangeDirection();
         }
-        public virtual void Stomped(int count)
+        public virtual void Stomped()
         {
-            StompedEvent?.Invoke(Position,  Score, count);
         }
 
-        public virtual void Flipped(int count)
+        public virtual void Flipped()
         {
             IsFlipped = true;
-            StompedEvent?.Invoke(Position, Score, count);
         }
 
         public void MoveLeft()
         {
-            StompedEvent?.Invoke(Position, Score, 1);
             MovementState.MoveLeft();
         }
 
         public void MoveRight()
         {
-            StompedEvent?.Invoke(Position, Score, 1);
             MovementState.MoveRight();
         }
     }

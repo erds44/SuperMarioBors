@@ -7,5 +7,7 @@ namespace SuperMarioBros.GameStates
     {
         void Draw(SpriteBatch spriteBatch);
         void Pause();
+        void Die();
+        void TimeUp();
     }
 }

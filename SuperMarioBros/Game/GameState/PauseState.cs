@@ -9,7 +9,7 @@ using Buttons = Microsoft.Xna.Framework.Input.Buttons;
 
 namespace SuperMarioBros.GameStates
 {
-    public class PauseState : IGameState
+    public class PauseState : GameState
     {
         private readonly GraphicsDevice graphicsDevice;
         private readonly MarioGame game;
@@ -24,21 +24,21 @@ namespace SuperMarioBros.GameStates
             MediaPlayer.Pause();
             AudioFactory.Instance.CreateSound("pause").Play();
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: game.Camera.Transform);
             graphicsDevice.Clear(Color.CornflowerBlue);
             game.ObjectsManager.Draw(spriteBatch);
-            game.HeadsUps.Draw(spriteBatch, game.Camera.LeftBound, game.Camera.UpperBound);
+            game.Hud.Draw(spriteBatch, game.CameraLeftBound, game.CameraUpperBound);
             spriteBatch.End();
         }
 
-        public void Pause()
+        public override void Pause()
         {
-            game.State = new GameState(game);
+            game.State = new PlayingState(game);
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             game.Controller.Update(gameTime);
         }

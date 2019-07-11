@@ -12,7 +12,7 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
     {
         private readonly IMario mario;
         private readonly Collection<Color> starColor = new Collection<Color> { Color.Green, Color.Black, Color.White };
-        private float transitionTimer = 15f;
+        private float transitionTimer = 1500f;
         private readonly Song lastSong;
         private int colorIndex = 0;
         private float delay = 0.1f;

@@ -11,11 +11,6 @@ namespace SuperMarioBros.Collisions
 {
     public class DynamicAndStaticObjectsHandler : ICollisionResponder
     {
-        private readonly MarioGame game;
-        public DynamicAndStaticObjectsHandler(MarioGame game)
-        {
-            this.game = game;
-        }
         public void HandleCollision(IObject mover, IObject target, Direction direction)
         {
             if (collisionDictionary.TryGetValue((((IDynamic)mover).GetType().GetInterfaces()[0], ((IStatic)target).GetType().GetInterfaces()[0]), out var responder))

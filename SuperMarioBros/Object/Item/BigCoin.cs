@@ -17,10 +17,7 @@ namespace SuperMarioBros.Items
             Physics = new Physics(initialVelocity, itemGravity, itemWeight);
             ObjState = ObjectState.Normal;
         }
-        public override void Destroy()
-        {
-            //Do nothing.
-        }
+
     }
 
 }

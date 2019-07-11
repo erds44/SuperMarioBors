@@ -2,43 +2,44 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 using SuperMarioBros.AudioFactories;
+using SuperMarioBros.Stats;
 
 namespace SuperMarioBros.GameStates
 {
-    public class FlagPoleState : IGameState
+    public class FlagPoleState : GameState
     {
-        public bool UpdateHeadsUp { get; set; }
         private readonly MarioGame game;
         private readonly GraphicsDevice graphicsDevice;
+        private bool isClearingScore = false;
         public FlagPoleState(MarioGame game)
         {
             graphicsDevice = game.GraphicsDevice;
-            UpdateHeadsUp = false;
             this.game = game;
+            game.Player.ClearingScoresEvent += ClearScore;
             MediaPlayer.Stop();
             AudioFactory.Instance.CreateSound("flagpole").Play();
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: game.Camera.Transform);
             graphicsDevice.Clear(Color.CornflowerBlue);
             game.ObjectsManager.Draw(spriteBatch);
-            game.HeadsUps.Draw(spriteBatch, game.Camera.LeftBound, game.Camera.UpperBound);
+            game.Hud.Draw(spriteBatch, game.CameraLeftBound, game.CameraUpperBound);
             spriteBatch.End();
         }
 
-        public void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             game.Camera.Update();
             game.ObjectsManager.Update(gameTime);
             game.CollisionManager.Update();
-            if(UpdateHeadsUp)
-                game.HeadsUps.Update(gameTime);
+            if(isClearingScore) StatsManager.Instance.CollectRemainingTime();
+            if(StatsManager.Instance.Time == 0) isClearingScore = false;
         }
-
-        public void Pause()
+        
+        private void ClearScore()
         {
-            //Do Nothing
+            isClearingScore = true;
         }
     }
 }

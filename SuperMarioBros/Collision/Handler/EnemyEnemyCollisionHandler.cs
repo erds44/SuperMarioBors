@@ -1,4 +1,6 @@
-﻿using SuperMarioBros.Objects.Enemy;
+﻿using SuperMarioBros.AudioFactories;
+using SuperMarioBros.Objects.Enemy;
+using SuperMarioBros.Stats;
 
 namespace SuperMarioBros.Collisions
 {
@@ -6,10 +8,12 @@ namespace SuperMarioBros.Collisions
     {
         public static void MoverStompsTarget(IEnemy mover, IEnemy koopa, Direction direction)
         {
-            koopa.Stomped(mover.EnemyKillStreakCounter);
-            koopa.EnemyKillStreakCounter++;
+            koopa.Stomped();
+            mover.EnemyKillStreakCounter++;
             Bump(mover);
             ResolveOverlap(mover, koopa, direction);
+            StatsManager.Instance.Enemykilled(koopa.Position, koopa.Score, mover.EnemyKillStreakCounter);
+            AudioFactory.Instance.CreateSound("stomp").Play();
         }
 
         public static void EnemyVsShelledIdleKoopaTopCollision(IEnemy mover, IEnemy target, Direction direction)
@@ -22,6 +26,8 @@ namespace SuperMarioBros.Collisions
                     else
                         koopa.MoveLeft();
                     koopa.DealDemage = true;
+                mover.EnemyKillStreakCounter++;
+                StatsManager.Instance.Enemykilled(koopa.Position, koopa.Score, mover.EnemyKillStreakCounter);
             }
             ResolveOverlap(mover, koopa, direction);
         }
@@ -31,9 +37,11 @@ namespace SuperMarioBros.Collisions
             Koopa koopa = (Koopa)target;
             if (!koopa.DealDemage)
             {
-                koopa.Flipped(mover.EnemyKillStreakCounter);
+                koopa.Flipped();
                 koopa.EnemyKillStreakCounter++;
                 koopa.ObjState = ObjectState.NonCollidable;
+                StatsManager.Instance.Enemykilled(koopa.Position, koopa.Score, mover.EnemyKillStreakCounter);
+                AudioFactory.Instance.CreateSound("stomp").Play();
             }
             ResolveOverlap(mover, koopa, direction);
         }
@@ -53,17 +61,21 @@ namespace SuperMarioBros.Collisions
         public static void MoverFlipped(IEnemy mover, IEnemy target, Direction direction)
         {
             Koopa koopa = (Koopa)target;
-            mover.Flipped(koopa.EnemyKillStreakCounter);
+            mover.Flipped();
             koopa.EnemyKillStreakCounter++;
             mover.ObjState = ObjectState.NonCollidable;
+            StatsManager.Instance.Enemykilled(mover.Position, mover.Score, koopa.EnemyKillStreakCounter);
+            AudioFactory.Instance.CreateSound("stomp").Play();
         }
 
         public static void TargetStompsMover(IEnemy mover, IEnemy target, Direction direction)
         {
-            mover.Stomped(target.EnemyKillStreakCounter);
+            mover.Stomped();
             target.EnemyKillStreakCounter++;
             Bump(target);
             ResolveOverlap(mover, target, direction);
+            StatsManager.Instance.Enemykilled(mover.Position, mover.Score, target.EnemyKillStreakCounter);
+            AudioFactory.Instance.CreateSound("stomp").Play();
         }
     }
 }

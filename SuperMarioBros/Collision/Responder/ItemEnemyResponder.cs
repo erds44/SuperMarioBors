@@ -2,6 +2,7 @@
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Enemy;
+using SuperMarioBros.Stats;
 using System;
 using System.Collections.Generic;
 
@@ -24,8 +25,9 @@ namespace SuperMarioBros.Collisions
         private static void FireBallVSEnemy(IItem fireBall, IEnemy enemy)
         {
             ((FireBall)fireBall).FireExplosion();
-            enemy.Flipped(1);
+            enemy.Flipped();
             enemy.ObjState = ObjectState.NonCollidable;
+            StatsManager.Instance.Enemykilled(enemy.Position, enemy.Score);
         }
     }
 }

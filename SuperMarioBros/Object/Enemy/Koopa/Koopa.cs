@@ -16,13 +16,13 @@ namespace SuperMarioBros.Objects.Enemy
             if (initialVelocity.X <= 0) MovementState = new KoopaLeftMovingState(this);
             else MovementState = new KoopaRightMovingState(this);
         }
-        public override void Stomped(int count)
-        {
+        public override void Stomped()
+        { 
             IsStomped = true;
             DealDemage = false;
             HealthState.Stomped();
             MovementState.Stomped();
-            base.Stomped(count);
+            base.Stomped();
         }
         public override void Update(GameTime gameTime)
         {

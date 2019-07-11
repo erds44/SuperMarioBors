@@ -9,7 +9,6 @@ namespace SuperMarioBros.Collisions
 {
     public class MarioEnemyResponder : MarioEnemyCollisionHandler, ICollisionResponder
     {
-
         private delegate void MarioEnemyHandler(IMario mario, IEnemy enemy);
 
         public void HandleCollision(IObject mover, IObject target, Direction direction)

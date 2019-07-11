@@ -1,8 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Items;
 using SuperMarioBros.Managers;
 using SuperMarioBros.Marios;
+using SuperMarioBros.Stats;
 using System;
 using System.Collections.Generic;
 
@@ -10,7 +12,6 @@ namespace SuperMarioBros.Objects
 {
     public class ObjectFactory
     {
-        public event Action<Vector2> ItemCollectedEvent;
         private static readonly ObjectFactory instance = new ObjectFactory();
         public static ObjectFactory Instance { get {return instance;} }
         private  ObjectsManager objectsManager;
@@ -22,6 +23,7 @@ namespace SuperMarioBros.Objects
         private static Vector2 flagOffset = new Vector2(68, -130);
         public int count = 0;
         private  MarioGame game;
+        private SpriteFont spriteFont;
         /* Red/Green msuhrrom, star, debris, flower, coin*/
         private readonly static Dictionary<Type, Vector2> dictionary = new Dictionary<Type, Vector2>
         {
@@ -37,6 +39,7 @@ namespace SuperMarioBros.Objects
         {
             this.game = game;
             objectsManager = game.ObjectsManager;
+            spriteFont = game.Content.Load<SpriteFont>("Font/MarioFont");
         }
         /* Mainly used for itemBlock creates items*/
         public void CreateNonCollidableObject(Type type, Vector2 location)
@@ -46,7 +49,10 @@ namespace SuperMarioBros.Objects
             IDynamic obj = (IDynamic)Activator.CreateInstance(type, location);
             objectsManager.AddNonCollidableObject(obj);
             if (type == typeof(Coin))
-                ItemCollectedEvent?.Invoke(new Vector2(location.X, location.Y -60));
+            {
+                StatsManager.Instance.CoinCollected(new Vector2(location.X, location.Y - 60));
+                AudioFactory.Instance.CreateSound("coin").Play();
+            }
             if (obj is WinFlag winFlag)
                 winFlag.startOverEvent += game.StartOver;        
         }
@@ -69,9 +75,9 @@ namespace SuperMarioBros.Objects
             objectsManager.AddObject((IDynamic)Activator.CreateInstance(typeof(FireBall), location, direction));
         }
 
-        public void CreateScoreText(Vector2 location, SpriteFont inputSpriteFont, string str)
+        public void CreateScoreText(Vector2 location, string str)
         {
-            objectsManager.AddNonCollidableObject(new ScoreText(location, inputSpriteFont, str));
+            objectsManager.AddNonCollidableObject(new ScoreText(location, spriteFont, str));
         }
 
     }

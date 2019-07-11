@@ -16,12 +16,12 @@ namespace SuperMarioBros.Loading
         private readonly List<(float, IObject)> nonCollidableObjects = new List<(float, IObject)>();
         private readonly ObjectsManager objectsManager;
         private readonly ObjectLoader objectLoader;
-        private readonly HUD headsUp;
+      //  private readonly HeadsUpDisplay headsUp;
         private readonly MarioGame game;
         public DynamicLoader(MarioGame game , ObjectLoader objectLoader, ObjectsManager objectsManager) {
             this.objectsManager = objectsManager;
             this.objectLoader = objectLoader;
-            headsUp = game.HeadsUps;
+           // headsUp = game.HeadsUps;
             this.game = game;
         }
         public void Initialize()
@@ -58,16 +58,10 @@ namespace SuperMarioBros.Loading
             while (dynamicObjects.Count > 0 && dynamicObjects.First().Item1 < rightBound)
             {
                 IDynamic obj = dynamicObjects.First().Item2;
-                if (obj is IEnemy enemy)
-                    enemy.StompedEvent += headsUp.EnemyStomped; //Initialize this event to the enemy.
-                else if (obj is Flag flag)
+                if (obj is Flag flag)
                 {
                     objectLoader.Mario.SlidingEvent += flag.Sliding;
                     flag.MarioJumpingOffFlagEvent += objectLoader.Mario.JumpingOffFlag;
-                }
-                else if (obj is BigCoin coin)
-                {
-                    coin.CoinCollectedEvent += headsUp.CoinCollected;
                 }
                 objectsManager.AddObject(obj);
                 dynamicObjects.RemoveAt(0);

@@ -10,6 +10,7 @@ using SuperMarioBros.Objects.Mario.TransitionState;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
+using SuperMarioBros.Stats;
 using System;
 using System.Collections.Generic;
 
@@ -17,18 +18,16 @@ namespace SuperMarioBros.Marios
 {
     public class Mario : IMario
     {
-        public int EnemyKillStreakCounter { get; set; }
+        public int EnemyKillStreakCounter { get; set; } = 0;
         public event Func<bool> IsFlagPoleStateEvent;
         public event Action ClearingScoresEvent;
         public event Action ChangeToFlagPoleStateEvent;
         public event Action SetPipeTeleportngEvent;
         public event Action DestoryEvent;
-        public event Action DeadStateEvent;
         public event Action ChangeToGameStateEvent;
         public event Action ChangeToTeleportStateEvent;
+        public event Action DeathStateEvent;
         public event Action<IObject> FocusMarioEvent;
-        public event Action<Vector2> PowerUpEvent;
-        public event Action<Vector2> ExtraLifeEvent;
         public event Action<Vector2> SlidingEvent;
         public event Action<Vector2> SetCameraFocus;
         public ObjectState ObjState { get; set; }
@@ -90,6 +89,7 @@ namespace SuperMarioBros.Marios
         public void TakeDamage()
         {
             TransitionState.TakeDamage();
+            if(HealthState is DeadMario) DeathStateEvent?.Invoke();
         }
 
         public void MoveUp()
@@ -150,12 +150,15 @@ namespace SuperMarioBros.Marios
                 DestoryEvent?.Invoke();
             }
             else
+            {
                 ClearingScoresEvent?.Invoke();
+                StatsManager.Instance.CollectRemainingTime();
+            }
+
         }
 
         public void TakeRedMushroom()
         {
-            PowerUpEvent?.Invoke(Position);
             TransitionState.TakeRedMushroom();
         }
 
@@ -166,19 +169,14 @@ namespace SuperMarioBros.Marios
 
         public void TakeFlower()
         {
-            PowerUpEvent?.Invoke(Position);
             TransitionState.OnFireFlower();
-        }
-        public void TakeGreenMushroom()
-        {
-            ExtraLifeEvent?.Invoke(Position);
         }
 
         public void TimeOver()
         {
             while (!(HealthState is DeadMario))
                 HealthState.TakeDamage();
-            DeadStateEvent?.Invoke();
+            DeathStateEvent?.Invoke();
         }
 
         public void SlidingFlagPole()

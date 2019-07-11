@@ -12,8 +12,8 @@ namespace SuperMarioBros.Objects.Enemy
         int EnemyKillStreakCounter { get; set; }
         ISprite Sprite { get; set; }
         int Score { get; set; }
-        void Flipped(int count);
-        void Stomped(int count);
+        void Flipped();
+        void Stomped();
         void ChangeDirection(); 
         /* Change the direction of enemy, mainly used for koopa shell */
         void MoveLeft();

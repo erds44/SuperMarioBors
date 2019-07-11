@@ -30,16 +30,13 @@ namespace SuperMarioBros.GameStates
         public void Draw(SpriteBatch spriteBatch)
         {
             var color = Color.White;
-            if (isHovering)
-                color = Color.Gray;
+            if (isHovering) color = Color.Gray;
 
             if (!string.IsNullOrEmpty(text))
-            {
                 spriteBatch.DrawString(spriteFont, text, position, color);
-            }
         }
 
-        public void Update(GameTime gameTime)
+        public void Update()
         {
             previousMouse = currentMouse;
             currentMouse = Mouse.GetState();

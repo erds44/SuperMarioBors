@@ -1,28 +1,22 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Media;
-using SuperMarioBros.AudioFactories;
+using SuperMarioBros.Stats;
 
 namespace SuperMarioBros.GameStates
 {
-    public class TeleportingState : GameState
+    public class PlayerDeadState : GameState
     {
-        private readonly GraphicsDevice graphicsDevice;
         private readonly MarioGame game;
-        private Color backGroundColor = Color.CornflowerBlue;
-        public TeleportingState(MarioGame game)
+        private Color backGroundColor = Color.CornflowerBlue;   
+        public PlayerDeadState(MarioGame game)
         {
-            game.DisableController();
             this.game = game;
-            graphicsDevice = game.GraphicsDevice;
-            MediaPlayer.Stop();
-            AudioFactory.Instance.CreateSound("pipe").Play();
-            if (game.Player.Position.Y < 0) backGroundColor = Color.Black;
+            game.Player.DestoryEvent += Die;
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin(sortMode: SpriteSortMode.FrontToBack, samplerState: SamplerState.PointClamp, transformMatrix: game.Camera.Transform);
-            graphicsDevice.Clear(backGroundColor);
+            game.GraphicsDevice.Clear(backGroundColor);
             game.ObjectsManager.Draw(spriteBatch);
             game.Hud.Draw(spriteBatch, game.CameraLeftBound, game.CameraUpperBound);
             spriteBatch.End();
@@ -30,9 +24,15 @@ namespace SuperMarioBros.GameStates
 
         public override void Update(GameTime gameTime)
         {
-            game.ObjectsManager.Mario.Update(gameTime);
+            game.ObjectsManager.Update(gameTime);
             game.CollisionManager.Update();
-            game.Camera.Update();
         }
+        public override void Die()
+        {
+            game.ResetGame();
+            if (StatsManager.Instance.Life == 0) game.State = new GameOverState(game);
+            else game.State = new PlayerStatusState(game);
+        }
+
     }
 }
