@@ -31,7 +31,6 @@ namespace SuperMarioBros
         public IMario Player => ObjectsManager.Mario;
         public HeadsUp HeadsUps { get; set; }
         public IGameState State { get; set; }
-        public bool FocusMario { get; set; }
         public bool IskeyboardController { get; set; }
         public MarioGame()
         {
@@ -43,23 +42,22 @@ namespace SuperMarioBros
             WindowHeight = graphics.PreferredBackBufferHeight;
             WindowWidth = graphics.PreferredBackBufferWidth;
             Content.RootDirectory = "Content";
-            FocusMario = true;
-            IskeyboardController = false;
         }
 
-        public void ChangeToFlagPoleState()
-        {
-            State = new FlagPoleState(this);
-        }
         protected override void Initialize()
         {
             IsMouseVisible = true;
-            State = new MenuState(this);
             SpriteFactory.Initialize(Content);
             Camera = new Camera(WindowWidth);
             HeadsUps = new HeadsUp(this);
-            ObjectFactory.Instance.ItemCollectedEvent += HeadsUps.CoinCollected;
             AudioFactory.Instance.Initialize(Content, "Content/sounds.xml", "Content/musics.xml", "Content/hurry.xml");
+            ObjectsManager = new ObjectsManager(new ObjectLoader(), this);
+            ObjectsManager.Initialize();
+            ObjectFactory.Instance.Initialize(this);
+            ObjectFactory.Instance.ItemCollectedEvent += HeadsUps.CoinCollected;
+            CollisionManager = new CollisionManager(this);
+            State = new MenuState(this);
+            EventBinding();
             base.Initialize();
         }
         protected override void Update(GameTime gameTime)
@@ -97,23 +95,34 @@ namespace SuperMarioBros
         {
             State = new TeleportingState(this);
         }
-       
-        public void InitializeGame()
+        public void ChangeToFlagPoleState()
+        {
+            State = new FlagPoleState(this);
+        }
+        public void ChangeToGameState()
+        {
+            State = new GameState(this);
+        }
+
+        public void ResetGame()
         {
             ObjectsManager = new ObjectsManager(new ObjectLoader(), this);
-           // ObjectsManager.LevelLoading();
             ObjectsManager.Initialize();
             Camera.Reset(Player);
-            //marioCamera.SetFocus(ObjectsManager.Mario);
             ObjectFactory.Instance.Initialize(this);
             CollisionManager = new CollisionManager(this);
-            if (IskeyboardController)
+            if (Controller is KeyboardController)
                 InitializeKeyBoard();
             else
                 InitializeGamePad();
 
+            EventBinding();
+        }
+
+        public void EventBinding()
+        {
             ObjectsManager.Mario.DestoryEvent += HeadsUps.OnMarioDeath;
-            ObjectsManager.Mario.DestoryEvent += InitializeGame;
+            ObjectsManager.Mario.DestoryEvent += ResetGame;
             ObjectsManager.Mario.SlidingEvent += HeadsUps.AddFlagScore;
             ObjectsManager.Mario.DestoryEvent += HeadsUps.ResetTimer;
             ObjectsManager.Mario.PowerUpEvent += HeadsUps.PowerUpCollected;
@@ -129,15 +138,9 @@ namespace SuperMarioBros
             HeadsUps.TimeOverEvent += ObjectsManager.Mario.TimeOver;
         }
 
-        public void ChangeToGameState()
-        {
-           State = new GameState(this);
-        }
         public void StartOver()
         {
             Initialize();
-            InitializeGame();
-            State = new MenuState(this);
         }
         public void SetMarioFocus(IObject obj)
         {
@@ -151,7 +154,7 @@ namespace SuperMarioBros
         {
             return State is FlagPoleState;
         }
-        private void InitializeKeyBoard()
+        public void InitializeKeyBoard()
         {
             Controller = new KeyboardController(
                     (Keys.Q, new QuitCommand(this), new EmptyCommand(), false),
@@ -164,7 +167,7 @@ namespace SuperMarioBros
                     );
         }
 
-        private void InitializeGamePad()
+        public void InitializeGamePad()
         {
             Controller = new JoyStickController(Player,
                     (Buttons.A, new UpPressedCommand(Player), new UpReleasedCommand(Player), true),
@@ -172,17 +175,13 @@ namespace SuperMarioBros
                     (Buttons.Y, new QuitCommand(this), new EmptyCommand(), false)
                 );
         }
-        public void SetKeyboardController()
-        {
-            IskeyboardController = true;
-        }
         public void DisableController()
         {
-            Controller.IsPause = true;
+            Controller.DisableController();
         }
         public void EnableController()
         {
-            Controller.IsPause = false;
+            Controller.EnableController();
         }
     }
 }

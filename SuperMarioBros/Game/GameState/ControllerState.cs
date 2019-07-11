@@ -17,10 +17,11 @@ namespace SuperMarioBros.GameStates
             var itemFont = game.Content.Load<SpriteFont>("Font/MarioFontSize25");
 
             var keyboardButton = new Buttons(itemFont, "Keyboard", new Vector2(300, 140));
-            keyboardButton.Click += game.SetKeyboardController;
+            keyboardButton.Click += game.InitializeKeyBoard;
             keyboardButton.Click += game.ChangeToPlayerStatusState;
 
            var GamePadButton = new Buttons(itemFont, "GamePad", new Vector2(300, 250));
+            GamePadButton.Click += game.InitializeGamePad;
             GamePadButton.Click += game.ChangeToPlayerStatusState;
             game.IsMouseVisible = true;
             buttons = new List<Buttons>

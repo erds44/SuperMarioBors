@@ -9,7 +9,7 @@
         }
         public void Execute()
         {
-            game.InitializeGame();
+            game.ResetGame();
         }
     }
 }

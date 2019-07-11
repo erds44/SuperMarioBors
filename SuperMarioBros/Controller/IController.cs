@@ -2,6 +2,7 @@
 {
     public interface IController : IUpdatable
     {
-        bool IsPause { get; set; }
+        void EnableController();
+        void DisableController();
     }
 }

@@ -13,8 +13,7 @@ namespace SuperMarioBros.Controllers
         private readonly Dictionary<Buttons, ICommand> buttonUpDictionary = new Dictionary<Buttons, ICommand>();
         private readonly List<Buttons> checkButtonUplist = new List<Buttons>();
         private readonly List<Buttons> nonHoldableButtons = new List<Buttons>();
-
-        public bool IsPause { get; set; }
+        private bool isPause;
 
         public JoyStickController(IMario mario, params (Buttons key, ICommand buttonDownCommand, ICommand buttonUpCommand, bool CanBeHeld)[] args)
         {
@@ -29,52 +28,53 @@ namespace SuperMarioBros.Controllers
         }
         public void Update(GameTime gameTime)
         {
-            GamePadCapabilities capabilities = GamePad.GetCapabilities(PlayerIndex.One);
-            if (capabilities.IsConnected)
+            if (isPause)
             {
-                GamePadState state = GamePad.GetState(PlayerIndex.One);
-                Vector2 joyStickState = state.ThumbSticks.Left;
-                JoyStickHandler(joyStickState);
-                foreach (Buttons buttonUp in checkButtonUplist)
+                GamePadCapabilities capabilities = GamePad.GetCapabilities(PlayerIndex.One);
+                if (capabilities.IsConnected)
                 {
-                    if (state.IsButtonUp(buttonUp) && buttonUpDictionary.TryGetValue(buttonUp, out ICommand buttonUpCommand))
-                        buttonUpCommand.Execute();
-                }
-                checkButtonUplist.Clear();
-                foreach (Buttons buttonDown in buttonDownDictionary.Keys)
-                {
-                    if (state.IsButtonDown(buttonDown))
+                    GamePadState state = GamePad.GetState(PlayerIndex.One);
+                    Vector2 joyStickState = state.ThumbSticks.Left;
+                    JoyStickHandler(joyStickState);
+                    foreach (Buttons buttonUp in checkButtonUplist)
                     {
-                        if (!nonHoldableButtons.Contains(buttonDown) || !checkButtonUplist.Contains(buttonDown))
-                            buttonDownDictionary[buttonDown].Execute();
-                        if (!checkButtonUplist.Contains(buttonDown))
-                            checkButtonUplist.Add(buttonDown);
+                        if (state.IsButtonUp(buttonUp) && buttonUpDictionary.TryGetValue(buttonUp, out ICommand buttonUpCommand))
+                            buttonUpCommand.Execute();
+                    }
+                    checkButtonUplist.Clear();
+                    foreach (Buttons buttonDown in buttonDownDictionary.Keys)
+                    {
+                        if (state.IsButtonDown(buttonDown))
+                        {
+                            if (!nonHoldableButtons.Contains(buttonDown) || !checkButtonUplist.Contains(buttonDown))
+                                buttonDownDictionary[buttonDown].Execute();
+                            if (!checkButtonUplist.Contains(buttonDown))
+                                checkButtonUplist.Add(buttonDown);
+                        }
                     }
                 }
-            }         
+            }
         }
         private void JoyStickHandler(Vector2 joyStickState)
         {
-                if (joyStickState.Y < -0.1)
-                {
+                if (joyStickState.Y < -0.8)
                     mario.MoveDown();
-                }
                 else if (joyStickState.X < -0.1)
-                {
                     mario.MoveLeft();
-                }
                 else if (joyStickState.X > 0.1)
-                {
                     mario.MoveRight();
-                }
                 else
-                {
                     mario.Idle();
-                }
         }
 
-            
+        public void EnableController()
+        {
+            isPause = false;
+        }
 
-        
+        public void DisableController()
+        {
+            isPause = true;
+        }
     }
 }

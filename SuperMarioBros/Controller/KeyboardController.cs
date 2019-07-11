@@ -11,7 +11,7 @@ namespace SuperMarioBros.Controllers
         private readonly Dictionary<Keys, ICommand> keyUpDictionary = new Dictionary<Keys, ICommand>();
         private readonly List<Keys> checkKeyUplist = new List<Keys>();
         private readonly List<Keys> nonHoldableKeys = new List<Keys>();
-        public bool IsPause { get; set; } = false;
+        private bool isPause;
         public KeyboardController(params (Keys key, ICommand KeyDownCommand, ICommand KeyUpCommand , bool CanBeHeld)[] args)
         {
             foreach (var (key, downCommand, upCommand, canBeHeld) in args)
@@ -25,7 +25,7 @@ namespace SuperMarioBros.Controllers
 
         public void Update(GameTime gameTime)
         {
-            if (!IsPause)
+            if (!isPause)
             {
                 Keys[] currentlyPressedKeys = Keyboard.GetState().GetPressedKeys();
                 foreach (Keys keyUp in keyUpDictionary.Keys)
@@ -46,6 +46,16 @@ namespace SuperMarioBros.Controllers
                         checkKeyUplist.Add(keyDown);
                 }
             }
+        }
+
+        public void EnableController()
+        {
+            isPause = false;
+        }
+
+        public void DisableController()
+        {
+            isPause = true;
         }
     }
 }
