@@ -85,8 +85,9 @@ namespace SuperMarioBros.Collisions
                 AudioFactory.Instance.CreateSound("bump").Play();
                 MoverVerticallyBounce(mario, block, direction);
             }
+            else
+                ResolveOverlap(mario, block, direction);
         }
-
         public static void BigOrFireMarioVsBrickBlock(IMario mario, IBlock block, Direction direction)
         {
             if (block.CanBeBumped)
@@ -96,11 +97,8 @@ namespace SuperMarioBros.Collisions
                 ObjectFactory.Instance.CreateBlockDebris(block.Position, block.GetType());
                 MoverVerticallyBounce(mario, block, direction);
             }
-        }
-        public static void MarioVsBrickBlockTopCollision(IMario mario, IBlock block, Direction direction)
-        {
-            if (block.CanBeBumped)
-                MarioOnGround(mario, block, direction);
+            else
+                ResolveOverlap(mario, block, direction);
         }
 
         public static void SmallMarioVsQuestionOrItemBrickBlock(IMario mario, IBlock block, Direction direction)

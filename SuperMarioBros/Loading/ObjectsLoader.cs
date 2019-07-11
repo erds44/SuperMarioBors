@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using SuperMarioBros.Collisions;
 using SuperMarioBros.Marios;
-using SuperMarioBros.Pipes;
 using SuperMarioBros.Objects;
 
 namespace SuperMarioBros.Loading
@@ -21,10 +20,10 @@ namespace SuperMarioBros.Loading
 
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(3000,-135),1,23,35)),
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueRockBlock",new Vector2(3000,-100),1,23,35)),
-               (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3000,-170),4,10,35,"SuperMarioBros.Blocks.RockBlock")),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-170),1,14,35,"SuperMarioBros.Blocks.BrickBlock")),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-205),1,14,35,"SuperMarioBros.Blocks.BrickBlock")),
-                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-240),1,14,35,"SuperMarioBros.Blocks.BrickBlock")),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3000,-170),4,10,35,"SuperMarioBros.Blocks.RockBlock")),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-170),1,14,35,"SuperMarioBros.Blocks.RockBlock")),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-205),1,14,35,"SuperMarioBros.Blocks.RockBlock")),
+                (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-240),1,14,35,"SuperMarioBros.Blocks.RockBlock")),
                 (new ObjectsNode("SuperMarioBros.Blocks.BlueBrickBlock",new Vector2(3140,-480),1,14,35,"SuperMarioBros.Blocks.BrickBlock")),
                 (new ObjectsNode("SuperMarioBros.Pipes.Pipe",new Vector2(3759, -170),1,1,0,Direction.bottom,"HighPipe",new Vector2(0,0))),
                 (new ObjectsNode("SuperMarioBros.Pipes.TeleportPipe",new Vector2(3705, -170),1,1,0,Direction.left,"TeleportHorizontalSmallPipe",new Vector2(6980, 400))),

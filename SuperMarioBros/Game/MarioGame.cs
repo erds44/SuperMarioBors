@@ -111,11 +111,8 @@ namespace SuperMarioBros
             Camera.Reset(Player);
             ObjectFactory.Instance.Initialize(this);
             CollisionManager = new CollisionManager(this);
-            if (Controller is KeyboardController)
-                InitializeKeyBoard();
-            else
-                InitializeGamePad();
-
+            if (Controller is KeyboardController) InitializeKeyBoard();
+            else InitializeGamePad();
             EventBinding();
         }
 
