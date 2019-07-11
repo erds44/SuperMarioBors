@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 using SuperMarioBros.AudioFactories;
+using SuperMarioBros.Controllers;
 
 namespace SuperMarioBros.GameStates
 {
@@ -9,15 +10,16 @@ namespace SuperMarioBros.GameStates
     {
         private GraphicsDevice GraphicsDevice => game.GraphicsDevice;
         private readonly MarioGame game;
-        private Color backGroundColor = Color.CornflowerBlue;
-        
+        private Color backGroundColor = Color.CornflowerBlue;   
         public GameState(MarioGame game)
         {
-            game.IsMouseVisible = false;
             this.game = game;
-            //if (game.ObjectsManager is null)
-            //    game.InitializeGame();
-            game.EnableController();
+            game.IsMouseVisible = false;
+            if (game.IskeyboardController) game.InitializeKeyBoard();
+            else game.InitializeGamePad();
+            
+
+
             if (MediaPlayer.State == MediaState.Paused) MediaPlayer.Resume();
             else if (game.Player.Position.Y > 0) { MediaPlayer.Play(AudioFactory.Instance.CreateSong("overworld")); }
             else { MediaPlayer.Play(AudioFactory.Instance.CreateSong("underworld")); backGroundColor = Color.Black; }

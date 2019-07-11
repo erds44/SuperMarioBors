@@ -1,7 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using SuperMarioBros.AudioFactories;
+using SuperMarioBros.Commands;
+using SuperMarioBros.Controllers;
+using Buttons = Microsoft.Xna.Framework.Input.Buttons;
 
 namespace SuperMarioBros.GameStates
 {
@@ -13,6 +17,10 @@ namespace SuperMarioBros.GameStates
         {
             this.game = game;
             graphicsDevice = game.GraphicsDevice;
+            if (game.IskeyboardController)
+                game.Controller = new KeyboardController((Keys.O, new PauseCommand(game), new EmptyCommand(), false));
+            else
+                game.Controller = new JoyStickController(game.Player, (Microsoft.Xna.Framework.Input.Buttons.LeftShoulder, new PauseCommand(game), new EmptyCommand(), false));
             MediaPlayer.Pause();
             AudioFactory.Instance.CreateSound("pause").Play();
         }
@@ -32,7 +40,7 @@ namespace SuperMarioBros.GameStates
 
         public void Update(GameTime gameTime)
         {
-            // Do Nothing
+            game.Controller.Update(gameTime);
         }
     }
 }

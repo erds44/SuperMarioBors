@@ -19,6 +19,7 @@ namespace SuperMarioBros.GameStates
         {
             this.game = game;
             game.IsMouseVisible = false;
+            game.DisableController();
             graphicsDevice = game.GraphicsDevice;
             spriteFont = game.Content.Load<SpriteFont>("Font/MarioFont");
             smallMarioSprite = SpriteFactory.CreateSprite(nameof(SmallMario) + nameof(RightIdle));

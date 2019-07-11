@@ -13,6 +13,7 @@ using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Commands;
 using Buttons = Microsoft.Xna.Framework.Input.Buttons;
+using System;
 
 namespace SuperMarioBros
 {
@@ -20,18 +21,17 @@ namespace SuperMarioBros
     public class MarioGame : Game
     {
         public readonly int WindowWidth;
-
         public readonly int WindowHeight;
-        private bool pause = false;
         public ObjectsManager ObjectsManager { get; set; }
         public Camera Camera { get; private set; }
-        public IController Controller { get; private set; }
+
+        public IController Controller { get; set; }
         private SpriteBatch spriteBatch;
         public CollisionManager CollisionManager;
         public IMario Player => ObjectsManager.Mario;
         public HeadsUp HeadsUps { get; set; }
         public IGameState State { get; set; }
-        public bool IskeyboardController { get; set; }
+        public bool IskeyboardController { get; private set; } = true;
         public MarioGame()
         {
             GraphicsDeviceManager graphics = new GraphicsDeviceManager(this);
@@ -62,20 +62,8 @@ namespace SuperMarioBros
         }
         protected override void Update(GameTime gameTime)
         {
-            CheckPause();
             State.Update(gameTime);
             base.Update(gameTime);
-        }
-
-        private void CheckPause()
-        {
-            if (!pause && Keyboard.GetState().IsKeyDown(Keys.P))
-            {
-                pause = true;
-                State.Pause();
-            }
-            else if (pause && Keyboard.GetState().IsKeyUp(Keys.P))
-                pause = false;
         }
 
         protected override void Draw(GameTime gameTime)
@@ -160,7 +148,8 @@ namespace SuperMarioBros
                     (Keys.Down, new DownCommand(Player), new UpPressedCommand(Player), true),
                     (Keys.Right, new RightCommand(Player), new IdleCommand(Player), true),
                     (Keys.Up, new UpPressedCommand(Player), new UpReleasedCommand(Player), true),
-                    (Keys.X, new PowerPressedCommand(Player), new PowerReleasedCommand(Player), false)
+                    (Keys.X, new PowerPressedCommand(Player), new PowerReleasedCommand(Player), false),
+                    (Keys.P, new PauseCommand(this), new EmptyCommand(), false)
                     );
         }
 
@@ -169,16 +158,25 @@ namespace SuperMarioBros
             Controller = new JoyStickController(Player,
                     (Buttons.A, new UpPressedCommand(Player), new UpReleasedCommand(Player), true),
                     (Buttons.RightTrigger, new PowerPressedCommand(Player), new PowerReleasedCommand(Player), false),
-                    (Buttons.Y, new QuitCommand(this), new EmptyCommand(), false)
+                    (Buttons.Y, new QuitCommand(this), new EmptyCommand(), false),
+                    (Buttons.RightShoulder, new PauseCommand(this), new EmptyCommand(), false)
                 );
         }
         public void DisableController()
         {
-            Controller.DisableController();
+            Controller?.DisableController();
         }
         public void EnableController()
         {
             Controller.EnableController();
+        }
+        public void Pause()
+        {
+            State.Pause();
+        }
+        public void SetControllerAsGamePad()
+        {
+            IskeyboardController = false;
         }
     }
 }

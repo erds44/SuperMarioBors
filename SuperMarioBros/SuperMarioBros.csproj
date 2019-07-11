@@ -556,6 +556,7 @@
     <Compile Include="Collision\Responder\MarioEnemyResponder.cs" />
     <Compile Include="Collision\Responder\MarioItemResponder.cs" />
     <Compile Include="Collision\Responder\MarioPipeResponder.cs" />
+    <Compile Include="Command\GameCommand\PauseCommand.cs" />
     <Compile Include="Command\KeyUpCommand\EmptyCommand.cs" />
     <Compile Include="Command\MarioCommand\DownCommand.cs" />
     <Compile Include="Command\MarioCommand\PowerReleasedCommand.cs" />
