@@ -69,8 +69,6 @@ namespace SuperMarioBros.Loading
 
                 }
             }
-  
-
         }
 
         private void HorizontalLine(ObjectsNode node)

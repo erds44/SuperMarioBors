@@ -16,7 +16,7 @@ namespace SuperMarioBros.Loading
         public Dictionary<string, SpritesNode> SpritesInfo()
         {
             Dictionary<string, SpritesNode> spritesInfo = new Dictionary<string, SpritesNode>();
-            spritesList = XMLReader<SpritesNode>(Strings.SpritesFile);
+            spritesList = XMLReader<SpritesNode>(StringConsts.SpritesFile);
             foreach (SpritesNode node in this.spritesList)
             {
                 spritesInfo.Add(node.ObjectName, node);
