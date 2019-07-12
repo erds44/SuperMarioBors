@@ -22,5 +22,7 @@ namespace SuperMarioBros.Utility
         public const string Pipe = "pipe";
         public const string Dead = "youredead";
         public const string Star = "starman";
+        public const string Font = "Font/MarioFont";
+        public const string Coin = "coin";
     }
 }
