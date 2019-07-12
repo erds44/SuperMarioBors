@@ -29,7 +29,13 @@ namespace SuperMarioBros.Utility
         public const string StaticsFile = "Statics.xml";
         public const string DynamicsFile = "Dynamics.xml";
         public const string NoncollidablesFile = "Noncollidables.xml";
-
-        //public const 
+        public const string LeftTopBrickDebris = "LeftTopBrickDebris";
+        public const string RightTopBrickDebris = "RightTopBrickDebris";
+        public const string LeftBottomBrickDebris = "LeftBottomBrickDebris";
+        public const string RightBottomBrickDebris = "RightBottomBrickDebris";
+        public const string LeftBottomBlueBrickDebris = "LeftBottomBlueBrickDebris";
+        public const string LeftTopBlueBrickDebris = "LeftTopBlueBrickDebris";
+        public const string RightBottomBlueBrickDebris = "RightBottomBlueBrickDebris";
+        public const string RightTopBlueBrickDebris = "RightTopBlueBrickDebris";
     }
 }
