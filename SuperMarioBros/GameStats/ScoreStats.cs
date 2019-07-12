@@ -23,8 +23,9 @@ namespace SuperMarioBros.Stats
         }
 
         public void CollectFlagPoleScore(Vector2 position)
-        {
+        {  
             int flagScore = (int)(375 - position.Y) * (5000 / 304);
+            currentScore += flagScore;
             ObjectFactory.Instance.CreateScoreText(position, flagScore.ToString());
         }
 
