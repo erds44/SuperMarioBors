@@ -21,7 +21,7 @@ namespace SuperMarioBros.Objects
         private static Vector2 rightTopDebrisOffset = Locations.RightTopDebrisOffset;
         private static Vector2 rightBottomDebrisOffset = Locations.RightBottomDebrisOffset;
         private static Vector2 flagOffset = Locations.FlagOffset;
-        public int count = Utilities.InitialCount;
+        public int count = GeneralConstants.InitialCount;
         private  MarioGame game;
         private SpriteFont spriteFont;
         /* Red/Green msuhrrom, star, debris, flower, coin*/

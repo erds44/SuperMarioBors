@@ -41,9 +41,9 @@ namespace SuperMarioBros.GameStates
             previousMouse = currentMouse;
             currentMouse = Mouse.GetState();
 
-            var mouseRectangle = new Rectangle(currentMouse.X, currentMouse.Y, 1, 1);
+            var mousePoint = new Point(currentMouse.X, currentMouse.Y);
             isHovering = false;
-            if (mouseRectangle.Intersects(rectangle))
+            if (rectangle.Contains(mousePoint))
             {
                 isHovering = true;
                 if (currentMouse.LeftButton == ButtonState.Released && previousMouse.LeftButton == ButtonState.Pressed)

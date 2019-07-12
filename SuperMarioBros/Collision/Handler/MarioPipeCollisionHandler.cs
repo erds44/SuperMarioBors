@@ -100,7 +100,7 @@ namespace SuperMarioBros.Collisions
                 mario.MovementState.OnGround();
                 mario.Physics.ApplyGravity();
             }
-            mario.Physics.Velocity = new Vector2(mario.Physics.Velocity.X, 0);
+            mario.Physics.Velocity = new Vector2(mario.Physics.Velocity.X, 0); //Halt vertical movement.
             ResolveOverlap(mario, pipe, direction);
         }
     }

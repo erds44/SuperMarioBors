@@ -7,8 +7,45 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros.Utility
 {
-    public static class PhysicsConsts
+    public static class Constants
     {
+        /*General*/
+        public const int DefaultEnmeyScore = 100;
+        public const int ShelledKoopaScore = 500;
+        public const int DefaultEnmeyCount = 0;
+        public const int InitialEnmeyCount = 1;
+        public const int InitialCount = 0;
+        public const int FireBallCount = 2;
+        public const int DefaultDelayScale = 5;
+        public const int DefaultItemContained = 0;
+        public const int HorizontalLine = 1;
+        public const int LeftTriangle = 3;
+        public const int RightTriangle = 2;
+        public const int VerticalLine = 4;
+
+        /*Locations*/
+        public readonly static Vector2 CoinOffset = new Vector2(12, -50);
+        public readonly static Vector2 ItemOffset = new Vector2(1, 0); /* includes muhsrooms, star, flower */
+        public readonly static Vector2 FlagOffset = new Vector2(68, -130);
+        public readonly static Vector2 LeftTopDebrisOffset = new Vector2(0, -40);
+        public readonly static Vector2 LeftBottomDebrisOffset = new Vector2(0, 0);
+        public readonly static Vector2 RightTopDebrisOffset = new Vector2(20, -40);
+        public readonly static Vector2 RightBottomDebrisOffset = new Vector2(20, 0);
+        public readonly static Vector2 BumpedBlockOffset = new Vector2(0, -20);
+        public readonly static Vector2 FireBallExplosionOffSet = new Vector2(-16, 0);
+        public readonly static Vector2 MarioLeftCrouchingOffset = new Vector2(-22, -22);
+        public readonly static Vector2 MarioRightNormalOffSet = new Vector2(52, -32);
+        public readonly static Vector2 MarioRightCrouchingOffset = new Vector2(52, -22);
+        public readonly static Vector2 MarioOffset = new Vector2(-22, -32);
+        public readonly static Vector2 MarioJumpOffFlagOffSet = new Vector2(20, 0);
+        public readonly static Vector2 MarioInitialLocation = new Vector2(0, 410);
+        public const float ScoreOffset = -60f;
+        public const float CastleOffset = 94f;
+        public const int FireBallOffSet = 16;
+        public const float FlagBottomOffset = 255f;
+        public const float WinFlagOffset = 28f;
+
+        /*Physics*/
         public const float DecayRatio = 0.96f;
         public const float DefaultAccelaration = 0f;
         public const float DecelarationScale = 2f;
@@ -38,8 +75,8 @@ namespace SuperMarioBros.Utility
         public const float MarioGravity = 800f;
         public const float MarioWeight = 200f;
         public const float MarioAcceleration = 150f;
-        public const int ZeroVelocity = 0;
         public const float BumpedVelocity = -180f;
+        public const int ZeroVelocity = 0;
 
         public readonly static Vector2 IdleVelocity = new Vector2(0, 0);
         public readonly static Vector2 BumpedBlockInitialVelocity = new Vector2(0, -150);
@@ -72,8 +109,5 @@ namespace SuperMarioBros.Utility
         public readonly static Vector2 MarioTeleportleftVelocity = new Vector2(-35, 0);
         public readonly static Vector2 MarioTeleportRightVelocity = new Vector2(35, 0);
         public readonly static Vector2 MarioJumpOffFlagVelocity = new Vector2(100, -180);
-
-
     }
 }
-

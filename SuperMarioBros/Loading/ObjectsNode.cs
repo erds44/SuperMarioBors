@@ -19,7 +19,7 @@ namespace SuperMarioBros.Loading
         public Direction Direction { get; set; }
 
 
-        public ObjectsNode(string objectType, Vector2 position, int shape, int size, int width, string itemType= Strings.NoItemContained, int itemCount=Utilities.DefaultItemContained)
+        public ObjectsNode(string objectType, Vector2 position, int shape, int size, int width, string itemType= Strings.NoItemContained, int itemCount=GeneralConstants.DefaultItemContained)
         {
             this.ObjectType = objectType;
             this.Position = position;

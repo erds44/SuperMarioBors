@@ -1,6 +1,7 @@
 ﻿using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Stats;
+using static SuperMarioBros.Utility.Strings;
 
 namespace SuperMarioBros.Collisions
 {
@@ -10,10 +11,10 @@ namespace SuperMarioBros.Collisions
         {
             koopa.Stomped();
             mover.EnemyKillStreakCounter++;
-            Bump(mover);
+            BumpUp(mover);
             ResolveOverlap(mover, koopa, direction);
             StatsManager.Instance.Enemykilled(koopa.Position, koopa.Score, mover.EnemyKillStreakCounter);
-            AudioFactory.Instance.CreateSound("stomp").Play();
+            AudioFactory.Instance.CreateSound(Stomp).Play();
         }
 
         public static void EnemyVsShelledIdleKoopaTopCollision(IEnemy mover, IEnemy target, Direction direction)
@@ -41,7 +42,7 @@ namespace SuperMarioBros.Collisions
                 koopa.EnemyKillStreakCounter++;
                 koopa.ObjState = ObjectState.NonCollidable;
                 StatsManager.Instance.Enemykilled(koopa.Position, koopa.Score, mover.EnemyKillStreakCounter);
-                AudioFactory.Instance.CreateSound("stomp").Play();
+                AudioFactory.Instance.CreateSound(Stomp).Play();
             }
             ResolveOverlap(mover, koopa, direction);
         }
@@ -65,17 +66,17 @@ namespace SuperMarioBros.Collisions
             koopa.EnemyKillStreakCounter++;
             mover.ObjState = ObjectState.NonCollidable;
             StatsManager.Instance.Enemykilled(mover.Position, mover.Score, koopa.EnemyKillStreakCounter);
-            AudioFactory.Instance.CreateSound("stomp").Play();
+            AudioFactory.Instance.CreateSound(Stomp).Play();
         }
 
         public static void TargetStompsMover(IEnemy mover, IEnemy target, Direction direction)
         {
             mover.Stomped();
             target.EnemyKillStreakCounter++;
-            Bump(target);
+            BumpUp(target);
             ResolveOverlap(mover, target, direction);
             StatsManager.Instance.Enemykilled(mover.Position, mover.Score, target.EnemyKillStreakCounter);
-            AudioFactory.Instance.CreateSound("stomp").Play();
+            AudioFactory.Instance.CreateSound(Stomp).Play();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace SuperMarioBros.Objects.Enemy
 
         public void Update(GameTime gameTime)
         {
-            if (koopa.Score != Utilities.ShelledKoopaScore) koopa.Score = Utilities.ShelledKoopaScore;
+            if (koopa.Score != GeneralConstants.ShelledKoopaScore) koopa.Score = GeneralConstants.ShelledKoopaScore;
         }
     }
 }

@@ -54,16 +54,16 @@ namespace SuperMarioBros.Loading
             {
                 switch (node.Shape)
                 {
-                    case Utilities.HorizontalLine:
+                    case GeneralConstants.HorizontalLine:
                         HorizontalLine(node);
                         break;
-                    case Utilities.RightTriangle:
+                    case GeneralConstants.RightTriangle:
                         RightTriangle(node);
                         break;
-                    case Utilities.LeftTriangle:
+                    case GeneralConstants.LeftTriangle:
                         LeftTriangle(node);
                         break;
-                    case Utilities.VerticalLine:
+                    case GeneralConstants.VerticalLine:
                         VerticalLine(node);
                         break;
 
@@ -145,7 +145,7 @@ namespace SuperMarioBros.Loading
                else
                     return (IStatic)(Activator.CreateInstance(t, position,node.TransferedLocation,node.PipeType,node.Direction));
             }
-            if (node.ItemCount == Utilities.DefaultItemContained)
+            if (node.ItemCount == GeneralConstants.DefaultItemContained)
             {
                 if (node.ItemType.Equals(Strings.NoItemContained))
                 {

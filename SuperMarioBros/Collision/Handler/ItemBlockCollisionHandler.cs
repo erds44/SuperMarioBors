@@ -14,7 +14,7 @@ namespace SuperMarioBros.Collisions
 
         public static void ItemBumpedOrChangeDirection(IItem item, IBlock block, Direction direction)
         {
-            Bump(item);
+            BumpUp(item);
             if (item.HitBox.Center.X <= block.HitBox.Center.X)
                 ChangeDirection(item);
             ResolveOverlap(item, block, direction);

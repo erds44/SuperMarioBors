@@ -40,10 +40,10 @@ namespace SuperMarioBros.Cameras
         {
             if (focus is null) return;
             Vector2 targetPosition = focus.Position;
-            LeftBound = Math.Max(prevLeftBound, targetPosition.X + focus.HitBox.Width / 2 - windowWidth / 2);
+            LeftBound = Math.Max(prevLeftBound, targetPosition.X + focus.HitBox.Width / 2 - windowWidth / 2); //2 for the midpoint.
             prevLeftBound = LeftBound;
-            var position = Matrix.CreateTranslation(-LeftBound-windowWidth / 2, 0, 0);
-            var offset = Matrix.CreateTranslation(windowWidth / 2, 0,0);
+            var position = Matrix.CreateTranslation(-LeftBound-windowWidth / 2, 0, 0); //2 for the midpoint.
+            var offset = Matrix.CreateTranslation(windowWidth / 2, 0,0); //2 for the midpoint.
             Transform = position * offset;
             if (UpperBound != 0)
                 UpperBound = 0;
@@ -51,9 +51,9 @@ namespace SuperMarioBros.Cameras
 
         public void Update(Vector2 focus) //focus on given point. This does not have a "left-only" limit. Given point will be the center of the camera.
         {
-            LeftBound = focus.X - windowWidth / 2;
-            var position = Matrix.CreateTranslation(-LeftBound - windowWidth / 2, -focus.Y, 0);
-            var offset = Matrix.CreateTranslation(windowWidth / 2, 0, 0);
+            LeftBound = focus.X - windowWidth / 2; //2 for the midpoint.
+            var position = Matrix.CreateTranslation(-LeftBound - windowWidth / 2, -focus.Y, 0); //2 for the midpoint.
+            var offset = Matrix.CreateTranslation(windowWidth / 2, 0, 0); //2 for the midpoint.
             Transform = position * offset;
             UpperBound = focus.Y ;
         }

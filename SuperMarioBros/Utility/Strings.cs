@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros.Utility
 {
-    internal static class Strings
+    public static class Strings
     {
         public const string LeftTopDebris = "LeftTopDerbis";
         public const string LeftBottoomDebris = "LeftBottomDerbis";
@@ -24,12 +24,14 @@ namespace SuperMarioBros.Utility
         public const string Star = "starman";
         public const string Font = "Font/MarioFont";
         public const string Coin = "coin";
+        public const string Stomp = "stomp";
+        public const string Bump = "bump";
+        public const string PowerUp = "powerup";
+        public const string ExtraLife = "1up";
         public const string NoItemContained = "noType";
         public const string SpritesFile = "Sprites.xml";
         public const string StaticsFile = "Statics.xml";
         public const string DynamicsFile = "Dynamics.xml";
         public const string NoncollidablesFile = "Noncollidables.xml";
-
-        //public const 
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros.Utility
 {
-    internal static class Layers
+    public static class Layers
     {
         public const float DefaultLayer = 0.5f;
         public const float PipeLayer = 0.9f;

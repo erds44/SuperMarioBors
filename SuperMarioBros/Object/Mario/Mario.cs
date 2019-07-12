@@ -18,7 +18,7 @@ namespace SuperMarioBros.Marios
 {
     public class Mario : IMario
     {
-        public int EnemyKillStreakCounter { get; set; } = Utilities.DefaultEnmeyCount;
+        public int EnemyKillStreakCounter { get; set; } = GeneralConstants.DefaultEnmeyCount;
         public event Action ClearingScoresEvent;
         public event Action ChangeToFlagPoleStateEvent;
         public event Action DestroyEvent;
@@ -108,7 +108,7 @@ namespace SuperMarioBros.Marios
         {
             TransitionState.Update(gameTime);
             NoMovementTimer -= gameTime.ElapsedGameTime.TotalSeconds;
-            if (OnGround) EnemyKillStreakCounter = Utilities.InitialEnmeyCount; //Reset it.
+            if (OnGround) EnemyKillStreakCounter = GeneralConstants.InitialEnmeyCount; //Reset it.
             if (NoMovementTimer <= 0)
             {
                 HealthState.Update(gameTime);

@@ -15,7 +15,7 @@ namespace SuperMarioBros.Objects.Enemy
                 koopa.Physics.Velocity = PhysicsConsts.RightMovingNormalKoopaVelocity;
             else
                 koopa.Physics.Velocity = PhysicsConsts.RightMovingShelledKoopaVelocity;
-            koopa.Score = Utilities.DefaultEnmeyScore;
+            koopa.Score = GeneralConstants.DefaultEnmeyScore;
         }
         public void ChangeDirection()
         {

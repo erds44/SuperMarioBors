@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros.Utility
 {
-    internal static class SpriteConsts
+    public static class SpriteConsts
     {
         public const int DebrisFrame = 1;
         public const int DebrisDelay = 1;

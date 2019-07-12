@@ -7,6 +7,7 @@ using SuperMarioBros.Marios;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Objects;
 using System;
+using static SuperMarioBros.Utility.Strings;
 
 namespace SuperMarioBros.Collisions
 {
@@ -22,7 +23,7 @@ namespace SuperMarioBros.Collisions
             {
                 MoverVerticallyBounce(mario,block,direction);
                 block.Used();
-                AudioFactory.Instance.CreateSound("bump").Play();
+                AudioFactory.Instance.CreateSound(Bump).Play();
                 if (block.ItemType != null)
                     GenerateItemInBlock(block.ItemType, block.Position);
                 else

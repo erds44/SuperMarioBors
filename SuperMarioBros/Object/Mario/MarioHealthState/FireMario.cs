@@ -8,7 +8,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
     public class FireMario :  IMarioHealthState
     {
         private readonly IMario mario;
-        private static int fireBallCount = Utilities.FireBallCount;
+        private static int fireBallCount = GeneralConstants.FireBallCount;
         private static float fireBallCoolDown = Timers.FireBallCoolDown;
         private static bool isCoolDown = false;
         public FireMario(IMario mario)
@@ -53,7 +53,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
                 if (fireBallCount <= 0)
                 {
                     isCoolDown = true;
-                    fireBallCount = Utilities.FireBallCount;
+                    fireBallCount = GeneralConstants.FireBallCount;
                 }
             }
         }

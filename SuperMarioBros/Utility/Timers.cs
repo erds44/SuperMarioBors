@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros.Utility
 {
-    internal static class Timers
+    public static class Timers
     {
         public const float RefreshFrequency = 60f;
         public const float InitialTime = 0f;
@@ -24,8 +24,6 @@ namespace SuperMarioBros.Utility
         public const float MarioUpdateDelay = 0.1f;
         public const double GrowMarioTimeSpan = 0.5d;
         public const float StarMarioTimeSpan = 15f;
-
-
     }
 }
 

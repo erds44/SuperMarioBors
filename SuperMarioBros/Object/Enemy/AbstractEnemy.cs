@@ -28,8 +28,8 @@ namespace SuperMarioBros.Objects.Enemy
             Physics = new Physics(Vector2.Zero, enemyGravity, enemyWeight);
             Physics.ApplyGravity();
             IsFlipped = false;
-            Score = Utilities.DefaultEnmeyScore;
-            EnemyKillStreakCounter = Utilities.DefaultEnmeyCount;
+            Score = GeneralConstants.DefaultEnmeyScore;
+            EnemyKillStreakCounter = GeneralConstants.DefaultEnmeyCount;
         }
         public virtual void Draw(SpriteBatch spriteBatch)
         {

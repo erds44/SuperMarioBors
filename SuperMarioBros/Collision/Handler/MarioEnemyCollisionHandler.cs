@@ -2,6 +2,7 @@
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Stats;
+using static SuperMarioBros.Utility.Strings;
 
 namespace SuperMarioBros.Collisions
 {
@@ -9,18 +10,18 @@ namespace SuperMarioBros.Collisions
     {
         public static void NormalMarioVsEnemyTopSideCollision(IMario mario, IEnemy enemy)
         {
-            Bump(mario);
+            BumpUp(mario);
             enemy.Stomped();
             mario.EnemyKillStreakCounter++;
             StatsManager.Instance.Enemykilled(enemy.Position, enemy.Score, mario.EnemyKillStreakCounter);
-            AudioFactory.Instance.CreateSound("stomp").Play();
+            AudioFactory.Instance.CreateSound(Stomp).Play();
         }
         public static void StarMarioVsEnemy(IMario mario, IEnemy enemy)
         {
             enemy.Flipped();
             enemy.ObjState = ObjectState.NonCollidable;
             StatsManager.Instance.Enemykilled(enemy.Position, enemy.Score, mario.EnemyKillStreakCounter);
-            AudioFactory.Instance.CreateSound("stomp").Play();
+            AudioFactory.Instance.CreateSound(Stomp).Play();
         }
         public static void NormalMarioTakeDamage(IMario mario, IEnemy enemy)
         {
@@ -38,7 +39,7 @@ namespace SuperMarioBros.Collisions
                 koopa.DealDemage = true;
                 StatsManager.Instance.Enemykilled(koopa.Position, koopa.Score, mario.EnemyKillStreakCounter);
             }
-            Bump(mario);
+            BumpUp(mario);
             ResolveOverlap(mario, koopa, Direction.top);
         }
         public static void NormalMarioVsShelledMovingKoopaTopSideCollision(IMario mario, IEnemy enemy)
@@ -50,7 +51,7 @@ namespace SuperMarioBros.Collisions
                 mario.EnemyKillStreakCounter++;
                 koopa.ObjState = ObjectState.NonCollidable;
                 StatsManager.Instance.Enemykilled(koopa.Position, koopa.Score, mario.EnemyKillStreakCounter);
-                AudioFactory.Instance.CreateSound("stomp").Play();
+                AudioFactory.Instance.CreateSound(Stomp).Play();
             }
             ResolveOverlap(mario, koopa, Direction.top);
         }

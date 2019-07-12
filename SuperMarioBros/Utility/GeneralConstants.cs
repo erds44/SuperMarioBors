@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros.Utility
 {
-    internal static class Utilities
+    public static class GeneralConstants
     {
         public const int DefaultEnmeyScore = 100;
         public const int ShelledKoopaScore = 500;
@@ -20,6 +20,9 @@ namespace SuperMarioBros.Utility
         public const int LeftTriangle = 3;
         public const int RightTriangle = 2;
         public const int VerticalLine = 4;
+
+        public const float JoystickXThreshold = 0.1f;
+        public const float JoystickYThreshold = 0.8f;
 
     }
 }

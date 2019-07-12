@@ -1,13 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Objects;
+using static SuperMarioBros.Utility.PhysicsConsts;
 
 namespace SuperMarioBros.Collisions
 {
     public abstract class GeneralHandler 
     {
         /* Below are some help methods shared by every response class */
-        private readonly static float bumpedVelocity = -180f;
         protected static void MoverOnGround(IObject mover, IObject target, Direction direction)
         {
             mover.Physics.Velocity = new Vector2(mover.Physics.Velocity.X, 0);
@@ -39,9 +39,9 @@ namespace SuperMarioBros.Collisions
                 default: obj1.Position = new Vector2(obj1.Position.X - overlap.Width, obj1.Position.Y); break;
             }
         }
-        protected static void Bump(IObject obj)
+        protected static void BumpUp(IObject obj)
         {
-            obj.Physics.Velocity = new Vector2(obj.Physics.Velocity.X, bumpedVelocity);
+            obj.Physics.Velocity = new Vector2(obj.Physics.Velocity.X, BumpedVelocity);
         }
         protected static void ChangeDirection(IObject obj)
         {

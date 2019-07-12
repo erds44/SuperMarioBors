@@ -21,7 +21,7 @@ namespace SuperMarioBros.Loading
 
         }
 
-        public SpritesNode(string objectName,string spriteName,int width=SpriteConsts.DefaultWidth, int height=SpriteConsts.DefaultHeight, int totalFrame = SpriteConsts.DefaultTotalFrame, int delay = Utilities.DefaultDelayScale)
+        public SpritesNode(string objectName,string spriteName,int width=SpriteConsts.DefaultWidth, int height=SpriteConsts.DefaultHeight, int totalFrame = SpriteConsts.DefaultTotalFrame, int delay = GeneralConstants.DefaultDelayScale)
         {
             this.ObjectName = objectName;
             this.SpriteName = spriteName;

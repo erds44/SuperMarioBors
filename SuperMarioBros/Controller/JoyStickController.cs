@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Input;
 using SuperMarioBros.Commands;
 using SuperMarioBros.Marios;
 using System.Collections.Generic;
+using static SuperMarioBros.Utility.GeneralConstants;
 
 namespace SuperMarioBros.Controllers
 {
@@ -57,11 +58,11 @@ namespace SuperMarioBros.Controllers
         }
         private void JoyStickHandler(Vector2 joyStickState)
         {
-                if (joyStickState.Y < -0.8)
+                if (joyStickState.Y < -JoystickYThreshold)
                     mario.MoveDown();
-                else if (joyStickState.X < -0.1)
+                else if (joyStickState.X < -JoystickXThreshold)
                     mario.MoveLeft();
-                else if (joyStickState.X > 0.1)
+                else if (joyStickState.X > JoystickXThreshold)
                     mario.MoveRight();
                 else
                     mario.Idle();
