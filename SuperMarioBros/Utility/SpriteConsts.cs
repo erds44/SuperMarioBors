@@ -20,5 +20,8 @@ namespace SuperMarioBros.Utility
         public const int MarioInitialColorIndex = 0;
         public const float GrowMarioFirstScale = 0.8f;
         public const float GrowMarioSecondScale = 1f;
+        public const int DefaultTotalFrame = 1;
+        public const int DefaultWidth = 0;
+        public const int DefaultHeight = 0;
     }
 }

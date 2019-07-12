@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Collisions;
+using SuperMarioBros.Utility;
 using System;
 
 namespace SuperMarioBros.Loading
@@ -18,7 +19,7 @@ namespace SuperMarioBros.Loading
         public Direction Direction { get; set; }
 
 
-        public ObjectsNode(string objectType, Vector2 position, int shape, int size, int width, string itemType= "noType", int itemCount=0)
+        public ObjectsNode(string objectType, Vector2 position, int shape, int size, int width, string itemType= Strings.NoItemContained, int itemCount=Utilities.DefaultItemContained)
         {
             this.ObjectType = objectType;
             this.Position = position;

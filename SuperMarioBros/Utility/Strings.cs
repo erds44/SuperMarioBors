@@ -24,5 +24,12 @@ namespace SuperMarioBros.Utility
         public const string Star = "starman";
         public const string Font = "Font/MarioFont";
         public const string Coin = "coin";
+        public const string NoItemContained = "noType";
+        public const string SpritesFile = "Sprites.xml";
+        public const string StaticsFile = "Statics.xml";
+        public const string DynamicsFile = "Dynamics.xml";
+        public const string NoncollidablesFile = "Noncollidables.xml";
+
+        //public const 
     }
 }

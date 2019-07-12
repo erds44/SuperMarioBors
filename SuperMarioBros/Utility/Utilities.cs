@@ -14,5 +14,12 @@ namespace SuperMarioBros.Utility
         public const int InitialEnmeyCount = 1;
         public const int InitialCount = 0;
         public const int FireBallCount = 2;
+        public const int DefaultDelayScale = 5;
+        public const int DefaultItemContained = 0;
+        public const int HorizontalLine = 1;
+        public const int LeftTriangle = 3;
+        public const int RightTriangle = 2;
+        public const int VerticalLine = 4;
+
     }
 }

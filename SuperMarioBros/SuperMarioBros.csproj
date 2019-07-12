@@ -603,7 +603,7 @@
     <Compile Include="Utility\Strings.cs" />
     <Compile Include="Utility\Timers.cs" />
     <Compile Include="Utility\Utilities.cs" />
-    <Compile Include="Utility\XMLUtilities.cs" />
+    <Compile Include="Loading\XMLUtilities.cs" />
     <Compile Include="Manager\CollisionManager.cs" />
     <Compile Include="Collision\Responder\DynamicAndDynamicObjectsResponder.cs" />
     <Compile Include="Collision\Responder\DynamicAndStaticObjectsResponder.cs" />
