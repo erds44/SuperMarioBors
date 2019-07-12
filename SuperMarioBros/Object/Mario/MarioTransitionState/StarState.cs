@@ -22,7 +22,7 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
             this.mario = mario;
             mario.NoMovementTimer = 0;
             lastSong = MediaPlayer.Queue.ActiveSong;
-            MediaPlayer.Play(AudioFactory.Instance.CreateSong(Strings.Star));
+            MediaPlayer.Play(AudioFactory.Instance.CreateSong(StringConsts.Star));
         }
         public void Draw(SpriteBatch spriteBatch)
         {

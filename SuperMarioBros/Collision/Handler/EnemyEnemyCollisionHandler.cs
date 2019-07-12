@@ -1,7 +1,7 @@
 ﻿using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Stats;
-using static SuperMarioBros.Utility.Strings;
+using static SuperMarioBros.Utility.StringConsts;
 
 namespace SuperMarioBros.Collisions
 {

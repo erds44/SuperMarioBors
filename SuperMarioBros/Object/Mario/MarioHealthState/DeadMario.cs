@@ -17,7 +17,7 @@ namespace SuperMarioBros.Marios.MarioTypeStates
             mario.Sprite = SpriteFactory.CreateSprite(nameof(DeadMario));
             mario.MovementState = new TerminateMovementState();
             mario.Physics.Velocity = PhysicsConsts.DeadMarioVelocity;
-            MediaPlayer.Play(AudioFactory.Instance.CreateSong(Strings.Dead));
+            MediaPlayer.Play(AudioFactory.Instance.CreateSong(StringConsts.Dead));
             StatsManager.Instance.LoseLife();
         }
 

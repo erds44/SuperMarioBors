@@ -5,7 +5,7 @@ using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
 using SuperMarioBros.Stats;
-
+using static SuperMarioBros.Utility.Locations;
 namespace SuperMarioBros.GameStates
 {
     public class PlayerStatusState : GameState
@@ -30,7 +30,7 @@ namespace SuperMarioBros.GameStates
         {
             spriteBatch.Begin();
             graphicsDevice.Clear(Color.Black);
-            game.Hud.Draw(spriteBatch, 0f, 0f);
+            game.Hud.Draw(spriteBatch, Origin, Origin);
             DrawPlayerAndWorldInfo(spriteBatch);          
             spriteBatch.End();
         }
@@ -43,9 +43,9 @@ namespace SuperMarioBros.GameStates
 
         private void DrawPlayerAndWorldInfo(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(spriteFont, "WORLD 1-1 ", new Vector2(350, 140), Color.White);
-            smallMarioSprite.Draw(spriteBatch, new Vector2(332, 262));
-            spriteBatch.DrawString(spriteFont, "  X   " + StatsManager.Instance.Life, new Vector2(382, 240), Color.White);
+            spriteBatch.DrawString(spriteFont, "WORLD 1-1 ", WorldOffest, Color.White);
+            smallMarioSprite.Draw(spriteBatch, IconOffest);
+            spriteBatch.DrawString(spriteFont, "  X   " + StatsManager.Instance.Life, StatuLifeOffset, Color.White);
         }
     }
 }

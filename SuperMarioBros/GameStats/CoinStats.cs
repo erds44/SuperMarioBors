@@ -1,22 +1,23 @@
 ﻿using Microsoft.Xna.Framework;
+using static SuperMarioBros.Utility.GeneralConstants;
 
 namespace SuperMarioBros.Stats
 {
     public class CoinStats
     {
-        public int currentCoin { get; private set; }
+        public int CurrentCoin { get; private set; }
         public CoinStats()
         {
-            currentCoin = 0;
+            CurrentCoin = InitialCount;
         }
         public void Reset()
         {
-            currentCoin = 0;
+            CurrentCoin = InitialCount;
         }
         
         public void CoinCollected()
         {
-            currentCoin++;
+            CurrentCoin++;
         }
        
     }

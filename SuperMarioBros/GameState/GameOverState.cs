@@ -24,7 +24,7 @@ namespace SuperMarioBros.GameStates
         {
             spriteBatch.Begin();
             graphicsDevice.Clear(Color.Black);
-            spriteBatch.DrawString(spriteFont, "GameOver", new Vector2(350, 240), Color.White);
+            spriteBatch.DrawString(spriteFont, "GameOver", Utility.Locations.GameoverString, Color.White);
             spriteBatch.End();
         }
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Objects;
+using static SuperMarioBros.Utility.GeneralConstants;
 
 namespace SuperMarioBros.Stats
 {
@@ -9,7 +10,7 @@ namespace SuperMarioBros.Stats
         public int RemaningLives { get; private set; }
         public LifeStats()
         {
-            totalLives = 3;
+            totalLives = InitialLife;
             RemaningLives = totalLives;
         }
         public void GainExtraLife(Vector2 position)

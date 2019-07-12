@@ -600,7 +600,7 @@
     <Compile Include="Utility\Locations.cs" />
     <Compile Include="Utility\PhysicsConsts.cs" />
     <Compile Include="Utility\SpriteConsts.cs" />
-    <Compile Include="Utility\Strings.cs" />
+    <Compile Include="Utility\StringConsts.cs" />
     <Compile Include="Utility\Timers.cs" />
     <Compile Include="Utility\GeneralConstants.cs" />
     <Compile Include="Loading\XMLUtilities.cs" />

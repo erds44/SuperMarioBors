@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SuperMarioBros.Utility
 {
-    public static class Strings
+    public static class StringConsts
     {
         public const string LeftTopDebris = "LeftTopDerbis";
         public const string LeftBottoomDebris = "LeftBottomDerbis";
@@ -29,9 +29,9 @@ namespace SuperMarioBros.Utility
         public const string PowerUp = "powerup";
         public const string ExtraLife = "1up";
         public const string NoItemContained = "noType";
-        public const string SpritesFile = "Sprites.xml";
-        public const string StaticsFile = "Statics.xml";
-        public const string DynamicsFile = "Dynamics.xml";
+        public const string SpritesFile = "sprites.xml";
+        public const string StaticsFile = "statics.xml";
+        public const string DynamicsFile = "dynamics.xml";
         public const string NoncollidablesFile = "Noncollidables.xml";
         public const string LeftTopBrickDebris = "LeftTopBrickDebris";
         public const string RightTopBrickDebris = "RightTopBrickDebris";

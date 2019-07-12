@@ -7,7 +7,7 @@ using SuperMarioBros.Marios;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Objects;
 using System;
-using static SuperMarioBros.Utility.Strings;
+using static SuperMarioBros.Utility.StringConsts;
 
 namespace SuperMarioBros.Collisions
 {

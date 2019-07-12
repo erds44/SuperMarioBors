@@ -20,15 +20,15 @@ namespace SuperMarioBros.Items
         };
         private readonly Dictionary<(Type, BrickPosition), string> debrisSpriteInfo = new Dictionary<(Type, BrickPosition), string>
         {
-            {(typeof(BrickBlock),BrickPosition.leftTop),Strings.LeftTopBrickDebris },
-            {(typeof(BrickBlock),BrickPosition.leftBottom),Strings.LeftBottomBrickDebris },
-            {(typeof(BrickBlock),BrickPosition.rightTop),Strings.RightTopBrickDebris },
-            {(typeof(BrickBlock),BrickPosition.rightBottom),Strings.RightBottomBrickDebris },
+            {(typeof(BrickBlock),BrickPosition.leftTop),StringConsts.LeftTopBrickDebris },
+            {(typeof(BrickBlock),BrickPosition.leftBottom),StringConsts.LeftBottomBrickDebris },
+            {(typeof(BrickBlock),BrickPosition.rightTop),StringConsts.RightTopBrickDebris },
+            {(typeof(BrickBlock),BrickPosition.rightBottom),StringConsts.RightBottomBrickDebris },
 
-            {(typeof(BlueBrickBlock),BrickPosition.leftTop),Strings.LeftTopBlueBrickDebris },
-            {(typeof(BlueBrickBlock),BrickPosition.leftBottom),Strings.LeftBottomBlueBrickDebris },
-            {(typeof(BlueBrickBlock),BrickPosition.rightTop),Strings.RightTopBlueBrickDebris },
-            {(typeof(BlueBrickBlock),BrickPosition.rightBottom),Strings.RightBottomBlueBrickDebris }
+            {(typeof(BlueBrickBlock),BrickPosition.leftTop),StringConsts.LeftTopBlueBrickDebris },
+            {(typeof(BlueBrickBlock),BrickPosition.leftBottom),StringConsts.LeftBottomBlueBrickDebris },
+            {(typeof(BlueBrickBlock),BrickPosition.rightTop),StringConsts.RightTopBlueBrickDebris },
+            {(typeof(BlueBrickBlock),BrickPosition.rightBottom),StringConsts.RightBottomBlueBrickDebris }
         };
         private float timer = Timers.BlockDebrisTimeSpan;
         public BrickDerbis(Vector2 location, BrickPosition brickPosition, Type type)

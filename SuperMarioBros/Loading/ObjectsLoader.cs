@@ -33,7 +33,7 @@ namespace SuperMarioBros.Loading
 
         private void LoadNonCollidables()
         {
-            nonCollidableList = XMLUtility.XMLReader<ObjectsNode>(Strings.NoncollidablesFile);
+            nonCollidableList = XMLUtility.XMLReader<ObjectsNode>(StringConsts.NoncollidablesFile);
             foreach (ObjectsNode node in nonCollidableList)
             {
                 Type t = Type.GetType(node.ObjectType);
@@ -49,7 +49,7 @@ namespace SuperMarioBros.Loading
 
         private void LoadStatics()
         {
-            staticList = XMLUtility.XMLReader<ObjectsNode>(Strings.StaticsFile);
+            staticList = XMLUtility.XMLReader<ObjectsNode>(StringConsts.StaticsFile);
             foreach (ObjectsNode node in staticList)
             {
                 switch (node.Shape)
@@ -147,7 +147,7 @@ namespace SuperMarioBros.Loading
             }
             if (node.ItemCount == GeneralConstants.DefaultItemContained)
             {
-                if (node.ItemType.Equals(Strings.NoItemContained))
+                if (node.ItemType.Equals(StringConsts.NoItemContained))
                 {
                     return (IStatic)(Activator.CreateInstance(t, position));
                 }
@@ -157,7 +157,7 @@ namespace SuperMarioBros.Loading
                 }
 
             }
-            else if (node.ItemType.Equals(Strings.NoItemContained))
+            else if (node.ItemType.Equals(StringConsts.NoItemContained))
             {
                 return (IStatic)(Activator.CreateInstance(t, position, node.ItemCount));
             }
@@ -171,7 +171,7 @@ namespace SuperMarioBros.Loading
 
         private void LoadDynamics()
         {
-            dynamicList = XMLUtility.XMLReader<ObjectsNode>(Strings.DynamicsFile);
+            dynamicList = XMLUtility.XMLReader<ObjectsNode>(StringConsts.DynamicsFile);
             foreach (ObjectsNode node in dynamicList)
             {
                 Type t = Type.GetType(node.ObjectType);

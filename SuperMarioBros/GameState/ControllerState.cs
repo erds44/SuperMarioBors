@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-
+using static SuperMarioBros.Utility.Locations;
 namespace SuperMarioBros.GameStates
 {
     public class ChooseControllerState : GameState
@@ -36,14 +36,14 @@ namespace SuperMarioBros.GameStates
 
         private void AddKeyBoardButton(List<Buttons> buttons)
         {
-            var keyboardButton = new Buttons(buttonFont, "Keyboard", new Vector2(300, 140));
+            var keyboardButton = new Buttons(buttonFont, "Keyboard", KeyboardButton);
             keyboardButton.Click += game.ChangeToPlayerStatusState;
             buttons.Add(keyboardButton);
         }
 
         private void AddGamePadButton(List<Buttons> buttons)
         {
-            var GamePadButton = new Buttons(buttonFont, "GamePad", new Vector2(300, 250));
+            var GamePadButton = new Buttons(buttonFont, "GamePad", GamepadButton);
             GamePadButton.Click += game.SetControllerAsGamePad;
             GamePadButton.Click += game.ChangeToPlayerStatusState;
             buttons.Add(GamePadButton);

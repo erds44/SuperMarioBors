@@ -3,6 +3,9 @@ using Microsoft.Xna.Framework.Media;
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Items;
 using SuperMarioBros.Objects;
+using static SuperMarioBros.Utility.GeneralConstants;
+using static SuperMarioBros.Utility.Timers;
+using static SuperMarioBros.Utility.Locations;
 
 namespace SuperMarioBros.Stats
 {
@@ -10,10 +13,10 @@ namespace SuperMarioBros.Stats
     {
         private readonly float initalTime;
         public float currentTime { get; private set; }
-        private int songUpdateDelay = 0;
+        private int songUpdateDelay = InitialCount;
         public TimeStats()
         {
-            initalTime = 400;
+            initalTime = GameStartTime;
             currentTime = initalTime;
         }
         public void Reset()
@@ -22,26 +25,26 @@ namespace SuperMarioBros.Stats
         }
         public void Update(GameTime gameTime) 
         {
-            currentTime -= 2 * (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (++songUpdateDelay > 10 && currentTime <= 100)
+            currentTime -= TimeElapseScale * (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if (++songUpdateDelay > SongUpdateThreshold && currentTime <= HurryUpTime)
             {
-                songUpdateDelay = 0;
+                songUpdateDelay = InitialCount;
                 Song hurrySong = AudioFactory.Instance.CreateHurrySong(MediaPlayer.Queue.ActiveSong, out bool shouldNotChange);
                 if (!shouldNotChange) { MediaPlayer.Play(hurrySong); }
             }
         }
         public int TimeBonusScore()
         {
-            if (currentTime <= 3)
+            if (currentTime <= TimeToScoreUnit)
             {
-                currentTime = 0;
-                ObjectFactory.Instance.CreateNonCollidableObject(typeof(WinFlag), new Vector2(8620, 410));
-                return  (int)currentTime * 100; //100 score for each sec remain.
+                currentTime = InitialTime;
+                ObjectFactory.Instance.CreateNonCollidableObject(typeof(WinFlag), WinFlagPosition);
+                return  (int)currentTime * TimeToScoreScale; //100 score for each sec remain.
             }
             else
             {
-                currentTime -= 3; //Use 3 as count unit.
-                return 300; //100 score for each sec remain.
+                currentTime -= TimeToScoreUnit; //Use 3 as count unit.
+                return TimeToScoreScale*TimeToScoreUnit; //100 score for each sec remain.
             }
         }
     }

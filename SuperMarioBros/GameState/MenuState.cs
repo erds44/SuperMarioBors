@@ -26,7 +26,7 @@ namespace SuperMarioBros.GameStates
         }
         private void AddNewGameButton(List<Buttons> buttons)
         {
-            var startButton = new Buttons(spriteFont, "New Game", new Vector2(300, 240));
+            var startButton = new Buttons(spriteFont, "New Game", Utility.Locations.NewgameButton);
             startButton.Click += NewGameClick;
             buttons.Add(startButton);
         }
@@ -38,7 +38,7 @@ namespace SuperMarioBros.GameStates
 
         private void AddQuitGameButton(List<Buttons> buttons)
         {
-            var quitButton = new Buttons(spriteFont, "Quit", new Vector2(300, 300));
+            var quitButton = new Buttons(spriteFont, "Quit", Utility.Locations.QuitButton);
             quitButton.Click += QuitGameClick;
             buttons.Add(quitButton);
         }

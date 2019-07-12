@@ -5,6 +5,7 @@ using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
 using System;
 using System.Collections.Generic;
+using static SuperMarioBros.Utility.GeneralConstants;
 
 namespace SuperMarioBros.Managers
 {
@@ -36,7 +37,7 @@ namespace SuperMarioBros.Managers
 
         public void Update(GameTime gameTime)
         {
-            dynamicLoader.Load(game.Camera.RightBound + 100); // We set the load range to 100.
+            dynamicLoader.Load(game.Camera.RightBound + LoadMargin); // We set the load range to 100.
             if (Mario.Position.X < game.Camera.LeftBound)
             {
                 Mario.Position = new Vector2(game.Camera.LeftBound, Mario.Position.Y);
@@ -149,9 +150,9 @@ namespace SuperMarioBros.Managers
         }
         private void BoundaryCheck(IObject obj)
         {
-            if (obj.Position.Y > game.WindowHeight + 100) obj.ObjState = ObjectState.Destroy;
-            if (obj.Position.X < game.CameraLeftBound - 300) obj.ObjState = ObjectState.Destroy;
-            if (obj.Position.X > game.CameraRightBound + 300) obj.ObjState = ObjectState.Destroy;
+            if (obj.Position.Y > game.WindowHeight + FallMargin) obj.ObjState = ObjectState.Destroy;
+            if (obj.Position.X < game.CameraLeftBound - DisposeMargin) obj.ObjState = ObjectState.Destroy;
+            if (obj.Position.X > game.CameraRightBound + DisposeMargin) obj.ObjState = ObjectState.Destroy;
         }
     }
 }

@@ -48,7 +48,7 @@ namespace SuperMarioBros.GameStates
         private void Teleport()
         {
             if(teleportPosition.Y < 0)
-                game.Camera.Update(teleportPosition + new Vector2(350, -103));
+                game.Camera.Update(teleportPosition + Utility.Locations.TeleportOffset);
             if(teleportPosition != Vector2.Zero)
                 game.Player.Position = teleportPosition;
             game.Player.ResetVelocity();

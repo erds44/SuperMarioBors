@@ -20,7 +20,7 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
         {
             this.mario = mario;
             mario.NoMovementTimer = nonMovementTimer;
-            AudioFactory.Instance.CreateSound(Strings.Pipe).Play(); //Surprisingly, taking damage and going into pipe has the same sound.
+            AudioFactory.Instance.CreateSound(StringConsts.Pipe).Play(); //Surprisingly, taking damage and going into pipe has the same sound.
         }
         public void Draw(SpriteBatch spriteBatch)
         {

@@ -11,10 +11,10 @@ namespace SuperMarioBros.Stats
         private ScoreStats scoreStats;
 
         public event Action timeUpEvent;
-        public int Coin { get => coinStats.currentCoin; }
+        public int Coin { get => coinStats.CurrentCoin; }
         public int Time { get => (int)timeStats.currentTime; }
         public int Life { get => lifeStats.RemaningLives; }
-        public int Score { get => scoreStats.currentScore; }
+        public int Score { get => scoreStats.CurrentScore; }
 
         public static StatsManager Instance { get; } = new StatsManager();
         public void Initialize()

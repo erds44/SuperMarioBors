@@ -7,7 +7,7 @@ using static SuperMarioBros.Utility.XMLUtility;
 namespace SuperMarioBros.Loading
 {
     public class SpritesLoader
-    {
+    {   //All numbers here are the property of a sprite, so we don't think that's magical number.
         private readonly List<SpritesNode> spritesCollection = new List<SpritesNode>
         {
              new SpritesNode("BigMarioLeftCrouching","BigMarioLeftCrouching",32,44),
@@ -124,8 +124,8 @@ namespace SuperMarioBros.Loading
         public Dictionary<string, SpritesNode> SpritesInfo()
         {
             Dictionary<string, SpritesNode> spritesInfo = new Dictionary<string, SpritesNode>();
-            XMLUtility.XMLWriter(Strings.SpritesFile, spritesCollection);
-            spritesList = XMLReader<SpritesNode>(Strings.SpritesFile);
+            XMLUtility.XMLWriter(StringConsts.SpritesFile, spritesCollection);
+            spritesList = XMLReader<SpritesNode>(StringConsts.SpritesFile);
             foreach (SpritesNode node in this.spritesList)
             {
                 spritesInfo.Add(node.ObjectName, node);

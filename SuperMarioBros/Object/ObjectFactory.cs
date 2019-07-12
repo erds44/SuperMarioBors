@@ -39,7 +39,7 @@ namespace SuperMarioBros.Objects
         {
             this.game = game;
             objectsManager = game.ObjectsManager;
-            spriteFont = game.Content.Load<SpriteFont>(Strings.Font);
+            spriteFont = game.Content.Load<SpriteFont>(StringConsts.Font);
         }
         /* Mainly used for itemBlock creates items*/
         public void CreateNonCollidableObject(Type type, Vector2 location)
@@ -51,7 +51,7 @@ namespace SuperMarioBros.Objects
             if (type == typeof(Coin))
             {
                 StatsManager.Instance.CoinCollected(new Vector2(location.X, location.Y + Locations.ScoreOffset));
-                AudioFactory.Instance.CreateSound(Strings.Coin).Play();
+                AudioFactory.Instance.CreateSound(StringConsts.Coin).Play();
             }
             if (obj is WinFlag winFlag)
                 winFlag.startOverEvent += game.StartOver;        

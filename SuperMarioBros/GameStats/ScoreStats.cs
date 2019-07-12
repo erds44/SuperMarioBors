@@ -1,46 +1,47 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Objects;
+using static SuperMarioBros.Utility.GeneralConstants;
 
 namespace SuperMarioBros.Stats
 {
     public class ScoreStats
     {
-        public int currentScore {get;private set;}
+        public int CurrentScore {get;private set;}
         public ScoreStats()
         {
-            currentScore = 0;
+            CurrentScore = InitialCount;
         }
         public void CollectCoinSocre(Vector2 position)
         {
-            currentScore += 200;
+            CurrentScore += CoinScore;
             ObjectFactory.Instance.CreateScoreText(position, "200");
         }
         public void CollectEnemyKilledScore(Vector2 position, int baseScore, int killStreak)
         {
             int killScore = baseScore * killStreak;
-            currentScore += killScore;
+            CurrentScore += killScore;
             ObjectFactory.Instance.CreateScoreText(position, killScore.ToString());
         }
 
         public void CollectFlagPoleScore(Vector2 position)
         {  
-            int flagScore = (int)(375 - position.Y) * (5000 / 304);
-            currentScore += flagScore;
+            int flagScore = (int)((FlagScoreBase - position.Y) * FlagScoreScale);
+            CurrentScore += flagScore;
             ObjectFactory.Instance.CreateScoreText(position, flagScore.ToString());
         }
 
         public void CollectPowerUp(Vector2 position)
         {
-            currentScore += 1000;
+            CurrentScore += PowerUpScore;
             ObjectFactory.Instance.CreateScoreText(position, "1000");
         }
         public void AddRemainingTimeScore(int score)
         {
-            currentScore += score;
+            CurrentScore += score;
         }
         public void Reset()
         {
-            currentScore = 0;
+            CurrentScore = InitialCount;
         }
        
     }

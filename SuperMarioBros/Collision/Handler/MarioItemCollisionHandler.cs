@@ -3,8 +3,9 @@ using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Stats;
+using SuperMarioBros.Utility;
 using static SuperMarioBros.Utility.Locations;
-using static SuperMarioBros.Utility.Strings;
+using static SuperMarioBros.Utility.StringConsts;
 
 namespace SuperMarioBros.Collisions
 {
@@ -61,7 +62,7 @@ namespace SuperMarioBros.Collisions
             coin.CoinCollectedEvent?.Invoke(coin.Position);
             item.ObjState = ObjectState.Destroy;
             StatsManager.Instance.CoinCollected(item.Position);
-            AudioFactory.Instance.CreateSound(Coin).Play();
+            AudioFactory.Instance.CreateSound(StringConsts.Coin).Play();
         }
     }
 }

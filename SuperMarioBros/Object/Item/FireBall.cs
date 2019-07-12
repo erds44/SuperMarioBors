@@ -27,7 +27,7 @@ namespace SuperMarioBros.Marios
             Physics.ApplyGravity();
             sprite = SpriteFactory.CreateSprite(GetType().Name);
             Explosion = false;
-            AudioFactory.Instance.CreateSound(Strings.FireBall).Play();
+            AudioFactory.Instance.CreateSound(StringConsts.FireBall).Play();
         }
 
         public override Rectangle ItemHitBox()
@@ -38,7 +38,7 @@ namespace SuperMarioBros.Marios
         public override void Destroy() { }
         public void FireExplosion()
         {
-            AudioFactory.Instance.CreateSound(Strings.Kick).Play();
+            AudioFactory.Instance.CreateSound(StringConsts.Kick).Play();
             sprite = SpriteFactory.CreateSprite(nameof(FireExplosion));
             sprite.SetLayer(itemLayer);
             Position += Locations.FireBallExplosionOffSet;

@@ -36,7 +36,7 @@ namespace SuperMarioBros.Sprites
             {               
                 currentFrame++;
                 if (currentFrame == totalFrame)
-                    currentFrame = 0;
+                    currentFrame = Utility.GeneralConstants.InitialCount;
                 dt = Timers.InitialTime;
             }
         }

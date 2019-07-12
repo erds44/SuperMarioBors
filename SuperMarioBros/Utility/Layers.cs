@@ -21,6 +21,9 @@ namespace SuperMarioBros.Utility
         public const float FireBallExplosionLayer = 1f;
         public const float FlagLayer = 0.39f;
         public const float FlagPoleLayer = 0.4f;
+        public const float HeadsUpLayer = 1f;
+        public const float HeadsUpScale = 1f;
+        public const float HeadsUpRotation = 0f;
     }
 }
 

@@ -23,7 +23,12 @@ namespace SuperMarioBros.Utility
         public const double DemageMarioNoMoveTimeSpan = 0.5d;
         public const float MarioUpdateDelay = 0.1f;
         public const double GrowMarioTimeSpan = 0.5d;
+        public const int GameStartTime = 400;
+        public const int TimeElapseScale = 2;
+        public const int HurryUpTime = 100;
         public const float StarMarioTimeSpan = 15f;
+        public const int TimeToScoreUnit = 3;
+        public const int TimeToScoreScale = 100;
     }
 }
 

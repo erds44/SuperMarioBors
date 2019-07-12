@@ -36,7 +36,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         public override void Up()
         {
             if (mario.Physics.Jump) return;
-            AudioFactory.Instance.CreateSound(Strings.Jump).Play();
+            AudioFactory.Instance.CreateSound(StringConsts.Jump).Play();
             mario.MovementState = new RightJumping(mario);
         }
 

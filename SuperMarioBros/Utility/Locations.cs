@@ -24,13 +24,32 @@ namespace SuperMarioBros.Utility
         public readonly static Vector2 MarioOffset = new Vector2(-22, -32);
         public readonly static Vector2 MarioJumpOffFlagOffSet = new Vector2(20, 0);
         public readonly static Vector2 MarioInitialLocation = new Vector2(0, 410);
-        public static readonly Vector2 MarioFlagOffset = new Vector2(14, 0);
+        public readonly static Vector2 MarioFlagOffset = new Vector2(14, 0);
+        public readonly static Vector2 KeyboardButton = new Vector2(300, 140);
+        public readonly static Vector2 GamepadButton = new Vector2(300, 250);
+        public readonly static Vector2 NewgameButton = new Vector2(300, 240);
+        public readonly static Vector2 QuitButton = new Vector2(300, 300);
+        public readonly static Vector2 GameoverString = new Vector2(350, 240);
+        public readonly static Vector2 WorldOffest = new Vector2(350, 140);
+        public readonly static Vector2 IconOffest = new Vector2(332, 262);
+        public readonly static Vector2 StatuLifeOffset = new Vector2(382, 240);
+        public readonly static Vector2 TeleportOffset = new Vector2(350, -103);
+        public readonly static Vector2 WinFlagPosition = new Vector2(8620, 410);
+
         public const float ScoreOffset = -60f;
         public const float CastleOffset = 94f;
         public const int FireBallOffSet = 16;
         public const float FlagBottomOffset = 255f;
         public const float WinFlagOffset = 28f;
         public const float FlagYAxisOffset = 88;
+        public const float Origin = 0;
+        public const float ScoreStringOffset = 93;
+        public const float CoinStringOffset = 256;
+        public const float WorldStringOffset = 410;
+        public const float TimeStringOffset = 542;
+        public const float LivesStringOffset = 698;
+        public const int WordXOffset = 5;
+        public const int WordYOffset = 30;
 
     }
 }
