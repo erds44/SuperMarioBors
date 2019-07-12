@@ -4,6 +4,7 @@ using SuperMarioBros.Objects;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Backgrounds
 {
@@ -20,7 +21,7 @@ namespace SuperMarioBros.Backgrounds
             Position = location;
             ObjState = ObjectState.NonCollidable;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
-            sprite.SetLayer();
+            sprite.SetLayer(Layers.BackgroundLayer);
         }
 
         public void Draw(SpriteBatch spriteBatch)
