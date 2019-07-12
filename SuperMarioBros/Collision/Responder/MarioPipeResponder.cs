@@ -21,10 +21,10 @@ namespace SuperMarioBros.Collisions
 
         private readonly Dictionary<(Type, bool, Direction), MarioBlockHandler> handlerDictionary = new Dictionary<(Type, bool, Direction), MarioBlockHandler>
         {
-            { (typeof(Pipe), false, Direction.top), MarioVsRegularPipeTopCollision},  
+            { (typeof(Pipe), false, Direction.top), MarioVsRegularPipeTopOrBottomCollision},  
             { (typeof(Pipe), false, Direction.left), MarioVsRegularPipeLeftOrRightCollision},
             { (typeof(Pipe), false, Direction.right), MarioVsRegularPipeLeftOrRightCollision},
-            { (typeof(Pipe), false, Direction.bottom), MarioInPipe},
+            { (typeof(Pipe), false, Direction.bottom), MarioVsRegularPipeTopOrBottomCollision},
 
             { (typeof(TeleportPipe), false, Direction.top), MarioVsTeleportPipeTopCollision},  
             { (typeof(TeleportPipe), false, Direction.left), MarioVsTeleportPipeLeftCollision},

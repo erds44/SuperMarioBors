@@ -10,7 +10,6 @@ namespace SuperMarioBros.Objects.Enemy
     public abstract class AbstractEnemy : IEnemy
     {
         public int EnemyKillStreakCounter { get; set; }
-        public event Action<Vector2,int, int> StompedEvent;
         public IEnemyMovementState MovementState { get; set; }
         public IEnemyHealthState HealthState { get; set; }
         public ISprite Sprite { get; set; }

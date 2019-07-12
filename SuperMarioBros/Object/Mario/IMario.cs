@@ -14,14 +14,9 @@ namespace SuperMarioBros.Marios
         event Action ClearingScoresEvent;
         event Action DestoryEvent;
         event Action DeathStateEvent;
-        event Action<IObject> FocusMarioEvent;
-        event Action<Vector2> SlidingEvent;
-        event Action<Vector2> SetCameraFocus;
-        event Action SetPipeTeleportngEvent;
-        event Action ChangeToGameStateEvent;
-        event Action ChangeToTeleportStateEvent;
+        event Action <Vector2> SlidingEvent;
+        event Action <Vector2>ChangeToTeleportStateEvent;
         event Action ChangeToFlagPoleStateEvent;
-        event Func<bool> IsFlagPoleStateEvent;
         int EnemyKillStreakCounter { get; set; }
         double NoMovementTimer { get; set; }
         bool OnGround { get; set; }
@@ -45,5 +40,7 @@ namespace SuperMarioBros.Marios
         void Teleport(Vector2 teleportPosition, Direction direction);
         void PowerPressed();
         void PowerReleased();
+        void ResetVelocity();
+        void EnterCastle();
     }
 }

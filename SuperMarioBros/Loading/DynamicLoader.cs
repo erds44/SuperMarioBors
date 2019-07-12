@@ -60,8 +60,8 @@ namespace SuperMarioBros.Loading
                 IDynamic obj = dynamicObjects.First().Item2;
                 if (obj is Flag flag)
                 {
-                    objectLoader.Mario.SlidingEvent += flag.Sliding;
-                    flag.MarioJumpingOffFlagEvent += objectLoader.Mario.JumpingOffFlag;
+                    game.Player.SlidingEvent += flag.Sliding;
+                    flag.MarioJumpingOffFlagEvent += game.Player.JumpingOffFlag;
                 }
                 objectsManager.AddObject(obj);
                 dynamicObjects.RemoveAt(0);

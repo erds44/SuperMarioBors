@@ -36,7 +36,6 @@ namespace SuperMarioBros.Physicses
             this.gravity = gravity;
             JumpKeyUp = false;
         }
- 
         public void Left()
         {
             Velocity -= new Vector2 (acceleration * dt, 0);
@@ -102,6 +101,12 @@ namespace SuperMarioBros.Physicses
             CurrentGravity = 0f;
             sprintVelocityRate = 1f;
             Velocity = velocity;
+        }
+
+        public void ResetVelocity()
+        {
+            Velocity = Vector2.Zero;
+            CurrentGravity = gravity;
         }
     }
 }

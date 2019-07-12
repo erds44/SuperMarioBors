@@ -11,7 +11,7 @@ namespace SuperMarioBros.Collisions
         private static readonly Vector2 marioFlagOffset = new Vector2(14, 0);
         public static void EnterCastle(IMario mario, IItem item)
         {
-            mario.ObjState = ObjectState.Destroy;
+            mario.EnterCastle();
         }
 
         public static void SlidingFlagPole(IMario mario, IItem item)

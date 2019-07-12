@@ -30,11 +30,7 @@ namespace SuperMarioBros.GameStates
         public override void Update(GameTime gameTime)
         {
             timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (timer <= 0)
-            {
-                //game.HeadsUps.ResetAll();
-                game.State = new MenuState(game);
-            }
+            if (timer <= 0) game.State = new MenuState(game);
         }
     }
 }

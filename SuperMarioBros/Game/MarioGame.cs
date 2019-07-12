@@ -56,7 +56,6 @@ namespace SuperMarioBros
 
         protected override void Initialize()
         {
-            IsMouseVisible = true;
             SpriteFactory.Load(Content); // make this mehtod into loadContent
             Camera = new Camera(WindowWidth);
             StatsManager.Instance.Initialize();
@@ -85,17 +84,13 @@ namespace SuperMarioBros
         {
             State = new PlayerStatusState(this);
         }
-        public void ChangeToTeleportingState()
+        public void ChangeToTeleportingState(Vector2 Position)
         {
-            State = new TeleportingState(this);
+            State = new TeleportingState(this, Position);
         }
         public void ChangeToFlagPoleState()
         {
             State = new FlagPoleState(this);
-        }
-        public void ChangeToGameState()
-        {
-            State = new PlayingState(this);
         }
 
         public void ResetGame()
@@ -113,19 +108,15 @@ namespace SuperMarioBros
 
         public void EventBinding()
         {
-            ObjectsManager.Mario.FocusMarioEvent += SetMarioFocus;
-            ObjectsManager.Mario.ChangeToGameStateEvent += ChangeToGameState;
-            ObjectsManager.Mario.ChangeToTeleportStateEvent += ChangeToTeleportingState;
-            ObjectsManager.Mario.IsFlagPoleStateEvent += IsFlagPoleState;
-            ObjectsManager.Mario.SetCameraFocus += SetCameraFocus;
-            ObjectsManager.Mario.ChangeToFlagPoleStateEvent += ChangeToFlagPoleState;
+            Player.ChangeToTeleportStateEvent += ChangeToTeleportingState;
+            Player.ChangeToFlagPoleStateEvent += ChangeToFlagPoleState;
         }
 
         public void StartOver()
         {
             Initialize();
         }
-        public void SetMarioFocus(IObject obj)
+        public void SetFocus(IObject obj)
         {
             Camera.SetFocus(obj);
         }

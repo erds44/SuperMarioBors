@@ -14,6 +14,7 @@ namespace SuperMarioBros.GameStates
         public MenuState(MarioGame game)
         {
             this.game = game;
+            game.IsMouseVisible = true;
             graphics = game.GraphicsDevice;
             spriteFont = game.Content.Load<SpriteFont>("Font/MarioFontSize25");
             background = game.Content.Load<Texture2D>("StartBackground");

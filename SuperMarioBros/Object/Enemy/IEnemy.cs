@@ -6,7 +6,6 @@ namespace SuperMarioBros.Objects.Enemy
 {
     public interface IEnemy : IDynamic
     {
-        event Action<Vector2, int,int> StompedEvent;
         IEnemyHealthState HealthState { get; set; }
         IEnemyMovementState MovementState { get; set; }
         int EnemyKillStreakCounter { get; set; }

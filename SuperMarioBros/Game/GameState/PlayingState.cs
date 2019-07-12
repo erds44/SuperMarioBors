@@ -21,8 +21,17 @@ namespace SuperMarioBros.GameStates
             StatsManager.Instance.timeUpEvent += TimeUp;
 
             if (MediaPlayer.State == MediaState.Paused) MediaPlayer.Resume();
-            else if (game.Player.Position.Y > 0) { MediaPlayer.Play(AudioFactory.Instance.CreateSong("overworld")); }
-            else { MediaPlayer.Play(AudioFactory.Instance.CreateSong("underworld")); backGroundColor = Color.Black; }
+            else if (game.Player.Position.Y > 0)
+            {
+                MediaPlayer.Play(AudioFactory.Instance.CreateSong("overworld"));
+                game.SetFocus(game.Player);
+            }
+            else
+            {
+                MediaPlayer.Play(AudioFactory.Instance.CreateSong("underworld"));
+                backGroundColor = Color.Black;
+                game.SetFocus(null);
+            }
         }
         public override void Draw(SpriteBatch spriteBatch)
         {

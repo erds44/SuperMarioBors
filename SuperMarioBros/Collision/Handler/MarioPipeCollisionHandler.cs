@@ -7,17 +7,20 @@ namespace SuperMarioBros.Collisions
 {
     public class MarioPipeCollisionHandler : GeneralHandler
     {
-        public static void MarioVsRegularPipeTopCollision(IMario mario, IPipe target, Direction direction)
+        public static void MarioVsRegularPipeTopOrBottomCollision(IMario mario, IPipe target, Direction direction)
         {
-            MarioInPipe(mario, target, direction);
-            if (!(target).Teleported)
+            if(!MarioInPipe(mario, target, direction))
+            {
                 MarioOnGround(mario, target, direction);
+            }
         }
         public static void MarioVsRegularPipeLeftOrRightCollision(IMario mario, IPipe target, Direction direction)
         {
-            MarioInPipe(mario, target, direction);
-            if (!(target).Teleported)
+            if (!MarioInPipe(mario, target, direction))
+            {
                 MoverHorizontallyBlock(mario, target, direction);
+            }
+            
         }
         public static void MarioVsTeleportPipeTopCollision(IMario mario, IPipe pipe, Direction direction)
         {
@@ -61,15 +64,15 @@ namespace SuperMarioBros.Collisions
             }
         }
 
-        public static void MarioInPipe(IMario mario, IPipe pipe, Direction direction)
+        private static bool MarioInPipe(IMario mario, IPipe pipe, Direction direction)
         {
             Rectangle overlap = Rectangle.Intersect(mario.HitBox(), pipe.HitBox());
             if (overlap == mario.HitBox())
             {
                 mario.Teleport(Vector2.Zero, Direction.top);
-                pipe.Teleported = true;
-                mario.SetPipeTeleportngEvent += ((Pipe)pipe).SetTeleporting;
+                return true;
             }
+            return false;
         }
         private static bool MarioInTopSidePipeRange(IMario mario, IPipe pipe)
         {

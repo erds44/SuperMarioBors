@@ -9,5 +9,6 @@ namespace SuperMarioBros.GameStates
         void Pause();
         void Die();
         void TimeUp();
+        void TeleportPosition(Vector2 position);
     }
 }

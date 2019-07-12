@@ -38,8 +38,7 @@ namespace SuperMarioBros.GameStates
         public override void Update(GameTime gameTime)
         {
             timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (timer <= 0)
-                game.State = new PlayingState(game);
+            if (timer <= 0) game.State = new PlayingState(game);
         }
 
         private void DrawPlayerAndWorldInfo(SpriteBatch spriteBatch)

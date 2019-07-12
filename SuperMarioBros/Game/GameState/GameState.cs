@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Media;
-using SuperMarioBros.AudioFactories;
 
 namespace SuperMarioBros.GameStates
 {
@@ -13,5 +11,6 @@ namespace SuperMarioBros.GameStates
         public virtual void Die() { }
         public virtual void Pause() { }
         public virtual void TimeUp() { }
+        public virtual void TeleportPosition(Vector2 position) { }
     }
 }

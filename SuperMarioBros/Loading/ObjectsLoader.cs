@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using SuperMarioBros.Collisions;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Pipes;
 
 namespace SuperMarioBros.Loading
 {
@@ -113,13 +114,16 @@ namespace SuperMarioBros.Loading
               (new ObjectsNode("SuperMarioBros.Blocks.RockBlock",new Vector2(6607,480),1,85,35)),
 
               (new ObjectsNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(6607,410),2,4,35)),
-            //  (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(6958,410),1,1,72)),
+
+             // (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(6958,410),1,1,72)),
               (new ObjectsNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(7164,288),1,2,35)),
               (new ObjectsNode("SuperMarioBros.Blocks.QuestionBlock",new Vector2(7234,288),1,1,35,"SuperMarioBros.Items.Coin")),
               (new ObjectsNode("SuperMarioBros.Blocks.BrickBlock",new Vector2(7269,288),1,1,35)),
              // (new ObjectsNode("SuperMarioBros.Items.Pipe",new Vector2(7647,410),1,1,72)),
               (new ObjectsNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(7719,410),3,8,35)),
               (new ObjectsNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(7999,410),4,8,35)),
+
+
               (new ObjectsNode("SuperMarioBros.Pipes.Pipe",new Vector2(6958, 410),1,1,0,Direction.bottom,"SmallPipe",new Vector2(0,0))),
               (new ObjectsNode("SuperMarioBros.Blocks.ConcreteBlock",new Vector2(8489,410),1,1,0)),
             };
@@ -237,7 +241,7 @@ namespace SuperMarioBros.Loading
 
         public void LevelLoading()
         {
-            Mario = new Mario(new Vector2(0, 410));
+            Mario = new Mario(new Vector2(2500, 410));
             LoadDynamics();
             LoadStatics();
             LoadNonCollidables();
