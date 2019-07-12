@@ -10,6 +10,7 @@ using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
 using SuperMarioBros.Stats;
+using SuperMarioBros.Utility;
 using System;
 using System.Collections.Generic;
 
@@ -17,7 +18,7 @@ namespace SuperMarioBros.Marios
 {
     public class Mario : IMario
     {
-        public int EnemyKillStreakCounter { get; set; } = 0;
+        public int EnemyKillStreakCounter { get; set; } = Utilities.DefaultEnmeyCount;
         public event Action ClearingScoresEvent;
         public event Action ChangeToFlagPoleStateEvent;
         public event Action DestroyEvent;
@@ -44,15 +45,15 @@ namespace SuperMarioBros.Marios
         }
         private readonly Dictionary<Direction, Vector2> teleportDictionary = new Dictionary<Direction, Vector2>
         {
-            { Direction.top, new Vector2(0, -32)},
-            { Direction.bottom, new Vector2(0, 35)},
-            { Direction.left, new Vector2(-35, 0)},
-            { Direction.right, new Vector2(35, 0)},
+            { Direction.top, PhysicsConsts.MarioTeleportTopVelocity},
+            { Direction.bottom, PhysicsConsts.MarioTeleportBottomVelocity},
+            { Direction.left, PhysicsConsts.MarioTeleportleftVelocity},
+            { Direction.right, PhysicsConsts.MarioTeleportRightVelocity},
         };
         public Mario(Vector2 location)
         {
             HealthState = new SmallMario(this);
-            Physics = new Physics(new Vector2(0,0), 800f, 200f, 150f);
+            Physics = new Physics(PhysicsConsts.IdleVelocity, PhysicsConsts.MarioGravity, PhysicsConsts.MarioWeight, PhysicsConsts.MarioAcceleration);
             Physics.ApplyGravity();
             MovementState = new RightIdle(this);
             TransitionState = new NormalState(this);
@@ -107,7 +108,7 @@ namespace SuperMarioBros.Marios
         {
             TransitionState.Update(gameTime);
             NoMovementTimer -= gameTime.ElapsedGameTime.TotalSeconds;
-            if (OnGround) EnemyKillStreakCounter = 1; //Reset it.
+            if (OnGround) EnemyKillStreakCounter = Utilities.InitialEnmeyCount; //Reset it.
             if (NoMovementTimer <= 0)
             {
                 HealthState.Update(gameTime);
@@ -163,8 +164,8 @@ namespace SuperMarioBros.Marios
             if (MovementState is RightSliding)
                 MovementState.ChangeSlidingDirection();
             else
-                Position += new Vector2(20, 0);
-            Physics.Velocity = new Vector2(100, -180);
+                Position += Locations.MarioJumpOffFlagOffSet;
+            Physics.Velocity = PhysicsConsts.MarioJumpOffFlagVelocity;
             Physics.ApplyGravity();
         }
 

@@ -4,6 +4,7 @@ using SuperMarioBros.Managers;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Items
 {
@@ -16,19 +17,19 @@ namespace SuperMarioBros.Items
         public Rectangle HitBox { get => ItemHitBox(); }
         private protected bool addFlag;
         private protected float speedChangeFlag;
-        private protected float peak = 45f;
-        private protected Vector2 initialVelocity = new Vector2(0, -180);
-        private protected Vector2 collidableVelocity = new Vector2(40, 0);
-        private protected float itemGravity =  800f;
-        private protected float itemWeight = 20f;
-        private protected float itemLayer = 1f;
+        private protected float peak = PhysicsConsts.ItemPeak;
+        private protected Vector2 initialVelocity = PhysicsConsts.ItemInitialVelocity;
+        private protected Vector2 collidableVelocity = PhysicsConsts.ItemCollidableVelocity;
+        private protected float itemGravity =  PhysicsConsts.ItemGravity;
+        private protected float itemWeight = PhysicsConsts.ItemWeight;
+        private protected float itemLayer = Layers.ItemLayer;
 
 
         protected virtual void Initialize()
         {
             ObjState = ObjectState.NonCollidable;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
-            sprite.SetLayer(0.4f);
+            sprite.SetLayer(Layers.ItemInitialLayer);
             Physics = new Physics(initialVelocity, itemGravity, itemWeight);
             addFlag = false;
             speedChangeFlag += Position.Y - peak;

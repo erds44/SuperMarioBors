@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Objects.Enemy
 {
@@ -8,7 +9,7 @@ namespace SuperMarioBros.Objects.Enemy
         public KoopaNormalState(Koopa koopa)
         {
             this.koopa = koopa;
-            koopa.Score = 100;
+            koopa.Score = Utilities.DefaultEnmeyScore;
         }
 
         public void Stomped()

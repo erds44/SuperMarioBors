@@ -19,6 +19,11 @@ namespace SuperMarioBros.Utility
         public const float ScoreTextTimeSpan = 0.5f;
         public const int WinFlagSleepTime = 2000;
         public const float FireBallCoolDown = 2f;
+        public const float DemageMarioTimeSpan = 2f;
+        public const double DemageMarioNoMoveTimeSpan = 0.5d;
+        public const float MarioUpdateDelay = 0.1f;
+        public const double GrowMarioTimeSpan = 0.5d;
+        public const float StarMarioTimeSpan = 15f;
 
 
     }

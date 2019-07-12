@@ -1,4 +1,5 @@
 ﻿using SuperMarioBros.SpriteFactories;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
@@ -18,7 +19,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
 
         public override void ChangeSlidingDirection()
         {
-            mario.Physics.CurrentGravity = 100f;
+            mario.Physics.CurrentGravity = PhysicsConsts.SlidingMarioGravity;
             mario.MovementState = new LeftSliding(mario);
         }
     }

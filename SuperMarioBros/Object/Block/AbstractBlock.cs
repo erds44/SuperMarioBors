@@ -6,6 +6,7 @@ using SuperMarioBros.Managers;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
+using SuperMarioBros.Utility;
 using System;
 
 namespace SuperMarioBros.Blocks
@@ -34,8 +35,8 @@ namespace SuperMarioBros.Blocks
         {
             ObjState = ObjectState.Normal;
             State = new NormalState(this);
-            Physics = new Physics(Vector2.Zero, 0f, 0f);
-            Sprite?.SetLayer(0.45f);
+            Physics = new Physics(Vector2.Zero, PhysicsConsts.ZeroGravity, PhysicsConsts.ZeroWeight);
+            Sprite?.SetLayer(Layers.BlockLayer);
         }
         public virtual void Destroy() { }
 

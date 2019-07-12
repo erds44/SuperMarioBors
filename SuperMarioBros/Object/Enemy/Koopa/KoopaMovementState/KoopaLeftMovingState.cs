@@ -1,22 +1,21 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.SpriteFactories;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Objects.Enemy
 {
     public class KoopaLeftMovingState : IEnemyMovementState
     {
         private readonly Koopa koopa;
-        private readonly Vector2 NormalStateVelocity = new Vector2(-80, 0);
-        private readonly Vector2 ShelledStateVelocity = new Vector2(-160, 0);
         public KoopaLeftMovingState(Koopa koopa)
         {
             this.koopa = koopa;
             koopa.Sprite = SpriteFactory.CreateSprite(koopa.HealthState.GetType().Name + GetType().Name);
             if(koopa.HealthState is KoopaNormalState)
-                koopa.Physics.Velocity = NormalStateVelocity;
+                koopa.Physics.Velocity = PhysicsConsts.LeftMovingNormalKoopaVelocity;
             else
-                koopa.Physics.Velocity = ShelledStateVelocity;
-            koopa.Score = 100;
+                koopa.Physics.Velocity = PhysicsConsts.LeftMovingShelledKoopaVelocity;
+            koopa.Score = Utilities.DefaultEnmeyScore;
         }
 
         public void ChangeDirection()

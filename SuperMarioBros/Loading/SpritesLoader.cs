@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
-using static SuperMarioBros.Utilities.XMLUtility;
+using static SuperMarioBros.Utility.XMLUtility;
 
 namespace SuperMarioBros.Loading
 {

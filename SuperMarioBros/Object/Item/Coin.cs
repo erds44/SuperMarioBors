@@ -2,20 +2,19 @@
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Items
 {
     public class Coin : AbstractItem, IItem
     {
-        private readonly float coinGravity = 100f;
-        private float existingTimer = 2f;
-        private Vector2 coinInitialVelocity = new Vector2(0, -100);
+        private float existingTimer = Timers.CoinTimeSpan;
         public Coin(Vector2 location)
         {
             Position = location;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
-            sprite.SetLayer(0);
-            Physics = new Physics(coinInitialVelocity, coinGravity, itemWeight);
+            sprite.SetLayer(Layers.CoinLayer);
+            Physics = new Physics(PhysicsConsts.CoinInitialVelocity, PhysicsConsts.CoinGravity, itemWeight);
             Physics.ApplyGravity();
             /* Since Initally item does not have gravity for responding state */
         }

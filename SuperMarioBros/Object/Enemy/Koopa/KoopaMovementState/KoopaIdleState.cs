@@ -1,11 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.SpriteFactories;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Objects.Enemy
 {
     public class KoopaIdleState : IEnemyMovementState
     {
-        private float respondingTimer = 5f;
+        private float respondingTimer = Timers.ShelledKoopaTimeSpan;
         private readonly Koopa koopa;
         public KoopaIdleState(Koopa koopa)
         {

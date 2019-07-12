@@ -14,7 +14,7 @@ namespace SuperMarioBros.Backgrounds
         public Vector2 Position { get; set; }
         public ObjectState ObjState { get; set; }
         public Physics Physics { get; set; }
-        public Rectangle HitBox { get => new Rectangle((int)Position.X, (int)Position.Y, 0, 0); }
+        public Rectangle HitBox { get => new Rectangle((int)Position.X, (int)Position.Y, SpriteConsts.BackgroundWidth, SpriteConsts.BackgroundHeight); }
         
         protected AbstractBackground(Vector2 location)
         {
@@ -26,7 +26,7 @@ namespace SuperMarioBros.Backgrounds
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position,SpriteEffects.None, 1.5f);
+            sprite.Draw(spriteBatch, Position,SpriteEffects.None, SpriteConsts.BackgroundScale);
         }
 
         public void Destroy() { }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static SuperMarioBros.Utilities.XMLUtility;
+using static SuperMarioBros.Utility.XMLUtility;
 
 namespace SuperMarioBros.Loading
 {

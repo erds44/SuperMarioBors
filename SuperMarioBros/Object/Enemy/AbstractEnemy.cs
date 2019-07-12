@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Sprites;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Objects.Enemy
 {
@@ -16,9 +17,9 @@ namespace SuperMarioBros.Objects.Enemy
         public Physics Physics { get; set; }
         public ObjectState ObjState { get; set; }
         private protected bool IsFlipped;
-        private protected Vector2 initialVelocity = new Vector2(-30, 0);
-        private protected float enemyGravity = 800f;
-        private protected float enemyWeight = 200f;
+        private protected Vector2 initialVelocity = PhysicsConsts.EnemyInitialVelocity;
+        private protected float enemyGravity = PhysicsConsts.EnemyGravity;
+        private protected float enemyWeight = PhysicsConsts.EnemyWeight;
         public int Score { get; set; }
         public Rectangle HitBox { get => EnemyHitBox(); }
         protected void Initialize()
@@ -27,8 +28,8 @@ namespace SuperMarioBros.Objects.Enemy
             Physics = new Physics(Vector2.Zero, enemyGravity, enemyWeight);
             Physics.ApplyGravity();
             IsFlipped = false;
-            Score = 100;
-            EnemyKillStreakCounter = 0;
+            Score = Utilities.DefaultEnmeyScore;
+            EnemyKillStreakCounter = Utilities.DefaultEnmeyCount;
         }
         public virtual void Draw(SpriteBatch spriteBatch)
         {

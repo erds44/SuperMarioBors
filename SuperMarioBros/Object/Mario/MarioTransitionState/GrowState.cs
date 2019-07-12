@@ -3,15 +3,16 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.Objects.Mario.TransitionState;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Objects.Mario.MarioTransitionState
 {
     public class GrowState : IMarioTransitionState
     {
         private readonly IMario mario;
-        private double transitionTimer = .5d;
+        private double transitionTimer = Timers.GrowMarioTimeSpan;
         private int index;
-        private readonly float[] scales = {0.8f, 1f };
+        private readonly float[] scales = {SpriteConsts.GrowMarioFirstScale, SpriteConsts.GrowMarioSecondScale };
         public GrowState(IMario mario)
         {
             this.mario = mario;
@@ -28,8 +29,8 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
         public void TakeRedMushroom() // Not likely to happen
         {
             mario.HealthState.TakeRedMushroom();
-            mario.NoMovementTimer = .5d;
-            transitionTimer = .5d;
+            mario.NoMovementTimer = Timers.GrowMarioTimeSpan;
+            transitionTimer = Timers.GrowMarioTimeSpan;
         }
 
         public void TakeDamage()
@@ -52,8 +53,8 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
         public void OnFireFlower()
         {
             mario.HealthState.TakeFireFlower();
-            mario.NoMovementTimer = .5d;
-            transitionTimer = .5d;
+            mario.NoMovementTimer = Timers.GrowMarioTimeSpan;
+            transitionTimer = Timers.GrowMarioTimeSpan;
         }
     }
 }

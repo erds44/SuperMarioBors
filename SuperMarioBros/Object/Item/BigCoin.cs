@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Physicses;
+using SuperMarioBros.Utility;
 using System;
 
 namespace SuperMarioBros.Items
@@ -7,14 +8,12 @@ namespace SuperMarioBros.Items
 
     public class BigCoin : AbstractItem, IItem
     {
-        private new Vector2 initialVelocity = new Vector2(0, 0);
-        private new float itemGravity = 0f;
         public Action<Vector2> CoinCollectedEvent;
         public BigCoin(Vector2 location)
         {
             Position = location;
             base.Initialize();
-            Physics = new Physics(initialVelocity, itemGravity, itemWeight);
+            Physics = new Physics(PhysicsConsts.BigCoinInitialVelocity, PhysicsConsts.BigCoinGravity, itemWeight);
             ObjState = ObjectState.Normal;
         }
 

@@ -1,11 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Utility;
 using System;
 
 namespace SuperMarioBros.Blocks
 {
     public class BlueBrickBlock:AbstractBlock
     {
-        private protected double deleteTimer = 0.1;
+        private protected double deleteTimer = Timers.BrickBlockTimeSpan;
         private protected bool bumped;
         public BlueBrickBlock(Vector2 location,Type type)
         {

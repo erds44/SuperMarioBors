@@ -2,13 +2,14 @@
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
+using SuperMarioBros.Utility;
 using System;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
     public class LeftMoving : AbstractMovementState, IMarioMovementState
     {
-        private readonly float jumpingSpeed = 40f;
+        private readonly float jumpingSpeed = PhysicsConsts.MarioJumpingSpeed;
         private bool movingLeft = true;
         public LeftMoving(IMario mario)
         {
@@ -40,12 +41,12 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         public override void Up()
         {
             if (mario.Physics.Jump) return;
-            AudioFactory.Instance.CreateSound("jump").Play();
+            AudioFactory.Instance.CreateSound(Strings.Jump).Play();
             mario.MovementState = new LeftJumping(mario);
         }
         public override void Update(GameTime gameTime)
         {
-            if (mario.Physics.Velocity.Y >= jumpingSpeed) 
+            if (mario.Physics.Velocity.Y >= PhysicsConsts.MarioJumpingSpeed) 
             {
                 mario.MovementState = new LeftJumping(mario);
                 mario.Physics.Jump = true;
