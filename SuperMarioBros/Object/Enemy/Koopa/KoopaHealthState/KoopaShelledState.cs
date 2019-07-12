@@ -10,10 +10,7 @@ namespace SuperMarioBros.Objects.Enemy
             this.koopa = koopa;
         }
 
-        public void Stomped()
-        {
-            // Do Nothing
-        }
+        public void Stomped() { }
 
         public void Update(GameTime gameTime)
         {

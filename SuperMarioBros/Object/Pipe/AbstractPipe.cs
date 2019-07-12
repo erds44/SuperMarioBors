@@ -17,6 +17,14 @@ namespace SuperMarioBros.Pipes
         public Direction TeleportDirection { get; protected set; }
         public bool Teleported { get; set; }
         protected string pipeType;
+        public Rectangle HitBox
+        {
+            get
+            {
+                Point size = SpriteFactory.ObjectSize(pipeType);
+                return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
+            }
+        }
 
         protected virtual void Initialize()
         {
@@ -29,25 +37,13 @@ namespace SuperMarioBros.Pipes
             Teleported = false;
         }
 
-        public virtual void Destroy()
-        {
-            // Do Nothing
-        }
+        public virtual void Destroy() { }
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Position);
         }
 
-        public virtual Rectangle HitBox()
-        {
-            Point size = SpriteFactory.ObjectSize(pipeType);
-            return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
-        }
-
-        public virtual void Update(GameTime gameTime)
-        {
-            // Do Nothing
-        }
+        public virtual void Update(GameTime gameTime) { }
     }
 }

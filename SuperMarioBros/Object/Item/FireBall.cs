@@ -31,15 +31,12 @@ namespace SuperMarioBros.Marios
             AudioFactory.Instance.CreateSound("fireball").Play();
         }
 
-        public override Rectangle HitBox()
+        public override Rectangle ItemHitBox()
         {
             return new Rectangle((int)Position.X, (int)Position.Y - 16, 16, 16);
         }
 
-        public override void Destroy()
-        {
-            // Do Nothing
-        }
+        public override void Destroy() { }
         public void FireExplosion()
         {
             AudioFactory.Instance.CreateSound("kick").Play();

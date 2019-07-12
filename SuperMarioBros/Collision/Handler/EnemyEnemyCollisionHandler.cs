@@ -21,7 +21,7 @@ namespace SuperMarioBros.Collisions
             Koopa koopa = (Koopa)target;
             if (!koopa.DealDemage)
             {
-                    if (mover.HitBox().Center.X <= koopa.HitBox().Center.X)
+                    if (mover.HitBox.Center.X <= koopa.EnemyHitBox().Center.X)
                         koopa.MoveRight();
                     else
                         koopa.MoveLeft();

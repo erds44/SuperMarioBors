@@ -29,10 +29,8 @@ namespace SuperMarioBros.Objects.Enemy
             koopa.MovementState = new KoopaIdleState(koopa);
         }
 
-        public void Update(GameTime gameTime)
-        {
-            //Do Nothing
-        }
+        public void Update(GameTime gameTime) { }
+
         public void MoveLeft()
         {
             koopa.MovementState = new KoopaLeftMovingState(koopa);

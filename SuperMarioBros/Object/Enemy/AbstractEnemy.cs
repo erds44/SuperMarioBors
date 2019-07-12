@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Sprites;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
-using System;
 
 namespace SuperMarioBros.Objects.Enemy
 {
@@ -21,6 +20,7 @@ namespace SuperMarioBros.Objects.Enemy
         private protected float enemyGravity = 800f;
         private protected float enemyWeight = 200f;
         public int Score { get; set; }
+        public Rectangle HitBox { get => EnemyHitBox(); }
         protected void Initialize()
         {
             ObjState = ObjectState.Normal;
@@ -37,15 +37,13 @@ namespace SuperMarioBros.Objects.Enemy
             else
                 Sprite.Draw(spriteBatch, Position);
         }
-        public virtual Rectangle HitBox()
+        public virtual Rectangle EnemyHitBox()
         {
             Point size = SpriteFactory.ObjectSize(MovementState.GetType().Name);
             return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
         }
-        public void Destroy()
-        {
-            //Do Nothing For Now
-        }
+        public void Destroy() { }
+
         public virtual void Update(GameTime gameTime)
         {
             Position += Physics.Displacement(gameTime);
@@ -55,9 +53,7 @@ namespace SuperMarioBros.Objects.Enemy
         {
             MovementState.ChangeDirection();
         }
-        public virtual void Stomped()
-        {
-        }
+        public virtual void Stomped() { }
 
         public virtual void Flipped()
         {

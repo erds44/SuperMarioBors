@@ -6,7 +6,7 @@ namespace SuperMarioBros.Objects
     public interface IObject : IDrawable, IUpdatable
     {
         ObjectState ObjState { get; set; }
-        Rectangle HitBox();
+        Rectangle HitBox { get; }
         Vector2 Position { get; set; }
         void Destroy();
         Physics Physics { get; set; }

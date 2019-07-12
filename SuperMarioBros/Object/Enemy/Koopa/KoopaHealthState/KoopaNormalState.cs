@@ -16,9 +16,6 @@ namespace SuperMarioBros.Objects.Enemy
             koopa.HealthState = new KoopaShelledState(koopa);
         }
 
-        public void Update(GameTime gameTime)
-        {
-            //Do Nothing
-        }
+        public void Update(GameTime gameTime) { }
     }
 }

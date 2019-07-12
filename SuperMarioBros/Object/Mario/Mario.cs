@@ -34,6 +34,14 @@ namespace SuperMarioBros.Marios
         public bool OnGround { get; set; }
         public double NoMovementTimer { get; set; }
         public IMarioTransitionState TransitionState { get; set; }
+        public Rectangle HitBox
+        {
+            get
+            {
+                Point size = SpriteFactory.ObjectSize(HealthState.GetType().Name + MovementState.GetType().Name);
+                return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
+            }
+        }
         private readonly Dictionary<Direction, Vector2> teleportDictionary = new Dictionary<Direction, Vector2>
         {
             { Direction.top, new Vector2(0, -32)},
@@ -93,12 +101,6 @@ namespace SuperMarioBros.Marios
         {
             if (NoMovementTimer <= 0)
                 MovementState.Idle();
-        }
-
-        public Rectangle HitBox()
-        {
-            Point size = SpriteFactory.ObjectSize(HealthState.GetType().Name + MovementState.GetType().Name);
-            return new Rectangle((int)Position.X, (int)Position.Y- size.Y, size.X, size.Y);
         }
 
         public void Update(GameTime gameTime)

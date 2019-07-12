@@ -14,11 +14,9 @@ namespace SuperMarioBros.Items
             sprite.SetLayer(0.4f);
             Physics = new Physics(Vector2.Zero, 0, 0);
         }
-        public override void Update(GameTime gameTime)
-        {
-            // Do Nothing
-        }
-        public override Rectangle HitBox()
+        public override void Update(GameTime gameTime) { }
+
+        public override Rectangle ItemHitBox()
         {
             Point size = SpriteFactory.ObjectSize(GetType().Name);
             return new Rectangle((int)(Position.X + castleOffset), (int)Position.Y - size.Y, size.X, size.Y);

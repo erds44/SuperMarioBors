@@ -610,7 +610,7 @@
     <Compile Include="Controller\KeyboardController.cs" />
     <Compile Include="General Interfaces\IDraw.cs" />
     <Compile Include="Loading\ObjectsNode.cs" />
-    <Compile Include="Object\Background\AbstractBackGround.cs" />
+    <Compile Include="Object\Background\AbstractBackground.cs" />
     <Compile Include="Object\Background\BigBush.cs" />
     <Compile Include="Object\Background\BigCloud.cs" />
     <Compile Include="Object\Background\BigHill.cs" />

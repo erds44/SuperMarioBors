@@ -13,10 +13,7 @@ namespace SuperMarioBros.Items
             sprite.SetLayer(0.4f);
             Physics = new Physics(Vector2.Zero, 0, 0);
         }
-        public override void Update(GameTime gameTime)
-        {
-            // Do Nothing
-        }
+        public override void Update(GameTime gameTime) { }
     }
 }
 

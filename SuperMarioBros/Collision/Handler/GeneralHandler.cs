@@ -30,7 +30,7 @@ namespace SuperMarioBros.Collisions
         }
         protected static void ResolveOverlap(IObject obj1, IObject obj2, Direction direction)
         {
-            Rectangle overlap = Rectangle.Intersect(obj1.HitBox(), obj2.HitBox());
+            Rectangle overlap = Rectangle.Intersect(obj1.HitBox, obj2.HitBox);
             switch (direction)
             {
                 case Direction.bottom: obj1.Position = new Vector2(obj1.Position.X, obj1.Position.Y + overlap.Height); break;

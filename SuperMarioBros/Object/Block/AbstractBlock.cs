@@ -22,6 +22,14 @@ namespace SuperMarioBros.Blocks
         public ObjectState ObjState { get; set; }
         public int BumpedCount { get; set; }
         public bool CanBeBumped { get; protected set; }
+        public Rectangle HitBox
+        {
+            get
+            {
+                Point size = SpriteFactory.ObjectSize(GetType().Name);
+                return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
+            }
+        } 
         public void Initialize()
         {
             ObjState = ObjectState.Normal;
@@ -29,21 +37,11 @@ namespace SuperMarioBros.Blocks
             Physics = new Physics(Vector2.Zero, 0f, 0f);
             Sprite?.SetLayer(0.45f);
         }
-        public virtual void Destroy()
-        {
-            // Do Nothing
-        }
+        public virtual void Destroy() { }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             Sprite?.Draw(spriteBatch, Position);
-            //Sprite?.Draw(spriteBatch, Position,SpriteEffects.None, 0.8f);
-        }
-
-        public Rectangle HitBox()
-        {
-            Point size = SpriteFactory.ObjectSize(GetType().Name);
-            return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
         }
 
         public virtual void Used()
@@ -61,10 +59,7 @@ namespace SuperMarioBros.Blocks
             Sprite?.Update(gameTime);
         }
 
-        public virtual void Broken()
-        {
-            // Do Nothing
-        }
+        public virtual void Broken() { }
 
     }
 }

@@ -13,7 +13,7 @@ namespace SuperMarioBros.Items
         public Vector2 Position { get; set; }
         public Physics Physics { get; set; }
         public ObjectState ObjState { get; set; }
-
+        public Rectangle HitBox { get => ItemHitBox(); }
         private protected bool addFlag;
         private protected float speedChangeFlag;
         private protected float peak = 45f;
@@ -22,6 +22,7 @@ namespace SuperMarioBros.Items
         private protected float itemGravity =  800f;
         private protected float itemWeight = 20f;
         private protected float itemLayer = 1f;
+
 
         protected virtual void Initialize()
         {
@@ -33,17 +34,15 @@ namespace SuperMarioBros.Items
             speedChangeFlag += Position.Y - peak;
         }
 
-        public virtual void Destroy()
-        {
-            // Do Nothing
-        }
+        public virtual void Destroy() { }
+
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Position);
         }
 
-        public virtual Rectangle HitBox()
+        public virtual Rectangle ItemHitBox()
         {
             Point size = SpriteFactory.ObjectSize(GetType().Name);
             return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);

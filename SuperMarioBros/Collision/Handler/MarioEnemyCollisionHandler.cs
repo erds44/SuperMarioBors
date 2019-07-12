@@ -31,7 +31,7 @@ namespace SuperMarioBros.Collisions
             Koopa koopa = (Koopa)enemy;
             if (!koopa.DealDemage)
             {
-                if (mario.HitBox().Center.X <= koopa.HitBox().Center.X)
+                if (mario.HitBox.Center.X <= koopa.EnemyHitBox().Center.X)
                     koopa.MoveRight();
                 else
                     koopa.MoveLeft();
@@ -58,7 +58,7 @@ namespace SuperMarioBros.Collisions
         public static void MoveShelledIdleKoopa(IMario mario, IEnemy enemy)
         {
             Koopa koopa = (Koopa)enemy;
-            if(mario.HitBox().Center.X <= koopa.HitBox().Center.X)
+            if(mario.HitBox.Center.X <= koopa.EnemyHitBox().Center.X)
             {
                 koopa.MoveRight();
                 ResolveOverlap(mario, koopa, Direction.left);

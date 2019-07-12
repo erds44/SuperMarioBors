@@ -30,7 +30,7 @@ namespace SuperMarioBros.Objects.Enemy
             MovementState.Update(gameTime);
             base.Update(gameTime);
         }
-        public override Rectangle HitBox()
+        public override Rectangle EnemyHitBox()
         {
             Point size = SpriteFactory.ObjectSize(HealthState.GetType().Name + MovementState.GetType().Name);
             return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);

@@ -14,13 +14,9 @@ namespace SuperMarioBros.Blocks
             Position = location;
             bumped = false;
             if(type == typeof(RockBlock))
-            {
                 CanBeBumped = false;
-            }
             else
-            {
                 CanBeBumped = true;
-            }
             base.Initialize();
         }
 

@@ -14,10 +14,7 @@ namespace SuperMarioBros.Objects.Enemy
             this.koopa.Physics.Velocity = Vector2.Zero;
         }
 
-        public void ChangeDirection()
-        {
-            // Do Nothing
-        }
+        public void ChangeDirection() { }
 
         public void MoveLeft()
         {
@@ -29,10 +26,8 @@ namespace SuperMarioBros.Objects.Enemy
             koopa.MovementState = new KoopaRightMovingState(koopa);
         }
 
-        public void Stomped()
-        {
-            // Do Nothing
-        }
+        public void Stomped() { }
+
         public void Update(GameTime gameTime)
         {
             respondingTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;

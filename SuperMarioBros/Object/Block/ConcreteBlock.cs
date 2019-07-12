@@ -12,9 +12,6 @@ namespace SuperMarioBros.Blocks
             Position = location;
             base.Initialize();
         }
-        public override void Used()
-        {
-            // Do Nothing
-        }
+        public override void Used() { }
     }
 }

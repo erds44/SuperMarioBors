@@ -66,8 +66,8 @@ namespace SuperMarioBros.Collisions
 
         private static bool MarioInPipe(IMario mario, IPipe pipe, Direction direction)
         {
-            Rectangle overlap = Rectangle.Intersect(mario.HitBox(), pipe.HitBox());
-            if (overlap == mario.HitBox())
+            Rectangle overlap = Rectangle.Intersect(mario.HitBox, pipe.HitBox);
+            if (overlap == mario.HitBox)
             {
                 mario.Teleport(Vector2.Zero, Direction.top);
                 return true;
@@ -76,15 +76,15 @@ namespace SuperMarioBros.Collisions
         }
         private static bool MarioInTopSidePipeRange(IMario mario, IPipe pipe)
         {
-            Rectangle overlap = Rectangle.Intersect(mario.HitBox(), pipe.HitBox());
-            if (overlap.Width == mario.HitBox().Width)
+            Rectangle overlap = Rectangle.Intersect(mario.HitBox, pipe.HitBox);
+            if (overlap.Width == mario.HitBox.Width)
                 return true;
             return false;
         }
         private static bool MarioInHorizontalSidePipeRange(IMario mario, IPipe pipe)
         {
-            Rectangle overlap = Rectangle.Intersect(mario.HitBox(), pipe.HitBox());
-            if (overlap.Height == mario.HitBox().Height)
+            Rectangle overlap = Rectangle.Intersect(mario.HitBox, pipe.HitBox);
+            if (overlap.Height == mario.HitBox.Height)
                 return true;
             return false;
         }

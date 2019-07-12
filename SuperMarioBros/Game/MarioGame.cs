@@ -24,6 +24,7 @@ namespace SuperMarioBros
         public readonly int WindowHeight;
         public float CameraLeftBound { get => Camera.LeftBound; }
         public float CameraUpperBound { get => Camera.UpperBound; }
+        public float CameraRightBound { get => Camera.RightBound; }
         public ObjectsManager ObjectsManager { get; set; }
         public Camera Camera { get; private set; }
 

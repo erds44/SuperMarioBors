@@ -33,17 +33,17 @@ namespace SuperMarioBros.Managers
 
         private static Direction Detect(IObject object1, IObject object2)
         {
-            if (!(object1.HitBox().Intersects(object2.HitBox()))) return Direction.none;
-            Rectangle overlap = Rectangle.Intersect(object1.HitBox(), object2.HitBox());
+            if (!(object1.HitBox.Intersects(object2.HitBox))) return Direction.none;
+            Rectangle overlap = Rectangle.Intersect(object1.HitBox, object2.HitBox);
             if (overlap.Height <= overlap.Width)
             {
-                if (overlap.Center.Y >= object2.HitBox().Center.Y) return Direction.bottom;
-                if (overlap.Center.Y < object2.HitBox().Center.Y) return Direction.top;
+                if (overlap.Center.Y >= object2.HitBox.Center.Y) return Direction.bottom;
+                if (overlap.Center.Y < object2.HitBox.Center.Y) return Direction.top;
             }
             else
             {
-                if (overlap.Center.X >= object2.HitBox().Center.X) return Direction.right;
-                if (overlap.Center.X < object2.HitBox().Center.X) return Direction.left;
+                if (overlap.Center.X >= object2.HitBox.Center.X) return Direction.right;
+                if (overlap.Center.X < object2.HitBox.Center.X) return Direction.left;
             }
             return Direction.none;
         }

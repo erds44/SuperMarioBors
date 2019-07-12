@@ -150,8 +150,8 @@ namespace SuperMarioBros.Managers
         private void BoundaryCheck(IObject obj)
         {
             if (obj.Position.Y > game.WindowHeight + 100) obj.ObjState = ObjectState.Destroy;
-            if (obj.Position.X < game.Camera.LeftBound - 300) obj.ObjState = ObjectState.Destroy;
-            if (obj.Position.X > game.Camera.RightBound + 300) obj.ObjState = ObjectState.Destroy;
+            if (obj.Position.X < game.CameraLeftBound - 300) obj.ObjState = ObjectState.Destroy;
+            if (obj.Position.X > game.CameraRightBound + 300) obj.ObjState = ObjectState.Destroy;
         }
     }
 }

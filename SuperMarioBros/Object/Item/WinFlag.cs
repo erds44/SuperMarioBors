@@ -31,7 +31,7 @@ namespace SuperMarioBros.Items
                 startOverEvent?.Invoke();
             }
         }
-        public override Rectangle HitBox()
+        public override Rectangle ItemHitBox()
         {
             Point size = SpriteFactory.ObjectSize(GetType().Name);
             return new Rectangle((int)Position.X , (int)Position.Y - size.Y, size.X, size.Y);

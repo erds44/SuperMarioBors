@@ -9,39 +9,26 @@ namespace SuperMarioBros.Backgrounds
 {
     public abstract class AbstractBackground : IStatic
     {
-        private protected ISprite sprite;
+        protected ISprite sprite;
         public Vector2 Position { get; set; }
         public ObjectState ObjState { get; set; }
         public Physics Physics { get; set; }
+        public Rectangle HitBox { get => new Rectangle((int)Position.X, (int)Position.Y, 0, 0); }
         
         protected AbstractBackground(Vector2 location)
         {
             Position = location;
             ObjState = ObjectState.NonCollidable;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
-            sprite.SetLayer(0);
+            sprite.SetLayer(0f);
         }
 
-
-        protected void Initialize()
-        {
-            ObjState = ObjectState.NonCollidable;
-            sprite = SpriteFactory.CreateSprite(GetType().Name);
-            sprite.SetLayer(0);
-        }
         public void Draw(SpriteBatch spriteBatch)
         {
             sprite.Draw(spriteBatch, Position,SpriteEffects.None, 1.5f);
         }
 
-        public Rectangle HitBox()
-        {
-            return new Rectangle((int)Position.X,(int)Position.Y , 0, 0);
-        }
-        public void Destroy()
-        {
-            //Do nothing.
-        }
+        public void Destroy() { }
 
         public virtual void Update(GameTime gameTime)
         {

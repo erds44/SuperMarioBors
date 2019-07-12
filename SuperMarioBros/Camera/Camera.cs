@@ -40,7 +40,7 @@ namespace SuperMarioBros.Cameras
         {
             if (focus is null) return;
             Vector2 targetPosition = focus.Position;
-            LeftBound = Math.Max(prevLeftBound, targetPosition.X + focus.HitBox().Width / 2 - windowWidth / 2);
+            LeftBound = Math.Max(prevLeftBound, targetPosition.X + focus.HitBox.Width / 2 - windowWidth / 2);
             prevLeftBound = LeftBound;
             var position = Matrix.CreateTranslation(-LeftBound-windowWidth / 2, 0, 0);
             var offset = Matrix.CreateTranslation(windowWidth / 2, 0,0);
