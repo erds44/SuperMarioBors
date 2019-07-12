@@ -25,9 +25,8 @@ namespace SuperMarioBros
         public float CameraLeftBound { get => Camera.LeftBound; }
         public float CameraUpperBound { get => Camera.UpperBound; }
         public float CameraRightBound { get => Camera.RightBound; }
-        public ObjectsManager ObjectsManager { get; set; }
+        public ObjectsManager ObjectsManager { get; private set; }
         public Camera Camera { get; private set; }
-
         public IController Controller { get; set; }
         private SpriteBatch spriteBatch;
         public CollisionManager CollisionManager;
@@ -49,15 +48,13 @@ namespace SuperMarioBros
 
         protected override void LoadContent()
         {
-            //SpriteFactory.Load(Content);
             AudioFactory.Instance.Load(Content, "Content/sounds.xml", "Content/musics.xml", "Content/hurry.xml");
             base.LoadContent();
         }
 
-
         protected override void Initialize()
         {
-            SpriteFactory.Load(Content); // make this mehtod into loadContent
+            SpriteFactory.Initialize(Content); 
             Camera = new Camera(WindowWidth);
             StatsManager.Instance.Initialize();
             Hud = new HUD(this);

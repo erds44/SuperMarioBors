@@ -17,7 +17,7 @@ namespace SuperMarioBros.SpriteFactories
         private static ISprite sprite;
         private static SpritesNode spriteNode;
 
-        public static void Load(ContentManager inputContent)
+        public static void Initialize(ContentManager inputContent)
         {
             content = inputContent;
             SpritesLoader spritesLoading = new SpritesLoader();
