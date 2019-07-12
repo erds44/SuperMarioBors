@@ -11,7 +11,7 @@ namespace SuperMarioBros.GameStates
         public PlayerDeadState(MarioGame game)
         {
             this.game = game;
-            game.Player.DestoryEvent += Die;
+            game.Player.DestroyEvent += Die;
         }
         public override void Draw(SpriteBatch spriteBatch)
         {

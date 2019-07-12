@@ -16,9 +16,9 @@ namespace SuperMarioBros.Objects
         private  ObjectsManager objectsManager;
         private static Vector2 itemOffset = new Vector2(1, 0);  /* includes muhsrooms, star, flower */
         private static Vector2 coinOffset = new Vector2(12, -50);
-        private  Vector2 leftTopDebrisOffset = new Vector2(0, -40);
-        private  Vector2 rightTopDebrisOffset = new Vector2(20, -40);
-        private  Vector2 rightBottomDebrisOffset = new Vector2(20, 0);
+        private static Vector2 leftTopDebrisOffset = new Vector2(0, -40);
+        private static Vector2 rightTopDebrisOffset = new Vector2(20, -40);
+        private static Vector2 rightBottomDebrisOffset = new Vector2(20, 0);
         private static Vector2 flagOffset = new Vector2(68, -130);
         public int count = 0;
         private  MarioGame game;

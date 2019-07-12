@@ -57,7 +57,12 @@ namespace SuperMarioBros.GameStates
         }
         public override void Die()
         {
+            game.Player.DestroyEvent -= Die;
             game.State = new PlayerDeadState(game);
+        }
+        public override void Reset()
+        {
+            game.Player.DeathStateEvent += Die;
         }
         public override void TimeUp()
         {
