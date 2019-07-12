@@ -5,6 +5,7 @@ using SuperMarioBros.Items;
 using SuperMarioBros.Managers;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Stats;
+using SuperMarioBros.Utility;
 using System;
 using System.Collections.Generic;
 
@@ -14,14 +15,13 @@ namespace SuperMarioBros.Objects
     {
         public static ObjectFactory Instance { get; } = new ObjectFactory();
         private  ObjectsManager objectsManager;
-        private readonly static Vector2 itemOffset = new Vector2(1, 0);  /* includes muhsrooms, star, flower */
-        private readonly static Vector2 coinOffset = new Vector2(12, -50);
-        private readonly static Vector2 leftTopDebrisOffset = new Vector2(0, -40);
-        private readonly static Vector2 rightTopDebrisOffset = new Vector2(20, -40);
-        private readonly static Vector2 rightBottomDebrisOffset = new Vector2(20, 0);
-        private readonly static Vector2 flagOffset = new Vector2(68, -130);
-        private const int coinCollectOffset = 60;
-        public int count = 0;
+        private static Vector2 itemOffset = Locations.ItemOffset;  /* includes muhsrooms, star, flower */
+        private static Vector2 coinOffset = Locations.CoinOffset;
+        private static Vector2 leftTopDebrisOffset = Locations.LeftTopDebrisOffset;
+        private static Vector2 rightTopDebrisOffset = Locations.RightTopDebrisOffset;
+        private static Vector2 rightBottomDebrisOffset = Locations.RightBottomDebrisOffset;
+        private static Vector2 flagOffset = Locations.FlagOffset;
+        public int count = Utilities.InitialCount;
         private  MarioGame game;
         private SpriteFont spriteFont;
         /* Red/Green msuhrrom, star, debris, flower, coin*/
@@ -39,7 +39,7 @@ namespace SuperMarioBros.Objects
         {
             this.game = game;
             objectsManager = game.ObjectsManager;
-            spriteFont = game.Content.Load<SpriteFont>("Font/MarioFont");
+            spriteFont = game.Content.Load<SpriteFont>(Strings.Font);
         }
         /* Mainly used for itemBlock creates items*/
         public void CreateNonCollidableObject(Type type, Vector2 location)
@@ -50,8 +50,8 @@ namespace SuperMarioBros.Objects
             objectsManager.AddNonCollidableObject(obj);
             if (type == typeof(Coin))
             {
-                StatsManager.Instance.CoinCollected(new Vector2(location.X, location.Y - 60));
-                AudioFactory.Instance.CreateSound("coin").Play();
+                StatsManager.Instance.CoinCollected(new Vector2(location.X, location.Y + Locations.ScoreOffset));
+                AudioFactory.Instance.CreateSound(Strings.Coin).Play();
             }
             if (obj is WinFlag winFlag)
                 winFlag.startOverEvent += game.StartOver;        

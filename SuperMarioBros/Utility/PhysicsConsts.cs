@@ -38,6 +38,7 @@ namespace SuperMarioBros.Utility
         public const float MarioGravity = 800f;
         public const float MarioWeight = 200f;
         public const float MarioAcceleration = 150f;
+        public const int ZeroVelocity = 0;
 
         public static Vector2 IdleVelocity = new Vector2(0, 0);
         public static Vector2 BumpedBlockInitialVelocity = new Vector2(0, -150);

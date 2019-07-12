@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperMarioBros.Utility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace SuperMarioBros.Loading
 
         }
 
-        public SpritesNode(string objectName,string spriteName,int width=0, int height=0, int totalFrame = 1, int delay = 5)
+        public SpritesNode(string objectName,string spriteName,int width=SpriteConsts.DefaultWidth, int height=SpriteConsts.DefaultHeight, int totalFrame = SpriteConsts.DefaultTotalFrame, int delay = Utilities.DefaultDelayScale)
         {
             this.ObjectName = objectName;
             this.SpriteName = spriteName;

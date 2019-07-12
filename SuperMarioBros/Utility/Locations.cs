@@ -23,6 +23,7 @@ namespace SuperMarioBros.Utility
         public static Vector2 MarioRightCrouchingOffset = new Vector2(52, -22);
         public static Vector2 MarioOffset = new Vector2(-22, -32);
         public static Vector2 MarioJumpOffFlagOffSet = new Vector2(20, 0);
+        public static Vector2 MarioInitialLocation = new Vector2(0, 410);
         public const float ScoreOffset = -60f;
         public const float CastleOffset = 94f;
         public const int FireBallOffSet = 16;
