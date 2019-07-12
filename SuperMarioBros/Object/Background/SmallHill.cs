@@ -5,10 +5,6 @@ namespace SuperMarioBros.Backgrounds
 {
     public class SmallHill : AbstractBackground
     {
-        public SmallHill(Vector2 location)
-        {
-            Position = location;
-            base.Initialize();
-        }
+        public SmallHill(Vector2 location) : base(location) { }
     }
 }

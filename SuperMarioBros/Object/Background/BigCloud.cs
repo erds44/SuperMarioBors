@@ -6,10 +6,6 @@ namespace SuperMarioBros.Backgrounds
 
     public class BigCloud : AbstractBackground
     {
-        public BigCloud(Vector2 location)
-        {
-            Position = location;
-            base.Initialize();
-        }
+        public BigCloud(Vector2 position) : base(position) { }
     }
 }

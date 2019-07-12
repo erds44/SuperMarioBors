@@ -13,6 +13,16 @@ namespace SuperMarioBros.Backgrounds
         public Vector2 Position { get; set; }
         public ObjectState ObjState { get; set; }
         public Physics Physics { get; set; }
+        
+        protected AbstractBackground(Vector2 location)
+        {
+            Position = location;
+            ObjState = ObjectState.NonCollidable;
+            sprite = SpriteFactory.CreateSprite(GetType().Name);
+            sprite.SetLayer(0);
+        }
+
+
         protected void Initialize()
         {
             ObjState = ObjectState.NonCollidable;

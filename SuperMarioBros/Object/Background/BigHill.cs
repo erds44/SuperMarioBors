@@ -5,13 +5,6 @@ namespace SuperMarioBros.Backgrounds
 {
     public class BigHill : AbstractBackground
     {
-        public BigHill(Vector2 location)
-        {
-            Position = location;
-            base.Initialize();
-        }
-
-
-
+        public BigHill(Vector2 location) : base(location) { }
     }
 }

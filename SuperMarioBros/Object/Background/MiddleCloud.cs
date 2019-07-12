@@ -5,10 +5,6 @@ namespace SuperMarioBros.Backgrounds
 {
     public class MiddleCloud : AbstractBackground
     {
-        public MiddleCloud(Vector2 location)
-        {
-            Position = location;
-            base.Initialize();
-        }
+        public MiddleCloud(Vector2 location) : base(location) { }
     }
 }
