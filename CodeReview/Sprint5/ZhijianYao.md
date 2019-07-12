@@ -20,4 +20,23 @@ Number of minutes taken to complete the review: 10 minutes
 where adds nodes from a xmlReader and consider writing a seperate  
 method such that it is easier to read. 
 
+## Quality Review 
+Date: 12 July, 2019  
+Name of .cs file: GeneralHandler.cs  
+Author of .cs file: ZhijianYao Keyu Bao  
+Number of minutes taken to complete the review: 10 minutes  
+1. The GeneralHandler class mainly serves the purpose of a  
+help method for every other class to deal with collision.  
+However, it is not a proper use of abstract calss, since   
+this abstract class only saves a space of one or two line  
+(most functionality only takes one or two lines) which is  
+overbored. One way to deal with it is to write the specific  
+mehtod into its subclass.  
+2. In the ResolveOverlap and ReverseDirection method, there  
+is no need to do the branching hrere, since the dictionary  
+already determines the direction. I understand that the method  
+wants to be abstract so that it can handle all kinds of cases,  
+but it also brings branching as well. One way to solve this is      
+reversing the direcion or overlap based on the direcion given  
+by the dictionary.
 
