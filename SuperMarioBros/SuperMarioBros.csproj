@@ -596,6 +596,13 @@
     <Compile Include="GameStats\LifeStats.cs" />
     <Compile Include="GameStats\CoinStats.cs" />
     <Compile Include="GameStats\TimeStats.cs" />
+    <Compile Include="Utility\Layers.cs" />
+    <Compile Include="Utility\Locations.cs" />
+    <Compile Include="Utility\PhysicsConsts.cs" />
+    <Compile Include="Utility\SpriteConsts.cs" />
+    <Compile Include="Utility\Strings.cs" />
+    <Compile Include="Utility\Timers.cs" />
+    <Compile Include="Utility\Utilities.cs" />
     <Compile Include="Utility\XMLUtilities.cs" />
     <Compile Include="Manager\CollisionManager.cs" />
     <Compile Include="Collision\Responder\DynamicAndDynamicObjectsResponder.cs" />

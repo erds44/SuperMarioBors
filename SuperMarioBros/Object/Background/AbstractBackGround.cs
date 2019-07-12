@@ -13,14 +13,14 @@ namespace SuperMarioBros.Backgrounds
         public Vector2 Position { get; set; }
         public ObjectState ObjState { get; set; }
         public Physics Physics { get; set; }
-        public Rectangle HitBox { get => new Rectangle((int)Position.X, (int)Position.Y, 0, 0); }
+        public Rectangle HitBox { get => new Rectangle((int)Position.X, (int)Position.Y, , 0); }
         
         protected AbstractBackground(Vector2 location)
         {
             Position = location;
             ObjState = ObjectState.NonCollidable;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
-            sprite.SetLayer(0f);
+            sprite.SetLayer();
         }
 
         public void Draw(SpriteBatch spriteBatch)
