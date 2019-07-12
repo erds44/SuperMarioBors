@@ -1,11 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Objects.Enemy
 {
     public class GoombaStompedState : IEnemyHealthState
     {
         private readonly Goomba goomba;
-        private float deleteTimer = 0.3f;
+        private float deleteTimer = Timers.StompedGoombaTimeSpan;
         public GoombaStompedState(Goomba goomba)
         {
             this.goomba = goomba;

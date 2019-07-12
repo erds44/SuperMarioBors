@@ -35,7 +35,11 @@ namespace SuperMarioBros.Utility
         public const float StarGravity = 200f;
         public const float SlidingMarioGravity = 100f;
         public const float MarioJumpingSpeed = 40f;
+        public const float MarioGravity = 800f;
+        public const float MarioWeight = 200f;
+        public const float MarioAcceleration = 150f;
 
+        public static Vector2 IdleVelocity = new Vector2(0, 0);
         public static Vector2 BumpedBlockInitialVelocity = new Vector2(0, -150);
         public static Vector2 LeftMovingGoombaVelocity = new Vector2(-60, 0);
         public static Vector2 RightMovingGoombaVelocity = new Vector2(60, 0);
@@ -60,6 +64,12 @@ namespace SuperMarioBros.Utility
         public static Vector2 StarInitialVelocity = new Vector2(40, -140);
         public static Vector2 WinFlagVelocity = new Vector2(0, -14);
         public static Vector2 SlidingMarioVelocity = new Vector2(0, 150);
+        public static Vector2 DeadMarioVelocity = new Vector2(0, -150);
+        public static Vector2 MarioTeleportTopVelocity = new Vector2(0, -32);
+        public static Vector2 MarioTeleportBottomVelocity = new Vector2(0, 35);
+        public static Vector2 MarioTeleportleftVelocity = new Vector2(-35, 0);
+        public static Vector2 MarioTeleportRightVelocity = new Vector2(35, 0);
+        public static Vector2 MarioJumpOffFlagVelocity = new Vector2(100, -180);
 
 
     }

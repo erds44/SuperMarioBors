@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Items
 {
@@ -10,8 +11,8 @@ namespace SuperMarioBros.Items
         {
             Position = location;
             sprite = SpriteFactory.CreateSprite(GetType().Name);
-            sprite.SetLayer(0.4f);
-            Physics = new Physics(Vector2.Zero, 0, 0);
+            sprite.SetLayer(Layers.FlagPoleLayer);
+            Physics = new Physics(Vector2.Zero, PhysicsConsts.ZeroGravity, PhysicsConsts.ZeroWeight);
         }
         public override void Update(GameTime gameTime) { }
     }

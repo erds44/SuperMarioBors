@@ -17,5 +17,8 @@ namespace SuperMarioBros.Utility
         public const float StarScale = 0.8f;
         public const int BackgroundWidth = 0;
         public const int BackgroundHeight = 0;
+        public const int MarioInitialColorIndex = 0;
+        public const float GrowMarioFirstScale = 0.8f;
+        public const float GrowMarioSecondScale = 1f;
     }
 }

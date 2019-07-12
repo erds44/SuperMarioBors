@@ -10,7 +10,8 @@ namespace SuperMarioBros.Utility
     {
         public const int DefaultEnmeyScore = 100;
         public const int ShelledKoopaScore = 500;
-        public const int DefaultEnmeyCount = 1;
+        public const int DefaultEnmeyCount = 0;
+        public const int InitialEnmeyCount = 1;
         public const int FireBallCount = 2;
     }
 }

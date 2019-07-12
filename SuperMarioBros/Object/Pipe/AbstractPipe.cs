@@ -4,6 +4,7 @@ using SuperMarioBros.Collisions;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
 using SuperMarioBros.Sprites;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Pipes
 {
@@ -30,8 +31,8 @@ namespace SuperMarioBros.Pipes
         {
             ObjState = ObjectState.Normal;
             sprite = SpriteFactory.CreateSprite(pipeType);
-            sprite.SetLayer(0.9f);
-            Physics = new Physics(Vector2.Zero, 0f, 0f);
+            sprite.SetLayer(Layers.PipeLayer);
+            Physics = new Physics(Vector2.Zero, PhysicsConsts.ZeroGravity, PhysicsConsts.ZeroWeight);
             TransferedLocation = Vector2.Zero;
             TeleportDirection = Direction.none;
             Teleported = false;

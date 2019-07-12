@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Interfaces.State;
 using SuperMarioBros.SpriteFactories;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Marios.MarioTypeStates
 {
@@ -30,13 +31,13 @@ namespace SuperMarioBros.Marios.MarioTypeStates
         public void PowerPressed()
         {
             if (mario.OnGround)
-                mario.Physics.SetSprintVelocityRate(1.2f);
+                mario.Physics.SetSprintVelocityRate(PhysicsConsts.PoweredMarioSprintVelocityRate);
         }
 
         public void PowerReleased()
         {
             if (mario.OnGround)
-                mario.Physics.SetSprintVelocityRate(1f);
+                mario.Physics.SetSprintVelocityRate(PhysicsConsts.DefaultSprintVelocityRate);
         }
     }
 }

@@ -20,5 +20,7 @@ namespace SuperMarioBros.Utility
         public const string Kick = "kick";
         public const string Jump = "jump";
         public const string Pipe = "pipe";
+        public const string Dead = "youredead";
+        public const string Star = "starman";
     }
 }

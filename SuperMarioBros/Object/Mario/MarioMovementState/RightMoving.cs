@@ -2,13 +2,14 @@
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
+using SuperMarioBros.Utility;
 using System;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
 {
     public class RightMoving : AbstractMovementState, IMarioMovementState
     {
-        private readonly float jumpingSpeed = 40f;
+        private readonly float jumpingSpeed = PhysicsConsts.MarioJumpingSpeed;
         private bool movingRight = true;
         public RightMoving(IMario mario)
         {
@@ -35,7 +36,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         public override void Up()
         {
             if (mario.Physics.Jump) return;
-            AudioFactory.Instance.CreateSound("jump").Play();
+            AudioFactory.Instance.CreateSound(Strings.Jump).Play();
             mario.MovementState = new RightJumping(mario);
         }
 
@@ -68,7 +69,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         }
         public override void SlidingFlagPole()
         {
-            mario.Physics.CurrentGravity = 100f;
+            mario.Physics.CurrentGravity = PhysicsConsts.SlidingMarioGravity;
             mario.MovementState = new RightSliding(mario);
         }
     }

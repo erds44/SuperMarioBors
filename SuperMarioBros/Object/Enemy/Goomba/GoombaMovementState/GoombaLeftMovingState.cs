@@ -1,17 +1,17 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.SpriteFactories;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Objects.Enemy
 {
     public class GoombaLeftMovingState : IEnemyMovementState
     {
         private readonly Goomba goomba;
-         private readonly Vector2 LeftMovingVelocity = new Vector2(-60, 0);
         public GoombaLeftMovingState(Goomba goomba)
         {
             this.goomba = goomba;
             goomba.Sprite = SpriteFactory.CreateSprite(GetType().Name);
-            goomba.Physics.Velocity = LeftMovingVelocity;
+            goomba.Physics.Velocity = PhysicsConsts.LeftMovingGoombaVelocity;
         }
 
         public void ChangeDirection()

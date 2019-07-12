@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Blocks.BlockStates
 {
@@ -6,8 +7,8 @@ namespace SuperMarioBros.Blocks.BlockStates
     {
         private readonly IBlock block;
         private Vector2 bumpPeak;
-        private Vector2 offSet = new Vector2(0, -20);
-        private Vector2 InitialVelocity = new Vector2(0, -150);
+        private Vector2 offSet = Locations.BumpedBlockOffset;
+        private Vector2 InitialVelocity = PhysicsConsts.BumpedBlockInitialVelocity;
 
         public BumpedState(IBlock block)
         {

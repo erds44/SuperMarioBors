@@ -11,8 +11,8 @@ namespace SuperMarioBros.SpriteFactories
     public static class SpriteFactory
     {
         private static ContentManager content;
-        private static Dictionary<BrickPosition, ISprite> derbisSprite;
-        private static Dictionary<BrickPosition, ISprite> blueDerbisSprite;
+        private static Dictionary<BrickPosition, ISprite> debrisSprite;
+        private static Dictionary<BrickPosition, ISprite> blueDebrisSprite;
         private static Dictionary<string, SpritesNode> spritesInfo;
         private static ISprite sprite;
         private static SpritesNode spriteNode;
@@ -22,14 +22,14 @@ namespace SuperMarioBros.SpriteFactories
             content = inputContent;
             SpritesLoader spritesLoading = new SpritesLoader();
             spritesInfo = spritesLoading.SpritesInfo();
-            derbisSprite = new Dictionary<BrickPosition, ISprite>
+            debrisSprite = new Dictionary<BrickPosition, ISprite>
             {
                 { BrickPosition.leftTop, new UniversalSprite(content.Load<Texture2D>("LeftTopDerbis"), 1,1) },
                 { BrickPosition.leftBottom, new UniversalSprite(content.Load<Texture2D>("LeftBottomDerbis"), 1,1) },
                 { BrickPosition.rightTop, new UniversalSprite(content.Load<Texture2D>("RightTopDerbis"), 1,1) },
                 { BrickPosition.rightBottom, new UniversalSprite(content.Load<Texture2D>("RightBottomDerbis"), 1,1) }
             };
-            blueDerbisSprite = new Dictionary<BrickPosition, ISprite>
+            blueDebrisSprite = new Dictionary<BrickPosition, ISprite>
             {
                 { BrickPosition.leftTop, new UniversalSprite(content.Load<Texture2D>("BlueLeftTopDebris"), 1,1) },
                 { BrickPosition.leftBottom, new UniversalSprite(content.Load<Texture2D>("BlueLeftBottomDebris"), 1,1) },
@@ -55,13 +55,13 @@ namespace SuperMarioBros.SpriteFactories
 
         public static ISprite CreateDerbisSprite(BrickPosition brickPosition)
         {
-            derbisSprite.TryGetValue(brickPosition, out sprite);
+            debrisSprite.TryGetValue(brickPosition, out sprite);
             return sprite;
         }
 
         public static ISprite CreateBlueDerbisSprite(BrickPosition brickPosition)
         {
-            blueDerbisSprite.TryGetValue(brickPosition, out sprite);
+            blueDebrisSprite.TryGetValue(brickPosition, out sprite);
             return sprite;
         }
     }

@@ -1,11 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Blocks
 {
     public class BrickBlock : AbstractBlock 
     {
         /* Star, Bump, or Borken */
-        private protected double deleteTimer = 0.1;
+        private protected double deleteTimer = Timers.BrickBlockTimeSpan;
         private protected bool bumped;
         public BrickBlock(Vector2 location)
         {

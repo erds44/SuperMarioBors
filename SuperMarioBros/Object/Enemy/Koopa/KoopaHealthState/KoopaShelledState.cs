@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Objects.Enemy
 {
@@ -14,7 +15,7 @@ namespace SuperMarioBros.Objects.Enemy
 
         public void Update(GameTime gameTime)
         {
-            if (koopa.Score != 500) koopa.Score = 500;
+            if (koopa.Score != Utilities.ShelledKoopaScore) koopa.Score = Utilities.ShelledKoopaScore;
         }
     }
 }

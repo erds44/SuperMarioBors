@@ -2,6 +2,7 @@
 using SuperMarioBros.Blocks;
 using SuperMarioBros.Physicses;
 using SuperMarioBros.SpriteFactories;
+using SuperMarioBros.Utility;
 using System;
 using System.Collections.Generic;
 
@@ -12,12 +13,12 @@ namespace SuperMarioBros.Items
     {
         private readonly Dictionary<BrickPosition, Vector2> derbisInfo = new Dictionary<BrickPosition, Vector2>
         {
-            { BrickPosition.leftTop, new Vector2(-60,60)},
-            { BrickPosition.leftBottom, new Vector2(-60,60) },
-            { BrickPosition.rightTop,  new Vector2(60,60) },
-            { BrickPosition.rightBottom,  new Vector2(60,60) }
+            { BrickPosition.leftTop, PhysicsConsts.LeftTopBlockDebrisVelocity},
+            { BrickPosition.leftBottom, PhysicsConsts.LeftBottomBlockDebrisVelocity},
+            { BrickPosition.rightTop,  PhysicsConsts.RightTopBlockDebrisVelocity },
+            { BrickPosition.rightBottom,  PhysicsConsts.RightBottomBlockDebrisVelocity}
         };
-        private float timer = 0.5f;
+        private float timer = Timers.BlockDebrisTimeSpan;
         public BrickDerbis(Vector2 location, BrickPosition brickPosition, Type type)
         {
             derbisInfo.TryGetValue(brickPosition, out Vector2 velocity);
@@ -28,7 +29,7 @@ namespace SuperMarioBros.Items
                 sprite = SpriteFactory.CreateBlueDerbisSprite(brickPosition);
             Physics = new Physics(velocity, itemGravity, itemWeight);
             ObjState = ObjectState.NonCollidable;
-            sprite.SetLayer(1f);
+            sprite.SetLayer(itemLayer);
         }
 
         public override void Update(GameTime gameTime)

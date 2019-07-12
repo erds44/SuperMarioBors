@@ -36,7 +36,6 @@ namespace SuperMarioBros.AudioFactories
         public Song CreateSong(string name)
         {
             if (songDictionary.TryGetValue(name, out string song)) return content.Load<Song>(song);
-            Console.WriteLine("Cannot find song" + name);
             return null;
         }
         public Song CreateHurrySong(Song song, out bool isHurry)

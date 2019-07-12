@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Media;
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Objects.Mario.TransitionState;
+using SuperMarioBros.Utility;
 using System.Collections.ObjectModel;
 
 namespace SuperMarioBros.Objects.Mario.MarioTransitionState
@@ -12,16 +13,16 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
     {
         private readonly IMario mario;
         private readonly Collection<Color> starColor = new Collection<Color> { Color.Green, Color.Black, Color.White };
-        private float transitionTimer = 1500f;
+        private float transitionTimer = Timers.StarMarioTimeSpan;
         private readonly Song lastSong;
-        private int colorIndex = 0;
-        private float delay = 0.1f;
+        private int colorIndex = SpriteConsts.MarioInitialColorIndex;
+        private float delay = Timers.MarioUpdateDelay;
         public StarState(IMario mario)
         {
             this.mario = mario;
             mario.NoMovementTimer = 0;
             lastSong = MediaPlayer.Queue.ActiveSong;
-            MediaPlayer.Play(AudioFactory.Instance.CreateSong("starman"));
+            MediaPlayer.Play(AudioFactory.Instance.CreateSong(Strings.Star));
         }
         public void Draw(SpriteBatch spriteBatch)
         {
@@ -45,7 +46,7 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
 
         public void TakeStar()
         {
-            transitionTimer = 15f;
+            transitionTimer = Timers.StarMarioTimeSpan;
         }
 
         public void Update(GameTime gameTime)
@@ -59,7 +60,7 @@ namespace SuperMarioBros.Objects.Mario.MarioTransitionState
             }
             if(delay <= 0)
             {
-                delay = 0.1f;
+                delay = Timers.MarioUpdateDelay;
                 colorIndex++;
                 colorIndex = colorIndex % starColor.Count;
             }

@@ -1,5 +1,6 @@
 ﻿using SuperMarioBros.Marios.MarioTypeStates;
 using SuperMarioBros.SpriteFactories;
+using SuperMarioBros.Utility;
 using System;
 
 namespace SuperMarioBros.Marios.MarioMovementStates
@@ -45,7 +46,7 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         }
         public override void SlidingFlagPole()
         {
-            mario.Physics.CurrentGravity = 100f;
+            mario.Physics.CurrentGravity = PhysicsConsts.SlidingMarioGravity;
             mario.MovementState = new RightSliding(mario);
         }
     }
