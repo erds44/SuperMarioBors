@@ -20,7 +20,7 @@ namespace SuperMarioBros.Marios
         public int EnemyKillStreakCounter { get; set; } = 0;
         public event Action ClearingScoresEvent;
         public event Action ChangeToFlagPoleStateEvent;
-        public event Action DestoryEvent;
+        public event Action DestroyEvent;
         public event Action<Vector2> ChangeToTeleportStateEvent;
         public event Action DeathStateEvent;
         public event Action<Vector2> SlidingEvent;
@@ -119,7 +119,7 @@ namespace SuperMarioBros.Marios
         public void Destroy()
         {        
             if (!(HealthState is DeadMario)) HealthState = new DeadMario(this);
-            DestoryEvent?.Invoke();
+            DestroyEvent?.Invoke();
         }
 
         public void EnterCastle()

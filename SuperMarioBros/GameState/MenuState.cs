@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SuperMarioBros.Stats;
 using System.Collections.Generic;
 
 namespace SuperMarioBros.GameStates
@@ -19,6 +20,7 @@ namespace SuperMarioBros.GameStates
             spriteFont = game.Content.Load<SpriteFont>("Font/MarioFontSize25");
             background = game.Content.Load<Texture2D>("StartBackground");
             buttons = new List<Buttons>();
+            StatsManager.Instance.Reset();
             AddNewGameButton(buttons);
             AddQuitGameButton(buttons);
         }

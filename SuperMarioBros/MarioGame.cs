@@ -95,6 +95,7 @@ namespace SuperMarioBros
         {
             ObjectsManager = new ObjectsManager(new ObjectLoader(), this);
             ObjectsManager.Initialize();
+            State.Reset();
             Camera.Reset(Player);
             ObjectFactory.Instance.Initialize(this);
             CollisionManager = new CollisionManager(this);

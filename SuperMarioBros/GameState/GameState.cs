@@ -12,5 +12,6 @@ namespace SuperMarioBros.GameStates
         public virtual void Pause() { }
         public virtual void TimeUp() { }
         public virtual void TeleportPosition(Vector2 position) { }
+        public virtual void Reset() { }
     }
 }

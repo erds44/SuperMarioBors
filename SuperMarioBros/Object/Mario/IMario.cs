@@ -12,7 +12,7 @@ namespace SuperMarioBros.Marios
     public interface IMario : IDynamic
     {
         event Action ClearingScoresEvent;
-        event Action DestoryEvent;
+        event Action DestroyEvent;
         event Action DeathStateEvent;
         event Action <Vector2> SlidingEvent;
         event Action <Vector2>ChangeToTeleportStateEvent;
