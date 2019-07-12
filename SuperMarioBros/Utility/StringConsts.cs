@@ -29,10 +29,10 @@ namespace SuperMarioBros.Utility
         public const string PowerUp = "powerup";
         public const string ExtraLife = "1up";
         public const string NoItemContained = "noType";
-        public const string SpritesFile = "sprites.xml";
-        public const string StaticsFile = "statics.xml";
-        public const string DynamicsFile = "dynamics.xml";
-        public const string NoncollidablesFile = "Noncollidables.xml";
+        public const string SpritesFile = "Content/sprites.xml";
+        public const string StaticsFile = "Content/statics.xml";
+        public const string DynamicsFile = "Content/dynamics.xml";
+        public const string NoncollidablesFile = "Content/Noncollidables.xml";
         public const string LeftTopBrickDebris = "LeftTopBrickDebris";
         public const string RightTopBrickDebris = "RightTopBrickDebris";
         public const string LeftBottomBrickDebris = "LeftBottomBrickDebris";

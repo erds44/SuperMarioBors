@@ -63,6 +63,9 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Content\Statics.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="App.config" />
     <None Include="Content\BigBush.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -148,7 +151,9 @@
     <None Include="Content\ConcreteBlock.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <Content Include="Content\Content.mgcb" />
+    <Content Include="Content\Content.mgcb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Content\DeadMario.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -386,8 +391,11 @@
     <None Include="Content\SmallMarioRightSliding.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Content Include="Content\Dynamics.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\hurry.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Musics\castle.wma">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -442,6 +450,9 @@
     </Content>
     <Content Include="Content\Musics\youredead.wma">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Noncollidables.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Sounds\1up.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -765,13 +776,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Musics.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\NonCollidableLevel.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Sounds.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Sprites.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

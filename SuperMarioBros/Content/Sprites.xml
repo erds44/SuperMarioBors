@@ -6,7 +6,7 @@
     <Width>32</Width>
     <Height>44</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>BigMarioLeftIdle</ObjectName>
@@ -14,7 +14,7 @@
     <Width>32</Width>
     <Height>64</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>BigMarioLeftJumping</ObjectName>
@@ -22,7 +22,7 @@
     <Width>32</Width>
     <Height>65</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>BigMarioLeftMoving</ObjectName>
@@ -30,7 +30,7 @@
     <Width>32</Width>
     <Height>64</Height>
     <TotalFrame>4</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>BigMarioRightCrouching</ObjectName>
@@ -38,7 +38,7 @@
     <Width>32</Width>
     <Height>44</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>BigMarioRightIdle</ObjectName>
@@ -46,7 +46,7 @@
     <Width>32</Width>
     <Height>64</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>BigMarioRightJumping</ObjectName>
@@ -54,7 +54,7 @@
     <Width>32</Width>
     <Height>65</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>BigMarioRightMoving</ObjectName>
@@ -62,23 +62,39 @@
     <Width>32</Width>
     <Height>64</Height>
     <TotalFrame>4</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>BrickBlock</ObjectName>
     <SpriteName>BrickBlock</SpriteName>
-    <Width>32</Width>
-    <Height>32</Height>
+    <Width>35</Width>
+    <Height>35</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>BlueBrickBlock</ObjectName>
+    <SpriteName>BlueBrickBlock</SpriteName>
+    <Width>35</Width>
+    <Height>35</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>BlueRockBlock</ObjectName>
+    <SpriteName>BlueRockBlock</SpriteName>
+    <Width>35</Width>
+    <Height>35</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>ItemBrickBlock</ObjectName>
     <SpriteName>BrickBlock</SpriteName>
-    <Width>32</Width>
-    <Height>32</Height>
+    <Width>35</Width>
+    <Height>35</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>BrickDebris</ObjectName>
@@ -86,7 +102,7 @@
     <Width>0</Width>
     <Height>0</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>Coin</ObjectName>
@@ -94,23 +110,31 @@
     <Width>14</Width>
     <Height>26</Height>
     <TotalFrame>5</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>3</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>BigCoin</ObjectName>
+    <SpriteName>BigCoin</SpriteName>
+    <Width>25</Width>
+    <Height>30</Height>
+    <TotalFrame>3</TotalFrame>
+    <Delay>10</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>ConcreteBlock</ObjectName>
     <SpriteName>ConcreteBlock</SpriteName>
-    <Width>32</Width>
-    <Height>32</Height>
+    <Width>35</Width>
+    <Height>35</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>UsedBlock</ObjectName>
     <SpriteName>UsedBlock</SpriteName>
-    <Width>32</Width>
-    <Height>32</Height>
+    <Width>35</Width>
+    <Height>35</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>FireMarioLeftCrouching</ObjectName>
@@ -118,7 +142,7 @@
     <Width>32</Width>
     <Height>44</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>FireMarioLeftIdle</ObjectName>
@@ -126,7 +150,7 @@
     <Width>32</Width>
     <Height>64</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>FireMarioLeftJumping</ObjectName>
@@ -134,7 +158,7 @@
     <Width>32</Width>
     <Height>65</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>FireMarioLeftMoving</ObjectName>
@@ -142,7 +166,7 @@
     <Width>32</Width>
     <Height>64</Height>
     <TotalFrame>5</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>FireMarioRightCrouching</ObjectName>
@@ -150,7 +174,7 @@
     <Width>32</Width>
     <Height>44</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>FireMarioRightIdle</ObjectName>
@@ -158,7 +182,7 @@
     <Width>32</Width>
     <Height>64</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>FireMarioRightJumping</ObjectName>
@@ -166,7 +190,7 @@
     <Width>32</Width>
     <Height>65</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>FireMarioRightMoving</ObjectName>
@@ -174,7 +198,7 @@
     <Width>32</Width>
     <Height>64</Height>
     <TotalFrame>5</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>Flower</ObjectName>
@@ -182,7 +206,7 @@
     <Width>32</Width>
     <Height>32</Height>
     <TotalFrame>5</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>15</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>GoombaLeftMovingState</ObjectName>
@@ -190,7 +214,7 @@
     <Width>30</Width>
     <Height>30</Height>
     <TotalFrame>2</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>15</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>GoombaRightMovingState</ObjectName>
@@ -198,7 +222,7 @@
     <Width>30</Width>
     <Height>30</Height>
     <TotalFrame>2</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>15</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>GoombaStompedState</ObjectName>
@@ -206,7 +230,7 @@
     <Width>32</Width>
     <Height>16</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>FlippedGoombaIdleState</ObjectName>
@@ -214,7 +238,7 @@
     <Width>30</Width>
     <Height>30</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>StompedKoopaRightMoving</ObjectName>
@@ -222,7 +246,7 @@
     <Width>32</Width>
     <Height>28</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>StompedKoopaLeftMoving</ObjectName>
@@ -230,7 +254,7 @@
     <Width>32</Width>
     <Height>28</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>GreenMushroom</ObjectName>
@@ -238,15 +262,15 @@
     <Width>29</Width>
     <Height>29</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>HiddenBlock</ObjectName>
     <SpriteName>HiddenBlock</SpriteName>
-    <Width>28</Width>
-    <Height>28</Height>
+    <Width>35</Width>
+    <Height>35</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>KoopaNormalStateKoopaLeftMovingState</ObjectName>
@@ -254,7 +278,7 @@
     <Width>30</Width>
     <Height>45</Height>
     <TotalFrame>5</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>15</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>KoopaNormalStateKoopaRightMovingState</ObjectName>
@@ -262,7 +286,7 @@
     <Width>30</Width>
     <Height>45</Height>
     <TotalFrame>5</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>15</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>KoopaShelledStateKoopaIdleState</ObjectName>
@@ -270,7 +294,7 @@
     <Width>32</Width>
     <Height>28</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>KoopaShelledStateKoopaLeftMovingState</ObjectName>
@@ -278,7 +302,7 @@
     <Width>32</Width>
     <Height>28</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>KoopaShelledStateKoopaRightMovingState</ObjectName>
@@ -286,39 +310,15 @@
     <Width>32</Width>
     <Height>28</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
-  </SpritesNode>
-  <SpritesNode>
-    <ObjectName>Pipe</ObjectName>
-    <SpriteName>Pipe</SpriteName>
-    <Width>72</Width>
-    <Height>74</Height>
-    <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
-  </SpritesNode>
-  <SpritesNode>
-    <ObjectName>MiddlePipe</ObjectName>
-    <SpriteName>MiddlePipe</SpriteName>
-    <Width>74</Width>
-    <Height>122</Height>
-    <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
-  </SpritesNode>
-  <SpritesNode>
-    <ObjectName>HighPipe</ObjectName>
-    <SpriteName>HighPipe</SpriteName>
-    <Width>72</Width>
-    <Height>170</Height>
-    <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>QuestionBlock</ObjectName>
     <SpriteName>QuestionBlock</SpriteName>
-    <Width>32</Width>
-    <Height>32</Height>
+    <Width>35</Width>
+    <Height>35</Height>
     <TotalFrame>5</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>15</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>RedMushroom</ObjectName>
@@ -326,15 +326,15 @@
     <Width>28</Width>
     <Height>28</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>RockBlock</ObjectName>
     <SpriteName>RockBlock</SpriteName>
-    <Width>32</Width>
-    <Height>32</Height>
+    <Width>35</Width>
+    <Height>35</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>DeadMario</ObjectName>
@@ -342,7 +342,7 @@
     <Width>0</Width>
     <Height>0</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>SmallMarioLeftIdle</ObjectName>
@@ -350,7 +350,7 @@
     <Width>34</Width>
     <Height>32</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>SmallMarioLeftJumping</ObjectName>
@@ -358,7 +358,7 @@
     <Width>34</Width>
     <Height>31</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>SmallMarioLeftMoving</ObjectName>
@@ -366,7 +366,7 @@
     <Width>34</Width>
     <Height>32</Height>
     <TotalFrame>4</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>SmallMarioRightIdle</ObjectName>
@@ -374,7 +374,7 @@
     <Width>34</Width>
     <Height>32</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>SmallMarioRightJumping</ObjectName>
@@ -382,7 +382,7 @@
     <Width>34</Width>
     <Height>31</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>SmallMarioRightMoving</ObjectName>
@@ -390,7 +390,7 @@
     <Width>34</Width>
     <Height>32</Height>
     <TotalFrame>4</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>SmallMarioLeftBreaking</ObjectName>
@@ -398,7 +398,7 @@
     <Width>34</Width>
     <Height>32</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>SmallMarioRightBreaking</ObjectName>
@@ -406,7 +406,7 @@
     <Width>34</Width>
     <Height>32</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>BigMarioRightBreaking</ObjectName>
@@ -414,7 +414,7 @@
     <Width>32</Width>
     <Height>64</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>BigMarioLeftBreaking</ObjectName>
@@ -422,7 +422,7 @@
     <Width>32</Width>
     <Height>64</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>FireMarioRightBreaking</ObjectName>
@@ -430,7 +430,7 @@
     <Width>32</Width>
     <Height>64</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>FireMarioLeftBreaking</ObjectName>
@@ -438,7 +438,7 @@
     <Width>32</Width>
     <Height>64</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>Star</ObjectName>
@@ -446,7 +446,7 @@
     <Width>35</Width>
     <Height>40</Height>
     <TotalFrame>4</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>BigHill</ObjectName>
@@ -454,7 +454,7 @@
     <Width>0</Width>
     <Height>0</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>BigBush</ObjectName>
@@ -462,7 +462,7 @@
     <Width>0</Width>
     <Height>0</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>SmallBush</ObjectName>
@@ -470,7 +470,7 @@
     <Width>0</Width>
     <Height>0</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>MiddleCloud</ObjectName>
@@ -478,7 +478,7 @@
     <Width>0</Width>
     <Height>0</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>SmallHill</ObjectName>
@@ -486,7 +486,7 @@
     <Width>0</Width>
     <Height>0</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>BigCloud</ObjectName>
@@ -494,7 +494,7 @@
     <Width>0</Width>
     <Height>0</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>SmallCloud</ObjectName>
@@ -502,7 +502,7 @@
     <Width>0</Width>
     <Height>0</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>FireBall</ObjectName>
@@ -510,14 +510,246 @@
     <Width>0</Width>
     <Height>0</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
   </SpritesNode>
   <SpritesNode>
     <ObjectName>FireExplosion</ObjectName>
     <SpriteName>FireExplosion</SpriteName>
-    <Width>3</Width>
+    <Width>0</Width>
+    <Height>0</Height>
+    <TotalFrame>3</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>FlagPole</ObjectName>
+    <SpriteName>FlagPole</SpriteName>
+    <Width>16</Width>
+    <Height>600</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>Castle</ObjectName>
+    <SpriteName>Castle</SpriteName>
+    <Width>32</Width>
+    <Height>62</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>SmallMarioLeftSliding</ObjectName>
+    <SpriteName>SmallMarioLeftSliding</SpriteName>
+    <Width>26</Width>
+    <Height>30</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>SmallMarioRightSliding</ObjectName>
+    <SpriteName>SmallMarioRightSliding</SpriteName>
+    <Width>26</Width>
+    <Height>30</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>BigMarioLeftSliding</ObjectName>
+    <SpriteName>BigMarioLeftSliding</SpriteName>
+    <Width>28</Width>
+    <Height>60</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>BigMarioRightSliding</ObjectName>
+    <SpriteName>BigMarioRightSliding</SpriteName>
+    <Width>28</Width>
+    <Height>60</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>FireMarioLeftSliding</ObjectName>
+    <SpriteName>FireMarioLeftSliding</SpriteName>
+    <Width>28</Width>
+    <Height>60</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>FireMarioRightSliding</ObjectName>
+    <SpriteName>FireMarioRightSliding</SpriteName>
+    <Width>28</Width>
+    <Height>60</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>WinFlag</ObjectName>
+    <SpriteName>WinFlag</SpriteName>
+    <Width>0</Width>
     <Height>0</Height>
     <TotalFrame>1</TotalFrame>
-    <Delay>0</Delay>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>Flag</ObjectName>
+    <SpriteName>Flag</SpriteName>
+    <Width>32</Width>
+    <Height>32</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>TeleportPipe</ObjectName>
+    <SpriteName>HighPipe</SpriteName>
+    <Width>72</Width>
+    <Height>170</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>TeleportHugePipeH</ObjectName>
+    <SpriteName>HugePipeH</SpriteName>
+    <Width>54</Width>
+    <Height>87</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>LeftTopBrickDebris</ObjectName>
+    <SpriteName>LeftTopDerbis</SpriteName>
+    <Width>0</Width>
+    <Height>0</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>1</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>RightTopBrickDebris</ObjectName>
+    <SpriteName>RightTopDerbis</SpriteName>
+    <Width>0</Width>
+    <Height>0</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>1</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>LeftBottomBrickDebris</ObjectName>
+    <SpriteName>LeftBottomDerbis</SpriteName>
+    <Width>0</Width>
+    <Height>0</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>1</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>RightBottomBrickDebris</ObjectName>
+    <SpriteName>RightBottomDerbis</SpriteName>
+    <Width>0</Width>
+    <Height>0</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>1</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>LeftBottomBlueBrickDebris</ObjectName>
+    <SpriteName>BlueLeftBottomDebris</SpriteName>
+    <Width>0</Width>
+    <Height>0</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>1</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>LeftTopBlueBrickDebris</ObjectName>
+    <SpriteName>BlueLeftTopDebris</SpriteName>
+    <Width>0</Width>
+    <Height>0</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>1</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>RightBottomBlueBrickDebris</ObjectName>
+    <SpriteName>BlueRightBottomDebris</SpriteName>
+    <Width>0</Width>
+    <Height>0</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>1</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>RightTopBlueBrickDebris</ObjectName>
+    <SpriteName>BlueRightTopDebris</SpriteName>
+    <Width>0</Width>
+    <Height>0</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>1</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>SmallPipe</ObjectName>
+    <SpriteName>Pipe</SpriteName>
+    <Width>72</Width>
+    <Height>74</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>TeleporVerticalSmallPipe</ObjectName>
+    <SpriteName>Pipe</SpriteName>
+    <Width>72</Width>
+    <Height>74</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>MiddlePipe</ObjectName>
+    <SpriteName>MiddlePipe</SpriteName>
+    <Width>74</Width>
+    <Height>122</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>LargePipe</ObjectName>
+    <SpriteName>HighPipe</SpriteName>
+    <Width>72</Width>
+    <Height>170</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>TeleportVerticalLargePipe</ObjectName>
+    <SpriteName>HighPipe</SpriteName>
+    <Width>72</Width>
+    <Height>170</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>HighPipe</ObjectName>
+    <SpriteName>HugePipeV</SpriteName>
+    <Width>46</Width>
+    <Height>350</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>TeleportHorizontalSmallPipe</ObjectName>
+    <SpriteName>HugePipeH</SpriteName>
+    <Width>54</Width>
+    <Height>87</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>SmallMarioLeftCrouching</ObjectName>
+    <SpriteName>SmallMarioLeftIdle</SpriteName>
+    <Width>34</Width>
+    <Height>32</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
+  </SpritesNode>
+  <SpritesNode>
+    <ObjectName>SmallMarioRightCrouching</ObjectName>
+    <SpriteName>SmallMarioRightIdle</SpriteName>
+    <Width>34</Width>
+    <Height>32</Height>
+    <TotalFrame>1</TotalFrame>
+    <Delay>5</Delay>
   </SpritesNode>
 </ArrayOfSpritesNode>
