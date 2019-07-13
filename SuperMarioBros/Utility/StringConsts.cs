@@ -49,5 +49,36 @@ namespace SuperMarioBros.Utility
         public const string LeftTopBlueBrickDebris = "LeftTopBlueBrickDebris";
         public const string RightBottomBlueBrickDebris = "RightBottomBlueBrickDebris";
         public const string RightTopBlueBrickDebris = "RightTopBlueBrickDebris";
+        public const string MarioFont = "Font/MarioFont";
+        public const string MarioFontForChoose = "Font/MarioFontSize25";
+        public const string Power = "powerupappears";
+        public const string BlockBreak = "breakblock";
+        public const string LevelComplete = "levelcomplete";
+        public const string KeyBoard = "Keyboard";
+        public const string GamePad = "GamePad";
+        public const string FlagPole = "flagpole";
+        public const string GameOver = "gameover";
+        public const string StartBackground = "StartBackground";
+        public const string NewGame = "New Game";
+        public const string Quit = "Quit";
+        public const string Pause = "pause";
+        public const string World = "WORLD 1-1 ";
+        public const string Life = "  X   ";
+        public const string UnderWorld = "underworld";
+        public const string OverWorld = "overworld";
+        public const string LF1 = "1LF";
+        public const string CoinScore = "200";
+        public const string PowerUpScore = "1000";
+        public const string ScoreInfo = "SCORE";
+        public const string CoinInfo = "COINS";
+        public const string WorldInfo = "WORLD";
+        public const string LevelInfo = "1-1";
+        public const string TimeInfo = "TIME";
+        public const string LivesInfo = "LIVES";
+        public const string Content = "Content";
+        public const string SoundsFile = "Content/sounds.xml";
+        public const string MusicsFile = "Content/musics.xml";
+        public const string HurrysFile = "Content/hurry.xml";
+
     }
 }

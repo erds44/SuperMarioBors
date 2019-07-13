@@ -29,6 +29,13 @@ namespace SuperMarioBros.Utility
         public const int LoadMargin = 300;
         public const int FallMargin = 100;
         public const int DisposeMargin = 500;
+        public const float InitialUpperBound = 0f;
+        public const float InitialLeftBound = 0f;
+        public const int MidPoint = 2;
+        public const int NonChange = 0;
+        public const int Greater = 1;
+        public const int Less = -1;
+        public const int Equal = 0;
         public const int ScaleTwo = 2;
         public const int InitialKillStreak = 1;
 

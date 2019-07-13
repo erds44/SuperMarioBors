@@ -2,6 +2,7 @@
 using SuperMarioBros.Marios;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Pipes;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.Collisions
 {
@@ -101,7 +102,7 @@ namespace SuperMarioBros.Collisions
                 mario.MovementState.OnGround();
                 mario.Physics.ApplyGravity();
             }
-            mario.Physics.Velocity = new Vector2(mario.Physics.Velocity.X, 0); //Halt vertical movement.
+            mario.Physics.Velocity = new Vector2(mario.Physics.Velocity.X, PhysicsConsts.ZeroVelocity); //Halt vertical movement.
             ResolveOverlap(mario, pipe, direction);
         }
     }

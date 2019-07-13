@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Utility;
 using static SuperMarioBros.Utility.GeneralConstants;
 
 namespace SuperMarioBros.Stats
@@ -16,7 +17,7 @@ namespace SuperMarioBros.Stats
         public void GainExtraLife(Vector2 position)
         {
             RemaningLives++;
-            ObjectFactory.Instance.CreateScoreText(position, "1LF");
+            ObjectFactory.Instance.CreateScoreText(position, StringConsts.LF1);
         }
         public void LoseLife()
         {

@@ -26,9 +26,12 @@ namespace SuperMarioBros.Utility
         public const int GameStartTime = 400;
         public const int TimeElapseScale = 2;
         public const int HurryUpTime = 100;
-        public const float StarMarioTimeSpan = 15f;
+        public const float StarMarioTimeSpan = 1500f;
         public const int TimeToScoreUnit = 3;
         public const int TimeToScoreScale = 100;
+        public const float GameOverTimeSpan = 2f;
+        public const float StatusTimeSpan = 3f;
+        public const float TeleportTimeSpan = 2f;
     }
 }
 

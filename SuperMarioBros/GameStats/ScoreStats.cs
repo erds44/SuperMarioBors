@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Utility;
 using static SuperMarioBros.Utility.GeneralConstants;
 
 namespace SuperMarioBros.Stats
@@ -14,7 +15,7 @@ namespace SuperMarioBros.Stats
         public void CollectCoinSocre(Vector2 position)
         {
             CurrentScore += CoinScore;
-            ObjectFactory.Instance.CreateScoreText(position, "200");
+            ObjectFactory.Instance.CreateScoreText(position, StringConsts.CoinScore);
         }
         public void CollectEnemyKilledScore(Vector2 position, int baseScore, int killStreak)
         {
@@ -33,7 +34,7 @@ namespace SuperMarioBros.Stats
         public void CollectPowerUp(Vector2 position)
         {
             CurrentScore += PowerUpScore;
-            ObjectFactory.Instance.CreateScoreText(position, "1000");
+            ObjectFactory.Instance.CreateScoreText(position, StringConsts.PowerUpScore);
         }
         public void AddRemainingTimeScore(int score)
         {

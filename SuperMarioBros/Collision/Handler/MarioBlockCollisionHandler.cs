@@ -6,6 +6,7 @@ using SuperMarioBros.Items;
 using SuperMarioBros.Marios;
 using SuperMarioBros.Marios.MarioMovementStates;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Utility;
 using System;
 using static SuperMarioBros.Utility.StringConsts;
 
@@ -39,7 +40,7 @@ namespace SuperMarioBros.Collisions
             {
                 MoverVerticallyBounce(mario, block, direction);
                 block.Used();
-                AudioFactory.Instance.CreateSound("bump").Play();
+                AudioFactory.Instance.CreateSound(Bump).Play();
 
                 if (block.ItemType != null)
                     GenerateItemInBlock(block.ItemType, block.Position);
@@ -70,7 +71,7 @@ namespace SuperMarioBros.Collisions
             {
                 flagePoleStage = true;
                 MediaPlayer.Stop();
-                MediaPlayer.Play(AudioFactory.Instance.CreateSong("levelcomplete"));
+                MediaPlayer.Play(AudioFactory.Instance.CreateSong(LevelComplete));
                 mario.ClearingScoresEvent += ResetFlagPoleStage;
             }
             if (flagePoleStage)
@@ -83,7 +84,7 @@ namespace SuperMarioBros.Collisions
             if (block.CanBeBumped)
             {
                 block.Bumped();
-                AudioFactory.Instance.CreateSound("bump").Play();
+                AudioFactory.Instance.CreateSound(Bump).Play();
                 MoverVerticallyBounce(mario, block, direction);
             }
             else
@@ -94,7 +95,7 @@ namespace SuperMarioBros.Collisions
             if (block.CanBeBumped)
             {
                 block.Broken();
-                AudioFactory.Instance.CreateSound("breakblock").Play();
+                AudioFactory.Instance.CreateSound(BlockBreak).Play();
                 ObjectFactory.Instance.CreateBlockDebris(block.Position, block.GetType());
                 MoverVerticallyBounce(mario, block, direction);
             }
@@ -108,7 +109,7 @@ namespace SuperMarioBros.Collisions
             {
                 block.Bumped();
                 GenerateItemInBlock(block.ItemType, block.Position);
-                AudioFactory.Instance.CreateSound("bump").Play();
+                AudioFactory.Instance.CreateSound(Bump).Play();
             }
             else
             {
@@ -126,7 +127,7 @@ namespace SuperMarioBros.Collisions
             {
                 block.Bumped();
                 GenerateItemInBlock(block.ItemType, block.Position);
-                AudioFactory.Instance.CreateSound("bump").Play();
+                AudioFactory.Instance.CreateSound(Bump).Play();
             }
             else
             {
@@ -139,7 +140,7 @@ namespace SuperMarioBros.Collisions
         }
         public static void MarioVsUsedBlock(IMario mario, IBlock block, Direction direction)
         {
-            AudioFactory.Instance.CreateSound("bump").Play();
+            AudioFactory.Instance.CreateSound(Bump).Play();
             MoverVerticallyBounce(mario, block, direction);
         }
 
@@ -150,12 +151,12 @@ namespace SuperMarioBros.Collisions
         private static void GenerateRedMushroom(Vector2 position)
         {
             ObjectFactory.Instance.CreateNonCollidableObject(typeof(RedMushroom), position);
-            AudioFactory.Instance.CreateSound("powerupappears").Play();
+            AudioFactory.Instance.CreateSound(Power).Play();
         }
         private static void GenerateFlower(Vector2 position)
         {
             ObjectFactory.Instance.CreateNonCollidableObject(typeof(Flower), position);
-            AudioFactory.Instance.CreateSound("powerupappears").Play();
+            AudioFactory.Instance.CreateSound(Power).Play();
         }
         private static void GenerateUsedBlock(Vector2 position)
         {

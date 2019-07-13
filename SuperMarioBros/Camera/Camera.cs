@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Utility;
 using System;
-using static SuperMarioBros.Utility.GeneralConstants;
 
 namespace SuperMarioBros.Cameras
 {
@@ -17,7 +17,8 @@ namespace SuperMarioBros.Cameras
         public Camera(float windowWidth)
         {
             this.windowWidth = windowWidth;
-            Reset();
+            LeftBound = GeneralConstants.InitialLeftBound;
+            UpperBound = GeneralConstants.InitialUpperBound;
         }
         public void SetFocus(IObject obj)
         {
@@ -25,33 +26,35 @@ namespace SuperMarioBros.Cameras
         }
         public void Reset()
         {
-            LeftBound = InitialCount;
-            prevLeftBound = InitialCount;
-            UpperBound = InitialCount;
+            LeftBound = GeneralConstants.InitialLeftBound;
+            prevLeftBound = GeneralConstants.InitialLeftBound;
+            UpperBound = GeneralConstants.InitialUpperBound;
         }
         public void Reset(IObject obj)
         {
-            Reset();
+            LeftBound = GeneralConstants.InitialLeftBound;
+            prevLeftBound = GeneralConstants.InitialLeftBound;
+            UpperBound = GeneralConstants.InitialUpperBound;
             focus = obj;
         }
         public void Update()
         {
             if (focus is null) return;
             Vector2 targetPosition = focus.Position;
-            LeftBound = Math.Max(prevLeftBound, targetPosition.X + focus.HitBox.Width / ScaleTwo - windowWidth / ScaleTwo); //2 for the midpoint.
+            LeftBound = Math.Max(prevLeftBound, targetPosition.X + focus.HitBox.Width / GeneralConstants.MidPoint - windowWidth / GeneralConstants.MidPoint); //2 for the midpoint.
             prevLeftBound = LeftBound;
-            var position = Matrix.CreateTranslation(-LeftBound-windowWidth / ScaleTwo, 0, 0); //2 for the midpoint.
-            var offset = Matrix.CreateTranslation(windowWidth / ScaleTwo, 0 ,0); //2 for the midpoint.
+            var position = Matrix.CreateTranslation(-LeftBound-windowWidth / GeneralConstants.MidPoint, GeneralConstants.NonChange, GeneralConstants.NonChange); //2 for the midpoint.
+            var offset = Matrix.CreateTranslation(windowWidth / GeneralConstants.MidPoint, GeneralConstants.NonChange, GeneralConstants.NonChange); //2 for the midpoint.
             Transform = position * offset;
-            if (UpperBound != 0)
-                UpperBound = 0;
+            if (UpperBound != GeneralConstants.InitialUpperBound)
+                UpperBound = GeneralConstants.InitialUpperBound;
         }
 
         public void Update(Vector2 focusPoint) //focus on given point. This does not have a "left-only" limit. Given point will be the center of the camera.
         {
-            LeftBound = focusPoint.X - windowWidth / ScaleTwo; //2 for the midpoint.
-            var position = Matrix.CreateTranslation(-LeftBound - windowWidth / ScaleTwo, -focusPoint.Y, 0); //2 for the midpoint.
-            var offset = Matrix.CreateTranslation(windowWidth / ScaleTwo, 0, 0); //2 for the midpoint.
+            LeftBound = focus.X - windowWidth / GeneralConstants.MidPoint; //2 for the midpoint.
+            var position = Matrix.CreateTranslation(-LeftBound - windowWidth / GeneralConstants.MidPoint, -focus.Y, GeneralConstants.NonChange); //2 for the midpoint.
+            var offset = Matrix.CreateTranslation(windowWidth / GeneralConstants.MidPoint, GeneralConstants.NonChange, GeneralConstants.NonChange); //2 for the midpoint.
             Transform = position * offset;
             UpperBound = focusPoint.Y ;
         }

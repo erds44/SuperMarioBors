@@ -3,6 +3,7 @@ using SuperMarioBros.Items;
 using SuperMarioBros.Managers;
 using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Enemy;
+using SuperMarioBros.Utility;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -44,9 +45,9 @@ namespace SuperMarioBros.Loading
         private static int FloatComparison(float f1, float f2)
         {
             //Used three times so not a good practice to use lambda.
-            if (f1 > f2) return 1;
-            if (f1 < f2) return -1;
-            return 0;
+            if (f1 > f2) return GeneralConstants.Greater;
+            if (f1 < f2) return GeneralConstants.Less;
+            return GeneralConstants.Equal;
         }
         public void Load(float rightBound)
         {

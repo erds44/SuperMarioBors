@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 using SuperMarioBros.AudioFactories;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.GameStates
 {
@@ -10,7 +11,7 @@ namespace SuperMarioBros.GameStates
         private readonly GraphicsDevice graphicsDevice;
         private readonly MarioGame game;
         private Color backGroundColor = Color.CornflowerBlue;
-        private float teleportTimer = 2f;
+        private float teleportTimer = Timers.TeleportTimeSpan;
         private Vector2 teleportPosition;
         public TeleportingState(MarioGame game, Vector2 Position)
         {
@@ -18,7 +19,7 @@ namespace SuperMarioBros.GameStates
             this.game = game;
             graphicsDevice = game.GraphicsDevice;
             MediaPlayer.Stop();
-            AudioFactory.Instance.CreateSound("pipe").Play();
+            AudioFactory.Instance.CreateSound(StringConsts.Pipe).Play();
             if (game.Player.Position.Y < 0) backGroundColor = Color.Black;
             teleportPosition = Position;
 
