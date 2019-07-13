@@ -47,13 +47,13 @@ namespace SuperMarioBros.Cameras
                 UpperBound = 0;
         }
 
-        public void Update(Vector2 focus) //focus on given point. This does not have a "left-only" limit. Given point will be the center of the camera.
+        public void Update(Vector2 focusPoint) //focus on given point. This does not have a "left-only" limit. Given point will be the center of the camera.
         {
-            LeftBound = focus.X - windowWidth / ScaleTwo; //2 for the midpoint.
-            var position = Matrix.CreateTranslation(-LeftBound - windowWidth / ScaleTwo, -focus.Y, 0); //2 for the midpoint.
+            LeftBound = focusPoint.X - windowWidth / ScaleTwo; //2 for the midpoint.
+            var position = Matrix.CreateTranslation(-LeftBound - windowWidth / ScaleTwo, -focusPoint.Y, 0); //2 for the midpoint.
             var offset = Matrix.CreateTranslation(windowWidth / ScaleTwo, 0, 0); //2 for the midpoint.
             Transform = position * offset;
-            UpperBound = focus.Y ;
+            UpperBound = focusPoint.Y ;
         }
     }
 }

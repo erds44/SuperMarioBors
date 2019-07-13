@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Stats;
+using System;
 
 namespace SuperMarioBros.GameStates
 {
@@ -55,8 +56,7 @@ namespace SuperMarioBros.GameStates
         {
             game.State = new PauseState(game);
         }
-        public override void Die()
-        {
+        public override void Die() { 
             game.Player.DestroyEvent -= Die;
             game.State = new PlayerDeadState(game);
         }

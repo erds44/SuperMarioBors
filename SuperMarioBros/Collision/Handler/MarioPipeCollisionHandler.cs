@@ -66,6 +66,7 @@ namespace SuperMarioBros.Collisions
 
         private static bool MarioInPipe(IMario mario, IPipe pipe, Direction direction)
         {
+            if (direction == Direction.none) return false;
             Rectangle overlap = Rectangle.Intersect(mario.HitBox, pipe.HitBox);
             if (overlap == mario.HitBox)
             {

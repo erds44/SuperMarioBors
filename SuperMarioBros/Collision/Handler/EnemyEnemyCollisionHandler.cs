@@ -53,6 +53,7 @@ namespace SuperMarioBros.Collisions
             mover.ChangeDirection();
             target.ChangeDirection();
         }
+        
         public static void MoverChangeDirection(IEnemy mover, IEnemy target, Direction direction)
         {
             mover.ChangeDirection();

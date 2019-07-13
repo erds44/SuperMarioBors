@@ -34,19 +34,19 @@ namespace SuperMarioBros.GameStates
             foreach (var ele in buttons) ele.Update();
         }
 
-        private void AddKeyBoardButton(List<Buttons> buttons)
+        private void AddKeyBoardButton(List<Buttons> keyboardButtons)
         {
             var keyboardButton = new Buttons(buttonFont, "Keyboard", KeyboardButton);
             keyboardButton.Click += game.ChangeToPlayerStatusState;
-            buttons.Add(keyboardButton);
+            keyboardButtons.Add(keyboardButton);
         }
 
-        private void AddGamePadButton(List<Buttons> buttons)
+        private void AddGamePadButton(List<Buttons> gamepadButtons)
         {
             var GamePadButton = new Buttons(buttonFont, "GamePad", GamepadButton);
             GamePadButton.Click += game.SetControllerAsGamePad;
             GamePadButton.Click += game.ChangeToPlayerStatusState;
-            buttons.Add(GamePadButton);
+            gamepadButtons.Add(GamePadButton);
         }
     }
 }

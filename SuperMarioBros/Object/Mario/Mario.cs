@@ -18,7 +18,7 @@ namespace SuperMarioBros.Marios
 {
     public class Mario : IMario
     {
-        public int EnemyKillStreakCounter { get; set; } = GeneralConstants.DefaultEnmeyCount;
+        public int EnemyKillStreakCounter { get; set; } = GeneralConstants.DefaultEnemyCount;
         public event Action ClearingScoresEvent;
         public event Action ChangeToFlagPoleStateEvent;
         public event Action DestroyEvent;
@@ -35,6 +35,7 @@ namespace SuperMarioBros.Marios
         public bool OnGround { get; set; }
         public double NoMovementTimer { get; set; }
         public IMarioTransitionState TransitionState { get; set; }
+        private bool isWin;
         public Rectangle HitBox
         {
             get
@@ -60,6 +61,7 @@ namespace SuperMarioBros.Marios
             Position = location;
             NoMovementTimer = 0;
             ObjState = ObjectState.Normal;
+            isWin = false;
         }
 
         public void MoveDown()
@@ -108,7 +110,7 @@ namespace SuperMarioBros.Marios
         {
             TransitionState.Update(gameTime);
             NoMovementTimer -= gameTime.ElapsedGameTime.TotalSeconds;
-            if (OnGround) EnemyKillStreakCounter = GeneralConstants.InitialEnmeyCount; //Reset it.
+            if (OnGround) EnemyKillStreakCounter = GeneralConstants.InitialEnemyCount; //Reset it.
             if (NoMovementTimer <= 0)
             {
                 HealthState.Update(gameTime);
@@ -118,13 +120,14 @@ namespace SuperMarioBros.Marios
             }
         }
         public void Destroy()
-        {        
+        {   if (isWin) return;
             if (!(HealthState is DeadMario)) HealthState = new DeadMario(this);
             DestroyEvent?.Invoke();
         }
 
         public void EnterCastle()
         {
+            isWin = true;
             ClearingScoresEvent?.Invoke();
             StatsManager.Instance.CollectRemainingTime();
             ObjState = ObjectState.Destroy;

@@ -17,7 +17,7 @@ namespace SuperMarioBros.Pipes
         public Vector2 TransferedLocation { get; protected set; }
         public Direction TeleportDirection { get; protected set; }
         public bool Teleported { get; set; }
-        protected string pipeType;
+        protected string pipeType { get; set; }
         public Rectangle HitBox
         {
             get

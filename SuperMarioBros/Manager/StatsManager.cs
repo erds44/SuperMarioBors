@@ -31,7 +31,11 @@ namespace SuperMarioBros.Stats
             scoreStats.CollectCoinSocre(position);
         }
 
-        public void Enemykilled(Vector2 position, int baseScore, int killStreak = 1) // i.e. block kill enemy
+        public void Enemykilled(Vector2 position, int baseScore) // i.e. block kill enemy
+        {
+            Enemykilled(position, baseScore, Utility.GeneralConstants.InitialKillStreak);
+        }
+        public void Enemykilled(Vector2 position, int baseScore, int killStreak) // i.e. block kill enemy
         {
             scoreStats.CollectEnemyKilledScore(position, baseScore, killStreak);
         }

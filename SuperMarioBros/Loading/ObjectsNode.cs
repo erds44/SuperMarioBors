@@ -19,7 +19,7 @@ namespace SuperMarioBros.Loading
         public Direction Direction { get; set; }
 
 
-        public ObjectsNode(string objectType, Vector2 position, int shape, int size, int width, string itemType= StringConsts.NoItemContained, int itemCount=GeneralConstants.DefaultItemContained)
+        public ObjectsNode(string objectType, Vector2 position, int shape, int size, int width, string itemType, int itemCount)
         {
             this.ObjectType = objectType;
             this.Position = position;
@@ -30,8 +30,23 @@ namespace SuperMarioBros.Loading
             this.ItemCount = itemCount;
             this.Direction = Direction.none;
         }
-        
-        public ObjectsNode(string objectType, Vector2 position, int shape, int size, int width, Direction direction,string pipeType, Vector2 transferedLocation)
+
+        public ObjectsNode(string objectType, Vector2 position, int shape, int size, int width)
+        {
+            this.ObjectType = objectType;
+            this.Position = position;
+            this.Shape = shape;
+            this.Size = size;
+            this.Width = width;
+            this.ItemType = StringConsts.NoItemContained;
+            this.ItemCount = GeneralConstants.DefaultItemContained;
+            this.Direction = Direction.none;
+        }
+
+
+
+
+        public ObjectsNode(string objectType, Vector2 position, int shape, int size, int width, Direction direction, string pipeType, Vector2 transferedLocation)
         {
             this.ObjectType = objectType;
             this.Position = position;

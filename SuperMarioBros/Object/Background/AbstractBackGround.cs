@@ -10,7 +10,7 @@ namespace SuperMarioBros.Backgrounds
 {
     public abstract class AbstractBackground : IStatic
     {
-        protected ISprite sprite;
+        protected ISprite sprite { get; set; }
         public Vector2 Position { get; set; }
         public ObjectState ObjState { get; set; }
         public Physics Physics { get; set; }

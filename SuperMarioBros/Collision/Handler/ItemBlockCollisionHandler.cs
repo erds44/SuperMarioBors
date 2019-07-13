@@ -12,6 +12,7 @@ namespace SuperMarioBros.Collisions
             item.ObjState = ObjectState.NonCollidable;
         }
 
+        
         public static void ItemBumpedOrChangeDirection(IItem item, IBlock block, Direction direction)
         {
             BumpUp(item);

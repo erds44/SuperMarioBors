@@ -8,10 +8,10 @@ namespace SuperMarioBros.Utility
 {
     public static class GeneralConstants
     {
-        public const int DefaultEnmeyScore = 100;
+        public const int DefaultEnemyScore = 100;
         public const int ShelledKoopaScore = 500;
-        public const int DefaultEnmeyCount = 0;
-        public const int InitialEnmeyCount = 1;
+        public const int DefaultEnemyCount = 0;
+        public const int InitialEnemyCount = 1;
         public const int InitialCount = 0;
         public const int FireBallCount = 2;
         public const int DefaultDelayScale = 5;
@@ -30,6 +30,7 @@ namespace SuperMarioBros.Utility
         public const int FallMargin = 100;
         public const int DisposeMargin = 500;
         public const int ScaleTwo = 2;
+        public const int InitialKillStreak = 1;
 
         public const float JoystickXThreshold = 0.1f;
         public const float JoystickYThreshold = 0.8f;

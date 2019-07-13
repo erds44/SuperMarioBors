@@ -28,13 +28,13 @@ namespace SuperMarioBros.Objects.Enemy
             Physics = new Physics(Vector2.Zero, enemyGravity, enemyWeight);
             Physics.ApplyGravity();
             IsFlipped = false;
-            Score = GeneralConstants.DefaultEnmeyScore;
-            EnemyKillStreakCounter = GeneralConstants.DefaultEnmeyCount;
+            Score = GeneralConstants.DefaultEnemyScore;
+            EnemyKillStreakCounter = GeneralConstants.DefaultEnemyCount;
         }
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             if (IsFlipped)
-                ((UniversalSprite)Sprite).Draw(spriteBatch, Position, SpriteEffects.FlipVertically);
+                ((UniversalSprite)Sprite).Draw(spriteBatch, Position, spriteEffects: SpriteEffects.FlipVertically, scale: SpriteConsts.DefaultScale);
             else
                 Sprite.Draw(spriteBatch, Position);
         }

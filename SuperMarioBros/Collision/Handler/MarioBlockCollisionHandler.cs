@@ -16,7 +16,7 @@ namespace SuperMarioBros.Collisions
         /* This class deals mainly with the bottom collision agaisnt block
          * Rest sides collision heandlers are in GeneralHandler
          */
-        protected static bool flagePoleStage = false;
+        private static bool flagePoleStage = false;
         public static void SmallMarioVsHidden(IMario mario, IBlock block, Direction direction) 
         {
             if (mario.Physics.Velocity.Y < 0)

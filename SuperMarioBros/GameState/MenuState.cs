@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Stats;
+using System;
 using System.Collections.Generic;
 
 namespace SuperMarioBros.GameStates
@@ -24,11 +25,11 @@ namespace SuperMarioBros.GameStates
             AddNewGameButton(buttons);
             AddQuitGameButton(buttons);
         }
-        private void AddNewGameButton(List<Buttons> buttons)
+        private void AddNewGameButton(List<Buttons> newGameButton)
         {
             var startButton = new Buttons(spriteFont, "New Game", Utility.Locations.NewgameButton);
             startButton.Click += NewGameClick;
-            buttons.Add(startButton);
+            newGameButton.Add(startButton);
         }
 
         private void NewGameClick()
@@ -36,11 +37,11 @@ namespace SuperMarioBros.GameStates
             game.State = new ChooseControllerState(game);
         }
 
-        private void AddQuitGameButton(List<Buttons> buttons)
+        private void AddQuitGameButton(List<Buttons> quitGameButton)
         {
             var quitButton = new Buttons(spriteFont, "Quit", Utility.Locations.QuitButton);
             quitButton.Click += QuitGameClick;
-            buttons.Add(quitButton);
+            quitGameButton.Add(quitButton);
         }
 
         private void QuitGameClick()

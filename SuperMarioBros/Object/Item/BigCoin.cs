@@ -8,7 +8,7 @@ namespace SuperMarioBros.Items
 
     public class BigCoin : AbstractItem, IItem
     {
-        public Action<Vector2> CoinCollectedEvent;
+        public Action<Vector2> CoinCollectedEvent { get; }
         public BigCoin(Vector2 location)
         {
             Position = location;

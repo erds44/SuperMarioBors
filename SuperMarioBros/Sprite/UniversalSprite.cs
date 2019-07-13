@@ -40,7 +40,7 @@ namespace SuperMarioBros.Sprites
                 dt = Timers.InitialTime;
             }
         }
-        public void Draw(SpriteBatch spriteBatch, Vector2 location,SpriteEffects spriteEffects = SpriteEffects.None, float scale = SpriteConsts.DefaultScale)
+        public void Draw(SpriteBatch spriteBatch, Vector2 location,SpriteEffects spriteEffects, float scale)
         {
             int row = (int)((float)currentFrame / (float)totalFrame);
             int column = currentFrame % totalFrame;
@@ -59,6 +59,16 @@ namespace SuperMarioBros.Sprites
             Vector2 Position = new Vector2((int)location.X, (int)location.Y - height * scale);
 
             spriteBatch.Draw(texture, Position, sourceRectangle, spriteColor, SpriteConsts.DefaultRotation, Vector2.Zero, scale, spriteEffects, layerDepth);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 location)
+        {
+            Draw(spriteBatch, location, SpriteEffects.None, SpriteConsts.DefaultScale);
+        }
+
+        public void Draw(SpriteBatch spriteBatch, Vector2 location, Color spriteColor)
+        {
+            Draw(spriteBatch, location, spriteColor, SpriteEffects.None, SpriteConsts.DefaultScale);
         }
     }
 }

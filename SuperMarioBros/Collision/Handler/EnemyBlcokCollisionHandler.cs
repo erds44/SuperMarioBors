@@ -1,4 +1,5 @@
 ﻿using SuperMarioBros.Blocks;
+using SuperMarioBros.Objects;
 using SuperMarioBros.Objects.Enemy;
 using SuperMarioBros.Stats;
 
@@ -20,6 +21,7 @@ namespace SuperMarioBros.Collisions
             enemy.ObjState = ObjectState.NonCollidable;
             StatsManager.Instance.Enemykilled(enemy.Position, enemy.Score);
         }
+        
         public static void EnemyHorizontallyBounce(IEnemy enemy, IBlock block, Direction direction)
         {
             MoverHorizontallyBounce(enemy, block, direction);

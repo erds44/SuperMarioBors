@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 
 namespace SuperMarioBros.Utility
 {
-    public class XMLUtility
+    public static class XMLUtility
     {
         /// <summary>
         /// Read from a file, return a list containing given type elements.

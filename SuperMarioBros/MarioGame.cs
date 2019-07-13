@@ -20,8 +20,8 @@ namespace SuperMarioBros
     public enum ObjectState { Normal, NonCollidable, Destroy }
     public class MarioGame : Game
     {
-        public readonly int WindowWidth;
-        public readonly int WindowHeight;
+        public int WindowWidth { get; }
+        public int WindowHeight { get; }
         public float CameraLeftBound { get => Camera.LeftBound; }
         public float CameraUpperBound { get => Camera.UpperBound; }
         public float CameraRightBound { get => Camera.RightBound; }
@@ -29,7 +29,7 @@ namespace SuperMarioBros
         public Camera Camera { get; private set; }
         public IController Controller { get; set; }
         private SpriteBatch spriteBatch;
-        public CollisionManager CollisionManager;
+        public CollisionManager CollisionManager { get; private set; }
         public IMario Player => ObjectsManager.Mario;
         public IGameState State { get; set; }
         public bool IskeyboardController { get; private set; } = true;

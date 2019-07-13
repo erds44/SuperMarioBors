@@ -14,9 +14,6 @@ namespace SuperMarioBros.Marios.MarioMovementStates
         protected private Vector2 offset = Locations.MarioOffset;
         protected private Vector2 slidingVelocity = PhysicsConsts.SlidingMarioVelocity;
         protected private FireBallDirection direction = FireBallDirection.left;
-        protected static private int fireBallCount = GeneralConstants.FireBallCount;
-        protected static private float fireBallCoolDown = Timers.FireBallCoolDown;
-        protected static private bool coolDown = false;
         public virtual void OnGround()
         {
             mario.OnGround = true;
