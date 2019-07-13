@@ -14,6 +14,7 @@ using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Commands;
 using Buttons = Microsoft.Xna.Framework.Input.Buttons;
 using SuperMarioBros.Stats;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros
 {
@@ -43,12 +44,12 @@ namespace SuperMarioBros
             };
             WindowHeight = graphics.PreferredBackBufferHeight;
             WindowWidth = graphics.PreferredBackBufferWidth;
-            Content.RootDirectory = "Content";
+            Content.RootDirectory = StringConsts.Content;
         }
 
         protected override void LoadContent()
         {
-            AudioFactory.Instance.Load(Content, "Content/sounds.xml", "Content/musics.xml", "Content/hurry.xml");
+            AudioFactory.Instance.Load(Content, StringConsts.SoundsFile, StringConsts.MusicsFile, StringConsts.HurrysFile);
             base.LoadContent();
         }
 

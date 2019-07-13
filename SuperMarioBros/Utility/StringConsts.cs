@@ -75,6 +75,10 @@ namespace SuperMarioBros.Utility
         public const string LevelInfo = "1-1";
         public const string TimeInfo = "TIME";
         public const string LivesInfo = "LIVES";
+        public const string Content = "Content";
+        public const string SoundsFile = "Content/sounds.xml";
+        public const string MusicsFile = "Content/musics.xml";
+        public const string HurrysFile = "Content/hurry.xml";
 
     }
 }
