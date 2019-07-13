@@ -29,6 +29,7 @@ namespace SuperMarioBros.Utility
         public const int LoadMargin = 300;
         public const int FallMargin = 100;
         public const int DisposeMargin = 500;
+        public const int ScaleTwo = 2;
 
         public const float JoystickXThreshold = 0.1f;
         public const float JoystickYThreshold = 0.8f;

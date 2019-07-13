@@ -28,6 +28,14 @@ namespace SuperMarioBros.Utility
         public const string Bump = "bump";
         public const string PowerUp = "powerup";
         public const string ExtraLife = "1up";
+        public const string ScoreString = "SCORE";
+        public const string WorldString = "WORLD";
+        public const string WorldOneOne = "1-1";
+        public const string CoinsString = "COINS";
+        public const string TimeString = "TIME";
+        public const string LivesString = "LIVES";
+        public const string Gameover = "gameover";
+        public const string GameOverString = "GameOver";
         public const string NoItemContained = "noType";
         public const string SpritesFile = "Content/sprites.xml";
         public const string StaticsFile = "Content/statics.xml";

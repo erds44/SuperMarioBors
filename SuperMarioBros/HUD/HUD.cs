@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Stats;
 using static SuperMarioBros.Utility.Layers;
 using static SuperMarioBros.Utility.Locations;
+using static SuperMarioBros.Utility.StringConsts;
 
 namespace SuperMarioBros.HeadsUps
 {
@@ -11,23 +12,23 @@ namespace SuperMarioBros.HeadsUps
         private SpriteFont spriteFont;
         public HUD(MarioGame game)
         {
-            spriteFont = game.Content.Load<SpriteFont>("Font/MarioFont");
+            spriteFont = game.Content.Load<SpriteFont>(Font);
         }
         public void Draw(SpriteBatch spriteBatch, float leftBound, float upperBound)
         {
-            DrawHelper(spriteBatch, "SCORE", new Vector2(ScoreStringOffset + leftBound, WordXOffset + upperBound));
+            DrawHelper(spriteBatch, ScoreString, new Vector2(ScoreStringOffset + leftBound, WordXOffset + upperBound));
             DrawHelper(spriteBatch, StatsManager.Instance.Score.ToString(), new Vector2(ScoreStringOffset + leftBound, WordYOffset + upperBound));
 
-            DrawHelper(spriteBatch, "COINS", new Vector2(CoinStringOffset + leftBound, WordXOffset + upperBound));
+            DrawHelper(spriteBatch, CoinsString, new Vector2(CoinStringOffset + leftBound, WordXOffset + upperBound));
             DrawHelper(spriteBatch, StatsManager.Instance.Coin.ToString(), new Vector2(CoinStringOffset + leftBound, WordYOffset + upperBound));
 
-            DrawHelper(spriteBatch, "WORLD", new Vector2(WorldStringOffset + leftBound, WordXOffset + upperBound));
-            DrawHelper(spriteBatch, "1-1", new Vector2(WorldStringOffset + leftBound, WordYOffset + upperBound));
+            DrawHelper(spriteBatch, WorldString, new Vector2(WorldStringOffset + leftBound, WordXOffset + upperBound));
+            DrawHelper(spriteBatch, WorldOneOne, new Vector2(WorldStringOffset + leftBound, WordYOffset + upperBound));
 
-            DrawHelper(spriteBatch, "TIME", new Vector2(TimeStringOffset + leftBound, WordXOffset + upperBound));
+            DrawHelper(spriteBatch, TimeString, new Vector2(TimeStringOffset + leftBound, WordXOffset + upperBound));
             DrawHelper(spriteBatch, StatsManager.Instance.Time.ToString(), new Vector2(TimeStringOffset + leftBound, WordYOffset + upperBound));
 
-            DrawHelper(spriteBatch, "LIVES", new Vector2(LivesStringOffset + leftBound, WordXOffset + upperBound));
+            DrawHelper(spriteBatch, LivesString, new Vector2(LivesStringOffset + leftBound, WordXOffset + upperBound));
             DrawHelper(spriteBatch, StatsManager.Instance.Life.ToString(), new Vector2(LivesStringOffset + leftBound, WordYOffset + upperBound));
         }
 
