@@ -162,7 +162,7 @@ namespace SuperMarioBros.Collisions
         {
             ObjectFactory.Instance.CreateCollidableObject(typeof(UsedBlock), position);
         }
-        public static void ResetFlagPoleStage()
+        public static void ResetFlagPoleStage(object sender, EventArgs e)
         {
             flagePoleStage = false;
         }

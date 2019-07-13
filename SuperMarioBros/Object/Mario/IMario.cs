@@ -11,12 +11,12 @@ namespace SuperMarioBros.Marios
 {
     public interface IMario : IDynamic
     {
-        event Action ClearingScoresEvent;
-        event Action DestroyEvent;
-        event Action DeathStateEvent;
-        event Action <Vector2> SlidingEvent;
-        event Action <Vector2>ChangeToTeleportStateEvent;
-        event Action ChangeToFlagPoleStateEvent;
+        event EventHandler ClearingScoresEvent;
+        event EventHandler DestroyEvent;
+        event EventHandler DeathStateEvent;
+        event EventHandler SlidingEvent;
+        event EventHandler ChangeToTeleportStateEvent;
+        event EventHandler ChangeToFlagPoleStateEvent;
         int EnemyKillStreakCounter { get; set; }
         double NoMovementTimer { get; set; }
         bool OnGround { get; set; }
@@ -36,7 +36,7 @@ namespace SuperMarioBros.Marios
         void TakeDamage();
         void TimeOver();
         void SlidingFlagPole();
-        void JumpingOffFlag();
+        void JumpingOffFlag(object sender, System.EventArgs e);
         void Teleport(Vector2 teleportPosition, Direction direction);
         void PowerPressed();
         void PowerReleased();

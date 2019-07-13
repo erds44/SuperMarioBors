@@ -717,6 +717,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Sprite\ISprite.cs" />
     <Compile Include="Sprite\UniversalSprite.cs" />
+    <Compile Include="Utility\VectorEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="levelLoading, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">

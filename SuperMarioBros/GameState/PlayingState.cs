@@ -19,7 +19,7 @@ namespace SuperMarioBros.GameStates
             else game.InitializeGamePad();
 
             game.Player.DeathStateEvent += Die;
-            StatsManager.Instance.timeUpEvent += TimeUp;
+            StatsManager.Instance.TimeUpEvent += TimeUp;
 
             if (MediaPlayer.State == MediaState.Paused) MediaPlayer.Resume();
             else if (game.Player.Position.Y > 0)
@@ -56,15 +56,15 @@ namespace SuperMarioBros.GameStates
         {
             game.State = new PauseState(game);
         }
-        public override void Die() { 
+        public override void Die(object sender, System.EventArgs e) { 
             game.Player.DestroyEvent -= Die;
             game.State = new PlayerDeadState(game);
         }
-        public override void Reset()
+        public override void Reset(object sender, System.EventArgs e)
         {
             game.Player.DeathStateEvent += Die;
         }
-        public override void TimeUp()
+        public override void TimeUp(object sender, System.EventArgs e)
         {
             game.Player.TimeOver();
             game.State = new PlayerDeadState(game);

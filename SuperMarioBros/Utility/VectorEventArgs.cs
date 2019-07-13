@@ -9,10 +9,10 @@ namespace SuperMarioBros.Utility
 {
     public class VectorEventArgs : EventArgs
     {
-        public Vector2 vect;
-        public VectorEventArgs(Vector2 vector)
+        public Vector2 Vector { get; }
+        public VectorEventArgs(Vector2 eventVector)
         {
-            this.vect = vector;
+            Vector = eventVector;
         }
     }
 }

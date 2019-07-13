@@ -54,7 +54,7 @@ namespace SuperMarioBros.Objects
                 AudioFactory.Instance.CreateSound(StringConsts.Coin).Play();
             }
             if (obj is WinFlag winFlag)
-                winFlag.startOverEvent += game.StartOver;        
+                winFlag.StartOverEvent += game.StartOver;        
         }
 
         public void CreateCollidableObject(Type type, Vector2 location)

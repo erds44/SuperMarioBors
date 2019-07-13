@@ -52,8 +52,8 @@ namespace SuperMarioBros.Cameras
 
         public void Update(Vector2 focusPoint) //focus on given point. This does not have a "left-only" limit. Given point will be the center of the camera.
         {
-            LeftBound = focus.X - windowWidth / GeneralConstants.MidPoint; //2 for the midpoint.
-            var position = Matrix.CreateTranslation(-LeftBound - windowWidth / GeneralConstants.MidPoint, -focus.Y, GeneralConstants.NonChange); //2 for the midpoint.
+            LeftBound = focusPoint.X - windowWidth / GeneralConstants.MidPoint; //2 for the midpoint.
+            var position = Matrix.CreateTranslation(-LeftBound - windowWidth / GeneralConstants.MidPoint, -focusPoint.Y, GeneralConstants.NonChange); //2 for the midpoint.
             var offset = Matrix.CreateTranslation(windowWidth / GeneralConstants.MidPoint, GeneralConstants.NonChange, GeneralConstants.NonChange); //2 for the midpoint.
             Transform = position * offset;
             UpperBound = focusPoint.Y ;

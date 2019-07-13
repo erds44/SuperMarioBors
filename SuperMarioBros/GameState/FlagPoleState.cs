@@ -38,7 +38,7 @@ namespace SuperMarioBros.GameStates
             if(StatsManager.Instance.Time == 0) isClearingScore = false;
         }
         
-        private void ClearScore()
+        private void ClearScore(object sender, System.EventArgs e)
         {
             isClearingScore = true;
         }

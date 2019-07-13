@@ -9,14 +9,14 @@ namespace SuperMarioBros.GameStates
     {
         private MouseState currentMouse;
         private MouseState previousMouse;
-        private SpriteFont spriteFont;
+        private readonly SpriteFont spriteFont;
         private bool isHovering;
 
-        public event Action Click;
+        public event EventHandler Click;
         private Vector2 position;
         private Rectangle rectangle;
 
-        private string text;
+        private readonly string text;
         public Buttons(SpriteFont spriteFont, string text, Vector2 position)
         {
             this.spriteFont = spriteFont;
@@ -45,7 +45,7 @@ namespace SuperMarioBros.GameStates
                 isHovering = true;
                 if (currentMouse.LeftButton == ButtonState.Released && previousMouse.LeftButton == ButtonState.Pressed)
                 {
-                    Click?.Invoke();
+                    Click?.Invoke(this, new EventArgs());
                 }
             }
         }

@@ -10,7 +10,7 @@ namespace SuperMarioBros.Stats
         private TimeStats timeStats;
         private ScoreStats scoreStats;
 
-        public event Action timeUpEvent;
+        public event EventHandler TimeUpEvent;
         public int Coin { get => coinStats.CurrentCoin; }
         public int Time { get => (int)timeStats.currentTime; }
         public int Life { get => lifeStats.RemaningLives; }
@@ -64,7 +64,7 @@ namespace SuperMarioBros.Stats
         public void Update(GameTime gameTime)
         {
             timeStats.Update(gameTime);
-            if (Time <= 0) timeUpEvent?.Invoke();
+            if (Time <= 0) TimeUpEvent?.Invoke(this, new EventArgs());
         }
 
         public void LoseLife()

@@ -57,7 +57,6 @@ namespace SuperMarioBros.Utility
         public const string KeyBoard = "Keyboard";
         public const string GamePad = "GamePad";
         public const string FlagPole = "flagpole";
-        public const string GameOver = "gameover";
         public const string StartBackground = "StartBackground";
         public const string NewGame = "New Game";
         public const string Quit = "Quit";

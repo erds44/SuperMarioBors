@@ -32,7 +32,7 @@ namespace SuperMarioBros.GameStates
             newGameButton.Add(startButton);
         }
 
-        private void NewGameClick()
+        private void NewGameClick(object sender, System.EventArgs e)
         {
             game.State = new ChooseControllerState(game);
         }
@@ -44,7 +44,7 @@ namespace SuperMarioBros.GameStates
             quitGameButton.Add(quitButton);
         }
 
-        private void QuitGameClick()
+        private void QuitGameClick(object sender, System.EventArgs e)
         {
             game.Exit();
         }

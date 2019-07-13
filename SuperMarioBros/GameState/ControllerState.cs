@@ -7,9 +7,9 @@ namespace SuperMarioBros.GameStates
 {
     public class ChooseControllerState : GameState
     {
-        private List<Buttons> buttons;
-        private GraphicsDevice graphics;
-        private SpriteFont buttonFont;
+        private readonly List<Buttons> buttons;
+        private readonly GraphicsDevice graphics;
+        private readonly SpriteFont buttonFont;
         private readonly MarioGame game;
         public ChooseControllerState(MarioGame game)
         {

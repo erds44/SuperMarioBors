@@ -10,8 +10,8 @@ namespace SuperMarioBros.Items
 {
     public class WinFlag : AbstractItem, IItem
     {
-        public event Action startOverEvent;
-        private float speedChange;
+        public event EventHandler StartOverEvent;
+        private readonly float speedChange;
         public WinFlag(Vector2 location)
         {
             Position = location;
@@ -28,7 +28,7 @@ namespace SuperMarioBros.Items
             else
             {
                 Thread.Sleep(Timers.WinFlagSleepTime);
-                startOverEvent?.Invoke();
+                StartOverEvent?.Invoke(this, new EventArgs());
             }
         }
         public override Rectangle ItemHitBox()

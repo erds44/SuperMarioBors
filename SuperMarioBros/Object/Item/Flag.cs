@@ -8,7 +8,7 @@ namespace SuperMarioBros.Items
 {
     public class Flag : AbstractItem, IItem
     {
-        public event Action MarioJumpingOffFlagEvent;
+        public event EventHandler MarioJumpingOffFlagEvent;
         private readonly float flagLowestPoistion;
         private bool marioJumpFlag;
         public Flag(Vector2 location)
@@ -27,11 +27,11 @@ namespace SuperMarioBros.Items
             Position += Physics.Displacement(gameTime);
             if(Position.Y >= flagLowestPoistion && !marioJumpFlag)
             {
-                MarioJumpingOffFlagEvent?.Invoke();
+                MarioJumpingOffFlagEvent?.Invoke(this, new EventArgs());
                 marioJumpFlag = true;
             }
         }
-        public void Sliding(Vector2 position) //mathing the signiture only, since socrebaod use the same event as well
+        public void Sliding(object sender, System.EventArgs e) //mathing the signiture only, since socrebaod use the same event as well
         {
             Physics.Velocity = PhysicsConsts.FlagVelocity;
             Physics.ApplyGravity();

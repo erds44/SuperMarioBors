@@ -10,7 +10,7 @@ namespace SuperMarioBros.Backgrounds
 {
     public abstract class AbstractBackground : IStatic
     {
-        protected ISprite sprite { get; set; }
+        protected ISprite Sprite { get; set; }
         public Vector2 Position { get; set; }
         public ObjectState ObjState { get; set; }
         public Physics Physics { get; set; }
@@ -20,20 +20,20 @@ namespace SuperMarioBros.Backgrounds
         {
             Position = location;
             ObjState = ObjectState.NonCollidable;
-            sprite = SpriteFactory.CreateSprite(GetType().Name);
-            sprite.SetLayer(Layers.BackgroundLayer);
+            Sprite = SpriteFactory.CreateSprite(GetType().Name);
+            Sprite.SetLayer(Layers.BackgroundLayer);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            sprite.Draw(spriteBatch, Position,SpriteEffects.None, SpriteConsts.BackgroundScale);
+            Sprite.Draw(spriteBatch, Position,SpriteEffects.None, SpriteConsts.BackgroundScale);
         }
 
         public void Destroy() { }
 
         public virtual void Update(GameTime gameTime)
         {
-            sprite.Update(gameTime);
+            Sprite.Update(gameTime);
         }
     }
 }

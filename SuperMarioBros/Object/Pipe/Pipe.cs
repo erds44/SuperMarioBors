@@ -11,7 +11,7 @@ namespace SuperMarioBros.Pipes
         public Pipe(Vector2 location,string pipeType)
         {
             Position = location;
-            this.pipeType = pipeType;
+            this.PipeType = pipeType;
             base.Initialize();
         }
         public void SetTeleporting()

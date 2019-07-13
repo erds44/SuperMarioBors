@@ -8,7 +8,7 @@ namespace SuperMarioBros.GameStates
 {
     public class GameOverState : GameState
     {
-        private GraphicsDevice graphicsDevice;
+        private readonly GraphicsDevice graphicsDevice;
         private readonly SpriteFont spriteFont;
         private float timer = Timers.GameOverTimeSpan;
         private readonly MarioGame game;
@@ -18,14 +18,14 @@ namespace SuperMarioBros.GameStates
             this.graphicsDevice = game.GraphicsDevice;
             spriteFont = game.Content.Load<SpriteFont>(StringConsts.MarioFont);
             MediaPlayer.Stop();
-            MediaPlayer.Play(AudioFactory.Instance.CreateSong(StringConsts.GameOver));
+            MediaPlayer.Play(AudioFactory.Instance.CreateSong(StringConsts.Gameover));
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
             graphicsDevice.Clear(Color.Black);
-            spriteBatch.DrawString(spriteFont, StringConsts.GameOver, Utility.Locations.GameoverString, Color.White);
+            spriteBatch.DrawString(spriteFont, StringConsts.Gameover, Utility.Locations.GameoverString, Color.White);
             spriteBatch.End();
         }
 

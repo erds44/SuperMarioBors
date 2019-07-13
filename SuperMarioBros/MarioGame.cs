@@ -15,6 +15,7 @@ using SuperMarioBros.Commands;
 using Buttons = Microsoft.Xna.Framework.Input.Buttons;
 using SuperMarioBros.Stats;
 using SuperMarioBros.Utility;
+using System;
 
 namespace SuperMarioBros
 {
@@ -79,15 +80,16 @@ namespace SuperMarioBros
             State.Draw(spriteBatch);
             base.Draw(gameTime);
         }
-        public void ChangeToPlayerStatusState()
+        public void ChangeToPlayerStatusState(object sender, System.EventArgs e)
         {
             State = new PlayerStatusState(this);
         }
-        public void ChangeToTeleportingState(Vector2 Position)
+        public void ChangeToTeleportingState(object sender, System.EventArgs e)
         {
-            State = new TeleportingState(this, Position);
+            var position = ((VectorEventArgs)e).Vector;
+            State = new TeleportingState(this, position);
         }
-        public void ChangeToFlagPoleState()
+        public void ChangeToFlagPoleState(object sender, System.EventArgs e)
         {
             State = new FlagPoleState(this);
         }
@@ -96,7 +98,7 @@ namespace SuperMarioBros
         {
             ObjectsManager = new ObjectsManager(new ObjectLoader(), this);
             ObjectsManager.Initialize();
-            State.Reset();
+            State.Reset(this, new EventArgs());
             Camera.Reset(Player);
             ObjectFactory.Instance.Initialize(this);
             CollisionManager = new CollisionManager(this);
@@ -112,7 +114,7 @@ namespace SuperMarioBros
             Player.ChangeToFlagPoleStateEvent += ChangeToFlagPoleState;
         }
 
-        public void StartOver()
+        public void StartOver(object sender, System.EventArgs e)
         {
             Initialize();
         }
@@ -163,7 +165,7 @@ namespace SuperMarioBros
         {
             State.Pause();
         }
-        public void SetControllerAsGamePad()
+        public void SetControllerAsGamePad(object sender, System.EventArgs e)
         {
             IskeyboardController = false;
         }

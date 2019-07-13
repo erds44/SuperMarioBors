@@ -28,7 +28,7 @@ namespace SuperMarioBros.GameStates
             game.ObjectsManager.Update(gameTime);
             game.CollisionManager.Update();
         }
-        public override void Die()
+        public override void Die(object sender, System.EventArgs e)
         {
             game.ResetGame();
             if (StatsManager.Instance.Life == 0) game.State = new GameOverState(game);

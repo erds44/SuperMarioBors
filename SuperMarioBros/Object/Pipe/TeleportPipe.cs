@@ -10,7 +10,7 @@ namespace SuperMarioBros.Pipes
         public TeleportPipe(Vector2 location, Vector2 transferedLocation, string pipeType, Direction direction)
         {
             Position = location;
-            this.pipeType = pipeType;
+            this.PipeType = pipeType;
             base.Initialize();
             TransferedLocation = transferedLocation;
             TeleportDirection = direction;

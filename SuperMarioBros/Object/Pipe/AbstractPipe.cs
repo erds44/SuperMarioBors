@@ -17,12 +17,12 @@ namespace SuperMarioBros.Pipes
         public Vector2 TransferedLocation { get; protected set; }
         public Direction TeleportDirection { get; protected set; }
         public bool Teleported { get; set; }
-        protected string pipeType { get; set; }
+        protected string PipeType { get; set; }
         public Rectangle HitBox
         {
             get
             {
-                Point size = SpriteFactory.ObjectSize(pipeType);
+                Point size = SpriteFactory.ObjectSize(PipeType);
                 return new Rectangle((int)Position.X, (int)Position.Y - size.Y, size.X, size.Y);
             }
         }
@@ -30,7 +30,7 @@ namespace SuperMarioBros.Pipes
         protected virtual void Initialize()
         {
             ObjState = ObjectState.Normal;
-            sprite = SpriteFactory.CreateSprite(pipeType);
+            sprite = SpriteFactory.CreateSprite(PipeType);
             sprite.SetLayer(Layers.PipeLayer);
             Physics = new Physics(Vector2.Zero, PhysicsConsts.ZeroGravity, PhysicsConsts.ZeroWeight);
             TransferedLocation = Vector2.Zero;

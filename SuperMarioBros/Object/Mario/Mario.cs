@@ -19,12 +19,12 @@ namespace SuperMarioBros.Marios
     public class Mario : IMario
     {
         public int EnemyKillStreakCounter { get; set; } = GeneralConstants.DefaultEnemyCount;
-        public event Action ClearingScoresEvent;
-        public event Action ChangeToFlagPoleStateEvent;
-        public event Action DestroyEvent;
-        public event Action<Vector2> ChangeToTeleportStateEvent;
-        public event Action DeathStateEvent;
-        public event Action<Vector2> SlidingEvent;
+        public event EventHandler ClearingScoresEvent;
+        public event EventHandler ChangeToFlagPoleStateEvent;
+        public event EventHandler DestroyEvent;
+        public event EventHandler ChangeToTeleportStateEvent;
+        public event EventHandler DeathStateEvent;
+        public event EventHandler SlidingEvent;
         public ObjectState ObjState { get; set; }
         public IMarioHealthState HealthState { get; set; }
         public IMarioMovementState MovementState { get; set; }
@@ -90,7 +90,7 @@ namespace SuperMarioBros.Marios
         public void TakeDamage()
         {
             TransitionState.TakeDamage();
-            if(HealthState is DeadMario) DeathStateEvent?.Invoke();
+            if(HealthState is DeadMario) DeathStateEvent?.Invoke(this, new EventArgs());
         }
 
         public void MoveUp()
@@ -122,13 +122,13 @@ namespace SuperMarioBros.Marios
         public void Destroy()
         {   if (isWin) return;
             if (!(HealthState is DeadMario)) HealthState = new DeadMario(this);
-            DestroyEvent?.Invoke();
+            DestroyEvent?.Invoke(this, new EventArgs());
         }
 
         public void EnterCastle()
         {
             isWin = true;
-            ClearingScoresEvent?.Invoke();
+            ClearingScoresEvent?.Invoke(this, new EventArgs());
             StatsManager.Instance.CollectRemainingTime();
             ObjState = ObjectState.Destroy;
         }
@@ -152,17 +152,17 @@ namespace SuperMarioBros.Marios
         {
             while (!(HealthState is DeadMario))
                 HealthState.TakeDamage();
-            DeathStateEvent?.Invoke();
+            DeathStateEvent?.Invoke(this, new EventArgs());
         }
 
         public void SlidingFlagPole()
         {
             MovementState.SlidingFlagPole();
-            SlidingEvent?.Invoke(Position);
-            ChangeToFlagPoleStateEvent?.Invoke();
+            SlidingEvent?.Invoke(this, new VectorEventArgs(Position));
+            ChangeToFlagPoleStateEvent?.Invoke(this, new EventArgs());
         }
 
-        public void JumpingOffFlag()
+        public void JumpingOffFlag(object sender, System.EventArgs e)
         {
             if (MovementState is RightSliding)
                 MovementState.ChangeSlidingDirection();
@@ -174,7 +174,7 @@ namespace SuperMarioBros.Marios
 
         public void Teleport(Vector2 teleportPosition, Direction direction)
         {
-            ChangeToTeleportStateEvent?.Invoke(teleportPosition);
+            ChangeToTeleportStateEvent?.Invoke(this, new VectorEventArgs(teleportPosition));
             if (teleportDictionary.TryGetValue(direction, out var tuple))
                 Physics.SetConstentVelocity(tuple);
 

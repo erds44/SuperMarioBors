@@ -9,10 +9,10 @@ namespace SuperMarioBros.GameStates
         public abstract void Draw(SpriteBatch spriteBatch);
         public abstract void Update(GameTime game);
 
-        public virtual void Die() { }
+        public virtual void Die(object sender, System.EventArgs e) { }
         public virtual void Pause() { }
-        public virtual void TimeUp() { }
+        public virtual void TimeUp(object sender, System.EventArgs e) { }
         public virtual void TeleportPosition(Vector2 position) { }
-        public virtual void Reset() { }
+        public virtual void Reset(object sender, System.EventArgs e) { }
     }
 }
