@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 using SuperMarioBros.AudioFactories;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.GameStates
 {
@@ -9,22 +10,22 @@ namespace SuperMarioBros.GameStates
     {
         private GraphicsDevice graphicsDevice;
         private readonly SpriteFont spriteFont;
-        private float timer = 2f;
+        private float timer = Timers.GameOverTimeSpan;
         private readonly MarioGame game;
         public GameOverState(MarioGame game)
         {
             this.game = game;
             this.graphicsDevice = game.GraphicsDevice;
-            spriteFont = game.Content.Load<SpriteFont>("Font/MarioFont");
+            spriteFont = game.Content.Load<SpriteFont>(StringConsts.MarioFont);
             MediaPlayer.Stop();
-            MediaPlayer.Play(AudioFactory.Instance.CreateSong("gameover"));
+            MediaPlayer.Play(AudioFactory.Instance.CreateSong(StringConsts.GameOver));
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Begin();
             graphicsDevice.Clear(Color.Black);
-            spriteBatch.DrawString(spriteFont, "GameOver", Utility.Locations.GameoverString, Color.White);
+            spriteBatch.DrawString(spriteFont, StringConsts.GameOver, Utility.Locations.GameoverString, Color.White);
             spriteBatch.End();
         }
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SuperMarioBros.Stats;
+using SuperMarioBros.Utility;
 using System.Collections.Generic;
 
 namespace SuperMarioBros.GameStates
@@ -17,8 +18,8 @@ namespace SuperMarioBros.GameStates
             this.game = game;
             game.IsMouseVisible = true;
             graphics = game.GraphicsDevice;
-            spriteFont = game.Content.Load<SpriteFont>("Font/MarioFontSize25");
-            background = game.Content.Load<Texture2D>("StartBackground");
+            spriteFont = game.Content.Load<SpriteFont>(StringConsts.MarioFontForChoose);
+            background = game.Content.Load<Texture2D>(StringConsts.StartBackground);
             buttons = new List<Buttons>();
             StatsManager.Instance.Reset();
             AddNewGameButton(buttons);
@@ -26,7 +27,7 @@ namespace SuperMarioBros.GameStates
         }
         private void AddNewGameButton(List<Buttons> buttons)
         {
-            var startButton = new Buttons(spriteFont, "New Game", Utility.Locations.NewgameButton);
+            var startButton = new Buttons(spriteFont, StringConsts.NewGame, Locations.NewgameButton);
             startButton.Click += NewGameClick;
             buttons.Add(startButton);
         }
@@ -38,7 +39,7 @@ namespace SuperMarioBros.GameStates
 
         private void AddQuitGameButton(List<Buttons> buttons)
         {
-            var quitButton = new Buttons(spriteFont, "Quit", Utility.Locations.QuitButton);
+            var quitButton = new Buttons(spriteFont, StringConsts.Quit, Locations.QuitButton);
             quitButton.Click += QuitGameClick;
             buttons.Add(quitButton);
         }

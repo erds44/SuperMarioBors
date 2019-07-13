@@ -50,7 +50,6 @@ namespace SuperMarioBros.AudioFactories
         public SoundEffect CreateSound(string name)
         {
             if (soundDictionary.TryGetValue(name, out string sound)) return content.Load<SoundEffect>(sound);
-            Console.WriteLine("Cannot find sound" + name);
             return null;
         }
     }

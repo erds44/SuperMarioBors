@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Stats;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.GameStates
 {
@@ -17,7 +18,7 @@ namespace SuperMarioBros.GameStates
             this.game = game;
             game.Player.ClearingScoresEvent += ClearScore;
             MediaPlayer.Stop();
-            AudioFactory.Instance.CreateSound("flagpole").Play();
+            AudioFactory.Instance.CreateSound(StringConsts.FlagPole).Play();
         }
         public override void Draw(SpriteBatch spriteBatch)
         {

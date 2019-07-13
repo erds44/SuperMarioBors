@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Objects;
+using SuperMarioBros.Utility;
 using static SuperMarioBros.Utility.PhysicsConsts;
 
 namespace SuperMarioBros.Collisions
@@ -10,7 +11,7 @@ namespace SuperMarioBros.Collisions
         /* Below are some help methods shared by every response class */
         protected static void MoverOnGround(IObject mover, IObject target, Direction direction)
         {
-            mover.Physics.Velocity = new Vector2(mover.Physics.Velocity.X, 0);
+            mover.Physics.Velocity = new Vector2(mover.Physics.Velocity.X, PhysicsConsts.ZeroVelocity);
             ResolveOverlap(mover, target, direction);
         }
         protected static void MoverVerticallyBounce(IObject mover, IObject target, Direction direction)
@@ -25,7 +26,7 @@ namespace SuperMarioBros.Collisions
         }
         protected static void MoverHorizontallyBlock(IObject mover, IObject target, Direction direction)
         {
-            mover.Physics.Velocity = new Vector2(0, mover.Physics.Velocity.Y);
+            mover.Physics.Velocity = new Vector2(PhysicsConsts.ZeroVelocity, mover.Physics.Velocity.Y);
             ResolveOverlap(mover, target, direction);
         }
         protected static void ResolveOverlap(IObject obj1, IObject obj2, Direction direction)

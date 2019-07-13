@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Media;
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Commands;
 using SuperMarioBros.Controllers;
+using SuperMarioBros.Utility;
 using Buttons = Microsoft.Xna.Framework.Input.Buttons;
 
 namespace SuperMarioBros.GameStates
@@ -22,7 +23,7 @@ namespace SuperMarioBros.GameStates
             else
                 game.Controller = new JoyStickController(game.Player, (Microsoft.Xna.Framework.Input.Buttons.LeftShoulder, new PauseCommand(game), new EmptyCommand(), false));
             MediaPlayer.Pause();
-            AudioFactory.Instance.CreateSound("pause").Play();
+            AudioFactory.Instance.CreateSound(StringConsts.Pause).Play();
         }
         public override void Draw(SpriteBatch spriteBatch)
         {

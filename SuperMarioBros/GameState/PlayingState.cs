@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 using SuperMarioBros.AudioFactories;
 using SuperMarioBros.Stats;
+using SuperMarioBros.Utility;
 
 namespace SuperMarioBros.GameStates
 {
@@ -23,12 +24,12 @@ namespace SuperMarioBros.GameStates
             if (MediaPlayer.State == MediaState.Paused) MediaPlayer.Resume();
             else if (game.Player.Position.Y > 0)
             {
-                MediaPlayer.Play(AudioFactory.Instance.CreateSong("overworld"));
+                MediaPlayer.Play(AudioFactory.Instance.CreateSong(StringConsts.OverWorld));
                 game.SetFocus(game.Player);
             }
             else
             {
-                MediaPlayer.Play(AudioFactory.Instance.CreateSong("underworld"));
+                MediaPlayer.Play(AudioFactory.Instance.CreateSong(StringConsts.UnderWorld));
                 backGroundColor = Color.Black;
                 game.SetFocus(null);
             }
